@@ -1,0 +1,40 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# ── Environment ───────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+!*/.env.example
+!.env.prod.example
+
+# ── Build output ──────────────────────────────────────────────────────────────
+backend/dist/
+frontend/.next/
+frontend/out/
+**/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# ── Prisma generated client ────────────────────────────────────────────────────
+**/generated/prisma/
+frontend/lib/generated/prisma/
+
+# ── Local uploads (dev only — production uses object storage) ─────────────────
+backend/uploads/
+
+# ── Logs ────────────────────────────────────────────────────────────────────
+*.log
+
+# ── Local DB backup dumps — not for source control ─────────────────────────────
+veritabani_yedek*.sql
+
+# ── OS / editor ───────────────────────────────────────────────────────────────
+.DS_Store
+*.pem
+
+# ── Claude Code local tool config ──────────────────────────────────────────────
+.claude/
+
+# ── Vercel ────────────────────────────────────────────────────────────────────
+.vercel

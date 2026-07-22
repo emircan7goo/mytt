@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="24" fill="url(#bg)"/>
+  <!-- Gift box bottom -->
+  <rect x="18" y="50" width="60" height="32" rx="6" fill="white" opacity="0.95"/>
+  <!-- Gift box top lid -->
+  <rect x="14" y="42" width="68" height="12" rx="5" fill="white" opacity="0.85"/>
+  <!-- Ribbon vertical -->
+  <rect x="44" y="50" width="8" height="32" fill="#F97316" opacity="0.8"/>
+  <!-- Ribbon horizontal on lid -->
+  <rect x="14" y="44" width="68" height="8" rx="0" fill="#F97316" opacity="0.6"/>
+  <!-- Bow left loop -->
+  <path d="M38 42 Q28 28 36 26 Q44 24 44 38" fill="#FBBF24" opacity="0.95"/>
+  <!-- Bow right loop -->
+  <path d="M58 42 Q68 28 60 26 Q52 24 52 38" fill="#FBBF24" opacity="0.95"/>
+  <!-- Bow center knot -->
+  <circle cx="48" cy="40" r="5" fill="#F59E0B"/>
+  <!-- % discount badge -->
+  <circle cx="70" cy="26" r="14" fill="#1E1B4B"/>
+  <text x="70" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="8" fill="#FBBF24">%</text>
+  <text x="70" y="33" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="9" fill="white">OFF</text>
+  <!-- Sparkles -->
+  <path d="M22 24 L23.5 20 L25 24 L22 24Z" fill="white" opacity="0.4"/>
+  <path d="M76 68 L77.5 64 L79 68 L76 68Z" fill="white" opacity="0.25"/>
+</svg>

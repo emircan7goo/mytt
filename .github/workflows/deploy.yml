@@ -1,0 +1,67 @@
+name: Deploy — Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # Manuel tetikleme
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false  # Deploy'ları asla interrupt etme
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    environment: production   # GitHub Environments ile onay kapısı
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── SSH ile sunucuya bağlan, deploy script çalıştır ─────────────────
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host:     ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key:      ${{ secrets.DEPLOY_SSH_KEY }}
+          port:     ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            set -e
+
+            echo "=== Mytt Deploy Başladı $(date) ==="
+
+            cd /opt/mytt
+
+            # Kodu güncelle
+            git pull origin main
+
+            # Backend image build ve restart
+            docker compose -f docker-compose.prod.yml build backend frontend
+            docker compose -f docker-compose.prod.yml up -d --no-deps backend frontend
+
+            # Eski image'ları temizle
+            docker image prune -f
+
+            # Health check — backend 30 saniyede ayağa kalksın
+            echo "Health check bekliyor..."
+            for i in $(seq 1 10); do
+              if curl -sf http://localhost:3001/health > /dev/null; then
+                echo "✅ Backend sağlıklı"
+                break
+              fi
+              echo "Bekleniyor... $i/10"
+              sleep 3
+            done
+
+            # Nihai health check
+            curl -sf http://localhost:3001/health || (echo "❌ Deploy başarısız — backend ayağa kalkmadı" && exit 1)
+
+            echo "=== Deploy Tamamlandı $(date) ==="
+
+      # ── Deploy başarısız olursa bildir ──────────────────────────────────
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Deploy BAŞARISIZ oldu! Manuel müdahale gerekiyor."
+          # İstersen buraya Slack/Telegram webhook ekle

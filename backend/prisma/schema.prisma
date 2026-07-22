@@ -1,0 +1,561 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [postgis]
+}
+
+enum Role {
+  CUSTOMER
+  DEALER
+  ADMIN
+}
+
+enum ApplicationStatus {
+  NONE
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum Condition {
+  NEW
+  SECOND_HAND
+}
+
+enum RequestType {
+  SELL
+  TRADE_IN
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Müşteri "Cihaz Sat" iş akışı durumları
+// ─────────────────────────────────────────────────────────────────────────────
+enum DealerMarketStatus {
+  PENDING_ADMIN  // Admin onayı bekleniyor
+  ACTIVE         // Aktif — bayiler teklif verebilir veya satın alabilir
+  EXPIRED        // Süre doldu (AUCTION için)
+  SOLD           // Satıldı
+  CANCELLED      // İptal edildi
+  REJECTED       // Admin tarafından reddedildi
+}
+
+enum DealerListingType {
+  AUCTION  // Kapalı teklif (30dk / 1sa / 6sa)
+  DIRECT   // Sabit fiyat — anlık satın al
+}
+
+enum SellRequestStatus {
+  PENDING      // Aktif — 1 saat boyunca bayiler teklif veriyor
+  EXPIRED      // 1 saat doldu, teklifler kapandı; müşteri en iyi teklifi görüyor
+  ACCEPTED     // Müşteri teklifi kabul etti → kargolama aşamasına geçer
+  REJECTED     // Müşteri tüm teklifleri reddetti
+  SHIPPED      // Müşteri cihazı kargoya verdi
+  RECEIVED     // Merkez teslim aldı; denetim aşaması
+  COMPLETED    // İşlem tamamlandı, bayi ödedi
+  CANCELLED    // İptal edildi
+}
+
+enum PaymentStatus {
+  PENDING    // Sipariş oluşturuldu, ödeme bekleniyor
+  ESCROW     // Ödeme alındı, güvende tutuluyor
+  RELEASED   // Bayi'ye aktarıldı
+  REFUNDED   // Müşteriye iade edildi
+  CANCELLED  // Ödeme başarısız veya iptal
+}
+
+// Kargo/Depo akışı: Bayi → Merkez → Denetim → Müşteri
+enum ShippingStatus {
+  WAITING_DEALER_SHIPMENT  // Bayi merkeze kargolaması bekleniyor
+  DEALER_SHIPPED           // Bayi kargoladı, merkez bekliyor
+  WAREHOUSE_RECEIVED       // Merkez teslim aldı, denetim başlıyor
+  INSPECTION_PASSED        // Denetim geçti, müşteriye gönderilecek
+  ADMIN_SHIPPED            // Admin müşteriye kargoladı
+  DELIVERED                // Müşteri teslim aldı → escrow serbest bırakılır
+}
+
+enum PayoutStatus {
+  PENDING    // Bayi talep etti, admin onayı bekliyor
+  APPROVED   // Admin onayladı, banka havalesi bekleniyor
+  PAID       // Elle havale yapıldı, tamamlandı
+  REJECTED   // Reddedildi — tutar tekrar çekilebilir bakiyeye döner
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Bayi Hakediş Çekim Talebi — RELEASED siparişlerden biriken net bakiyenin
+// banka hesabına aktarılması için admin onaylı talep akışı.
+// Otomatik banka API'si yok — admin onaylar, elle EFT/havale yapar, "Ödendi" işaretler.
+// ─────────────────────────────────────────────────────────────────────────────
+model Payout {
+  id          String       @id @default(uuid())
+  dealerId    String
+  amount      Decimal      @db.Decimal(12, 2)
+  status      PayoutStatus @default(PENDING)
+  iban        String       // Talep anındaki IBAN (snapshot — sonradan değişse de kayıt bozulmaz)
+  ibanName    String?
+  adminNote   String?      @db.Text
+  requestedAt DateTime     @default(now())
+  processedAt DateTime?
+  processedBy String?      // İşlemi yapan admin userId
+
+  dealer      User         @relation(fields: [dealerId], references: [id])
+
+  @@index([dealerId])
+  @@index([status])
+}
+
+model User {
+  id                 String    @id @default(uuid())
+  email              String    @unique
+  name               String?
+  password           String?
+  googleId           String?
+  role               Role      @default(CUSTOMER)
+  isActive           Boolean   @default(true)
+  b2bStatus          ApplicationStatus @default(NONE)
+
+  // B2B Dealer Authentication Fields
+  taxId              String?   @unique
+  companyName        String?
+  commissionRate     Float     @default(0.0)
+  walletBalance      Decimal   @default(0) @db.Decimal(12, 2)
+
+  // Hakediş çekimi için banka hesabı (Payout talebinde kullanılır)
+  iban               String?
+  ibanName           String?   // Hesap sahibinin adı
+
+  // PostGIS location column
+  location           Unsupported("geometry(Point, 4326)")?
+
+  // E-posta doğrulama
+  emailVerified      Boolean   @default(false)
+  emailVerifyToken   String?   @unique
+  emailVerifyExpiry  DateTime?
+
+  // Şifre sıfırlama
+  resetToken         String?   @unique
+  resetTokenExpiry   DateTime?
+
+  // Refresh token (hash'lenmiş)
+  refreshTokenHash   String?
+
+  documentsVerifiedAt DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  store              Store?
+  ordersAsBuyer      Order[]         @relation("BuyerOrders")
+  ordersAsSeller     Order[]         @relation("SellerOrders")
+  dealerApplication  DealerApplication?
+  stockRequests      StockRequest[]
+  activityLogs       ActivityLog[]
+  tickets            Ticket[]
+  // Cihaz Sat iş akışı
+  sellRequests       SellRequest[]   @relation("CustomerSellRequests")
+  sellRequestBids    SellRequestBid[]
+  wonSellRequests    SellRequest[]   @relation("WinningDealerSellRequests")
+  wishlists          Wishlist[]
+  // Bayiler arası paslaşma
+  dealerMarketItems  DealerMarketItem[] @relation("DealerMarketSeller")
+  dealerMarketWins   DealerMarketItem[] @relation("DealerMarketWinner")
+  dealerMarketBids   DealerMarketBid[]  @relation("DealerMarketBidder")
+  payouts            Payout[]
+
+  @@index([role])
+  @@index([createdAt])
+}
+
+model Store {
+  id                 String    @id @default(uuid())
+  ownerId            String    @unique
+  name               String
+  logo               String?
+  coverImage         String?
+  rating             Float     @default(0.0)
+  reviewCount        Int       @default(0)
+  jobsCompleted      Int       @default(0)
+  address            String?
+  bio                String?
+  subscriptionStatus String    @default("ACTIVE")
+  isPremium          Boolean   @default(false)
+  categories         String[]  @default([])
+  detailedServices   Json?
+  reviews            Json?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  owner              User      @relation(fields: [ownerId], references: [id])
+  products           Product[]
+  dealerStock        DealerStock[]
+}
+
+model Product {
+  id                 String    @id @default(uuid())
+  storeId            String
+  brand              String
+  model              String
+  condition          Condition @default(NEW)
+  price              Float
+  stock              Int       @default(0)
+  specsJson          Json?
+  imagesUrl          String[]
+  isSponsored        Boolean   @default(false)
+  priority           Int       @default(0)
+  // Campaign Details
+  discountedPrice    Float?
+  isOnCampaign       Boolean   @default(false)
+  campaignTag        String?   // e.g. "Son Şans", "Fırsat"
+  campaignEndDate    DateTime?
+
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  store              Store     @relation(fields: [storeId], references: [id])
+  orders             Order[]
+}
+
+model Order {
+  id                 String        @id @default(uuid())
+  buyerId            String
+  sellerId           String
+  // Eski Product sistemi — null ise dealerStockId kullanılıyor
+  productId          String?
+  // Yeni DealerStock sistemi — null ise productId kullanılıyor
+  dealerStockId      String?
+  quantity           Int           @default(1)
+  amount             Decimal       @db.Decimal(12, 2)
+  commissionRate     Decimal       @default(0.05) @db.Decimal(5, 4)
+  paymentStatus      PaymentStatus @default(PENDING)
+  paymentToken       String?       // PayTR geçici token (ödeme tamamlanınca silinir)
+  shippingAddress    String?
+  notes              String?
+  disputeStatus      String?       // null | "OPEN" | "IN_REVIEW" | "RESOLVED" | "ESCALATED"
+  disputeType        String?       // iade_talebi | hasar | teslim_edilmedi | yanlis_urun
+  disputeNote        String?       @db.Text
+
+  // ── Kargo ve Depo Akışı ────────────────────────────────────────────────────
+  shippingStatus       ShippingStatus  @default(WAITING_DEALER_SHIPMENT)
+  dealerTrackingCode   String?         // Bayinin merkeze gönderdiği kargo kodu
+  dealerShippedAt      DateTime?       // Bayi merkeze ne zaman kargoladı
+  warehouseReceivedAt  DateTime?       // Merkez teslim aldı
+  inspectionNotes      String?         @db.Text   // Admin denetim notu
+  inspectionPassedAt   DateTime?       // Denetim geçti
+  adminTrackingCode    String?         // Adminin müşteriye gönderdiği kargo kodu
+  adminShippedAt       DateTime?       // Müşteriye ne zaman kargolandı
+  deliveredAt          DateTime?       // Müşteri teslim aldı (escrow serbest bırakılır)
+
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  buyer              User          @relation("BuyerOrders", fields: [buyerId], references: [id])
+  seller             User          @relation("SellerOrders", fields: [sellerId], references: [id])
+  product            Product?      @relation(fields: [productId], references: [id], onDelete: SetNull)
+  dealerStock        DealerStock?  @relation(fields: [dealerStockId], references: [id], onDelete: SetNull)
+
+  @@index([buyerId])
+  @@index([sellerId])
+  @@index([paymentStatus])
+  @@index([createdAt])
+  @@index([disputeStatus])
+  @@index([dealerStockId])
+}
+
+model DealerApplication {
+  id          String            @id @default(uuid())
+  userId      String            @unique
+  companyName String
+  taxNumber   String
+  status      ApplicationStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Hero Slider — Admin panelden yönetilen anasayfa slider'ı
+// ─────────────────────────────────────────────────────────────────────────────
+model HeroSlide {
+  id              String   @id @default(uuid())
+  order           Int      @default(0)           // Sıralama (0 = ilk)
+  imageUrl        String?                        // Görseli isteğe bağlı yap
+  title           String?
+  subtitle        String?
+  btnLeftText     String?
+  btnLeftLink     String?
+  btnRightText    String?
+  btnRightLink    String?
+  textColor       String?  @default("#ffffff")  // Başlık/alt başlık rengi
+  textAlignment   String?  @default("left")     // left, center, right
+  overlayOpacity  Int?     @default(40)         // 0-100
+  animationType   String?  @default("fade")     // fade, slide, zoom
+  buttonStyle     String?  @default("solid")    // solid, outline
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Global Ürün Kataloğu — Admin tarafından onaylı model havuzu
+// ─────────────────────────────────────────────────────────────────────────────
+model GlobalProduct {
+  id           String   @id @default(uuid())
+  brand        String
+  model        String
+  storage      String?  // Örn: "256GB"
+  color        String?
+  masterImages String[] @default([])  // Admin yüklediği master görseller (maks 3)
+  specsJson    Json?    // Teknik özellikler
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  dealerItems  DealerStock[]
+
+  @@unique([brand, model, storage, color])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Bayi Stok Girişi — Global kataloğa bağlı bayi stok kaydı
+// ─────────────────────────────────────────────────────────────────────────────
+model DealerStock {
+  id              String        @id @default(uuid())
+  globalProductId String
+  storeId         String
+  grade           String        // A+, A, B
+  batteryHealth   Int?          // 0-100 arası yüzde
+  hasBox          Boolean       @default(false)
+  hasInvoice      Boolean       @default(false)
+  hasAccessories  Boolean       @default(false)
+  warrantyMonths  Int?          // Kalan garanti ay sayısı
+  imei            String?       // GİZLİ — Sadece admin görebilir
+  dealerImages    String[]      @default([])  // Bayi yüklediği cihaz fotoğrafları (min 3)
+  price           Decimal       @db.Decimal(12, 2)
+  stock           Int           @default(1)
+  notes           String?
+  adminApproved   Boolean       @default(false)   // Admin onayladı mı? false → marketplace'de görünmez
+  adminNote       String?       @db.Text
+  approvedAt      DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  globalProduct   GlobalProduct @relation(fields: [globalProductId], references: [id])
+  store           Store         @relation(fields: [storeId], references: [id])
+  orders          Order[]
+  wishlists       Wishlist[]
+
+  @@index([globalProductId])
+  @@index([storeId])
+  @@index([grade])
+  @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Stok Talep Formu — Bayilerin stokta olmayan model talebi
+// ─────────────────────────────────────────────────────────────────────────────
+model StockRequest {
+  id        String   @id @default(uuid())
+  userId    String
+  modelName String   // Bayi'nin aradığı model adı (serbest metin)
+  grade     String?  // İstediği grade (A+, A, B)
+  maxPrice  Decimal? @db.Decimal(12, 2)  // Maksimum ödemeye razı
+  notes     String?
+  status    String   @default("PENDING")  // PENDING, REVIEWED, FULFILLED, REJECTED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Admin Aktivite Logu — Kim ne zaman neyi değiştirdi
+// ─────────────────────────────────────────────────────────────────────────────
+model ActivityLog {
+  id         String   @id @default(uuid())
+  adminId    String
+  action     String   // Örn: "APPROVE_DEALER", "UPDATE_HERO_SLIDE", "DELETE_PRODUCT"
+  entityType String?  // Örn: "User", "HeroSlide", "Product"
+  entityId   String?  // İşlem yapılan kayıt ID'si
+  meta       Json?    // Detay bilgisi (eski değer, yeni değer vb.)
+  createdAt  DateTime @default(now())
+
+  admin      User     @relation(fields: [adminId], references: [id])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// YENİ: Visual Site Builder (Config) — Wix tarzı anasayfa yönetimi
+// ─────────────────────────────────────────────────────────────────────────────
+model SiteConfig {
+  id        String   @id @default("singleton")
+  settings  Json     // Categories, TrustBar, Layout ayarlarını barındırır.
+  updatedAt DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Destek Talebi — Bayi admin'e ticket açar
+// ─────────────────────────────────────────────────────────────────────────────
+model Ticket {
+  id         String    @id @default(uuid())
+  dealerId   String
+  subject    String
+  message    String    @db.Text
+  status     String    @default("OPEN")  // OPEN, IN_PROGRESS, CLOSED
+  adminReply String?   @db.Text
+  repliedAt  DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  dealer     User      @relation(fields: [dealerId], references: [id], onDelete: Cascade)
+
+  @@index([dealerId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Cihaz Sat — Müşteri elindeki cihazı platforma satıyor
+// Bayiler 1 saat içinde kapalı teklif veriyor (açık artırma değil, en yüksek teklif kazanır)
+// ─────────────────────────────────────────────────────────────────────────────
+model SellRequest {
+  id              String            @id @default(uuid())
+  userId          String            // Cihazı satan müşteri
+  brand           String
+  model           String
+  storage         String?           // Örn: "128GB"
+  color           String?
+  grade           String            // A+, A, B, C — kozmetik durum
+  batteryHealth   Int?              // 0–100 yüzde
+  hasBox          Boolean           @default(false)
+  hasInvoice      Boolean           @default(false)
+  hasAccessories  Boolean           @default(false)
+  description     String?           @db.Text
+  imagesUrl       String[]          @default([])  // Müşteri yüklediği fotoğraflar
+  requestType     RequestType       @default(SELL)    // SELL veya TRADE_IN
+  adminApproved   Boolean           @default(false)   // Admin onayladı mı? false → bayiler göremez
+  adminNote       String?           @db.Text           // Admin reddetme/onay notu
+  approvedAt      DateTime?                            // Admin onay zamanı
+  status          SellRequestStatus @default(PENDING)
+  expiresAt       DateTime          // Oluşturulma + 30 dk — teklif bitiş zamanı
+  finalPrice      Decimal?          @db.Decimal(12, 2)  // Kabul edilen nihai fiyat
+  winningDealerId String?           // En yüksek teklifi veren / müşterinin kabul ettiği bayi
+  shippingCode    String?           // Müşterinin kargo takip kodu (ACCEPTED sonrası)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  user            User              @relation("CustomerSellRequests", fields: [userId], references: [id])
+  bids            SellRequestBid[]
+  winningDealer   User?             @relation("WinningDealerSellRequests", fields: [winningDealerId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@index([expiresAt])
+  @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Kapalı Teklif — Bayinin bir SellRequest için verdiği fiyat teklifi
+// Bayiler birbirinin teklifini göremez; sadece admin tüm teklifleri görür
+// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Favori Listesi — Kullanıcının beğendiği ürünleri kaydeder
+// ─────────────────────────────────────────────────────────────────────────────
+model Wishlist {
+  id            String      @id @default(uuid())
+  userId        String
+  dealerStockId String
+
+  createdAt     DateTime    @default(now())
+
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dealerStock   DealerStock @relation(fields: [dealerStockId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, dealerStockId])
+  @@index([userId])
+  @@index([dealerStockId])
+}
+
+model SellRequestBid {
+  id            String      @id @default(uuid())
+  sellRequestId String
+  dealerId      String
+  amount        Decimal     @db.Decimal(12, 2)
+  note          String?     // Bayinin müşteriye özel notu (admin görür)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  sellRequest   SellRequest @relation(fields: [sellRequestId], references: [id], onDelete: Cascade)
+  dealer        User        @relation(fields: [dealerId], references: [id])
+
+  @@unique([sellRequestId, dealerId])  // Her bayi aynı talep için yalnızca 1 teklif
+  @@index([sellRequestId])
+  @@index([dealerId])
+  @@index([amount])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Bayiler Arası Cihaz Paslaşma — Bayi elindeki cihazı diğer bayilere satar
+// Açık artırma (AUCTION) veya sabit fiyat (DIRECT) ile listelenir
+// Admin onayı olmadan aktifleşmez
+// ─────────────────────────────────────────────────────────────────────────────
+model DealerMarketItem {
+  id              String             @id @default(uuid())
+  sellerId        String             // Listeleyen bayi
+  brand           String
+  model           String
+  storage         String?
+  color           String?
+  grade           String             // A+, A, B, C
+  batteryHealth   Int?               // 0-100 yüzde
+  hasBox          Boolean            @default(false)
+  hasInvoice      Boolean            @default(false)
+  hasAccessories  Boolean            @default(false)
+  description     String?            @db.Text
+  images          String[]           @default([])   // Min 3 görsel, etiketsiz
+  listingType     DealerListingType  @default(AUCTION)
+  floorPrice      Decimal            @db.Decimal(12, 2)  // Başlangıç / min fiyat
+  directPrice     Decimal?           @db.Decimal(12, 2)  // DIRECT tipte sabit fiyat
+  status          DealerMarketStatus @default(PENDING_ADMIN)
+  adminApproved   Boolean            @default(false)
+  adminNote       String?            @db.Text
+  approvedAt      DateTime?
+  expiresAt       DateTime?          // AUCTION için bitiş zamanı (onaydan itibaren +süre)
+  durationHours   Int                @default(1)    // 0.5 = 30dk, 1 = 1sa, 6 = 6sa
+  winningBidderId String?
+  finalPrice      Decimal?           @db.Decimal(12, 2)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  seller          User               @relation("DealerMarketSeller", fields: [sellerId], references: [id])
+  winningBidder   User?              @relation("DealerMarketWinner", fields: [winningBidderId], references: [id])
+  bids            DealerMarketBid[]
+
+  @@index([sellerId])
+  @@index([status])
+  @@index([listingType])
+  @@index([createdAt])
+  @@index([expiresAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Bayiler Arası Teklif — Kapalı teklif sistemi (bayiler birbirini göremez)
+// ─────────────────────────────────────────────────────────────────────────────
+model DealerMarketBid {
+  id       String           @id @default(uuid())
+  itemId   String
+  bidderId String
+  amount   Decimal          @db.Decimal(12, 2)
+  note     String?
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  item     DealerMarketItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  bidder   User             @relation("DealerMarketBidder", fields: [bidderId], references: [id])
+
+  @@unique([itemId, bidderId])  // Her bayi aynı ürüne 1 teklif
+  @@index([itemId])
+  @@index([bidderId])
+  @@index([amount])
+}

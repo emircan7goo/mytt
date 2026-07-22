@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="buildGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(110,231,183,0.25)"/>
+      <stop offset="100%" stop-color="rgba(16,185,129,0.1)"/>
+    </linearGradient>
+    <radialGradient id="pinGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </radialGradient>
+  </defs>
+  <rect width="96" height="96" rx="24" fill="url(#bg)"/>
+  <!-- Scan lines -->
+  <line x1="0" y1="32" x2="96" y2="32" stroke="#10b981" stroke-width="0.4" opacity="0.18"/>
+  <line x1="0" y1="64" x2="96" y2="64" stroke="#10b981" stroke-width="0.4" opacity="0.12"/>
+  <!-- Building main -->
+  <rect x="14" y="40" width="60" height="42" rx="5" fill="url(#buildGrad)" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Building roof lines -->
+  <path d="M8 40 L48 16 L88 40" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round" filter="url(#glow)" opacity="0.85"/>
+  <path d="M14 40 L48 20 L82 40" fill="rgba(52,211,153,0.08)" stroke="none"/>
+  <!-- Door glass -->
+  <rect x="37" y="58" width="22" height="24" rx="4" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.2"/>
+  <!-- Door center line -->
+  <line x1="48" y1="58" x2="48" y2="82" stroke="#34d399" stroke-width="0.8" opacity="0.5"/>
+  <!-- Door handle -->
+  <circle cx="54" cy="71" r="2" fill="#34d399" opacity="0.7"/>
+  <!-- Left window -->
+  <rect x="18" y="50" width="14" height="12" rx="3" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1"/>
+  <line x1="25" y1="50" x2="25" y2="62" stroke="#34d399" stroke-width="0.8" opacity="0.4"/>
+  <line x1="18" y1="56" x2="32" y2="56" stroke="#34d399" stroke-width="0.8" opacity="0.4"/>
+  <!-- Right window -->
+  <rect x="64" y="50" width="14" height="12" rx="3" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1"/>
+  <line x1="71" y1="50" x2="71" y2="62" stroke="#34d399" stroke-width="0.8" opacity="0.4"/>
+  <line x1="64" y1="56" x2="78" y2="56" stroke="#34d399" stroke-width="0.8" opacity="0.4"/>
+  <!-- Location pin -->
+  <circle cx="72" cy="22" r="11" fill="url(#pinGlow)" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="72" cy="22" r="7" fill="#022c22"/>
+  <circle cx="72" cy="22" r="4" fill="#34d399"/>
+  <path d="M68 27 L72 36 L76 27" fill="#34d399" opacity="0.7"/>
+  <!-- Neon base line -->
+  <line x1="14" y1="82" x2="82" y2="82" stroke="#34d399" stroke-width="2" stroke-linecap="round" opacity="0.3" filter="url(#glow)"/>
+  <!-- Corner dots -->
+  <circle cx="12" cy="12" r="1.5" fill="#34d399" opacity="0.35"/>
+  <circle cx="84" cy="84" r="1.5" fill="#34d399" opacity="0.35"/>
+</svg>

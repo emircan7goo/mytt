@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(110,231,183,0.28)"/>
+      <stop offset="100%" stop-color="rgba(16,185,129,0.12)"/>
+    </linearGradient>
+    <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(52,211,153,0.3)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="96" height="96" rx="24" fill="url(#bg)"/>
+  <!-- Hexagon bg pattern -->
+  <circle cx="48" cy="46" r="35" fill="url(#dotGlow)"/>
+  <!-- Speech bubble -->
+  <path d="M12 18 Q12 10 20 10 L76 10 Q84 10 84 18 L84 52 Q84 60 76 60 L54 60 L44 78 L40 60 L20 60 Q12 60 12 52 Z" fill="url(#bubbleGrad)" stroke="#34d399" stroke-width="1.8"/>
+  <!-- Inner highlight top -->
+  <path d="M16 18 Q16 14 20 14 L76 14 Q80 14 80 18 L80 26" fill="none" stroke="rgba(167,243,208,0.25)" stroke-width="1.2"/>
+  <!-- Big futuristic ? -->
+  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="none" stroke="#34d399" stroke-width="1.5" filter="url(#glow)" opacity="0.9">?</text>
+  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="#34d399" opacity="0.7">?</text>
+  <!-- Scan / data lines -->
+  <line x1="12" y1="35" x2="22" y2="35" stroke="#34d399" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="74" y1="35" x2="84" y2="35" stroke="#34d399" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <!-- Sparkle stars -->
+  <path d="M18 8 L19.5 4 L21 8 L25 9.5 L21 11 L19.5 15 L18 11 L14 9.5 Z" fill="#34d399" opacity="0.5" filter="url(#glow)"/>
+  <path d="M74 76 L75 73 L76 76 L79 77 L76 78 L75 81 L74 78 L71 77 Z" fill="#34d399" opacity="0.35"/>
+  <!-- Corner markers -->
+  <rect x="10" y="10" width="4" height="1.5" rx="1" fill="#34d399" opacity="0.4"/>
+  <rect x="10" y="10" width="1.5" height="4" rx="1" fill="#34d399" opacity="0.4"/>
+  <rect x="82" y="10" width="4" height="1.5" rx="1" fill="#34d399" opacity="0.4"/>
+  <rect x="84.5" y="10" width="1.5" height="4" rx="1" fill="#34d399" opacity="0.4"/>
+</svg>

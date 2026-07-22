@@ -1,0 +1,1 @@
+const { PrismaClient } = require('@prisma/client'); const prisma = new PrismaClient(); (async () => { try { const res = await prisma.user.findMany({ select: { walletBalance: true }, take: 1 }); console.log('SUCCESS:', res); } catch (err) { console.log('ERROR:', err.message); } finally { await prisma.$disconnect(); } })();
