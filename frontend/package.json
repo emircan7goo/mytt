@@ -10,8 +10,11 @@
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open"
   },
-  "prisma": {
-    "seed": "node prisma/seed.js"
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node"
+    }
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

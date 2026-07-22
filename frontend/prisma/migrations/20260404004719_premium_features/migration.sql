@@ -1,8 +1,0 @@
--- AlterTable
-ALTER TABLE "Product" ADD COLUMN     "isSponsored" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "priority" INTEGER NOT NULL DEFAULT 0;
-
--- AlterTable
-ALTER TABLE "Store" ADD COLUMN     "isPremium" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "jobsCompleted" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "reviewCount" INTEGER NOT NULL DEFAULT 0;
