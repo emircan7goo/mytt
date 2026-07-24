@@ -7,7 +7,7 @@
  * `requireAuth(req)` çağrılır.
  */
 import jwt from 'jsonwebtoken';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { prisma } from './prisma';
 import type { User, Role } from '@prisma/client';
@@ -86,6 +86,20 @@ export async function getAuthUser(req: NextRequest): Promise<User | null> {
 
 export function hasRole(user: User, roles: Role[]): boolean {
   return roles.includes(user.role);
+}
+
+/**
+ * Route handler'ların başında kullanılır: `const gate = await requireRole(req, ['ADMIN']);
+ * if (gate.error) return gate.error;` — kimlik doğrulanmamışsa 401, rol uymuyorsa 403 döner.
+ */
+export async function requireRole(
+  req: NextRequest,
+  roles: Role[],
+): Promise<{ user: User; error: null } | { user: null; error: NextResponse }> {
+  const user = await getAuthUser(req);
+  if (!user) return { user: null, error: NextResponse.json({ message: 'Not authenticated' }, { status: 401 }) };
+  if (!hasRole(user, roles)) return { user: null, error: NextResponse.json({ message: 'Forbidden' }, { status: 403 }) };
+  return { user, error: null };
 }
 
 /** `req.user.name` yoksa e-postanın @ öncesini kullanan görünen ad. */

@@ -188,6 +188,53 @@ export async function sendNewOrderNotification(opts: {
   );
 }
 
+export async function sendDealerApproved(opts: { email: string; name: string; companyName: string }): Promise<void> {
+  await send(
+    opts.email,
+    `Bayi Başvurunuz Onaylandı 🎉`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Başvurunuz Onaylandı! 🎉</h2>
+        <p style="color:#71717a;margin:0 0 24px">
+          Merhaba <strong>${opts.name}</strong>, <strong>${opts.companyName}</strong> olarak
+          ${siteName} bayi ağına katıldınız.
+        </p>
+        <div style="background:#ecfdf5;border-radius:12px;padding:16px;margin-bottom:24px">
+          <p style="margin:0;font-size:13px;color:#166534;line-height:1.6">
+            ✅ Artık ürün listeleyebilir, sipariş alabilir ve bayi panelinizi kullanabilirsiniz.
+          </p>
+        </div>
+        <a href="${siteUrl}/dealer/dashboard"
+           style="display:block;background:#18181b;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Bayi Panelime Git
+        </a>
+      </div>
+    </div>`,
+  );
+}
+
+export async function sendDealerRejected(opts: { email: string; name: string }): Promise<void> {
+  await send(
+    opts.email,
+    `Bayi Başvurusu Hakkında`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Başvurunuz İncelendi</h2>
+        <p style="color:#71717a;margin:0 0 24px">
+          Merhaba <strong>${opts.name}</strong>, bayi başvurunuz incelenmiş ve şu an için onaylanamamıştır.
+        </p>
+        <p style="color:#71717a;font-size:14px;line-height:1.6">
+          Eksik veya hatalı bilgi olduğunu düşünüyorsanız destek ekibimizle iletişime geçebilirsiniz.
+        </p>
+        <a href="mailto:destek@mytt.com.tr"
+           style="display:inline-block;margin-top:16px;color:#6366f1;font-weight:600;font-size:14px;text-decoration:none">
+          Destek ile İletişime Geç →
+        </a>
+      </div>
+    </div>`,
+  );
+}
+
 export async function sendPasswordReset(opts: { email: string; name: string; resetUrl: string }): Promise<void> {
   await send(
     opts.email,
