@@ -7,6 +7,7 @@
  * (backend/src/payment/payment.service.ts'ten taşındı)
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { waitUntil } from '@vercel/functions';
 import crypto from 'crypto';
 import { prisma } from '@/lib/prisma';
 import { getAuthUser, displayName } from '@/lib/auth-server';
@@ -190,22 +191,22 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      void sendOrderConfirmation({
+      waitUntil(sendOrderConfirmation({
         buyerEmail: mockOrder.buyer.email,
         buyerName: mockOrder.buyer.name ?? mockOrder.buyer.email,
         orderId: mockOrder.id,
         productName,
         amount: result.totalAmount,
-      });
+      }));
 
-      void sendNewOrderNotification({
+      waitUntil(sendNewOrderNotification({
         dealerEmail: mockOrder.seller.email,
         dealerName: mockOrder.seller.name ?? mockOrder.seller.email,
         orderId: mockOrder.id,
         productName,
         quantity,
         amount: result.totalAmount,
-      });
+      }));
 
       return NextResponse.json({ orderId: mockOrder.id, amount: result.totalAmount, testMode: true });
     }

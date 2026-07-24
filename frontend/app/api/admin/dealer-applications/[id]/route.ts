@@ -3,6 +3,7 @@
  * (backend/src/admin/admin.service.ts → updateDealerApplicationStatus'tan taşındı)
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { waitUntil } from '@vercel/functions';
 import { prisma } from '@/lib/prisma';
 import { requireRole } from '@/lib/auth-server';
 import { logActivity } from '@/lib/activityLog';
@@ -48,9 +49,9 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   const userInfo = await prisma.user.findUnique({ where: { id: application.userId }, select: { email: true, name: true } });
   if (userInfo) {
     if (status === 'APPROVED') {
-      void sendDealerApproved({ email: userInfo.email, name: userInfo.name ?? userInfo.email, companyName: application.companyName });
+      waitUntil(sendDealerApproved({ email: userInfo.email, name: userInfo.name ?? userInfo.email, companyName: application.companyName }));
     } else {
-      void sendDealerRejected({ email: userInfo.email, name: userInfo.name ?? userInfo.email });
+      waitUntil(sendDealerRejected({ email: userInfo.email, name: userInfo.name ?? userInfo.email }));
     }
   }
 

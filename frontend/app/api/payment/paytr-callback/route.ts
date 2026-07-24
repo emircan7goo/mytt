@@ -5,6 +5,7 @@
  * (backend/src/payment/payment.service.ts → handlePaytrCallback'ten taşındı)
  */
 import { NextRequest } from 'next/server';
+import { waitUntil } from '@vercel/functions';
 import crypto from 'crypto';
 import { prisma } from '@/lib/prisma';
 import { sendOrderConfirmation, sendNewOrderNotification } from '@/lib/mail';
@@ -49,22 +50,22 @@ export async function POST(req: NextRequest) {
       ? `${updatedOrder.product.brand ?? ''} ${updatedOrder.product.model ?? ''}`.trim() || 'Ürün'
       : 'Ürün';
 
-    void sendOrderConfirmation({
+    waitUntil(sendOrderConfirmation({
       buyerEmail: updatedOrder.buyer.email,
       buyerName: updatedOrder.buyer.name ?? updatedOrder.buyer.email,
       orderId: updatedOrder.id,
       productName,
       amount: Number(updatedOrder.amount),
-    });
+    }));
 
-    void sendNewOrderNotification({
+    waitUntil(sendNewOrderNotification({
       dealerEmail: updatedOrder.seller.email,
       dealerName: updatedOrder.seller.name ?? updatedOrder.seller.email,
       orderId: updatedOrder.id,
       productName,
       quantity: updatedOrder.quantity,
       amount: Number(updatedOrder.amount),
-    });
+    }));
   } else {
     const order = await prisma.order.findUnique({ where: { id: orderId } });
 

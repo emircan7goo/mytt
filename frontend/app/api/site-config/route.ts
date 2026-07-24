@@ -5,8 +5,9 @@
  * mevcut kayıt asla ezilmez.
  * (backend/src/site-config/site-config.service.ts'ten taşındı)
  */
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { requireRole } from '@/lib/auth-server';
 
 const DEFAULT_FEATURE_CARDS = [
   {
@@ -113,4 +114,20 @@ export async function GET() {
   }
 
   return NextResponse.json(config);
+}
+
+export async function PATCH(req: NextRequest) {
+  const gate = await requireRole(req, ['ADMIN']);
+  if (gate.error) return gate.error;
+
+  const settings = await req.json().catch(() => null);
+  if (!settings) return NextResponse.json({ message: 'Geçersiz istek gövdesi.' }, { status: 400 });
+
+  const updated = await prisma.siteConfig.upsert({
+    where: { id: 'singleton' },
+    create: { id: 'singleton', settings },
+    update: { settings },
+  });
+
+  return NextResponse.json(updated);
 }

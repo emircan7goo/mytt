@@ -188,6 +188,142 @@ export async function sendNewOrderNotification(opts: {
   );
 }
 
+export async function sendSellRequestCreated(opts: {
+  buyerEmail: string; buyerName: string; requestId: string; deviceName: string; expiresAt: Date;
+}): Promise<void> {
+  const shortId = opts.requestId.slice(0, 8).toUpperCase();
+  const expireStr = opts.expiresAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+  await send(
+    opts.buyerEmail,
+    `Satış Talebiniz Alındı — ${opts.deviceName}`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#065f46,#10b981);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+          <span style="color:#fff;font-size:24px">📱</span>
+        </div>
+        <h2 style="color:#18181b;margin:0 0 8px">Satış Talebiniz Alındı!</h2>
+        <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.buyerName}</strong>, <strong>${opts.deviceName}</strong> için satış talebiniz sisteme eklendi.</p>
+        <div style="background:#ecfdf5;border-radius:12px;padding:20px;margin-bottom:24px">
+          <p style="margin:0 0 8px;font-size:12px;color:#065f46;text-transform:uppercase;letter-spacing:1px;font-weight:700">Talep Kodu</p>
+          <p style="margin:0;font-size:22px;font-weight:800;color:#065f46;font-family:monospace">#${shortId}</p>
+        </div>
+        <div style="background:#fff7ed;border-radius:12px;padding:16px;margin-bottom:24px;border:1px solid #fed7aa">
+          <p style="margin:0;font-size:13px;color:#c2410c;font-weight:700">⏰ Teklif Süresi: ${expireStr}'a kadar</p>
+          <p style="margin:4px 0 0;font-size:12px;color:#9a3412">Bayiler 1 saat boyunca size fiyat teklifi sunacak. Süre dolunca en iyi teklifi görüp kabul edebilirsiniz.</p>
+        </div>
+        <a href="${siteUrl}/hesabim?tab=sell-requests" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Teklifleri Takip Et
+        </a>
+      </div>
+    </div>`,
+  );
+}
+
+export async function sendDealerNewSellRequest(opts: {
+  dealerEmail: string; dealerName: string; requestId: string; deviceName: string; grade: string;
+}): Promise<void> {
+  await send(
+    opts.dealerEmail,
+    `Yeni Satış Talebi — ${opts.deviceName} (${opts.grade})`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Yeni Alım Fırsatı!</h2>
+        <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.dealerName}</strong>, bir müşteri cihazını satmak istiyor.</p>
+        <div style="background:#f4f4f5;border-radius:12px;padding:20px;margin-bottom:24px">
+          <p style="margin:0 0 4px;font-size:11px;color:#71717a;text-transform:uppercase;letter-spacing:1px">Cihaz</p>
+          <p style="margin:0;font-size:20px;font-weight:700;color:#18181b">${opts.deviceName}</p>
+          <p style="margin:4px 0 0;color:#71717a;font-size:13px">Kozmetik Durum: <strong>${opts.grade}</strong></p>
+        </div>
+        <div style="background:#fef3c7;border-radius:12px;padding:12px 16px;margin-bottom:24px">
+          <p style="margin:0;font-size:12px;color:#92400e;font-weight:700">⏰ Teklifler 1 saat içinde kapanıyor!</p>
+        </div>
+        <a href="${siteUrl}/dealer/buy-requests/${opts.requestId}" style="display:block;background:#0c4a6e;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Teklif Ver — Bayi Paneli
+        </a>
+      </div>
+    </div>`,
+  );
+}
+
+export async function sendAuctionExpired(opts: {
+  buyerEmail: string; buyerName: string; requestId: string; deviceName: string; bestOffer: number | null; bidCount: number;
+}): Promise<void> {
+  const shortId = opts.requestId.slice(0, 8).toUpperCase();
+  const offerHtml = opts.bestOffer
+    ? `<div style="background:#ecfdf5;border-radius:12px;padding:20px;margin-bottom:24px;text-align:center">
+         <p style="margin:0 0 4px;font-size:12px;color:#065f46;text-transform:uppercase;letter-spacing:1px;font-weight:700">En Yüksek Teklif</p>
+         <p style="margin:0;font-size:36px;font-weight:900;color:#065f46">${opts.bestOffer.toLocaleString('tr-TR')} ₺</p>
+         <p style="margin:4px 0 0;font-size:12px;color:#059669">${opts.bidCount} bayi teklif verdi</p>
+       </div>`
+    : `<div style="background:#fef2f2;border-radius:12px;padding:16px;margin-bottom:24px">
+         <p style="margin:0;color:#991b1b;font-size:13px;">Ne yazık ki bu cihaz için henüz teklif gelmedi.</p>
+       </div>`;
+  await send(
+    opts.buyerEmail,
+    `Teklifler Hazır — ${opts.deviceName} #${shortId}`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Teklifler Kapandı!</h2>
+        <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.buyerName}</strong>, <strong>${opts.deviceName}</strong> için teklif süresi sona erdi.</p>
+        ${offerHtml}
+        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Teklifleri Gör ve Karar Ver
+        </a>
+      </div>
+    </div>`,
+  );
+}
+
+export async function sendSellRequestAccepted(opts: {
+  buyerEmail: string; buyerName: string; requestId: string; deviceName: string; amount: number;
+}): Promise<void> {
+  const shortId = opts.requestId.slice(0, 8).toUpperCase();
+  await send(
+    opts.buyerEmail,
+    `Teklif Kabul Edildi — Cihazınızı Kargolamanızı Bekliyoruz`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Teklif Kabul Edildi!</h2>
+        <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.buyerName}</strong>, <strong>${opts.deviceName}</strong> için <strong style="color:#065f46">${opts.amount.toLocaleString('tr-TR')} ₺</strong> teklifini kabul ettiniz.</p>
+        <div style="background:#eff6ff;border-radius:12px;padding:16px;margin-bottom:24px">
+          <p style="margin:0;font-size:13px;color:#1d4ed8;line-height:1.6">
+            📦 Lütfen cihazınızı platform adresine kargo gönderin ve kargo takip kodunu hesabınızdan girin.
+          </p>
+        </div>
+        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Kargo Kodumu Gir
+        </a>
+        <p style="margin:16px 0 0;font-size:12px;color:#a1a1aa;text-align:center">Talep No: #${shortId}</p>
+      </div>
+    </div>`,
+  );
+}
+
+export async function sendBidWon(opts: {
+  dealerEmail: string; dealerName: string; requestId: string; deviceName: string; amount: number;
+}): Promise<void> {
+  const shortId = opts.requestId.slice(0, 8).toUpperCase();
+  await send(
+    opts.dealerEmail,
+    `Teklifiniz Kazandı — ${opts.deviceName}`,
+    `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
+      <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
+        <h2 style="color:#18181b;margin:0 0 8px">Teklifiniz Kabul Edildi!</h2>
+        <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.dealerName}</strong>, müşteri <strong>${opts.deviceName}</strong> için teklifinizi kabul etti.</p>
+        <div style="background:#ecfdf5;border-radius:12px;padding:20px;margin-bottom:24px;text-align:center">
+          <p style="margin:0 0 4px;font-size:12px;color:#065f46;text-transform:uppercase;letter-spacing:1px;font-weight:700">Kazanılan Tutar</p>
+          <p style="margin:0;font-size:32px;font-weight:900;color:#065f46">${opts.amount.toLocaleString('tr-TR')} ₺</p>
+        </div>
+        <p style="color:#71717a;font-size:13px;margin:0 0 24px">Müşteri cihazını kargolayacak. Cihaz depoya ulaşıp denetimden geçtikten sonra ödemeniz yapılacaktır.</p>
+        <a href="${siteUrl}/dealer/buy-requests/${opts.requestId}" style="display:block;background:#0c4a6e;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+          Bayi Panelimde Takip Et
+        </a>
+        <p style="margin:16px 0 0;font-size:12px;color:#a1a1aa;text-align:center">Talep No: #${shortId}</p>
+      </div>
+    </div>`,
+  );
+}
+
 export async function sendDealerApproved(opts: { email: string; name: string; companyName: string }): Promise<void> {
   await send(
     opts.email,
