@@ -315,7 +315,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   border-radius: 9999px;
-  background: var(--ink-8);
+  background: var(--space);
   z-index: 1;
 }
 
