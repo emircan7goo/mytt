@@ -12,7 +12,7 @@ import { resolveUploadUrl } from '@/lib/resolveUrl';
 import DealerTrustBadge from '@/components/DealerTrustBadge';
 
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
-  'A+': { label: 'Kusursuz',         color: '#9A3412', bg: '#FFF7ED', border: '#FED7AA' },
+  'A+': { label: 'Kusursuz',         color: "var(--k-hot)", bg: '#FFF7ED', border: '#FED7AA' },
   'A':  { label: 'Çok İyi',          color: '#0369A1', bg: '#EFF6FF', border: '#BAE6FD' },
   'B':  { label: 'İyi',              color: '#B45309', bg: '#FFFBEB', border: '#FDE68A' },
   'C':  { label: 'Kabul Edilebilir', color: '#C2410C', bg: '#FFF7ED', border: '#FED7AA' },
@@ -47,7 +47,7 @@ export default function ProductFamilyPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0B1120] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--k-void)] flex items-center justify-center">
         <div className="w-10 h-10 border-2 border-white/10 border-t-orange-400 rounded-full animate-spin" />
       </div>
     );
@@ -55,7 +55,7 @@ export default function ProductFamilyPage() {
 
   if (isError || !family) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAFAFA]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--k-surface-2)]">
         <h1 className="font-editorial italic text-[var(--k-ink)] text-[44px] mb-4">Teklif bulunamadı.</h1>
         <p className="text-[var(--k-ink-3)] text-[15px] font-light max-w-sm text-center mb-8">
           {brand} {model} için şu anda aktif bir bayi teklifi yok.
@@ -73,9 +73,9 @@ export default function ProductFamilyPage() {
   const heroImage = family.masterImages?.[0] ? resolveUploadUrl(family.masterImages[0]) : null;
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-[var(--k-surface-2)]">
       {/* ══════════════════════════ HERO — Karanlık, Editoryal ══════════════════════════ */}
-      <div className="relative overflow-hidden bg-[#0B1120] pt-[100px] md:pt-[132px] pb-20 md:pb-28">
+      <div className="relative overflow-hidden bg-[var(--k-void)] pt-[100px] md:pt-[132px] pb-20 md:pb-28">
         {/* Ambiyans ışıması */}
         <div
           className="absolute inset-0 pointer-events-none"

@@ -42,7 +42,7 @@ function ResetPasswordContent() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
+      <div className="min-h-screen bg-[var(--k-canvas)] flex items-center justify-center p-6">
         <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10 text-center">
           <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 size={32} className="text-orange-500" />
@@ -58,7 +58,7 @@ function ResetPasswordContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[var(--k-canvas)] flex items-center justify-center p-6">
       <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10">
         <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
           <Lock size={22} className="text-blue-600" />

@@ -62,7 +62,7 @@ export default function RegisterDealerPage() {
   // Başvuru başarıyla alındı ekranı
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-[#F8FAFC]">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-[var(--k-canvas)]">
         <div className="w-full max-w-[420px] text-center">
           <div className="flex justify-center mb-6">
             <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
@@ -89,7 +89,7 @@ export default function RegisterDealerPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#F8FAFC]">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[var(--k-canvas)]">
       <div className="w-full max-w-[480px]">
 
         {/* Logo */}

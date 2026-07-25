@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function KVKKPage() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] pt-[100px] pb-20">
+    <main className="min-h-screen bg-[var(--k-canvas)] pt-[100px] pb-20">
       <div className="max-w-3xl mx-auto px-6">
         <h1 className="text-3xl font-bold text-[var(--k-ink)] mb-2 tracking-tight">
           Kişisel Verilerin Korunması

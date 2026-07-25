@@ -37,7 +37,7 @@ export default function CMSHeroRenderer() {
       initial="hidden"
       animate="visible"
       variants={getVariants()}
-      className="relative w-full min-h-[100svh] sm:min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[#F8FAFC] mt-0 pt-16 sm:pt-20"
+      className="relative w-full min-h-[100svh] sm:min-h-[90vh] flex flex-col justify-center overflow-hidden bg-[var(--k-canvas)] mt-0 pt-16 sm:pt-20"
     >
       {/* Deep Space / Studio Lighting Gradients */}
       <div className="absolute inset-0 z-0">

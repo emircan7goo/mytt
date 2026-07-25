@@ -292,7 +292,7 @@ const SELL_STATUS: Record<string, { label: string; color: string; bg: string }> 
   SHIPPED:   { label: 'Kargoya Verildi',    color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
   RECEIVED:  { label: 'Depoda — İnceleniyor', color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   COMPLETED: { label: 'Tamamlandı',         color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
-  CANCELLED: { label: 'İptal Edildi',       color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
+  CANCELLED: { label: 'İptal Edildi',       color: "var(--k-ink-3)", bg: 'rgba(107,114,128,0.1)' },
 };
 
 function SellRequestCard({ req }: { req: SellRequest }) {
@@ -360,8 +360,8 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                 <span
                   className="text-[10px] font-black px-2 py-0.5 rounded-full"
                   style={isTradeIn
-                    ? { background: 'rgba(37,99,235,0.1)', color: '#1d4ed8' }
-                    : { background: 'rgba(249,115,22,0.1)', color: '#EA580C' }}
+                    ? { background: 'rgba(37,99,235,0.1)', color: "var(--k-cool)" }
+                    : { background: 'rgba(249,115,22,0.1)', color: "var(--k-hot)" }}
                 >
                   {isTradeIn ? '⇄ TAKAS' : '↑ SATIŞ'}
                 </span>
@@ -758,7 +758,7 @@ export default function HesabimPage() {
           {!loading && orders.length > 0 && (
             <div className="grid grid-cols-3 gap-3 p-5 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] shadow-sm">
               {[
-                { label: 'Toplam Sipariş', value: orders.length.toString(), color: '#0f172a' },
+                { label: 'Toplam Sipariş', value: orders.length.toString(), color: 'var(--k-ink)' },
                 { label: 'Toplam Tutar',   value: fmt(totalAmount),         color: '#F97316' },
                 { label: 'Aktif Garanti',  value: `${orders.filter(o => o.paymentStatus === 'RELEASED').length} Cihaz`, color: '#f59e0b' },
               ].map(s => (

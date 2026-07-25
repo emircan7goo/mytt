@@ -23,10 +23,10 @@ import { toast } from 'sonner';
 
 // ── Grade konfigürasyonu ──────────────────────────────────────────────────────
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
-  'A+': { label: 'Kusursuz', color: '#EA580C', bg: '#FFF7ED', border: '#FED7AA' },
+  'A+': { label: 'Kusursuz', color: "var(--k-hot)", bg: '#FFF7ED', border: '#FED7AA' },
   'A':  { label: 'Çok İyi',  color: '#0284c7', bg: '#eff6ff', border: '#bae6fd' },
   'B':  { label: 'İyi',      color: '#d97706', bg: '#fffbeb', border: '#fde68a' },
-  'C':  { label: 'Kabul Edilebilir', color: '#EA580C', bg: '#FFF7ED', border: '#FED7AA' },
+  'C':  { label: 'Kabul Edilebilir', color: "var(--k-hot)", bg: '#FFF7ED', border: '#FED7AA' },
 };
 
 // ── Marka görseli için arka plan ──────────────────────────────────────────────

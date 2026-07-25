@@ -13,13 +13,13 @@ import apiClient, { API_BASE } from '@/lib/api';
 
 // ── Sabit veriler ─────────────────────────────────────────────────────────────
 const BRANDS = [
-  { id: 'Apple',   label: 'Apple',   color: '#1d1d1f', abbr: 'A' },
+  { id: 'Apple',   label: 'Apple',   color: "var(--k-ink)", abbr: 'A' },
   { id: 'Samsung', label: 'Samsung', color: '#1428a0', abbr: 'S' },
   { id: 'Xiaomi',  label: 'Xiaomi',  color: '#ff6900', abbr: 'X' },
   { id: 'Google',  label: 'Google',  color: '#4285f4', abbr: 'G' },
   { id: 'Huawei',  label: 'Huawei',  color: '#cf0a2c', abbr: 'H' },
   { id: 'OnePlus', label: 'OnePlus', color: '#f5010c', abbr: 'O' },
-  { id: 'Diğer',   label: 'Diğer',   color: '#6b7280', abbr: '?' },
+  { id: 'Diğer',   label: 'Diğer',   color: "var(--k-ink-3)", abbr: '?' },
 ];
 
 const POPULAR_MODELS: Record<string, string[]> = {
@@ -289,7 +289,7 @@ export default function SellPage() {
 
   // ── Ana form ─────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pt-24 pb-20">
+    <div className="min-h-screen bg-[var(--k-canvas)] pt-24 pb-20">
       {/* Header */}
       <div className="max-w-2xl mx-auto px-4">
         <Link href="/" className="inline-flex items-center gap-2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors mb-8 text-sm">

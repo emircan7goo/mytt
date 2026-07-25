@@ -121,7 +121,7 @@ export default function ProductDetailModal() {
 
                 {/* ── Gallery ── */}
                 <div className="flex flex-col gap-4">
-                  <div className="relative aspect-square bg-[#F8FAFC] rounded-[24px] flex items-center justify-center p-8 border border-[var(--k-line)]">
+                  <div className="relative aspect-square bg-[var(--k-canvas)] rounded-[24px] flex items-center justify-center p-8 border border-[var(--k-line)]">
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={activeImg}

@@ -124,7 +124,7 @@ function CheckoutContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pt-[100px] pb-20 px-4">
+    <div className="min-h-screen bg-[var(--k-canvas)] pt-[100px] pb-20 px-4">
       <div className="max-w-5xl mx-auto">
 
         {/* Başlık */}

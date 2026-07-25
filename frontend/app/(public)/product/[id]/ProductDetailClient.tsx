@@ -54,7 +54,7 @@ export default function ProductDetailClient() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--k-canvas)] flex items-center justify-center">
         <div className="w-10 h-10 border-[1px] border-[var(--k-line)] border-t-zinc-900 rounded-full animate-spin"></div>
       </div>
     );
@@ -62,7 +62,7 @@ export default function ProductDetailClient() {
 
   if (isError || !product) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F8FAFC]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--k-canvas)]">
         <h1 className="text-[var(--k-ink)] font-thin text-[60px] tracking-tighter mb-4">Yokluk.</h1>
         <p className="text-[var(--k-ink-3)] text-[18px] font-light max-w-sm text-center mb-10">
           Bu uzamsal frekansta aradığınız donanıma ulaşılamadı.
@@ -75,7 +75,7 @@ export default function ProductDetailClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[var(--k-ink)] selection:bg-zinc-900 selection:text-white pt-[100px] md:pt-[120px] pb-20 overflow-hidden relative">
+    <div className="min-h-screen bg-[var(--k-canvas)] text-[var(--k-ink)] selection:bg-zinc-900 selection:text-white pt-[100px] md:pt-[120px] pb-20 overflow-hidden relative">
       
       {/* Deep Space Glowing Orb Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-gradient-to-b from-blue-50/50 to-transparent blur-[100px] rounded-full pointer-events-none" />

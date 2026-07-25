@@ -52,7 +52,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#F8FAFC]">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[var(--k-canvas)]">
       <div className="w-full max-w-[420px]">
 
         {/* Logo */}

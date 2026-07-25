@@ -96,7 +96,7 @@ function filterAndRank(products: any[], answers: WizardAnswers): any[] {
 const RANKS = [
   { num: '1',  label: 'En İyi Eşleşme', color: '#92400E', bg: '#FEF3C7', border: '#FCD34D' },
   { num: '2',  label: '2. Öneri',        color: '#1E40AF', bg: '#DBEAFE', border: '#93C5FD' },
-  { num: '3',  label: '3. Öneri',        color: '#374151', bg: '#F3F4F6', border: '#D1D5DB' },
+  { num: '3',  label: '3. Öneri',        color: "var(--k-ink-2)", bg: '#F3F4F6', border: '#D1D5DB' },
 ];
 
 // ─── Option card ─────────────────────────────────────────────────────────────
@@ -186,7 +186,7 @@ export default function AIFinderPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#FAFBFC' }}>
+    <div className="min-h-screen" style={{ background: "var(--k-surface-2)" }}>
       {/* Brand accent line */}
       <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #9A3412 0%, #FB923C 50%, #FDBA74 100%)' }} />
 
@@ -206,7 +206,7 @@ export default function AIFinderPage() {
               className="w-7 h-7 rounded-lg flex items-center justify-center"
               style={{ background: 'rgba(154,52,18,0.08)' }}
             >
-              <Brain size={15} strokeWidth={1.5} style={{ color: '#9A3412' }} />
+              <Brain size={15} strokeWidth={1.5} style={{ color: "var(--k-hot)" }} />
             </div>
             <span className="text-sm font-bold text-[var(--k-ink-2)]">AI Telefon Bulucu</span>
           </div>
@@ -237,7 +237,7 @@ export default function AIFinderPage() {
             <div className="mb-8">
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-4"
-                style={{ background: 'rgba(154,52,18,0.08)', color: '#9A3412' }}
+                style={{ background: 'rgba(154,52,18,0.08)', color: "var(--k-hot)" }}
               >
                 <Trophy size={12} strokeWidth={2} />
                 Sonuçlar hazır
@@ -373,7 +373,7 @@ export default function AIFinderPage() {
                 style={
                   canAdvance && !productsLoading
                     ? { background: '#9A3412', boxShadow: '0 4px 14px rgba(154,52,18,0.28)' }
-                    : { background: '#CBD5E1' }
+                    : { background: "var(--k-line-2)" }
                 }
               >
                 {step === STEPS.length - 1

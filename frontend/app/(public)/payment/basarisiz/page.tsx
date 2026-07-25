@@ -11,7 +11,7 @@ function BasarisizContent() {
   const productId    = searchParams.get('productId');
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-[var(--k-canvas)] flex flex-col items-center justify-center p-6">
       <motion.div
         initial={{ scale: 0.85, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

@@ -16,7 +16,7 @@ const BRANDS = ['Apple', 'Samsung', 'Xiaomi', 'Huawei', 'OnePlus', 'Oppo'] as co
 type Brand = typeof BRANDS[number];
 
 const BRAND_META: Record<Brand, { initial: string; color: string }> = {
-  Apple:   { initial: 'A', color: '#1d1d1f' },
+  Apple:   { initial: 'A', color: "var(--k-ink)" },
   Samsung: { initial: 'S', color: '#1428A0' },
   Xiaomi:  { initial: 'X', color: '#FF6900' },
   Huawei:  { initial: 'H', color: '#CF0A2C' },
@@ -217,7 +217,7 @@ export default function TradeInPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#FAFBFC' }}>
+    <div className="min-h-screen" style={{ background: "var(--k-surface-2)" }}>
       {/* Brand accent line — blue for trade-in */}
       <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #1d4ed8 0%, #3b82f6 50%, #93c5fd 100%)' }} />
 
@@ -282,7 +282,7 @@ export default function TradeInPage() {
                 </p>
                 <div
                   className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-full text-xs font-semibold"
-                  style={{ background: 'rgba(37,99,235,0.1)', color: '#1d4ed8' }}
+                  style={{ background: 'rgba(37,99,235,0.1)', color: "var(--k-cool)" }}
                 >
                   <TrendingUp size={11} strokeWidth={2} />
                   Güncel piyasa koşullarına göre tahmin
@@ -471,7 +471,7 @@ export default function TradeInPage() {
                         key={m}
                         onClick={() => setModel(m)}
                         className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border text-left font-semibold text-[14px] transition-all duration-150 ${ active ? 'shadow-sm' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm' }`}
-                        style={active ? { borderColor: '#2563EB', background: '#EFF6FF', color: '#1d4ed8' } : { color: '#374151' }}
+                        style={active ? { borderColor: '#2563EB', background: "var(--k-surface-2)", color: "var(--k-cool)" } : { color: "var(--k-ink-2)" }}
                       >
                         <span>{m}</span>
                         {active && (
@@ -558,7 +558,7 @@ export default function TradeInPage() {
                 style={
                   canAdvance
                     ? { background: '#1d4ed8', boxShadow: '0 4px 14px rgba(29,78,216,0.28)' }
-                    : { background: '#CBD5E1' }
+                    : { background: "var(--k-line-2)" }
                 }
               >
                 {step === 2 ? 'Değeri Hesapla' : 'Devam'}
