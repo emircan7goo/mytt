@@ -147,7 +147,7 @@ export default function HeroSlider() {
             />
             {/* Soft Light ambient glow */}
             <div className="absolute inset-0 pointer-events-none" style={{
-              background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(236,253,245,0.6) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,243,255,0.6) 0%, transparent 70%)',
             }} />
           </div>
         ) : (

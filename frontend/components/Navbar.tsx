@@ -294,7 +294,7 @@ export default function Navbar() {
 
           {/* Arama (masaüstü) */}
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[600px] ml-4">
-            <div className="flex items-center w-full h-[46px] rounded-2xl bg-slate-50 border border-slate-200 focus-within:border-violet-500 focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(5,150,105,0.06)] transition-all overflow-hidden px-2">
+            <div className="flex items-center w-full h-[46px] rounded-2xl bg-slate-50 border border-slate-200 focus-within:border-violet-500 focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(124,58,237,0.06)] transition-all overflow-hidden px-2">
               <Search size={18} className="text-slate-400 ml-3 flex-shrink-0" />
               <input
                 type="text"

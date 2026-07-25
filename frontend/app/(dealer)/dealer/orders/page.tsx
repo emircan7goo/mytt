@@ -14,7 +14,7 @@ const fmt = (n: number) =>
 const PAY_STATUS: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   PENDING:   { label: 'Ödeme Bekleniyor', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', border: 'rgba(148,163,184,0.25)', icon: <Clock size={11}/>       },
   ESCROW:    { label: 'Escrow\'da',       color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.25)',  icon: <Clock size={11}/>       },
-  RELEASED:  { label: 'Tamamlandı',       color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.25)', icon: <CheckCircle size={11}/> },
+  RELEASED:  { label: 'Tamamlandı',       color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)',  border: 'rgba(139,92,246,0.25)', icon: <CheckCircle size={11}/> },
   REFUNDED:  { label: 'İade Edildi',      color: '#ef4444', bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)',  icon: <RotateCcw size={11}/>   },
   CANCELLED: { label: 'İptal',            color: '#6b7280', bg: 'rgba(107,114,128,0.1)', border: 'rgba(107,114,128,0.25)',icon: <XCircle size={11}/>     },
 };

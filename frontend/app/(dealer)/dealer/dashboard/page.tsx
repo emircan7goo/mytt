@@ -49,7 +49,7 @@ function buildMonthlyChartData(orders: any[], numMonths = 8) {
 }
 
 const CONDITION_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  'A+': { label: 'Tertemiz',  color: '#8B5CF6', bg: 'rgba(16,185,129,0.12)' },
+  'A+': { label: 'Tertemiz',  color: '#8B5CF6', bg: 'rgba(139,92,246,0.12)' },
   'A':  { label: 'Çok İyi',   color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)' },
   'B':  { label: 'İyi',       color: '#f59e0b', bg: 'rgba(245,158,11,0.12)' },
   'C':  { label: 'Kabul Edilebilir',color: '#a855f7', bg: 'rgba(168,85,247,0.12)' },
@@ -57,7 +57,7 @@ const CONDITION_LABELS: Record<string, { label: string; color: string; bg: strin
 
 const ORDER_STATUS: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   ESCROW:    { label: 'Ödeme Bekliyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.09)',  border: 'rgba(245,158,11,0.2)',  icon: <Clock size={11}/>         },
-  RELEASED:  { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(16,185,129,0.09)',  border: 'rgba(16,185,129,0.2)', icon: <CheckCircle size={11}/>   },
+  RELEASED:  { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(139,92,246,0.09)',  border: 'rgba(139,92,246,0.2)', icon: <CheckCircle size={11}/>   },
   REFUNDED:  { label: 'İade',           color: '#ef4444', bg: 'rgba(239,68,68,0.09)',   border: 'rgba(239,68,68,0.2)',  icon: <RotateCcw size={11}/>     },
 };
 
@@ -140,8 +140,8 @@ export default function DealerDashboard() {
       {/* ── Bakiye + Hızlı Erişim ─────────────────────────────────────── */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
         {/* Cüzdan */}
-        <div style={{ background: walletBalance > 0 ? 'rgba(16,185,129,0.07)' : 'rgba(245,158,11,0.07)', borderRadius: 16, border: walletBalance > 0 ? '1px solid rgba(16,185,129,0.2)' : '1px solid rgba(245,158,11,0.2)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: walletBalance > 0 ? 'rgba(16,185,129,0.15)' : 'rgba(245,158,11,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div style={{ background: walletBalance > 0 ? 'rgba(139,92,246,0.07)' : 'rgba(245,158,11,0.07)', borderRadius: 16, border: walletBalance > 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(245,158,11,0.2)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 10, background: walletBalance > 0 ? 'rgba(139,92,246,0.15)' : 'rgba(245,158,11,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Wallet size={18} style={{ color: walletBalance > 0 ? '#8B5CF6' : '#f59e0b' }} />
           </div>
           <div>
@@ -166,8 +166,8 @@ export default function DealerDashboard() {
         </Link>
         {/* Cihaz Sat */}
         <Link href="/dealer/sell" style={{ textDecoration: 'none' }}>
-          <div style={{ background: 'rgba(16,185,129,0.05)', borderRadius: 16, border: '1px solid rgba(16,185,129,0.15)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center', cursor: 'pointer', transition: 'all 0.15s' }}>
-            <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(16,185,129,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div style={{ background: 'rgba(139,92,246,0.05)', borderRadius: 16, border: '1px solid rgba(139,92,246,0.15)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center', cursor: 'pointer', transition: 'all 0.15s' }}>
+            <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(139,92,246,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <PlusCircle size={18} style={{ color: '#8B5CF6' }} />
             </div>
             <div>

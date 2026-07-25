@@ -264,8 +264,8 @@ export default function DealerSellPage() {
       <div style={{ maxWidth: 540, margin: '0 auto', textAlign: 'center', padding: '60px 24px' }}>
         <div style={{
           width: 80, height: 80, borderRadius: '50%', margin: '0 auto 24px',
-          background: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(14,165,233,0.1))',
-          border: '2px solid rgba(16,185,129,0.3)',
+          background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(14,165,233,0.1))',
+          border: '2px solid rgba(139,92,246,0.3)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           <Clock size={36} style={{ color: '#8B5CF6' }} />
@@ -279,7 +279,7 @@ export default function DealerSellPage() {
         </p>
         <div style={{
           padding: '16px', borderRadius: '14px',
-          background: 'rgba(16,185,129,0.07)', border: '1px solid rgba(16,185,129,0.2)',
+          background: 'rgba(139,92,246,0.07)', border: '1px solid rgba(139,92,246,0.2)',
           marginBottom: 24,
         }}>
           <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', margin: '0 0 4px' }}>
@@ -420,7 +420,7 @@ export default function DealerSellPage() {
                     style={{
                       padding: '8px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 600,
                       cursor: 'pointer', border: '1px solid',
-                      background: val ? 'rgba(16,185,129,0.12)' : 'rgba(255,255,255,0.04)',
+                      background: val ? 'rgba(139,92,246,0.12)' : 'rgba(255,255,255,0.04)',
                       borderColor: val ? '#8B5CF6' : 'rgba(255,255,255,0.1)',
                       color: val ? '#8B5CF6' : 'rgba(248,250,252,0.5)',
                       display: 'flex', alignItems: 'center', gap: 6,

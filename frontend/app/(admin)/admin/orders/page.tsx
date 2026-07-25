@@ -26,7 +26,7 @@ function productName(order: any): string {
 const PAY_CFG: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   PENDING:   { label: 'Beklemede',  color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', border: 'rgba(148,163,184,0.25)', icon: <Clock size={11}/>         },
   ESCROW:    { label: 'Escrow',     color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.25)',  icon: <ShoppingCart size={11}/>   },
-  RELEASED:  { label: 'Tamamlandı', color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.25)', icon: <CheckCircle size={11}/>    },
+  RELEASED:  { label: 'Tamamlandı', color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)', icon: <CheckCircle size={11}/>    },
   REFUNDED:  { label: 'İade',       color: '#ef4444', bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)',  icon: <RotateCcw size={11}/>      },
   CANCELLED: { label: 'İptal',      color: '#6b7280', bg: 'rgba(107,114,128,0.1)', border: 'rgba(107,114,128,0.25)',icon: <XCircle size={11}/>        },
 };
@@ -204,8 +204,8 @@ export default function AdminOrdersPage() {
         <div style={{
           position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999,
           padding: '12px 20px', borderRadius: '12px',
-          background: toast.startsWith('❌') ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)',
-          border: toast.startsWith('❌') ? '1px solid rgba(239,68,68,0.35)' : '1px solid rgba(16,185,129,0.35)',
+          background: toast.startsWith('❌') ? 'rgba(239,68,68,0.15)' : 'rgba(139,92,246,0.15)',
+          border: toast.startsWith('❌') ? '1px solid rgba(239,68,68,0.35)' : '1px solid rgba(139,92,246,0.35)',
           color: toast.startsWith('❌') ? '#ef4444' : '#8B5CF6',
           fontSize: '13px', fontWeight: 700,
           backdropFilter: 'blur(16px)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
@@ -429,7 +429,7 @@ export default function AdminOrdersPage() {
                     const cfg = SHIP_CFG[key];
                     return (
                       <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '5px', opacity: done || active ? 1 : 0.3 }}>
-                        <div style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: done ? 'rgba(16,185,129,0.2)' : active ? `${cfg.color}25` : 'rgba(255,255,255,0.05)', border: done ? '1px solid rgba(16,185,129,0.4)' : active ? `1px solid ${cfg.color}50` : '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
+                        <div style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: done ? 'rgba(139,92,246,0.2)' : active ? `${cfg.color}25` : 'rgba(255,255,255,0.05)', border: done ? '1px solid rgba(139,92,246,0.4)' : active ? `1px solid ${cfg.color}50` : '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
                           {done ? <CheckCircle size={9} color="#8B5CF6"/> : cfg.icon}
                         </div>
                         <span style={{ fontSize: '12px', fontWeight: active ? 700 : 500, color: active ? cfg.color : done ? '#8B5CF6' : 'rgba(248,250,252,0.4)' }}>{cfg.label}</span>

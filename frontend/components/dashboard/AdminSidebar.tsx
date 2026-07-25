@@ -106,9 +106,9 @@ export default function AdminSidebar() {
             <Link key={href} href={href} style={{
               display: 'flex', alignItems: 'center', gap: '10px',
               padding: '9px 12px', borderRadius: '9px', marginBottom: '2px',
-              background: isActive ? `rgba(${highlight ? '16,185,129' : '168,85,247'},0.1)` : 'transparent',
-              border: isActive ? `1px solid rgba(${highlight ? '16,185,129' : '168,85,247'},0.22)` : '1px solid transparent',
-              color: isActive ? accentColor : highlight ? 'rgba(16,185,129,0.7)' : 'rgba(248,250,252,0.45)',
+              background: isActive ? `rgba(${highlight ? '139,92,246' : '168,85,247'},0.1)` : 'transparent',
+              border: isActive ? `1px solid rgba(${highlight ? '139,92,246' : '168,85,247'},0.22)` : '1px solid transparent',
+              color: isActive ? accentColor : highlight ? 'rgba(139,92,246,0.7)' : 'rgba(248,250,252,0.45)',
               textDecoration: 'none', fontSize: '13px', fontWeight: isActive ? 700 : (highlight ? 600 : 400),
               transition: 'all 0.15s',
             }}>

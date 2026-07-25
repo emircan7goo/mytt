@@ -33,7 +33,7 @@ const POPULAR_MODELS: Record<string, string[]> = {
 };
 
 const GRADES = [
-  { id: 'A+', label: 'Tertemiz',   desc: 'Sıfır gibi, çizik yok',              color: '#8B5CF6', bg: 'rgba(16,185,129,0.08)',  border: 'rgba(16,185,129,0.25)' },
+  { id: 'A+', label: 'Tertemiz',   desc: 'Sıfır gibi, çizik yok',              color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)',  border: 'rgba(139,92,246,0.25)' },
   { id: 'A',  label: 'Çok İyi',    desc: 'Mikro çizikler, tamamen işlevsel',    color: '#0ea5e9', bg: 'rgba(14,165,233,0.08)',  border: 'rgba(14,165,233,0.25)' },
   { id: 'B',  label: 'İyi',        desc: 'Görünür hafif çizikler, normal kullanım', color: '#f59e0b', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.25)' },
   { id: 'C',  label: 'Kabul Edilebilir', desc: 'Belirgin hasar, tamamen çalışıyor',   color: '#ef4444', bg: 'rgba(239,68,68,0.08)',   border: 'rgba(239,68,68,0.25)' },
@@ -122,8 +122,8 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
           <div
             className="rounded-2xl p-4 mb-6 transition-all duration-300"
             style={{
-              background: newBidFlash ? 'rgba(16,185,129,0.08)' : 'rgba(248,250,252,1)',
-              border: newBidFlash ? '1px solid rgba(16,185,129,0.3)' : '1px solid #f1f5f9',
+              background: newBidFlash ? 'rgba(139,92,246,0.08)' : 'rgba(248,250,252,1)',
+              border: newBidFlash ? '1px solid rgba(139,92,246,0.3)' : '1px solid #f1f5f9',
             }}
           >
             <p className="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Gelen Teklifler</p>

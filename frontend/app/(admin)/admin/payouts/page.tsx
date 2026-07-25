@@ -68,7 +68,7 @@ export default function AdminPayoutsPage() {
   const STATUS_BADGE: Record<PayoutStatus, { label: string; color: string; bg: string; border: string }> = {
     PENDING:  { label: 'Onay Bekliyor',   color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
     APPROVED: { label: 'Havale Bekliyor', color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.25)' },
-    PAID:     { label: 'Ödendi',          color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.25)' },
+    PAID:     { label: 'Ödendi',          color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)' },
     REJECTED: { label: 'Reddedildi',      color: '#ef4444', bg: 'rgba(239,68,68,0.1)',  border: 'rgba(239,68,68,0.25)' },
   };
 

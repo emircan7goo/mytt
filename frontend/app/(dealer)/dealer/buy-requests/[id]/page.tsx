@@ -57,9 +57,9 @@ function LiveBidFeed({ count, isOpen }: { count: number; isOpen: boolean }) {
 
   return (
     <div style={{
-      background: flashing ? 'rgba(16,185,129,0.08)' : 'rgba(255,255,255,0.03)',
+      background: flashing ? 'rgba(139,92,246,0.08)' : 'rgba(255,255,255,0.03)',
       borderRadius: '16px',
-      border: flashing ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(255,255,255,0.07)',
+      border: flashing ? '1px solid rgba(139,92,246,0.3)' : '1px solid rgba(255,255,255,0.07)',
       padding: '20px', transition: 'all 0.4s',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
@@ -95,8 +95,8 @@ function LiveBidFeed({ count, isOpen }: { count: number; isOpen: boolean }) {
             <div key={i} style={{
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '7px 12px', borderRadius: '8px',
-              background: i === 0 ? 'rgba(16,185,129,0.08)' : 'rgba(255,255,255,0.02)',
-              border: i === 0 ? '1px solid rgba(16,185,129,0.2)' : '1px solid transparent',
+              background: i === 0 ? 'rgba(139,92,246,0.08)' : 'rgba(255,255,255,0.02)',
+              border: i === 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid transparent',
               opacity: 1 - i * 0.15,
               animation: i === 0 ? 'slideIn 0.3s ease-out' : 'none',
             }}>
@@ -258,7 +258,7 @@ export default function DealerBuyRequestDetailPage() {
 
           {/* Kendi teklifim */}
           {hasBid && !editing && (
-            <div style={{ background: 'rgba(16,185,129,0.07)', borderRadius: 16, border: '1px solid rgba(16,185,129,0.25)', padding: 20 }}>
+            <div style={{ background: 'rgba(139,92,246,0.07)', borderRadius: 16, border: '1px solid rgba(139,92,246,0.25)', padding: 20 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                 <CheckCircle size={18} style={{ color: '#8B5CF6' }} />
                 <p style={{ color: '#8B5CF6', fontWeight: 700, fontSize: '14px', margin: 0 }}>Teklifiniz Gönderildi</p>

@@ -115,7 +115,7 @@ function OptionCard({
       {Icon ? (
         <div
           className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-          style={{ background: selected ? 'rgba(6,95,70,0.1)' : '#F8FAFC' }}
+          style={{ background: selected ? 'rgba(76,29,149,0.1)' : '#F8FAFC' }}
         >
           <Icon size={18} strokeWidth={1.5} style={{ color: selected ? '#5B21B6' : '#94A3B8' }} />
         </div>
@@ -204,7 +204,7 @@ export default function AIFinderPage() {
           <div className="flex items-center gap-2">
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ background: 'rgba(6,95,70,0.08)' }}
+              style={{ background: 'rgba(76,29,149,0.08)' }}
             >
               <Brain size={15} strokeWidth={1.5} style={{ color: '#5B21B6' }} />
             </div>
@@ -237,7 +237,7 @@ export default function AIFinderPage() {
             <div className="mb-8">
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-4"
-                style={{ background: 'rgba(6,95,70,0.08)', color: '#5B21B6' }}
+                style={{ background: 'rgba(76,29,149,0.08)', color: '#5B21B6' }}
               >
                 <Trophy size={12} strokeWidth={2} />
                 Sonuçlar hazır
@@ -372,7 +372,7 @@ export default function AIFinderPage() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all disabled:opacity-35 disabled:cursor-not-allowed"
                 style={
                   canAdvance && !productsLoading
-                    ? { background: '#5B21B6', boxShadow: '0 4px 14px rgba(6,95,70,0.28)' }
+                    ? { background: '#5B21B6', boxShadow: '0 4px 14px rgba(76,29,149,0.28)' }
                     : { background: '#CBD5E1' }
                 }
               >

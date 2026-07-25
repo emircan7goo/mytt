@@ -20,7 +20,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', {
 
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
   PENDING_ADMIN: { label: 'Onay Bekliyor',  color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
-  ACTIVE:        { label: 'Aktif',           color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)' },
+  ACTIVE:        { label: 'Aktif',           color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
   EXPIRED:       { label: 'Süre Doldu',      color: '#6366f1', bg: 'rgba(99,102,241,0.1)' },
   SOLD:          { label: 'Satıldı',         color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
   CANCELLED:     { label: 'İptal',           color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
@@ -142,12 +142,12 @@ function DetailModal({ item, onClose }: { item: DealerMarketItem; onClose: () =>
                 <div key={bid.id} style={{
                   display: 'flex', alignItems: 'center', gap: 10,
                   padding: '10px 12px', borderRadius: 10,
-                  background: idx === 0 ? 'rgba(16,185,129,0.06)' : 'rgba(255,255,255,0.02)',
-                  border: idx === 0 ? '1px solid rgba(16,185,129,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                  background: idx === 0 ? 'rgba(139,92,246,0.06)' : 'rgba(255,255,255,0.02)',
+                  border: idx === 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(255,255,255,0.06)',
                 }}>
                   <div style={{
                     width: 24, height: 24, borderRadius: 6, flexShrink: 0,
-                    background: idx === 0 ? 'rgba(16,185,129,0.15)' : 'rgba(255,255,255,0.05)',
+                    background: idx === 0 ? 'rgba(139,92,246,0.15)' : 'rgba(255,255,255,0.05)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: idx === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)',
                     fontSize: 10, fontWeight: 800,

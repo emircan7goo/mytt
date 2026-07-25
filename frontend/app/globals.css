@@ -139,12 +139,18 @@ body {
   color: var(--brand-deep);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--ink);
+/* @layer base içinde — Tailwind text-color utility'leri (örn. text-white/70)
+   bunu normal şekilde ezebilsin diye. Katmansız (plain) CSS olsaydı, Tailwind
+   v4'ün layer sistemi yüzünden utility class'lar specificity'den bağımsız
+   olarak HER ZAMAN kaybederdi (footer başlıklarının görünmez olma sebebi buydu). */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
 }
 
 /* *******************************************************************************

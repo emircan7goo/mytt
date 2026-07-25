@@ -81,7 +81,7 @@ export default function ProductFamilyPage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 900px 500px at 12% -10%, rgba(16,185,129,0.16), transparent 60%),' +
+              'radial-gradient(ellipse 900px 500px at 12% -10%, rgba(139,92,246,0.16), transparent 60%),' +
               'radial-gradient(ellipse 700px 500px at 100% 20%, rgba(245,158,11,0.08), transparent 55%)',
           }}
         />
@@ -254,7 +254,7 @@ export default function ProductFamilyPage() {
                       href={`/product/${offer.id}`}
                       className={`group flex flex-col sm:flex-row sm:items-center gap-4 p-5 md:p-6 rounded-[22px] bg-white border transition-all hover:shadow-[0_16px_40px_rgba(0,0,0,0.07)] hover:-translate-y-0.5 ${
                         isTopPick
-                          ? 'border-transparent shadow-[0_0_0_1.5px_#7C3AED,0_16px_40px_rgba(5,150,105,0.12)]'
+                          ? 'border-transparent shadow-[0_0_0_1.5px_#7C3AED,0_16px_40px_rgba(124,58,237,0.12)]'
                           : 'border-zinc-100'
                       }`}
                     >

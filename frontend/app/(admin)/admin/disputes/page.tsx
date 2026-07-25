@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle, XCircle, Clock, MessageSquare, RefreshCw } 
 const STATUS_CFG: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   OPEN:      { label:'Açık',        color:'#ef4444', bg:'rgba(239,68,68,0.1)',   border:'rgba(239,68,68,0.25)',   icon: <AlertTriangle size={12}/> },
   IN_REVIEW: { label:'İnceleniyor', color:'#f59e0b', bg:'rgba(245,158,11,0.1)', border:'rgba(245,158,11,0.25)', icon: <Clock size={12}/>         },
-  RESOLVED:  { label:'Çözüldü',     color:'#8B5CF6', bg:'rgba(16,185,129,0.1)', border:'rgba(16,185,129,0.25)', icon: <CheckCircle size={12}/>   },
+  RESOLVED:  { label:'Çözüldü',     color:'#8B5CF6', bg:'rgba(139,92,246,0.1)', border:'rgba(139,92,246,0.25)', icon: <CheckCircle size={12}/>   },
   ESCALATED: { label:'Eskalasyon',  color:'#a855f7', bg:'rgba(168,85,247,0.1)', border:'rgba(168,85,247,0.25)', icon: <XCircle size={12}/>       },
   REFUNDED:  { label:'İade',        color:'#ef4444', bg:'rgba(239,68,68,0.1)',   border:'rgba(239,68,68,0.25)',   icon: <RefreshCw size={12}/>    },
 };
@@ -132,7 +132,7 @@ export default function AdminDisputesPage() {
                         )}
                         {(status === 'IN_REVIEW' || status === 'ESCALATED') && (
                           <button onClick={e => { e.stopPropagation(); updateStatus(d.id, 'RESOLVED'); }}
-                            style={{ padding:'4px 10px', borderRadius:'6px', background:'rgba(16,185,129,0.12)', border:'1px solid rgba(16,185,129,0.25)', color:'#8B5CF6', fontSize:'11px', fontWeight:700, cursor:'pointer' }}>
+                            style={{ padding:'4px 10px', borderRadius:'6px', background:'rgba(139,92,246,0.12)', border:'1px solid rgba(139,92,246,0.25)', color:'#8B5CF6', fontSize:'11px', fontWeight:700, cursor:'pointer' }}>
                             Çöz
                           </button>
                         )}

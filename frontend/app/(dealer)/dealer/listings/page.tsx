@@ -20,7 +20,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', { day: '2
 // ── Status config ─────────────────────────────────────────────────────────────
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string; icon: React.ElementType }> = {
   PENDING_ADMIN: { label: 'Admin Onayı Bekliyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  icon: Clock },
-  ACTIVE:        { label: 'Aktif',                color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)',  icon: CheckCircle },
+  ACTIVE:        { label: 'Aktif',                color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)',  icon: CheckCircle },
   EXPIRED:       { label: 'Süre Doldu',           color: '#6366f1', bg: 'rgba(99,102,241,0.1)',  icon: Clock },
   SOLD:          { label: 'Satıldı',              color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)',  icon: CheckCircle },
   CANCELLED:     { label: 'İptal Edildi',         color: '#6b7280', bg: 'rgba(107,114,128,0.1)', icon: XCircle },
@@ -91,7 +91,7 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
   return (
     <div style={{
       background: 'rgba(255,255,255,0.03)', borderRadius: 18,
-      border: `1px solid ${item.status === 'ACTIVE' ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.07)'}`,
+      border: `1px solid ${item.status === 'ACTIVE' ? 'rgba(139,92,246,0.2)' : 'rgba(255,255,255,0.07)'}`,
       overflow: 'hidden', transition: 'all 0.2s',
     }}>
       {/* Header row */}
@@ -216,13 +216,13 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
               <div key={bid.id} style={{
                 display: 'flex', alignItems: 'center', gap: 12,
                 padding: '10px 14px', borderRadius: 12,
-                background: idx === 0 ? 'rgba(16,185,129,0.06)' : 'rgba(255,255,255,0.02)',
-                border: idx === 0 ? '1px solid rgba(16,185,129,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                background: idx === 0 ? 'rgba(139,92,246,0.06)' : 'rgba(255,255,255,0.02)',
+                border: idx === 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(255,255,255,0.06)',
               }}>
                 {/* Rank */}
                 <div style={{
                   width: 28, height: 28, borderRadius: 8, flexShrink: 0,
-                  background: idx === 0 ? 'rgba(16,185,129,0.15)' : 'rgba(255,255,255,0.05)',
+                  background: idx === 0 ? 'rgba(139,92,246,0.15)' : 'rgba(255,255,255,0.05)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: idx === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)',
                   fontSize: 12, fontWeight: 800,
@@ -246,8 +246,8 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
                   <button onClick={() => handleAcceptBid(bid.id)} disabled={busy} style={{
                     display: 'flex', alignItems: 'center', gap: 5,
                     padding: '7px 14px', borderRadius: 9, fontSize: 11, fontWeight: 700,
-                    background: idx === 0 ? '#8B5CF6' : 'rgba(16,185,129,0.12)',
-                    border: idx === 0 ? 'none' : '1px solid rgba(16,185,129,0.25)',
+                    background: idx === 0 ? '#8B5CF6' : 'rgba(139,92,246,0.12)',
+                    border: idx === 0 ? 'none' : '1px solid rgba(139,92,246,0.25)',
                     color: idx === 0 ? '#fff' : '#8B5CF6',
                     cursor: busy ? 'not-allowed' : 'pointer', transition: 'all 0.15s',
                   }}>
@@ -326,7 +326,7 @@ export default function DealerMyListingsPage() {
           <Link href="/dealer/sell" style={{
             display: 'flex', alignItems: 'center', gap: 6,
             padding: '9px 16px', borderRadius: 10, textDecoration: 'none',
-            background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)',
+            background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)',
             color: '#8B5CF6', fontSize: 12, fontWeight: 700,
           }}>
             <Plus size={13} /> Yeni İlan
@@ -379,7 +379,7 @@ export default function DealerMyListingsPage() {
           <Link href="/dealer/sell" style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             marginTop: 16, padding: '10px 22px', borderRadius: 10,
-            background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)',
+            background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)',
             color: '#8B5CF6', fontSize: 13, fontWeight: 700, textDecoration: 'none',
           }}>
             <Plus size={14} /> İlk İlanını Oluştur

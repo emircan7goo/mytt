@@ -144,7 +144,7 @@ function CompareTable({ products }: { products: MockProduct[] }) {
           <div
             key={product.id}
             className="bg-white rounded-3xl border border-zinc-100 shadow-md p-5 flex flex-col items-center gap-4 relative overflow-hidden"
-            style={{ boxShadow: product.price === minPrice && products.length > 1 ? '0 0 0 2px #7C3AED, 0 8px 32px rgba(5,150,105,0.1)' : undefined }}
+            style={{ boxShadow: product.price === minPrice && products.length > 1 ? '0 0 0 2px #7C3AED, 0 8px 32px rgba(124,58,237,0.1)' : undefined }}
           >
             {product.price === minPrice && products.length > 1 && (
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-400 to-violet-600 rounded-t-3xl" />

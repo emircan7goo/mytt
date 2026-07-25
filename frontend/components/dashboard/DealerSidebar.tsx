@@ -86,9 +86,9 @@ export default function DealerSidebar() {
             <Link key={href} href={href} style={{
               display: 'flex', alignItems: 'center', gap: '10px',
               padding: '9px 11px', borderRadius: '9px', marginBottom: '2px',
-              background: active ? `rgba(${highlight ? '16,185,129' : '14,165,233'},0.1)` : 'transparent',
-              border: active ? `1px solid rgba(${highlight ? '16,185,129' : '14,165,233'},0.2)` : '1px solid transparent',
-              color: active ? accentColor : highlight ? 'rgba(16,185,129,0.75)' : 'rgba(248,250,252,0.45)',
+              background: active ? `rgba(${highlight ? '139,92,246' : '14,165,233'},0.1)` : 'transparent',
+              border: active ? `1px solid rgba(${highlight ? '139,92,246' : '14,165,233'},0.2)` : '1px solid transparent',
+              color: active ? accentColor : highlight ? 'rgba(139,92,246,0.75)' : 'rgba(248,250,252,0.45)',
               textDecoration: 'none', fontSize: '13px', fontWeight: active ? 700 : (highlight ? 600 : 400),
               transition: 'all 0.15s',
             }}>

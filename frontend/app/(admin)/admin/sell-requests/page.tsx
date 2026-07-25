@@ -18,11 +18,11 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', {
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
   PENDING:   { label: 'Teklif Açık',    color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
   EXPIRED:   { label: 'Süre Doldu',     color: '#6366f1', bg: 'rgba(99,102,241,0.1)' },
-  ACCEPTED:  { label: 'Kabul Edildi',   color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)' },
+  ACCEPTED:  { label: 'Kabul Edildi',   color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
   REJECTED:  { label: 'Reddedildi',     color: '#ef4444', bg: 'rgba(239,68,68,0.1)' },
   SHIPPED:   { label: 'Kargoda',        color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
   RECEIVED:  { label: 'Depoda',         color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' },
-  COMPLETED: { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)' },
+  COMPLETED: { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
   CANCELLED: { label: 'İptal',          color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
 };
 

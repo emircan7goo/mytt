@@ -109,7 +109,7 @@ function OrderCard({ order }: { order: any }) {
 
       {/* Garanti */}
       {order.paymentStatus === 'RELEASED' && (
-        <div className="p-3 rounded-xl" style={{ background: warrantyDays < 30 ? 'rgba(239,68,68,0.04)' : 'rgba(16,185,129,0.04)', border: `1px solid ${warrantyColor}22` }}>
+        <div className="p-3 rounded-xl" style={{ background: warrantyDays < 30 ? 'rgba(239,68,68,0.04)' : 'rgba(139,92,246,0.04)', border: `1px solid ${warrantyColor}22` }}>
           <div className="flex items-center gap-1.5 mb-1.5">
             <ShieldCheck size={13} style={{ color: warrantyColor }} />
             <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: warrantyColor }}>6 Ay Garanti</p>
@@ -287,11 +287,11 @@ function useCountdown(expiresAt: string) {
 const SELL_STATUS: Record<string, { label: string; color: string; bg: string }> = {
   PENDING:   { label: 'Teklif Bekleniyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)'  },
   EXPIRED:   { label: 'Teklifler Kapandı', color: '#6366f1', bg: 'rgba(99,102,241,0.1)'  },
-  ACCEPTED:  { label: 'Teklif Kabul Edildi', color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)' },
+  ACCEPTED:  { label: 'Teklif Kabul Edildi', color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
   REJECTED:  { label: 'Reddedildi',         color: '#ef4444', bg: 'rgba(239,68,68,0.1)'  },
   SHIPPED:   { label: 'Kargoya Verildi',    color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
   RECEIVED:  { label: 'Depoda — İnceleniyor', color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' },
-  COMPLETED: { label: 'Tamamlandı',         color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)' },
+  COMPLETED: { label: 'Tamamlandı',         color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
   CANCELLED: { label: 'İptal Edildi',       color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
 };
 
@@ -361,7 +361,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                   className="text-[10px] font-black px-2 py-0.5 rounded-full"
                   style={isTradeIn
                     ? { background: 'rgba(37,99,235,0.1)', color: '#1d4ed8' }
-                    : { background: 'rgba(16,185,129,0.1)', color: '#7C3AED' }}
+                    : { background: 'rgba(139,92,246,0.1)', color: '#7C3AED' }}
                 >
                   {isTradeIn ? '⇄ TAKAS' : '↑ SATIŞ'}
                 </span>

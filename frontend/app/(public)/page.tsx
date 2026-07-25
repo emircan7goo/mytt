@@ -114,7 +114,7 @@ const CARD_META: Record<string, {
     iconBg:      'bg-violet-50',
     iconColor:   'text-violet-600',
     borderColor: 'group-hover:border-violet-500/30',
-    glowColor:   'rgba(16,185,129,0.15)',
+    glowColor:   'rgba(139,92,246,0.15)',
   },
   'ai-finder': {
     gradient:    'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
@@ -796,7 +796,7 @@ function HomePage() {
       </div>
 
       {/* ── MAIN CONTENT (SIDEBAR + GRID) ── */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-8 mt-6 pb-24 flex flex-col lg:flex-row gap-8 lg:gap-10">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-8 mt-6 pb-12 flex flex-col lg:flex-row gap-8 lg:gap-10">
 
         {/* DESKTOP SIDEBAR */}
         <div className="hidden lg:block w-[280px] flex-shrink-0 relative">
@@ -1046,7 +1046,7 @@ function HomePage() {
             {!isLoading && paginatedProducts.length === 0 && (
               <div className="relative flex flex-col items-center justify-center py-20 text-center bg-violet-50/60 rounded-[2rem] border-2 border-dashed border-violet-200 shadow-sm animate-in fade-in overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none"
-                     style={{ background: 'radial-gradient(circle at 50% 50%, rgba(16,185,129,0.05) 0%, transparent 65%)' }} />
+                     style={{ background: 'radial-gradient(circle at 50% 50%, rgba(139,92,246,0.05) 0%, transparent 65%)' }} />
                 <div className="relative z-10 w-24 h-24 mb-8">
                   <div className="absolute inset-0 bg-violet-300/30 rounded-full animate-ping opacity-60" />
                   <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg border border-violet-200">

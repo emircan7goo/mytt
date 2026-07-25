@@ -26,7 +26,7 @@ function BasariliContent() {
         className="flex flex-col items-center gap-6 max-w-md text-center"
       >
         {/* İkon */}
-        <div className="w-28 h-28 rounded-full bg-violet-50 border-2 border-violet-200 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.15)]">
+        <div className="w-28 h-28 rounded-full bg-violet-50 border-2 border-violet-200 flex items-center justify-center shadow-[0_0_60px_rgba(139,92,246,0.15)]">
           <CheckCircle2 size={52} className="text-violet-500" strokeWidth={1.5} />
         </div>
 

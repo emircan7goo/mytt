@@ -79,15 +79,15 @@ export default function AdminDashboardPage() {
       {totalPending > 0 && (
         <Link href="/admin/approvals" style={{ textDecoration: 'none' }}>
           <div className="flex items-center gap-4 p-4 rounded-2xl border cursor-pointer transition-all hover:brightness-110"
-            style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.3)' }}>
-            <div style={{ width: 42, height: 42, borderRadius: '12px', background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            style={{ background: 'rgba(139,92,246,0.08)', border: '1px solid rgba(139,92,246,0.3)' }}>
+            <div style={{ width: 42, height: 42, borderRadius: '12px', background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <CheckCircle size={20} style={{ color: '#8B5CF6' }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: '#8B5CF6', fontWeight: 800, fontSize: '15px', margin: 0 }}>
                 {totalPending} kayıt onay bekliyor
               </p>
-              <p style={{ color: 'rgba(16,185,129,0.6)', fontSize: '12px', margin: '2px 0 0' }}>
+              <p style={{ color: 'rgba(139,92,246,0.6)', fontSize: '12px', margin: '2px 0 0' }}>
                 {pendingApprovals?.sellRequests?.length ?? 0} satış talebi · {pendingApprovals?.dealerStocks?.length ?? 0} bayi stoku · {pendingApprovals?.dealerMarketItems?.length ?? 0} bayi ilanı — hemen incele →
               </p>
             </div>
