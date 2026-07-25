@@ -38,7 +38,7 @@ function MetricCard({
 const ORDER_STATUS: Record<string, { label: string; color: string }> = {
   PENDING:  { label: 'Bekliyor',       color: '#f59e0b' },
   ESCROW:   { label: 'Ödeme Alındı',   color: '#0ea5e9' },
-  RELEASED: { label: 'Teslim Edildi',  color: '#8B5CF6' },
+  RELEASED: { label: 'Teslim Edildi',  color: '#F97316' },
   REFUNDED: { label: 'İade',           color: '#ef4444' },
   CANCELLED:{ label: 'İptal',          color: '#6b7280' },
 };
@@ -79,19 +79,19 @@ export default function AdminDashboardPage() {
       {totalPending > 0 && (
         <Link href="/admin/approvals" style={{ textDecoration: 'none' }}>
           <div className="flex items-center gap-4 p-4 rounded-2xl border cursor-pointer transition-all hover:brightness-110"
-            style={{ background: 'rgba(139,92,246,0.08)', border: '1px solid rgba(139,92,246,0.3)' }}>
-            <div style={{ width: 42, height: 42, borderRadius: '12px', background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <CheckCircle size={20} style={{ color: '#8B5CF6' }} />
+            style={{ background: 'rgba(249,115,22,0.08)', border: '1px solid rgba(249,115,22,0.3)' }}>
+            <div style={{ width: 42, height: 42, borderRadius: '12px', background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <CheckCircle size={20} style={{ color: '#F97316' }} />
             </div>
             <div style={{ flex: 1 }}>
-              <p style={{ color: '#8B5CF6', fontWeight: 800, fontSize: '15px', margin: 0 }}>
+              <p style={{ color: '#F97316', fontWeight: 800, fontSize: '15px', margin: 0 }}>
                 {totalPending} kayıt onay bekliyor
               </p>
-              <p style={{ color: 'rgba(139,92,246,0.6)', fontSize: '12px', margin: '2px 0 0' }}>
+              <p style={{ color: 'rgba(249,115,22,0.6)', fontSize: '12px', margin: '2px 0 0' }}>
                 {pendingApprovals?.sellRequests?.length ?? 0} satış talebi · {pendingApprovals?.dealerStocks?.length ?? 0} bayi stoku · {pendingApprovals?.dealerMarketItems?.length ?? 0} bayi ilanı — hemen incele →
               </p>
             </div>
-            <div style={{ padding: '6px 16px', borderRadius: '10px', background: '#8B5CF6', color: '#fff', fontSize: '12px', fontWeight: 800, flexShrink: 0 }}>
+            <div style={{ padding: '6px 16px', borderRadius: '10px', background: '#F97316', color: '#fff', fontSize: '12px', fontWeight: 800, flexShrink: 0 }}>
               Onayla
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function AdminDashboardPage() {
         <MetricCard
           title="Toplam Üye"
           value={loading ? '…' : (m.totalUsers ?? 0).toLocaleString('tr-TR')}
-          accent="#8B5CF6"
+          accent="#F97316"
           icon={<Users size={15}/>}
         />
         <MetricCard
@@ -168,7 +168,7 @@ export default function AdminDashboardPage() {
           title="Son 30 Gün"
           value={loading ? '…' : (m.recentOrders ?? 0).toString()}
           sub="Sipariş adedi"
-          accent="#8B5CF6"
+          accent="#F97316"
           icon={<Clock size={15}/>}
         />
       </div>
@@ -302,7 +302,7 @@ export default function AdminDashboardPage() {
             { href: '/admin/dealer-approvals', label: 'Bayi Başvuruları',  icon: <CheckCircle size={16}/>, color: '#f59e0b' },
             { href: '/admin/dealers',          label: 'Bayi Analitik',      icon: <Store size={16}/>,       color: '#0ea5e9' },
             { href: '/admin/catalog',          label: 'Ürün Kataloğu',      icon: <Package size={16}/>,     color: '#a855f7' },
-            { href: '/admin/builder',          label: 'Site Düzenleyici',   icon: <TrendingUp size={16}/>,  color: '#8B5CF6' },
+            { href: '/admin/builder',          label: 'Site Düzenleyici',   icon: <TrendingUp size={16}/>,  color: '#F97316' },
           ].map((item) => (
             <Link
               key={item.href}

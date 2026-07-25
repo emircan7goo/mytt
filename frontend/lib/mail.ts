@@ -198,20 +198,20 @@ export async function sendSellRequestCreated(opts: {
     `Satış Talebiniz Alındı — ${opts.deviceName}`,
     `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#f8fafc">
       <div style="background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0">
-        <div style="width:48px;height:48px;background:linear-gradient(135deg,#065f46,#10b981);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#EA580C,#F97316);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
           <span style="color:#fff;font-size:24px">📱</span>
         </div>
         <h2 style="color:#18181b;margin:0 0 8px">Satış Talebiniz Alındı!</h2>
         <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.buyerName}</strong>, <strong>${opts.deviceName}</strong> için satış talebiniz sisteme eklendi.</p>
-        <div style="background:#ecfdf5;border-radius:12px;padding:20px;margin-bottom:24px">
-          <p style="margin:0 0 8px;font-size:12px;color:#065f46;text-transform:uppercase;letter-spacing:1px;font-weight:700">Talep Kodu</p>
-          <p style="margin:0;font-size:22px;font-weight:800;color:#065f46;font-family:monospace">#${shortId}</p>
+        <div style="background:#fff7ed;border-radius:12px;padding:20px;margin-bottom:24px">
+          <p style="margin:0 0 8px;font-size:12px;color:#EA580C;text-transform:uppercase;letter-spacing:1px;font-weight:700">Talep Kodu</p>
+          <p style="margin:0;font-size:22px;font-weight:800;color:#EA580C;font-family:monospace">#${shortId}</p>
         </div>
         <div style="background:#fff7ed;border-radius:12px;padding:16px;margin-bottom:24px;border:1px solid #fed7aa">
           <p style="margin:0;font-size:13px;color:#c2410c;font-weight:700">⏰ Teklif Süresi: ${expireStr}'a kadar</p>
           <p style="margin:4px 0 0;font-size:12px;color:#9a3412">Bayiler 1 saat boyunca size fiyat teklifi sunacak. Süre dolunca en iyi teklifi görüp kabul edebilirsiniz.</p>
         </div>
-        <a href="${siteUrl}/hesabim?tab=sell-requests" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+        <a href="${siteUrl}/hesabim?tab=sell-requests" style="display:block;background:#EA580C;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
           Teklifleri Takip Et
         </a>
       </div>
@@ -266,7 +266,7 @@ export async function sendAuctionExpired(opts: {
         <h2 style="color:#18181b;margin:0 0 8px">Teklifler Kapandı!</h2>
         <p style="color:#71717a;margin:0 0 24px">Merhaba <strong>${opts.buyerName}</strong>, <strong>${opts.deviceName}</strong> için teklif süresi sona erdi.</p>
         ${offerHtml}
-        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#EA580C;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
           Teklifleri Gör ve Karar Ver
         </a>
       </div>
@@ -290,7 +290,7 @@ export async function sendSellRequestAccepted(opts: {
             📦 Lütfen cihazınızı platform adresine kargo gönderin ve kargo takip kodunu hesabınızdan girin.
           </p>
         </div>
-        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#065f46;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
+        <a href="${siteUrl}/hesabim?tab=sell-requests&id=${opts.requestId}" style="display:block;background:#EA580C;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:14px">
           Kargo Kodumu Gir
         </a>
         <p style="margin:16px 0 0;font-size:12px;color:#a1a1aa;text-align:center">Talep No: #${shortId}</p>

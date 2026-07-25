@@ -24,7 +24,7 @@ export default function DealerTrustBadge({
 
   return (
     <div className={`flex items-center gap-2 flex-wrap ${text}`}>
-      <span className="inline-flex items-center gap-1 font-bold text-violet-600 bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-full">
+      <span className="inline-flex items-center gap-1 font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-full">
         <ShieldCheck size={12} strokeWidth={2.5} /> Doğrulanmış Satıcı
       </span>
 

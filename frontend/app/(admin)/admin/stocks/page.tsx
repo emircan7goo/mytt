@@ -12,7 +12,7 @@ import {
 
 const GRADES = [
   { value: '',   label: 'Tüm Kaliteler' },
-  { value: 'A+', label: 'A+ Kalite',   color: '#8B5CF6' },
+  { value: 'A+', label: 'A+ Kalite',   color: '#F97316' },
   { value: 'A',  label: 'A Kalite',    color: '#3b82f6' },
   { value: 'B',  label: 'B Kalite',    color: '#f59e0b' },
   { value: 'C',  label: 'C Kalite',    color: '#ef4444' },
@@ -357,7 +357,7 @@ export default function AdminStocksPage() {
 
                     {/* Stok */}
                     <td style={{ padding: '10px 14px' }}>
-                      <span style={{ color: item.stock > 0 ? '#8B5CF6' : '#ef4444', fontWeight: 700 }}>
+                      <span style={{ color: item.stock > 0 ? '#F97316' : '#ef4444', fontWeight: 700 }}>
                         {item.stock}
                       </span>
                       <span style={{ color: 'rgba(248,250,252,0.3)', fontSize: 11 }}> adet</span>

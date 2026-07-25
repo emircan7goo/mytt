@@ -17,7 +17,7 @@ const CARD_META: Record<string, {
   sell: {
     label: 'Cihazını Sat',
     icon: <Smartphone size={18} />,
-    gradient: 'linear-gradient(135deg, #7C3AED, #6D28D9)',
+    gradient: 'linear-gradient(135deg, #EA580C, #C2410C)',
     accent: 'emerald',
   },
   'ai-finder': {
@@ -99,7 +99,7 @@ function CardEditor({
           {/* Enabled toggle */}
           <button
             onClick={(e) => { e.stopPropagation(); set('enabled', !card.enabled); }}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold border transition-all ${ card.enabled ? 'bg-violet-500/15 border-violet-500/30 text-violet-400' : 'bg-zinc-800 border-zinc-700 text-zinc-500' }`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold border transition-all ${ card.enabled ? 'bg-orange-500/15 border-orange-500/30 text-orange-400' : 'bg-zinc-800 border-zinc-700 text-zinc-500' }`}
           >
             {card.enabled ? <Eye size={12} /> : <EyeOff size={12} />}
             {card.enabled ? 'Görünür' : 'Gizli'}
@@ -155,8 +155,8 @@ function CardEditor({
             <div className="space-y-2">
               {card.features.map((f, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                    <Check size={10} className="text-violet-400" strokeWidth={3} />
+                  <div className="w-5 h-5 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                    <Check size={10} className="text-orange-400" strokeWidth={3} />
                   </div>
                   <input value={f} onChange={e => setFeature(i, e.target.value)}
                     placeholder={`Özellik ${i + 1}`}
@@ -244,8 +244,8 @@ export default function AdminSettingsPage() {
       {/* ── Öne Çıkan Kart Yönetimi ──────────────────────────────────────── */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2.5 rounded-xl bg-violet-500/15 border border-violet-500/20">
-            <LayoutGrid size={18} className="text-violet-400" />
+          <div className="p-2.5 rounded-xl bg-orange-500/15 border border-orange-500/20">
+            <LayoutGrid size={18} className="text-orange-400" />
           </div>
           <div>
             <h3 className="text-zinc-100 font-bold text-[15px]">Öne Çıkan Hizmet Kartları</h3>
@@ -337,7 +337,7 @@ export default function AdminSettingsPage() {
           ].map(([label, value]) => (
             <div key={label} className="flex justify-between py-2.5 border-b border-zinc-800/60 last:border-0">
               <span className="text-zinc-500">{label}</span>
-              <span className="text-violet-400 font-semibold">{value}</span>
+              <span className="text-orange-400 font-semibold">{value}</span>
             </div>
           ))}
         </div>
@@ -347,7 +347,7 @@ export default function AdminSettingsPage() {
       <button
         onClick={handleSave}
         disabled={saveState === 'saving'}
-        className={`flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm transition-all w-fit disabled:opacity-60 disabled:cursor-not-allowed ${ saveState === 'saved' ? 'bg-violet-500 text-white' : saveState === 'error' ? 'bg-red-500 text-white' : 'bg-white text-zinc-950 hover:bg-zinc-100' }`}
+        className={`flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm transition-all w-fit disabled:opacity-60 disabled:cursor-not-allowed ${ saveState === 'saved' ? 'bg-orange-500 text-white' : saveState === 'error' ? 'bg-red-500 text-white' : 'bg-white text-zinc-950 hover:bg-zinc-100' }`}
       >
         {saveState === 'saving' ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
         {saveState === 'saving' ? 'Kaydediliyor...' :

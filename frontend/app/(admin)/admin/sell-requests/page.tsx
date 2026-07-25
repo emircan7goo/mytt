@@ -18,11 +18,11 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', {
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
   PENDING:   { label: 'Teklif Açık',    color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
   EXPIRED:   { label: 'Süre Doldu',     color: '#6366f1', bg: 'rgba(99,102,241,0.1)' },
-  ACCEPTED:  { label: 'Kabul Edildi',   color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  ACCEPTED:  { label: 'Kabul Edildi',   color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   REJECTED:  { label: 'Reddedildi',     color: '#ef4444', bg: 'rgba(239,68,68,0.1)' },
   SHIPPED:   { label: 'Kargoda',        color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
-  RECEIVED:  { label: 'Depoda',         color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' },
-  COMPLETED: { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  RECEIVED:  { label: 'Depoda',         color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
+  COMPLETED: { label: 'Tamamlandı',     color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   CANCELLED: { label: 'İptal',          color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
 };
 
@@ -36,8 +36,8 @@ export default function AdminSellRequestsPage() {
     { label: 'Toplam', value: stats?.total ?? 0, color: '#0ea5e9' },
     { label: 'Bekleyen', value: stats?.pending ?? 0, color: '#f59e0b' },
     { label: 'Süre Doldu', value: stats?.expired ?? 0, color: '#6366f1' },
-    { label: 'Kabul', value: stats?.accepted ?? 0, color: '#8B5CF6' },
-    { label: 'Tamamlanan', value: stats?.completed ?? 0, color: '#7C3AED' },
+    { label: 'Kabul', value: stats?.accepted ?? 0, color: '#F97316' },
+    { label: 'Tamamlanan', value: stats?.completed ?? 0, color: '#EA580C' },
     { label: 'Toplam Teklif', value: stats?.totalBids ?? 0, color: '#a855f7' },
     { label: 'Ort. Teklif', value: stats?.avgBids ?? '0', color: '#f43f5e' },
   ];
@@ -154,7 +154,7 @@ export default function AdminSellRequestsPage() {
                     <td style={{ padding: '12px 14px' }}>
                       {bestBid ? (
                         <div>
-                          <p style={{ color: '#8B5CF6', fontSize: 14, fontWeight: 800, margin: 0 }}>{fmt(Number(bestBid.amount))}</p>
+                          <p style={{ color: '#F97316', fontSize: 14, fontWeight: 800, margin: 0 }}>{fmt(Number(bestBid.amount))}</p>
                           <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: 9, margin: '1px 0 0' }}>
                             {bestBid.dealer?.companyName ?? bestBid.dealer?.name ?? '—'}
                           </p>

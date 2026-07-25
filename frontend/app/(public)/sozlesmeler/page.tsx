@@ -130,7 +130,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center gap-3.5 px-5 py-4 rounded-2xl text-[14px] font-black text-left transition-all ${
                     isSelected 
-                      ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/25 border-violet-500' 
+                      ? 'bg-orange-600 text-white shadow-lg shadow-orange-600/25 border-orange-500' 
                       : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900 border-transparent'
                   } border`}
                 >
@@ -147,7 +147,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
             <div className="p-6 md:p-8 bg-slate-50 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center text-violet-700">
+                  <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-700">
                     <IconComponent size={20} strokeWidth={2.5} />
                   </div>
                   <h2 className="font-heading font-black text-slate-900 text-[20px] md:text-[24px]">

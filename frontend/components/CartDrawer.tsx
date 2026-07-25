@@ -107,7 +107,7 @@ export default function CartDrawer() {
 
             {/* Escrow Banner */}
             <div className="bg-slate-50/50 border-b border-zinc-200 p-4 flex items-start gap-3">
-              <ShieldCheck size={20} strokeWidth={2.5} className="text-violet-500 shrink-0 mt-0.5" />
+              <ShieldCheck size={20} strokeWidth={2.5} className="text-orange-500 shrink-0 mt-0.5" />
               <p className="text-zinc-600 font-bold text-[12px] uppercase tracking-widest leading-loose">
                 Re-Luxe Güvencesi: Sipariş sonlanana dek bakiye koruma altında.
               </p>

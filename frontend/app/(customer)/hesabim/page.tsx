@@ -25,7 +25,7 @@ const fmt = (n: number) =>
 const STATUS_MAP: Record<string, { label: string; step: number; color: string }> = {
   PENDING:  { label: 'Ödeme Bekleniyor', step: 0, color: '#f59e0b' },
   ESCROW:   { label: 'Ödeme Alındı',     step: 1, color: '#0ea5e9' },
-  RELEASED: { label: 'Teslim Edildi',    step: 3, color: '#8B5CF6' },
+  RELEASED: { label: 'Teslim Edildi',    step: 3, color: '#F97316' },
   REFUNDED: { label: 'İade Edildi',      step: 0, color: '#ef4444' },
   CANCELLED:{ label: 'İptal Edildi',     step: 0, color: '#ef4444' },
 };
@@ -46,7 +46,7 @@ function OrderCard({ order }: { order: any }) {
   warrantyEnd.setMonth(warrantyEnd.getMonth() + 6);
   const warrantyDays = Math.max(0, Math.floor((warrantyEnd.getTime() - Date.now()) / 86_400_000));
   const warrantyPct  = Math.round((warrantyDays / 180) * 100);
-  const warrantyColor = warrantyDays > 90 ? '#8B5CF6' : warrantyDays > 30 ? '#f59e0b' : '#ef4444';
+  const warrantyColor = warrantyDays > 90 ? '#F97316' : warrantyDays > 30 ? '#f59e0b' : '#ef4444';
 
   return (
     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
@@ -83,11 +83,11 @@ function OrderCard({ order }: { order: any }) {
                 <div key={step.key} className="flex-1 flex flex-col items-center relative">
                   {idx > 0 && (
                     <div className="absolute top-[15px] left-[-50%] w-full h-[2px]"
-                      style={{ background: isDone ? 'linear-gradient(90deg,#8B5CF6,#0ea5e9)' : 'rgba(15,23,42,0.08)' }} />
+                      style={{ background: isDone ? 'linear-gradient(90deg,#F97316,#0ea5e9)' : 'rgba(15,23,42,0.08)' }} />
                   )}
                   <div className="w-[30px] h-[30px] rounded-full z-10 relative flex items-center justify-center"
                     style={{
-                      background: isDone ? (isActive ? 'linear-gradient(135deg,#0ea5e9,#0284c7)' : '#8B5CF6') : 'rgba(15,23,42,0.06)',
+                      background: isDone ? (isActive ? 'linear-gradient(135deg,#0ea5e9,#0284c7)' : '#F97316') : 'rgba(15,23,42,0.06)',
                       border: isDone ? 'none' : '2px solid rgba(15,23,42,0.1)',
                       color: isDone ? 'white' : 'rgba(15,23,42,0.3)',
                       boxShadow: isActive ? '0 4px 12px rgba(14,165,233,0.3)' : 'none',
@@ -96,7 +96,7 @@ function OrderCard({ order }: { order: any }) {
                   </div>
                   <div className="mt-2 text-center max-w-[70px]">
                     <div className="text-[10px] leading-tight"
-                      style={{ fontWeight: isActive ? 700 : 500, color: isActive ? '#0284c7' : isDone ? '#7C3AED' : 'rgba(15,23,42,0.3)' }}>
+                      style={{ fontWeight: isActive ? 700 : 500, color: isActive ? '#0284c7' : isDone ? '#EA580C' : 'rgba(15,23,42,0.3)' }}>
                       {step.label}
                     </div>
                   </div>
@@ -109,7 +109,7 @@ function OrderCard({ order }: { order: any }) {
 
       {/* Garanti */}
       {order.paymentStatus === 'RELEASED' && (
-        <div className="p-3 rounded-xl" style={{ background: warrantyDays < 30 ? 'rgba(239,68,68,0.04)' : 'rgba(139,92,246,0.04)', border: `1px solid ${warrantyColor}22` }}>
+        <div className="p-3 rounded-xl" style={{ background: warrantyDays < 30 ? 'rgba(239,68,68,0.04)' : 'rgba(249,115,22,0.04)', border: `1px solid ${warrantyColor}22` }}>
           <div className="flex items-center gap-1.5 mb-1.5">
             <ShieldCheck size={13} style={{ color: warrantyColor }} />
             <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: warrantyColor }}>6 Ay Garanti</p>
@@ -220,7 +220,7 @@ function ProfileTab() {
           <Lock size={16} className="text-amber-500" /> Şifre Değiştir
         </h3>
         {pwdSuccess ? (
-          <div className="flex items-center gap-2 text-violet-600 bg-violet-50 rounded-xl p-4 text-sm font-semibold">
+          <div className="flex items-center gap-2 text-orange-600 bg-orange-50 rounded-xl p-4 text-sm font-semibold">
             <CheckCircle2 size={16} /> Şifreniz başarıyla güncellendi
           </div>
         ) : (
@@ -287,11 +287,11 @@ function useCountdown(expiresAt: string) {
 const SELL_STATUS: Record<string, { label: string; color: string; bg: string }> = {
   PENDING:   { label: 'Teklif Bekleniyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)'  },
   EXPIRED:   { label: 'Teklifler Kapandı', color: '#6366f1', bg: 'rgba(99,102,241,0.1)'  },
-  ACCEPTED:  { label: 'Teklif Kabul Edildi', color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  ACCEPTED:  { label: 'Teklif Kabul Edildi', color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   REJECTED:  { label: 'Reddedildi',         color: '#ef4444', bg: 'rgba(239,68,68,0.1)'  },
   SHIPPED:   { label: 'Kargoya Verildi',    color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
-  RECEIVED:  { label: 'Depoda — İnceleniyor', color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' },
-  COMPLETED: { label: 'Tamamlandı',         color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  RECEIVED:  { label: 'Depoda — İnceleniyor', color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
+  COMPLETED: { label: 'Tamamlandı',         color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   CANCELLED: { label: 'İptal Edildi',       color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
 };
 
@@ -361,7 +361,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                   className="text-[10px] font-black px-2 py-0.5 rounded-full"
                   style={isTradeIn
                     ? { background: 'rgba(37,99,235,0.1)', color: '#1d4ed8' }
-                    : { background: 'rgba(139,92,246,0.1)', color: '#7C3AED' }}
+                    : { background: 'rgba(249,115,22,0.1)', color: '#EA580C' }}
                 >
                   {isTradeIn ? '⇄ TAKAS' : '↑ SATIŞ'}
                 </span>
@@ -394,9 +394,9 @@ function SellRequestCard({ req }: { req: SellRequest }) {
         {req.status === 'PENDING' && sortedBids.length === 0 && (
           <div className="mb-3 text-center py-5 bg-slate-50 rounded-xl border border-slate-100">
             <div className="flex items-center justify-center gap-2 text-slate-400">
-              <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-              <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-              <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '0ms' }} />
+              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '150ms' }} />
+              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '300ms' }} />
             </div>
             <p className="text-slate-400 text-xs mt-2">Bayiler teklif hazırlıyor...</p>
           </div>
@@ -413,26 +413,26 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                 <div key={bid.id}
                   className={`flex items-center justify-between p-3 rounded-xl border ${
                     i === 0
-                      ? 'border-violet-200 bg-gradient-to-r from-violet-50 to-white'
+                      ? 'border-orange-200 bg-gradient-to-r from-orange-50 to-white'
                       : 'border-slate-100 bg-slate-50'
                   }`}>
                   <div className="flex items-center gap-2">
                     {i === 0 && <span className="text-base leading-none">🏆</span>}
                     <div>
-                      <p className={`font-bold text-sm ${i === 0 ? 'text-violet-800' : 'text-slate-600'}`}>
+                      <p className={`font-bold text-sm ${i === 0 ? 'text-orange-800' : 'text-slate-600'}`}>
                         {bid.dealerTag ?? `Bayi #${i + 1}`}
                       </p>
                       {bid.note && <p className="text-xs text-slate-400 italic">"{bid.note}"</p>}
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`font-black text-base ${i === 0 ? 'text-violet-700' : 'text-slate-700'}`}>
+                    <span className={`font-black text-base ${i === 0 ? 'text-orange-700' : 'text-slate-700'}`}>
                       {Number(bid.amount).toLocaleString('tr-TR')} ₺
                     </span>
                     {req.status === 'EXPIRED' && i === 0 && (
                       <button onClick={() => handleAccept(bid.id)}
                         disabled={acceptBid.isPending}
-                        className="flex items-center gap-1 px-3 py-1.5 bg-violet-600 text-white rounded-lg text-xs font-bold hover:bg-violet-700 transition-colors disabled:opacity-50">
+                        className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition-colors disabled:opacity-50">
                         <Check size={11} /> Kabul Et
                       </button>
                     )}
@@ -459,7 +459,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
               <p className="text-blue-700 text-xs">Cihazınızı Mytt deposuna kargolayın. Kargo kodunuzu girin.</p>
             </div>
             {req.shippingCode ? (
-              <div className="flex items-center gap-2 text-sm text-violet-700 bg-violet-50 border border-violet-100 rounded-xl p-3">
+              <div className="flex items-center gap-2 text-sm text-orange-700 bg-orange-50 border border-orange-100 rounded-xl p-3">
                 <Package size={14} />
                 <span>Kargo Kodu: <strong className="font-mono">{req.shippingCode}</strong></span>
               </div>
@@ -474,7 +474,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                   placeholder="Kargo takip kodu..."
                   className="flex-1 border border-slate-200 focus:border-slate-900 rounded-xl px-3 py-2 text-sm outline-none" />
                 <button onClick={handleShipping} disabled={!shippingCode || addShipping.isPending}
-                  className="px-4 py-2 bg-violet-600 text-white rounded-xl text-xs font-bold disabled:opacity-50">
+                  className="px-4 py-2 bg-orange-600 text-white rounded-xl text-xs font-bold disabled:opacity-50">
                   {addShipping.isPending ? '...' : 'Kaydet'}
                 </button>
               </div>
@@ -484,11 +484,11 @@ function SellRequestCard({ req }: { req: SellRequest }) {
 
         {/* COMPLETED */}
         {req.status === 'COMPLETED' && (
-          <div className="mb-4 p-3 rounded-xl bg-violet-50 border border-violet-100 flex items-center gap-2">
-            <Check size={16} className="text-violet-600" />
+          <div className="mb-4 p-3 rounded-xl bg-orange-50 border border-orange-100 flex items-center gap-2">
+            <Check size={16} className="text-orange-600" />
             <div>
-              <p className="text-violet-800 text-xs font-bold">İşlem Tamamlandı</p>
-              <p className="text-violet-700 text-xs">Nihai ödeme: {req.finalPrice ? `${Number(req.finalPrice).toLocaleString('tr-TR')} ₺` : '—'}</p>
+              <p className="text-orange-800 text-xs font-bold">İşlem Tamamlandı</p>
+              <p className="text-orange-700 text-xs">Nihai ödeme: {req.finalPrice ? `${Number(req.finalPrice).toLocaleString('tr-TR')} ₺` : '—'}</p>
             </div>
           </div>
         )}
@@ -514,7 +514,7 @@ function SellRequestsTab() {
           <p className="text-slate-400 text-sm">Cihaz satış talepleriniz ve gelen teklifler</p>
         </div>
         <Link href="/sell"
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-violet-600 text-white text-xs font-bold hover:bg-violet-700 transition-colors">
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-600 text-white text-xs font-bold hover:bg-orange-700 transition-colors">
           <Smartphone size={13} /> Yeni Talep
         </Link>
       </div>
@@ -663,7 +663,7 @@ function WishlistTab() {
                     <span className="font-bold text-[14px] text-slate-900 leading-snug truncate">{p.model}</span>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       {p.grade && (
-                        <span className="text-[10px] font-bold text-violet-600 bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-full">{p.grade}</span>
+                        <span className="text-[10px] font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-full">{p.grade}</span>
                       )}
                       {p.store && (
                         <DealerTrustBadge rating={p.store.rating} isPremium={p.store.isPremium} />
@@ -750,7 +750,7 @@ export default function HesabimPage() {
               <p className="text-slate-400 text-sm">Sipariş durumu, garanti süresi ve kargo takibi</p>
             </div>
             <a href="/"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-violet-500 text-white text-xs font-bold shadow-sm hover:bg-violet-600 transition-colors">
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-500 text-white text-xs font-bold shadow-sm hover:bg-orange-600 transition-colors">
               Alışverişe Devam <ChevronRight size={13} />
             </a>
           </div>
@@ -759,7 +759,7 @@ export default function HesabimPage() {
             <div className="grid grid-cols-3 gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
               {[
                 { label: 'Toplam Sipariş', value: orders.length.toString(), color: '#0f172a' },
-                { label: 'Toplam Tutar',   value: fmt(totalAmount),         color: '#8B5CF6' },
+                { label: 'Toplam Tutar',   value: fmt(totalAmount),         color: '#F97316' },
                 { label: 'Aktif Garanti',  value: `${orders.filter(o => o.paymentStatus === 'RELEASED').length} Cihaz`, color: '#f59e0b' },
               ].map(s => (
                 <div key={s.label} className="text-center">
@@ -787,8 +787,8 @@ export default function HesabimPage() {
             </div>
           )}
 
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-violet-50 border border-violet-100">
-            <ShieldCheck size={18} className="text-violet-500 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 rounded-xl bg-orange-50 border border-orange-100">
+            <ShieldCheck size={18} className="text-orange-500 shrink-0 mt-0.5" />
             <div>
               <p className="text-slate-900 text-sm font-semibold mb-0.5">6 Aylık Garanti Hakkında</p>
               <p className="text-slate-500 text-xs leading-relaxed">

@@ -127,7 +127,7 @@ export default function DealerRequestsPage() {
                         {r.status === 'PENDING' ? (
                           <span className="flex items-center gap-1.5 text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md w-fit font-bold text-xs"><Clock size={14} /> Bekleniyor</span>
                         ) : r.status === 'RESOLVED' ? (
-                          <span className="flex items-center gap-1.5 text-violet-600 bg-violet-50 px-2.5 py-1 rounded-md w-fit font-bold text-xs"><CheckCircle size={14} /> Bayi Bulundu</span>
+                          <span className="flex items-center gap-1.5 text-orange-600 bg-orange-50 px-2.5 py-1 rounded-md w-fit font-bold text-xs"><CheckCircle size={14} /> Bayi Bulundu</span>
                         ) : (
                           <span className="flex items-center gap-1.5 text-red-600 bg-red-50 px-2.5 py-1 rounded-md w-fit font-bold text-xs"><XCircle size={14} /> İptal Edildi</span>
                         )}

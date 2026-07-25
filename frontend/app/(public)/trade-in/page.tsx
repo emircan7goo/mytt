@@ -53,9 +53,9 @@ const CONDITIONS = [
     multiplier: 1.00,
     pct: 100,
     bars: 4,
-    accent: '#7C3AED',
+    accent: '#EA580C',
     bg: '#F0FDF4',
-    border: '#C4B5FD',
+    border: '#FDBA74',
   },
   {
     value: 'good',

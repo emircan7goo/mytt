@@ -35,7 +35,7 @@ const STEPS = [
       { value: 'Apple',   label: 'Apple',        sub: 'iOS ekosistemi · Uzun yazılım desteği · Yüksek yeniden satış değeri', initial: 'A', bg: '#1d1d1f' },
       { value: 'Samsung', label: 'Samsung',       sub: 'Galaxy serisi · Geniş model yelpazesi · Android',                   initial: 'S', bg: '#1428A0' },
       { value: 'Xiaomi',  label: 'Xiaomi',        sub: 'Yüksek donanım · Uygun fiyat · HyperOS',                           initial: 'X', bg: '#FF6900' },
-      { value: 'all',     label: 'Tüm Markalar',  sub: 'Tüm markalar arasından en uygun eşleşmeyi bul',                    initial: '→', bg: '#5B21B6' },
+      { value: 'all',     label: 'Tüm Markalar',  sub: 'Tüm markalar arasından en uygun eşleşmeyi bul',                    initial: '→', bg: '#9A3412' },
     ],
   },
   {
@@ -109,27 +109,27 @@ function OptionCard({
   return (
     <button
       onClick={onClick}
-      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-violet-300 shadow-sm shadow-violet-100' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'}
-      style={selected ? { background: 'linear-gradient(135deg, #f0fdf4, #F5F3FF)', borderColor: '#C4B5FD' } : { background: '#fff' }}
+      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-orange-300 shadow-sm shadow-orange-100' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'}
+      style={selected ? { background: 'linear-gradient(135deg, #f0fdf4, #FFF7ED)', borderColor: '#FDBA74' } : { background: '#fff' }}
     >
       {Icon ? (
         <div
           className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-          style={{ background: selected ? 'rgba(76,29,149,0.1)' : '#F8FAFC' }}
+          style={{ background: selected ? 'rgba(154,52,18,0.1)' : '#F8FAFC' }}
         >
-          <Icon size={18} strokeWidth={1.5} style={{ color: selected ? '#5B21B6' : '#94A3B8' }} />
+          <Icon size={18} strokeWidth={1.5} style={{ color: selected ? '#9A3412' : '#94A3B8' }} />
         </div>
       ) : (
         <div
           className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-black text-white"
-          style={{ background: selected ? '#5B21B6' : (bg || '#94A3B8') }}
+          style={{ background: selected ? '#9A3412' : (bg || '#94A3B8') }}
         >
           {initial}
         </div>
       )}
 
       <div className="flex-1 min-w-0">
-        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-violet-800' : 'text-slate-800'}`}>
+        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-orange-800' : 'text-slate-800'}`}>
           {label}
         </p>
         {sub && (
@@ -138,7 +138,7 @@ function OptionCard({
       </div>
 
       <div
-        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-violet-600 border-violet-600' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-slate-300 bg-white'}
+        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-orange-600 border-orange-600' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-slate-300 bg-white'}
       >
         {selected && <Check size={10} className="text-white" strokeWidth={3.5} />}
       </div>
@@ -188,7 +188,7 @@ export default function AIFinderPage() {
   return (
     <div className="min-h-screen" style={{ background: '#FAFBFC' }}>
       {/* Brand accent line */}
-      <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #5B21B6 0%, #A78BFA 50%, #C4B5FD 100%)' }} />
+      <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #9A3412 0%, #FB923C 50%, #FDBA74 100%)' }} />
 
       {/* Header */}
       <header className="bg-white border-b border-slate-100 sticky top-0 z-10">
@@ -204,9 +204,9 @@ export default function AIFinderPage() {
           <div className="flex items-center gap-2">
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ background: 'rgba(76,29,149,0.08)' }}
+              style={{ background: 'rgba(154,52,18,0.08)' }}
             >
-              <Brain size={15} strokeWidth={1.5} style={{ color: '#5B21B6' }} />
+              <Brain size={15} strokeWidth={1.5} style={{ color: '#9A3412' }} />
             </div>
             <span className="text-sm font-bold text-slate-700">AI Telefon Bulucu</span>
           </div>
@@ -237,7 +237,7 @@ export default function AIFinderPage() {
             <div className="mb-8">
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-4"
-                style={{ background: 'rgba(76,29,149,0.08)', color: '#5B21B6' }}
+                style={{ background: 'rgba(154,52,18,0.08)', color: '#9A3412' }}
               >
                 <Trophy size={12} strokeWidth={2} />
                 Sonuçlar hazır
@@ -259,7 +259,7 @@ export default function AIFinderPage() {
                 <button
                   onClick={handleReset}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
-                  style={{ background: '#5B21B6' }}
+                  style={{ background: '#9A3412' }}
                 >
                   <RotateCcw size={14} />
                   Tekrar Dene
@@ -314,7 +314,7 @@ export default function AIFinderPage() {
                   className="h-full rounded-full transition-all duration-500 ease-out"
                   style={{
                     width: `${Math.round((step / STEPS.length) * 100)}%`,
-                    background: 'linear-gradient(90deg, #5B21B6, #A78BFA)',
+                    background: 'linear-gradient(90deg, #9A3412, #FB923C)',
                   }}
                 />
               </div>
@@ -372,7 +372,7 @@ export default function AIFinderPage() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all disabled:opacity-35 disabled:cursor-not-allowed"
                 style={
                   canAdvance && !productsLoading
-                    ? { background: '#5B21B6', boxShadow: '0 4px 14px rgba(76,29,149,0.28)' }
+                    ? { background: '#9A3412', boxShadow: '0 4px 14px rgba(154,52,18,0.28)' }
                     : { background: '#CBD5E1' }
                 }
               >

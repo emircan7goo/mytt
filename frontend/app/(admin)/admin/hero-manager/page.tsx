@@ -273,7 +273,7 @@ export default function HeroManagerPage() {
                   Aktif — Sitede göster
                 </label>
                 {editingSlide.isActive
-                  ? <Eye size={14} className="text-violet-400 ml-auto" />
+                  ? <Eye size={14} className="text-orange-400 ml-auto" />
                   : <EyeOff size={14} className="text-zinc-400 ml-auto" />
                 }
               </div>
@@ -323,7 +323,7 @@ export default function HeroManagerPage() {
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-bold text-zinc-100 truncate">{slide.title || '—'}</h3>
                   {slide.isActive
-                    ? <span className="flex-shrink-0 flex items-center gap-1 text-xs font-bold text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full"><CheckCircle2 size={10} /> Aktif</span>
+                    ? <span className="flex-shrink-0 flex items-center gap-1 text-xs font-bold text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-full"><CheckCircle2 size={10} /> Aktif</span>
                     : <span className="flex-shrink-0 text-xs font-bold text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded-full">Pasif</span>
                   }
                 </div>
@@ -339,7 +339,7 @@ export default function HeroManagerPage() {
                 <button
                   onClick={() => handleToggleActive(slide)}
                   title={slide.isActive ? 'Gizle' : 'Aktif Et'}
-                  className={`p-2 rounded-lg transition-colors ${slide.isActive ? 'bg-violet-500/10 hover:bg-violet-500/20 text-violet-400' : 'bg-white/[0.05] hover:bg-white/[0.1] text-zinc-500'}`}
+                  className={`p-2 rounded-lg transition-colors ${slide.isActive ? 'bg-orange-500/10 hover:bg-orange-500/20 text-orange-400' : 'bg-white/[0.05] hover:bg-white/[0.1] text-zinc-500'}`}
                 >
                   {slide.isActive ? <Eye size={15} /> : <EyeOff size={15} />}
                 </button>

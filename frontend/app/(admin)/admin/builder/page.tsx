@@ -26,10 +26,10 @@ const BG_LABELS: Record<string, string> = {
 const BG_GRADIENTS: Record<string, string> = {
   indigo:  'linear-gradient(145deg,#EEF2FF,#C7D2FE)',
   rose:    'linear-gradient(145deg,#FFF1F2,#FECDD3)',
-  emerald: 'linear-gradient(145deg,#F5F3FF,#DDD6FE)',
+  emerald: 'linear-gradient(145deg,#FFF7ED,#FED7AA)',
   amber:   'linear-gradient(145deg,#FFFBEB,#FDE68A)',
   sky:     'linear-gradient(145deg,#EFF6FF,#BAE6FD)',
-  violet:  'linear-gradient(145deg,#F5F3FF,#DDD6FE)',
+  violet:  'linear-gradient(145deg,#FFF7ED,#FED7AA)',
   fuchsia: 'linear-gradient(145deg,#FDF4FF,#F5D0FE)',
   teal:    'linear-gradient(145deg,#F0FDFA,#99F6E4)',
 };
@@ -40,9 +40,9 @@ const BG_EMOJIS: Record<string, string> = {
 const COLOR_PRESETS = [
   { label: 'Yeşil',   color: '#00B96B' },
   { label: 'Mavi',    color: '#3B82F6' },
-  { label: 'Mor',     color: '#8B5CF6' },
+  { label: 'Mor',     color: '#F97316' },
   { label: 'Çivit',   color: '#6366F1' },
-  { label: 'Turuncu', color: '#8B5CF6' },
+  { label: 'Turuncu', color: '#F97316' },
   { label: 'Kırmızı', color: '#EF4444' },
   { label: 'Pembe',   color: '#EC4899' },
   { label: 'Teal',    color: '#14B8A6' },
@@ -295,7 +295,7 @@ function ThemeTab({ draft, update }: { draft: any; update: (k: string, v: any) =
                   className="text-[13px] font-semibold leading-tight"
                   style={{
                     fontFamily: `${name}, sans-serif`,
-                    color: active ? '#c4b5fd' : 'rgba(255,255,255,0.8)',
+                    color: active ? '#FDBA74' : 'rgba(255,255,255,0.8)',
                   }}
                 >
                   {name}
@@ -823,7 +823,7 @@ function HeroTab({ heroSlides, setHeroSlides, onEditingChange }: { heroSlides: a
             type="submit"
             disabled={saving}
             className="w-full py-2.5 text-white text-[13px] font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg shadow-purple-900/30"
-            style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}>
+            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}>
             {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
             {editing.id ? 'Güncelle' : 'Slide Ekle'}
           </button>
@@ -969,7 +969,7 @@ function BubblesTab({ draft, update }: { draft: any; update: (k: string, v: any)
           />
         </div>
         <div className="flex flex-wrap gap-1.5 mt-2">
-          {['#22c55e','#0ea5e9','#a855f7','#f59e0b','#ef4444','#ec4899','#14b8a6','#8B5CF6'].map(c => (
+          {['#22c55e','#0ea5e9','#a855f7','#f59e0b','#ef4444','#ec4899','#14b8a6','#F97316'].map(c => (
             <button key={c} type="button" onClick={() => update('bubbleRingColor', c)}
               className={`w-6 h-6 rounded-full border-2 transition-all hover:scale-110 ${ringColor === c ? 'border-white scale-110' : 'border-white/20'}`}
               style={{ background: c }} />
@@ -1390,7 +1390,7 @@ export default function SiteBuilderPage() {
           <button
             onClick={() => refetch()}
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-bold text-white transition-all hover:brightness-110 active:scale-95"
-            style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}
+            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}
           >
             <RefreshCw size={14} />
             Yeniden Dene
@@ -1406,10 +1406,10 @@ export default function SiteBuilderPage() {
       <div className="-m-4 md:-m-8 flex items-center justify-center" style={{ height: 'calc(100vh - 64px)', background: '#0a0d1a' }}>
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
-            <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}>
               <LayoutTemplate size={24} className="text-white" />
             </div>
-            <div className="absolute -inset-1 rounded-2xl animate-ping opacity-20" style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }} />
+            <div className="absolute -inset-1 rounded-2xl animate-ping opacity-20" style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }} />
           </div>
           <div className="text-center">
             <p className="text-white/70 text-[14px] font-bold">Visual Builder</p>
@@ -1431,7 +1431,7 @@ export default function SiteBuilderPage() {
 
         {/* Left: Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}>
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}>
             <LayoutTemplate size={14} className="text-white" />
           </div>
           <div>
@@ -1454,7 +1454,7 @@ export default function SiteBuilderPage() {
               onClick={() => setDevice(id)}
               title={label}
               className={`w-8 h-7 rounded-md flex items-center justify-center transition-all ${device === id ? 'text-white shadow-sm' : 'text-white/30 hover:text-white/60'}`}
-              style={device === id ? { background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' } : {}}>
+              style={device === id ? { background: 'linear-gradient(135deg,#EA580C,#4f46e5)' } : {}}>
               <Icon size={14} />
             </button>
           ))}
@@ -1476,7 +1476,7 @@ export default function SiteBuilderPage() {
             onClick={handleSave}
             disabled={saving}
             className="flex items-center gap-1.5 px-4 h-8 disabled:opacity-50 text-white text-[12px] font-bold rounded-lg transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 hover:brightness-110"
-            style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}>
+            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}>
             {saving ? <Loader2 size={13} className="animate-spin" /> : <Save size={13} />}
             {saving ? 'Yayınlanıyor...' : 'Yayına Al'}
           </button>

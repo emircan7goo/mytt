@@ -26,7 +26,7 @@ function productName(order: any): string {
 const PAY_CFG: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   PENDING:   { label: 'Beklemede',  color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', border: 'rgba(148,163,184,0.25)', icon: <Clock size={11}/>         },
   ESCROW:    { label: 'Escrow',     color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.25)',  icon: <ShoppingCart size={11}/>   },
-  RELEASED:  { label: 'Tamamlandı', color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)', icon: <CheckCircle size={11}/>    },
+  RELEASED:  { label: 'Tamamlandı', color: '#F97316', bg: 'rgba(249,115,22,0.1)', border: 'rgba(249,115,22,0.25)', icon: <CheckCircle size={11}/>    },
   REFUNDED:  { label: 'İade',       color: '#ef4444', bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)',  icon: <RotateCcw size={11}/>      },
   CANCELLED: { label: 'İptal',      color: '#6b7280', bg: 'rgba(107,114,128,0.1)', border: 'rgba(107,114,128,0.25)',icon: <XCircle size={11}/>        },
 };
@@ -35,10 +35,10 @@ const PAY_CFG: Record<string, { label: string; color: string; bg: string; border
 const SHIP_CFG: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
   WAITING_DEALER_SHIPMENT: { label: 'Kargo Bekleniyor',    color: '#f59e0b', icon: <Clock size={11}/>           },
   DEALER_SHIPPED:          { label: 'Bayiden Geldi',       color: '#0ea5e9', icon: <Truck size={11}/>           },
-  WAREHOUSE_RECEIVED:      { label: 'Merkezde',            color: '#8b5cf6', icon: <Warehouse size={11}/>       },
+  WAREHOUSE_RECEIVED:      { label: 'Merkezde',            color: '#F97316', icon: <Warehouse size={11}/>       },
   INSPECTION_PASSED:       { label: 'Denetim OK',          color: '#06b6d4', icon: <ClipboardCheck size={11}/> },
-  ADMIN_SHIPPED:           { label: 'Müşteriye Gönderildi',color: '#8B5CF6', icon: <Truck size={11}/>           },
-  DELIVERED:               { label: 'Teslim Edildi',       color: '#8B5CF6', icon: <PackageCheck size={11}/>    },
+  ADMIN_SHIPPED:           { label: 'Müşteriye Gönderildi',color: '#F97316', icon: <Truck size={11}/>           },
+  DELIVERED:               { label: 'Teslim Edildi',       color: '#F97316', icon: <PackageCheck size={11}/>    },
 };
 
 const ALL_STATUSES = ['ALL', 'PENDING', 'ESCROW', 'RELEASED', 'REFUNDED', 'CANCELLED'];
@@ -57,10 +57,10 @@ function payTransitions(status: string): { value: string; label: string }[] {
 function shippingActions(order: any): { endpoint: string; label: string; color: string; needsInput?: 'trackingCode' | 'notes' }[] {
   if (order.paymentStatus !== 'ESCROW') return [];
   switch (order.shippingStatus) {
-    case 'DEALER_SHIPPED':    return [{ endpoint: `/orders/${order.id}/warehouse-receive`, label: 'Merkeze Teslim Al', color: '#8b5cf6' }];
+    case 'DEALER_SHIPPED':    return [{ endpoint: `/orders/${order.id}/warehouse-receive`, label: 'Merkeze Teslim Al', color: '#F97316' }];
     case 'WAREHOUSE_RECEIVED':return [{ endpoint: `/orders/${order.id}/inspection-pass`,  label: 'Denetim Geçti',     color: '#06b6d4', needsInput: 'notes' }];
-    case 'INSPECTION_PASSED': return [{ endpoint: `/orders/${order.id}/admin-ship`,        label: 'Müşteriye Kargola', color: '#8B5CF6', needsInput: 'trackingCode' }];
-    case 'ADMIN_SHIPPED':     return [{ endpoint: `/orders/${order.id}/delivered`,         label: 'Teslim Onayı + Escrow Serbest', color: '#8B5CF6' }];
+    case 'INSPECTION_PASSED': return [{ endpoint: `/orders/${order.id}/admin-ship`,        label: 'Müşteriye Kargola', color: '#F97316', needsInput: 'trackingCode' }];
+    case 'ADMIN_SHIPPED':     return [{ endpoint: `/orders/${order.id}/delivered`,         label: 'Teslim Onayı + Escrow Serbest', color: '#F97316' }];
     default:                  return [];
   }
 }
@@ -204,9 +204,9 @@ export default function AdminOrdersPage() {
         <div style={{
           position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999,
           padding: '12px 20px', borderRadius: '12px',
-          background: toast.startsWith('❌') ? 'rgba(239,68,68,0.15)' : 'rgba(139,92,246,0.15)',
-          border: toast.startsWith('❌') ? '1px solid rgba(239,68,68,0.35)' : '1px solid rgba(139,92,246,0.35)',
-          color: toast.startsWith('❌') ? '#ef4444' : '#8B5CF6',
+          background: toast.startsWith('❌') ? 'rgba(239,68,68,0.15)' : 'rgba(249,115,22,0.15)',
+          border: toast.startsWith('❌') ? '1px solid rgba(239,68,68,0.35)' : '1px solid rgba(249,115,22,0.35)',
+          color: toast.startsWith('❌') ? '#ef4444' : '#F97316',
           fontSize: '13px', fontWeight: 700,
           backdropFilter: 'blur(16px)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
         }}>{toast}</div>
@@ -227,7 +227,7 @@ export default function AdminOrdersPage() {
         {[
           { label: 'Toplam',     value: stats.total,     color: '#94a3b8' },
           { label: 'Escrow',     value: stats.escrow,    color: '#f59e0b' },
-          { label: 'Tamamlandı', value: stats.released,  color: '#8B5CF6' },
+          { label: 'Tamamlandı', value: stats.released,  color: '#F97316' },
           { label: 'İade',       value: stats.refunded,  color: '#ef4444' },
           { label: 'İptal',      value: stats.cancelled, color: '#6b7280' },
           { label: 'GMV', value: fmt(stats.gmv), color: '#0ea5e9', isStr: true },
@@ -314,7 +314,7 @@ export default function AdminOrdersPage() {
                     <td style={{ padding: '14px 16px', maxWidth: '120px' }}>
                       <div style={{ color: 'rgba(248,250,252,0.6)', fontSize: '12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{o.seller?.companyName ?? o.seller?.name ?? '—'}</div>
                     </td>
-                    <td style={{ padding: '14px 16px', color: '#8B5CF6', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap' }}>{fmt(Number(o.amount))}</td>
+                    <td style={{ padding: '14px 16px', color: '#F97316', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap' }}>{fmt(Number(o.amount))}</td>
                     <td style={{ padding: '14px 16px', whiteSpace: 'nowrap' }}>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 8px', borderRadius: '100px', fontSize: '11px', fontWeight: 700, background: pay.bg, color: pay.color, border: `1px solid ${pay.border}` }}>
                         {pay.icon} {pay.label}
@@ -371,7 +371,7 @@ export default function AdminOrdersPage() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                 <div style={{ padding: '12px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>Tutar</p>
-                  <p style={{ color: '#8B5CF6', fontSize: '15px', fontWeight: 800 }}>{fmt(Number(selected.amount))}</p>
+                  <p style={{ color: '#F97316', fontSize: '15px', fontWeight: 800 }}>{fmt(Number(selected.amount))}</p>
                 </div>
                 <div style={{ padding: '12px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>Platform</p>
@@ -429,10 +429,10 @@ export default function AdminOrdersPage() {
                     const cfg = SHIP_CFG[key];
                     return (
                       <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '5px', opacity: done || active ? 1 : 0.3 }}>
-                        <div style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: done ? 'rgba(139,92,246,0.2)' : active ? `${cfg.color}25` : 'rgba(255,255,255,0.05)', border: done ? '1px solid rgba(139,92,246,0.4)' : active ? `1px solid ${cfg.color}50` : '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
-                          {done ? <CheckCircle size={9} color="#8B5CF6"/> : cfg.icon}
+                        <div style={{ width: 16, height: 16, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: done ? 'rgba(249,115,22,0.2)' : active ? `${cfg.color}25` : 'rgba(255,255,255,0.05)', border: done ? '1px solid rgba(249,115,22,0.4)' : active ? `1px solid ${cfg.color}50` : '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
+                          {done ? <CheckCircle size={9} color="#F97316"/> : cfg.icon}
                         </div>
-                        <span style={{ fontSize: '12px', fontWeight: active ? 700 : 500, color: active ? cfg.color : done ? '#8B5CF6' : 'rgba(248,250,252,0.4)' }}>{cfg.label}</span>
+                        <span style={{ fontSize: '12px', fontWeight: active ? 700 : 500, color: active ? cfg.color : done ? '#F97316' : 'rgba(248,250,252,0.4)' }}>{cfg.label}</span>
                       </div>
                     );
                   })}

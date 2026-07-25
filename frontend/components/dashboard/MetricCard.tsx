@@ -64,7 +64,7 @@ export default function MetricCard({ title, value, subtitle, trend, trendLabel, 
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: '3px',
             fontSize: '12px', fontWeight: 700,
-            color: isPositive ? '#8B5CF6' : '#ef4444',
+            color: isPositive ? '#F97316' : '#ef4444',
           }}>
             {isPositive ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
             {isPositive ? '+' : ''}{trend.toFixed(1)}%

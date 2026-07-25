@@ -31,16 +31,16 @@ const DEFAULT_SERVICES = [
 
 // ─── CMS bubble bg → gradient eşlemesi ───────────────────────────────────────
 const BG_GRADIENTS: Record<string, { gradient: string }> = {
-  indigo:  { gradient: 'from-violet-100 to-violet-50'  },
+  indigo:  { gradient: 'from-orange-100 to-orange-50'  },
   rose:    { gradient: 'from-rose-100 to-pink-50'      },
-  emerald: { gradient: 'from-violet-100 to-violet-50'   },
+  emerald: { gradient: 'from-orange-100 to-orange-50'   },
   amber:   { gradient: 'from-amber-100 to-yellow-50'   },
   sky:     { gradient: 'from-sky-100 to-blue-50'       },
-  violet:  { gradient: 'from-violet-100 to-purple-50'  },
+  violet:  { gradient: 'from-orange-100 to-orange-50'  },
   fuchsia: { gradient: 'from-fuchsia-100 to-pink-50'   },
-  teal:    { gradient: 'from-violet-100 to-violet-50'   },
-  orange:  { gradient: 'from-violet-100 to-amber-50'   },
-  green:   { gradient: 'from-green-100 to-violet-50'  },
+  teal:    { gradient: 'from-orange-100 to-orange-50'   },
+  orange:  { gradient: 'from-orange-100 to-amber-50'   },
+  green:   { gradient: 'from-green-100 to-orange-50'  },
 };
 
 // CMS index → local SVG icon fallback
@@ -56,12 +56,12 @@ const CMS_ICON_FALLBACKS = [
 ];
 
 const FALLBACK_GRADIENTS = [
-  'from-violet-100 to-violet-50',
-  'from-violet-100 to-amber-50',
-  'from-violet-100 to-violet-50',
+  'from-orange-100 to-orange-50',
+  'from-orange-100 to-amber-50',
+  'from-orange-100 to-orange-50',
   'from-sky-100 to-blue-50',
   'from-yellow-100 to-amber-50',
-  'from-violet-100 to-green-50',
+  'from-orange-100 to-green-50',
   'from-rose-100 to-pink-50',
   'from-slate-100 to-gray-50',
 ];
@@ -107,7 +107,7 @@ function DefaultBubble({
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
         <span className="block font-semibold text-slate-500" style={{ fontSize: size.textSm }}>{svc.title1}</span>
         <span
-          className="block font-black text-slate-900 mt-0.5 group-hover:text-violet-700 transition-colors"
+          className="block font-black text-slate-900 mt-0.5 group-hover:text-orange-700 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {svc.title2}
@@ -157,7 +157,7 @@ function CmsBubble({
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
         <span className="block font-semibold text-slate-500" style={{ fontSize: size.textSm }}>{bubble.title1}</span>
         <span
-          className="block font-black text-slate-900 mt-0.5 group-hover:text-violet-700 transition-colors"
+          className="block font-black text-slate-900 mt-0.5 group-hover:text-orange-700 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {bubble.title2}

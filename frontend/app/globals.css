@@ -5,27 +5,27 @@
    TELEFONCUM â   NEO PREMIUM DESIGN SYSTEM v3.0
    ----------------------------------------------------------------------------- 
    Font       : Plus Jakarta Sans (display + body)
-   Primary    : Deep Emerald #065F46    prestigious, refined
+   Primary    : Deep Emerald #EA580C    prestigious, refined
    Space Dark : #0B1120    premium announcement bar, badges
    Surface    : #F8FAFC    barely-there blue-white background
    Cards      : Pure #FFFFFF with layered shadows
    ******************************************************************************* */
 
 :root {
-  /* ── Brand — Premium Emerald ────────────────────────────────────────── */
-  --brand:         #7C3AED; /* Violet 600 — primary */
-  --brand-hover:   #6D28D9; /* Violet 700 — hover */
-  --brand-deep:    #4C1D95; /* Violet 900 — deepest */
-  --brand-light:   #F5F3FF; /* Violet 50 — tint */
-  --brand-mid:     #A78BFA; /* Violet 400 — muted accent */
-  --brand-glow:    rgba(124, 58, 237, 0.2);
+  /* ── Brand — Enerjik Turuncu ────────────────────────────────────────── */
+  --brand:         #EA580C; /* Orange 600 — primary */
+  --brand-hover:   #C2410C; /* Orange 700 — hover */
+  --brand-deep:    #7C2D12; /* Orange 900 — deepest */
+  --brand-light:   #FFF7ED; /* Orange 50 — tint */
+  --brand-mid:     #FB923C; /* Orange 400 — muted accent */
+  --brand-glow:    rgba(234, 88, 12, 0.2);
   --brand-lime:    #C6F135; /* Dogrulanmis rozet / canli vurgu */
   --brand-lime-ink:#3F4D06; /* Lime zemin ustu koyu metin */
 
-  /* ── Space — Slate Space ────────────────────────────────────────────── */
-  --space:         #0A0A12;
-  --space-2:       #16161F;
-  --space-3:       #26262F;
+  /* ── Space — Warm Charcoal ────────────────────────────────────────────── */
+  --space:         #120E0B;
+  --space-2:       #1D1712;
+  --space-3:       #2B221A;
 
   /* ── Surface System (Light Premium) ─────────────────────────────────── */
   --bg:            #FFFFFF;
@@ -48,21 +48,21 @@
   --red:           #EF4444;   /* UyarÄ±, stok bitti */
   --blue:          #3B82F6;   /* Bilgi, link */
   --gold:          #F59E0B;   /* Premium, Ã¶ne Ã§Ä±kan */
-  --violet:        #8B5CF6;   /* B2B, bayi */
+  --violet:        #F97316;   /* B2B, bayi */
 
   /* -- Bubble Backgrounds -------------------------------------------------  */
   --bubble-indigo-from: #EEF2FF;
   --bubble-indigo-to:   #C7D2FE;
   --bubble-rose-from:   #FFF1F2;
   --bubble-rose-to:     #FECDD3;
-  --bubble-emerald-from:#F5F3FF;
-  --bubble-emerald-to:  #DDD6FE;
+  --bubble-emerald-from:#FFF7ED;
+  --bubble-emerald-to:  #FED7AA;
   --bubble-amber-from:  #FFFBEB;
   --bubble-amber-to:    #FDE68A;
   --bubble-sky-from:    #EFF6FF;
   --bubble-sky-to:      #BAE6FD;
-  --bubble-violet-from: #F5F3FF;
-  --bubble-violet-to:   #DDD6FE;
+  --bubble-violet-from: #FFF7ED;
+  --bubble-violet-to:   #FED7AA;
   --bubble-fuchsia-from:#FDF4FF;
   --bubble-fuchsia-to:  #F5D0FE;
   --bubble-teal-from:   #F0FDFA;
@@ -90,11 +90,11 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-sharp:  cubic-bezier(0.4, 0, 0.2, 1);
 
-  /*    Mesh Background (Emerald & Orange Ambient Glows)                     */
-  --mesh-bg: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+  /*    Mesh Background (Warm Orange Ambient Glows)                     */
+  --mesh-bg: radial-gradient(at 0% 0%, rgba(234, 88, 12, 0.05) 0px, transparent 50%),
              radial-gradient(at 50% 0%, rgba(249, 115, 22, 0.02) 0px, transparent 50%),
-             radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-             radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
+             radial-gradient(at 100% 0%, rgba(234, 88, 12, 0.05) 0px, transparent 50%),
+             radial-gradient(at 50% 100%, rgba(234, 88, 12, 0.03) 0px, transparent 50%);
 }
 
 /* Tailwind v4 theme tokens */
@@ -103,10 +103,10 @@
   --font-display:   var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   /* Editoryal serif — model karşılaştırma/vitrin akışında premium başlıklar için */
   --font-editorial: var(--font-fraunces), Georgia, serif;
-  --color-brand:  #065F46;
-  --color-space:  #0B1120;
+  --color-brand:  #EA580C;
+  --color-space:  #120E0B;
   --color-bg:     #F8FAFC;
-  --color-ink:    #0B1120;
+  --color-ink:    #120E0B;
 }
 
 /* *******************************************************************************
@@ -157,7 +157,7 @@ body {
    ANNOUNCEMENT TICKER BAR
    ******************************************************************************* */
 .ticker-bar {
-  background: linear-gradient(135deg, var(--space) 0%, var(--space-2) 50%, #2e1a4d 100%);
+  background: linear-gradient(135deg, var(--space) 0%, var(--space-2) 50%, #4A2410 100%);
   height: 36px;
   display: flex;
   align-items: center;
@@ -217,7 +217,7 @@ body {
   );
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(6, 95, 70, 0.08);
+  border-bottom: 1px solid rgba(234,88,12, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   padding: 0;
   overflow-x: auto;
@@ -266,31 +266,31 @@ body {
 
 /*     HOVER STATE                                              */
 .nav-modern-pill:hover {
-  background: linear-gradient(135deg, rgba(6, 95, 70, 0.08), rgba(6, 95, 70, 0.04));
-  border-color: rgba(6, 95, 70, 0.2);
+  background: linear-gradient(135deg, rgba(234,88,12, 0.08), rgba(234,88,12, 0.04));
+  border-color: rgba(234,88,12, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(6, 95, 70, 0.1);
+  box-shadow: 0 6px 16px rgba(234,88,12, 0.1);
 }
 
 .nav-modern-pill:hover .nav-modern-pill-text {
-  color: #065F46;
+  color: #EA580C;
   letter-spacing: 0.5px;
 }
 
 /*     ACTIVE STATE                                             */
 .nav-modern-pill--active {
   background: linear-gradient(135deg, 
-    rgba(6, 95, 70, 0.1),
-    rgba(6, 95, 70, 0.05)
+    rgba(234,88,12, 0.1),
+    rgba(234,88,12, 0.05)
   );
-  border-color: #065F46;
-  box-shadow: 0 8px 24px rgba(6, 95, 70, 0.14),
+  border-color: #EA580C;
+  box-shadow: 0 8px 24px rgba(234,88,12, 0.14),
               inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transform: translateY(-3px);
 }
 
 .nav-modern-pill--active .nav-modern-pill-text {
-  color: #064E3B;
+  color: #7C2D12;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -332,7 +332,7 @@ body {
   position: absolute;
   inset: -2px;
   border-radius: 9999px;
-  background: conic-gradient(from 0deg, transparent 0%, #10b981 20%, transparent 40%);
+  background: conic-gradient(from 0deg, transparent 0%, #F97316 20%, transparent 40%);
   animation: conicSpin 3s linear infinite;
   z-index: -2;
 }
@@ -450,7 +450,7 @@ body {
 .bubble-circle--emerald { background: linear-gradient(145deg, #ECFDF5, #A7F3D0); }
 .bubble-circle--amber   { background: linear-gradient(145deg, #FFFBEB, #FDE68A); }
 .bubble-circle--sky     { background: linear-gradient(145deg, #EFF6FF, #BAE6FD); }
-.bubble-circle--violet  { background: linear-gradient(145deg, #F5F3FF, #DDD6FE); }
+.bubble-circle--violet  { background: linear-gradient(145deg, #FFF7ED, #FED7AA); }
 .bubble-circle--fuchsia { background: linear-gradient(145deg, #FDF4FF, #F5D0FE); }
 .bubble-circle--teal    { background: linear-gradient(145deg, #F0FDFA, #99F6E4); }
 
@@ -458,8 +458,8 @@ body {
 .bubble-ring-wrap {
   border-radius: 50%;
   padding: 3px;
-  background: var(--brc-bg, linear-gradient(135deg, rgba(6,95,70,0.15) 0%, rgba(6,95,70,0.25) 50%, rgba(6,95,70,0.15) 100%));
-  box-shadow: var(--brc-shadow-lo, 0 0 5px rgba(6,95,70,0.15));
+  background: var(--brc-bg, linear-gradient(135deg, rgba(234,88,12,0.15) 0%, rgba(234,88,12,0.25) 50%, rgba(234,88,12,0.15) 100%));
+  box-shadow: var(--brc-shadow-lo, 0 0 5px rgba(234,88,12,0.15));
   flex-shrink: 0;
 }
 
@@ -534,7 +534,7 @@ body {
 
 /*    Product card hover glow                                         */
 .product-card-container:hover .product-card-glow {
-  box-shadow: 0 0 50px rgba(6,95,70,0.07), 0 20px 60px rgba(0,0,0,0.06);
+  box-shadow: 0 0 50px rgba(234,88,12,0.07), 0 20px 60px rgba(0,0,0,0.06);
 }
 
 /* *******************************************************************************
@@ -864,7 +864,7 @@ body {
   left: 0; right: 0;
   height: 2px;
   border-radius: 99px;
-  background: #065F46;
+  background: #EA580C;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
@@ -881,21 +881,21 @@ body {
   height: 20px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid #065F46;
-  box-shadow: 0 2px 8px rgba(6,95,70,0.25);
+  border: 2px solid #EA580C;
+  box-shadow: 0 2px 8px rgba(234,88,12,0.25);
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .range-slider-thumb::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 4px 16px rgba(6,95,70,0.35);
+  box-shadow: 0 4px 16px rgba(234,88,12,0.35);
 }
 .range-slider-thumb::-moz-range-thumb {
   width: 20px; height: 20px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid #065F46;
-  box-shadow: 0 2px 8px rgba(6,95,70,0.25);
+  border: 2px solid #EA580C;
+  box-shadow: 0 2px 8px rgba(234,88,12,0.25);
   cursor: pointer;
 }
 .range-slider-thumb {
@@ -931,7 +931,7 @@ a:active {
   --ink-7:     #1E293B;
   --ink-8:     #0F172A;
   /* Brand stays the same, glow more vivid */
-  --brand-glow: rgba(124, 58, 237, 0.45);
+  --brand-glow: rgba(234, 88, 12, 0.45);
   /* Shadows darker */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   --shadow-md: 0 8px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.2);
@@ -967,8 +967,8 @@ a:active {
 .pill-toggle.active {
   background: var(--brand-light);
   color: var(--brand-deep);
-  border-color: rgba(6, 95, 70, 0.2);
-  box-shadow: 0 2px 8px rgba(6, 95, 70, 0.08);
+  border-color: rgba(234,88,12, 0.2);
+  box-shadow: 0 2px 8px rgba(234,88,12, 0.08);
 }
 
 /*    Card Borderless                                                   */
@@ -1203,7 +1203,7 @@ a:active {
 
 /* Glowing Neon Stats style */
 .wow-stat-glow-emerald {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  background: linear-gradient(135deg, #C2410C 0%, #F97316 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -229,7 +229,7 @@ export default function DealerSettingsPage() {
               {/* Kaydet butonu */}
               <div className="pt-4 border-t border-zinc-800 flex items-center justify-between gap-4">
                 {saved && (
-                  <div className="flex items-center gap-2 text-violet-400 text-sm font-semibold">
+                  <div className="flex items-center gap-2 text-orange-400 text-sm font-semibold">
                     <CheckCircle2 size={15} /> Kaydedildi
                   </div>
                 )}

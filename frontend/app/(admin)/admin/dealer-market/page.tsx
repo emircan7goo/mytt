@@ -20,7 +20,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', {
 
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
   PENDING_ADMIN: { label: 'Onay Bekliyor',  color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
-  ACTIVE:        { label: 'Aktif',           color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  ACTIVE:        { label: 'Aktif',           color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   EXPIRED:       { label: 'Süre Doldu',      color: '#6366f1', bg: 'rgba(99,102,241,0.1)' },
   SOLD:          { label: 'Satıldı',         color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
   CANCELLED:     { label: 'İptal',           color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
@@ -117,7 +117,7 @@ function DetailModal({ item, onClose }: { item: DealerMarketItem; onClose: () =>
             <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', margin: 0 }}>
               {d.listingType === 'AUCTION' ? 'Taban Fiyat' : 'Satış Fiyatı'}
             </p>
-            <p style={{ color: '#8B5CF6', fontSize: 15, fontWeight: 800, margin: '4px 0 0' }}>
+            <p style={{ color: '#F97316', fontSize: 15, fontWeight: 800, margin: '4px 0 0' }}>
               {fmt(Number(d.listingType === 'AUCTION' ? d.floorPrice : d.directPrice) || 0)}
             </p>
           </div>
@@ -142,14 +142,14 @@ function DetailModal({ item, onClose }: { item: DealerMarketItem; onClose: () =>
                 <div key={bid.id} style={{
                   display: 'flex', alignItems: 'center', gap: 10,
                   padding: '10px 12px', borderRadius: 10,
-                  background: idx === 0 ? 'rgba(139,92,246,0.06)' : 'rgba(255,255,255,0.02)',
-                  border: idx === 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                  background: idx === 0 ? 'rgba(249,115,22,0.06)' : 'rgba(255,255,255,0.02)',
+                  border: idx === 0 ? '1px solid rgba(249,115,22,0.2)' : '1px solid rgba(255,255,255,0.06)',
                 }}>
                   <div style={{
                     width: 24, height: 24, borderRadius: 6, flexShrink: 0,
-                    background: idx === 0 ? 'rgba(139,92,246,0.15)' : 'rgba(255,255,255,0.05)',
+                    background: idx === 0 ? 'rgba(249,115,22,0.15)' : 'rgba(255,255,255,0.05)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: idx === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)',
+                    color: idx === 0 ? '#F97316' : 'rgba(248,250,252,0.4)',
                     fontSize: 10, fontWeight: 800,
                   }}>#{idx + 1}</div>
                   <div style={{ flex: 1 }}>
@@ -160,7 +160,7 @@ function DetailModal({ item, onClose }: { item: DealerMarketItem; onClose: () =>
                       {fmtDate(bid.createdAt)}
                     </span>
                   </div>
-                  <span style={{ color: idx === 0 ? '#8B5CF6' : '#f8fafc', fontSize: 15, fontWeight: 800 }}>
+                  <span style={{ color: idx === 0 ? '#F97316' : '#f8fafc', fontSize: 15, fontWeight: 800 }}>
                     {fmt(Number(bid.amount))}
                   </span>
                 </div>
@@ -189,7 +189,7 @@ function DetailModal({ item, onClose }: { item: DealerMarketItem; onClose: () =>
             <div style={{ display: 'flex', gap: 8 }}>
               <button onClick={handleApprove} disabled={busy} style={{
                 flex: 1, padding: '10px', borderRadius: 10, fontSize: 13, fontWeight: 700,
-                background: '#8B5CF6', border: 'none', color: '#fff', cursor: busy ? 'wait' : 'pointer',
+                background: '#F97316', border: 'none', color: '#fff', cursor: busy ? 'wait' : 'pointer',
               }}>
                 {busy ? '...' : '✓ Onayla'}
               </button>
@@ -257,7 +257,7 @@ export default function AdminDealerMarketPage() {
         {[
           { key: 'all', label: 'Tümü', color: '#0ea5e9' },
           { key: 'pending', label: 'Onay Bekleyen', color: '#f59e0b' },
-          { key: 'active', label: 'Aktif', color: '#8B5CF6' },
+          { key: 'active', label: 'Aktif', color: '#F97316' },
           { key: 'closed', label: 'Kapanan', color: '#6b7280' },
         ].map(f => (
           <button key={f.key} onClick={() => setFilter(f.key)} style={{
@@ -332,7 +332,7 @@ export default function AdminDealerMarketPage() {
                         {item.listingType === 'AUCTION' ? 'Açık Artırma' : 'Sabit'}
                       </span>
                     </td>
-                    <td style={{ padding: '12px 14px', color: '#8B5CF6', fontSize: 13, fontWeight: 800 }}>
+                    <td style={{ padding: '12px 14px', color: '#F97316', fontSize: 13, fontWeight: 800 }}>
                       {fmt(Number(item.listingType === 'AUCTION' ? item.floorPrice : item.directPrice) || 0)}
                     </td>
                     <td style={{ padding: '12px 14px' }}>

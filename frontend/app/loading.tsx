@@ -18,15 +18,15 @@ export default function Loading() {
             className="absolute inset-0 rounded-full animate-spin"
             style={{
               border: '3px solid transparent',
-              borderTopColor: '#7c3aed',
-              borderRightColor: '#7c3aed',
+              borderTopColor: '#EA580C',
+              borderRightColor: '#EA580C',
             }}
           />
           <div
             className="absolute inset-[6px] rounded-full animate-spin"
             style={{
               border: '2px solid transparent',
-              borderBottomColor: '#a78bfa',
+              borderBottomColor: '#FB923C',
               animationDirection: 'reverse',
               animationDuration: '0.8s',
             }}

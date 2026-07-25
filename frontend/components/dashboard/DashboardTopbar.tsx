@@ -12,7 +12,7 @@ export default function DashboardTopbar({ title, subtitle }: DashboardTopbarProp
   const { user, logout } = useApp();
   const [showMenu, setShowMenu] = useState(false);
 
-  const roleColor = user?.role === 'admin' ? '#a855f7' : user?.role === 'dealer' ? '#0ea5e9' : '#8B5CF6';
+  const roleColor = user?.role === 'admin' ? '#a855f7' : user?.role === 'dealer' ? '#0ea5e9' : '#F97316';
   const roleName  = user?.role === 'admin' ? 'Admin' : user?.role === 'dealer' ? 'Bayi' : 'Müşteri';
 
   return (

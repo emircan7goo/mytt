@@ -67,7 +67,7 @@ export default function PriceComparisonWidget({ globalProductId, currentPrice }:
 
                <div className="flex items-center gap-4">
                  <div className="flex flex-col items-end">
-                   <span className={`text-[14px] font-black tracking-tight ${isCheaper ? 'text-violet-600' : 'text-gray-900'}`}>
+                   <span className={`text-[14px] font-black tracking-tight ${isCheaper ? 'text-orange-600' : 'text-gray-900'}`}>
                      {price.toLocaleString('tr-TR')} <span className="text-[10px]">₺</span>
                    </span>
                  </div>

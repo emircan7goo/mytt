@@ -28,7 +28,7 @@ export default function CustomerTopbar() {
           cursor: 'pointer', color: 'rgba(15,23,42,0.5)', position: 'relative',
         }}>
           <Bell size={14} />
-          <div style={{ position: 'absolute', top: '7px', right: '7px', width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6' }} />
+          <div style={{ position: 'absolute', top: '7px', right: '7px', width: 6, height: 6, borderRadius: '50%', background: '#F97316' }} />
         </button>
 
         {/* Avatar + Logout */}
@@ -37,7 +37,7 @@ export default function CustomerTopbar() {
             // eslint-disable-next-line @next/next/no-img-element
             <img src={user.avatar} alt={user.name} style={{ width: 26, height: 26, borderRadius: '7px', objectFit: 'cover' }} />
           ) : (
-            <div style={{ width: 26, height: 26, borderRadius: '7px', background: '#8B5CF6', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '11px', fontWeight: 700 }}>
+            <div style={{ width: 26, height: 26, borderRadius: '7px', background: '#F97316', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '11px', fontWeight: 700 }}>
               {user?.name?.charAt(0)}
             </div>
           )}

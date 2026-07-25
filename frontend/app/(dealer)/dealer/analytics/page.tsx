@@ -41,7 +41,7 @@ function StatCard({
         </span>
         {trend && (
           <span className="ml-auto">
-            {trend === 'up'      && <ArrowUpRight   size={14} className="text-violet-400" />}
+            {trend === 'up'      && <ArrowUpRight   size={14} className="text-orange-400" />}
             {trend === 'down'    && <ArrowDownRight  size={14} className="text-rose-400"    />}
             {trend === 'neutral' && <Minus           size={14} className="text-zinc-500"    />}
           </span>
@@ -136,7 +136,7 @@ export default function DealerAnalyticsPage() {
   }, [stocks]);
 
   const gradeColors: Record<string, string> = {
-    'A+': '#8B5CF6', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
+    'A+': '#F97316', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
   };
 
   const walletBalance = Number((user as any)?.walletBalance ?? 0);
@@ -158,7 +158,7 @@ export default function DealerAnalyticsPage() {
             value={loading ? '…' : fmt(netRevenue)}
             sub={`Komisyon sonrası (${fmtPct(commRate)} kesildi)`}
             icon={<TrendingUp size={18} />}
-            color="#8B5CF6"
+            color="#F97316"
           />
           <StatCard
             label="Brüt Satış"
@@ -172,7 +172,7 @@ export default function DealerAnalyticsPage() {
             value={loading ? '…' : fmt(walletBalance)}
             sub={walletBalance === 0 ? 'Teklif için bakiye yükle' : 'Teklif limiti aktif'}
             icon={<Wallet size={18} />}
-            color={walletBalance > 0 ? '#8B5CF6' : '#f59e0b'}
+            color={walletBalance > 0 ? '#F97316' : '#f59e0b'}
           />
           <StatCard
             label="Komisyon Oranı"
@@ -228,14 +228,14 @@ export default function DealerAnalyticsPage() {
             value={loading ? '…' : totalBids.toString()}
             sub="Müşteri taleplerinde"
             icon={<Gavel size={18} />}
-            color="#8B5CF6"
+            color="#F97316"
           />
           <StatCard
             label="Kazanılan"
             value={loading ? '…' : wonBids.toString()}
             sub="Müşteri kabul etti"
             icon={<Trophy size={18} />}
-            color="#8B5CF6"
+            color="#F97316"
             trend={wonBids > 0 ? 'up' : 'neutral'}
           />
           <StatCard
@@ -250,7 +250,7 @@ export default function DealerAnalyticsPage() {
             value={loading ? '…' : activeBids.toString()}
             sub="Sonuç bekleniyor"
             icon={<Clock size={18} />}
-            color="#8b5cf6"
+            color="#F97316"
           />
         </div>
       </section>

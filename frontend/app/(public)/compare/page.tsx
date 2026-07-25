@@ -24,7 +24,7 @@ const ROWS: { key: RowKey; label: string; icon?: string }[] = [
 
 function getGradeStyle(product: MockProduct): { bg: string; text: string; border: string } {
   switch (product.cosmeticGrade) {
-    case 'A+': return { bg: '#F5F3FF', text: '#5B21B6', border: '#C4B5FD' };
+    case 'A+': return { bg: '#FFF7ED', text: '#9A3412', border: '#FDBA74' };
     case 'A':  return { bg: '#EFF6FF', text: '#1D4ED8', border: '#BAE6FD' };
     case 'B':  return { bg: '#F8FAFC', text: '#475569', border: '#CBD5E1' };
     case 'C':  return { bg: '#FFFBEB', text: '#92400E', border: '#FDE68A' };
@@ -37,10 +37,10 @@ function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8 px-4 text-center">
       <div className="relative">
-        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-violet-50 to-violet-100 border border-violet-200 flex items-center justify-center shadow-lg">
-          <BarChart2 size={40} className="text-violet-600" />
+        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 flex items-center justify-center shadow-lg">
+          <BarChart2 size={40} className="text-orange-600" />
         </div>
-        <div className="absolute -top-1 -right-1 w-6 h-6 bg-violet-500 rounded-full flex items-center justify-center">
+        <div className="absolute -top-1 -right-1 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
           <span className="text-white text-xs font-black">0</span>
         </div>
       </div>
@@ -107,11 +107,11 @@ function CompareTable({ products }: { products: MockProduct[] }) {
       const isLowest = product.price === minPrice && products.length > 1;
       return (
         <div className="flex flex-col items-center gap-1">
-          <span className={`font-black text-lg leading-none ${isLowest ? 'text-violet-600' : 'text-zinc-800'}`}>
+          <span className={`font-black text-lg leading-none ${isLowest ? 'text-orange-600' : 'text-zinc-800'}`}>
             {product.price.toLocaleString('tr-TR')} ₺
           </span>
           {isLowest && (
-            <span className="inline-block text-[10px] font-bold uppercase tracking-wide text-violet-700 bg-violet-50 border border-violet-200 px-2 py-0.5 rounded-full">
+            <span className="inline-block text-[10px] font-bold uppercase tracking-wide text-orange-700 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full">
               En İyi Fiyat
             </span>
           )}
@@ -144,10 +144,10 @@ function CompareTable({ products }: { products: MockProduct[] }) {
           <div
             key={product.id}
             className="bg-white rounded-3xl border border-zinc-100 shadow-md p-5 flex flex-col items-center gap-4 relative overflow-hidden"
-            style={{ boxShadow: product.price === minPrice && products.length > 1 ? '0 0 0 2px #7C3AED, 0 8px 32px rgba(124,58,237,0.1)' : undefined }}
+            style={{ boxShadow: product.price === minPrice && products.length > 1 ? '0 0 0 2px #EA580C, 0 8px 32px rgba(234,88,12,0.1)' : undefined }}
           >
             {product.price === minPrice && products.length > 1 && (
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-400 to-violet-600 rounded-t-3xl" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-t-3xl" />
             )}
             <button
               onClick={() => toggleCompare(product)}
@@ -244,7 +244,7 @@ export default function ComparePage() {
           <div className="flex items-center gap-2.5">
             <h1 className="text-3xl font-black text-zinc-900 tracking-tight">Telefon Karşılaştır</h1>
             {compareList.length >= 2 && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-violet-50 border border-violet-200 text-violet-700 text-xs font-bold">
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-bold">
                 <Zap size={10} />
                 {compareList.length} ürün
               </span>

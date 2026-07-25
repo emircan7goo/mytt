@@ -79,8 +79,8 @@ export default function RootError({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <button
             onClick={() => unstable_retry()}
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-purple-900/40 hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}
+            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}
           >
             <RefreshCw size={15} className="group-hover:rotate-180 transition-transform duration-500" />
             Tekrar Dene

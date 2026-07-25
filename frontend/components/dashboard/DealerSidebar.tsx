@@ -80,20 +80,20 @@ export default function DealerSidebar() {
           const isActive = pathname === href || (pathname.startsWith(href + '/') && href !== '/dealer/dashboard');
           const exactActive = pathname === href;
           const active = href === '/dealer/dashboard' ? exactActive : isActive;
-          const accentColor = highlight ? '#8B5CF6' : '#0ea5e9';
+          const accentColor = highlight ? '#F97316' : '#0ea5e9';
           const badgeCount = badgeKey ? (badges[badgeKey] ?? 0) : 0;
           return (
             <Link key={href} href={href} style={{
               display: 'flex', alignItems: 'center', gap: '10px',
               padding: '9px 11px', borderRadius: '9px', marginBottom: '2px',
-              background: active ? `rgba(${highlight ? '139,92,246' : '14,165,233'},0.1)` : 'transparent',
-              border: active ? `1px solid rgba(${highlight ? '139,92,246' : '14,165,233'},0.2)` : '1px solid transparent',
-              color: active ? accentColor : highlight ? 'rgba(139,92,246,0.75)' : 'rgba(248,250,252,0.45)',
+              background: active ? `rgba(${highlight ? '249,115,22' : '14,165,233'},0.1)` : 'transparent',
+              border: active ? `1px solid rgba(${highlight ? '249,115,22' : '14,165,233'},0.2)` : '1px solid transparent',
+              color: active ? accentColor : highlight ? 'rgba(249,115,22,0.75)' : 'rgba(248,250,252,0.45)',
               textDecoration: 'none', fontSize: '13px', fontWeight: active ? 700 : (highlight ? 600 : 400),
               transition: 'all 0.15s',
             }}>
               <div style={{ position: 'relative', flexShrink: 0 }}>
-                <Icon size={15} style={{ color: highlight ? '#8B5CF6' : 'inherit' }} />
+                <Icon size={15} style={{ color: highlight ? '#F97316' : 'inherit' }} />
                 {badgeCount > 0 && (
                   <span style={{
                     position: 'absolute', top: -5, right: -6,

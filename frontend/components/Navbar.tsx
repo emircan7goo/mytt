@@ -294,7 +294,7 @@ export default function Navbar() {
 
           {/* Arama (masaüstü) */}
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[600px] ml-4">
-            <div className="flex items-center w-full h-[46px] rounded-2xl bg-slate-50 border border-slate-200 focus-within:border-violet-500 focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(124,58,237,0.06)] transition-all overflow-hidden px-2">
+            <div className="flex items-center w-full h-[46px] rounded-2xl bg-slate-50 border border-slate-200 focus-within:border-orange-500 focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(234,88,12,0.06)] transition-all overflow-hidden px-2">
               <Search size={18} className="text-slate-400 ml-3 flex-shrink-0" />
               <input
                 type="text"
@@ -324,7 +324,7 @@ export default function Navbar() {
               className="hidden md:flex items-center gap-1.5 h-9 px-4 rounded-full text-[12px] font-bold bg-slate-900 text-white shadow-sm conic-glow-button"
             >
               <Smartphone size={13} className="relative z-10" />
-              <span className="relative z-10 text-white group-hover:text-violet-900 mix-blend-difference">Cihazını Sat</span>
+              <span className="relative z-10 text-white group-hover:text-orange-900 mix-blend-difference">Cihazını Sat</span>
             </Link>
 
             {/* Mobil arama */}
@@ -458,17 +458,17 @@ export default function Navbar() {
                       onMouseEnter={() => setHoveredCategory(cat.label)}
                       className={`relative flex items-center gap-1.5 px-4 h-full text-[13px] whitespace-nowrap font-semibold transition-colors duration-150 ${
                         isActive
-                          ? 'text-violet-700'
+                          ? 'text-orange-700'
                           : 'text-slate-500 hover:text-slate-900'
                       }`}
                     >
                       {cat.label}
                       {cat.megaMenu && (
-                        <ChevronDown size={12} className={`transition-transform duration-200 ${isHovered ? 'rotate-180' : ''} ${isActive ? 'text-violet-600' : 'text-slate-400'}`} />
+                        <ChevronDown size={12} className={`transition-transform duration-200 ${isHovered ? 'rotate-180' : ''} ${isActive ? 'text-orange-600' : 'text-slate-400'}`} />
                       )}
                       {/* Active underline */}
                       {isActive && (
-                        <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-violet-600 rounded-full" />
+                        <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-orange-600 rounded-full" />
                       )}
                     </Link>
                   </div>
@@ -493,7 +493,7 @@ export default function Navbar() {
                         <div className="flex flex-col space-y-2.5">
                           {group.items.map((item, j) => (
                             <Link key={j} href={item.href} onClick={() => setHoveredCategory(null)}
-                              className="text-[14px] font-medium text-slate-700 hover:text-violet-600 transition-colors w-max">
+                              className="text-[14px] font-medium text-slate-700 hover:text-orange-600 transition-colors w-max">
                               {item.name}
                             </Link>
                           ))}
@@ -507,7 +507,7 @@ export default function Navbar() {
                     <Link
                       href={cat.href}
                       onClick={() => setHoveredCategory(null)}
-                      className="inline-flex items-center gap-1.5 text-[13px] font-bold text-violet-600 hover:text-violet-700 hover:translate-x-1 transition-all"
+                      className="inline-flex items-center gap-1.5 text-[13px] font-bold text-orange-600 hover:text-orange-700 hover:translate-x-1 transition-all"
                     >
                       Tüm {cat.label} Modelleri
                       <ChevronRight size={14} />

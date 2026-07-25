@@ -15,7 +15,7 @@ const BRANDS = ['Apple', 'Samsung', 'Xiaomi', 'Huawei', 'Oppo', 'Vivo', 'OnePlus
 const STORAGES = ['16GB', '32GB', '64GB', '128GB', '256GB', '512GB', '1TB'];
 const COLORS = ['Siyah', 'Beyaz', 'Gümüş', 'Altın', 'Mavi', 'Kırmızı', 'Yeşil', 'Mor', 'Pembe', 'Sarı', 'Diğer'];
 const GRADES = [
-  { value: 'A+', label: 'A+ — Sıfır gibi', desc: 'Hiç kullanılmamış, kutusunda',  color: '#8B5CF6' },
+  { value: 'A+', label: 'A+ — Sıfır gibi', desc: 'Hiç kullanılmamış, kutusunda',  color: '#F97316' },
   { value: 'A',  label: 'A — Çok iyi',      desc: 'Çok az kullanılmış, görünür iz yok', color: '#0ea5e9' },
   { value: 'B',  label: 'B — İyi',           desc: 'Normal kullanım izleri mevcut',  color: '#f59e0b' },
   { value: 'C',  label: 'C — Orta',          desc: 'Belirgin çizikler/izler var',    color: '#ef4444' },
@@ -57,7 +57,7 @@ function StepBar({ current }: { current: number }) {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, flex: 'none' }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%',
-                background: done ? '#8B5CF6' : active ? '#0ea5e9' : 'rgba(255,255,255,0.07)',
+                background: done ? '#F97316' : active ? '#0ea5e9' : 'rgba(255,255,255,0.07)',
                 border: done ? 'none' : active ? '2px solid #0ea5e9' : '2px solid rgba(255,255,255,0.12)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'all 0.2s',
@@ -67,10 +67,10 @@ function StepBar({ current }: { current: number }) {
                   : <span style={{ color: active ? '#0ea5e9' : 'rgba(248,250,252,0.3)', fontSize: '13px', fontWeight: 700 }}>{i + 1}</span>
                 }
               </div>
-              <span style={{ fontSize: '10px', fontWeight: 600, color: active ? '#0ea5e9' : done ? '#8B5CF6' : 'rgba(248,250,252,0.25)', whiteSpace: 'nowrap' }}>{lbl}</span>
+              <span style={{ fontSize: '10px', fontWeight: 600, color: active ? '#0ea5e9' : done ? '#F97316' : 'rgba(248,250,252,0.25)', whiteSpace: 'nowrap' }}>{lbl}</span>
             </div>
             {i < STEP_LABELS.length - 1 && (
-              <div style={{ flex: 1, height: 2, background: done ? '#8B5CF6' : 'rgba(255,255,255,0.07)', margin: '0 6px 16px' }} />
+              <div style={{ flex: 1, height: 2, background: done ? '#F97316' : 'rgba(255,255,255,0.07)', margin: '0 6px 16px' }} />
             )}
           </div>
         );
@@ -191,7 +191,7 @@ function PhotoUpload({ images, onChange }: { images: string[], onChange: (imgs: 
       <input ref={inputRef} type="file" accept="image/*" multiple onChange={e => handleFiles(e.target.files)} style={{ display: 'none' }} />
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ color: images.length < 3 ? '#ef4444' : '#8B5CF6', fontSize: '12px', fontWeight: 600 }}>
+        <span style={{ color: images.length < 3 ? '#ef4444' : '#F97316', fontSize: '12px', fontWeight: 600 }}>
           {images.length} / 8 fotoğraf {images.length < 3 ? `(en az 3 gerekli, ${3 - images.length} daha ekle)` : '✓'}
         </span>
         <span style={{ color: 'rgba(248,250,252,0.3)', fontSize: '11px' }}>İlk fotoğraf kapak olur</span>
@@ -264,11 +264,11 @@ export default function DealerSellPage() {
       <div style={{ maxWidth: 540, margin: '0 auto', textAlign: 'center', padding: '60px 24px' }}>
         <div style={{
           width: 80, height: 80, borderRadius: '50%', margin: '0 auto 24px',
-          background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(14,165,233,0.1))',
-          border: '2px solid rgba(139,92,246,0.3)',
+          background: 'linear-gradient(135deg, rgba(249,115,22,0.15), rgba(14,165,233,0.1))',
+          border: '2px solid rgba(249,115,22,0.3)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          <Clock size={36} style={{ color: '#8B5CF6' }} />
+          <Clock size={36} style={{ color: '#F97316' }} />
         </div>
         <h2 style={{ color: '#f8fafc', fontSize: '24px', fontWeight: 800, margin: '0 0 12px' }}>
           İlan Oluşturuldu
@@ -279,13 +279,13 @@ export default function DealerSellPage() {
         </p>
         <div style={{
           padding: '16px', borderRadius: '14px',
-          background: 'rgba(139,92,246,0.07)', border: '1px solid rgba(139,92,246,0.2)',
+          background: 'rgba(249,115,22,0.07)', border: '1px solid rgba(249,115,22,0.2)',
           marginBottom: 24,
         }}>
           <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', margin: '0 0 4px' }}>
             İlan ID
           </p>
-          <p style={{ color: '#8B5CF6', fontSize: '15px', fontWeight: 800, fontFamily: 'monospace', margin: 0 }}>
+          <p style={{ color: '#F97316', fontSize: '15px', fontWeight: 800, fontFamily: 'monospace', margin: 0 }}>
             {success.id.slice(0, 8).toUpperCase()}
           </p>
         </div>
@@ -420,9 +420,9 @@ export default function DealerSellPage() {
                     style={{
                       padding: '8px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 600,
                       cursor: 'pointer', border: '1px solid',
-                      background: val ? 'rgba(139,92,246,0.12)' : 'rgba(255,255,255,0.04)',
-                      borderColor: val ? '#8B5CF6' : 'rgba(255,255,255,0.1)',
-                      color: val ? '#8B5CF6' : 'rgba(248,250,252,0.5)',
+                      background: val ? 'rgba(249,115,22,0.12)' : 'rgba(255,255,255,0.04)',
+                      borderColor: val ? '#F97316' : 'rgba(255,255,255,0.1)',
+                      color: val ? '#F97316' : 'rgba(248,250,252,0.5)',
                       display: 'flex', alignItems: 'center', gap: 6,
                     }}>
                     {val && <Check size={12} />} {lbl}

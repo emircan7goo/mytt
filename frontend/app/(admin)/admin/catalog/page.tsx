@@ -42,7 +42,7 @@ function completeness(variants: any[]) {
 
 function CompletenessDot({ level }: { level: string }) {
   const map: Record<string, { bg: string; title: string }> = {
-    full:    { bg: '#8B5CF6', title: 'Specs + görsel tam' },
+    full:    { bg: '#F97316', title: 'Specs + görsel tam' },
     partial: { bg: '#f59e0b', title: 'Kısmi bilgi' },
     empty:   { bg: '#ef4444', title: 'Specs/görsel eksik' },
   };
@@ -352,7 +352,7 @@ export default function AdminCatalogPage() {
               </div>
               <button type="button" onClick={() => setEditing({ ...editing, isActive: !editing.isActive })}>
                 {editing.isActive
-                  ? <ToggleRight size={28} className="text-violet-400" />
+                  ? <ToggleRight size={28} className="text-orange-400" />
                   : <ToggleLeft  size={28} className="text-zinc-400" />}
               </button>
             </div>
@@ -394,13 +394,13 @@ export default function AdminCatalogPage() {
           {editing.id && varCount > 1 && (
             <div
               onClick={() => setEditing((e: any) => ({ ...e, applyToAll: !e.applyToAll }))}
-              className={editing.applyToAll ? 'flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all bg-violet-500/10 border-violet-500/30' : 'flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'}
+              className={editing.applyToAll ? 'flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all bg-orange-500/10 border-orange-500/30' : 'flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'}
             >
-              <div className={editing.applyToAll ? 'w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border bg-violet-500 border-violet-500' : 'w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border border-white/[0.2]'}>
+              <div className={editing.applyToAll ? 'w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border bg-orange-500 border-orange-500' : 'w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border border-white/[0.2]'}>
                 {editing.applyToAll && <span className="text-white text-xs font-bold">✓</span>}
               </div>
               <div>
-                <p className={`text-sm font-semibold ${editing.applyToAll ? 'text-violet-300' : 'text-zinc-300'}`}>
+                <p className={`text-sm font-semibold ${editing.applyToAll ? 'text-orange-300' : 'text-zinc-300'}`}>
                   Tüm varyantlara uygula
                 </p>
                 <p className="text-zinc-500 text-xs mt-0.5">
@@ -439,7 +439,7 @@ export default function AdminCatalogPage() {
           { label: 'Marka',   value: stats.brands,    color: '#a855f7' },
           { label: 'Model',   value: stats.models,    color: '#3b82f6' },
           { label: 'Varyant', value: stats.variants,  color: '#64748b' },
-          { label: 'Specs Dolu', value: stats.withSpecs, color: '#8B5CF6' },
+          { label: 'Specs Dolu', value: stats.withSpecs, color: '#F97316' },
           { label: 'Görselli',   value: stats.withImg,   color: '#f59e0b' },
         ].map(s => (
           <div key={s.label}
@@ -552,7 +552,7 @@ export default function AdminCatalogPage() {
                           <p className="text-zinc-100 font-semibold text-[13px]">{group.brand} {group.model}</p>
                           <p className="text-zinc-400 text-[11px] mt-0.5">
                             {group.variants.length} varyant
-                            {group.level === 'full' && <span className="text-violet-500/70 ml-2">● Tam</span>}
+                            {group.level === 'full' && <span className="text-orange-500/70 ml-2">● Tam</span>}
                             {group.level === 'partial' && <span className="text-amber-500/70 ml-2">● Kısmi</span>}
                             {group.level === 'empty' && <span className="text-red-500/70 ml-2">● Eksik</span>}
                           </p>
@@ -573,9 +573,9 @@ export default function AdminCatalogPage() {
                     {/* Aktif/Pasif */}
                     <td className="px-4 py-3 hidden lg:table-cell" onClick={e => e.stopPropagation()}>
                       <button onClick={() => toggleGroup(group)}
-                        className={`flex items-center gap-1.5 text-xs font-semibold transition-colors ${anyActive ? 'text-violet-400 hover:text-violet-300' : 'text-zinc-400 hover:text-zinc-400'}`}>
+                        className={`flex items-center gap-1.5 text-xs font-semibold transition-colors ${anyActive ? 'text-orange-400 hover:text-orange-300' : 'text-zinc-400 hover:text-zinc-400'}`}>
                         {anyActive
-                          ? <ToggleRight size={16} className="text-violet-400" />
+                          ? <ToggleRight size={16} className="text-orange-400" />
                           : <ToggleLeft  size={16} className="text-zinc-400" />}
                         {anyActive ? 'Aktif' : 'Pasif'}
                       </button>

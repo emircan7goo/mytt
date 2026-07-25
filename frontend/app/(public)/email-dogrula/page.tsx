@@ -147,7 +147,7 @@ function EmailDogrulaContent() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-black tracking-tight text-zinc-900">
-              my<span className="text-violet-500">tt</span>
+              my<span className="text-orange-500">tt</span>
             </span>
           </Link>
         </div>
@@ -166,7 +166,7 @@ function EmailDogrulaContent() {
               <p className="text-zinc-500 text-sm leading-relaxed mb-6">{message}</p>
               <Link
                 href="/login"
-                className="block w-full py-3.5 rounded-xl font-bold text-sm bg-violet-500 hover:bg-violet-600 text-white transition-colors text-center shadow-violet-500/20 shadow-lg"
+                className="block w-full py-3.5 rounded-xl font-bold text-sm bg-orange-500 hover:bg-orange-600 text-white transition-colors text-center shadow-orange-500/20 shadow-lg"
               >
                 Giriş Yap
               </Link>
@@ -175,8 +175,8 @@ function EmailDogrulaContent() {
             /* ── Kod Giriş Formu ─────────────────────────────────────────── */
             <>
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-violet-50 flex items-center justify-center">
-                  <Mail className="text-violet-500" size={28} />
+                <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center">
+                  <Mail className="text-orange-500" size={28} />
                 </div>
               </div>
 
@@ -217,12 +217,12 @@ function EmailDogrulaContent() {
                     className={[
                       'w-11 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all outline-none',
                       digit
-                        ? 'border-violet-400 bg-violet-50 text-zinc-900'
+                        ? 'border-orange-400 bg-orange-50 text-zinc-900'
                         : 'border-zinc-200 bg-zinc-50 text-zinc-400',
                       status === 'error'
                         ? '!border-red-400 !bg-red-50'
                         : '',
-                      'focus:border-violet-500 focus:bg-white focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
+                      'focus:border-orange-500 focus:bg-white focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
                     ].join(' ')}
                   />
                 ))}
@@ -239,7 +239,7 @@ function EmailDogrulaContent() {
               <button
                 onClick={handleVerify}
                 disabled={status === 'loading' || fullCode.length < 6}
-                className="w-full py-3.5 rounded-xl font-bold text-sm bg-violet-500 hover:bg-violet-600 text-white transition-colors shadow-violet-500/20 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-4"
+                className="w-full py-3.5 rounded-xl font-bold text-sm bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-orange-500/20 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-4"
               >
                 {status === 'loading' ? (
                   <><Loader2 size={18} className="animate-spin" /> Doğrulanıyor...</>
@@ -253,7 +253,7 @@ function EmailDogrulaContent() {
                 <button
                   onClick={handleResend}
                   disabled={resendTimer > 0}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-violet-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-orange-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <RotateCcw size={13} />
                   {resendTimer > 0 ? `Yeniden gönder (${resendTimer}s)` : 'Yeni kod gönder'}
@@ -277,7 +277,7 @@ export default function EmailDogrulaPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={36} className="animate-spin text-violet-400" />
+        <Loader2 size={36} className="animate-spin text-orange-400" />
       </div>
     }>
       <EmailDogrulaContent />

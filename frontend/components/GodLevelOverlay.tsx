@@ -26,7 +26,7 @@ export default function GodLevelOverlay() {
       {/* 17. Maintenance Mode */}
       {settings.maintenanceMode && (
         <div className="fixed inset-0 z-[9999] bg-[#0a0d1a] flex flex-col items-center justify-center text-white">
-          <AlertCircle size={64} className="text-purple-500 mb-6 animate-pulse" />
+          <AlertCircle size={64} className="text-orange-500 mb-6 animate-pulse" />
           <h1 className="text-4xl font-bold font-[family-name:var(--font-display)] mb-4">Mola Verdik!</h1>
           <p className="text-white/60 max-w-md text-center text-lg">
             Gördüğünüz üzere muazzam bir güncelleme yapıyoruz. En kısa sürede en iyi fiyata yenilenmiş telefonlarla döneceğiz.

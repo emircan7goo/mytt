@@ -61,7 +61,7 @@ export default function DealerSupportPage() {
     <div className="flex flex-col gap-6 pb-16">
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-violet-500/15 border border-violet-500/30 text-violet-400 text-sm font-semibold backdrop-blur-xl shadow-xl">
+        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-orange-500/15 border border-orange-500/30 text-orange-400 text-sm font-semibold backdrop-blur-xl shadow-xl">
           {toast}
         </div>
       )}

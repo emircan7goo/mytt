@@ -14,12 +14,12 @@ export default function Footer() {
         {/* Top: Logo + Tagline */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-8 border-b border-white/10">
           <div className="flex items-center gap-4 group cursor-pointer selection:bg-transparent">
-            <div className="w-12 h-12 bg-white border border-violet-200 rounded-[16px] flex items-center justify-center transition-all group-hover:border-violet-300 group-hover:shadow-[0_0_15px_rgba(15,118,110,0.08)]">
+            <div className="w-12 h-12 bg-white border border-orange-200 rounded-[16px] flex items-center justify-center transition-all group-hover:border-orange-300 group-hover:shadow-[0_0_15px_rgba(15,118,110,0.08)]">
               <Smartphone className="text-[var(--brand)]" size={24} strokeWidth={2} />
             </div>
             <div>
-              <h2 className="text-[24px] font-black tracking-tight text-white group-hover:text-violet-400 transition-colors">
-                Mytt<span className="text-violet-500">.</span>
+              <h2 className="text-[24px] font-black tracking-tight text-white group-hover:text-orange-400 transition-colors">
+                Mytt<span className="text-orange-500">.</span>
               </h2>
               <p className="text-white/90 text-[15px] font-semibold mt-1">Türkiye&apos;nin En Prestijli Doğrulanmış Cihaz Borsası</p>
             </div>
@@ -90,7 +90,7 @@ export default function Footer() {
         <div className="rounded-[20px] p-5 md:p-6 flex flex-col md:flex-row items-stretch gap-4 mb-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
           {/* Telefon */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(196,181,253,0.12)', border: '1px solid rgba(196,181,253,0.2)' }}>
+            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
               <Phone size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
             </div>
             <div className="min-w-0">
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {/* E-posta */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(196,181,253,0.12)', border: '1px solid rgba(196,181,253,0.2)' }}>
+            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
               <Mail size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
             </div>
             <div className="min-w-0">
@@ -116,7 +116,7 @@ export default function Footer() {
 
           {/* Adres */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(196,181,253,0.12)', border: '1px solid rgba(196,181,253,0.2)' }}>
+            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
               <MapPin size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
             </div>
             <div className="min-w-0">
@@ -134,7 +134,7 @@ export default function Footer() {
             <Link href="/kullanim-kosullari" className="text-white/65 hover:text-white transition-colors font-semibold">Kullanım Koşulları</Link>
             <Link href="/cerez-politikasi" className="text-white/65 hover:text-white transition-colors font-semibold">Çerez Politikası</Link>
             <Link href="/sozlesmeler" className="text-white/65 hover:text-white transition-colors font-semibold">Sözleşmeler ve Formlar</Link>
-            <span className="text-[var(--brand-mid)] px-3 py-1 rounded-[8px] font-bold ml-2" style={{ background: 'rgba(196,181,253,0.1)', border: '1px solid rgba(196,181,253,0.2)' }}>v10.0 Elite</span>
+            <span className="text-[var(--brand-mid)] px-3 py-1 rounded-[8px] font-bold ml-2" style={{ background: 'rgba(253,186,116,0.1)', border: '1px solid rgba(253,186,116,0.2)' }}>v10.0 Elite</span>
           </div>
         </div>
       </div>

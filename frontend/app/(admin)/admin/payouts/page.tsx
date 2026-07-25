@@ -68,7 +68,7 @@ export default function AdminPayoutsPage() {
   const STATUS_BADGE: Record<PayoutStatus, { label: string; color: string; bg: string; border: string }> = {
     PENDING:  { label: 'Onay Bekliyor',   color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
     APPROVED: { label: 'Havale Bekliyor', color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.25)' },
-    PAID:     { label: 'Ödendi',          color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)' },
+    PAID:     { label: 'Ödendi',          color: '#F97316', bg: 'rgba(249,115,22,0.1)', border: 'rgba(249,115,22,0.25)' },
     REJECTED: { label: 'Reddedildi',      color: '#ef4444', bg: 'rgba(239,68,68,0.1)',  border: 'rgba(239,68,68,0.25)' },
   };
 
@@ -112,7 +112,7 @@ export default function AdminPayoutsPage() {
         </div>
       ) : payouts.length === 0 ? (
         <div className="bg-white/[0.03] border border-white/[0.08] rounded-[32px] p-16 flex flex-col items-center text-center">
-          <CheckCircle2 size={48} className="text-violet-500 mb-4" />
+          <CheckCircle2 size={48} className="text-orange-500 mb-4" />
           <h3 className="text-zinc-100 text-xl font-bold">Bu kategoride talep yok</h3>
           <p className="text-zinc-500 text-[13px] mt-2">Yeni bir hakediş çekim talebi geldiğinde burada görünecek.</p>
         </div>
@@ -199,7 +199,7 @@ export default function AdminPayoutsPage() {
                           <button
                             onClick={() => handleMarkPaid(p.id)}
                             disabled={busyId === p.id}
-                            className="flex items-center gap-2 bg-violet-500 text-white font-black uppercase tracking-widest text-[12px] px-6 py-3 rounded-full shadow-md hover:bg-violet-400 transition-all disabled:opacity-50"
+                            className="flex items-center gap-2 bg-orange-500 text-white font-black uppercase tracking-widest text-[12px] px-6 py-3 rounded-full shadow-md hover:bg-orange-400 transition-all disabled:opacity-50"
                           >
                             {busyId === p.id ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <ArrowDownToLine size={14} />}
                             Havale Yapıldı — Ödendi

@@ -21,15 +21,15 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', {
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
   PENDING:   { label: 'Teklif Açık',    color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
   EXPIRED:   { label: 'Süre Doldu',     color: '#6366f1', bg: 'rgba(99,102,241,0.1)' },
-  ACCEPTED:  { label: 'Kabul Edildi',   color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  ACCEPTED:  { label: 'Kabul Edildi',   color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   REJECTED:  { label: 'Reddedildi',     color: '#ef4444', bg: 'rgba(239,68,68,0.1)' },
   SHIPPED:   { label: 'Kargoda',        color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)' },
-  RECEIVED:  { label: 'Depoda',         color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' },
-  COMPLETED: { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)' },
+  RECEIVED:  { label: 'Depoda',         color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
+  COMPLETED: { label: 'Tamamlandı',     color: '#F97316', bg: 'rgba(249,115,22,0.1)' },
   CANCELLED: { label: 'İptal',          color: '#6b7280', bg: 'rgba(107,114,128,0.1)' },
 };
 
-const GRADE_COLORS: Record<string, string> = { 'A+': '#8B5CF6', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444' };
+const GRADE_COLORS: Record<string, string> = { 'A+': '#F97316', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444' };
 
 export default function AdminSellRequestDetailPage() {
   const params = useParams();
@@ -201,16 +201,16 @@ export default function AdminSellRequestDetailPage() {
                   <div key={bid.id} style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '12px 14px', borderRadius: 12,
-                    background: idx === 0 ? 'rgba(139,92,246,0.06)' : 'rgba(255,255,255,0.02)',
-                    border: idx === 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(255,255,255,0.06)',
-                    ...(bid.dealerId === req.winningDealerId ? { border: '2px solid #8B5CF6', background: 'rgba(139,92,246,0.1)' } : {}),
+                    background: idx === 0 ? 'rgba(249,115,22,0.06)' : 'rgba(255,255,255,0.02)',
+                    border: idx === 0 ? '1px solid rgba(249,115,22,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                    ...(bid.dealerId === req.winningDealerId ? { border: '2px solid #F97316', background: 'rgba(249,115,22,0.1)' } : {}),
                   }}>
                     {/* Rank */}
                     <div style={{
                       width: 30, height: 30, borderRadius: 8, flexShrink: 0,
-                      background: idx === 0 ? 'rgba(139,92,246,0.15)' : 'rgba(255,255,255,0.05)',
+                      background: idx === 0 ? 'rgba(249,115,22,0.15)' : 'rgba(255,255,255,0.05)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: idx === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)',
+                      color: idx === 0 ? '#F97316' : 'rgba(248,250,252,0.4)',
                       fontSize: 12, fontWeight: 800,
                     }}>
                       #{idx + 1}
@@ -224,7 +224,7 @@ export default function AdminSellRequestDetailPage() {
                           {bid.dealer?.companyName ?? bid.dealer?.name ?? 'Bayi'}
                         </span>
                         {bid.dealerId === req.winningDealerId && (
-                          <span style={{ padding: '1px 6px', borderRadius: 99, fontSize: 9, fontWeight: 800, background: '#8B5CF6', color: '#fff' }}>
+                          <span style={{ padding: '1px 6px', borderRadius: 99, fontSize: 9, fontWeight: 800, background: '#F97316', color: '#fff' }}>
                             KAZANAN
                           </span>
                         )}
@@ -248,7 +248,7 @@ export default function AdminSellRequestDetailPage() {
 
                     {/* Amount */}
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                      <p style={{ color: idx === 0 ? '#8B5CF6' : '#f8fafc', fontSize: 18, fontWeight: 800, margin: 0 }}>
+                      <p style={{ color: idx === 0 ? '#F97316' : '#f8fafc', fontSize: 18, fontWeight: 800, margin: 0 }}>
                         {fmt(Number(bid.amount))}
                       </p>
                     </div>
@@ -260,20 +260,20 @@ export default function AdminSellRequestDetailPage() {
 
           {/* Kazanan bayi */}
           {req.winningDealer && (
-            <div style={{ background: 'rgba(139,92,246,0.06)', borderRadius: 16, border: '1px solid rgba(139,92,246,0.2)', padding: 18 }}>
+            <div style={{ background: 'rgba(249,115,22,0.06)', borderRadius: 16, border: '1px solid rgba(249,115,22,0.2)', padding: 18 }}>
               <p style={{ color: 'rgba(248,250,252,0.35)', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', margin: '0 0 10px' }}>
                 Kazanan Bayi
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(139,92,246,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CheckCircle size={16} style={{ color: '#8B5CF6' }} />
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(249,115,22,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <CheckCircle size={16} style={{ color: '#F97316' }} />
                 </div>
                 <div>
-                  <p style={{ color: '#8B5CF6', fontSize: 14, fontWeight: 800, margin: 0 }}>
+                  <p style={{ color: '#F97316', fontSize: 14, fontWeight: 800, margin: 0 }}>
                     {req.winningDealer.companyName ?? req.winningDealer.name}
                   </p>
                   {req.finalPrice && (
-                    <p style={{ color: 'rgba(139,92,246,0.7)', fontSize: 12, margin: '2px 0 0' }}>
+                    <p style={{ color: 'rgba(249,115,22,0.7)', fontSize: 12, margin: '2px 0 0' }}>
                       Kabul edilen: {fmt(Number(req.finalPrice))}
                     </p>
                   )}

@@ -49,7 +49,7 @@ function buildMonthlyChartData(orders: any[], numMonths = 8) {
 }
 
 const CONDITION_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  'A+': { label: 'Tertemiz',  color: '#8B5CF6', bg: 'rgba(139,92,246,0.12)' },
+  'A+': { label: 'Tertemiz',  color: '#F97316', bg: 'rgba(249,115,22,0.12)' },
   'A':  { label: 'Çok İyi',   color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)' },
   'B':  { label: 'İyi',       color: '#f59e0b', bg: 'rgba(245,158,11,0.12)' },
   'C':  { label: 'Kabul Edilebilir',color: '#a855f7', bg: 'rgba(168,85,247,0.12)' },
@@ -57,7 +57,7 @@ const CONDITION_LABELS: Record<string, { label: string; color: string; bg: strin
 
 const ORDER_STATUS: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   ESCROW:    { label: 'Ödeme Bekliyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.09)',  border: 'rgba(245,158,11,0.2)',  icon: <Clock size={11}/>         },
-  RELEASED:  { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(139,92,246,0.09)',  border: 'rgba(139,92,246,0.2)', icon: <CheckCircle size={11}/>   },
+  RELEASED:  { label: 'Tamamlandı',     color: '#F97316', bg: 'rgba(249,115,22,0.09)',  border: 'rgba(249,115,22,0.2)', icon: <CheckCircle size={11}/>   },
   REFUNDED:  { label: 'İade',           color: '#ef4444', bg: 'rgba(239,68,68,0.09)',   border: 'rgba(239,68,68,0.2)',  icon: <RotateCcw size={11}/>     },
 };
 
@@ -114,7 +114,7 @@ export default function DealerDashboard() {
     <div className="flex flex-col gap-7 relative pb-10">
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-violet-500/15 border border-violet-500/35 text-violet-400 text-sm font-semibold backdrop-blur-xl shadow-xl animate-slide-up">
+        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-orange-500/15 border border-orange-500/35 text-orange-400 text-sm font-semibold backdrop-blur-xl shadow-xl animate-slide-up">
           {toast}
         </div>
       )}
@@ -140,13 +140,13 @@ export default function DealerDashboard() {
       {/* ── Bakiye + Hızlı Erişim ─────────────────────────────────────── */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
         {/* Cüzdan */}
-        <div style={{ background: walletBalance > 0 ? 'rgba(139,92,246,0.07)' : 'rgba(245,158,11,0.07)', borderRadius: 16, border: walletBalance > 0 ? '1px solid rgba(139,92,246,0.2)' : '1px solid rgba(245,158,11,0.2)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: walletBalance > 0 ? 'rgba(139,92,246,0.15)' : 'rgba(245,158,11,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <Wallet size={18} style={{ color: walletBalance > 0 ? '#8B5CF6' : '#f59e0b' }} />
+        <div style={{ background: walletBalance > 0 ? 'rgba(249,115,22,0.07)' : 'rgba(245,158,11,0.07)', borderRadius: 16, border: walletBalance > 0 ? '1px solid rgba(249,115,22,0.2)' : '1px solid rgba(245,158,11,0.2)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 10, background: walletBalance > 0 ? 'rgba(249,115,22,0.15)' : 'rgba(245,158,11,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Wallet size={18} style={{ color: walletBalance > 0 ? '#F97316' : '#f59e0b' }} />
           </div>
           <div>
             <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', margin: 0 }}>Bakiyem</p>
-            <p style={{ color: walletBalance > 0 ? '#8B5CF6' : '#f59e0b', fontSize: '20px', fontWeight: 800, margin: '2px 0 0', fontFamily: 'monospace' }}>{fmt(walletBalance)}</p>
+            <p style={{ color: walletBalance > 0 ? '#F97316' : '#f59e0b', fontSize: '20px', fontWeight: 800, margin: '2px 0 0', fontFamily: 'monospace' }}>{fmt(walletBalance)}</p>
             {walletBalance === 0 && <p style={{ color: 'rgba(245,158,11,0.6)', fontSize: '10px', margin: 0 }}>Teklif için bakiye yükle</p>}
           </div>
         </div>
@@ -166,13 +166,13 @@ export default function DealerDashboard() {
         </Link>
         {/* Cihaz Sat */}
         <Link href="/dealer/sell" style={{ textDecoration: 'none' }}>
-          <div style={{ background: 'rgba(139,92,246,0.05)', borderRadius: 16, border: '1px solid rgba(139,92,246,0.15)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center', cursor: 'pointer', transition: 'all 0.15s' }}>
-            <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(139,92,246,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <PlusCircle size={18} style={{ color: '#8B5CF6' }} />
+          <div style={{ background: 'rgba(249,115,22,0.05)', borderRadius: 16, border: '1px solid rgba(249,115,22,0.15)', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center', cursor: 'pointer', transition: 'all 0.15s' }}>
+            <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(249,115,22,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <PlusCircle size={18} style={{ color: '#F97316' }} />
             </div>
             <div>
               <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', margin: 0 }}>Cihaz Sat</p>
-              <p style={{ color: '#8B5CF6', fontSize: '14px', fontWeight: 700, margin: '4px 0 0' }}>Yeni İlan →</p>
+              <p style={{ color: '#F97316', fontSize: '14px', fontWeight: 700, margin: '4px 0 0' }}>Yeni İlan →</p>
               <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: '10px', margin: 0 }}>bayilere sat</p>
             </div>
           </div>
@@ -294,7 +294,7 @@ export default function DealerDashboard() {
                           {cond.label}
                         </span>
                       </td>
-                      <td className="px-5 py-4 text-violet-400 font-bold text-[14px]">
+                      <td className="px-5 py-4 text-orange-400 font-bold text-[14px]">
                         {fmt(Number(s.price))}
                       </td>
                       <td className="px-5 py-4 text-zinc-400 text-[13px]">
@@ -365,7 +365,7 @@ export default function DealerDashboard() {
                           #{o.id.slice(0, 8).toUpperCase()}
                         </div>
                       </td>
-                      <td className="px-5 py-4 text-violet-400 font-bold text-[14px]">
+                      <td className="px-5 py-4 text-orange-400 font-bold text-[14px]">
                         {fmt(Number(o.amount))}
                       </td>
                       <td className="px-5 py-4">

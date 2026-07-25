@@ -120,7 +120,7 @@ export default function ProductDetailClient() {
                   Grade {(product as any).cosmeticGrade || (product as any).grade || 'A'}
                 </span>
                 {product.condition === 'NEW' && (
-                  <span className="bg-violet-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
+                  <span className="bg-orange-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
                     Sıfır Cihaz
                   </span>
                 )}
@@ -243,7 +243,7 @@ export default function ProductDetailClient() {
                     <AnimatePresence mode="wait">
                       {addedPulse ? (
                         <motion.span key="added" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">
-                          <CheckCircle2 size={18} className="text-violet-500" /> Eklendi
+                          <CheckCircle2 size={18} className="text-orange-500" /> Eklendi
                         </motion.span>
                       ) : (
                         <motion.span key="add" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">
@@ -272,7 +272,7 @@ export default function ProductDetailClient() {
 
               <div className="pt-6 border-t border-zinc-200 flex flex-col gap-4">
                  <div className="flex items-center gap-4 text-zinc-700 text-[13px] font-medium bg-white p-4 rounded-xl border border-zinc-100 shadow-sm">
-                    <div className="w-8 h-8 rounded-full bg-violet-50 text-violet-500 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
                        <Truck size={16} />
                     </div>
                     <div>

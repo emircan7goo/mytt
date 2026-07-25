@@ -24,7 +24,7 @@ export default function NotFound() {
       {/* Decorative blobs */}
       <div
         className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-30 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #7c3aed 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #EA580C 0%, transparent 70%)' }}
       />
       <div
         className="absolute bottom-1/4 right-1/4 w-[360px] h-[360px] rounded-full blur-[120px] opacity-20 pointer-events-none"
@@ -38,11 +38,11 @@ export default function NotFound() {
           className="text-[160px] md:text-[220px] font-black leading-none tracking-tighter select-none"
           style={{
             background:
-              'linear-gradient(135deg, #a78bfa 0%, #7c3aed 40%, #4f46e5 80%)',
+              'linear-gradient(135deg, #FB923C 0%, #EA580C 40%, #4f46e5 80%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            filter: 'drop-shadow(0 0 60px rgba(124,58,237,0.35))',
+            filter: 'drop-shadow(0 0 60px rgba(234,88,12,0.35))',
           }}
         >
           404
@@ -61,8 +61,8 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <Link
             href="/"
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-purple-900/40 hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}
+            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}
           >
             <Home size={16} />
             Anasayfaya Dön

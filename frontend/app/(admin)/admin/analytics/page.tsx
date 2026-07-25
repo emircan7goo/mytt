@@ -20,7 +20,7 @@ export default function AdminAnalyticsPage() {
     { label: 'Toplam Satış Hacmi',   value: fmt(m.gmv ?? 0),            icon: <TrendingUp size={18}/>,   color: '#a855f7' },
     { label: 'Komisyon Geliri',       value: fmt(m.commission ?? 0),      icon: <TrendingUp size={18}/>,   color: '#f59e0b' },
     { label: 'Toplam Sipariş',        value: (m.totalOrders ?? 0).toString(), icon: <ShoppingCart size={18}/>, color: '#0ea5e9' },
-    { label: 'Ortalama Sipariş',      value: fmt(m.avgOrderValue ?? 0),   icon: <ShoppingCart size={18}/>, color: '#8B5CF6' },
+    { label: 'Ortalama Sipariş',      value: fmt(m.avgOrderValue ?? 0),   icon: <ShoppingCart size={18}/>, color: '#F97316' },
     { label: 'Kayıtlı Üye',          value: (m.totalUsers ?? 0).toLocaleString('tr-TR'),   icon: <Users size={18}/>,        color: '#ec4899' },
     { label: 'Aktif Bayi',           value: (m.totalDealers ?? 0).toString(),               icon: <Store size={18}/>,        color: '#0ea5e9' },
     { label: 'Stok Ürün',            value: (m.totalProducts ?? 0).toString(),              icon: <Package size={18}/>,      color: '#a855f7' },
