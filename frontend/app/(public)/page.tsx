@@ -35,7 +35,16 @@ const BRAND_COLORS: Record<string, { active: string; text: string; glow: string 
   Realme:  { active: '#7C3AED', text: '#ffffff', glow: 'rgba(234,88,12,0.25)'   },
   Tecno:   { active: '#0d9488', text: '#ffffff', glow: 'rgba(13,148,136,0.25)'  },
   Infinix: { active: '#16a34a', text: '#ffffff', glow: 'rgba(22,163,74,0.25)'   },
+  Aksesuarlar: { active: '#7C3AED', text: '#ffffff', glow: 'rgba(124,58,237,0.25)' },
 };
+
+const DEFAULT_BRAND_COLOR = { active: '#52525b', text: '#ffffff', glow: 'rgba(82,82,91,0.25)' };
+
+function brandMonogram(brand: string): string {
+  const parts = brand.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return brand.slice(0, 2).toUpperCase();
+}
 
 const GRADE_CLASS: Record<string, string> = {
   'A+': 'grade-badge--a-plus',
@@ -394,7 +403,7 @@ function HomePage() {
           value={searchQuery}
           onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
           placeholder="Kelime veya model ara..."
-          className="w-full pl-4 pr-10 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all"
+          className="w-full pl-4 pr-10 py-2.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-200 outline-none transition-all"
         />
         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
           <Search size={16} />
@@ -409,20 +418,28 @@ function HomePage() {
         <div className="p-3 bg-white space-y-2">
           {brands.map(brand => {
             const isActive = selectedBrand === brand;
+            const bc = BRAND_COLORS[brand] ?? DEFAULT_BRAND_COLOR;
             return (
               <button
                 key={brand}
                 onClick={() => setSelectedBrand(isActive ? null : brand)}
                 className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
               >
-                <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white group-hover:border-slate-400'
-                }`}>
-                  {isActive && <Check size={12} strokeWidth={3} />}
+                <div
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shrink-0 transition-all"
+                  style={{
+                    background: bc.active,
+                    color: bc.text,
+                    boxShadow: isActive ? `0 0 0 3px ${bc.glow}` : 'none',
+                    opacity: isActive ? 1 : 0.75,
+                  }}
+                >
+                  {brandMonogram(brand)}
                 </div>
                 <span className={`transition-colors ${isActive ? 'font-bold text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`}>
                   {brand}
                 </span>
+                {isActive && <Check size={12} strokeWidth={3} className="ml-auto text-violet-600" />}
               </button>
             );
           })}
@@ -451,7 +468,7 @@ function HomePage() {
                 className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
               >
                 <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white group-hover:border-slate-400'
+                  isActive ? "bg-violet-600 border-violet-600 text-white" : 'border-slate-300 bg-white group-hover:border-slate-400'
                 }`}>
                   {isActive && <Check size={12} strokeWidth={3} />}
                 </div>
@@ -479,7 +496,7 @@ function HomePage() {
                 className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
               >
                 <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white group-hover:border-slate-400'
+                  isActive ? "bg-violet-600 border-violet-600 text-white" : 'border-slate-300 bg-white group-hover:border-slate-400'
                 }`}>
                   {isActive && <Check size={12} strokeWidth={3} />}
                 </div>
@@ -507,7 +524,7 @@ function HomePage() {
                 className="flex items-center gap-2.5 w-full text-left py-0.5 text-xs group"
               >
                 <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white group-hover:border-slate-400'
+                  isActive ? "bg-violet-600 border-violet-600 text-white" : 'border-slate-300 bg-white group-hover:border-slate-400'
                 }`}>
                   {isActive && <Check size={12} strokeWidth={3} />}
                 </div>
@@ -536,7 +553,7 @@ function HomePage() {
                 if (!isNaN(n)) setPriceRange([n, priceRange[1]]);
               }}
               placeholder="Min"
-              className="w-full px-2 py-1.5 border border-slate-300 rounded text-xs text-slate-800 outline-none focus:border-blue-500"
+              className="w-full px-2 py-1.5 border border-slate-300 rounded text-xs text-slate-800 outline-none focus:border-violet-500"
             />
             <span className="text-slate-400 text-xs">-</span>
             <input
@@ -548,7 +565,7 @@ function HomePage() {
                 if (!isNaN(n)) setPriceRange([priceRange[0], n]);
               }}
               placeholder="Max"
-              className="w-full px-2 py-1.5 border border-slate-300 rounded text-xs text-slate-800 outline-none focus:border-blue-500"
+              className="w-full px-2 py-1.5 border border-slate-300 rounded text-xs text-slate-800 outline-none focus:border-violet-500"
             />
           </div>
 
@@ -560,7 +577,7 @@ function HomePage() {
                   key={label}
                   onClick={() => setPriceRange([min, max])}
                   className={`py-1 px-2 border rounded text-[10px] text-center transition-all ${
-                    isActive ? 'bg-blue-50 border-blue-500 text-blue-700 font-bold' : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'
+                    isActive ? "bg-violet-50 border-violet-500 text-violet-700 font-bold" : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'
                   }`}
                 >
                   {label}
@@ -579,7 +596,7 @@ function HomePage() {
             className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
           >
             <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-              warrantyOnly ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white group-hover:border-slate-400'
+              warrantyOnly ? "bg-violet-600 border-violet-600 text-white" : 'border-slate-300 bg-white group-hover:border-slate-400'
             }`}>
               {warrantyOnly && <Check size={12} strokeWidth={3} />}
             </div>
@@ -829,7 +846,7 @@ function HomePage() {
                 </h2>
                 {!isLoading && (
                   <span className="inline-flex items-center text-xs font-medium text-slate-500 mt-0.5">
-                    <b className="text-blue-600 mr-1">{filteredProducts.length}</b>
+                    <b className="text-violet-600 mr-1">{filteredProducts.length}</b>
                     {sameDayMode ? ' cihaz — yakınında, bugün teslim' : ' cihaz listeleniyor'}
                   </span>
                 )}
