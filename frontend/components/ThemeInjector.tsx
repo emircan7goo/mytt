@@ -69,8 +69,8 @@ export default function ThemeInjector() {
 
   if (!settings) return null;
 
-  const primaryColor  = settings.primaryColor || '#065F46';
-  const primaryHover  = settings.primaryColorHover || '#064E3B';
+  const primaryColor  = settings.primaryColor || '#7C3AED';
+  const primaryHover  = settings.primaryColorHover || '#6D28D9';
   const fontKey       = settings.fontFamily || 'Outfit';
   const fontDef       = FONT_CATALOG[fontKey] ?? FONT_CATALOG['Outfit'];
   const fontStack     = fontDef.stack;

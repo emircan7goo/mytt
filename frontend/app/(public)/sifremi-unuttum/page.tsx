@@ -28,8 +28,8 @@ export default function ForgotPasswordPage() {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
         <div className="max-w-md w-full bg-white rounded-3xl border border-zinc-100 shadow-sm p-10 text-center">
-          <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 size={32} className="text-emerald-500" />
+          <div className="w-16 h-16 bg-violet-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 size={32} className="text-violet-500" />
           </div>
           <h2 className="text-xl font-semibold text-zinc-900 mb-2">Email Gönderildi</h2>
           <p className="text-zinc-500 text-sm leading-relaxed mb-6">

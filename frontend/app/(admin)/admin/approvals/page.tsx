@@ -121,7 +121,7 @@ function ApprovalCard({
               flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               padding: '9px', borderRadius: 10, fontSize: 12, fontWeight: 700, cursor: 'pointer',
               background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.3)',
-              color: '#10b981', transition: 'all 0.15s',
+              color: '#8B5CF6', transition: 'all 0.15s',
             }}
           >
             {loading ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} /> : <CheckCircle2 size={13} />}
@@ -357,8 +357,8 @@ function EmptyState({ icon, text }: { icon: React.ReactNode; text: string }) {
       <div style={{ color: 'rgba(248,250,252,0.15)' }}>{icon}</div>
       <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: 16, margin: 0 }}>{text}</p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 16px', borderRadius: 10, background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
-        <CheckCircle2 size={14} style={{ color: '#10b981' }} />
-        <span style={{ color: '#10b981', fontSize: 12, fontWeight: 700 }}>Tüm kayıtlar onaylandı ✓</span>
+        <CheckCircle2 size={14} style={{ color: '#8B5CF6' }} />
+        <span style={{ color: '#8B5CF6', fontSize: 12, fontWeight: 700 }}>Tüm kayıtlar onaylandı ✓</span>
       </div>
     </div>
   );

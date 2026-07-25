@@ -16,15 +16,15 @@ export const metadata: Metadata = {
     'ikinci el telefon', 'sıfır telefon', 'garantili iPhone', 'Samsung ikinci el',
     'Xiaomi ikinci el', 'telefon al', 'Mytt', 'güvenli alışveriş',
   ],
-  alternates: { canonical: 'https://mytt.com' },
+  alternates: { canonical: 'https://mytt.com.tr' },
   openGraph: {
     title: 'Mytt — Doğrulanmış Cihaz Pazaryeri',
     description: 'Sıfır ve hatasız 2. el cihazlarda doğrulanmış bayi teklifleri — güvenli ve garantili.',
-    url: 'https://mytt.com',
+    url: 'https://mytt.com.tr',
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Mytt',
-    images: [{ url: 'https://mytt.com/og-banner.png', width: 1200, height: 630, alt: 'Mytt Galeri' }],
+    images: [{ url: 'https://mytt.com.tr/og-banner.png', width: 1200, height: 630, alt: 'Mytt Galeri' }],
   },
 };
 import Navbar from '@/components/Navbar';

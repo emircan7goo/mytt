@@ -5,7 +5,7 @@ import { resolveUploadUrl } from '@/lib/resolveUrl';
 import type { FamilySummary } from '@/lib/hooks/useProducts';
 
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
-  'A+': { label: 'Kusursuz',         color: '#065F46', bg: '#ECFDF5', border: '#A7F3D0' },
+  'A+': { label: 'Kusursuz',         color: '#5B21B6', bg: '#F5F3FF', border: '#DDD6FE' },
   'A':  { label: 'Çok İyi',          color: '#0369A1', bg: '#EFF6FF', border: '#BAE6FD' },
   'B':  { label: 'İyi',              color: '#B45309', bg: '#FFFBEB', border: '#FDE68A' },
   'C':  { label: 'Kabul Edilebilir', color: '#6D28D9', bg: '#F5F3FF', border: '#DDD6FE' },
@@ -73,7 +73,7 @@ export default function FamilyCard({ family, index }: Props) {
 
             {family.batteryMax !== null && (
               <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-white/85 backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-zinc-600 shadow-sm">
-                <Battery size={10} className="text-emerald-500" />
+                <Battery size={10} className="text-violet-500" />
                 {family.batteryMin === family.batteryMax ? `%${family.batteryMax}` : `%${family.batteryMin}–${family.batteryMax}`}
               </div>
             )}
@@ -115,7 +115,7 @@ export default function FamilyCard({ family, index }: Props) {
                   {fmt(family.minPrice)}
                 </span>
               </div>
-              <div className="h-9 px-3.5 flex items-center rounded-xl text-[11px] font-black bg-zinc-900 text-white transition-all duration-200 group-hover:bg-emerald-600 group-hover:px-4">
+              <div className="h-9 px-3.5 flex items-center rounded-xl text-[11px] font-black bg-zinc-900 text-white transition-all duration-200 group-hover:bg-violet-600 group-hover:px-4">
                 {family.offerCount > 1 ? 'Karşılaştır →' : 'İncele →'}
               </div>
             </div>

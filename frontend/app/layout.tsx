@@ -22,7 +22,7 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-const BASE_URL = 'https://mytt.com';
+const BASE_URL = 'https://mytt.com.tr';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#065F46',
+  themeColor: '#5B21B6',
 };
 
 /**
@@ -104,7 +104,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="tr" className={`${jakarta.variable} ${fraunces.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#065F46" />
+        <meta name="theme-color" content="#5B21B6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Mytt" />

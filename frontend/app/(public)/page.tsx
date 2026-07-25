@@ -32,7 +32,7 @@ const BRAND_COLORS: Record<string, { active: string; text: string; glow: string 
   POCO:    { active: '#FFD700', text: '#000000', glow: 'rgba(255,215,0,0.25)'   },
   Huawei:  { active: '#cf0a2c', text: '#ffffff', glow: 'rgba(207,10,44,0.25)'   },
   Vivo:    { active: '#4338ca', text: '#ffffff', glow: 'rgba(67,56,202,0.25)'   },
-  Realme:  { active: '#ea580c', text: '#ffffff', glow: 'rgba(234,88,12,0.25)'   },
+  Realme:  { active: '#7C3AED', text: '#ffffff', glow: 'rgba(234,88,12,0.25)'   },
   Tecno:   { active: '#0d9488', text: '#ffffff', glow: 'rgba(13,148,136,0.25)'  },
   Infinix: { active: '#16a34a', text: '#ffffff', glow: 'rgba(22,163,74,0.25)'   },
 };
@@ -108,12 +108,12 @@ const CARD_META: Record<string, {
   glowColor: string;
 }> = {
   sell: {
-    gradient:    'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-    badgeCls:    'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20',
+    gradient:    'linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)',
+    badgeCls:    'bg-violet-500/10 text-violet-500 border border-violet-500/20',
     link:        '/sell',
-    iconBg:      'bg-emerald-50',
-    iconColor:   'text-emerald-600',
-    borderColor: 'group-hover:border-emerald-500/30',
+    iconBg:      'bg-violet-50',
+    iconColor:   'text-violet-600',
+    borderColor: 'group-hover:border-violet-500/30',
     glowColor:   'rgba(16,185,129,0.15)',
   },
   'ai-finder': {
@@ -362,7 +362,7 @@ function HomePage() {
   const activeSortLabel = sortOptions.find(o => o.id === sortMode)?.label || 'Önerilen';
 
   const Divider = () => (
-    <div className="h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent my-6" />
+    <div className="h-px bg-gradient-to-r from-transparent via-violet-200 to-transparent my-6" />
   );
 
   // ── Sidebar ────────────────────────────────────────────────────────
@@ -606,7 +606,7 @@ function HomePage() {
 
   // ── Page ──────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-violet-500 selection:text-white">
 
 
 
@@ -676,7 +676,7 @@ function HomePage() {
 
             <ScrollReveal className="rounded-[3rem] bg-slate-50/50 p-6 lg:p-10 relative overflow-hidden border border-slate-100 shadow-[inset_0_0_100px_rgba(0,0,0,0.02)]">
               {/* Dynamic Abstract Background Blobs */}
-              <div className="absolute -top-20 -left-20 w-[32rem] h-[32rem] bg-emerald-200/50 rounded-full blur-[100px] wow-blob pointer-events-none" />
+              <div className="absolute -top-20 -left-20 w-[32rem] h-[32rem] bg-violet-200/50 rounded-full blur-[100px] wow-blob pointer-events-none" />
               <div className="absolute -bottom-32 -right-20 w-[35rem] h-[35rem] bg-blue-200/50 rounded-full blur-[100px] wow-blob-reverse pointer-events-none" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-amber-100/40 rounded-full blur-[100px] wow-blob pointer-events-none" />
               
@@ -705,28 +705,28 @@ function HomePage() {
                       
                       // Stat text gradient mapping
                       const gradText = isSell 
-                        ? 'bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 text-transparent bg-clip-text' 
+                        ? 'bg-gradient-to-r from-violet-600 via-violet-500 to-violet-600 text-transparent bg-clip-text' 
                         : isAI 
                           ? 'bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 text-transparent bg-clip-text' 
-                          : 'bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-transparent bg-clip-text';
+                          : 'bg-gradient-to-r from-amber-500 via-violet-500 to-amber-500 text-transparent bg-clip-text';
 
                       // Minimalist but bold colors for tags and icons
-                      const iconColor = isSell ? 'text-emerald-600 bg-emerald-50' : isAI ? 'text-blue-600 bg-blue-50' : 'text-amber-600 bg-amber-50';
-                      const tagColor = isSell ? 'bg-emerald-100 text-emerald-700' : isAI ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700';
-                      const btnColor = isSell ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/30' : isAI ? 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/30' : 'bg-amber-500 hover:bg-amber-400 shadow-amber-500/30';
+                      const iconColor = isSell ? 'text-violet-600 bg-violet-50' : isAI ? 'text-blue-600 bg-blue-50' : 'text-amber-600 bg-amber-50';
+                      const tagColor = isSell ? 'bg-violet-100 text-violet-700' : isAI ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700';
+                      const btnColor = isSell ? 'bg-violet-600 hover:bg-violet-500 shadow-violet-600/30' : isAI ? 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/30' : 'bg-amber-500 hover:bg-amber-400 shadow-amber-500/30';
 
                       return (
                         <Link key={card.id} href={meta.link}
                               className="group flex flex-col rounded-[2.5rem] overflow-hidden glass-card-wow relative min-h-[460px]"
                         >
                           {/* VISUAL STAGE (Görsel Alan) */}
-                          <div className={`h-56 relative w-full overflow-hidden flex items-center justify-center ${isSell ? 'bg-emerald-50/50' : isAI ? 'bg-blue-50/50' : 'bg-amber-50/50'}`}>
+                          <div className={`h-56 relative w-full overflow-hidden flex items-center justify-center ${isSell ? 'bg-violet-50/50' : isAI ? 'bg-blue-50/50' : 'bg-amber-50/50'}`}>
                             {/* Futuristic Background Grid */}
                             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_14px]" />
                             
                             {/* Massive Glowing CSS Orb (The "Visual") */}
-                            <div className={`absolute w-32 h-32 rounded-full blur-2xl opacity-60 group-hover:scale-150 transition-transform duration-1000 ${isSell ? 'bg-emerald-400' : isAI ? 'bg-blue-400' : 'bg-amber-400'}`} />
-                            <div className={`absolute w-24 h-24 rounded-full blur-xl opacity-80 mix-blend-overlay ${isSell ? 'bg-teal-300' : isAI ? 'bg-indigo-300' : 'bg-orange-300'} wow-blob`} />
+                            <div className={`absolute w-32 h-32 rounded-full blur-2xl opacity-60 group-hover:scale-150 transition-transform duration-1000 ${isSell ? 'bg-violet-400' : isAI ? 'bg-blue-400' : 'bg-amber-400'}`} />
+                            <div className={`absolute w-24 h-24 rounded-full blur-xl opacity-80 mix-blend-overlay ${isSell ? 'bg-violet-300' : isAI ? 'bg-indigo-300' : 'bg-violet-300'} wow-blob`} />
 
                             {/* Center Glass Pill containing the Icon */}
                             <div className="relative z-10 w-24 h-24 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/80 shadow-2xl flex items-center justify-center wow-icon-bounce">
@@ -841,11 +841,11 @@ function HomePage() {
                   onClick={handleSameDayToggle}
                   disabled={locationLoading}
                   title={sameDayMode ? 'Tüm Cihazlara Dön' : 'Yakınımdaki Mağazalar (Gün İçi Teslim)'}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 font-bold text-sm transition-all shadow-sm disabled:opacity-60 ${ sameDayMode ? 'bg-emerald-500 border-emerald-500 text-white shadow-emerald-500/30 shadow-lg' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700' }`}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 font-bold text-sm transition-all shadow-sm disabled:opacity-60 ${ sameDayMode ? 'bg-violet-500 border-violet-500 text-white shadow-violet-500/30 shadow-lg' : 'bg-white border-slate-200 text-slate-600 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700' }`}
                 >
                   {locationLoading
                     ? <Loader2 size={15} className="animate-spin" />
-                    : <MapPin size={15} className={sameDayMode ? 'text-white' : 'text-emerald-500'} />
+                    : <MapPin size={15} className={sameDayMode ? 'text-white' : 'text-violet-500'} />
                   }
                   <span className="hidden sm:inline">
                     {locationLoading ? 'Konum Alınıyor…' : sameDayMode ? 'Gün İçi Teslim' : 'Gün İçi Teslim'}
@@ -875,21 +875,21 @@ function HomePage() {
                 <div className="relative" ref={sortRef}>
                   <button
                     onClick={() => setIsSortOpen(!isSortOpen)}
-                    className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-800 hover:bg-emerald-50 hover:border-emerald-300 transition-all shadow-sm"
+                    className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-800 hover:bg-violet-50 hover:border-violet-300 transition-all shadow-sm"
                   >
-                    <SlidersHorizontal size={14} className="text-emerald-500 mr-1" />
+                    <SlidersHorizontal size={14} className="text-violet-500 mr-1" />
                     <span className="hidden sm:inline text-slate-500 font-medium mr-1">Sırala:</span>
                     {activeSortLabel}
                     <ChevronDown size={16} className={`text-slate-400 transition-transform ${isSortOpen ? 'rotate-180' : ''}`} />
                   </button>
 
                   {isSortOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-56 bg-white border border-emerald-100 rounded-2xl shadow-xl shadow-emerald-500/10 z-50 p-2 animate-in fade-in slide-in-from-top-2">
+                    <div className="absolute right-0 top-full mt-2 w-56 bg-white border border-violet-100 rounded-2xl shadow-xl shadow-violet-500/10 z-50 p-2 animate-in fade-in slide-in-from-top-2">
                       {sortOptions.map(option => (
                         <button
                           key={option.id}
                           onClick={() => { setSortMode(option.id); setIsSortOpen(false); setCurrentPage(1); }}
-                          className={`w-full text-left px-4 py-3 text-sm font-bold rounded-xl transition-all flex items-center justify-between mb-1 last:mb-0 ${ sortMode === option.id ? 'text-emerald-700 bg-emerald-50 border border-emerald-200' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }`}
+                          className={`w-full text-left px-4 py-3 text-sm font-bold rounded-xl transition-all flex items-center justify-between mb-1 last:mb-0 ${ sortMode === option.id ? 'text-violet-700 bg-violet-50 border border-violet-200' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }`}
                         >
                           {option.label}
                           {sortMode === option.id && <Check size={16} strokeWidth={3} />}
@@ -902,12 +902,12 @@ function HomePage() {
                 {/* Mobile Filter */}
                 <button
                   onClick={() => setShowMobileFilters(true)}
-                  className="lg:hidden flex items-center gap-2 pl-4 pr-3 py-2.5 bg-white border border-slate-200 text-slate-900 rounded-xl text-sm font-bold hover:bg-emerald-50 hover:border-emerald-300 transition-all shadow-sm relative"
+                  className="lg:hidden flex items-center gap-2 pl-4 pr-3 py-2.5 bg-white border border-slate-200 text-slate-900 rounded-xl text-sm font-bold hover:bg-violet-50 hover:border-violet-300 transition-all shadow-sm relative"
                 >
                   <Filter size={16} />
                   <span>Filtreler</span>
                   {activeFiltersCount > 0 && (
-                    <span className="absolute -top-2 -right-2 w-5 h-5 bg-emerald-500 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                    <span className="absolute -top-2 -right-2 w-5 h-5 bg-violet-500 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                       {activeFiltersCount}
                     </span>
                   )}
@@ -932,18 +932,18 @@ function HomePage() {
                 )}
                 {selectedGrade && (
                   <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:-translate-y-0.5 transition-transform"
-                        style={{ background: 'linear-gradient(135deg, #047857, #10b981)', color: '#fff' }}>
+                        style={{ background: 'linear-gradient(135deg, #6D28D9, #8B5CF6)', color: '#fff' }}>
                     Kozmetik: {selectedGrade}
-                    <button onClick={() => setSelectedGrade(null)} className="text-emerald-200 hover:text-white transition-colors">
+                    <button onClick={() => setSelectedGrade(null)} className="text-violet-200 hover:text-white transition-colors">
                       <X size={14} strokeWidth={3} />
                     </button>
                   </span>
                 )}
                 {selectedStorage && (
                   <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:-translate-y-0.5 transition-transform"
-                        style={{ background: 'linear-gradient(135deg, #065f46, #059669)', color: '#fff' }}>
+                        style={{ background: 'linear-gradient(135deg, #5B21B6, #7C3AED)', color: '#fff' }}>
                     {selectedStorage}
-                    <button onClick={() => setSelectedStorage(null)} className="text-emerald-200 hover:text-white transition-colors">
+                    <button onClick={() => setSelectedStorage(null)} className="text-violet-200 hover:text-white transition-colors">
                       <X size={14} strokeWidth={3} />
                     </button>
                   </span>
@@ -952,7 +952,7 @@ function HomePage() {
                   <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:-translate-y-0.5 transition-transform"
                         style={{ background: 'linear-gradient(135deg, #0f766e, #14b8a6)', color: '#fff' }}>
                     {selectedColor}
-                    <button onClick={() => setSelectedColor(null)} className="text-teal-100 hover:text-white transition-colors">
+                    <button onClick={() => setSelectedColor(null)} className="text-violet-100 hover:text-white transition-colors">
                       <X size={14} strokeWidth={3} />
                     </button>
                   </span>
@@ -968,9 +968,9 @@ function HomePage() {
                 )}
                 {(priceRange[0] > priceStats.min || priceRange[1] < priceStats.max) && (
                   <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:-translate-y-0.5 transition-transform"
-                        style={{ background: 'linear-gradient(135deg, #064e3b, #047857)', color: '#fff' }}>
+                        style={{ background: 'linear-gradient(135deg, #4C1D95, #6D28D9)', color: '#fff' }}>
                     ₺{priceRange[0].toLocaleString('tr-TR')} – ₺{priceRange[1].toLocaleString('tr-TR')}
-                    <button onClick={() => setPriceRange([priceStats.min, priceStats.max])} className="text-emerald-200 hover:text-white transition-colors">
+                    <button onClick={() => setPriceRange([priceStats.min, priceStats.max])} className="text-violet-200 hover:text-white transition-colors">
                       <X size={14} strokeWidth={3} />
                     </button>
                   </span>
@@ -1008,7 +1008,7 @@ function HomePage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] font-semibold text-slate-600 group-hover:text-emerald-600 text-center leading-tight transition-colors line-clamp-2">
+                      <p className="text-[11px] font-semibold text-slate-600 group-hover:text-violet-600 text-center leading-tight transition-colors line-clamp-2">
                         {item.name}
                       </p>
                     </Link>
@@ -1032,7 +1032,7 @@ function HomePage() {
                   <div key={`${family.brand}-${family.model}`} className="relative animate-in fade-in slide-in-from-bottom-3 h-full"
                     style={{ animationDelay: `${Math.min(index * 35, 200)}ms` }}>
                     {sameDayMode && (
-                      <div className="absolute top-2 left-2 z-20 flex items-center gap-1 bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-md shadow-emerald-500/40 pointer-events-none">
+                      <div className="absolute top-2 left-2 z-20 flex items-center gap-1 bg-violet-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-md shadow-violet-500/40 pointer-events-none">
                         <MapPin size={9} /> Bugün Teslim
                       </div>
                     )}
@@ -1044,13 +1044,13 @@ function HomePage() {
 
             {/* Boş Durum */}
             {!isLoading && paginatedProducts.length === 0 && (
-              <div className="relative flex flex-col items-center justify-center py-20 text-center bg-emerald-50/60 rounded-[2rem] border-2 border-dashed border-emerald-200 shadow-sm animate-in fade-in overflow-hidden">
+              <div className="relative flex flex-col items-center justify-center py-20 text-center bg-violet-50/60 rounded-[2rem] border-2 border-dashed border-violet-200 shadow-sm animate-in fade-in overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none"
                      style={{ background: 'radial-gradient(circle at 50% 50%, rgba(16,185,129,0.05) 0%, transparent 65%)' }} />
                 <div className="relative z-10 w-24 h-24 mb-8">
-                  <div className="absolute inset-0 bg-emerald-300/30 rounded-full animate-ping opacity-60" />
-                  <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg border border-emerald-200">
-                    <Search size={32} className="text-emerald-400" strokeWidth={2} />
+                  <div className="absolute inset-0 bg-violet-300/30 rounded-full animate-ping opacity-60" />
+                  <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg border border-violet-200">
+                    <Search size={32} className="text-violet-400" strokeWidth={2} />
                   </div>
                 </div>
                 <h3 className="font-black text-2xl text-slate-900 tracking-tight mb-3 relative z-10">
@@ -1068,7 +1068,7 @@ function HomePage() {
                 {activeFiltersCount > 0 && (
                   <button
                     onClick={resetFilters}
-                    className="relative z-10 px-8 py-4 bg-emerald-500 text-white font-bold text-sm rounded-2xl hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/25 hover:-translate-y-0.5"
+                    className="relative z-10 px-8 py-4 bg-violet-500 text-white font-bold text-sm rounded-2xl hover:bg-violet-600 transition-all shadow-xl shadow-violet-500/25 hover:-translate-y-0.5"
                   >
                     Tüm Filtreleri Sıfırla
                   </button>
@@ -1082,7 +1082,7 @@ function HomePage() {
                 <button
                   onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
-                  className="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl disabled:opacity-40 disabled:cursor-not-allowed hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-sm"
+                  className="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl disabled:opacity-40 disabled:cursor-not-allowed hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700 transition-all shadow-sm"
                 >
                   Önceki
                 </button>
@@ -1093,7 +1093,7 @@ function HomePage() {
                     <button
                       key={pageNum}
                       onClick={() => setCurrentPage(pageNum)}
-                      className={`w-10 h-10 rounded-xl transition-all font-bold text-sm shadow-sm border ${ currentPage === pageNum ? 'bg-emerald-500 text-white border-emerald-500 shadow-md shadow-emerald-300/40' : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700' }`}
+                      className={`w-10 h-10 rounded-xl transition-all font-bold text-sm shadow-sm border ${ currentPage === pageNum ? 'bg-violet-500 text-white border-violet-500 shadow-md shadow-violet-300/40' : 'bg-white text-slate-700 border-slate-200 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700' }`}
                     >
                       {pageNum}
                     </button>
@@ -1105,7 +1105,7 @@ function HomePage() {
                     <span className="text-slate-400 font-black px-2 tracking-widest">...</span>
                     <button
                       onClick={() => setCurrentPage(totalPages)}
-                      className="w-10 h-10 rounded-xl bg-white text-slate-700 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-all font-bold text-sm shadow-sm"
+                      className="w-10 h-10 rounded-xl bg-white text-slate-700 border border-slate-200 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700 transition-all font-bold text-sm shadow-sm"
                     >
                       {totalPages}
                     </button>
@@ -1115,7 +1115,7 @@ function HomePage() {
                 <button
                   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl disabled:opacity-40 disabled:cursor-not-allowed hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-sm"
+                  className="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl disabled:opacity-40 disabled:cursor-not-allowed hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700 transition-all shadow-sm"
                 >
                   Sonraki
                 </button>

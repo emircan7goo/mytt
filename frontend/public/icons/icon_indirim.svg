@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="0%" stop-color="#8B5CF6"/>
       <stop offset="100%" stop-color="#DC2626"/>
     </linearGradient>
   </defs>
@@ -11,9 +11,9 @@
   <!-- Gift box top lid -->
   <rect x="14" y="42" width="68" height="12" rx="5" fill="white" opacity="0.85"/>
   <!-- Ribbon vertical -->
-  <rect x="44" y="50" width="8" height="32" fill="#F97316" opacity="0.8"/>
+  <rect x="44" y="50" width="8" height="32" fill="#8B5CF6" opacity="0.8"/>
   <!-- Ribbon horizontal on lid -->
-  <rect x="14" y="44" width="68" height="8" rx="0" fill="#F97316" opacity="0.6"/>
+  <rect x="14" y="44" width="68" height="8" rx="0" fill="#8B5CF6" opacity="0.6"/>
   <!-- Bow left loop -->
   <path d="M38 42 Q28 28 36 26 Q44 24 44 38" fill="#FBBF24" opacity="0.95"/>
   <!-- Bow right loop -->

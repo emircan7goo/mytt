@@ -23,12 +23,12 @@ export default function CustomerSidebar() {
       {/* Logo */}
       <div style={{ padding: '24px 20px 16px', borderBottom: '1px solid rgba(15,23,42,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: 32, height: 32, borderRadius: '8px', background: 'linear-gradient(135deg, #10b981, #059669)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(16,185,129,0.25)' }}>
+          <div style={{ width: 32, height: 32, borderRadius: '8px', background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(16,185,129,0.25)' }}>
             <ShieldCheck size={16} color="white" />
           </div>
           <div>
             <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 800 }}>Mytt</div>
-            <div style={{ color: '#10b981', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Hesabım</div>
+            <div style={{ color: '#8B5CF6', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Hesabım</div>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function CustomerSidebar() {
               padding: '10px 12px', borderRadius: '10px', marginBottom: '2px',
               background: isActive ? 'rgba(16,185,129,0.08)' : 'transparent',
               border: isActive ? '1px solid rgba(16,185,129,0.18)' : '1px solid transparent',
-              color: isActive ? '#059669' : 'rgba(15,23,42,0.45)',
+              color: isActive ? '#7C3AED' : 'rgba(15,23,42,0.45)',
               textDecoration: 'none', fontSize: '13px', fontWeight: isActive ? 700 : 400,
               transition: 'all 0.15s',
             }}>
@@ -61,8 +61,8 @@ export default function CustomerSidebar() {
       <div style={{ padding: '14px 18px 24px', borderTop: '1px solid rgba(15,23,42,0.06)' }}>
         <div style={{ padding: '12px 14px', borderRadius: '10px', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-            <ShieldCheck size={13} color="#10b981" />
-            <span style={{ color: '#059669', fontSize: '11px', fontWeight: 700 }}>6 Ay Garanti</span>
+            <ShieldCheck size={13} color="#8B5CF6" />
+            <span style={{ color: '#7C3AED', fontSize: '11px', fontWeight: 700 }}>6 Ay Garanti</span>
           </div>
           <p style={{ color: 'rgba(15,23,42,0.45)', fontSize: '11px', lineHeight: 1.5 }}>
             Tüm ürünler profesyonel test ve garanti kapsamında.

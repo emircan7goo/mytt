@@ -39,16 +39,16 @@ function useCountdown(expiresAt?: string | null) {
 const SELL_STATUS_MAP: Record<SellRequestStatus, { label: string; color: string; bg: string; icon: React.ElementType }> = {
   PENDING:   { label: 'Teklif Açık',    color: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  icon: Clock        },
   EXPIRED:   { label: 'Teklif Kapandı', color: '#6366f1', bg: 'rgba(99,102,241,0.12)',  icon: AlertCircle  },
-  ACCEPTED:  { label: 'Kabul Edildi',   color: '#10b981', bg: 'rgba(16,185,129,0.12)',  icon: CheckCircle  },
+  ACCEPTED:  { label: 'Kabul Edildi',   color: '#8B5CF6', bg: 'rgba(16,185,129,0.12)',  icon: CheckCircle  },
   REJECTED:  { label: 'Reddedildi',     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',   icon: XCircle      },
   SHIPPED:   { label: 'Kargoda',        color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)',  icon: Package      },
   RECEIVED:  { label: 'Depoda',         color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',  icon: CheckCircle  },
-  COMPLETED: { label: 'Tamamlandı',     color: '#10b981', bg: 'rgba(16,185,129,0.12)',  icon: CheckCircle  },
+  COMPLETED: { label: 'Tamamlandı',     color: '#8B5CF6', bg: 'rgba(16,185,129,0.12)',  icon: CheckCircle  },
   CANCELLED: { label: 'İptal',          color: '#6b7280', bg: 'rgba(107,114,128,0.12)', icon: XCircle      },
 };
 
 const GRADE_COLORS: Record<string, string> = {
-  'A+': '#10b981', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
+  'A+': '#8B5CF6', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
 };
 
 // ── Müşteri satış talebi kartı ─────────────────────────────────────────────────
@@ -110,8 +110,8 @@ function CustomerCard({ req, hasNoBalance }: { req: SellRequest; hasNoBalance: b
               <Battery size={9} /> %{req.batteryHealth}
             </span>
           )}
-          {req.hasBox     && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Kutulu</span>}
-          {req.hasInvoice && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Faturalı</span>}
+          {req.hasBox     && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#8B5CF6', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Kutulu</span>}
+          {req.hasInvoice && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#8B5CF6', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Faturalı</span>}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: '99px', background: status.bg }}>
@@ -125,7 +125,7 @@ function CustomerCard({ req, hasNoBalance }: { req: SellRequest; hasNoBalance: b
             </div>
           )}
           {!hasNoBalance && hasBid
-            ? <span style={{ color: '#10b981', fontSize: '12px', fontWeight: 800 }}>Teklifim: {fmt(Number(req.myBid!.amount))}</span>
+            ? <span style={{ color: '#8B5CF6', fontSize: '12px', fontWeight: 800 }}>Teklifim: {fmt(Number(req.myBid!.amount))}</span>
             : !hasNoBalance && isOpen
             ? <span style={{ color: '#f59e0b', fontSize: '12px', fontWeight: 700 }}>Teklif Ver →</span>
             : null
@@ -233,8 +233,8 @@ function DealerItemCard({ item, hasNoBalance }: { item: DealerMarketItem; hasNoB
               <Battery size={9} /> %{item.batteryHealth}
             </span>
           )}
-          {item.hasBox     && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Kutulu</span>}
-          {item.hasInvoice && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Faturalı</span>}
+          {item.hasBox     && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#8B5CF6', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Kutulu</span>}
+          {item.hasInvoice && <span style={{ background: 'rgba(16,185,129,0.1)', color: '#8B5CF6', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>Faturalı</span>}
         </div>
 
         {/* Fiyat */}
@@ -246,7 +246,7 @@ function DealerItemCard({ item, hasNoBalance }: { item: DealerMarketItem; hasNoB
               <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '12px', margin: 0 }}>Taban fiyat yok</p>
             )}
             {hasBid && item.myBid && (
-              <p style={{ color: '#10b981', fontSize: '12px', fontWeight: 700, margin: '4px 0 0' }}>Teklifim: {fmt(Number(item.myBid.amount))}</p>
+              <p style={{ color: '#8B5CF6', fontSize: '12px', fontWeight: 700, margin: '4px 0 0' }}>Teklifim: {fmt(Number(item.myBid.amount))}</p>
             )}
             {item.bidCount !== undefined && (
               <p style={{ color: 'rgba(248,250,252,0.3)', fontSize: '10px', margin: '2px 0 0' }}>{item.bidCount} teklif</p>
@@ -260,7 +260,7 @@ function DealerItemCard({ item, hasNoBalance }: { item: DealerMarketItem; hasNoB
 
         {/* Mesaj */}
         {msg && (
-          <p style={{ color: msg.includes('alındı') || msg.includes('verildi') ? '#10b981' : '#ef4444', fontSize: '11px', fontWeight: 600, margin: '0 0 8px' }}>{msg}</p>
+          <p style={{ color: msg.includes('alındı') || msg.includes('verildi') ? '#8B5CF6' : '#ef4444', fontSize: '11px', fontWeight: 600, margin: '0 0 8px' }}>{msg}</p>
         )}
 
         {/* Aksiyonlar */}
@@ -377,8 +377,8 @@ export default function DealerBuyRequestsPage() {
       {/* Yeni talep badge */}
       {newBadge > 0 && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 18px', borderRadius: '12px', marginBottom: 18, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)' }}>
-          <Bell size={16} style={{ color: '#10b981' }} />
-          <p style={{ color: '#10b981', fontWeight: 800, fontSize: '13px', margin: 0 }}>{newBadge} yeni müşteri talebi!</p>
+          <Bell size={16} style={{ color: '#8B5CF6' }} />
+          <p style={{ color: '#8B5CF6', fontWeight: 800, fontSize: '13px', margin: 0 }}>{newBadge} yeni müşteri talebi!</p>
         </div>
       )}
 
@@ -390,7 +390,7 @@ export default function DealerBuyRequestsPage() {
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <button onClick={() => router.push('/dealer/sell')}
-            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#10b981', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}>
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#8B5CF6', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}>
             <Plus size={13} /> Cihaz Sat
           </button>
           <button onClick={refetch} disabled={isFetching}
@@ -404,7 +404,7 @@ export default function DealerBuyRequestsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '12px', marginBottom: '24px' }}>
         {[
           { label: 'Açık Müşteri',   value: openCustCount,  color: '#f59e0b', icon: Clock      },
-          { label: 'Müşteri Tekl.',  value: myBidCustCount, color: '#10b981', icon: TrendingUp  },
+          { label: 'Müşteri Tekl.',  value: myBidCustCount, color: '#8B5CF6', icon: TrendingUp  },
           { label: 'Aktif Bayi',     value: activeDeal,     color: '#a855f7', icon: Store       },
           { label: 'Bayi Tekl.',     value: myBidDeal,      color: '#0ea5e9', icon: Gavel       },
         ].map(({ label, value, color, icon: Icon }) => (
@@ -537,7 +537,7 @@ export default function DealerBuyRequestsPage() {
               </p>
               {tab === 'dealer' && (
                 <button onClick={() => router.push('/dealer/sell')}
-                  style={{ marginTop: 16, padding: '10px 22px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#10b981', fontSize: '13px', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  style={{ marginTop: 16, padding: '10px 22px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#8B5CF6', fontSize: '13px', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                   <Plus size={14} /> İlk ilanı sen oluştur
                 </button>
               )}

@@ -100,7 +100,7 @@ export default function AdminSidebar() {
         </p>
         {NAV_ITEMS.map(({ href, label, icon: Icon, highlight, badgeKey }: any) => {
           const isActive = pathname === href || pathname.startsWith(href + '/');
-          const accentColor = highlight ? '#10b981' : '#a855f7';
+          const accentColor = highlight ? '#8B5CF6' : '#a855f7';
           const badgeCount = badgeKey ? (badges[badgeKey] ?? 0) : 0;
           return (
             <Link key={href} href={href} style={{
@@ -113,7 +113,7 @@ export default function AdminSidebar() {
               transition: 'all 0.15s',
             }}>
               <div style={{ position: 'relative', flexShrink: 0 }}>
-                <Icon size={15} style={{ color: highlight ? '#10b981' : 'inherit' }} />
+                <Icon size={15} style={{ color: highlight ? '#8B5CF6' : 'inherit' }} />
                 {badgeCount > 0 && (
                   <span style={{
                     position: 'absolute', top: -5, right: -6,
@@ -140,8 +140,8 @@ export default function AdminSidebar() {
             Platform
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }} />
-            <span style={{ color: '#10b981', fontSize: '11px', fontWeight: 600 }}>Sistemler Aktif</span>
+            <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#8B5CF6', boxShadow: '0 0 6px #8B5CF6' }} />
+            <span style={{ color: '#8B5CF6', fontSize: '11px', fontWeight: 600 }}>Sistemler Aktif</span>
           </div>
         </div>
       </div>

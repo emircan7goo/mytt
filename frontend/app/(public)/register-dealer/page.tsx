@@ -79,7 +79,7 @@ export default function RegisterDealerPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-xl transition-colors"
           >
             Ana Sayfaya Dön
           </Link>
@@ -96,7 +96,7 @@ export default function RegisterDealerPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-black tracking-tight text-zinc-900">
-              my<span className="text-orange-500">tt</span>
+              my<span className="text-violet-500">tt</span>
             </span>
           </Link>
           <p className="mt-2 text-sm text-zinc-500 font-medium">
@@ -256,7 +256,7 @@ export default function RegisterDealerPage() {
               Bireysel hesap mı açmak istiyorsunuz?{' '}
               <Link
                 href="/register"
-                className="font-bold text-orange-500 hover:text-orange-600 transition-colors"
+                className="font-bold text-violet-500 hover:text-violet-600 transition-colors"
               >
                 Üye Ol
               </Link>

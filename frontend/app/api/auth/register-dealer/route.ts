@@ -5,8 +5,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
+import { isRateLimited, rateLimitResponse } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
+  if (await isRateLimited(req, 'register-dealer', 5, 60_000)) return rateLimitResponse();
+
   const body = await req.json().catch(() => null);
   const { email, name, password, companyName, taxId } = body ?? {};
 

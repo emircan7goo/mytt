@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { CheckCircle2, Package, ShieldCheck, ArrowRight, Loader2 } from 'lucide-react';
+import { CheckCircle2, Package, ShieldCheck, ArrowRight, Loader2, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -9,6 +9,7 @@ function BasariliContent() {
   const searchParams = useSearchParams();
   const router       = useRouter();
   const orderId      = searchParams.get('orderId');
+  const isTestMode   = searchParams.get('testMode') === '1';
 
   // 10 saniye sonra hesabıma yönlendir
   useEffect(() => {
@@ -25,8 +26,8 @@ function BasariliContent() {
         className="flex flex-col items-center gap-6 max-w-md text-center"
       >
         {/* İkon */}
-        <div className="w-28 h-28 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.15)]">
-          <CheckCircle2 size={52} className="text-emerald-500" strokeWidth={1.5} />
+        <div className="w-28 h-28 rounded-full bg-violet-50 border-2 border-violet-200 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.15)]">
+          <CheckCircle2 size={52} className="text-violet-500" strokeWidth={1.5} />
         </div>
 
         <div>
@@ -38,6 +39,20 @@ function BasariliContent() {
             kargoya verilecek ve size bildirim yapılacaktır.
           </p>
         </div>
+
+        {/* Test modu uyarısı — gerçek ödeme henüz bağlı değil */}
+        {isTestMode && (
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 w-full text-left flex gap-3">
+            <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-semibold text-amber-800 mb-0.5">Test Modu — Gerçek Ödeme Alınmadı</p>
+              <p className="text-xs text-amber-700 leading-relaxed">
+                Ödeme altyapımız yakında devreye alınacak. Bu sipariş test amaçlı oluşturuldu,
+                kartınızdan herhangi bir tutar çekilmedi.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Sipariş ID */}
         {orderId && (

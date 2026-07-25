@@ -11,7 +11,7 @@ import {
 // ── Sabitler ──────────────────────────────────────────────────────────────────
 
 const GRADES = [
-  { value: 'A+', label: 'A+ Kalite', desc: 'Tertemiz — Hiç iz yok, neredeyse sıfır', color: '#10b981' },
+  { value: 'A+', label: 'A+ Kalite', desc: 'Tertemiz — Hiç iz yok, neredeyse sıfır', color: '#8B5CF6' },
   { value: 'A',  label: 'A Kalite',  desc: 'Çok İyi — Gözle zor fark edilen kılcal iz', color: '#38bdf8' },
   { value: 'B',  label: 'B Kalite',  desc: 'İyi — Belirgin kullanım izi var, tam çalışır', color: '#f59e0b' },
   { value: 'C',  label: 'C Kalite',  desc: 'Kasa çizik/ezik — Tamirsiz, eksiksiz çalışır', color: '#f87171' },
@@ -413,7 +413,7 @@ export default function DealerStockPage() {
                   </p>
                   <p style={{ color: 'rgba(248,250,252,0.35)', fontSize: 11, marginTop: 3 }}>
                     Cihazın gerçekten elinizde olduğunu kanıtlamanız gerekiyor.{' '}
-                    <span style={{ fontWeight: 700, color: uploadedCount >= 3 ? '#10b981' : '#f87171' }}>
+                    <span style={{ fontWeight: 700, color: uploadedCount >= 3 ? '#8B5CF6' : '#f87171' }}>
                       {uploadedCount}/3 yüklendi
                     </span>
                   </p>

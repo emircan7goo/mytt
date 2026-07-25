@@ -42,7 +42,7 @@ function completeness(variants: any[]) {
 
 function CompletenessDot({ level }: { level: string }) {
   const map: Record<string, { bg: string; title: string }> = {
-    full:    { bg: '#10b981', title: 'Specs + görsel tam' },
+    full:    { bg: '#8B5CF6', title: 'Specs + görsel tam' },
     partial: { bg: '#f59e0b', title: 'Kısmi bilgi' },
     empty:   { bg: '#ef4444', title: 'Specs/görsel eksik' },
   };
@@ -352,7 +352,7 @@ export default function AdminCatalogPage() {
               </div>
               <button type="button" onClick={() => setEditing({ ...editing, isActive: !editing.isActive })}>
                 {editing.isActive
-                  ? <ToggleRight size={28} className="text-emerald-400" />
+                  ? <ToggleRight size={28} className="text-violet-400" />
                   : <ToggleLeft  size={28} className="text-zinc-400" />}
               </button>
             </div>
@@ -439,7 +439,7 @@ export default function AdminCatalogPage() {
           { label: 'Marka',   value: stats.brands,    color: '#a855f7' },
           { label: 'Model',   value: stats.models,    color: '#3b82f6' },
           { label: 'Varyant', value: stats.variants,  color: '#64748b' },
-          { label: 'Specs Dolu', value: stats.withSpecs, color: '#10b981' },
+          { label: 'Specs Dolu', value: stats.withSpecs, color: '#8B5CF6' },
           { label: 'Görselli',   value: stats.withImg,   color: '#f59e0b' },
         ].map(s => (
           <div key={s.label}
@@ -552,7 +552,7 @@ export default function AdminCatalogPage() {
                           <p className="text-zinc-100 font-semibold text-[13px]">{group.brand} {group.model}</p>
                           <p className="text-zinc-400 text-[11px] mt-0.5">
                             {group.variants.length} varyant
-                            {group.level === 'full' && <span className="text-emerald-500/70 ml-2">● Tam</span>}
+                            {group.level === 'full' && <span className="text-violet-500/70 ml-2">● Tam</span>}
                             {group.level === 'partial' && <span className="text-amber-500/70 ml-2">● Kısmi</span>}
                             {group.level === 'empty' && <span className="text-red-500/70 ml-2">● Eksik</span>}
                           </p>
@@ -573,9 +573,9 @@ export default function AdminCatalogPage() {
                     {/* Aktif/Pasif */}
                     <td className="px-4 py-3 hidden lg:table-cell" onClick={e => e.stopPropagation()}>
                       <button onClick={() => toggleGroup(group)}
-                        className={`flex items-center gap-1.5 text-xs font-semibold transition-colors ${anyActive ? 'text-emerald-400 hover:text-emerald-300' : 'text-zinc-400 hover:text-zinc-400'}`}>
+                        className={`flex items-center gap-1.5 text-xs font-semibold transition-colors ${anyActive ? 'text-violet-400 hover:text-violet-300' : 'text-zinc-400 hover:text-zinc-400'}`}>
                         {anyActive
-                          ? <ToggleRight size={16} className="text-emerald-400" />
+                          ? <ToggleRight size={16} className="text-violet-400" />
                           : <ToggleLeft  size={16} className="text-zinc-400" />}
                         {anyActive ? 'Aktif' : 'Pasif'}
                       </button>

@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle, XCircle, Clock, MessageSquare, RefreshCw } 
 const STATUS_CFG: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   OPEN:      { label:'Açık',        color:'#ef4444', bg:'rgba(239,68,68,0.1)',   border:'rgba(239,68,68,0.25)',   icon: <AlertTriangle size={12}/> },
   IN_REVIEW: { label:'İnceleniyor', color:'#f59e0b', bg:'rgba(245,158,11,0.1)', border:'rgba(245,158,11,0.25)', icon: <Clock size={12}/>         },
-  RESOLVED:  { label:'Çözüldü',     color:'#10b981', bg:'rgba(16,185,129,0.1)', border:'rgba(16,185,129,0.25)', icon: <CheckCircle size={12}/>   },
+  RESOLVED:  { label:'Çözüldü',     color:'#8B5CF6', bg:'rgba(16,185,129,0.1)', border:'rgba(16,185,129,0.25)', icon: <CheckCircle size={12}/>   },
   ESCALATED: { label:'Eskalasyon',  color:'#a855f7', bg:'rgba(168,85,247,0.1)', border:'rgba(168,85,247,0.25)', icon: <XCircle size={12}/>       },
   REFUNDED:  { label:'İade',        color:'#ef4444', bg:'rgba(239,68,68,0.1)',   border:'rgba(239,68,68,0.25)',   icon: <RefreshCw size={12}/>    },
 };
@@ -68,7 +68,7 @@ export default function AdminDisputesPage() {
           { label:'Açık Ticket', count:stats.open,      color:'#ef4444' },
           { label:'İnceleniyor', count:stats.inReview,  color:'#f59e0b' },
           { label:'Eskalasyon',  count:stats.escalated, color:'#a855f7' },
-          { label:'Çözüldü',     count:stats.resolved,  color:'#10b981' },
+          { label:'Çözüldü',     count:stats.resolved,  color:'#8B5CF6' },
         ].map(s => (
           <div key={s.label} style={{ padding:'16px 20px', borderRadius:'12px', background:`${s.color}08`, border:`1px solid ${s.color}22` }}>
             <div style={{ fontSize:'24px', fontWeight:800, color:s.color }}>{loading ? '…' : s.count}</div>
@@ -132,7 +132,7 @@ export default function AdminDisputesPage() {
                         )}
                         {(status === 'IN_REVIEW' || status === 'ESCALATED') && (
                           <button onClick={e => { e.stopPropagation(); updateStatus(d.id, 'RESOLVED'); }}
-                            style={{ padding:'4px 10px', borderRadius:'6px', background:'rgba(16,185,129,0.12)', border:'1px solid rgba(16,185,129,0.25)', color:'#10b981', fontSize:'11px', fontWeight:700, cursor:'pointer' }}>
+                            style={{ padding:'4px 10px', borderRadius:'6px', background:'rgba(16,185,129,0.12)', border:'1px solid rgba(16,185,129,0.25)', color:'#8B5CF6', fontSize:'11px', fontWeight:700, cursor:'pointer' }}>
                             Çöz
                           </button>
                         )}
@@ -197,7 +197,7 @@ export default function AdminDisputesPage() {
                 <button
                   disabled={saving}
                   onClick={() => updateStatus(selected.id, 'RESOLVED', note)}
-                  style={{ flex:1, padding:'10px', borderRadius:'10px', border:'none', background:'linear-gradient(135deg, #10b981, #059669)', color:'white', fontSize:'13px', fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:'6px', opacity: saving ? 0.6 : 1 }}>
+                  style={{ flex:1, padding:'10px', borderRadius:'10px', border:'none', background:'linear-gradient(135deg, #8B5CF6, #7C3AED)', color:'white', fontSize:'13px', fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:'6px', opacity: saving ? 0.6 : 1 }}>
                   <CheckCircle size={14}/> {saving ? 'Kaydediliyor…' : 'Çözüldü İşaretle'}
                 </button>
                 <button style={{ padding:'10px 14px', borderRadius:'10px', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)', color:'rgba(248,250,252,0.6)', fontSize:'13px', fontWeight:600, cursor:'pointer', display:'flex', alignItems:'center', gap:'6px' }}>

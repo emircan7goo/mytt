@@ -8,21 +8,21 @@ export const metadata: Metadata = {
     'trade-in', 'takas', 'telefon takas', 'iPhone takas', 'Samsung takas',
     'eski telefon değeri', 'yeni telefon al', 'Mytt takas', 'cihaz takas',
   ],
-  alternates: { canonical: 'https://mytt.com/trade-in' },
+  alternates: { canonical: 'https://mytt.com.tr/trade-in' },
   openGraph: {
     title: 'Trade-In — Eski Telefonu Yenisiyle Değiştir | Mytt',
     description: 'Eski cihazınızı değerlendirin, yenisiyle takas edin. %40\'a kadar tasarruf.',
-    url: 'https://mytt.com/trade-in',
+    url: 'https://mytt.com.tr/trade-in',
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Mytt',
-    images: [{ url: 'https://mytt.com/og-banner.png', width: 1200, height: 630, alt: 'Mytt — Trade-In' }],
+    images: [{ url: 'https://mytt.com.tr/og-banner.png', width: 1200, height: 630, alt: 'Mytt — Trade-In' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Trade-In — Eski Telefonu Yenisiyle Değiştir | Mytt',
     description: 'Eski cihazınızı değerlendirin, yenisiyle takas edin.',
-    images: ['https://mytt.com/og-banner.png'],
+    images: ['https://mytt.com.tr/og-banner.png'],
   },
 };
 

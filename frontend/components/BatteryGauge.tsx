@@ -11,7 +11,7 @@ interface BatteryGaugeProps {
 }
 
 function getColor(pct: number): { stroke: string; glow: string; text: string } {
-  if (pct >= 80) return { stroke: '#10B981', glow: 'rgba(16,185,129,0.25)', text: '#059669' };
+  if (pct >= 80) return { stroke: '#8B5CF6', glow: 'rgba(16,185,129,0.25)', text: '#7C3AED' };
   if (pct >= 65) return { stroke: '#F59E0B', glow: 'rgba(245,158,11,0.25)',  text: '#D97706' };
   return          { stroke: '#EF4444', glow: 'rgba(239,68,68,0.25)',   text: '#DC2626' };
 }

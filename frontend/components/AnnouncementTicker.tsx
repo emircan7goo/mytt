@@ -78,7 +78,7 @@ export default function AnnouncementTicker() {
               <span className="px-6">{item}</span>
               <span
                 className="shrink-0 text-[8px] leading-none"
-                style={{ color: '#6EE7B7' }}
+                style={{ color: '#C4B5FD' }}
                 aria-hidden
               >
                 ◆

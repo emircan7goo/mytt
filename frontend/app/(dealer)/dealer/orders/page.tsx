@@ -14,7 +14,7 @@ const fmt = (n: number) =>
 const PAY_STATUS: Record<string, { label: string; color: string; bg: string; border: string; icon: React.ReactNode }> = {
   PENDING:   { label: 'Ödeme Bekleniyor', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', border: 'rgba(148,163,184,0.25)', icon: <Clock size={11}/>       },
   ESCROW:    { label: 'Escrow\'da',       color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.25)',  icon: <Clock size={11}/>       },
-  RELEASED:  { label: 'Tamamlandı',       color: '#10b981', bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.25)', icon: <CheckCircle size={11}/> },
+  RELEASED:  { label: 'Tamamlandı',       color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.25)', icon: <CheckCircle size={11}/> },
   REFUNDED:  { label: 'İade Edildi',      color: '#ef4444', bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)',  icon: <RotateCcw size={11}/>   },
   CANCELLED: { label: 'İptal',            color: '#6b7280', bg: 'rgba(107,114,128,0.1)', border: 'rgba(107,114,128,0.25)',icon: <XCircle size={11}/>     },
 };
@@ -25,8 +25,8 @@ const SHIP_STATUS: Record<string, { label: string; color: string; icon: React.Re
   DEALER_SHIPPED:          { label: 'Merkeze Gönderildi',  color: '#0ea5e9', icon: <Truck size={11}/>            },
   WAREHOUSE_RECEIVED:      { label: 'Merkeze Ulaştı',      color: '#8b5cf6', icon: <Warehouse size={11}/>        },
   INSPECTION_PASSED:       { label: 'Denetim Geçti',       color: '#06b6d4', icon: <ClipboardCheck size={11}/>   },
-  ADMIN_SHIPPED:           { label: 'Müşteriye Gönderildi',color: '#10b981', icon: <Truck size={11}/>            },
-  DELIVERED:               { label: 'Teslim Edildi',       color: '#10b981', icon: <CheckCircle size={11}/>      },
+  ADMIN_SHIPPED:           { label: 'Müşteriye Gönderildi',color: '#8B5CF6', icon: <Truck size={11}/>            },
+  DELIVERED:               { label: 'Teslim Edildi',       color: '#8B5CF6', icon: <CheckCircle size={11}/>      },
 };
 
 // ── Ürün adı yardımcısı ───────────────────────────────────────────────────────
@@ -132,7 +132,7 @@ export default function DealerOrdersPage() {
 
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 text-emerald-400 text-sm font-semibold backdrop-blur-xl shadow-xl">
+        <div className="fixed bottom-6 right-6 z-[9999] px-5 py-3 rounded-2xl bg-violet-500/15 border border-violet-500/35 text-violet-400 text-sm font-semibold backdrop-blur-xl shadow-xl">
           {toast}
         </div>
       )}
@@ -163,7 +163,7 @@ export default function DealerOrdersPage() {
           {[
             { label: 'Kargo Bekliyor', value: stats.pending,  color: '#f59e0b', desc: 'escrow + gönderilmedi' },
             { label: 'Escrow\'da',     value: stats.escrow,   color: '#0ea5e9', desc: 'ödeme tutuldu' },
-            { label: 'Tamamlandı',    value: stats.released, color: '#10b981', desc: 'escrow serbest' },
+            { label: 'Tamamlandı',    value: stats.released, color: '#8B5CF6', desc: 'escrow serbest' },
           ].map(s => (
             <div key={s.label} className="rounded-xl border p-4"
               style={{ background: `${s.color}08`, borderColor: `${s.color}22` }}>
@@ -230,7 +230,7 @@ export default function DealerOrdersPage() {
                       <div className="text-zinc-200 text-[13px] font-semibold">{productLabel(o)}</div>
                       <div className="text-zinc-500 text-[11px] mt-0.5">{o.quantity} adet</div>
                     </td>
-                    <td className="px-5 py-4 text-emerald-400 font-black text-[14px]">
+                    <td className="px-5 py-4 text-violet-400 font-black text-[14px]">
                       {fmt(Number(o.amount))}
                     </td>
                     <td className="px-5 py-4">
@@ -288,11 +288,11 @@ export default function DealerOrdersPage() {
                                 const active = stepIdx === currentIdx;
                                 return (
                                   <div key={step.key} className="flex items-center gap-1">
-                                    <div className={active ? 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-sky-500/20 border border-sky-500/40 text-sky-400' : done ? 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-emerald-500/15 border border-emerald-500/25 text-emerald-400' : 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-zinc-800/40 border border-zinc-700/30 text-zinc-400'}>
+                                    <div className={active ? 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-sky-500/20 border border-sky-500/40 text-sky-400' : done ? 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-violet-500/15 border border-violet-500/25 text-violet-400' : 'px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all bg-zinc-800/40 border border-zinc-700/30 text-zinc-400'}>
                                       {done ? '✓ ' : ''}{step.label}
                                     </div>
                                     {idx < arr.length - 1 && (
-                                      <div className={`w-4 h-px ${done ? 'bg-emerald-500/40' : 'bg-zinc-700/40'}`}/>
+                                      <div className={`w-4 h-px ${done ? 'bg-violet-500/40' : 'bg-zinc-700/40'}`}/>
                                     )}
                                   </div>
                                 );

@@ -76,7 +76,7 @@ function LoginForm() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-black tracking-tight text-zinc-900">
-              my<span className="text-orange-500">tt</span>
+              my<span className="text-violet-500">tt</span>
             </span>
           </Link>
           <p className="mt-2 text-sm text-zinc-500 font-medium">
@@ -97,7 +97,7 @@ function LoginForm() {
                 </label>
                 <div className="relative group">
                   <Mail
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-violet-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -107,7 +107,7 @@ function LoginForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ornek@hesap.com"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
@@ -120,14 +120,14 @@ function LoginForm() {
                   </label>
                   <Link
                     href="/sifremi-unuttum"
-                    className="text-[11px] font-bold text-zinc-400 hover:text-orange-500 transition-colors"
+                    className="text-[11px] font-bold text-zinc-400 hover:text-violet-500 transition-colors"
                   >
                     Şifremi Unuttum
                   </Link>
                 </div>
                 <div className="relative group">
                   <Lock
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-violet-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -137,7 +137,7 @@ function LoginForm() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-11 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium tracking-widest text-sm"
+                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-11 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition-all font-medium tracking-widest text-sm"
                   />
                   <button
                     type="button"
@@ -153,7 +153,7 @@ function LoginForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group relative mt-1 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-orange-500 hover:bg-orange-600 text-white shadow-orange-500/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="group relative mt-1 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-violet-500 hover:bg-violet-600 text-white shadow-violet-500/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -173,7 +173,7 @@ function LoginForm() {
               Hesabınız yok mu?{' '}
               <Link
                 href="/register"
-                className="font-bold text-orange-500 hover:text-orange-600 transition-colors"
+                className="font-bold text-violet-500 hover:text-violet-600 transition-colors"
               >
                 Üye Ol
               </Link>

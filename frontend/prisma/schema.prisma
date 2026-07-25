@@ -559,3 +559,20 @@ model DealerMarketBid {
   @@index([bidderId])
   @@index([amount])
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Rate Limiting — auth endpoint'lerinde brute-force/spam koruması
+// Sabit pencere (fixed window) algoritması: her (key, windowStart) çifti için
+// sayaç tutulur, limit aşılırsa istek reddedilir. Serverless instance'lar
+// arası tutarlı çalışması için Postgres'te (in-memory değil) tutulur.
+// ─────────────────────────────────────────────────────────────────────────────
+model RateLimitHit {
+  id          String   @id @default(uuid())
+  key         String   // Örn: "login:203.0.113.5"
+  windowStart DateTime
+  count       Int      @default(1)
+  updatedAt   DateTime @updatedAt
+
+  @@unique([key, windowStart])
+  @@index([windowStart])
+}

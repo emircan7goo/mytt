@@ -76,7 +76,7 @@ export default function AdminStockRequestsPage() {
                         <Clock size={12} /> Bekleyen
                       </span>
                     ) : r.status === 'RESOLVED' ? (
-                      <span className="flex items-center gap-1.5 text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg w-fit font-bold text-xs">
+                      <span className="flex items-center gap-1.5 text-violet-400 bg-violet-500/10 border border-violet-500/20 px-2.5 py-1 rounded-lg w-fit font-bold text-xs">
                         <CheckCircle size={12} /> Çözüldü
                       </span>
                     ) : (
@@ -90,7 +90,7 @@ export default function AdminStockRequestsPage() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => updateStatus(r.id, 'RESOLVED')}
-                          className="px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 rounded-lg font-bold text-xs transition-colors"
+                          className="px-3 py-1.5 bg-violet-500/10 border border-violet-500/20 text-violet-400 hover:bg-violet-500/20 rounded-lg font-bold text-xs transition-colors"
                         >
                           Çözüldü Yap
                         </button>

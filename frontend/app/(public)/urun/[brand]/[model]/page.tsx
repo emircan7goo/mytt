@@ -12,7 +12,7 @@ import { resolveUploadUrl } from '@/lib/resolveUrl';
 import DealerTrustBadge from '@/components/DealerTrustBadge';
 
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
-  'A+': { label: 'Kusursuz',         color: '#065F46', bg: '#ECFDF5', border: '#A7F3D0' },
+  'A+': { label: 'Kusursuz',         color: '#5B21B6', bg: '#F5F3FF', border: '#DDD6FE' },
   'A':  { label: 'Çok İyi',          color: '#0369A1', bg: '#EFF6FF', border: '#BAE6FD' },
   'B':  { label: 'İyi',              color: '#B45309', bg: '#FFFBEB', border: '#FDE68A' },
   'C':  { label: 'Kabul Edilebilir', color: '#6D28D9', bg: '#F5F3FF', border: '#DDD6FE' },
@@ -48,7 +48,7 @@ export default function ProductFamilyPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#0B1120] flex items-center justify-center">
-        <div className="w-10 h-10 border-2 border-white/10 border-t-emerald-400 rounded-full animate-spin" />
+        <div className="w-10 h-10 border-2 border-white/10 border-t-violet-400 rounded-full animate-spin" />
       </div>
     );
   }
@@ -114,7 +114,7 @@ export default function ProductFamilyPage() {
             {/* Başlık + istatistikler */}
             <div className="flex-1 text-center lg:text-left">
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-[0.2em] bg-emerald-400/10 border border-emerald-400/20 px-3 py-1.5 rounded-full">
+                <span className="text-[11px] font-bold text-violet-300 uppercase tracking-[0.2em] bg-violet-400/10 border border-violet-400/20 px-3 py-1.5 rounded-full">
                   {family.brand}
                 </span>
                 <span className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em] bg-white/[0.06] border border-white/10 px-3 py-1.5 rounded-full">
@@ -254,7 +254,7 @@ export default function ProductFamilyPage() {
                       href={`/product/${offer.id}`}
                       className={`group flex flex-col sm:flex-row sm:items-center gap-4 p-5 md:p-6 rounded-[22px] bg-white border transition-all hover:shadow-[0_16px_40px_rgba(0,0,0,0.07)] hover:-translate-y-0.5 ${
                         isTopPick
-                          ? 'border-transparent shadow-[0_0_0_1.5px_#059669,0_16px_40px_rgba(5,150,105,0.12)]'
+                          ? 'border-transparent shadow-[0_0_0_1.5px_#7C3AED,0_16px_40px_rgba(5,150,105,0.12)]'
                           : 'border-zinc-100'
                       }`}
                     >
@@ -262,7 +262,7 @@ export default function ProductFamilyPage() {
                       <div className="flex-1 flex flex-col gap-2.5 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           {isTopPick && (
-                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-white bg-emerald-600 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-white bg-violet-600 px-2.5 py-1 rounded-full">
                               <Crown size={11} />
                               {sort === 'best_condition' ? 'En İyi Durum' : 'En Uygun Fiyat'}
                             </span>
@@ -284,7 +284,7 @@ export default function ProductFamilyPage() {
                             <span className="inline-flex items-center gap-1 text-[11px] font-bold text-zinc-600 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">
                               <Battery
                                 size={11}
-                                className={offer.batteryHealth >= 85 ? 'text-emerald-500' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
+                                className={offer.batteryHealth >= 85 ? 'text-violet-500' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
                               />
                               Pil %{offer.batteryHealth}
                             </span>
@@ -313,7 +313,7 @@ export default function ProductFamilyPage() {
                       <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-zinc-100">
                         <div className="text-right">
                           {isCheapest && family.items.length > 1 && (
-                            <span className="block text-[9px] font-black uppercase tracking-wide text-emerald-600 mb-0.5">En Düşük Fiyat</span>
+                            <span className="block text-[9px] font-black uppercase tracking-wide text-violet-600 mb-0.5">En Düşük Fiyat</span>
                           )}
                           <span className="font-editorial block text-[26px] md:text-[30px] leading-none text-zinc-900">
                             {fmt(price)}
@@ -344,7 +344,7 @@ function StatBlock({
       <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/40">
         {icon} {label}
       </span>
-      <span className={`font-editorial text-[22px] md:text-[26px] leading-none ${accent ? 'text-emerald-300' : 'text-white'}`}>
+      <span className={`font-editorial text-[22px] md:text-[26px] leading-none ${accent ? 'text-violet-300' : 'text-white'}`}>
         {value}
       </span>
     </div>

@@ -13,17 +13,19 @@
 
 :root {
   /* ── Brand — Premium Emerald ────────────────────────────────────────── */
-  --brand:         #059669; /* Emerald 600 — primary */
-  --brand-hover:   #047857; /* Emerald 700 — hover */
-  --brand-deep:    #065F46; /* Emerald 800 — deepest */
-  --brand-light:   #ECFDF5; /* Emerald 50 — tint */
-  --brand-mid:     #34D399; /* Emerald 300 — muted accent */
-  --brand-glow:    rgba(5, 150, 105, 0.15);
+  --brand:         #7C3AED; /* Violet 600 — primary */
+  --brand-hover:   #6D28D9; /* Violet 700 — hover */
+  --brand-deep:    #4C1D95; /* Violet 900 — deepest */
+  --brand-light:   #F5F3FF; /* Violet 50 — tint */
+  --brand-mid:     #A78BFA; /* Violet 400 — muted accent */
+  --brand-glow:    rgba(124, 58, 237, 0.2);
+  --brand-lime:    #C6F135; /* Dogrulanmis rozet / canli vurgu */
+  --brand-lime-ink:#3F4D06; /* Lime zemin ustu koyu metin */
 
   /* ── Space — Slate Space ────────────────────────────────────────────── */
-  --space:         #0F172A;
-  --space-2:       #1E293B;
-  --space-3:       #334155;
+  --space:         #0A0A12;
+  --space-2:       #16161F;
+  --space-3:       #26262F;
 
   /* ── Surface System (Light Premium) ─────────────────────────────────── */
   --bg:            #FFFFFF;
@@ -53,8 +55,8 @@
   --bubble-indigo-to:   #C7D2FE;
   --bubble-rose-from:   #FFF1F2;
   --bubble-rose-to:     #FECDD3;
-  --bubble-emerald-from:#ECFDF5;
-  --bubble-emerald-to:  #A7F3D0;
+  --bubble-emerald-from:#F5F3FF;
+  --bubble-emerald-to:  #DDD6FE;
   --bubble-amber-from:  #FFFBEB;
   --bubble-amber-to:    #FDE68A;
   --bubble-sky-from:    #EFF6FF;
@@ -149,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
    ANNOUNCEMENT TICKER BAR
    ******************************************************************************* */
 .ticker-bar {
-  background: linear-gradient(135deg, var(--space) 0%, var(--space-2) 50%, #1e3a2f 100%);
+  background: linear-gradient(135deg, var(--space) 0%, var(--space-2) 50%, #2e1a4d 100%);
   height: 36px;
   display: flex;
   align-items: center;
@@ -923,7 +925,7 @@ a:active {
   --ink-7:     #1E293B;
   --ink-8:     #0F172A;
   /* Brand stays the same, glow more vivid */
-  --brand-glow: rgba(6, 95, 70, 0.45);
+  --brand-glow: rgba(124, 58, 237, 0.45);
   /* Shadows darker */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   --shadow-md: 0 8px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.2);

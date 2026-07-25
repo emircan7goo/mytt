@@ -8,21 +8,21 @@ export const metadata: Metadata = {
     'AI telefon bulucu', 'yapay zeka telefon öner', 'telefon önerisi', 'hangi telefon alsam',
     'bütçeye göre telefon', 'Mytt AI', 'akıllı telefon seçimi',
   ],
-  alternates: { canonical: 'https://mytt.com/ai-finder' },
+  alternates: { canonical: 'https://mytt.com.tr/ai-finder' },
   openGraph: {
     title: 'AI Telefon Bulucu — Sana Özel 3 Öneri | Mytt',
     description: 'Bütçen ve ihtiyacına göre saniyeler içinde en iyi 3 cihaz önerisi.',
-    url: 'https://mytt.com/ai-finder',
+    url: 'https://mytt.com.tr/ai-finder',
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Mytt',
-    images: [{ url: 'https://mytt.com/og-banner.png', width: 1200, height: 630, alt: 'Mytt — AI Telefon Bulucu' }],
+    images: [{ url: 'https://mytt.com.tr/og-banner.png', width: 1200, height: 630, alt: 'Mytt — AI Telefon Bulucu' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Telefon Bulucu — Sana Özel 3 Öneri | Mytt',
     description: 'Bütçen ve ihtiyacına göre saniyeler içinde en iyi 3 cihaz önerisi.',
-    images: ['https://mytt.com/og-banner.png'],
+    images: ['https://mytt.com.tr/og-banner.png'],
   },
 };
 

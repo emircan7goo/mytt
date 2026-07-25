@@ -6,8 +6,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { signAccessToken, signRefreshToken, setAuthCookies } from '@/lib/auth-server';
+import { isRateLimited, rateLimitResponse } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
+  if (await isRateLimited(req, 'login', 5, 60_000)) return rateLimitResponse();
+
   const body = await req.json().catch(() => null);
   const email = body?.email;
   const password = body?.password;

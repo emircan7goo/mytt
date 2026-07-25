@@ -10,7 +10,7 @@ import { useDealerSellRequest, usePlaceBid } from '@/lib/hooks/useSellRequests';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 
 const GRADE_INFO: Record<string, { label: string; color: string }> = {
-  'A+': { label: 'Tertemiz',   color: '#10b981' },
+  'A+': { label: 'Tertemiz',   color: '#8B5CF6' },
   'A':  { label: 'Çok İyi',    color: '#0ea5e9' },
   'B':  { label: 'İyi',        color: '#f59e0b' },
   'C':  { label: 'Kabul Edilebilir', color: '#ef4444' },
@@ -67,17 +67,17 @@ function LiveBidFeed({ count, isOpen }: { count: number; isOpen: boolean }) {
         <span style={{ color: '#f8fafc', fontWeight: 700, fontSize: '14px' }}>Canlı Teklif Akışı</span>
         {isOpen && (
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6 }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981', animation: 'pulse 1.5s ease-in-out infinite' }} />
-            <span style={{ color: '#10b981', fontSize: '10px', fontWeight: 700 }}>CANLI</span>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', boxShadow: '0 0 6px #8B5CF6', animation: 'pulse 1.5s ease-in-out infinite' }} />
+            <span style={{ color: '#8B5CF6', fontSize: '10px', fontWeight: 700 }}>CANLI</span>
           </div>
         )}
       </div>
 
       {/* Sayaç */}
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, marginBottom: 14 }}>
-        <span style={{ color: flashing ? '#10b981' : '#f8fafc', fontSize: '42px', fontWeight: 900, lineHeight: 1, transition: 'color 0.3s' }}>{count}</span>
+        <span style={{ color: flashing ? '#8B5CF6' : '#f8fafc', fontSize: '42px', fontWeight: 900, lineHeight: 1, transition: 'color 0.3s' }}>{count}</span>
         <span style={{ color: 'rgba(248,250,252,0.4)', fontSize: '13px', paddingBottom: 6 }}>bayi teklif verdi</span>
-        {flashing && <Bell size={16} style={{ color: '#10b981', paddingBottom: 6, animation: 'bounce 0.5s ease-in-out 3' }} />}
+        {flashing && <Bell size={16} style={{ color: '#8B5CF6', paddingBottom: 6, animation: 'bounce 0.5s ease-in-out 3' }} />}
       </div>
 
       {/* Gizli teklif açıklaması */}
@@ -100,8 +100,8 @@ function LiveBidFeed({ count, isOpen }: { count: number; isOpen: boolean }) {
               opacity: 1 - i * 0.15,
               animation: i === 0 ? 'slideIn 0.3s ease-out' : 'none',
             }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: i === 0 ? '#10b981' : 'rgba(248,250,252,0.2)', flexShrink: 0 }} />
-              <span style={{ color: i === 0 ? '#10b981' : 'rgba(248,250,252,0.4)', fontSize: '12px', fontWeight: i === 0 ? 700 : 500 }}>{entry}</span>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: i === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.2)', flexShrink: 0 }} />
+              <span style={{ color: i === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)', fontSize: '12px', fontWeight: i === 0 ? 700 : 500 }}>{entry}</span>
             </div>
           ))}
         </div>
@@ -260,11 +260,11 @@ export default function DealerBuyRequestDetailPage() {
           {hasBid && !editing && (
             <div style={{ background: 'rgba(16,185,129,0.07)', borderRadius: 16, border: '1px solid rgba(16,185,129,0.25)', padding: 20 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                <CheckCircle size={18} style={{ color: '#10b981' }} />
-                <p style={{ color: '#10b981', fontWeight: 700, fontSize: '14px', margin: 0 }}>Teklifiniz Gönderildi</p>
+                <CheckCircle size={18} style={{ color: '#8B5CF6' }} />
+                <p style={{ color: '#8B5CF6', fontWeight: 700, fontSize: '14px', margin: 0 }}>Teklifiniz Gönderildi</p>
               </div>
               <p style={{ color: 'rgba(248,250,252,0.4)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 4px' }}>Teklif Tutarınız</p>
-              <p style={{ color: '#10b981', fontSize: '32px', fontWeight: 900, margin: '0 0 10px', fontFamily: 'monospace' }}>
+              <p style={{ color: '#8B5CF6', fontSize: '32px', fontWeight: 900, margin: '0 0 10px', fontFamily: 'monospace' }}>
                 {Number(req.myBid!.amount).toLocaleString('tr-TR')} ₺
               </p>
               {req.myBid?.note && (

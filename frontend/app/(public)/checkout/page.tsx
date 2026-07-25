@@ -104,7 +104,7 @@ function CheckoutContent() {
       if (data.testMode) {
         // Test modu — gerçek PayTR yok, başarı sayfasına yönlendir
         toast.success('Test modu: Ödeme simüle edildi');
-        setTimeout(() => router.push(`/payment/basarili?orderId=${data.orderId}`), 1500);
+        setTimeout(() => router.push(`/payment/basarili?orderId=${data.orderId}&testMode=1`), 1500);
       } else {
         setIframeToken(data.iframeToken);
         // iframe'e scroll et
@@ -231,7 +231,7 @@ function CheckoutContent() {
               className="bg-white rounded-3xl border border-zinc-100 shadow-sm p-6"
             >
               <div className="flex items-center gap-2 mb-4">
-                <ShieldCheck size={18} className="text-emerald-500" />
+                <ShieldCheck size={18} className="text-violet-500" />
                 <span className="font-semibold text-zinc-800 text-sm">Güvenli Ödeme Formu</span>
                 <span className="ml-auto text-xs text-zinc-400">PayTR ile korunuyor</span>
               </div>
@@ -243,7 +243,7 @@ function CheckoutContent() {
           <div className="flex flex-col gap-4">
             <div className="bg-white rounded-3xl border border-zinc-100 shadow-sm p-6 sticky top-[120px]">
               <h3 className="font-semibold text-zinc-900 mb-5 flex items-center gap-2">
-                <ShieldCheck size={16} className="text-emerald-500" /> Sipariş Özeti
+                <ShieldCheck size={16} className="text-violet-500" /> Sipariş Özeti
               </h3>
 
               <div className="bg-zinc-50 rounded-2xl p-4 mb-5">
@@ -260,7 +260,7 @@ function CheckoutContent() {
                 </div>
                 <div className="flex justify-between text-zinc-500">
                   <span>Kargo</span>
-                  <span className="text-emerald-600 font-semibold">Ücretsiz</span>
+                  <span className="text-violet-600 font-semibold">Ücretsiz</span>
                 </div>
                 <div className="flex justify-between text-zinc-500">
                   <span>KDV</span>
@@ -279,7 +279,7 @@ function CheckoutContent() {
               {/* Güvenlik rozetleri */}
               <div className="mt-5 pt-4 border-t border-zinc-100 flex flex-col gap-2">
                 <div className="flex items-center gap-2 text-xs text-zinc-500">
-                  <ShieldCheck size={13} className="text-emerald-500" />
+                  <ShieldCheck size={13} className="text-violet-500" />
                   <span>Alışveriş güvencesi — ödeme teslimata kadar tutulur</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-zinc-500">

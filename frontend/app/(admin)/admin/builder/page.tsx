@@ -26,7 +26,7 @@ const BG_LABELS: Record<string, string> = {
 const BG_GRADIENTS: Record<string, string> = {
   indigo:  'linear-gradient(145deg,#EEF2FF,#C7D2FE)',
   rose:    'linear-gradient(145deg,#FFF1F2,#FECDD3)',
-  emerald: 'linear-gradient(145deg,#ECFDF5,#A7F3D0)',
+  emerald: 'linear-gradient(145deg,#F5F3FF,#DDD6FE)',
   amber:   'linear-gradient(145deg,#FFFBEB,#FDE68A)',
   sky:     'linear-gradient(145deg,#EFF6FF,#BAE6FD)',
   violet:  'linear-gradient(145deg,#F5F3FF,#DDD6FE)',
@@ -42,7 +42,7 @@ const COLOR_PRESETS = [
   { label: 'Mavi',    color: '#3B82F6' },
   { label: 'Mor',     color: '#8B5CF6' },
   { label: 'Çivit',   color: '#6366F1' },
-  { label: 'Turuncu', color: '#F97316' },
+  { label: 'Turuncu', color: '#8B5CF6' },
   { label: 'Kırmızı', color: '#EF4444' },
   { label: 'Pembe',   color: '#EC4899' },
   { label: 'Teal',    color: '#14B8A6' },
@@ -969,7 +969,7 @@ function BubblesTab({ draft, update }: { draft: any; update: (k: string, v: any)
           />
         </div>
         <div className="flex flex-wrap gap-1.5 mt-2">
-          {['#22c55e','#0ea5e9','#a855f7','#f59e0b','#ef4444','#ec4899','#14b8a6','#f97316'].map(c => (
+          {['#22c55e','#0ea5e9','#a855f7','#f59e0b','#ef4444','#ec4899','#14b8a6','#8B5CF6'].map(c => (
             <button key={c} type="button" onClick={() => update('bubbleRingColor', c)}
               className={`w-6 h-6 rounded-full border-2 transition-all hover:scale-110 ${ringColor === c ? 'border-white scale-110' : 'border-white/20'}`}
               style={{ background: c }} />

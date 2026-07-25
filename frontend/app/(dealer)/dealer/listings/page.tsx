@@ -20,7 +20,7 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString('tr-TR', { day: '2
 // ── Status config ─────────────────────────────────────────────────────────────
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string; icon: React.ElementType }> = {
   PENDING_ADMIN: { label: 'Admin Onayı Bekliyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  icon: Clock },
-  ACTIVE:        { label: 'Aktif',                color: '#10b981', bg: 'rgba(16,185,129,0.1)',  icon: CheckCircle },
+  ACTIVE:        { label: 'Aktif',                color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)',  icon: CheckCircle },
   EXPIRED:       { label: 'Süre Doldu',           color: '#6366f1', bg: 'rgba(99,102,241,0.1)',  icon: Clock },
   SOLD:          { label: 'Satıldı',              color: '#0ea5e9', bg: 'rgba(14,165,233,0.1)',  icon: CheckCircle },
   CANCELLED:     { label: 'İptal Edildi',         color: '#6b7280', bg: 'rgba(107,114,128,0.1)', icon: XCircle },
@@ -28,7 +28,7 @@ const STATUS_MAP: Record<string, { label: string; color: string; bg: string; ico
 };
 
 const GRADE_COLORS: Record<string, string> = {
-  'A+': '#10b981', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
+  'A+': '#8B5CF6', A: '#0ea5e9', B: '#f59e0b', C: '#ef4444',
 };
 
 // ── Countdown hook ────────────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
             )}
 
             {item.finalPrice && (
-              <span style={{ color: '#10b981', fontSize: 14, fontWeight: 800 }}>
+              <span style={{ color: '#8B5CF6', fontSize: 14, fontWeight: 800 }}>
                 Satış: {fmt(Number(item.finalPrice))}
               </span>
             )}
@@ -224,7 +224,7 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
                   width: 28, height: 28, borderRadius: 8, flexShrink: 0,
                   background: idx === 0 ? 'rgba(16,185,129,0.15)' : 'rgba(255,255,255,0.05)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: idx === 0 ? '#10b981' : 'rgba(248,250,252,0.4)',
+                  color: idx === 0 ? '#8B5CF6' : 'rgba(248,250,252,0.4)',
                   fontSize: 12, fontWeight: 800,
                 }}>
                   #{idx + 1}
@@ -232,7 +232,7 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
 
                 {/* Amount + Time */}
                 <div style={{ flex: 1 }}>
-                  <p style={{ color: idx === 0 ? '#10b981' : '#f8fafc', fontSize: 15, fontWeight: 800, margin: 0 }}>
+                  <p style={{ color: idx === 0 ? '#8B5CF6' : '#f8fafc', fontSize: 15, fontWeight: 800, margin: 0 }}>
                     {fmt(Number(bid.amount))}
                   </p>
                   <p style={{ color: 'rgba(248,250,252,0.35)', fontSize: 10, margin: '1px 0 0' }}>
@@ -246,9 +246,9 @@ function ListingCard({ item }: { item: DealerMarketItem }) {
                   <button onClick={() => handleAcceptBid(bid.id)} disabled={busy} style={{
                     display: 'flex', alignItems: 'center', gap: 5,
                     padding: '7px 14px', borderRadius: 9, fontSize: 11, fontWeight: 700,
-                    background: idx === 0 ? '#10b981' : 'rgba(16,185,129,0.12)',
+                    background: idx === 0 ? '#8B5CF6' : 'rgba(16,185,129,0.12)',
                     border: idx === 0 ? 'none' : '1px solid rgba(16,185,129,0.25)',
-                    color: idx === 0 ? '#fff' : '#10b981',
+                    color: idx === 0 ? '#fff' : '#8B5CF6',
                     cursor: busy ? 'not-allowed' : 'pointer', transition: 'all 0.15s',
                   }}>
                     {busy ? <Loader2 size={11} style={{ animation: 'spin 1s linear infinite' }} /> : <CheckCircle size={11} />}
@@ -304,7 +304,7 @@ export default function DealerMyListingsPage() {
 
   const FILTERS: { key: Filter; label: string; color: string }[] = [
     { key: 'all',     label: 'Tümü',      color: '#0ea5e9' },
-    { key: 'active',  label: 'Aktif',      color: '#10b981' },
+    { key: 'active',  label: 'Aktif',      color: '#8B5CF6' },
     { key: 'pending', label: 'Bekleyen',   color: '#f59e0b' },
     { key: 'sold',    label: 'Satılan',    color: '#a855f7' },
     { key: 'expired', label: 'Kapanan',    color: '#6b7280' },
@@ -327,7 +327,7 @@ export default function DealerMyListingsPage() {
             display: 'flex', alignItems: 'center', gap: 6,
             padding: '9px 16px', borderRadius: 10, textDecoration: 'none',
             background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)',
-            color: '#10b981', fontSize: 12, fontWeight: 700,
+            color: '#8B5CF6', fontSize: 12, fontWeight: 700,
           }}>
             <Plus size={13} /> Yeni İlan
           </Link>
@@ -380,7 +380,7 @@ export default function DealerMyListingsPage() {
             display: 'inline-flex', alignItems: 'center', gap: 6,
             marginTop: 16, padding: '10px 22px', borderRadius: 10,
             background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)',
-            color: '#10b981', fontSize: 13, fontWeight: 700, textDecoration: 'none',
+            color: '#8B5CF6', fontSize: 13, fontWeight: 700, textDecoration: 'none',
           }}>
             <Plus size={14} /> İlk İlanını Oluştur
           </Link>

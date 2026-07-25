@@ -101,8 +101,8 @@ export default function KVKKPage() {
             </ul>
             <p className="mt-3">
               Haklarınızı kullanmak için{' '}
-              <a href="mailto:kvkk@mytt.com" className="text-zinc-900 underline underline-offset-2">
-                kvkk@mytt.com
+              <a href="mailto:kvkk@mytt.com.tr" className="text-zinc-900 underline underline-offset-2">
+                kvkk@mytt.com.tr
               </a>{' '}
               adresine yazılı başvuruda bulunabilirsiniz.
             </p>

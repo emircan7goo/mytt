@@ -4,8 +4,11 @@
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { isRateLimited, rateLimitResponse } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
+  if (await isRateLimited(req, 'verify-otp', 10, 60_000)) return rateLimitResponse();
+
   const body = await req.json().catch(() => null);
   const email = body?.email;
   const code = body?.code;

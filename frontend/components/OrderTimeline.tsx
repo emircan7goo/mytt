@@ -50,21 +50,21 @@ export default function OrderTimeline({ currentStep, compact = false }: OrderTim
             {/* Content */}
             <div className="pt-1.5 pb-1 min-w-0 flex-1">
               <p className={`font-bold text-sm leading-tight
-                ${isDone    ? 'text-emerald-700' : ''}
+                ${isDone    ? 'text-violet-700' : ''}
                 ${isActive  ? 'text-slate-900'   : ''}
                 ${isPending ? 'text-slate-400'   : ''}
               `}>
                 {step.label}
                 {isActive && (
-                  <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
-                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse-dot" />
+                  <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-extrabold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full border border-violet-100">
+                    <span className="w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse-dot" />
                     AKTIF
                   </span>
                 )}
               </p>
               {!compact && (
                 <p className={`text-xs font-medium mt-1 leading-relaxed
-                  ${isDone    ? 'text-emerald-600/80' : ''}
+                  ${isDone    ? 'text-violet-600/80' : ''}
                   ${isActive  ? 'text-slate-500'       : ''}
                   ${isPending ? 'text-slate-300'       : ''}
                 `}>

@@ -119,7 +119,7 @@ export default function AdminDealersPage() {
                       {dealer.email}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 font-black rounded-lg border border-emerald-100/50 text-base">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-violet-50 text-violet-700 font-black rounded-lg border border-violet-100/50 text-base">
                         {Number(dealer.walletBalance ?? 0).toLocaleString('tr-TR')} ₺
                       </span>
                     </td>
@@ -152,7 +152,7 @@ export default function AdminDealersPage() {
               </div>
               <div className="text-right">
                 <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mevcut</p>
-                <p className="text-lg font-black text-emerald-600 leading-none">
+                <p className="text-lg font-black text-violet-600 leading-none">
                   {Number(selectedDealer.walletBalance ?? 0).toLocaleString('tr-TR')} ₺
                 </p>
               </div>
@@ -167,11 +167,11 @@ export default function AdminDealersPage() {
                     onClick={() => setMode('add')}
                     className={`flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all ${
                       mode === 'add' 
-                        ? 'border-emerald-500 bg-emerald-50 text-emerald-700' 
+                        ? 'border-violet-500 bg-violet-50 text-violet-700' 
                         : 'border-slate-100 bg-white hover:border-slate-300 text-slate-500'
                     }`}
                   >
-                    <div className={`p-2 rounded-full ${mode === 'add' ? 'bg-emerald-100' : 'bg-slate-100'}`}>
+                    <div className={`p-2 rounded-full ${mode === 'add' ? 'bg-violet-100' : 'bg-slate-100'}`}>
                       <Plus size={16} />
                     </div>
                     <span className="text-xs font-bold">Üzerine Ekle</span>

@@ -4,7 +4,7 @@
  */
 import type { MetadataRoute } from 'next';
 import { API_BASE } from '@/lib/apiBase';
-const SITE_URL   = 'https://mytt.com';
+const SITE_URL   = 'https://mytt.com.tr';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Statik sayfalar ──────────────────────────────────────────────────────
@@ -14,27 +14,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/register`,  changeFrequency: 'monthly', priority: 0.3 },
   ];
 
-  // ── Dinamik ürün sayfaları ───────────────────────────────────────────────
+  // ── Dinamik ürün sayfaları — gerçek katalog vitrini (marka+model aileleri) ──
   let productPages: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE}/products?limit=500`, {
+    const res = await fetch(`${API_BASE}/catalog/browse?limit=1000`, {
       next: { revalidate: 3600 }, // Saatte bir yenile
     });
     if (res.ok) {
       const data = await res.json();
-      const products: Array<{ id: string; updatedAt?: string }> = Array.isArray(data)
-        ? data
-        : (data.items ?? data.data ?? []);
+      const families: Array<{ brand: string; model: string; createdAt?: string }> = data.items ?? [];
 
-      productPages = products.map((p) => ({
-        url:             `${SITE_URL}/product/${p.id}`,
-        lastModified:    p.updatedAt ? new Date(p.updatedAt) : new Date(),
+      productPages = families.map((f) => ({
+        url:             `${SITE_URL}/urun/${encodeURIComponent(f.brand)}/${encodeURIComponent(f.model)}`,
+        lastModified:    f.createdAt ? new Date(f.createdAt) : new Date(),
         changeFrequency: 'weekly' as const,
         priority:        0.8,
       }));
     }
   } catch {
-    // Build sırasında backend erişilemezse boş bırak
+    // Build sırasında API'ye erişilemezse boş bırak
   }
 
   return [...staticPages, ...productPages];

@@ -3,7 +3,7 @@
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#022c22"/>
       <stop offset="40%" stop-color="#064e3b"/>
-      <stop offset="100%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#5B21B6"/>
     </linearGradient>
     <linearGradient id="shieldFill" x1="10%" y1="0%" x2="90%" y2="100%">
       <stop offset="0%" stop-color="rgba(167,243,208,0.3)"/>
@@ -22,26 +22,26 @@
   <rect width="96" height="96" rx="24" fill="url(#bg)"/>
   <rect width="96" height="96" rx="24" fill="url(#innerGlow)"/>
   <!-- Hex grid bg -->
-  <circle cx="48" cy="48" r="38" fill="none" stroke="#34d399" stroke-width="0.4" opacity="0.12"/>
-  <circle cx="48" cy="48" r="28" fill="none" stroke="#34d399" stroke-width="0.4" opacity="0.1"/>
+  <circle cx="48" cy="48" r="38" fill="none" stroke="#A78BFA" stroke-width="0.4" opacity="0.12"/>
+  <circle cx="48" cy="48" r="28" fill="none" stroke="#A78BFA" stroke-width="0.4" opacity="0.1"/>
   <!-- Shield outer glow -->
-  <path d="M48 8 L80 20 L80 50 Q80 74 48 88 Q16 74 16 50 L16 20 Z" fill="#34d399" opacity="0.08" filter="url(#glow)"/>
+  <path d="M48 8 L80 20 L80 50 Q80 74 48 88 Q16 74 16 50 L16 20 Z" fill="#A78BFA" opacity="0.08" filter="url(#glow)"/>
   <!-- Shield main body -->
-  <path d="M48 12 L76 23 L76 50 Q76 70 48 83 Q20 70 20 50 L20 23 Z" fill="url(#shieldFill)" stroke="#34d399" stroke-width="1.8"/>
+  <path d="M48 12 L76 23 L76 50 Q76 70 48 83 Q20 70 20 50 L20 23 Z" fill="url(#shieldFill)" stroke="#A78BFA" stroke-width="1.8"/>
   <!-- Shield inner border -->
   <path d="M48 18 L70 27 L70 50 Q70 66 48 77" fill="none" stroke="rgba(167,243,208,0.3)" stroke-width="1"/>
   <!-- Hex pattern on shield -->
-  <path d="M48 30 L54 33 L54 39 L48 42 L42 39 L42 33 Z" fill="none" stroke="#34d399" stroke-width="0.8" opacity="0.4"/>
+  <path d="M48 30 L54 33 L54 39 L48 42 L42 39 L42 33 Z" fill="none" stroke="#A78BFA" stroke-width="0.8" opacity="0.4"/>
   <!-- Big neon checkmark -->
-  <path d="M30 50 L42 63 L68 35" fill="none" stroke="#34d399" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" opacity="0.9"/>
-  <path d="M30 50 L42 63 L68 35" fill="none" stroke="#a7f3d0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <path d="M30 50 L42 63 L68 35" fill="none" stroke="#A78BFA" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" opacity="0.9"/>
+  <path d="M30 50 L42 63 L68 35" fill="none" stroke="#DDD6FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
   <!-- Top light ray -->
-  <line x1="48" y1="6" x2="48" y2="12" stroke="#34d399" stroke-width="2" stroke-linecap="round" opacity="0.6" filter="url(#glow)"/>
+  <line x1="48" y1="6" x2="48" y2="12" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" opacity="0.6" filter="url(#glow)"/>
   <!-- Side sparkles -->
-  <circle cx="14" cy="35" r="2.5" fill="#34d399" opacity="0.4" filter="url(#glow)"/>
-  <circle cx="82" cy="35" r="2.5" fill="#34d399" opacity="0.4" filter="url(#glow)"/>
-  <circle cx="10" cy="58" r="1.5" fill="#34d399" opacity="0.25"/>
-  <circle cx="86" cy="58" r="1.5" fill="#34d399" opacity="0.25"/>
+  <circle cx="14" cy="35" r="2.5" fill="#A78BFA" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="82" cy="35" r="2.5" fill="#A78BFA" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="10" cy="58" r="1.5" fill="#A78BFA" opacity="0.25"/>
+  <circle cx="86" cy="58" r="1.5" fill="#A78BFA" opacity="0.25"/>
   <!-- Bottom ribbon glow -->
-  <ellipse cx="48" cy="84" rx="16" ry="4" fill="#34d399" opacity="0.15" filter="url(#glow)"/>
+  <ellipse cx="48" cy="84" rx="16" ry="4" fill="#A78BFA" opacity="0.15" filter="url(#glow)"/>
 </svg>

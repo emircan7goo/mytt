@@ -14,12 +14,12 @@ export default function Footer() {
         {/* Top: Logo + Tagline */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-16 pb-12 border-b border-white/10">
           <div className="flex items-center gap-4 group cursor-pointer selection:bg-transparent">
-            <div className="w-12 h-12 bg-white border border-teal-200 rounded-[16px] flex items-center justify-center transition-all group-hover:border-teal-300 group-hover:shadow-[0_0_15px_rgba(15,118,110,0.08)]">
+            <div className="w-12 h-12 bg-white border border-violet-200 rounded-[16px] flex items-center justify-center transition-all group-hover:border-violet-300 group-hover:shadow-[0_0_15px_rgba(15,118,110,0.08)]">
               <Smartphone className="text-[var(--brand)]" size={24} strokeWidth={2} />
             </div>
             <div>
-              <h2 className="text-[24px] font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                Mytt<span className="text-emerald-500">.</span>
+              <h2 className="text-[24px] font-black tracking-tight text-white group-hover:text-violet-400 transition-colors">
+                Mytt<span className="text-violet-500">.</span>
               </h2>
               <p className="text-white/90 text-[15px] font-semibold mt-1">Türkiye&apos;nin En Prestijli Doğrulanmış Cihaz Borsası</p>
             </div>
@@ -56,7 +56,7 @@ export default function Footer() {
                     'Sipariş Takibi':       '/hesabim',
                     'İade & Değişim':       '/iade',
                     'Garanti Başvurusu':    '/garanti',
-                    'Canlı Destek':         'mailto:destek@mytt.com',
+                    'Canlı Destek':         'mailto:destek@mytt.com.tr',
                     '6 Ay Garanti Kapsamı': '/garanti#kapsam',
                     'Test Prosedürü':       '/test-proseduru',
                     'Kozmetik Grading':     '/grading',
@@ -108,7 +108,7 @@ export default function Footer() {
             </div>
             <div className="min-w-0">
               <p className="text-white/65 text-[11px] font-bold uppercase tracking-widest mb-1">E-posta</p>
-              <a href="mailto:destek@mytt.com" className="text-white font-extrabold text-[16px] hover:text-[var(--brand-mid)] transition-colors truncate block">destek@mytt.com</a>
+              <a href="mailto:destek@mytt.com.tr" className="text-white font-extrabold text-[16px] hover:text-[var(--brand-mid)] transition-colors truncate block">destek@mytt.com.tr</a>
             </div>
           </div>
 

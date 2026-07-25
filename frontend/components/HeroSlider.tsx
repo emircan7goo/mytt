@@ -200,7 +200,7 @@ export default function HeroSlider() {
                   {slide.btnLeftText && (
                     <Link
                       href={slide.btnLeftLink || '#'}
-                      className="px-6 py-3.5 rounded-2xl bg-[#065F46] text-white font-bold text-[14px] tracking-wide hover:bg-[#047857] transition-all shadow-lg hover:-translate-y-0.5 active:scale-95"
+                      className="px-6 py-3.5 rounded-2xl bg-[#5B21B6] text-white font-bold text-[14px] tracking-wide hover:bg-[#6D28D9] transition-all shadow-lg hover:-translate-y-0.5 active:scale-95"
                     >
                       {slide.btnLeftText}
                     </Link>
@@ -208,7 +208,7 @@ export default function HeroSlider() {
                   {slide.btnRightText && (
                     <Link
                       href={slide.btnRightLink || '#'}
-                      className="px-6 py-3.5 rounded-2xl bg-white border-2 border-emerald-600 font-bold text-[14px] tracking-wide text-emerald-800 hover:bg-emerald-50 transition-all hover:-translate-y-0.5 active:scale-95 shadow-sm"
+                      className="px-6 py-3.5 rounded-2xl bg-white border-2 border-violet-600 font-bold text-[14px] tracking-wide text-violet-800 hover:bg-violet-50 transition-all hover:-translate-y-0.5 active:scale-95 shadow-sm"
                     >
                       {slide.btnRightText}
                     </Link>

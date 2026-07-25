@@ -80,7 +80,7 @@ export default function DealerSidebar() {
           const isActive = pathname === href || (pathname.startsWith(href + '/') && href !== '/dealer/dashboard');
           const exactActive = pathname === href;
           const active = href === '/dealer/dashboard' ? exactActive : isActive;
-          const accentColor = highlight ? '#10b981' : '#0ea5e9';
+          const accentColor = highlight ? '#8B5CF6' : '#0ea5e9';
           const badgeCount = badgeKey ? (badges[badgeKey] ?? 0) : 0;
           return (
             <Link key={href} href={href} style={{
@@ -93,7 +93,7 @@ export default function DealerSidebar() {
               transition: 'all 0.15s',
             }}>
               <div style={{ position: 'relative', flexShrink: 0 }}>
-                <Icon size={15} style={{ color: highlight ? '#10b981' : 'inherit' }} />
+                <Icon size={15} style={{ color: highlight ? '#8B5CF6' : 'inherit' }} />
                 {badgeCount > 0 && (
                   <span style={{
                     position: 'absolute', top: -5, right: -6,

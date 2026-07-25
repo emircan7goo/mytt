@@ -6,12 +6,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { sendVerificationCode } from '@/lib/mail';
+import { isRateLimited, rateLimitResponse } from '@/lib/rateLimit';
 
 function generateOtp(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
 export async function POST(req: NextRequest) {
+  if (await isRateLimited(req, 'register', 10, 60_000)) return rateLimitResponse();
+
   const body = await req.json().catch(() => null);
   const email = body?.email;
   const password = body?.password;

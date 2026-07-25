@@ -103,7 +103,7 @@ export default function AdminDealerApprovalsPage() {
         </div>
       ) : applications.length === 0 ? (
         <div className="bg-white/[0.03] border border-white/[0.08] rounded-[32px] p-16 flex flex-col items-center text-center">
-          <CheckCircle2 size={48} className="text-emerald-500 mb-4" />
+          <CheckCircle2 size={48} className="text-violet-500 mb-4" />
           <h3 className="text-zinc-100 text-xl font-bold">Tüm Başvurular İşlendi</h3>
           <p className="text-zinc-500 text-[13px] mt-2">Bekleyen bayi başvurusu bulunmuyor.</p>
         </div>
@@ -167,7 +167,7 @@ export default function AdminDealerApprovalsPage() {
                       id={`approve-dealer-${app.id}`}
                       onClick={() => handleApprove(app.id, app.email)}
                       disabled={processingId === app.id}
-                      className="flex items-center gap-2 bg-emerald-500 text-white font-black uppercase tracking-widest text-[12px] px-6 py-3 rounded-full shadow-md hover:bg-emerald-400 transition-all disabled:opacity-50"
+                      className="flex items-center gap-2 bg-violet-500 text-white font-black uppercase tracking-widest text-[12px] px-6 py-3 rounded-full shadow-md hover:bg-violet-400 transition-all disabled:opacity-50"
                     >
                       {processingId === app.id ? (
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

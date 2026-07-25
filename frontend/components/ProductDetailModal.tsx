@@ -13,8 +13,8 @@ import BatteryGauge from '@/components/BatteryGauge';
 import { GRADE_LABELS, type CosmeticGrade } from '@/lib/mock-data';
 
 const gradeClass: Record<CosmeticGrade, string> = {
-  'A+': 'bg-emerald-500 text-white',
-  'A':  'bg-[#10B981] text-white',
+  'A+': 'bg-violet-500 text-white',
+  'A':  'bg-[#8B5CF6] text-white',
   'B':  'bg-[#3B82F6] text-white',
   'C':  'bg-[#F59E0B] text-white',
 };
@@ -22,14 +22,14 @@ const gradeClass: Record<CosmeticGrade, string> = {
 function TestValueTag({ value }: { value: string | number | boolean }) {
   if (typeof value === 'boolean') {
     return (
-      <span className={`px-2 py-1 rounded-md text-[10px] font-black uppercase ${value ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'}`}>
+      <span className={`px-2 py-1 rounded-md text-[10px] font-black uppercase ${value ? 'bg-violet-100 text-violet-700' : 'bg-red-100 text-red-600'}`}>
         {value ? '✓ Başarılı' : '✗ Sorunlu'}
       </span>
     );
   }
   if (typeof value === 'number') {
     const colorClass = value >= 90
-      ? 'bg-emerald-100 text-emerald-700'
+      ? 'bg-violet-100 text-violet-700'
       : value >= 80
         ? 'bg-amber-100 text-amber-600'
         : 'bg-red-100 text-red-600';
@@ -176,7 +176,7 @@ export default function ProductDetailModal() {
 
                   <div className="flex items-center justify-center gap-6 text-[13px] font-black text-slate-700 bg-slate-100 py-4 rounded-[20px]">
                     <span className="flex items-center gap-2 text-slate-800">
-                      <ShieldCheck size={18} className="text-[#10B981]" strokeWidth={3} /> 6 Ay Garantili
+                      <ShieldCheck size={18} className="text-[#8B5CF6]" strokeWidth={3} /> 6 Ay Garantili
                     </span>
                     <span className="flex items-center gap-2 text-slate-800">
                       <Lock size={18} className="text-blue-600" strokeWidth={3} /> %100 Güvenli Ödeme
@@ -212,7 +212,7 @@ export default function ProductDetailModal() {
                     <span className="text-[14px] font-black text-amber-700 ml-1">4.8</span>
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-200 mx-2" />
                     <span className="flex items-center gap-1 font-bold text-amber-700 text-[13px]">
-                      <BadgeCheck size={16} strokeWidth={2.5} className="text-emerald-500" /> Mytt Onaylı
+                      <BadgeCheck size={16} strokeWidth={2.5} className="text-violet-500" /> Mytt Onaylı
                     </span>
                   </div>
 

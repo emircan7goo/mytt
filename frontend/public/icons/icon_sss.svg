@@ -21,21 +21,21 @@
   <!-- Hexagon bg pattern -->
   <circle cx="48" cy="46" r="35" fill="url(#dotGlow)"/>
   <!-- Speech bubble -->
-  <path d="M12 18 Q12 10 20 10 L76 10 Q84 10 84 18 L84 52 Q84 60 76 60 L54 60 L44 78 L40 60 L20 60 Q12 60 12 52 Z" fill="url(#bubbleGrad)" stroke="#34d399" stroke-width="1.8"/>
+  <path d="M12 18 Q12 10 20 10 L76 10 Q84 10 84 18 L84 52 Q84 60 76 60 L54 60 L44 78 L40 60 L20 60 Q12 60 12 52 Z" fill="url(#bubbleGrad)" stroke="#A78BFA" stroke-width="1.8"/>
   <!-- Inner highlight top -->
   <path d="M16 18 Q16 14 20 14 L76 14 Q80 14 80 18 L80 26" fill="none" stroke="rgba(167,243,208,0.25)" stroke-width="1.2"/>
   <!-- Big futuristic ? -->
-  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="none" stroke="#34d399" stroke-width="1.5" filter="url(#glow)" opacity="0.9">?</text>
-  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="#34d399" opacity="0.7">?</text>
+  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="none" stroke="#A78BFA" stroke-width="1.5" filter="url(#glow)" opacity="0.9">?</text>
+  <text x="48" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="42" fill="#A78BFA" opacity="0.7">?</text>
   <!-- Scan / data lines -->
-  <line x1="12" y1="35" x2="22" y2="35" stroke="#34d399" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
-  <line x1="74" y1="35" x2="84" y2="35" stroke="#34d399" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="12" y1="35" x2="22" y2="35" stroke="#A78BFA" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="74" y1="35" x2="84" y2="35" stroke="#A78BFA" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
   <!-- Sparkle stars -->
-  <path d="M18 8 L19.5 4 L21 8 L25 9.5 L21 11 L19.5 15 L18 11 L14 9.5 Z" fill="#34d399" opacity="0.5" filter="url(#glow)"/>
-  <path d="M74 76 L75 73 L76 76 L79 77 L76 78 L75 81 L74 78 L71 77 Z" fill="#34d399" opacity="0.35"/>
+  <path d="M18 8 L19.5 4 L21 8 L25 9.5 L21 11 L19.5 15 L18 11 L14 9.5 Z" fill="#A78BFA" opacity="0.5" filter="url(#glow)"/>
+  <path d="M74 76 L75 73 L76 76 L79 77 L76 78 L75 81 L74 78 L71 77 Z" fill="#A78BFA" opacity="0.35"/>
   <!-- Corner markers -->
-  <rect x="10" y="10" width="4" height="1.5" rx="1" fill="#34d399" opacity="0.4"/>
-  <rect x="10" y="10" width="1.5" height="4" rx="1" fill="#34d399" opacity="0.4"/>
-  <rect x="82" y="10" width="4" height="1.5" rx="1" fill="#34d399" opacity="0.4"/>
-  <rect x="84.5" y="10" width="1.5" height="4" rx="1" fill="#34d399" opacity="0.4"/>
+  <rect x="10" y="10" width="4" height="1.5" rx="1" fill="#A78BFA" opacity="0.4"/>
+  <rect x="10" y="10" width="1.5" height="4" rx="1" fill="#A78BFA" opacity="0.4"/>
+  <rect x="82" y="10" width="4" height="1.5" rx="1" fill="#A78BFA" opacity="0.4"/>
+  <rect x="84.5" y="10" width="1.5" height="4" rx="1" fill="#A78BFA" opacity="0.4"/>
 </svg>

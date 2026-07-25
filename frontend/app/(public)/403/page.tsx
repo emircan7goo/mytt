@@ -50,7 +50,7 @@ export default function ForbiddenPage() {
         {/* Error code */}
         <div style={{
           fontSize: '96px', fontWeight: 900, lineHeight: 1,
-          background: 'linear-gradient(135deg, #ef4444, #f97316)',
+          background: 'linear-gradient(135deg, #ef4444, #8B5CF6)',
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           marginBottom: '16px', letterSpacing: '-4px',
         }}>403</div>

@@ -23,7 +23,7 @@ import { toast } from 'sonner';
 
 // ── Grade konfigürasyonu ──────────────────────────────────────────────────────
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
-  'A+': { label: 'Kusursuz', color: '#059669', bg: '#ecfdf5', border: '#a7f3d0' },
+  'A+': { label: 'Kusursuz', color: '#7C3AED', bg: '#F5F3FF', border: '#DDD6FE' },
   'A':  { label: 'Çok İyi',  color: '#0284c7', bg: '#eff6ff', border: '#bae6fd' },
   'B':  { label: 'İyi',      color: '#d97706', bg: '#fffbeb', border: '#fde68a' },
   'C':  { label: 'Kabul Edilebilir', color: '#7c3aed', bg: '#f5f3ff', border: '#ddd6fe' },
@@ -125,7 +125,7 @@ export default function DealerStockCard({ product, index }: Props) {
               <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-white/80 backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-zinc-600 shadow-sm">
                 <Battery
                   size={10}
-                  className={battery >= 85 ? 'text-emerald-500' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
+                  className={battery >= 85 ? 'text-violet-500' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
                 />
                 %{battery}
               </div>

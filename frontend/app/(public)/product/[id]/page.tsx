@@ -51,7 +51,7 @@ export async function generateMetadata(
   const title       = `${product.brand} ${product.model} — ${product.condition === 'NEW' ? 'Sıfır' : 'Yenilenmiş'} | Mytt`;
   const description = `${product.brand} ${product.model} — ₺${Number(product.price).toLocaleString('tr-TR')} — Güvenli alışveriş, garantili cihaz. Mytt Elite Galeri.`;
   const image       = product.imagesUrl?.[0] ?? '/og-banner.png';
-  const url         = `https://mytt.com/product/${id}`;
+  const url         = `https://mytt.com.tr/product/${id}`;
 
   return {
     title,
@@ -100,7 +100,7 @@ export default async function ProductDetailPage(
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
       seller:         { '@type': 'Organization', name: 'Mytt' },
-      url:            `https://mytt.com/product/${id}`,
+      url:            `https://mytt.com.tr/product/${id}`,
     },
     ...(product.condition === 'SECOND_HAND' && {
       itemCondition: 'https://schema.org/RefurbishedCondition',

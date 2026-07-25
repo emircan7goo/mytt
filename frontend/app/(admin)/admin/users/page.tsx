@@ -24,7 +24,7 @@ interface AdminUser {
 
 // ── Sabitler ─────────────────────────────────────────────────────────────────
 const STATUS_CONFIG: Record<UserStatus, { label: string; color: string; bg: string; border: string }> = {
-  active:      { label: 'Aktif',        color: '#10b981', bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.25)' },
+  active:      { label: 'Aktif',        color: '#8B5CF6', bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.25)' },
   pending_kyc: { label: 'KYC Bekliyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
   banned:      { label: 'Banlı',        color: '#ef4444', bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)'  },
 };
@@ -250,7 +250,7 @@ export default function AdminUsersPage() {
                       <span style={{
                         padding: '3px 10px', borderRadius: '100px', fontSize: '11px', fontWeight: 700,
                         background: u.role === 'dealer' ? 'rgba(14,165,233,0.12)' : 'rgba(16,185,129,0.1)',
-                        color: u.role === 'dealer' ? '#0ea5e9' : '#10b981',
+                        color: u.role === 'dealer' ? '#0ea5e9' : '#8B5CF6',
                         border: `1px solid ${u.role === 'dealer' ? 'rgba(14,165,233,0.25)' : 'rgba(16,185,129,0.2)'}`,
                       }}>
                         {u.role === 'dealer' ? 'Bayi' : 'Müşteri'}
@@ -294,7 +294,7 @@ export default function AdminUsersPage() {
                             <button
                               onClick={() => void handleSaveComm(u.id)}
                               disabled={saving}
-                              style={{ padding: '4px 10px', borderRadius: '6px', background: '#10b981', border: 'none', color: 'white', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}
+                              style={{ padding: '4px 10px', borderRadius: '6px', background: '#8B5CF6', border: 'none', color: 'white', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}
                             >
                               {saving ? '...' : '✓'}
                             </button>
@@ -327,7 +327,7 @@ export default function AdminUsersPage() {
                           <button id={`unban-${u.id}`} onClick={() => void handleBan(u.id)} style={{
                             display: 'flex', alignItems: 'center', gap: '4px', padding: '5px 10px', borderRadius: '7px',
                             background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)',
-                            color: '#10b981', fontSize: '11px', fontWeight: 700, cursor: 'pointer',
+                            color: '#8B5CF6', fontSize: '11px', fontWeight: 700, cursor: 'pointer',
                           }}>
                             <CheckCircle size={12} /> Aktif Et
                           </button>
