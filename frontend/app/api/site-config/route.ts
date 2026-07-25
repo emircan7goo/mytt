@@ -61,7 +61,7 @@ const DEFAULT_FEATURE_CARDS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  ticker: "🏆 Türkiye'nin En Güvenilir Yenilenmiş Telefon Pazarı  |  🎉 Vade Farksız 9 Taksit İmkânı  |  ✅ 21 Nokta Kalite Kontrol  |  🚀 Aynı Gün Kargo  |  💎 TSE Onaylı Premium Cihazlar",
+  ticker: "🏆 Türkiye'nin En Güvenilir Doğrulanmış Cihaz Pazarı  |  🎉 Vade Farksız 9 Taksit İmkânı  |  ✅ 21 Nokta Kalite Kontrol  |  🚀 Aynı Gün Kargo  |  💎 TSE Onaylı Premium Cihazlar",
   trustBar: [
     { icon: 'ShieldCheck', title: '12 Ay Garanti', desc: "Tüm cihazlarda tam güvence." },
     { icon: 'Truck', title: 'Aynı Gün Kargo', desc: "Saat 14:00'e kadar olan siparişler." },

@@ -591,7 +591,7 @@ const SAMPLE_SLIDES = [
   },
   {
     imageUrl: 'linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%)',
-    title: 'iPhone �?? Elite Kalite',
+    title: 'iPhone — Elite Kalite',
     subtitle: 'A+ ve A Kalite iPhone modelleri. Kutulu, garantili, sıfır farkıyla.',
     btnLeftText: 'iPhone Gör',     btnLeftLink: '/?cat=Apple',
     btnRightText: 'Nasıl Çalışır', btnRightLink: '/',
@@ -1152,7 +1152,7 @@ function SeoTab({ draft, update }: { draft: any; update: (k: string, v: any) => 
           <Label>Site Ana Başlığı</Label>
           <span className={`text-[10px] font-bold ${titleLen > 60 ? 'text-red-400' : 'text-white/30'}`}>{titleLen}/60</span>
         </div>
-        <TInput value={draft.siteTitle || ''} onChange={(v) => update('siteTitle', v)} placeholder="Mytt �?? Elite Cihazlar" />
+        <TInput value={draft.siteTitle || ''} onChange={(v) => update('siteTitle', v)} placeholder="Mytt — Elite Cihazlar" />
         <p className="text-[10px] text-white/25 mt-1">Tarayıcı sekmesi ve Google'da görünür</p>
       </div>
 
