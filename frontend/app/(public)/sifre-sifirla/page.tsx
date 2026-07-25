@@ -43,12 +43,12 @@ function ResetPasswordContent() {
   if (success) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-3xl border border-zinc-100 shadow-sm p-10 text-center">
+        <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10 text-center">
           <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 size={32} className="text-orange-500" />
           </div>
-          <h2 className="text-xl font-semibold text-zinc-900 mb-2">Şifre Güncellendi</h2>
-          <p className="text-zinc-500 text-sm mb-4">Yeni şifrenizle giriş yapabilirsiniz. Yönlendiriliyorsunuz...</p>
+          <h2 className="text-xl font-semibold text-[var(--k-ink)] mb-2">Şifre Güncellendi</h2>
+          <p className="text-[var(--k-ink-3)] text-sm mb-4">Yeni şifrenizle giriş yapabilirsiniz. Yönlendiriliyorsunuz...</p>
           <Link href="/login" className="text-sm font-semibold text-blue-600 hover:underline">
             Hemen Giriş Yap
           </Link>
@@ -59,17 +59,17 @@ function ResetPasswordContent() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-zinc-100 shadow-sm p-10">
+      <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10">
         <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
           <Lock size={22} className="text-blue-600" />
         </div>
 
-        <h1 className="text-2xl font-semibold text-zinc-900 mb-1">Yeni Şifre Oluştur</h1>
-        <p className="text-zinc-500 text-sm mb-8">En az 6 karakter içeren güçlü bir şifre seçin.</p>
+        <h1 className="text-2xl font-semibold text-[var(--k-ink)] mb-1">Yeni Şifre Oluştur</h1>
+        <p className="text-[var(--k-ink-3)] text-sm mb-8">En az 6 karakter içeren güçlü bir şifre seçin.</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Yeni Şifre</label>
+            <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider">Yeni Şifre</label>
             <div className="relative">
               <input
                 type={showPwd ? 'text' : 'password'}
@@ -78,12 +78,12 @@ function ResetPasswordContent() {
                 minLength={6}
                 required
                 placeholder="En az 6 karakter"
-                className="w-full border border-zinc-200 focus:border-blue-500 rounded-xl px-4 py-3 pr-10 text-sm outline-none transition-colors"
+                className="w-full border border-[var(--k-line)] focus:border-blue-500 rounded-xl px-4 py-3 pr-10 text-sm outline-none transition-colors"
               />
               <button
                 type="button"
                 onClick={() => setShowPwd(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)]"
               >
                 {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -91,14 +91,14 @@ function ResetPasswordContent() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Şifre Tekrar</label>
+            <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider">Şifre Tekrar</label>
             <input
               type={showPwd ? 'text' : 'password'}
               value={confirm}
               onChange={e => setConfirm(e.target.value)}
               required
               placeholder="Şifrenizi tekrar girin"
-              className={`border rounded-xl px-4 py-3 text-sm outline-none transition-colors ${ confirm && confirm !== password ? 'border-red-300 focus:border-red-400' : 'border-zinc-200 focus:border-blue-500' }`}
+              className={`border rounded-xl px-4 py-3 text-sm outline-none transition-colors ${ confirm && confirm !== password ? 'border-red-300 focus:border-red-400' : 'border-[var(--k-line)] focus:border-blue-500' }`}
             />
             {confirm && confirm !== password && (
               <p className="text-xs text-red-500">Şifreler eşleşmiyor</p>
@@ -125,7 +125,7 @@ export default function ResetPasswordPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={32} className="animate-spin text-zinc-400" />
+        <Loader2 size={32} className="animate-spin text-[var(--k-ink-4)]" />
       </div>
     }>
       <ResetPasswordContent />

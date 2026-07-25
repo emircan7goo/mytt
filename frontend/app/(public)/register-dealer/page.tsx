@@ -69,12 +69,12 @@ export default function RegisterDealerPage() {
               <CheckCircle className="text-green-500" size={40} />
             </div>
           </div>
-          <h1 className="text-2xl font-black text-zinc-900 mb-3">
+          <h1 className="text-2xl font-black text-[var(--k-ink)] mb-3">
             Başvurunuz Alındı!
           </h1>
-          <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+          <p className="text-[var(--k-ink-3)] text-sm leading-relaxed mb-6">
             Bayi başvurunuz admin ekibimize iletildi. Onay süreci genellikle{' '}
-            <span className="font-bold text-zinc-700">1–2 iş günü</span> sürmektedir.
+            <span className="font-bold text-[var(--k-ink-2)]">1–2 iş günü</span> sürmektedir.
             Onaylandığında e-posta ile bilgilendirileceksiniz.
           </p>
           <Link
@@ -95,11 +95,11 @@ export default function RegisterDealerPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <span className="text-3xl font-black tracking-tight text-zinc-900">
+            <span className="text-3xl font-black tracking-tight text-[var(--k-ink)]">
               my<span className="text-orange-500">tt</span>
             </span>
           </Link>
-          <p className="mt-2 text-sm text-zinc-500 font-medium">
+          <p className="mt-2 text-sm text-[var(--k-ink-3)] font-medium">
             Bayi / Kurumsal Başvurusu
           </p>
         </div>
@@ -109,53 +109,53 @@ export default function RegisterDealerPage() {
           Başvurunuz admin onayına gönderilir. Onay sonrası mağazanızı açabilirsiniz.
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden">
+        <div className="bg-[var(--k-surface)] rounded-2xl shadow-sm border border-[var(--k-line)] overflow-hidden">
           <div className="p-6">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
               {/* Ad Soyad */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Yetkili Ad Soyad
                 </label>
                 <div className="relative group">
-                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={18} />
+                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={18} />
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ahmet Yılmaz"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
 
               {/* Şirket Adı */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Şirket / Mağaza Adı
                 </label>
                 <div className="relative group">
-                  <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={18} />
+                  <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={18} />
                   <input
                     type="text"
                     required
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     placeholder="Yıldız Telekomünikasyon A.Ş."
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
 
               {/* Vergi No */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Vergi Numarası
                 </label>
                 <div className="relative group">
-                  <Hash className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={18} />
+                  <Hash className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={18} />
                   <input
                     type="text"
                     required
@@ -164,18 +164,18 @@ export default function RegisterDealerPage() {
                     onChange={(e) => setTaxId(e.target.value.replace(/\D/g, ''))}
                     placeholder="1234567890"
                     maxLength={11}
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm tracking-widest"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm tracking-widest"
                   />
                 </div>
               </div>
 
               {/* E-posta */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   E-Posta
                 </label>
                 <div className="relative group">
-                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={18} />
+                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={18} />
                   <input
                     type="email"
                     required
@@ -183,7 +183,7 @@ export default function RegisterDealerPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ahmet@firma.com"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
@@ -191,11 +191,11 @@ export default function RegisterDealerPage() {
               {/* Şifre */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                  <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                     Şifre
                   </label>
                   <div className="relative group">
-                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={16} />
+                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={16} />
                     <input
                       type={showPw ? 'text' : 'password'}
                       required
@@ -203,12 +203,12 @@ export default function RegisterDealerPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••"
-                      className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-10 pr-9 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
+                      className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-10 pr-9 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPw(!showPw)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
                     >
                       {showPw ? <EyeOff size={14} /> : <Eye size={14} />}
                     </button>
@@ -216,11 +216,11 @@ export default function RegisterDealerPage() {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                  <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                     Tekrar
                   </label>
                   <div className="relative group">
-                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-sky-500 transition-colors" size={16} />
+                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-sky-500 transition-colors" size={16} />
                     <input
                       type={showPw ? 'text' : 'password'}
                       required
@@ -228,7 +228,7 @@ export default function RegisterDealerPage() {
                       value={confirm}
                       onChange={(e) => setConfirm(e.target.value)}
                       placeholder="••••••"
-                      className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
+                      className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-10 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all font-medium text-sm"
                     />
                   </div>
                 </div>
@@ -251,8 +251,8 @@ export default function RegisterDealerPage() {
             </form>
           </div>
 
-          <div className="px-6 py-4 bg-zinc-50 border-t border-zinc-100 text-center">
-            <p className="text-sm text-zinc-500">
+          <div className="px-6 py-4 bg-[var(--k-surface-2)] border-t border-[var(--k-line)] text-center">
+            <p className="text-sm text-[var(--k-ink-3)]">
               Bireysel hesap mı açmak istiyorsunuz?{' '}
               <Link
                 href="/register"

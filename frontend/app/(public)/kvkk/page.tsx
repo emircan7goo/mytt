@@ -10,17 +10,17 @@ export default function KVKKPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] pt-[100px] pb-20">
       <div className="max-w-3xl mx-auto px-6">
-        <h1 className="text-3xl font-bold text-zinc-900 mb-2 tracking-tight">
+        <h1 className="text-3xl font-bold text-[var(--k-ink)] mb-2 tracking-tight">
           Kişisel Verilerin Korunması
         </h1>
-        <p className="text-zinc-400 text-sm mb-10">
+        <p className="text-[var(--k-ink-4)] text-sm mb-10">
           6698 Sayılı Kişisel Verilerin Korunması Kanunu — KVKK Aydınlatma Metni
         </p>
 
-        <div className="prose prose-zinc max-w-none space-y-8 text-zinc-700 text-[15px] leading-relaxed">
+        <div className="prose prose-zinc max-w-none space-y-8 text-[var(--k-ink-2)] text-[15px] leading-relaxed">
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">1. Veri Sorumlusu</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">1. Veri Sorumlusu</h2>
             <p>
               Mytt platformu olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;)
               kapsamında kişisel verilerinizin işlenmesinden sorumlu veri sorumlusu sıfatıyla hareket
@@ -30,7 +30,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">2. İşlenen Kişisel Veriler</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">2. İşlenen Kişisel Veriler</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li><strong>Kimlik Bilgileri:</strong> Ad, soyad</li>
               <li><strong>İletişim Bilgileri:</strong> E-posta adresi, telefon numarası</li>
@@ -42,7 +42,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">3. Kişisel Verilerin İşlenme Amaçları</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">3. Kişisel Verilerin İşlenme Amaçları</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li>Sipariş oluşturma, yönetimi ve teslim süreçlerinin yürütülmesi</li>
               <li>Kullanıcı hesabının oluşturulması ve kimlik doğrulaması</li>
@@ -55,7 +55,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">4. Hukuki Dayanak</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">4. Hukuki Dayanak</h2>
             <p>Kişisel verileriniz aşağıdaki hukuki dayanaklar kapsamında işlenmektedir:</p>
             <ul className="list-disc pl-5 space-y-2 mt-2">
               <li>Sözleşmenin ifası (KVKK Madde 5/2-c)</li>
@@ -66,7 +66,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">5. Veri Güvenliği</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">5. Veri Güvenliği</h2>
             <p>
               Kişisel verilerinizin güvenliğini sağlamak amacıyla uygun teknik ve idari önlemler
               uygulanmaktadır. Şifreler bcrypt ile hashlenmekte, erişim token&apos;ları HttpOnly
@@ -77,7 +77,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">6. Veri Saklama Süresi</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">6. Veri Saklama Süresi</h2>
             <p>
               Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca veya ilgili
               mevzuatta öngörülen süreler dolana kadar saklanmaktadır. Hesabınızı kapatmanız
@@ -87,7 +87,7 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">7. KVKK Kapsamındaki Haklarınız</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">7. KVKK Kapsamındaki Haklarınız</h2>
             <p>KVKK&apos;nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
             <ul className="list-disc pl-5 space-y-2 mt-2">
               <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
@@ -101,7 +101,7 @@ export default function KVKKPage() {
             </ul>
             <p className="mt-3">
               Haklarınızı kullanmak için{' '}
-              <a href="mailto:kvkk@mytt.com.tr" className="text-zinc-900 underline underline-offset-2">
+              <a href="mailto:kvkk@mytt.com.tr" className="text-[var(--k-ink)] underline underline-offset-2">
                 kvkk@mytt.com.tr
               </a>{' '}
               adresine yazılı başvuruda bulunabilirsiniz.
@@ -109,18 +109,18 @@ export default function KVKKPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">8. Çerezler</h2>
+            <h2 className="text-lg font-semibold text-[var(--k-ink)] mb-3">8. Çerezler</h2>
             <p>
               Platform, oturum yönetimi ve deneyim iyileştirme amaçlarıyla çerezler kullanmaktadır.
               Detaylı bilgi için{' '}
-              <a href="/cerez-politikasi" className="text-zinc-900 underline underline-offset-2">
+              <a href="/cerez-politikasi" className="text-[var(--k-ink)] underline underline-offset-2">
                 Çerez Politikamızı
               </a>{' '}
               inceleyebilirsiniz.
             </p>
           </section>
 
-          <p className="text-zinc-400 text-xs pt-6 border-t border-zinc-100">
+          <p className="text-[var(--k-ink-4)] text-xs pt-6 border-t border-[var(--k-line)]">
             Son güncelleme: Nisan 2025
           </p>
         </div>

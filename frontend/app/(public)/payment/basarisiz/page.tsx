@@ -24,10 +24,10 @@ function BasarisizContent() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-light tracking-tight text-zinc-900 mb-2">
+          <h1 className="text-3xl font-light tracking-tight text-[var(--k-ink)] mb-2">
             Ödeme Başarısız
           </h1>
-          <p className="text-zinc-500 text-sm leading-relaxed">
+          <p className="text-[var(--k-ink-3)] text-sm leading-relaxed">
             Ödeme işlemi tamamlanamadı. Kart bilgilerinizi kontrol edip tekrar deneyebilirsiniz.
             Herhangi bir ücret tahsil edilmedi.
           </p>
@@ -57,13 +57,13 @@ function BasarisizContent() {
           )}
           <button
             onClick={() => router.back()}
-            className="w-full border border-zinc-200 hover:border-zinc-400 text-zinc-700 font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors text-sm"
+            className="w-full border border-[var(--k-line)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)] font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors text-sm"
           >
             <ArrowLeft size={16} /> Ürüne Dön
           </button>
           <Link
             href="/"
-            className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
+            className="text-sm text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
           >
             Ana Sayfaya Dön
           </Link>
@@ -77,7 +77,7 @@ export default function PaymentBasarisizPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={32} className="animate-spin text-zinc-400" />
+        <Loader2 size={32} className="animate-spin text-[var(--k-ink-4)]" />
       </div>
     }>
       <BasarisizContent />

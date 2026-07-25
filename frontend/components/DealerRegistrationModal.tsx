@@ -89,13 +89,13 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
       >
         {/* Backdrop */}
         <motion.div
-          className="absolute inset-0 bg-white/40 backdrop-blur-2xl"
+          className="absolute inset-0 bg-[rgba(6,6,7,0.62)] backdrop-blur-2xl"
           onClick={onClose}
         />
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-lg bg-white border-2 border-zinc-200/50 rounded-[32px] shadow-[0_0_60px_rgba(0,0,0,0.05)] overflow-hidden z-10"
+          className="relative w-full max-w-lg bg-[var(--k-surface)] border-2 border-[var(--k-line)] rounded-[32px] shadow-[0_0_60px_rgba(0,0,0,0.05)] overflow-hidden z-10"
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -105,24 +105,24 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-300 to-transparent" />
 
           {/* Header */}
-          <div className="px-8 pt-8 pb-6 border-b border-zinc-200 flex items-start justify-between">
+          <div className="px-8 pt-8 pb-6 border-b border-[var(--k-line)] flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-slate-100 border-2 border-zinc-200/50 flex items-center justify-center shadow-sm">
-                  <Store size={18} className="text-zinc-800" />
+                <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] border-2 border-[var(--k-line)] flex items-center justify-center shadow-sm">
+                  <Store size={18} className="text-[var(--k-ink)]" />
                 </div>
-                <span className="text-zinc-500 text-[11px] font-black uppercase tracking-widest">B2B Başvuru Sistemi</span>
+                <span className="text-[var(--k-ink-3)] text-[11px] font-black uppercase tracking-widest">B2B Başvuru Sistemi</span>
               </div>
-              <h2 className="text-zinc-900 text-3xl font-heading font-thin tracking-tighter">
+              <h2 className="text-[var(--k-ink)] text-3xl font-heading font-thin tracking-tighter">
                 Esnaf Ol.
               </h2>
-              <p className="text-zinc-500 text-[13px] mt-1">
+              <p className="text-[var(--k-ink-3)] text-[13px] mt-1">
                 Mytt Bayi Ağı'na katıl — toptan fiyat, özel panel.
               </p>
             </div>
             <button
               onClick={onClose}
-              className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-400 transition-all"
+              className="w-10 h-10 rounded-full border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-3)] hover:text-[var(--k-ink)] hover:border-[var(--k-line-2)] transition-all"
             >
               <X size={18} />
             </button>
@@ -130,8 +130,8 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
 
           {/* Steps indicator */}
           <div className="px-8 pt-6 flex items-center gap-3">
-            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 1 ? 'bg-zinc-900' : 'bg-zinc-200'}`} />
-            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 2 ? 'bg-zinc-900' : 'bg-zinc-200'}`} />
+            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 1 ? 'bg-zinc-900' : 'bg-[var(--k-surface-3)]'}`} />
+            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 2 ? 'bg-zinc-900' : 'bg-[var(--k-surface-3)]'}`} />
           </div>
 
           {isSuccess ? (
@@ -140,9 +140,9 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
                 <CheckCircle2 size={40} className="text-orange-400" />
               </div>
               <div>
-                <h3 className="text-zinc-900 text-2xl font-heading font-thin tracking-tight mb-2">Başvurunuz Alındı!</h3>
-                <p className="text-zinc-500 text-[14px] leading-relaxed max-w-xs mx-auto">
-                  Admin ekibimiz <span className="text-zinc-900 font-bold">{form.companyName}</span> başvurusunu inceleyecek.
+                <h3 className="text-[var(--k-ink)] text-2xl font-heading font-thin tracking-tight mb-2">Başvurunuz Alındı!</h3>
+                <p className="text-[var(--k-ink-3)] text-[14px] leading-relaxed max-w-xs mx-auto">
+                  Admin ekibimiz <span className="text-[var(--k-ink)] font-bold">{form.companyName}</span> başvurusunu inceleyecek.
                   Onay sonrası size e-posta ile bildirim gönderilecek.
                 </p>
               </div>
@@ -155,32 +155,32 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
             </div>
           ) : step === 1 ? (
             <form onSubmit={handleStep1} className="px-8 py-8 flex flex-col gap-5">
-              <p className="text-zinc-400 text-[11px] uppercase tracking-widest font-black">Adım 1 — Hesap Bilgileri</p>
+              <p className="text-[var(--k-ink-4)] text-[11px] uppercase tracking-widest font-black">Adım 1 — Hesap Bilgileri</p>
 
               <div className="flex flex-col gap-2">
-                <label className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Ad Soyad</label>
+                <label className="text-[var(--k-ink-3)] text-[10px] uppercase tracking-widest font-bold">Ad Soyad</label>
                 <div className="relative">
-                  <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]" />
                   <input name="name" value={form.name} onChange={handleChange} type="text" placeholder="Mehmet Yıldız" required
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-zinc-200 focus:border-zinc-400 focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-zinc-900 outline-none transition-all font-light placeholder:text-zinc-400" />
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--k-surface-2)] border border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-[var(--k-ink)] outline-none transition-all font-light placeholder:text-[var(--k-ink-4)]" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">E-Posta</label>
+                <label className="text-[var(--k-ink-3)] text-[10px] uppercase tracking-widest font-bold">E-Posta</label>
                 <div className="relative">
-                  <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]" />
                   <input name="email" value={form.email} onChange={handleChange} type="email" placeholder="mehmet@firma.com" required
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-zinc-200 focus:border-zinc-400 focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-zinc-900 outline-none transition-all font-light placeholder:text-zinc-400" />
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--k-surface-2)] border border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-[var(--k-ink)] outline-none transition-all font-light placeholder:text-[var(--k-ink-4)]" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Şifre</label>
+                <label className="text-[var(--k-ink-3)] text-[10px] uppercase tracking-widest font-bold">Şifre</label>
                 <div className="relative">
-                  <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]" />
                   <input name="password" value={form.password} onChange={handleChange} type="password" placeholder="En az 6 karakter" required minLength={6}
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-zinc-200 focus:border-zinc-400 focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-zinc-900 outline-none transition-all font-light placeholder:text-zinc-400" />
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--k-surface-2)] border border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-[var(--k-ink)] outline-none transition-all font-light placeholder:text-[var(--k-ink-4)]" />
                 </div>
               </div>
 
@@ -191,33 +191,33 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
             </form>
           ) : (
             <form onSubmit={handleSubmit} className="px-8 py-8 flex flex-col gap-5">
-              <p className="text-zinc-400 text-[11px] uppercase tracking-widest font-black">Adım 2 — Firma Bilgileri</p>
+              <p className="text-[var(--k-ink-4)] text-[11px] uppercase tracking-widest font-black">Adım 2 — Firma Bilgileri</p>
 
               <div className="flex flex-col gap-2">
-                <label className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Şirket Unvanı</label>
+                <label className="text-[var(--k-ink-3)] text-[10px] uppercase tracking-widest font-bold">Şirket Unvanı</label>
                 <div className="relative">
-                  <Building2 size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Building2 size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]" />
                   <input name="companyName" value={form.companyName} onChange={handleChange} type="text" placeholder="Yıldız Telekomünikasyon A.Ş." required
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-zinc-200 focus:border-zinc-400 focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-zinc-900 outline-none transition-all font-light placeholder:text-zinc-400" />
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--k-surface-2)] border border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-[var(--k-ink)] outline-none transition-all font-light placeholder:text-[var(--k-ink-4)]" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Vergi Numarası</label>
+                <label className="text-[var(--k-ink-3)] text-[10px] uppercase tracking-widest font-bold">Vergi Numarası</label>
                 <div className="relative">
-                  <Hash size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Hash size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]" />
                   <input name="taxId" value={form.taxId} onChange={handleChange} type="text" placeholder="1234567890" required maxLength={11}
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-zinc-200 focus:border-zinc-400 focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-zinc-900 outline-none transition-all font-light tracking-widest placeholder:text-zinc-400" />
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--k-surface-2)] border border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:shadow-[0_0_15px_rgba(0,0,0,0.05)] rounded-xl text-[var(--k-ink)] outline-none transition-all font-light tracking-widest placeholder:text-[var(--k-ink-4)]" />
                 </div>
               </div>
 
-              <div className="bg-slate-100 border border-zinc-200 rounded-xl p-4 text-zinc-600 text-[12px] leading-relaxed">
+              <div className="bg-[var(--k-surface-3)] border border-[var(--k-line)] rounded-xl p-4 text-[var(--k-ink-2)] text-[12px] leading-relaxed">
                 💼 Başvurunuz admin tarafından incelenecek. Onay sonrası toptan fiyat ve bayi paneli aktif olacak.
               </div>
 
               <div className="flex gap-3">
                 <button type="button" onClick={() => setStep(1)}
-                  className="flex-1 border-2 border-zinc-300 text-zinc-900 font-bold uppercase tracking-widest py-3.5 rounded-xl hover:border-zinc-400 transition-all text-[13px]">
+                  className="flex-1 border-2 border-[var(--k-line-2)] text-[var(--k-ink)] font-bold uppercase tracking-widest py-3.5 rounded-xl hover:border-[var(--k-line-2)] transition-all text-[13px]">
                   Geri
                 </button>
                 <button type="submit" disabled={isSubmitting}

@@ -115,7 +115,7 @@ function HealthBars({ bars, accent }: { bars: number; accent: string }) {
 function ProgressBar({ step, total }: { step: number; total: number }) {
   return (
     <div className="mb-8">
-      <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
+      <div className="h-1 bg-[var(--k-surface-3)] rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{
@@ -222,11 +222,11 @@ export default function TradeInPage() {
       <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #1d4ed8 0%, #3b82f6 50%, #93c5fd 100%)' }} />
 
       {/* Header */}
-      <header className="bg-white border-b border-slate-100 sticky top-0 z-10">
+      <header className="bg-[var(--k-surface)] border-b border-[var(--k-line)] sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-slate-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
           >
             <ArrowLeft size={15} strokeWidth={2} />
             Geri dön
@@ -239,17 +239,17 @@ export default function TradeInPage() {
             >
               <RefreshCcw size={14} strokeWidth={1.5} style={{ color: '#2563EB' }} />
             </div>
-            <span className="text-sm font-bold text-slate-700">Trade-In Hesaplayıcı</span>
+            <span className="text-sm font-bold text-[var(--k-ink-2)]">Trade-In Hesaplayıcı</span>
           </div>
 
           {step < 3 ? (
-            <span className="text-xs font-semibold text-slate-400 tabular-nums">
+            <span className="text-xs font-semibold text-[var(--k-ink-4)] tabular-nums">
               {step + 1} / 3
             </span>
           ) : (
             <button
               onClick={handleReset}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-slate-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
             >
               <RefreshCcw size={13} />
               Yeniden
@@ -270,15 +270,15 @@ export default function TradeInPage() {
         {step === 3 && result !== null && (
           <div className="space-y-6">
             {/* Price card */}
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden">
               {/* Color header */}
               <div className="px-6 py-8 text-center" style={{ background: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)' }}>
                 <p className="text-[11px] font-black uppercase tracking-[0.15em] text-blue-500 mb-3">
                   Tahmini Trade-In Değeri
                 </p>
-                <p className="text-5xl font-black text-slate-900 tracking-tight tabular-nums">
+                <p className="text-5xl font-black text-[var(--k-ink)] tracking-tight tabular-nums">
                   {result.toLocaleString('tr-TR')}
-                  <span className="text-2xl text-slate-400 font-bold ml-2">₺</span>
+                  <span className="text-2xl text-[var(--k-ink-4)] font-bold ml-2">₺</span>
                 </p>
                 <div
                   className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-full text-xs font-semibold"
@@ -299,17 +299,17 @@ export default function TradeInPage() {
                 ].map((row, i, arr) => (
                   <div
                     key={row.label}
-                    className={`flex items-center justify-between py-3 ${i < arr.length - 1 ? 'border-b border-slate-100' : ''}`}
+                    className={`flex items-center justify-between py-3 ${i < arr.length - 1 ? 'border-b border-[var(--k-line)]' : ''}`}
                   >
-                    <span className="text-sm text-slate-500">{row.label}</span>
-                    <span className="text-sm font-semibold text-slate-800">{row.value}</span>
+                    <span className="text-sm text-[var(--k-ink-3)]">{row.label}</span>
+                    <span className="text-sm font-semibold text-[var(--k-ink)]">{row.value}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Disclaimer */}
-            <p className="text-xs text-slate-400 text-center leading-relaxed px-4">
+            <p className="text-xs text-[var(--k-ink-4)] text-center leading-relaxed px-4">
               Bu değer tahmine dayalıdır. Kesin fiyat bayilerin teklifleriyle belirlenir.
             </p>
 
@@ -334,17 +334,17 @@ export default function TradeInPage() {
             </button>
 
             {/* Footer nav */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <div className="flex items-center justify-between pt-4 border-t border-[var(--k-line)]">
               <button
                 onClick={handleBack}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
               >
                 <ArrowLeft size={15} />
                 Geri
               </button>
               <button
                 onClick={handleReset}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--k-line)] bg-[var(--k-surface)] text-sm font-semibold text-[var(--k-ink-2)] hover:bg-[var(--k-surface-2)] transition-colors"
               >
                 <RefreshCcw size={14} />
                 Baştan Hesapla
@@ -357,8 +357,8 @@ export default function TradeInPage() {
         {step === 3 && result === null && (
           <div className="space-y-5">
             <div className="mb-6">
-              <h1 className="text-2xl font-black text-slate-900 mb-2">Fotoğraf Yükle</h1>
-              <p className="text-sm text-slate-500">Bayiler cihazı görebilsin. En az 2, en fazla 6 fotoğraf.</p>
+              <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2">Fotoğraf Yükle</h1>
+              <p className="text-sm text-[var(--k-ink-3)]">Bayiler cihazı görebilsin. En az 2, en fazla 6 fotoğraf.</p>
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex gap-3">
@@ -367,17 +367,17 @@ export default function TradeInPage() {
             </div>
 
             <button onClick={() => fileRef.current?.click()} disabled={uploading || images.length >= 6}
-              className="w-full border-2 border-dashed border-slate-300 rounded-2xl py-10 flex flex-col items-center gap-3 hover:border-blue-400 transition-colors disabled:opacity-50">
-              {uploading ? <Loader2 size={28} className="text-slate-400 animate-spin" /> : <Upload size={28} className="text-slate-400" />}
-              <p className="text-slate-600 font-semibold text-sm">{uploading ? 'Yükleniyor...' : 'Fotoğraf Seç'}</p>
-              <p className="text-slate-400 text-xs">{images.length}/6 yüklendi</p>
+              className="w-full border-2 border-dashed border-[var(--k-line-2)] rounded-2xl py-10 flex flex-col items-center gap-3 hover:border-blue-400 transition-colors disabled:opacity-50">
+              {uploading ? <Loader2 size={28} className="text-[var(--k-ink-4)] animate-spin" /> : <Upload size={28} className="text-[var(--k-ink-4)]" />}
+              <p className="text-[var(--k-ink-2)] font-semibold text-sm">{uploading ? 'Yükleniyor...' : 'Fotoğraf Seç'}</p>
+              <p className="text-[var(--k-ink-4)] text-xs">{images.length}/6 yüklendi</p>
             </button>
             <input ref={fileRef} type="file" accept="image/*" multiple onChange={handleFileChange} className="hidden" />
 
             {images.length > 0 && (
               <div className="grid grid-cols-3 gap-3">
                 {images.map((url, i) => (
-                  <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
+                  <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-[var(--k-line)] bg-[var(--k-surface-3)]">
                     <img src={url} alt="" className="w-full h-full object-cover" />
                     <button onClick={() => setImages(images.filter((_, j) => j !== i))}
                       className="absolute top-1.5 right-1.5 w-6 h-6 bg-black/70 rounded-full flex items-center justify-center">
@@ -389,8 +389,8 @@ export default function TradeInPage() {
               </div>
             )}
 
-            <div className="flex items-center justify-between mt-4 pt-6 border-t border-slate-200">
-              <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors">
+            <div className="flex items-center justify-between mt-4 pt-6 border-t border-[var(--k-line)]">
+              <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors">
                 <ArrowLeft size={15} /> Geri
               </button>
               <button
@@ -414,8 +414,8 @@ export default function TradeInPage() {
             {step === 0 && (
               <div>
                 <div className="mb-7">
-                  <h1 className="text-2xl font-black text-slate-900 mb-2">Cihazın markası nedir?</h1>
-                  <p className="text-sm text-slate-500">Hangi markaya ait cihazı değerlendirmek istiyorsunuz?</p>
+                  <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2">Cihazın markası nedir?</h1>
+                  <p className="text-sm text-[var(--k-ink-3)]">Hangi markaya ait cihazı değerlendirmek istiyorsunuz?</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
@@ -426,7 +426,7 @@ export default function TradeInPage() {
                       <button
                         key={b}
                         onClick={() => { setBrand(b); setModel(null); }}
-                        className={`flex items-center gap-3 p-4 rounded-xl border text-left font-semibold text-sm transition-all duration-150 ${ active ? 'shadow-sm' : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm' }`}
+                        className={`flex items-center gap-3 p-4 rounded-xl border text-left font-semibold text-sm transition-all duration-150 ${ active ? 'shadow-sm' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm' }`}
                         style={
                           active
                             ? { borderColor: meta.color, background: `${meta.color}08` }
@@ -459,8 +459,8 @@ export default function TradeInPage() {
                       {brand}
                     </div>
                   </div>
-                  <h1 className="text-2xl font-black text-slate-900 mb-2">Hangi modeli var?</h1>
-                  <p className="text-sm text-slate-500">Cihazınızın tam modelini seçin.</p>
+                  <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2">Hangi modeli var?</h1>
+                  <p className="text-sm text-[var(--k-ink-3)]">Cihazınızın tam modelini seçin.</p>
                 </div>
 
                 <div className="space-y-2">
@@ -470,7 +470,7 @@ export default function TradeInPage() {
                       <button
                         key={m}
                         onClick={() => setModel(m)}
-                        className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border text-left font-semibold text-[14px] transition-all duration-150 ${ active ? 'shadow-sm' : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm' }`}
+                        className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border text-left font-semibold text-[14px] transition-all duration-150 ${ active ? 'shadow-sm' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm' }`}
                         style={active ? { borderColor: '#2563EB', background: '#EFF6FF', color: '#1d4ed8' } : { color: '#374151' }}
                       >
                         <span>{m}</span>
@@ -490,8 +490,8 @@ export default function TradeInPage() {
             {step === 2 && (
               <div>
                 <div className="mb-7">
-                  <h1 className="text-2xl font-black text-slate-900 mb-2">Cihazın durumu nedir?</h1>
-                  <p className="text-sm text-slate-500">Genel dış görünüm ve çalışma durumunu en iyi tanımlayan seçeneği belirleyin.</p>
+                  <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2">Cihazın durumu nedir?</h1>
+                  <p className="text-sm text-[var(--k-ink-3)]">Genel dış görünüm ve çalışma durumunu en iyi tanımlayan seçeneği belirleyin.</p>
                 </div>
 
                 <div className="space-y-2.5">
@@ -501,7 +501,7 @@ export default function TradeInPage() {
                       <button
                         key={opt.value}
                         onClick={() => setCondition(opt.value)}
-                        className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 ${ active ? 'shadow-sm' : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm' }`}
+                        className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 ${ active ? 'shadow-sm' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm' }`}
                         style={active ? { borderColor: opt.border, background: opt.bg } : {}}
                       >
                         <HealthBars bars={opt.bars} accent={opt.accent} />
@@ -512,7 +512,7 @@ export default function TradeInPage() {
                           >
                             {opt.label}
                           </p>
-                          <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{opt.sub}</p>
+                          <p className="text-xs text-[var(--k-ink-4)] mt-0.5 leading-relaxed">{opt.sub}</p>
                         </div>
                         <div
                           className="flex-shrink-0 px-2.5 py-1 rounded-lg text-xs font-bold"
@@ -532,11 +532,11 @@ export default function TradeInPage() {
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-slate-200">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--k-line)]">
               {step > 0 ? (
                 <button
                   onClick={handleBack}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
                 >
                   <ArrowLeft size={15} />
                   Geri
@@ -544,7 +544,7 @@ export default function TradeInPage() {
               ) : (
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
                 >
                   <ArrowLeft size={15} />
                   Vazgeç
@@ -580,13 +580,13 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
   const countdown = useCountdown(created.expiresAt);
   return (
     <div className="space-y-5">
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden text-center">
+      <div className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden text-center">
         <div className="px-6 py-8" style={{ background: 'linear-gradient(135deg,#EFF6FF,#DBEAFE)' }}>
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg,#2563EB,#1d4ed8)' }}>
             <Check size={28} className="text-white" strokeWidth={2.5} />
           </div>
-          <h2 className="text-2xl font-black text-slate-900 mb-1">Takas Talebi Gönderildi!</h2>
-          <p className="text-sm text-slate-500">{brand} {model} için takas talebin aktif.</p>
+          <h2 className="text-2xl font-black text-[var(--k-ink)] mb-1">Takas Talebi Gönderildi!</h2>
+          <p className="text-sm text-[var(--k-ink-3)]">{brand} {model} için takas talebin aktif.</p>
         </div>
         <div className="px-6 py-5">
           {/* Countdown */}
@@ -604,9 +604,9 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
               ['Tür', '⇄ Takas Talebi'],
               ['Durum', 'Teklif Bekleniyor'],
             ].map(([k, v]) => (
-              <div key={k} className="flex justify-between text-sm py-2 border-b border-slate-100 last:border-0">
-                <span className="text-slate-500">{k}</span>
-                <span className="font-semibold text-slate-800">{v}</span>
+              <div key={k} className="flex justify-between text-sm py-2 border-b border-[var(--k-line)] last:border-0">
+                <span className="text-[var(--k-ink-3)]">{k}</span>
+                <span className="font-semibold text-[var(--k-ink)]">{v}</span>
               </div>
             ))}
           </div>
@@ -617,7 +617,7 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
         style={{ background: '#1d4ed8' }}>
         Teklifleri Takip Et
       </button>
-      <button onClick={onReset} className="w-full py-3 rounded-xl border border-slate-200 text-slate-500 text-sm font-semibold hover:bg-slate-50">
+      <button onClick={onReset} className="w-full py-3 rounded-xl border border-[var(--k-line)] text-[var(--k-ink-3)] text-sm font-semibold hover:bg-[var(--k-surface-2)]">
         Yeni Takas Talebi
       </button>
     </div>

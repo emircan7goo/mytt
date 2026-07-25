@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
+import { Space_Grotesk, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 import { AppProvider } from "@/providers/AppProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+// KARBON tipografisi — teknik/geometrik başlık, sıkı gövde, tabular mono veri
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
-// Editoryal başlık fontu — model karşılaştırma/vitrin akışında premium his için
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
-  weight: "variable",
-  style: ["normal", "italic"],
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["400", "500", "600", "700"],
+});
+
+// Fiyat/veri okumaları — tabular rakamlar hizalı kalsın diye monospace
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "700"],
 });
 
 const BASE_URL = 'https://mytt.com.tr';
@@ -101,7 +107,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${jakarta.variable} ${fraunces.variable} h-full antialiased`}>
+    <html lang="tr" className={`${spaceGrotesk.variable} ${interTight.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#EA580C" />

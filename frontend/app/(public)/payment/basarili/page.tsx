@@ -31,10 +31,10 @@ function BasariliContent() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-light tracking-tight text-zinc-900 mb-2">
+          <h1 className="text-3xl font-light tracking-tight text-[var(--k-ink)] mb-2">
             Ödeme Onaylandı
           </h1>
-          <p className="text-zinc-500 text-sm leading-relaxed">
+          <p className="text-[var(--k-ink-3)] text-sm leading-relaxed">
             Siparişiniz alındı ve güvence altına alındı. Bayi onayladıktan sonra
             kargoya verilecek ve size bildirim yapılacaktır.
           </p>
@@ -56,9 +56,9 @@ function BasariliContent() {
 
         {/* Sipariş ID */}
         {orderId && (
-          <div className="bg-white border border-zinc-100 rounded-2xl px-6 py-4 w-full shadow-sm">
-            <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">Sipariş No</p>
-            <p className="font-mono text-zinc-800 text-sm">{orderId.slice(0, 8).toUpperCase()}</p>
+          <div className="bg-[var(--k-surface)] border border-[var(--k-line)] rounded-2xl px-6 py-4 w-full shadow-sm">
+            <p className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-1">Sipariş No</p>
+            <p className="font-mono text-[var(--k-ink)] text-sm">{orderId.slice(0, 8).toUpperCase()}</p>
           </div>
         )}
 
@@ -75,11 +75,11 @@ function BasariliContent() {
         </div>
 
         {/* Sonraki adım */}
-        <div className="bg-white border border-zinc-100 rounded-2xl p-4 w-full text-left flex gap-3">
-          <Package size={18} className="text-zinc-500 shrink-0 mt-0.5" />
+        <div className="bg-[var(--k-surface)] border border-[var(--k-line)] rounded-2xl p-4 w-full text-left flex gap-3">
+          <Package size={18} className="text-[var(--k-ink-3)] shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm font-semibold text-zinc-800 mb-0.5">Sonraki Adım</p>
-            <p className="text-xs text-zinc-500 leading-relaxed">
+            <p className="text-sm font-semibold text-[var(--k-ink)] mb-0.5">Sonraki Adım</p>
+            <p className="text-xs text-[var(--k-ink-3)] leading-relaxed">
               Bayi siparişinizi onayladıktan sonra kargoya verilecek.
               Takip numaranız e-posta adresinize gönderilecektir.
             </p>
@@ -96,13 +96,13 @@ function BasariliContent() {
           </Link>
           <Link
             href="/"
-            className="w-full border border-zinc-200 hover:border-zinc-400 text-zinc-700 font-semibold py-3.5 rounded-2xl flex items-center justify-center transition-colors text-sm"
+            className="w-full border border-[var(--k-line)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)] font-semibold py-3.5 rounded-2xl flex items-center justify-center transition-colors text-sm"
           >
             Alışverişe Devam Et
           </Link>
         </div>
 
-        <p className="text-xs text-zinc-400">10 saniye içinde otomatik yönlendirileceksiniz</p>
+        <p className="text-xs text-[var(--k-ink-4)]">10 saniye içinde otomatik yönlendirileceksiniz</p>
       </motion.div>
     </div>
   );
@@ -112,7 +112,7 @@ export default function PaymentBasariliPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={32} className="animate-spin text-zinc-400" />
+        <Loader2 size={32} className="animate-spin text-[var(--k-ink-4)]" />
       </div>
     }>
       <BasariliContent />

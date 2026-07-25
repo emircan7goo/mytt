@@ -105,9 +105,9 @@ function DefaultBubble({
         />
       </div>
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
-        <span className="block font-semibold text-slate-500" style={{ fontSize: size.textSm }}>{svc.title1}</span>
+        <span className="block font-semibold text-[var(--k-ink-3)]" style={{ fontSize: size.textSm }}>{svc.title1}</span>
         <span
-          className="block font-black text-slate-900 mt-0.5 group-hover:text-orange-700 transition-colors"
+          className="block font-black text-[var(--k-ink)] mt-0.5 group-hover:text-orange-700 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {svc.title2}
@@ -155,9 +155,9 @@ function CmsBubble({
         />
       </div>
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
-        <span className="block font-semibold text-slate-500" style={{ fontSize: size.textSm }}>{bubble.title1}</span>
+        <span className="block font-semibold text-[var(--k-ink-3)]" style={{ fontSize: size.textSm }}>{bubble.title1}</span>
         <span
-          className="block font-black text-slate-900 mt-0.5 group-hover:text-orange-700 transition-colors"
+          className="block font-black text-[var(--k-ink)] mt-0.5 group-hover:text-orange-700 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {bubble.title2}
@@ -188,7 +188,7 @@ export default function ServiceBubbles() {
   const size = BUBBLE_SIZES[sizeKey] ?? BUBBLE_SIZES.md;
 
   return (
-    <section className="w-full bg-white border-b border-slate-100 py-4">
+    <section className="w-full bg-[var(--k-surface)] border-b border-[var(--k-line)] py-4">
       <div className="max-w-[1280px] mx-auto px-4 lg:px-8">
         <div
           className="flex items-center justify-between gap-3 overflow-x-auto py-2"

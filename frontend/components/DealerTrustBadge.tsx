@@ -29,11 +29,11 @@ export default function DealerTrustBadge({
       </span>
 
       {typeof rating === 'number' && rating > 0 && (
-        <span className="inline-flex items-center gap-1 font-semibold text-zinc-600">
+        <span className="inline-flex items-center gap-1 font-semibold text-[var(--k-ink-2)]">
           <Star size={12} className="fill-amber-400 text-amber-400" />
           {rating.toFixed(1)}
           {typeof reviewCount === 'number' && reviewCount > 0 && (
-            <span className="text-zinc-400 font-medium">({reviewCount})</span>
+            <span className="text-[var(--k-ink-4)] font-medium">({reviewCount})</span>
           )}
         </span>
       )}
@@ -45,7 +45,7 @@ export default function DealerTrustBadge({
       )}
 
       {typeof jobsCompleted === 'number' && jobsCompleted > 0 && (
-        <span className="text-zinc-400 font-medium">{jobsCompleted}+ satış tamamlandı</span>
+        <span className="text-[var(--k-ink-4)] font-medium">{jobsCompleted}+ satış tamamlandı</span>
       )}
     </div>
   );

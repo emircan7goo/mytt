@@ -51,8 +51,8 @@ export default function OrderTimeline({ currentStep, compact = false }: OrderTim
             <div className="pt-1.5 pb-1 min-w-0 flex-1">
               <p className={`font-bold text-sm leading-tight
                 ${isDone    ? 'text-orange-700' : ''}
-                ${isActive  ? 'text-slate-900'   : ''}
-                ${isPending ? 'text-slate-400'   : ''}
+                ${isActive  ? 'text-[var(--k-ink)]'   : ''}
+                ${isPending ? 'text-[var(--k-ink-4)]'   : ''}
               `}>
                 {step.label}
                 {isActive && (
@@ -65,8 +65,8 @@ export default function OrderTimeline({ currentStep, compact = false }: OrderTim
               {!compact && (
                 <p className={`text-xs font-medium mt-1 leading-relaxed
                   ${isDone    ? 'text-orange-600/80' : ''}
-                  ${isActive  ? 'text-slate-500'       : ''}
-                  ${isPending ? 'text-slate-300'       : ''}
+                  ${isActive  ? 'text-[var(--k-ink-3)]'       : ''}
+                  ${isPending ? 'text-[var(--k-ink-4)]'       : ''}
                 `}>
                   {step.description}
                 </p>

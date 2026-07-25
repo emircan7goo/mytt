@@ -88,16 +88,16 @@ export default function AuthModal() {
       />
 
       {/* Modal Box */}
-      <div className="relative w-full max-w-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-[400px] bg-[var(--k-surface)] rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header Ribbon */}
-        <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-gray-50/50">
-          <h2 className="text-xl font-black text-gray-900 tracking-tight">
+        <div className="flex items-center justify-between p-5 border-b border-[var(--k-line)] bg-[rgba(22,22,26,0.6)]">
+          <h2 className="text-xl font-black text-[var(--k-ink)] tracking-tight">
             {isDealerMode ? 'Bayi / Kurumsal Giriş' : 'Merhaba,'}
           </h2>
           <button 
             onClick={() => setAuthModalOpen(false)}
-            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] hover:bg-[var(--k-surface-3)] rounded-full transition-colors"
           >
             <X size={20} />
           </button>
@@ -108,7 +108,7 @@ export default function AuthModal() {
             Sadece onaylı mağaza yetkilileri giriş yapabilir.
           </div>
         ) : (
-          <div className="p-5 text-sm text-gray-500 font-medium pb-2">
+          <div className="p-5 text-sm text-[var(--k-ink-3)] font-medium pb-2">
             Mytt'e giriş yap veya hesap oluştur.
           </div>
         )}
@@ -116,40 +116,40 @@ export default function AuthModal() {
         <div className="p-5 pt-3">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold text-gray-600 uppercase tracking-widest pl-1">E-Posta</label>
+              <label className="text-xs font-bold text-[var(--k-ink-2)] uppercase tracking-widest pl-1">E-Posta</label>
               <div className="relative group">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-orange-500 transition-colors" size={18} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors" size={18} />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="ornek@hesap.com"
-                  className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-11 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium"
+                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between pl-1 pr-1">
-                <label className="text-xs font-bold text-gray-600 uppercase tracking-widest">Şifre</label>
+                <label className="text-xs font-bold text-[var(--k-ink-2)] uppercase tracking-widest">Şifre</label>
                 <Link
                 href="/sifremi-unuttum"
                 onClick={() => setAuthModalOpen(false)}
-                className="text-[11px] font-bold text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-[11px] font-bold text-[var(--k-ink-4)] hover:text-orange-500 transition-colors"
               >
                 Şifremi Unuttum
               </Link>
               </div>
               <div className="relative group">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-orange-500 transition-colors" size={18} />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors" size={18} />
                 <input
                   type="password"
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-11 pr-11 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium tracking-widest"
+                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium tracking-widest"
                 />
               </div>
             </div>
@@ -171,19 +171,19 @@ export default function AuthModal() {
           </form>
 
           {/* Register CTAs */}
-          <div className="mt-5 pt-4 border-t border-gray-100 space-y-2.5">
+          <div className="mt-5 pt-4 border-t border-[var(--k-line)] space-y-2.5">
             <Link
               href="/register"
               onClick={() => setAuthModalOpen(false)}
-              className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-xl bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 transition-all group"
+              className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-xl bg-[var(--k-surface-2)] hover:bg-orange-50 border border-[var(--k-line)] hover:border-orange-300 transition-all group"
             >
               <div className="flex items-center gap-2.5">
                 <UserPlus size={16} className="text-orange-500" />
-                <span className="text-[13px] font-bold text-gray-700 group-hover:text-orange-700">
+                <span className="text-[13px] font-bold text-[var(--k-ink-2)] group-hover:text-orange-700">
                   Hesabın yok mu? <span className="text-orange-600">Üye Ol</span>
                 </span>
               </div>
-              <ChevronRight size={14} className="text-gray-400 group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all" />
+              <ChevronRight size={14} className="text-[var(--k-ink-4)] group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all" />
             </Link>
             <Link
               href="/register-dealer"
@@ -202,11 +202,11 @@ export default function AuthModal() {
         </div>
 
         {/* The hidden dealer toggle */}
-        <div className="p-4 bg-gray-50 border-t border-gray-100 flex justify-center">
+        <div className="p-4 bg-[var(--k-surface-2)] border-t border-[var(--k-line)] flex justify-center">
           <button 
             type="button" 
             onClick={() => setIsDealerMode(!isDealerMode)}
-            className="text-[10px] text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-[10px] text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
           >
             {isDealerMode ? 'Standart Müşteri Girişine Dön' : 'Esnaf Mısınız? Bayi girişi için tıklayın.'}
           </button>

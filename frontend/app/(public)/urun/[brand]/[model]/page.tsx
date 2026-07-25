@@ -56,8 +56,8 @@ export default function ProductFamilyPage() {
   if (isError || !family) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAFAFA]">
-        <h1 className="font-editorial italic text-zinc-900 text-[44px] mb-4">Teklif bulunamadı.</h1>
-        <p className="text-zinc-500 text-[15px] font-light max-w-sm text-center mb-8">
+        <h1 className="font-editorial italic text-[var(--k-ink)] text-[44px] mb-4">Teklif bulunamadı.</h1>
+        <p className="text-[var(--k-ink-3)] text-[15px] font-light max-w-sm text-center mb-8">
           {brand} {model} için şu anda aktif bir bayi teklifi yok.
         </p>
         <button
@@ -102,7 +102,7 @@ export default function ProductFamilyPage() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[180px] h-[220px] md:w-[220px] md:h-[270px] shrink-0 rounded-[32px] bg-white/[0.04] border border-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden"
+              className="w-[180px] h-[220px] md:w-[220px] md:h-[270px] shrink-0 rounded-[32px] bg-[var(--k-surface)]/[0.04] border border-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden"
             >
               {heroImage ? (
                 <img src={heroImage} alt={model} className="w-4/5 h-4/5 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
@@ -117,7 +117,7 @@ export default function ProductFamilyPage() {
                 <span className="text-[11px] font-bold text-orange-300 uppercase tracking-[0.2em] bg-orange-400/10 border border-orange-400/20 px-3 py-1.5 rounded-full">
                   {family.brand}
                 </span>
-                <span className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em] bg-white/[0.06] border border-white/10 px-3 py-1.5 rounded-full">
+                <span className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em] bg-[var(--k-surface)]/[0.06] border border-white/10 px-3 py-1.5 rounded-full">
                   {family.offerCount} Doğrulanmış Teklif
                 </span>
               </div>
@@ -168,23 +168,23 @@ export default function ProductFamilyPage() {
 
       {/* ══════════════════════════ İÇERİK — Açık, Sakin ══════════════════════════ */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 -mt-10 md:-mt-12 relative z-20 pb-24">
-        <p className="text-center text-[13px] text-zinc-500 max-w-xl mx-auto mb-8 leading-relaxed">
+        <p className="text-center text-[13px] text-[var(--k-ink-3)] max-w-xl mx-auto mb-8 leading-relaxed">
           {family.offerCount > 1
             ? 'Bu modeli birden fazla doğrulanmış satıcı listeledi. Kimlikleri hiçbir zaman paylaşılmaz —'
             : 'Bu modeli doğrulanmış bir satıcı listeledi. Kimliği hiçbir zaman paylaşılmaz —'}{' '}
-          siz sadece durumu ve fiyatı karşılaştırırsınız, <span className="font-semibold text-zinc-700">Mytt güvencesiyle</span> satın alırsınız.
+          siz sadece durumu ve fiyatı karşılaştırırsınız, <span className="font-semibold text-[var(--k-ink-2)]">Mytt güvencesiyle</span> satın alırsınız.
         </p>
 
         {/* Filtre / Sıralama Çubuğu — tek teklifte gösterilecek bir şey yok */}
         {family.offerCount > 1 && (
-          <div className="sticky top-[76px] z-30 bg-white/85 backdrop-blur-xl border border-zinc-100 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] p-3 mb-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+          <div className="sticky top-[76px] z-30 bg-[rgba(16,16,19,0.85)] backdrop-blur-xl border border-[var(--k-line)] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] p-3 mb-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
           {/* Depolama filtresi */}
           {family.storageOptions.length > 1 ? (
             <div className="flex items-center gap-1.5 flex-wrap px-1">
               <button
                 onClick={() => setStorage(null)}
                 className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                  storage === null ? 'bg-zinc-900 text-white' : 'text-zinc-500 hover:bg-zinc-100'
+                  storage === null ? 'bg-zinc-900 text-white' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                 }`}
               >
                 Tümü
@@ -194,7 +194,7 @@ export default function ProductFamilyPage() {
                   key={s}
                   onClick={() => setStorage(s)}
                   className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                    storage === s ? 'bg-zinc-900 text-white' : 'text-zinc-500 hover:bg-zinc-100'
+                    storage === s ? 'bg-zinc-900 text-white' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                   }`}
                 >
                   {s}
@@ -204,17 +204,17 @@ export default function ProductFamilyPage() {
           ) : <div />}
 
           {/* Sıralama */}
-          <div className="flex bg-zinc-100 rounded-xl p-1 shrink-0">
+          <div className="flex bg-[var(--k-surface-3)] rounded-xl p-1 shrink-0">
             {SORT_OPTIONS.map((opt) => (
               <button
                 key={opt.value}
                 onClick={() => setSort(opt.value)}
                 className={`px-3.5 py-2 rounded-lg text-[12px] font-bold transition-all whitespace-nowrap ${
-                  sort === opt.value ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'
+                  sort === opt.value ? 'bg-[var(--k-surface)] text-[var(--k-ink)] shadow-sm' : 'text-[var(--k-ink-3)] hover:text-[var(--k-ink-2)]'
                 }`}
               >
                 {opt.label}
-                <span className={`ml-1.5 font-medium hidden md:inline ${sort === opt.value ? 'text-zinc-400' : 'text-zinc-400'}`}>
+                <span className={`ml-1.5 font-medium hidden md:inline ${sort === opt.value ? 'text-[var(--k-ink-4)]' : 'text-[var(--k-ink-4)]'}`}>
                   · {opt.hint}
                 </span>
               </button>
@@ -233,7 +233,7 @@ export default function ProductFamilyPage() {
             className="flex flex-col gap-3"
           >
             {family.items.length === 0 ? (
-              <div className="text-center py-20 text-zinc-400 text-[14px]">
+              <div className="text-center py-20 text-[var(--k-ink-4)] text-[14px]">
                 Bu filtrelerle eşleşen teklif yok.
               </div>
             ) : (
@@ -252,10 +252,10 @@ export default function ProductFamilyPage() {
                   >
                     <Link
                       href={`/product/${offer.id}`}
-                      className={`group flex flex-col sm:flex-row sm:items-center gap-4 p-5 md:p-6 rounded-[22px] bg-white border transition-all hover:shadow-[0_16px_40px_rgba(0,0,0,0.07)] hover:-translate-y-0.5 ${
+                      className={`group flex flex-col sm:flex-row sm:items-center gap-4 p-5 md:p-6 rounded-[22px] bg-[var(--k-surface)] border transition-all hover:shadow-[0_16px_40px_rgba(0,0,0,0.07)] hover:-translate-y-0.5 ${
                         isTopPick
                           ? 'border-transparent shadow-[0_0_0_1.5px_#EA580C,0_16px_40px_rgba(234,88,12,0.12)]'
-                          : 'border-zinc-100'
+                          : 'border-[var(--k-line)]'
                       }`}
                     >
                       {/* Sol: Durum + güven */}
@@ -268,7 +268,7 @@ export default function ProductFamilyPage() {
                             </span>
                           )}
                           {offer.globalProduct?.storage && (
-                            <span className="inline-flex items-center text-[11px] font-black text-zinc-700 bg-zinc-100 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center text-[11px] font-black text-[var(--k-ink-2)] bg-[var(--k-surface-3)] px-2.5 py-1 rounded-full">
                               {offer.globalProduct.storage}
                             </span>
                           )}
@@ -281,7 +281,7 @@ export default function ProductFamilyPage() {
                             </span>
                           )}
                           {offer.batteryHealth !== null && (
-                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-zinc-600 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[var(--k-ink-2)] bg-[var(--k-surface-2)] border border-[var(--k-line)] px-2.5 py-1 rounded-full">
                               <Battery
                                 size={11}
                                 className={offer.batteryHealth >= 85 ? 'text-orange-500' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
@@ -290,7 +290,7 @@ export default function ProductFamilyPage() {
                             </span>
                           )}
                           {offer.hasBox && (
-                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-100 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[var(--k-ink-3)] bg-[var(--k-surface-2)] border border-[var(--k-line)] px-2.5 py-1 rounded-full">
                               <Box size={10} /> Kutulu
                             </span>
                           )}
@@ -310,16 +310,16 @@ export default function ProductFamilyPage() {
                       </div>
 
                       {/* Sağ: Fiyat + CTA */}
-                      <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-zinc-100">
+                      <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[var(--k-line)]">
                         <div className="text-right">
                           {isCheapest && family.items.length > 1 && (
                             <span className="block text-[9px] font-black uppercase tracking-wide text-orange-600 mb-0.5">En Düşük Fiyat</span>
                           )}
-                          <span className="font-editorial block text-[26px] md:text-[30px] leading-none text-zinc-900">
+                          <span className="font-editorial block text-[26px] md:text-[30px] leading-none text-[var(--k-ink)]">
                             {fmt(price)}
                           </span>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-zinc-100 group-hover:bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-white shrink-0 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] group-hover:bg-zinc-900 flex items-center justify-center text-[var(--k-ink-4)] group-hover:text-white shrink-0 transition-colors">
                           <ChevronRight size={16} strokeWidth={2.5} />
                         </div>
                       </div>

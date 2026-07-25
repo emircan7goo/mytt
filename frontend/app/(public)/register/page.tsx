@@ -58,28 +58,28 @@ export default function RegisterPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <span className="text-3xl font-black tracking-tight text-zinc-900">
+            <span className="text-3xl font-black tracking-tight text-[var(--k-ink)]">
               my<span className="text-orange-500">tt</span>
             </span>
           </Link>
-          <p className="mt-2 text-sm text-zinc-500 font-medium">
+          <p className="mt-2 text-sm text-[var(--k-ink-3)] font-medium">
             Yeni hesap oluşturun
           </p>
         </div>
 
 
-        <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden">
+        <div className="bg-[var(--k-surface)] rounded-2xl shadow-sm border border-[var(--k-line)] overflow-hidden">
           <div className="p-6">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
               {/* Ad Soyad */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Ad Soyad
                 </label>
                 <div className="relative group">
                   <User
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -89,19 +89,19 @@ export default function RegisterPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ali Demir"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
 
               {/* E-posta */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   E-Posta
                 </label>
                 <div className="relative group">
                   <Mail
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -111,19 +111,19 @@ export default function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ornek@hesap.com"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
 
               {/* Şifre */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Şifre
                 </label>
                 <div className="relative group">
                   <Lock
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -133,12 +133,12 @@ export default function RegisterPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="En az 6 karakter"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-11 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPw(!showPw)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
                   >
                     {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -147,12 +147,12 @@ export default function RegisterPage() {
 
               {/* Şifre Tekrar */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1">
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-widest pl-1">
                   Şifre Tekrar
                 </label>
                 <div className="relative group">
                   <Lock
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-orange-500 transition-colors"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors"
                     size={18}
                   />
                   <input
@@ -162,7 +162,7 @@ export default function RegisterPage() {
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                     placeholder="Şifrenizi tekrar girin"
-                    className="w-full bg-white border border-zinc-300 rounded-xl py-3 pl-11 pr-4 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
                   />
                 </div>
               </div>
@@ -184,8 +184,8 @@ export default function RegisterPage() {
             </form>
           </div>
 
-          <div className="px-6 py-4 bg-zinc-50 border-t border-zinc-100 flex flex-col gap-2 text-center">
-            <p className="text-sm text-zinc-500">
+          <div className="px-6 py-4 bg-[var(--k-surface-2)] border-t border-[var(--k-line)] flex flex-col gap-2 text-center">
+            <p className="text-sm text-[var(--k-ink-3)]">
               Zaten hesabınız var mı?{' '}
               <Link
                 href="/login"
@@ -196,7 +196,7 @@ export default function RegisterPage() {
             </p>
             <Link
               href="/register-dealer"
-              className="text-[12px] text-zinc-400 hover:text-sky-600 transition-colors font-medium"
+              className="text-[12px] text-[var(--k-ink-4)] hover:text-sky-600 transition-colors font-medium"
             >
               Esnaf mısınız? Bayi başvurusu için tıklayın →
             </Link>

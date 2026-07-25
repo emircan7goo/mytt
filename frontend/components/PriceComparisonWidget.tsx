@@ -38,12 +38,12 @@ export default function PriceComparisonWidget({ globalProductId, currentPrice }:
   if (isLoading || dealers.length <= 1) return null; // Don't show if there are no alternatives
 
   return (
-    <div className="w-full bg-white rounded-2xl border border-gray-100 p-5 shadow-sm mt-8">
+    <div className="w-full bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] p-5 shadow-sm mt-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[13px] font-bold text-gray-900 tracking-tight flex items-center gap-2">
+        <h3 className="text-[13px] font-bold text-[var(--k-ink)] tracking-tight flex items-center gap-2">
           <Store size={16} /> Diğer Satıcılar
         </h3>
-        <span className="text-[11px] text-gray-500 font-medium">B2B Ekosistemi</span>
+        <span className="text-[11px] text-[var(--k-ink-3)] font-medium">B2B Ekosistemi</span>
       </div>
       
       <div className="flex flex-col gap-3">
@@ -52,14 +52,14 @@ export default function PriceComparisonWidget({ globalProductId, currentPrice }:
           const isCheaper = price < currentPrice;
           
           return (
-            <div key={dealerStock.id} className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200">
+            <div key={dealerStock.id} className="flex items-center justify-between p-3 rounded-xl bg-[var(--k-surface-2)] hover:bg-[var(--k-surface-3)] transition-colors border border-transparent hover:border-[var(--k-line)]">
                <div className="flex flex-col gap-1.5">
                  <DealerTrustBadge
                    rating={dealerStock.store?.rating}
                    reviewCount={dealerStock.store?.reviewCount}
                    isPremium={dealerStock.store?.isPremium}
                  />
-                 <div className="flex gap-2 text-[11px] text-gray-500 font-medium">
+                 <div className="flex gap-2 text-[11px] text-[var(--k-ink-3)] font-medium">
                    <span>Grade {dealerStock.grade}</span>
                    {dealerStock.warrantyMonths && <span>• {dealerStock.warrantyMonths} Ay Garanti</span>}
                  </div>
@@ -67,11 +67,11 @@ export default function PriceComparisonWidget({ globalProductId, currentPrice }:
 
                <div className="flex items-center gap-4">
                  <div className="flex flex-col items-end">
-                   <span className={`text-[14px] font-black tracking-tight ${isCheaper ? 'text-orange-600' : 'text-gray-900'}`}>
+                   <span className={`text-[14px] font-black tracking-tight ${isCheaper ? 'text-orange-600' : 'text-[var(--k-ink)]'}`}>
                      {price.toLocaleString('tr-TR')} <span className="text-[10px]">₺</span>
                    </span>
                  </div>
-                 <Link href={`/product/${dealerStock.id}`} className="text-gray-400 hover:text-black transition-colors bg-white p-1.5 rounded-full shadow-sm border border-gray-100">
+                 <Link href={`/product/${dealerStock.id}`} className="text-[var(--k-ink-4)] hover:text-black transition-colors bg-[var(--k-surface)] p-1.5 rounded-full shadow-sm border border-[var(--k-line)]">
                     <ChevronRight size={14} strokeWidth={3} />
                  </Link>
                </div>

@@ -27,18 +27,18 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-3xl border border-zinc-100 shadow-sm p-10 text-center">
+        <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10 text-center">
           <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 size={32} className="text-orange-500" />
           </div>
-          <h2 className="text-xl font-semibold text-zinc-900 mb-2">Email Gönderildi</h2>
-          <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+          <h2 className="text-xl font-semibold text-[var(--k-ink)] mb-2">Email Gönderildi</h2>
+          <p className="text-[var(--k-ink-3)] text-sm leading-relaxed mb-6">
             <strong>{email}</strong> adresine sıfırlama bağlantısı gönderdik.
             Gelen kutunuzu ve spam klasörünüzü kontrol edin.
           </p>
           <Link
             href="/login"
-            className="text-sm font-semibold text-zinc-900 hover:underline flex items-center justify-center gap-2"
+            className="text-sm font-semibold text-[var(--k-ink)] hover:underline flex items-center justify-center gap-2"
           >
             <ArrowLeft size={14} /> Girişe Dön
           </Link>
@@ -49,10 +49,10 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-zinc-100 shadow-sm p-10">
+      <div className="max-w-md w-full bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-10">
         <Link
           href="/login"
-          className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 text-sm mb-8 transition-colors"
+          className="flex items-center gap-2 text-[var(--k-ink-3)] hover:text-[var(--k-ink)] text-sm mb-8 transition-colors"
         >
           <ArrowLeft size={14} /> Girişe Dön
         </Link>
@@ -61,14 +61,14 @@ export default function ForgotPasswordPage() {
           <Mail size={22} className="text-blue-600" />
         </div>
 
-        <h1 className="text-2xl font-semibold text-zinc-900 mb-1">Şifremi Unuttum</h1>
-        <p className="text-zinc-500 text-sm mb-8 leading-relaxed">
+        <h1 className="text-2xl font-semibold text-[var(--k-ink)] mb-1">Şifremi Unuttum</h1>
+        <p className="text-[var(--k-ink-3)] text-sm mb-8 leading-relaxed">
           Kayıtlı e-posta adresinizi girin, şifre sıfırlama bağlantısını gönderelim.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
+            <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider">
               E-posta Adresi
             </label>
             <input
@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
               onChange={e => setEmail(e.target.value)}
               placeholder="ornek@email.com"
               required
-              className="border border-zinc-200 focus:border-blue-500 rounded-xl px-4 py-3 text-sm outline-none transition-colors"
+              className="border border-[var(--k-line)] focus:border-blue-500 rounded-xl px-4 py-3 text-sm outline-none transition-colors"
             />
           </div>
 

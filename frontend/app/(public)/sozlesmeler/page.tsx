@@ -95,12 +95,12 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
   const IconComponent = activeTabData.icon;
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen py-10">
+    <div className="w-full bg-[var(--k-surface-2)] min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Link */}
         <div className="mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors font-bold text-[14px]">
+          <Link href="/" className="inline-flex items-center gap-2 text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors font-bold text-[14px]">
             <ArrowLeft size={16} strokeWidth={2.5} />
             Ana Sayfaya Dön
           </Link>
@@ -108,10 +108,10 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
 
         {/* Title */}
         <div className="mb-10 text-center md:text-left">
-          <h1 className="font-heading font-black text-slate-900 text-[36px] md:text-[48px] tracking-tight leading-none mb-4">
+          <h1 className="font-heading font-black text-[var(--k-ink)] text-[36px] md:text-[48px] tracking-tight leading-none mb-4">
             Sözleşmeler & Formlar
           </h1>
-          <p className="text-slate-500 font-medium text-[16px] max-w-2xl">
+          <p className="text-[var(--k-ink-3)] font-medium text-[16px] max-w-2xl">
             Mytt platformundaki B2C alıcı hakları, B2B bayi sözleşmeleri, ön bilgilendirme formları ve yasal regülasyonlar hakkında tüm dökümanlara buradan ulaşabilirsiniz.
           </p>
         </div>
@@ -120,7 +120,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Sidebar Tabs */}
-          <div className="lg:col-span-4 flex flex-col gap-2 bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+          <div className="lg:col-span-4 flex flex-col gap-2 bg-[var(--k-surface)] p-4 rounded-3xl border border-[var(--k-line)] shadow-sm">
             {tabs.map((tab) => {
               const TabIcon = tab.icon;
               const isSelected = activeTab === tab.id;
@@ -131,10 +131,10 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
                   className={`w-full flex items-center gap-3.5 px-5 py-4 rounded-2xl text-[14px] font-black text-left transition-all ${
                     isSelected 
                       ? 'bg-orange-600 text-white shadow-lg shadow-orange-600/25 border-orange-500' 
-                      : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900 border-transparent'
+                      : 'hover:bg-[var(--k-surface-2)] text-[var(--k-ink-2)] hover:text-[var(--k-ink)] border-transparent'
                   } border`}
                 >
-                  <TabIcon size={20} strokeWidth={isSelected ? 2.5 : 2} className={isSelected ? 'text-amber-400' : 'text-slate-400'} />
+                  <TabIcon size={20} strokeWidth={isSelected ? 2.5 : 2} className={isSelected ? 'text-amber-400' : 'text-[var(--k-ink-4)]'} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -142,19 +142,19 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
           </div>
 
           {/* Content Card */}
-          <div className="lg:col-span-8 bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+          <div className="lg:col-span-8 bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm overflow-hidden">
             {/* Card Header */}
-            <div className="p-6 md:p-8 bg-slate-50 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="p-6 md:p-8 bg-[var(--k-surface-2)] border-b border-[var(--k-line)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-700">
                     <IconComponent size={20} strokeWidth={2.5} />
                   </div>
-                  <h2 className="font-heading font-black text-slate-900 text-[20px] md:text-[24px]">
+                  <h2 className="font-heading font-black text-[var(--k-ink)] text-[20px] md:text-[24px]">
                     {activeTabData.title}
                   </h2>
                 </div>
-                <p className="text-slate-500 text-[13px] font-medium pl-13">
+                <p className="text-[var(--k-ink-3)] text-[13px] font-medium pl-13">
                   {activeTabData.description}
                 </p>
               </div>
@@ -165,19 +165,19 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
 
             {/* Card Body */}
             <div className="p-6 md:p-8 max-h-[60vh] overflow-y-auto hide-scrollbar">
-              <div className="prose prose-slate max-w-none text-[15px] font-medium text-slate-600 leading-relaxed whitespace-pre-line">
+              <div className="prose prose-slate max-w-none text-[15px] font-medium text-[var(--k-ink-2)] leading-relaxed whitespace-pre-line">
                 {activeTabData.content.trim()}
               </div>
             </div>
             
             {/* Card Footer */}
-            <div className="p-6 md:p-8 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-[12px] font-medium text-slate-400 text-center sm:text-left">
+            <div className="p-6 md:p-8 border-t border-[var(--k-line)] bg-[rgba(22,22,26,0.6)] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-[12px] font-medium text-[var(--k-ink-4)] text-center sm:text-left">
                 Son Güncelleme: 16 Temmuz 2026 | Sürüm: v10.0-Elite
               </div>
               <button 
                 onClick={() => window.print()}
-                className="px-5 py-2.5 bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[13px] font-black rounded-xl transition-all shadow-sm shrink-0"
+                className="px-5 py-2.5 bg-[var(--k-surface)] hover:bg-[var(--k-surface-3)] border border-[var(--k-line)] text-[var(--k-ink-2)] text-[13px] font-black rounded-xl transition-all shadow-sm shrink-0"
               >
                 Yazdır veya PDF Kaydet
               </button>

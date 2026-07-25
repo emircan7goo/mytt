@@ -41,8 +41,8 @@ export default function CMSHeroRenderer() {
     >
       {/* Deep Space / Studio Lighting Gradients */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-slate-200/50 blur-[100px] mix-blend-multiply opacity-60" />
-        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] rounded-full bg-zinc-200/40 blur-[120px] mix-blend-multiply opacity-40" />
+        <div className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-[rgba(30,30,36,0.6)] blur-[100px] mix-blend-multiply opacity-60" />
+        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] rounded-full bg-[rgba(30,30,36,0.6)] blur-[120px] mix-blend-multiply opacity-40" />
       </div>
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between min-h-[80vh] px-5 sm:px-8 md:px-16 lg:px-24 gap-8 py-10 lg:py-0">
@@ -53,7 +53,7 @@ export default function CMSHeroRenderer() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="hidden sm:block absolute px-5 py-2 font-bold text-[10px] uppercase tracking-widest rounded-full backdrop-blur-xl bg-white/80 text-zinc-900 border border-zinc-200 z-30 shadow-sm"
+            className="hidden sm:block absolute px-5 py-2 font-bold text-[10px] uppercase tracking-widest rounded-full backdrop-blur-xl bg-[rgba(16,16,19,0.85)] text-[var(--k-ink)] border border-[var(--k-line)] z-30 shadow-sm"
             style={{ 
               left: `${block.badge.xPercent}%`, 
               top: `${block.badge.yPercent}%`, 
@@ -69,7 +69,7 @@ export default function CMSHeroRenderer() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 1 }}
-            className="font-heading tracking-tight leading-[0.95] text-zinc-900 font-thin break-words"
+            className="font-heading tracking-tight leading-[0.95] text-[var(--k-ink)] font-thin break-words"
             style={{ 
               fontSize: 'clamp(2.5rem, 7vw, 120px)',
             }}
@@ -81,7 +81,7 @@ export default function CMSHeroRenderer() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="text-[16px] sm:text-[20px] lg:text-[24px] font-medium max-w-[95%] sm:max-w-[85%] leading-relaxed text-zinc-600"
+            className="text-[16px] sm:text-[20px] lg:text-[24px] font-medium max-w-[95%] sm:max-w-[85%] leading-relaxed text-[var(--k-ink-2)]"
           >
             {block.typography.subtitle}
           </motion.p>
@@ -93,14 +93,14 @@ export default function CMSHeroRenderer() {
             className="pt-4 sm:pt-8"
           >
             <button 
-              className={`group inline-flex items-center justify-between gap-4 min-w-[180px] sm:min-w-[220px] px-6 sm:px-8 py-4 sm:py-5 rounded-[24px] backdrop-blur-xl bg-white border-2 border-zinc-200 font-black text-[13px] sm:text-[15px] tracking-widest uppercase text-zinc-900 transition-all duration-500 hover:bg-zinc-900 hover:text-white shadow-sm hover:shadow-md ${block.cta.isMagnetic ? 'hover:scale-105 active:scale-95' : ''}`}
+              className={`group inline-flex items-center justify-between gap-4 min-w-[180px] sm:min-w-[220px] px-6 sm:px-8 py-4 sm:py-5 rounded-[24px] backdrop-blur-xl bg-[var(--k-surface)] border-2 border-[var(--k-line)] font-black text-[13px] sm:text-[15px] tracking-widest uppercase text-[var(--k-ink)] transition-all duration-500 hover:bg-zinc-900 hover:text-white shadow-sm hover:shadow-md ${block.cta.isMagnetic ? 'hover:scale-105 active:scale-95' : ''}`}
               onClick={(e) => {
                 e.stopPropagation();
                 window.location.href = block.cta.href && block.cta.href !== '#' ? block.cta.href : '/';
               }}
             >
               <span>{block.cta.text}</span>
-              <ArrowRight size={18} strokeWidth={2} className="text-zinc-900 group-hover:text-white transition-colors shrink-0" />
+              <ArrowRight size={18} strokeWidth={2} className="text-[var(--k-ink)] group-hover:text-white transition-colors shrink-0" />
             </button>
           </motion.div>
         </div>
@@ -113,7 +113,7 @@ export default function CMSHeroRenderer() {
           className="relative w-full max-w-[320px] sm:max-w-full lg:w-[45%] flex items-center justify-center mx-auto lg:mx-0 p-4 lg:p-12 pointer-events-none z-10 order-1 lg:order-2"
         >
           {/* Glass halo effect behind image */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-zinc-200/50 blur-[60px] rounded-full mix-blend-multiply" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[rgba(30,30,36,0.6)] blur-[60px] rounded-full mix-blend-multiply" />
           
           <img 
             src={block.image.src} 

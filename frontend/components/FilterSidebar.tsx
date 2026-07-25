@@ -66,30 +66,30 @@ export default function FilterSidebar({
   const gradeStyles: Record<CosmeticGrade, { active: string; inactive: string }> = {
     'A+': {
       active:   'bg-orange-600 text-white border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.2)]',
-      inactive: 'bg-transparent text-zinc-500 border-zinc-200 hover:border-zinc-300',
+      inactive: 'bg-transparent text-[var(--k-ink-3)] border-[var(--k-line)] hover:border-[var(--k-line-2)]',
     },
     A: {
       active:   'bg-zinc-900 text-white border-zinc-900 shadow-[0_0_15px_rgba(0,0,0,0.1)]',
-      inactive: 'bg-transparent text-zinc-500 border-zinc-200 hover:border-zinc-300',
+      inactive: 'bg-transparent text-[var(--k-ink-3)] border-[var(--k-line)] hover:border-[var(--k-line-2)]',
     },
     B: {
-      active:   'bg-zinc-200 text-zinc-900 border-zinc-200 shadow-[0_0_15px_rgba(0,0,0,0.05)]',
-      inactive: 'bg-transparent text-zinc-500 border-zinc-200 hover:border-zinc-300',
+      active:   'bg-[var(--k-surface-3)] text-[var(--k-ink)] border-[var(--k-line)] shadow-[0_0_15px_rgba(0,0,0,0.05)]',
+      inactive: 'bg-transparent text-[var(--k-ink-3)] border-[var(--k-line)] hover:border-[var(--k-line-2)]',
     },
     C: {
-      active:   'bg-slate-100 text-zinc-600 border-zinc-300 shadow-none',
-      inactive: 'bg-transparent text-zinc-500 border-zinc-200 hover:border-zinc-300',
+      active:   'bg-[var(--k-surface-3)] text-[var(--k-ink-2)] border-[var(--k-line-2)] shadow-none',
+      inactive: 'bg-transparent text-[var(--k-ink-3)] border-[var(--k-line)] hover:border-[var(--k-line-2)]',
     },
   };
 
   const inner = (
-    <div className="flex flex-col p-8 backdrop-blur-3xl bg-white/80 bg-gradient-to-br from-slate-50 to-transparent text-zinc-900 min-h-full">
+    <div className="flex flex-col p-8 backdrop-blur-3xl bg-[rgba(16,16,19,0.85)] bg-gradient-to-br from-slate-50 to-transparent text-[var(--k-ink)] min-h-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8 pb-6 border-b border-zinc-200 px-1">
-        <div className="flex items-center gap-2 text-zinc-900">
-          <SlidersHorizontal size={20} strokeWidth={2.5} className="text-zinc-500" />
+      <div className="flex items-center justify-between mb-8 pb-6 border-b border-[var(--k-line)] px-1">
+        <div className="flex items-center gap-2 text-[var(--k-ink)]">
+          <SlidersHorizontal size={20} strokeWidth={2.5} className="text-[var(--k-ink-3)]" />
           <span className="font-heading font-thin text-[20px] tracking-tight">Filtreler</span>
-          <span className="text-zinc-500 bg-slate-50 text-[10px] font-black tracking-widest px-2 py-0.5 rounded-full border border-zinc-300">
+          <span className="text-[var(--k-ink-3)] bg-[var(--k-surface-2)] text-[10px] font-black tracking-widest px-2 py-0.5 rounded-full border border-[var(--k-line-2)]">
             {totalCount} NODE
           </span>
         </div>
@@ -97,13 +97,13 @@ export default function FilterSidebar({
           {hasFilters && (
             <button
               onClick={() => onChange(DEFAULT_FILTERS)}
-              className="flex items-center gap-1 text-[11px] text-zinc-500 hover:text-zinc-900 uppercase tracking-widest font-bold transition-colors"
+              className="flex items-center gap-1 text-[11px] text-[var(--k-ink-3)] hover:text-[var(--k-ink)] uppercase tracking-widest font-bold transition-colors"
             >
               <RotateCcw size={12} strokeWidth={2.5} /> Sıfırla
             </button>
           )}
           <button
-            className="lg:hidden p-1.5 rounded-full hover:bg-zinc-100 transition-colors text-zinc-500"
+            className="lg:hidden p-1.5 rounded-full hover:bg-[var(--k-surface-3)] transition-colors text-[var(--k-ink-3)]"
             onClick={onMobileClose}
           >
             <X size={20} strokeWidth={2.5} />
@@ -113,7 +113,7 @@ export default function FilterSidebar({
 
       {/* ── MARKA ── */}
       <div>
-        <h4 className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-6">Mimari & Üretici</h4>
+        <h4 className="text-[10px] font-black text-[var(--k-ink-2)] uppercase tracking-widest mb-6">Mimari & Üretici</h4>
         <div className="flex flex-col gap-4">
           {BRAND_OPTIONS.map(brand => (
             <label key={brand} className="flex items-center gap-4 cursor-pointer group">
@@ -125,14 +125,14 @@ export default function FilterSidebar({
                   onChange={() => toggleBrand(brand)}
                 />
                 <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300
-                   ${filters.brands.includes(brand) ? 'bg-zinc-900 border-zinc-900' : 'bg-transparent border-zinc-300 group-hover:border-zinc-500'}`}>
+                   ${filters.brands.includes(brand) ? 'bg-zinc-900 border-zinc-900' : 'bg-transparent border-[var(--k-line-2)] group-hover:border-zinc-500'}`}>
                    <svg width="10" height="8" viewBox="0 0 12 10" fill="none" className={`transition-opacity duration-300 ${filters.brands.includes(brand) ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                      <path d="M1.5 5L4.5 8L10.5 2" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                    </svg>
                 </div>
               </div>
               
-              <span className={`text-[14px] font-light tracking-wide transition-colors ${filters.brands.includes(brand) ? 'text-zinc-900 font-bold' : 'text-zinc-600 group-hover:text-zinc-900'}`}>
+              <span className={`text-[14px] font-light tracking-wide transition-colors ${filters.brands.includes(brand) ? 'text-[var(--k-ink)] font-bold' : 'text-[var(--k-ink-2)] group-hover:text-[var(--k-ink)]'}`}>
                 {brand}
               </span>
             </label>
@@ -144,7 +144,7 @@ export default function FilterSidebar({
 
       {/* ── KOZMETİK DURUM ── */}
       <div>
-        <h4 className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-6">Kozmetik Frekansı</h4>
+        <h4 className="text-[10px] font-black text-[var(--k-ink-2)] uppercase tracking-widest mb-6">Kozmetik Frekansı</h4>
         <div className="flex flex-col gap-3">
           {GRADE_OPTIONS.map(g => {
             const isActive = filters.grades.includes(g);
@@ -170,7 +170,7 @@ export default function FilterSidebar({
 
       {/* ── FİYAT ARALIĞI ── */}
       <div>
-        <h4 className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-6">Bütçe Topolojisi</h4>
+        <h4 className="text-[10px] font-black text-[var(--k-ink-2)] uppercase tracking-widest mb-6">Bütçe Topolojisi</h4>
         <div className="flex flex-col gap-3">
           {PRICE_PRESETS.map(p => (
                <button
@@ -179,7 +179,7 @@ export default function FilterSidebar({
                  className={`text-left px-5 py-3 rounded-xl border text-[13px] font-light tracking-wide transition-all duration-300
                    ${isPresetActive(p.min, p.max)
                      ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm font-bold'
-                     : 'bg-transparent text-zinc-600 border-zinc-300 hover:border-zinc-500 hover:bg-slate-50'
+                     : 'bg-transparent text-[var(--k-ink-2)] border-[var(--k-line-2)] hover:border-zinc-500 hover:bg-[var(--k-surface-2)]'
                    }
                  `}
                >
@@ -192,17 +192,17 @@ export default function FilterSidebar({
       <div className="w-full h-8" />
 
       {/* ── STOK ── */}
-      <label className="flex items-center justify-between cursor-pointer group bg-slate-50 border border-zinc-200 p-5 rounded-xl hover:bg-slate-100 transition-colors">
+      <label className="flex items-center justify-between cursor-pointer group bg-[var(--k-surface-2)] border border-[var(--k-line)] p-5 rounded-xl hover:bg-[var(--k-surface-3)] transition-colors">
         <div className="flex flex-col">
-          <span className="text-[13px] font-bold tracking-wide text-zinc-900">Tükenenleri Filtrele</span>
-          <span className="text-[10px] uppercase tracking-widest text-zinc-600 mt-1">Stoktaki cihazlar</span>
+          <span className="text-[13px] font-bold tracking-wide text-[var(--k-ink)]">Tükenenleri Filtrele</span>
+          <span className="text-[10px] uppercase tracking-widest text-[var(--k-ink-2)] mt-1">Stoktaki cihazlar</span>
         </div>
         <div
           onClick={(e) => { e.preventDefault(); onChange({ ...filters, inStockOnly: !filters.inStockOnly }); }}
           className={`relative w-12 h-6 rounded-full transition-all duration-400
             ${filters.inStockOnly ? 'bg-zinc-900' : 'bg-zinc-300'}`}
         >
-          <div className={`absolute top-[2px] w-5 h-5 bg-white rounded-full shadow-sm transition-all duration-400
+          <div className={`absolute top-[2px] w-5 h-5 bg-[var(--k-surface)] rounded-full shadow-sm transition-all duration-400
             ${filters.inStockOnly ? 'left-[26px]' : 'left-[2px]'}`}
           />
         </div>
@@ -212,15 +212,15 @@ export default function FilterSidebar({
 
   return (
     <>
-      <aside className="hidden lg:block w-[320px] shrink-0 bg-transparent rounded-[32px] overflow-hidden self-start sticky top-[130px] border border-zinc-200 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
+      <aside className="hidden lg:block w-[320px] shrink-0 bg-transparent rounded-[32px] overflow-hidden self-start sticky top-[130px] border border-[var(--k-line)] shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
         {inner}
       </aside>
 
       <AnimatePresence>
         {mobileOpen && (
           <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-white/80 backdrop-blur-md lg:hidden z-[200]" onClick={onMobileClose} />
-            <motion.div initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'spring', stiffness: 320, damping: 34 }} className="fixed left-0 top-0 bottom-0 w-[300px] border-r border-zinc-200 bg-white z-[201] overflow-y-auto shadow-[20px_0_40px_rgba(0,0,0,0.1)] lg:hidden">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-[rgba(16,16,19,0.85)] backdrop-blur-md lg:hidden z-[200]" onClick={onMobileClose} />
+            <motion.div initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'spring', stiffness: 320, damping: 34 }} className="fixed left-0 top-0 bottom-0 w-[300px] border-r border-[var(--k-line)] bg-[var(--k-surface)] z-[201] overflow-y-auto shadow-[20px_0_40px_rgba(0,0,0,0.1)] lg:hidden">
               <div className="h-full">
                 {inner}
               </div>

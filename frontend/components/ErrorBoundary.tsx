@@ -51,14 +51,14 @@ export default class ErrorBoundary extends Component<Props, State> {
 
     // Varsayılan fallback UI
     return (
-      <div className="flex flex-col items-center justify-center min-h-[300px] rounded-2xl border border-zinc-200 bg-zinc-50 p-8 text-center">
+      <div className="flex flex-col items-center justify-center min-h-[300px] rounded-2xl border border-[var(--k-line)] bg-[var(--k-surface-2)] p-8 text-center">
         <div className="w-14 h-14 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
           <AlertTriangle size={24} className="text-red-500" strokeWidth={1.5} />
         </div>
-        <h3 className="text-zinc-900 font-semibold text-base mb-1">
+        <h3 className="text-[var(--k-ink)] font-semibold text-base mb-1">
           Bu bölüm yüklenemedi
         </h3>
-        <p className="text-zinc-400 text-sm mb-5 max-w-xs">
+        <p className="text-[var(--k-ink-4)] text-sm mb-5 max-w-xs">
           Geçici bir hata oluştu. Tekrar deneyebilir ya da sayfayı yenileyebilirsiniz.
         </p>
         {process.env.NODE_ENV !== 'production' && this.state.error && (

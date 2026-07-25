@@ -30,9 +30,9 @@ export default function AnnouncementTicker() {
   if (!mounted) {
     return (
       <div
-        className="h-[36px]"
+        className="h-[34px]"
         style={{
-          background: 'linear-gradient(135deg, #0B1120 0%, #0F172A 50%, #1e3a2f 100%)',
+          background: 'var(--k-void)', borderBottom: '1px solid var(--k-line)',
         }}
         aria-hidden="true"
       />
@@ -53,9 +53,9 @@ export default function AnnouncementTicker() {
 
   return (
     <div
-      className="h-[36px] overflow-hidden flex items-center"
+      className="h-[34px] overflow-hidden flex items-center"
       style={{
-        background: 'linear-gradient(135deg, #0B1120 0%, #0F172A 50%, #1e3a2f 100%)',
+        background: 'var(--k-void)', borderBottom: '1px solid var(--k-line)',
       }}
       aria-label="Duyuru Bandı"
     >
@@ -73,12 +73,12 @@ export default function AnnouncementTicker() {
           {repeated.map((item, i) => (
             <span
               key={i}
-              className="inline-flex items-center shrink-0 text-white/85 text-[12px] font-medium tracking-wide select-none"
+              className="k-mono inline-flex items-center shrink-0 text-[10.5px] tracking-[0.12em] uppercase select-none" style={{ color: 'var(--k-ink-3)' }}
             >
               <span className="px-6">{item}</span>
               <span
                 className="shrink-0 text-[8px] leading-none"
-                style={{ color: '#FDBA74' }}
+                style={{ color: 'var(--k-hot)' }}
                 aria-hidden
               >
                 ◆

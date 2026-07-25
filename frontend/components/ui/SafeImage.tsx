@@ -15,7 +15,7 @@ export default function SafeImage({ src, alt, className, fallbackIcon, ...props 
   if (!src || error) {
     return (
       <div 
-        className={`bg-slate-100 flex items-center justify-center text-slate-400 ${className || ''}`}
+        className={`bg-[var(--k-surface-3)] flex items-center justify-center text-[var(--k-ink-4)] ${className || ''}`}
         style={{ width: props.width || '100%', height: props.height || '100%' }}
       >
         {fallbackIcon || <ImageOff size={24} className="opacity-50" />}
@@ -29,7 +29,7 @@ export default function SafeImage({ src, alt, className, fallbackIcon, ...props 
   if (!isValidSrc) {
     return (
       <div 
-        className={`bg-slate-100 flex items-center justify-center text-slate-400 ${className || ''}`}
+        className={`bg-[var(--k-surface-3)] flex items-center justify-center text-[var(--k-ink-4)] ${className || ''}`}
         style={{ width: props.width || '100%', height: props.height || '100%' }}
       >
         {fallbackIcon || <ImageOff size={24} className="opacity-50" />}

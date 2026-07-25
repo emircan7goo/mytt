@@ -25,15 +25,15 @@ export default function PublicError({
           <AlertTriangle size={28} className="text-red-500" strokeWidth={1.5} />
         </div>
 
-        <h1 className="text-2xl font-bold text-zinc-900 mb-2 tracking-tight">
+        <h1 className="text-2xl font-bold text-[var(--k-ink)] mb-2 tracking-tight">
           Bir şeyler ters gitti
         </h1>
-        <p className="text-zinc-500 text-sm leading-relaxed mb-2">
+        <p className="text-[var(--k-ink-3)] text-sm leading-relaxed mb-2">
           Bu sayfayı yüklerken bir hata oluştu. Lütfen tekrar deneyin.
         </p>
 
         {error.digest && (
-          <p className="text-[11px] text-zinc-300 font-mono mb-6">
+          <p className="text-[11px] text-[var(--k-ink-4)] font-mono mb-6">
             ref: {error.digest}
           </p>
         )}
@@ -54,7 +54,7 @@ export default function PublicError({
           </button>
           <Link
             href="/"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-sm font-bold hover:bg-zinc-50 transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--k-line)] text-[var(--k-ink-2)] text-sm font-bold hover:bg-[var(--k-surface-2)] transition-colors"
           >
             <Home size={14} />
             Vitrine Dön

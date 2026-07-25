@@ -109,7 +109,7 @@ function OptionCard({
   return (
     <button
       onClick={onClick}
-      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-orange-300 shadow-sm shadow-orange-100' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'}
+      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-orange-300 shadow-sm shadow-orange-100' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm'}
       style={selected ? { background: 'linear-gradient(135deg, #f0fdf4, #FFF7ED)', borderColor: '#FDBA74' } : { background: '#fff' }}
     >
       {Icon ? (
@@ -129,16 +129,16 @@ function OptionCard({
       )}
 
       <div className="flex-1 min-w-0">
-        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-orange-800' : 'text-slate-800'}`}>
+        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-orange-800' : 'text-[var(--k-ink)]'}`}>
           {label}
         </p>
         {sub && (
-          <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{sub}</p>
+          <p className="text-xs text-[var(--k-ink-4)] mt-0.5 leading-relaxed">{sub}</p>
         )}
       </div>
 
       <div
-        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-orange-600 border-orange-600' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-slate-300 bg-white'}
+        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-orange-600 border-orange-600' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-[var(--k-line-2)] bg-[var(--k-surface)]'}
       >
         {selected && <Check size={10} className="text-white" strokeWidth={3.5} />}
       </div>
@@ -191,11 +191,11 @@ export default function AIFinderPage() {
       <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #9A3412 0%, #FB923C 50%, #FDBA74 100%)' }} />
 
       {/* Header */}
-      <header className="bg-white border-b border-slate-100 sticky top-0 z-10">
+      <header className="bg-[var(--k-surface)] border-b border-[var(--k-line)] sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-slate-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
           >
             <ArrowLeft size={15} strokeWidth={2} />
             Geri dön
@@ -208,17 +208,17 @@ export default function AIFinderPage() {
             >
               <Brain size={15} strokeWidth={1.5} style={{ color: '#9A3412' }} />
             </div>
-            <span className="text-sm font-bold text-slate-700">AI Telefon Bulucu</span>
+            <span className="text-sm font-bold text-[var(--k-ink-2)]">AI Telefon Bulucu</span>
           </div>
 
           {!showResults ? (
-            <span className="text-xs font-semibold text-slate-400 tabular-nums">
+            <span className="text-xs font-semibold text-[var(--k-ink-4)] tabular-nums">
               {step + 1} / {STEPS.length}
             </span>
           ) : (
             <button
               onClick={handleReset}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-slate-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
             >
               <RotateCcw size={13} />
               Yeniden
@@ -242,20 +242,20 @@ export default function AIFinderPage() {
                 <Trophy size={12} strokeWidth={2} />
                 Sonuçlar hazır
               </div>
-              <h1 className="text-2xl font-black text-slate-900 mb-2">Sizin için öneriler</h1>
-              <p className="text-sm text-slate-500">
+              <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2">Sizin için öneriler</h1>
+              <p className="text-sm text-[var(--k-ink-3)]">
                 Tercihlerinize göre sıralanan{' '}
-                <span className="font-semibold text-slate-700">{results.length} cihaz</span>
+                <span className="font-semibold text-[var(--k-ink-2)]">{results.length} cihaz</span>
               </p>
             </div>
 
             {results.length === 0 ? (
-              <div className="text-center py-16 bg-white rounded-2xl border border-slate-200">
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
-                  <Smartphone size={22} className="text-slate-400" strokeWidth={1.5} />
+              <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)]">
+                <div className="w-14 h-14 rounded-2xl bg-[var(--k-surface-3)] flex items-center justify-center mx-auto mb-4">
+                  <Smartphone size={22} className="text-[var(--k-ink-4)]" strokeWidth={1.5} />
                 </div>
-                <p className="font-bold text-slate-700 text-base mb-1">Eşleşen cihaz bulunamadı</p>
-                <p className="text-sm text-slate-400 mb-6 max-w-xs mx-auto">Bu bütçe ve marka kombinasyonu için ürün bulunmuyor. Filtreleri değiştirmeyi deneyin.</p>
+                <p className="font-bold text-[var(--k-ink-2)] text-base mb-1">Eşleşen cihaz bulunamadı</p>
+                <p className="text-sm text-[var(--k-ink-4)] mb-6 max-w-xs mx-auto">Bu bütçe ve marka kombinasyonu için ürün bulunmuyor. Filtreleri değiştirmeyi deneyin.</p>
                 <button
                   onClick={handleReset}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
@@ -286,17 +286,17 @@ export default function AIFinderPage() {
               </div>
             )}
 
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-slate-200">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--k-line)]">
               <button
                 onClick={handleBack}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
               >
                 <ArrowLeft size={15} />
                 Geri
               </button>
               <button
                 onClick={handleReset}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--k-line)] bg-[var(--k-surface)] text-sm font-semibold text-[var(--k-ink-2)] hover:bg-[var(--k-surface-2)] transition-colors"
               >
                 <RotateCcw size={14} />
                 Baştan Başla
@@ -309,7 +309,7 @@ export default function AIFinderPage() {
           <div>
             {/* Progress bar */}
             <div className="mb-8">
-              <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
+              <div className="h-1 bg-[var(--k-surface-3)] rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500 ease-out"
                   style={{
@@ -322,10 +322,10 @@ export default function AIFinderPage() {
 
             {/* Question */}
             <div className="mb-7">
-              <h1 className="text-2xl font-black text-slate-900 mb-2 leading-tight">
+              <h1 className="text-2xl font-black text-[var(--k-ink)] mb-2 leading-tight">
                 {currentStep.question}
               </h1>
-              <p className="text-sm text-slate-500 leading-relaxed">
+              <p className="text-sm text-[var(--k-ink-3)] leading-relaxed">
                 {currentStep.subtitle}
               </p>
             </div>
@@ -347,11 +347,11 @@ export default function AIFinderPage() {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-slate-200">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--k-line)]">
               {step > 0 ? (
                 <button
                   onClick={handleBack}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
                 >
                   <ArrowLeft size={15} />
                   Geri
@@ -359,7 +359,7 @@ export default function AIFinderPage() {
               ) : (
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors"
                 >
                   <ArrowLeft size={15} />
                   Vazgeç

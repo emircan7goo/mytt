@@ -69,11 +69,17 @@ export default function ThemeInjector() {
 
   if (!settings) return null;
 
-  const primaryColor  = settings.primaryColor || '#EA580C';
-  const primaryHover  = settings.primaryColorHover || '#C2410C';
-  const fontKey       = settings.fontFamily || 'Outfit';
-  const fontDef       = FONT_CATALOG[fontKey] ?? FONT_CATALOG['Outfit'];
-  const fontStack     = fontDef.stack;
+  const primaryColor  = settings.primaryColor || '#FF6A1A';
+  const primaryHover  = settings.primaryColorHover || '#FF8A47';
+
+  // Font: SADECE admin panelden bilinçli olarak seçilmişse devreye girer.
+  // Aksi halde layout.tsx'teki KARBON fontları (Space Grotesk / Inter Tight /
+  // JetBrains Mono) geçerli kalır. Önceden burada 'Outfit' varsayılanı vardı ve
+  // !important ile her şeyi eziyordu — yani layout'taki font seçimi hiç
+  // uygulanmıyordu. Artık seçim yoksa hiç müdahale etmiyoruz.
+  const fontKey       = settings.fontFamily;
+  const fontDef       = fontKey ? FONT_CATALOG[fontKey] : undefined;
+  const fontStack     = fontDef?.stack;
 
   // Text scale: 0.8 – 1.3, default 1.0
   const textScale = Number(settings.textScale ?? 1.0).toFixed(2);
@@ -100,15 +106,27 @@ export default function ThemeInjector() {
   if (settings.buttonStyle === 'neo-brutalism') btnStyles = 'border-radius: 0px !important; box-shadow: 4px 4px 0px #000 !important; border: 2px solid #000 !important;';
   if (settings.buttonStyle === 'flat')         btnStyles = 'border-radius: 4px !important; box-shadow: none !important;';
 
-  // Build Google Fonts @import — only import the selected font to optimize speed and prevent failures
-  const gFontUrl   = `https://fonts.googleapis.com/css2?family=${fontDef.gFont}&display=swap`;
+  // Google Fonts @import — sadece admin panelden bir font seçildiyse
+  const fontCss = fontDef && fontStack
+    ? `
+        @import url('https://fonts.googleapis.com/css2?family=${fontDef.gFont}&display=swap');
+
+        :root {
+          --font-display: ${fontStack};
+          --font-sans:    ${fontStack};
+        }
+        body, button, input, select, textarea,
+        h1, h2, h3, h4, h5, h6 {
+          font-family: ${fontStack} !important;
+        }`
+    : '';
 
   return (
     <style dangerouslySetInnerHTML={{
       __html: `
-        @import url('${gFontUrl}');
+        ${fontCss}
 
-        /* ── Text Scale & Global Font ───────────────────────────── */
+        /* ── Text Scale ─────────────────────────────────────────── */
         html {
           font-size: calc(16px * ${textScale}) !important;
         }
@@ -116,18 +134,11 @@ export default function ThemeInjector() {
         :root {
           --brand:              ${primaryColor};
           --brand-hover:        ${primaryHover};
-          --font-display:       ${fontStack};
-          --font-sans:          ${fontStack};
+          --k-hot:              ${primaryColor};
+          --k-hot-2:            ${primaryHover};
           --r-pill:             ${buttonRadius};
           --font-scale:         ${textScale};
           --density-multiplier: ${densityMult};
-        }
-
-        body, button, input, select, textarea {
-          font-family: ${fontStack} !important;
-        }
-        h1, h2, h3, h4, h5, h6 {
-          font-family: ${fontStack} !important;
         }
 
         /* ── Transitions ────────────────────────────────────────── */
@@ -138,11 +149,14 @@ export default function ThemeInjector() {
                       opacity          ${animDur} ${animEase};
         }
 
-        /* ── Glassmorphism ──────────────────────────────────────────── */
+        /* ── Yüzeyler ───────────────────────────────────────────────
+           Not: Burada eskiden "background: rgba(255,255,255,0.98) !important"
+           vardı — KARBON koyu temasında navbar'ı zorla BEYAZ yapıyordu.
+           Artık yüzey rengi tek kaynaktan, karbon tokenlarından geliyor. */
         .glass-card, .glass-nav, .navbar-main {
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
-          background: rgba(255,255,255,0.98) !important;
+          background: var(--k-surface) !important;
         }
 
         /* ── Buttons ────────────────────────────────────────────── */
@@ -157,7 +171,7 @@ export default function ThemeInjector() {
             background: #0d1117 !important;
             color: #f3f4f6 !important;
           }
-          .glass-card, .bg-white, .product-card, .navbar-main {
+          .glass-card, .bg-[var(--k-surface)], .product-card, .navbar-main {
             background-color: #161b22 !important;
             border-color: #374151 !important;
           }

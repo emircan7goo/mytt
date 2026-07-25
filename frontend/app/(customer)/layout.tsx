@@ -10,9 +10,11 @@ export default function CustomerLayout({ children }: { children: React.ReactNode
     <RequireRole role="customer">
       <div style={{
         display: 'flex', minHeight: '100vh',
-        background: '#f6f8fb',
-        fontFamily: 'var(--font-inter, system-ui, sans-serif)',
-        color: '#0f172a',
+        // KARBON: müşteri hesabı vitrinin devamı sayılır, bu yüzden aynı koyu
+        // kanvası kullanır. (admin/bayi panelleri kendi kimliklerini korur.)
+        background: 'var(--k-canvas)',
+        fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+        color: 'var(--k-ink-2)',
       }}>
         <CustomerSidebar />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>

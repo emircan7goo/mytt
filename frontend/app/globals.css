@@ -97,16 +97,20 @@
              radial-gradient(at 50% 100%, rgba(234, 88, 12, 0.03) 0px, transparent 50%);
 }
 
-/* Tailwind v4 theme tokens */
+/* Tailwind v4 theme tokens — KARBON tipografisi
+   Display  : Space Grotesk  → geometrik, teknik, karakterli başlıklar
+   Sans     : Inter Tight    → sıkı, nötr, yoğun gövde metni
+   Mono     : JetBrains Mono → fiyat/veri okumaları (tabular nums) */
 @theme inline {
-  --font-sans:      var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display:   var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  /* Editoryal serif — model karşılaştırma/vitrin akışında premium başlıklar için */
-  --font-editorial: var(--font-fraunces), Georgia, serif;
-  --color-brand:  #EA580C;
-  --color-space:  #120E0B;
-  --color-bg:     #F8FAFC;
-  --color-ink:    #120E0B;
+  --font-sans:      var(--font-inter-tight), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:   var(--font-space-grotesk), var(--font-inter-tight), sans-serif;
+  --font-mono:      var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  /* Editoryal serif artık kullanılmıyor; eski referanslar display'e düşsün */
+  --font-editorial: var(--font-space-grotesk), sans-serif;
+  --color-brand:  #FF6A1A;
+  --color-space:  #060607;
+  --color-bg:     #0A0A0C;
+  --color-ink:    #FAFAF9;
 }
 
 /* *******************************************************************************
@@ -1240,3 +1244,354 @@ a:active {
 
 
 
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MYTT / KARBON — DESIGN SYSTEM v11
+   ───────────────────────────────────────────────────────────────────────────
+   Felsefe: "Cihaz kasası". Karanlık karbon kanvas, 1px hairline geometri,
+   yumusak golge YOK — onun yerine kenar isimasi. Veri = monospace.
+   Basliklar = devasa, siki, teknik. Tek aksan: elektrik turuncu.
+
+   Bu blok dosyanin SONUNDA duruyor; kaynak sirasi geregi yukaridaki tum eski
+   token/kurallari bilincli olarak eziyor (prefers-color-scheme blogu dahil).
+   Eski sinif adlari calismaya devam eder, sadece yeni tokenlara bakarlar.
+
+   NOT: Bilesen kurallari @layer components icinde. Katmansiz birakilirsa
+   Tailwind v4'te utility class'lari (bg-*, text-*) specificity'den bagimsiz
+   olarak KAYBEDER — bu tam olarak daha once footer'i gorunmez yapan hataydi.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root, :root[data-theme="light"], :root[data-theme="dark"] {
+  /* ── Kanvas: sicak karbon, saf siyah degil ───────────────────────────── */
+  --k-void:      #060607;
+  --k-canvas:    #0A0A0C;
+  --k-surface:   #101013;
+  --k-surface-2: #16161A;
+  --k-surface-3: #1E1E24;
+
+  /* ── Hairline: golge yerine cizgi ─────────────────────────────────────── */
+  --k-line:      rgba(255,255,255,0.07);
+  --k-line-2:    rgba(255,255,255,0.12);
+  --k-line-hot:  rgba(255,106,26,0.35);
+
+  /* ── Murekkep ─────────────────────────────────────────────────────────── */
+  --k-ink:       #FAFAF9;
+  --k-ink-2:     rgba(250,250,249,0.72);
+  --k-ink-3:     rgba(250,250,249,0.48);
+  --k-ink-4:     rgba(250,250,249,0.30);
+
+  /* ── Elektrik turuncu: koyu zeminde parlamasi icin daha canli ────────── */
+  --k-hot:       #FF6A1A;
+  --k-hot-2:     #FF8A47;
+  --k-hot-deep:  #C2410C;
+  --k-hot-ink:   #0A0A0C;
+  --k-hot-wash:  rgba(255,106,26,0.10);
+  --k-hot-glow:  rgba(255,106,26,0.28);
+
+  /* ── Sinyal renkleri (durum) ──────────────────────────────────────────── */
+  --k-ok:        #3DDC97;
+  --k-warn:      #FFC53D;
+  --k-bad:       #FF5C5C;
+  --k-cool:      #5B9DFF;
+
+  /* ── Geometri: keskin. Pill YOK. ──────────────────────────────────────── */
+  --k-r-xs: 4px;
+  --k-r-sm: 6px;
+  --k-r:    10px;
+  --k-r-lg: 14px;
+  --k-r-xl: 20px;
+
+  /* ── Legacy token koprusu — eski bilesenler kirilmasin ───────────────── */
+  --bg:            var(--k-canvas);
+  --bg-warm:       var(--k-surface);
+  --card:          var(--k-surface);
+  --elevated:      var(--k-surface-2);
+  --ink:           var(--k-ink);
+  --ink-2:         var(--k-ink-2);
+  --ink-3:         var(--k-ink-3);
+  --ink-4:         var(--k-ink-4);
+  --ink-5:         var(--k-ink-4);
+  --ink-6:         rgba(250,250,249,0.22);
+  --ink-7:         var(--k-line-2);
+  --ink-8:         var(--k-surface-2);
+  --brand:         var(--k-hot);
+  --brand-hover:   var(--k-hot-2);
+  --brand-deep:    var(--k-hot-deep);
+  --brand-light:   var(--k-hot-wash);
+  --brand-mid:     var(--k-hot-2);
+  --brand-glow:    var(--k-hot-glow);
+  --space:         var(--k-void);
+  --space-2:       var(--k-surface);
+  --space-3:       var(--k-surface-2);
+
+  /* Golgeler notrlestirildi — KARBON'da golge degil cizgi kullanilir */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.55);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.65);
+  --shadow-xl: 0 40px 100px rgba(0,0,0,0.75);
+  --shadow-brand: 0 0 0 1px var(--k-line-hot), 0 12px 40px var(--k-hot-glow);
+
+  --mesh-bg: none;
+}
+
+/* DİKKAT — bu üç kural bilinçli olarak KATMANSIZ (unlayered).
+   Yukarıdaki eski "body { background: #ffffff }" kuralı da katmansız; Tailwind
+   v4'te katmansız kural her zaman katmanlı kuralı yener. Bunları @layer base
+   içine koyarsak eski beyaz zemin kazanır ve sayfa beyaz kalır. */
+html { background: var(--k-void); }
+body {
+  background: var(--k-void);
+  color: var(--k-ink-2);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--k-hot); color: var(--k-hot-ink); }
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--k-ink);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    font-weight: 700;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--k-void); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--k-surface-3);
+    border-radius: 99px;
+    border: 2px solid var(--k-void);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--k-hot-deep); }
+  * { scrollbar-width: thin; scrollbar-color: var(--k-surface-3) var(--k-void); }
+}
+
+@layer components {
+  /* ── Grain: kanvasa dokunulabilirlik katar (tactile brutalism) ───────── */
+  .k-grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Teknik izgara zemin ────────────────────────────────────────────── */
+  .k-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Ufuk cizgisinde sonen izgara — hero altligi */
+  .k-grid-fade {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+  }
+
+  /* ── Tipografi yardimcilari ─────────────────────────────────────────── */
+  .k-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+    color: var(--k-ink);
+  }
+  .k-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "zero" 1;
+  }
+  .k-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--k-ink-4);
+  }
+
+  /* ── Kart: golge degil hairline; hover'da kenar isinir ──────────────── */
+  .k-card {
+    position: relative;
+    background: var(--k-surface);
+    border: 1px solid var(--k-line);
+    border-radius: var(--k-r-lg);
+    transition: border-color .28s cubic-bezier(0.22,1,0.36,1),
+                background .28s cubic-bezier(0.22,1,0.36,1),
+                transform .28s cubic-bezier(0.22,1,0.36,1);
+  }
+  .k-card:hover {
+    border-color: var(--k-line-hot);
+    background: var(--k-surface-2);
+  }
+  .k-card-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .32s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 0 0 1px var(--k-line-hot), 0 18px 50px -12px var(--k-hot-glow);
+  }
+  .k-card-glow:hover::after { opacity: 1; }
+
+  /* ── Butonlar ───────────────────────────────────────────────────────── */
+  .k-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 22px;
+    border-radius: var(--k-r);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .22s cubic-bezier(0.22,1,0.36,1);
+    white-space: nowrap;
+  }
+  .k-btn-hot {
+    background: var(--k-hot);
+    color: var(--k-hot-ink);
+  }
+  .k-btn-hot:hover {
+    background: var(--k-hot-2);
+    box-shadow: 0 10px 34px -8px var(--k-hot-glow);
+    transform: translateY(-1px);
+  }
+  .k-btn-ghost {
+    background: transparent;
+    color: var(--k-ink);
+    border-color: var(--k-line-2);
+  }
+  .k-btn-ghost:hover {
+    border-color: var(--k-ink-3);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── Chip / rozet ───────────────────────────────────────────────────── */
+  .k-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: var(--k-r-sm);
+    border: 1px solid var(--k-line-2);
+    background: rgba(255,255,255,0.03);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--k-ink-2);
+  }
+  .k-chip-hot {
+    border-color: var(--k-line-hot);
+    background: var(--k-hot-wash);
+    color: var(--k-hot-2);
+  }
+
+  /* ── Input ──────────────────────────────────────────────────────────── */
+  .k-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    background: var(--k-surface-3);
+    border: 1px solid var(--k-line);
+    border-radius: var(--k-r);
+    color: var(--k-ink);
+    font-size: 14px;
+    transition: border-color .2s, background .2s;
+  }
+  .k-input::placeholder { color: var(--k-ink-4); }
+  .k-input:focus {
+    outline: none;
+    border-color: var(--k-hot);
+    background: var(--k-surface-2);
+  }
+
+  /* ── Kinetik marquee (ticker) ───────────────────────────────────────── */
+  .k-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: k-marquee 42s linear infinite;
+    will-change: transform;
+  }
+  .k-marquee-wrap:hover .k-marquee-track { animation-play-state: paused; }
+
+  /* ── Bolum numarasi (editoryal) ─────────────────────────────────────── */
+  .k-section-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--k-hot);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .k-section-num::after {
+    content: '';
+    width: 44px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--k-hot), transparent);
+  }
+
+  /* ── Skeleton (koyu) ────────────────────────────────────────────────── */
+  .k-skeleton {
+    background: linear-gradient(90deg, var(--k-surface) 25%, var(--k-surface-3) 50%, var(--k-surface) 75%);
+    background-size: 200% 100%;
+    animation: k-shimmer 1.4s ease-in-out infinite;
+  }
+
+  /* ── Legacy sinif yamalari — eski bilesenler koyu zeminde okunur kalsin ── */
+  .glass-card, .glass-nav, .navbar-main {
+    background: var(--k-surface);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: var(--k-line);
+  }
+  .ticker-bar {
+    background: var(--k-void);
+    border-bottom: 1px solid var(--k-line);
+    height: 34px;
+  }
+  .grade-badge--a-plus { background: var(--k-hot); color: var(--k-hot-ink); }
+  .grade-badge--a      { background: var(--k-surface-3); color: var(--k-ink); }
+  .bubble-circle--emerald, .bubble-circle--violet, .bubble-circle--indigo,
+  .bubble-circle--rose, .bubble-circle--amber, .bubble-circle--sky,
+  .bubble-circle--fuchsia, .bubble-circle--teal {
+    background: var(--k-surface-2);
+    border: 1px solid var(--k-line);
+  }
+  .skeleton-wave {
+    background: linear-gradient(90deg, var(--k-surface) 25%, var(--k-surface-3) 50%, var(--k-surface) 75%);
+    background-size: 200% 100%;
+    animation: k-shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes k-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes k-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+/* Yavas yukselen aydinlatma — hero orb */
+@keyframes k-breathe {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.85; transform: scale(1.08); }
+}
+.k-breathe { animation: k-breathe 7s ease-in-out infinite; }

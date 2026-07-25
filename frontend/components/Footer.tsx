@@ -7,39 +7,42 @@ export default function Footer() {
   return (
     <footer
       className="w-full pt-12 pb-8 mt-10"
-      style={{ background: 'linear-gradient(180deg, #0B1120 0%, #0D1627 60%, #0B1120 100%)', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      style={{ background: 'var(--k-void)', borderTop: '1px solid var(--k-line)' }}
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
 
         {/* Top: Logo + Tagline */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-8 border-b border-white/10">
           <div className="flex items-center gap-4 group cursor-pointer selection:bg-transparent">
-            <div className="w-12 h-12 bg-white border border-orange-200 rounded-[16px] flex items-center justify-center transition-all group-hover:border-orange-300 group-hover:shadow-[0_0_15px_rgba(15,118,110,0.08)]">
-              <Smartphone className="text-[var(--brand)]" size={24} strokeWidth={2} />
+            <div
+              className="w-11 h-11 rounded-[10px] flex items-center justify-center transition-all flex-shrink-0"
+              style={{ background: 'var(--k-hot)' }}
+            >
+              <Smartphone size={22} strokeWidth={2.2} style={{ color: 'var(--k-hot-ink)' }} />
             </div>
             <div>
-              <h2 className="text-[24px] font-black tracking-tight text-white group-hover:text-orange-400 transition-colors">
-                Mytt<span className="text-orange-500">.</span>
+              <h2 className="k-display text-[22px] text-white">
+                mytt<span style={{ color: 'var(--k-hot)' }}>.</span>
               </h2>
-              <p className="text-white/90 text-[15px] font-semibold mt-1">Türkiye&apos;nin En Prestijli Doğrulanmış Cihaz Borsası</p>
+              <p className="k-label mt-1.5">Doğrulanmış Cihaz Pazaryeri</p>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-6 mt-8 md:mt-0 text-zinc-500 text-[12px] font-bold uppercase tracking-widest">
+          <div className="flex flex-col md:flex-row items-center gap-6 mt-8 md:mt-0 text-[var(--k-ink-3)] text-[12px] font-bold uppercase tracking-widest">
             <div className="flex items-center gap-6 opacity-60 hover:opacity-100 transition-opacity">
               <span className="flex items-center gap-2 text-white/80">
-                <ShieldCheck size={20} strokeWidth={2} className="text-[var(--brand-mid)]" /> %100 Orijinal
+                <ShieldCheck size={20} strokeWidth={2} style={{ color: 'var(--k-hot)' }} /> %100 Orijinal
               </span>
               <span className="flex items-center gap-2 text-white/80">
-                <ShieldCheck size={20} strokeWidth={2} className="text-[var(--brand-mid)]" /> Alışveriş Güvencesi
+                <ShieldCheck size={20} strokeWidth={2} style={{ color: 'var(--k-hot)' }} /> Alışveriş Güvencesi
               </span>
               <span className="flex items-center gap-2 text-white/80">
-                <ShieldCheck size={20} strokeWidth={2} className="text-[var(--brand-mid)]" /> 256-Bit SSL
+                <ShieldCheck size={20} strokeWidth={2} style={{ color: 'var(--k-hot)' }} /> 256-Bit SSL
               </span>
               <div className="flex items-center gap-3 border-l border-white/10 pl-6 ml-2">
-                <div className="w-9 h-6 bg-white/10 border border-white/15 rounded flex items-center justify-center font-black text-[9px] text-white/70 tracking-tighter">VISA</div>
-                <div className="w-9 h-6 bg-white/10 border border-white/15 rounded flex items-center justify-center font-black text-[9px] text-white/70 tracking-tighter">MASTER</div>
-                <div className="w-9 h-6 bg-white/10 border border-white/15 rounded flex items-center justify-center font-black text-[9px] text-white/70 tracking-tighter">TROY</div>
+                <div className="k-mono w-10 h-6 rounded-[4px] flex items-center justify-center text-[8px] tracking-tighter" style={{ background: 'var(--k-surface-2)', border: '1px solid var(--k-line-2)', color: 'var(--k-ink-3)' }}>VISA</div>
+                <div className="k-mono w-10 h-6 rounded-[4px] flex items-center justify-center text-[8px] tracking-tighter" style={{ background: 'var(--k-surface-2)', border: '1px solid var(--k-line-2)', color: 'var(--k-ink-3)' }}>MASTER</div>
+                <div className="k-mono w-10 h-6 rounded-[4px] flex items-center justify-center text-[8px] tracking-tighter" style={{ background: 'var(--k-surface-2)', border: '1px solid var(--k-line-2)', color: 'var(--k-ink-3)' }}>TROY</div>
               </div>
             </div>
           </div>
@@ -49,7 +52,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {FOOTER_DATA.sections.map((section, idx) => (
             <div key={idx}>
-              <h4 className="text-[12px] font-black text-white/70 uppercase tracking-widest mb-4">{section.title}</h4>
+              <h4 className="k-label mb-4">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map((link, i) => {
                   const href: Record<string, string> = {
@@ -87,54 +90,54 @@ export default function Footer() {
         </div>
 
         {/* Contact bar */}
-        <div className="rounded-[20px] p-5 md:p-6 flex flex-col md:flex-row items-stretch gap-4 mb-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-[12px] p-5 md:p-6 flex flex-col md:flex-row items-stretch gap-4 mb-8" style={{ background: 'var(--k-surface)', border: '1px solid var(--k-line)' }}>
           {/* Telefon */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
-              <Phone size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
+            <div className="w-11 h-11 flex-shrink-0 rounded-[9px] flex items-center justify-center group-hover:bg-[rgba(255,255,255,0.06)] transition-colors" style={{ background: 'var(--k-hot-wash)', border: '1px solid var(--k-line-hot)' }}>
+              <Phone size={18} strokeWidth={2} style={{ color: 'var(--k-hot)' }} />
             </div>
             <div className="min-w-0">
-              <p className="text-white/65 text-[11px] font-bold uppercase tracking-widest mb-1">Müşteri Hattı (7/24)</p>
-              <a href="tel:+908501234567" className="text-white font-extrabold text-[16px] hover:text-[var(--brand-mid)] transition-colors truncate block">0850 123 45 67</a>
+              <p className="k-label mb-1.5">Müşteri Hattı (7/24)</p>
+              <a href="tel:+908501234567" className="text-white font-extrabold text-[16px] hover:text-[var(--k-hot)] transition-colors truncate block">0850 123 45 67</a>
             </div>
           </div>
 
-          <div className="hidden md:block w-px self-stretch" style={{ background: 'rgba(255,255,255,0.08)' }} />
+          <div className="hidden md:block w-px self-stretch" style={{ background: 'var(--k-line)' }} />
 
           {/* E-posta */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
-              <Mail size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
+            <div className="w-11 h-11 flex-shrink-0 rounded-[9px] flex items-center justify-center group-hover:bg-[rgba(255,255,255,0.06)] transition-colors" style={{ background: 'var(--k-hot-wash)', border: '1px solid var(--k-line-hot)' }}>
+              <Mail size={18} strokeWidth={2} style={{ color: 'var(--k-hot)' }} />
             </div>
             <div className="min-w-0">
-              <p className="text-white/65 text-[11px] font-bold uppercase tracking-widest mb-1">E-posta</p>
-              <a href="mailto:destek@mytt.com.tr" className="text-white font-extrabold text-[16px] hover:text-[var(--brand-mid)] transition-colors truncate block">destek@mytt.com.tr</a>
+              <p className="k-label mb-1.5">E-posta</p>
+              <a href="mailto:destek@mytt.com.tr" className="text-white font-extrabold text-[16px] hover:text-[var(--k-hot)] transition-colors truncate block">destek@mytt.com.tr</a>
             </div>
           </div>
 
-          <div className="hidden md:block w-px self-stretch" style={{ background: 'rgba(255,255,255,0.08)' }} />
+          <div className="hidden md:block w-px self-stretch" style={{ background: 'var(--k-line)' }} />
 
           {/* Adres */}
           <div className="flex items-center gap-4 flex-1 min-w-0 group p-2">
-            <div className="w-11 h-11 flex-shrink-0 rounded-[14px] flex items-center justify-center group-hover:bg-white/15 transition-colors" style={{ background: 'rgba(253,186,116,0.12)', border: '1px solid rgba(253,186,116,0.2)' }}>
-              <MapPin size={18} strokeWidth={2} className="text-[var(--brand-mid)]" />
+            <div className="w-11 h-11 flex-shrink-0 rounded-[9px] flex items-center justify-center group-hover:bg-[rgba(255,255,255,0.06)] transition-colors" style={{ background: 'var(--k-hot-wash)', border: '1px solid var(--k-line-hot)' }}>
+              <MapPin size={18} strokeWidth={2} style={{ color: 'var(--k-hot)' }} />
             </div>
             <div className="min-w-0">
-              <p className="text-white/65 text-[11px] font-bold uppercase tracking-widest mb-1">Genel Merkez</p>
+              <p className="k-label mb-1.5">Genel Merkez</p>
               <p className="text-white font-extrabold text-[16px] truncate">Levent, İstanbul</p>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] font-medium" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] font-medium" style={{ borderTop: '1px solid var(--k-line)' }}>
           <p className="text-white/60">© 2026 Mytt Teknoloji A.Ş. Tüm hakları saklıdır.</p>
           <div className="flex items-center gap-6">
             <Link href="/kvkk" className="text-white/65 hover:text-white transition-colors font-semibold">KVKK</Link>
             <Link href="/kullanim-kosullari" className="text-white/65 hover:text-white transition-colors font-semibold">Kullanım Koşulları</Link>
             <Link href="/cerez-politikasi" className="text-white/65 hover:text-white transition-colors font-semibold">Çerez Politikası</Link>
             <Link href="/sozlesmeler" className="text-white/65 hover:text-white transition-colors font-semibold">Sözleşmeler ve Formlar</Link>
-            <span className="text-[var(--brand-mid)] px-3 py-1 rounded-[8px] font-bold ml-2" style={{ background: 'rgba(253,186,116,0.1)', border: '1px solid rgba(253,186,116,0.2)' }}>v10.0 Elite</span>
+            <span className="k-mono text-[10px] text-[var(--k-hot)] px-2.5 py-1 rounded-[5px] font-bold ml-2 tracking-wider" style={{ background: 'var(--k-hot-wash)', border: '1px solid var(--k-line-hot)' }}>KARBON v11</span>
           </div>
         </div>
       </div>

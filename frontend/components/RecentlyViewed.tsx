@@ -81,7 +81,7 @@ export default function RecentlyViewed() {
         {/* Section header */}
         <h2
           id="recently-viewed-title"
-          className="text-[22px] font-bold text-zinc-900 tracking-tight mb-5"
+          className="text-[22px] font-bold text-[var(--k-ink)] tracking-tight mb-5"
         >
           Son Baktıklarınız
         </h2>

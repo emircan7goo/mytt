@@ -79,23 +79,23 @@ export default function CookieConsent() {
         aria-label="Çerez onayı"
         aria-live="polite"
       >
-        <div className="bg-white border border-zinc-200 shadow-2xl shadow-zinc-900/10 rounded-2xl p-5 relative">
+        <div className="bg-[var(--k-surface)] border border-[var(--k-line)] shadow-2xl shadow-zinc-900/10 rounded-2xl p-5 relative">
           {/* Kapat (Reddet) */}
           <button
             onClick={reject}
             aria-label="Kapat"
-            className="absolute top-3 right-3 text-zinc-400 hover:text-zinc-700 transition-colors"
+            className="absolute top-3 right-3 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors"
           >
             <X size={16} />
           </button>
 
-          <p className="text-zinc-800 text-sm font-semibold mb-1">🍪 Çerez Tercihleri</p>
-          <p className="text-zinc-500 text-xs leading-relaxed mb-4">
+          <p className="text-[var(--k-ink)] text-sm font-semibold mb-1">🍪 Çerez Tercihleri</p>
+          <p className="text-[var(--k-ink-3)] text-xs leading-relaxed mb-4">
             Oturum ve güvenlik için zorunlu çerezler kullanıyoruz. İzin verirseniz
             deneyiminizi iyileştirmek için analitik çerezler de kullanırız.{' '}
             <Link
               href="/cerez-politikasi"
-              className="text-zinc-900 underline underline-offset-2 hover:no-underline"
+              className="text-[var(--k-ink)] underline underline-offset-2 hover:no-underline"
             >
               Detaylar
             </Link>
@@ -104,7 +104,7 @@ export default function CookieConsent() {
           <div className="flex gap-2">
             <button
               onClick={reject}
-              className="flex-1 text-xs font-medium px-4 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 hover:bg-zinc-50 transition-colors"
+              className="flex-1 text-xs font-medium px-4 py-2.5 rounded-xl border border-[var(--k-line)] text-[var(--k-ink-2)] hover:bg-[var(--k-surface-2)] transition-colors"
             >
               Yalnızca Zorunlu
             </button>

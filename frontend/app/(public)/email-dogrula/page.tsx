@@ -146,13 +146,13 @@ function EmailDogrulaContent() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <span className="text-3xl font-black tracking-tight text-zinc-900">
+            <span className="text-3xl font-black tracking-tight text-[var(--k-ink)]">
               my<span className="text-orange-500">tt</span>
             </span>
           </Link>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 p-8">
+        <div className="bg-[var(--k-surface)] rounded-2xl shadow-sm border border-[var(--k-line)] p-8">
 
           {status === 'success' ? (
             /* ── Başarı ─────────────────────────────────────────────────── */
@@ -162,8 +162,8 @@ function EmailDogrulaContent() {
                   <CheckCircle className="text-green-600" size={36} />
                 </div>
               </div>
-              <h2 className="text-xl font-bold text-zinc-900 mb-2">E-posta Doğrulandı!</h2>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-6">{message}</p>
+              <h2 className="text-xl font-bold text-[var(--k-ink)] mb-2">E-posta Doğrulandı!</h2>
+              <p className="text-[var(--k-ink-3)] text-sm leading-relaxed mb-6">{message}</p>
               <Link
                 href="/login"
                 className="block w-full py-3.5 rounded-xl font-bold text-sm bg-orange-500 hover:bg-orange-600 text-white transition-colors text-center shadow-orange-500/20 shadow-lg"
@@ -180,13 +180,13 @@ function EmailDogrulaContent() {
                 </div>
               </div>
 
-              <h2 className="text-xl font-bold text-zinc-900 mb-2 text-center">
+              <h2 className="text-xl font-bold text-[var(--k-ink)] mb-2 text-center">
                 Doğrulama Kodunu Girin
               </h2>
-              <p className="text-zinc-500 text-[13px] leading-relaxed mb-1 text-center">
-                <strong className="text-zinc-700 break-all">{email}</strong>
+              <p className="text-[var(--k-ink-3)] text-[13px] leading-relaxed mb-1 text-center">
+                <strong className="text-[var(--k-ink-2)] break-all">{email}</strong>
               </p>
-              <p className="text-zinc-400 text-xs mb-5 text-center">
+              <p className="text-[var(--k-ink-4)] text-xs mb-5 text-center">
                 adresine 6 haneli kod gönderdik
               </p>
 
@@ -217,12 +217,12 @@ function EmailDogrulaContent() {
                     className={[
                       'w-11 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all outline-none',
                       digit
-                        ? 'border-orange-400 bg-orange-50 text-zinc-900'
-                        : 'border-zinc-200 bg-zinc-50 text-zinc-400',
+                        ? 'border-orange-400 bg-orange-50 text-[var(--k-ink)]'
+                        : 'border-[var(--k-line)] bg-[var(--k-surface-2)] text-[var(--k-ink-4)]',
                       status === 'error'
                         ? '!border-red-400 !bg-red-50'
                         : '',
-                      'focus:border-orange-500 focus:bg-white focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
+                      'focus:border-orange-500 focus:bg-[var(--k-surface)] focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
                     ].join(' ')}
                   />
                 ))}
@@ -253,15 +253,15 @@ function EmailDogrulaContent() {
                 <button
                   onClick={handleResend}
                   disabled={resendTimer > 0}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-orange-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--k-ink-3)] hover:text-orange-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <RotateCcw size={13} />
                   {resendTimer > 0 ? `Yeniden gönder (${resendTimer}s)` : 'Yeni kod gönder'}
                 </button>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-zinc-100 text-center">
-                <Link href="/register" className="text-xs text-zinc-400 hover:text-zinc-600 transition-colors">
+              <div className="mt-5 pt-4 border-t border-[var(--k-line)] text-center">
+                <Link href="/register" className="text-xs text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors">
                   ← Kayıt sayfasına dön
                 </Link>
               </div>

@@ -98,7 +98,7 @@ export default function DealerStockCard({ product, index }: Props) {
       style={{ animationDelay: `${Math.min(index * 35, 200)}ms` }}
     >
       <Link href={href} className="block h-full">
-        <div className="h-full flex flex-col bg-white rounded-2xl border border-zinc-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-zinc-200">
+        <div className="h-full flex flex-col bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-[var(--k-line)]">
 
           {/* ── Görsel Alan (portrait 3:4) ─────────────────────────────────── */}
           <div
@@ -122,7 +122,7 @@ export default function DealerStockCard({ product, index }: Props) {
 
             {/* Pil sağlığı */}
             {battery !== null && battery !== undefined && (
-              <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-white/80 backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-zinc-600 shadow-sm">
+              <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-[rgba(16,16,19,0.85)] backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-[var(--k-ink-2)] shadow-sm">
                 <Battery
                   size={10}
                   className={battery >= 85 ? 'text-orange-500' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
@@ -146,10 +146,10 @@ export default function DealerStockCard({ product, index }: Props) {
             ) : (
               /* Görsel yoksa marka placeholder */
               <div className="w-full h-full flex flex-col items-center justify-center gap-4 select-none">
-                <Smartphone size={48} className="opacity-[0.12] text-zinc-400" strokeWidth={1.5} />
+                <Smartphone size={48} className="opacity-[0.12] text-[var(--k-ink-4)]" strokeWidth={1.5} />
                 <div className="text-center px-4">
-                  <p className="text-[11px] font-bold text-zinc-400">{product.brand}</p>
-                  <p className="text-[10px] text-zinc-300 mt-0.5 line-clamp-2">{product.model}</p>
+                  <p className="text-[11px] font-bold text-[var(--k-ink-4)]">{product.brand}</p>
+                  <p className="text-[10px] text-[var(--k-ink-4)] mt-0.5 line-clamp-2">{product.model}</p>
                 </div>
               </div>
             )}
@@ -157,10 +157,10 @@ export default function DealerStockCard({ product, index }: Props) {
             {/* Favori (kalp) butonu */}
             <button
               onClick={handleWishlist}
-              className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm transition-all duration-200 hover:scale-110 hover:bg-white"
+              className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-[rgba(16,16,19,0.85)] backdrop-blur-sm border border-white/60 shadow-sm transition-all duration-200 hover:scale-110 hover:bg-[var(--k-surface)]"
               aria-label={isWishlisted ? 'Favorilerden çıkar' : 'Favorilere ekle'}
             >
-              <Heart size={14} className={isWishlisted ? 'text-red-500 fill-red-500' : 'text-zinc-400'} />
+              <Heart size={14} className={isWishlisted ? 'text-red-500 fill-red-500' : 'text-[var(--k-ink-4)]'} />
             </button>
 
             {/* Stok uyarısı */}
@@ -182,12 +182,12 @@ export default function DealerStockCard({ product, index }: Props) {
           <div className="flex flex-col flex-1 p-4 gap-1.5">
 
             {/* Marka · Depolama */}
-            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none">
+            <span className="text-[10px] font-black text-[var(--k-ink-4)] uppercase tracking-widest leading-none">
               {product.brand}{product.storage ? ` · ${product.storage}` : ''}
             </span>
 
             {/* Model adı */}
-            <h3 className="text-[14px] font-bold text-zinc-900 leading-snug line-clamp-2">
+            <h3 className="text-[14px] font-bold text-[var(--k-ink)] leading-snug line-clamp-2">
               {product.model}
             </h3>
 
@@ -195,7 +195,7 @@ export default function DealerStockCard({ product, index }: Props) {
             {(product.hasBox || product.warrantyMonths) && (
               <div className="flex items-center gap-2 mt-0.5">
                 {product.hasBox && (
-                  <span className="inline-flex items-center gap-1 text-[9px] font-bold text-zinc-500 bg-zinc-100 px-1.5 py-0.5 rounded-full">
+                  <span className="inline-flex items-center gap-1 text-[9px] font-bold text-[var(--k-ink-3)] bg-[var(--k-surface-3)] px-1.5 py-0.5 rounded-full">
                     <Box size={8} /> Kutu
                   </span>
                 )}
@@ -211,14 +211,14 @@ export default function DealerStockCard({ product, index }: Props) {
             <div className="flex-1" />
 
             {/* Fiyat + CTA */}
-            <div className="flex items-center justify-between mt-2 pt-3 border-t border-zinc-100">
+            <div className="flex items-center justify-between mt-2 pt-3 border-t border-[var(--k-line)]">
               <div>
                 {hasMultipleOffers && (
-                  <span className="block text-[9px] font-bold text-zinc-400 uppercase tracking-wide mb-0.5">
+                  <span className="block text-[9px] font-bold text-[var(--k-ink-4)] uppercase tracking-wide mb-0.5">
                     örnek teklif
                   </span>
                 )}
-                <span className="text-[17px] font-black text-zinc-900 leading-none">
+                <span className="text-[17px] font-black text-[var(--k-ink)] leading-none">
                   {fmt(product.price)}
                 </span>
               </div>
@@ -236,14 +236,14 @@ export default function DealerStockCard({ product, index }: Props) {
 // ── Skeleton ──────────────────────────────────────────────────────────────────
 export function DealerStockCardSkeleton() {
   return (
-    <div className="bg-white rounded-2xl border border-zinc-100 overflow-hidden">
+    <div className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden">
       {/* Portrait image area */}
       <div className="skeleton-wave" style={{ aspectRatio: '3 / 4' }} />
       <div className="p-4 flex flex-col gap-3">
         <div className="h-2.5 w-16 skeleton-wave rounded-full" />
         <div className="h-4 w-3/4 skeleton-wave rounded-full" />
         <div className="h-3 w-1/2 skeleton-wave rounded-full" />
-        <div className="flex justify-between items-center mt-3 pt-3 border-t border-zinc-100">
+        <div className="flex justify-between items-center mt-3 pt-3 border-t border-[var(--k-line)]">
           <div className="h-5 w-20 skeleton-wave rounded-full" />
           <div className="h-9 w-20 skeleton-wave rounded-xl" />
         </div>
