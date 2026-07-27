@@ -7,17 +7,18 @@ import { resolveUploadUrl } from '@/lib/resolveUrl';
 import { API_BASE } from '@/lib/apiBase';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   KARBON hero
-   Eski hero: açık zemin, cam kutu içinde metin, yuvarlak köşeler, gölge.
-   Yeni hero: tam kanvas karbon sahne, görselin üstüne DOĞRUDAN devasa tipografi,
-   mono slayt sayacı, hairline ilerleme çizgisi.
+   ATÖLYE hero — bölünmüş editoryal düzen
 
-   Veri akışı ve admin builder önizlemesi bilinçli olarak AYNI bırakıldı —
-   admin hero yöneticisi eskisi gibi çalışmaya devam eder.
+   KARBON'da hero tam kanvas koyu bir sahneydi ve metin görselin üstünde,
+   koyu bir scrim'in korumasıyla duruyordu. Açık temada scrim mantığı çöker:
+   krem zemine krem scrim koymak metni kurtarmaz.
 
-   Not: eski sürüm slaytın DB'deki textColor'ına göre açık/koyu overlay
-   hesaplıyordu; bu, koyu temada beyaz-üstüne-beyaz riski taşıyordu. Artık
-   sahne her zaman koyu ve metin her zaman açık — kontrast garanti.
+   Bu yüzden düzen değişti — metin ve görsel artık ÜST ÜSTE değil, YAN YANA:
+   solda tipografi (krem zeminde koyu mürekkep, kontrast garantili), sağda
+   ürün görseli kendi yumuşak sahnesinde. Kontrast artık görselin ne kadar
+   karanlık olduğuna bağlı değil.
+
+   Veri akışı ve admin builder önizlemesi bilinçli olarak korundu.
    ───────────────────────────────────────────────────────────────────────────── */
 
 interface Slide {
@@ -37,7 +38,7 @@ interface Slide {
 
 const FALLBACK: Slide = {
   id: 'fallback',
-  imageUrl: 'linear-gradient(135deg, #0A0A0C 0%, #16161A 60%, #2B1A10 100%)',
+  imageUrl: '',
   title: 'Doğrulanmış cihaz.\nSıfır risk.',
   subtitle:
     'Yüzlerce yetkili bayi aynı cihaz için yarışır. Sen en iyi fiyatı alırsın — ödemen teslimata kadar Escrow’da güvende kalır.',
@@ -51,10 +52,16 @@ const FALLBACK: Slide = {
 const isCssBackground = (v?: string | null) =>
   !!v && (v.startsWith('linear-gradient') || v.startsWith('radial-gradient') || v.startsWith('#'));
 
+const TRUST = [
+  { v: '150+', l: 'Aktif Bayi' },
+  { v: '32',   l: 'Test Noktası' },
+  { v: '6 Ay', l: 'Garanti' },
+  { v: '%100', l: 'Escrow' },
+];
+
 export default function HeroSlider() {
   const [slides, setSlides]       = useState<Slide[]>([]);
   const [current, setCurrent]     = useState(0);
-  const [prev, setPrev]           = useState<number | null>(null);
   const [animating, setAnimating] = useState(false);
   const [paused, setPaused]       = useState(false);
   const [, forceRender]           = useState(0);
@@ -78,196 +85,160 @@ export default function HeroSlider() {
 
   const goTo = useCallback((idx: number) => {
     if (animating || idx === current || total <= 1) return;
-    setPrev(current);
-    setCurrent(idx);
     setAnimating(true);
-    setTimeout(() => { setPrev(null); setAnimating(false); }, 700);
+    setCurrent(idx);
+    setTimeout(() => setAnimating(false), 700);
   }, [animating, current, total]);
 
   const goNext = useCallback(() => goTo((current + 1) % total), [goTo, current, total]);
 
   useEffect(() => {
     if (total <= 1 || paused) return;
-    timerRef.current = setInterval(goNext, 6000);
+    timerRef.current = setInterval(goNext, 7000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [goNext, total, paused]);
 
-  // Hook sırası bozulmasın diye erken return TÜM hook'lardan sonra
+  // Erken return TÜM hook'lardan sonra — hook sırası bozulmasın
   if (previewSettings?.showHeroSlider === false) return null;
+
+  const slide    = display[Math.min(current, total - 1)];
+  const gradient = isCssBackground(slide.imageUrl);
+  const hasImage = !!slide.imageUrl;
 
   return (
     <section
-      className="relative w-full overflow-hidden group"
-      style={{
-        minHeight: 'clamp(460px, 62vh, 620px)',
-        background: 'var(--k-void)',
-        borderTop: '1px solid var(--k-line)',
-        borderBottom: '1px solid var(--k-line)',
-      }}
+      className="relative w-full overflow-hidden"
+      style={{ background: 'var(--k-canvas)', borderBottom: '1px solid var(--k-line)' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {display.map((slide, idx) => {
-        const isActive = idx === current;
-        const isPrev   = idx === prev;
-        const gradient = isCssBackground(slide.imageUrl);
+      {/* Çok hafif teknik ızgara — üstte belirir, aşağı doğru söner */}
+      <div className="k-grid-bg k-grid-fade pointer-events-none absolute inset-0 opacity-60" />
 
-        return (
-          <div
-            key={slide.id}
-            className="absolute inset-0"
-            aria-hidden={!isActive}
-            style={{
-              opacity: isActive ? 1 : 0,
-              transform: isActive ? 'scale(1)' : isPrev ? 'scale(1.05)' : 'scale(1.02)',
-              transition: isActive || isPrev
-                ? 'opacity .7s cubic-bezier(.22,1,.36,1), transform 1.4s cubic-bezier(.22,1,.36,1)'
-                : 'none',
-              zIndex: isActive ? 2 : isPrev ? 1 : 0,
-              pointerEvents: isActive ? 'auto' : 'none',
-            }}
-          >
-            {/* Sahne zemini */}
-            {gradient ? (
-              <div className="absolute inset-0" style={{ background: slide.imageUrl }} />
-            ) : (
-              <img
-                src={resolveUploadUrl(slide.imageUrl)}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover"
-                style={{ opacity: 0.5 }}
-                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-              />
-            )}
+      <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-24">
 
-            {/* Karbon scrim — metnin okunabilirliğini garanti eder */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(90deg, rgba(6,6,7,0.96) 0%, rgba(6,6,7,0.80) 42%, rgba(6,6,7,0.35) 100%)',
-              }}
-            />
-            {/* Nefes alan turuncu ışık */}
-            <div
-              className="k-breathe pointer-events-none absolute -right-[8%] top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full blur-[130px]"
-              style={{ background: 'rgba(255,106,26,0.22)' }}
-            />
+        {/* ── Sol: tipografi ─────────────────────────────────────────────── */}
+        <div key={`copy-${slide.id}`} className="max-w-[600px]">
+          <div className="mb-7 flex flex-wrap items-center gap-3 animate-hero-text">
+            <span className="k-chip k-chip-hot">
+              <ShieldCheck size={11} strokeWidth={2.5} />
+              Doğrulanmış Pazaryeri
+            </span>
+            <span className="k-label">32 Noktada Test · Escrow Korumalı</span>
           </div>
-        );
-      })}
 
-      {/* Teknik ızgara */}
-      <div className="k-grid-bg k-grid-fade pointer-events-none absolute inset-0 z-[3] opacity-70" />
+          {slide.title && (
+            <h1
+              className="k-display animate-hero-text whitespace-pre-line"
+              style={{ fontSize: 'clamp(2.5rem, 5.6vw, 4.6rem)', lineHeight: 1.02 }}
+            >
+              {slide.title}
+            </h1>
+          )}
 
-      {/* ── İçerik ─────────────────────────────────────────────────────────── */}
-      <div className="relative z-[4] mx-auto flex h-full max-w-[1440px] flex-col justify-center px-4 py-16 lg:px-8"
-           style={{ minHeight: 'clamp(460px, 62vh, 620px)' }}>
-        {display.map((slide, idx) => {
-          if (idx !== current) return null;
-          return (
-            <div key={slide.id} className="max-w-[760px]">
-              {/* Üst etiket */}
-              <div className="mb-6 flex items-center gap-3">
-                <span className="k-chip k-chip-hot">
-                  <ShieldCheck size={11} strokeWidth={2.5} />
-                  Doğrulanmış Pazaryeri
-                </span>
-                <span className="k-label hidden sm:block">32 Noktada Test · Escrow Korumalı</span>
-              </div>
+          {slide.subtitle && (
+            <p
+              className="animate-hero-text delay-100 mt-7 max-w-[520px] text-[15.5px] leading-[1.75] md:text-[17px]"
+              style={{ color: 'var(--k-ink-2)' }}
+            >
+              {slide.subtitle}
+            </p>
+          )}
 
-              {slide.title && (
-                <h1
-                  className="k-display animate-hero-text whitespace-pre-line"
-                  style={{ fontSize: 'clamp(2.6rem, 6.4vw, 5.2rem)' }}
-                >
-                  {slide.title}
-                </h1>
-              )}
+          <div className="animate-hero-text delay-200 mt-10 flex flex-wrap items-center gap-3">
+            {slide.btnLeftText && (
+              <Link href={slide.btnLeftLink || '#'} className="k-btn k-btn-hot">
+                {slide.btnLeftText}
+                <ArrowRight size={16} strokeWidth={2.2} />
+              </Link>
+            )}
+            {slide.btnRightText && (
+              <Link href={slide.btnRightLink || '#'} className="k-btn k-btn-ghost">
+                {slide.btnRightText}
+              </Link>
+            )}
+          </div>
 
-              {slide.subtitle && (
-                <p
-                  className="animate-hero-text delay-100 mt-6 max-w-[560px] text-[15px] leading-relaxed md:text-[17px]"
-                  style={{ color: 'var(--k-ink-2)' }}
-                >
-                  {slide.subtitle}
-                </p>
-              )}
-
-              <div className="animate-hero-text delay-200 mt-9 flex flex-wrap items-center gap-3">
-                {slide.btnLeftText && (
-                  <Link href={slide.btnLeftLink || '#'} className="k-btn k-btn-hot">
-                    {slide.btnLeftText}
-                    <ArrowRight size={16} strokeWidth={2.5} />
-                  </Link>
-                )}
-                {slide.btnRightText && (
-                  <Link href={slide.btnRightLink || '#'} className="k-btn k-btn-ghost">
-                    {slide.btnRightText}
-                  </Link>
-                )}
-              </div>
-
-              {/* Güven okumaları */}
+          {/* Güven okumaları — hairline ile bölünmüş, kutu değil */}
+          <div
+            className="animate-hero-text delay-300 mt-14 grid max-w-[540px] grid-cols-2 sm:grid-cols-4"
+            style={{ borderTop: '1px solid var(--k-line)' }}
+          >
+            {TRUST.map((s, i) => (
               <div
-                className="animate-hero-text delay-300 mt-12 grid max-w-[560px] grid-cols-2 gap-px sm:grid-cols-4"
-                style={{ background: 'var(--k-line)', border: '1px solid var(--k-line)' }}
+                key={s.l}
+                className="py-5 pr-4"
+                style={{ borderLeft: i === 0 ? 'none' : '1px solid var(--k-line)', paddingLeft: i === 0 ? 0 : 18 }}
               >
-                {[
-                  { v: '150+',  l: 'Aktif Bayi' },
-                  { v: '32',    l: 'Test Noktası' },
-                  { v: '6 Ay',  l: 'Garanti' },
-                  { v: '%100',  l: 'Escrow' },
-                ].map((s) => (
-                  <div key={s.l} className="px-3 py-3" style={{ background: 'rgba(6,6,7,0.72)' }}>
-                    <div className="k-mono text-[18px] font-bold leading-none" style={{ color: 'var(--k-hot)' }}>
-                      {s.v}
-                    </div>
-                    <div className="k-label mt-1.5" style={{ fontSize: 9 }}>{s.l}</div>
-                  </div>
-                ))}
+                <div className="k-price text-[24px] leading-none" style={{ color: 'var(--k-hot)' }}>
+                  {s.v}
+                </div>
+                <div className="k-label mt-2" style={{ fontSize: 9 }}>{s.l}</div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* ── Slayt sayacı (mono) ────────────────────────────────────────────── */}
-      {total > 1 && (
-        <div className="absolute bottom-7 right-4 z-[5] flex items-center gap-4 lg:right-8">
-          <span className="k-mono text-[11px] tracking-widest" style={{ color: 'var(--k-ink-3)' }}>
-            {String(current + 1).padStart(2, '0')}
-            <span style={{ color: 'var(--k-ink-4)' }}> / {String(total).padStart(2, '0')}</span>
-          </span>
-          <div className="flex gap-1.5">
-            {display.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goTo(idx)}
-                aria-label={`Slayt ${idx + 1}`}
-                className="h-[3px] transition-all duration-300"
-                style={{
-                  width: idx === current ? 28 : 14,
-                  background: idx === current ? 'var(--k-hot)' : 'var(--k-line-2)',
-                }}
-              />
             ))}
           </div>
         </div>
-      )}
 
-      {/* İlerleme çizgisi */}
-      {total > 1 && !paused && (
-        <div className="absolute bottom-0 left-0 right-0 z-[5] h-[2px]">
+        {/* ── Sağ: ürün sahnesi ──────────────────────────────────────────── */}
+        <div className="relative">
           <div
-            key={current}
-            className="h-full"
-            style={{ background: 'var(--k-hot)', animation: 'k-progress 6s linear forwards' }}
-          />
-        </div>
-      )}
+            className="relative overflow-hidden"
+            style={{
+              borderRadius: 'var(--k-r-xl)',
+              border: '1px solid var(--k-line)',
+              background: 'linear-gradient(160deg, #FFFFFF 0%, var(--k-canvas-2) 62%, #F6EDE4 100%)',
+              aspectRatio: '4 / 3.4',
+              boxShadow: 'var(--shadow-md)',
+            }}
+          >
+            {/* Yumuşak şeftali halesi — cihazı sahneden ayırır */}
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[64px]"
+              style={{ background: 'rgba(194,65,12,0.11)' }}
+            />
 
-      <style>{`@keyframes k-progress { from { width: 0% } to { width: 100% } }`}</style>
+            {hasImage && !gradient && (
+              <img
+                key={`img-${slide.id}`}
+                src={resolveUploadUrl(slide.imageUrl)}
+                alt={slide.title || ''}
+                className="k-drift absolute inset-0 h-full w-full object-contain"
+                style={{ padding: '9%' }}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+            )}
+            {gradient && (
+              <div className="absolute inset-0" style={{ background: slide.imageUrl, opacity: 0.5 }} />
+            )}
+
+            {/* Sahne köşe etiketi */}
+            <div className="absolute left-5 top-5">
+              <span className="k-label">Doğrulanmış Cihaz</span>
+            </div>
+          </div>
+
+          {/* Slayt sayacı — sahnenin altında, editoryal */}
+          {total > 1 && (
+            <div className="mt-6 flex items-center gap-5">
+              <span className="k-mono text-[11px] tracking-widest" style={{ color: 'var(--k-ink-3)' }}>
+                {String(current + 1).padStart(2, '0')}
+                <span style={{ color: 'var(--k-ink-4)' }}> / {String(total).padStart(2, '0')}</span>
+              </span>
+              <div className="flex flex-1 gap-1.5">
+                {display.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => goTo(idx)}
+                    aria-label={`Slayt ${idx + 1}`}
+                    className="h-[2px] flex-1 transition-all duration-500"
+                    style={{ background: idx === current ? 'var(--k-hot)' : 'var(--k-line-2)' }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

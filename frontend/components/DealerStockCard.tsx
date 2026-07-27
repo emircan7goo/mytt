@@ -122,7 +122,7 @@ export default function DealerStockCard({ product, index }: Props) {
 
             {/* Pil sağlığı */}
             {battery !== null && battery !== undefined && (
-              <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-[rgba(16,16,19,0.85)] backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-[var(--k-ink-2)] shadow-sm">
+              <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-[rgba(251,249,246,0.90)] backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-[var(--k-ink-2)] shadow-sm">
                 <Battery
                   size={10}
                   className={battery >= 85 ? 'text-orange-500' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
@@ -157,7 +157,7 @@ export default function DealerStockCard({ product, index }: Props) {
             {/* Favori (kalp) butonu */}
             <button
               onClick={handleWishlist}
-              className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-[rgba(16,16,19,0.85)] backdrop-blur-sm border border-white/60 shadow-sm transition-all duration-200 hover:scale-110 hover:bg-[var(--k-surface)]"
+              className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-[rgba(251,249,246,0.90)] backdrop-blur-sm border border-white/60 shadow-sm transition-all duration-200 hover:scale-110 hover:bg-[var(--k-surface)]"
               aria-label={isWishlisted ? 'Favorilerden çıkar' : 'Favorilere ekle'}
             >
               <Heart size={14} className={isWishlisted ? 'text-red-500 fill-red-500' : 'text-[var(--k-ink-4)]'} />

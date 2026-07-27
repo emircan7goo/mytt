@@ -41,8 +41,8 @@ export default function CMSHeroRenderer() {
     >
       {/* Deep Space / Studio Lighting Gradients */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-[rgba(30,30,36,0.6)] blur-[100px] mix-blend-multiply opacity-60" />
-        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] rounded-full bg-[rgba(30,30,36,0.6)] blur-[120px] mix-blend-multiply opacity-40" />
+        <div className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-[var(--k-surface-3)] blur-[100px] mix-blend-multiply opacity-60" />
+        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] rounded-full bg-[var(--k-surface-3)] blur-[120px] mix-blend-multiply opacity-40" />
       </div>
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between min-h-[80vh] px-5 sm:px-8 md:px-16 lg:px-24 gap-8 py-10 lg:py-0">
@@ -53,7 +53,7 @@ export default function CMSHeroRenderer() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="hidden sm:block absolute px-5 py-2 font-bold text-[10px] uppercase tracking-widest rounded-full backdrop-blur-xl bg-[rgba(16,16,19,0.85)] text-[var(--k-ink)] border border-[var(--k-line)] z-30 shadow-sm"
+            className="hidden sm:block absolute px-5 py-2 font-bold text-[10px] uppercase tracking-widest rounded-full backdrop-blur-xl bg-[rgba(255,255,255,0.92)] text-[var(--k-ink)] border border-[var(--k-line)] z-30 shadow-sm"
             style={{ 
               left: `${block.badge.xPercent}%`, 
               top: `${block.badge.yPercent}%`, 
@@ -113,7 +113,7 @@ export default function CMSHeroRenderer() {
           className="relative w-full max-w-[320px] sm:max-w-full lg:w-[45%] flex items-center justify-center mx-auto lg:mx-0 p-4 lg:p-12 pointer-events-none z-10 order-1 lg:order-2"
         >
           {/* Glass halo effect behind image */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[rgba(30,30,36,0.6)] blur-[60px] rounded-full mix-blend-multiply" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[var(--k-surface-3)] blur-[60px] rounded-full mix-blend-multiply" />
           
           <img 
             src={block.image.src} 

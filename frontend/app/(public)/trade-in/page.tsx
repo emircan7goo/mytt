@@ -64,7 +64,7 @@ const CONDITIONS = [
     multiplier: 0.80,
     pct: 80,
     bars: 3,
-    accent: '#2563EB',
+    accent: '#D4501E',
     bg: '#EFF6FF',
     border: '#93C5FD',
   },
@@ -120,7 +120,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{
             width: `${Math.round((step / total) * 100)}%`,
-            background: 'linear-gradient(90deg, #1d4ed8, #3b82f6)',
+            background: 'linear-gradient(90deg, #C2410C, #3b82f6)',
           }}
         />
       </div>
@@ -219,7 +219,7 @@ export default function TradeInPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--k-surface-2)" }}>
       {/* Brand accent line — blue for trade-in */}
-      <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #1d4ed8 0%, #3b82f6 50%, #93c5fd 100%)' }} />
+      <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #C2410C 0%, #3b82f6 50%, #93c5fd 100%)' }} />
 
       {/* Header */}
       <header className="bg-[var(--k-surface)] border-b border-[var(--k-line)] sticky top-0 z-10">
@@ -237,7 +237,7 @@ export default function TradeInPage() {
               className="w-7 h-7 rounded-lg flex items-center justify-center"
               style={{ background: 'rgba(37,99,235,0.08)' }}
             >
-              <RefreshCcw size={14} strokeWidth={1.5} style={{ color: '#2563EB' }} />
+              <RefreshCcw size={14} strokeWidth={1.5} style={{ color: '#D4501E' }} />
             </div>
             <span className="text-sm font-bold text-[var(--k-ink-2)]">Trade-In Hesaplayıcı</span>
           </div>
@@ -326,7 +326,7 @@ export default function TradeInPage() {
             <button
               onClick={handleNext}
               className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-white font-bold text-sm hover:opacity-90 transition-opacity"
-              style={{ background: 'linear-gradient(135deg, #2563EB, #1d4ed8)', boxShadow: '0 4px 18px rgba(37,99,235,0.28)' }}
+              style={{ background: 'linear-gradient(135deg, #D4501E, #C2410C)', boxShadow: '0 4px 18px rgba(194,65,12,0.26)' }}
             >
               <Camera size={16} />
               Fotoğraf Ekle & Takas Talebi Başlat
@@ -397,7 +397,7 @@ export default function TradeInPage() {
                 onClick={handleSubmit}
                 disabled={images.length < 2 || createRequest.isPending}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all disabled:opacity-35 disabled:cursor-not-allowed"
-                style={{ background: '#1d4ed8', boxShadow: '0 4px 14px rgba(29,78,216,0.28)' }}
+                style={{ background: '#C2410C', boxShadow: '0 4px 14px rgba(194,65,12,0.26)' }}
               >
                 {createRequest.isPending ? <><Loader2 size={14} className="animate-spin" /> Gönderiliyor...</> : <>Teklif Al <ArrowRight size={14} /></>}
               </button>
@@ -471,11 +471,11 @@ export default function TradeInPage() {
                         key={m}
                         onClick={() => setModel(m)}
                         className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border text-left font-semibold text-[14px] transition-all duration-150 ${ active ? 'shadow-sm' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm' }`}
-                        style={active ? { borderColor: '#2563EB', background: "var(--k-surface-2)", color: "var(--k-cool)" } : { color: "var(--k-ink-2)" }}
+                        style={active ? { borderColor: '#D4501E', background: "var(--k-surface-2)", color: "var(--k-cool)" } : { color: "var(--k-ink-2)" }}
                       >
                         <span>{m}</span>
                         {active && (
-                          <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#2563EB' }}>
+                          <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#D4501E' }}>
                             <Check size={11} className="text-white" strokeWidth={3} />
                           </div>
                         )}
@@ -557,7 +557,7 @@ export default function TradeInPage() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all disabled:opacity-35 disabled:cursor-not-allowed"
                 style={
                   canAdvance
-                    ? { background: '#1d4ed8', boxShadow: '0 4px 14px rgba(29,78,216,0.28)' }
+                    ? { background: '#C2410C', boxShadow: '0 4px 14px rgba(194,65,12,0.26)' }
                     : { background: "var(--k-line-2)" }
                 }
               >
@@ -581,8 +581,8 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
   return (
     <div className="space-y-5">
       <div className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden text-center">
-        <div className="px-6 py-8" style={{ background: 'linear-gradient(135deg,#EFF6FF,#DBEAFE)' }}>
-          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg,#2563EB,#1d4ed8)' }}>
+        <div className="px-6 py-8" style={{ background: 'linear-gradient(135deg,#FFF8F3,#FDF2EA)' }}>
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg,#D4501E,#C2410C)' }}>
             <Check size={28} className="text-white" strokeWidth={2.5} />
           </div>
           <h2 className="text-2xl font-black text-[var(--k-ink)] mb-1">Takas Talebi Gönderildi!</h2>
@@ -614,7 +614,7 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
       </div>
       <button onClick={() => router.push('/hesabim?tab=sell-requests')}
         className="w-full py-3.5 rounded-xl text-white font-bold text-sm"
-        style={{ background: '#1d4ed8' }}>
+        style={{ background: '#C2410C' }}>
         Teklifleri Takip Et
       </button>
       <button onClick={onReset} className="w-full py-3 rounded-xl border border-[var(--k-line)] text-[var(--k-ink-3)] text-sm font-semibold hover:bg-[var(--k-surface-2)]">

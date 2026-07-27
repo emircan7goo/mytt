@@ -112,7 +112,7 @@ export default function FlashDealBanner() {
         <button
           onClick={handleDismiss}
           aria-label="Duyuruyu kapat"
-          className="w-5 h-5 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.06)] hover:bg-[rgba(6,6,7,0.62)] transition-colors shrink-0"
+          className="w-5 h-5 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.06)] hover:bg-[rgba(28,21,18,0.45)] transition-colors shrink-0"
         >
           <X size={11} className="text-white" aria-hidden />
         </button>

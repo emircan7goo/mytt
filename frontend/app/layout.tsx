@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 import { AppProvider } from "@/providers/AppProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-// KARBON tipografisi — teknik/geometrik başlık, sıkı gövde, tabular mono veri
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+// ATÖLYE tipografisi — editoryal serif başlık, temiz sans gövde, mono mikro etiket.
+// Fraunces değişken eksenlere sahip (opsz/SOFT/WONK): büyük puntoda daha keskin,
+// küçük puntoda daha yumuşak render eder — editoryal his tam olarak buradan gelir.
+// latin-ext altkümesi Türkçe karakterler (ğ ş İ ı) için zorunlu.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
-// Fiyat/veri okumaları — tabular rakamlar hizalı kalsın diye monospace
+// Yalnız mikro teknik etiketler (kalite notu, pil %, sipariş no).
+// Fiyatlar ATÖLYE'de mono'dan serif'e taşındı — bkz. .k-price
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
@@ -80,7 +86,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#EA580C',
+  themeColor: '#C2410C',
 };
 
 /**
@@ -107,10 +113,10 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${spaceGrotesk.variable} ${interTight.variable} ${jetbrains.variable} h-full antialiased`}>
+    <html lang="tr" className={`${fraunces.variable} ${interTight.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#EA580C" />
+        <meta name="theme-color" content="#C2410C" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Mytt" />

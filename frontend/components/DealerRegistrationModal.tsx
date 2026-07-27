@@ -89,7 +89,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
       >
         {/* Backdrop */}
         <motion.div
-          className="absolute inset-0 bg-[rgba(6,6,7,0.62)] backdrop-blur-2xl"
+          className="absolute inset-0 bg-[rgba(28,21,18,0.45)] backdrop-blur-2xl"
           onClick={onClose}
         />
 

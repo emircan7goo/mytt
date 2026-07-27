@@ -83,7 +83,7 @@ export default function FilterSidebar({
   };
 
   const inner = (
-    <div className="flex flex-col p-8 backdrop-blur-3xl bg-[rgba(16,16,19,0.85)] bg-gradient-to-br from-slate-50 to-transparent text-[var(--k-ink)] min-h-full">
+    <div className="flex flex-col p-8 bg-[var(--k-surface)] text-[var(--k-ink)] min-h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-8 pb-6 border-b border-[var(--k-line)] px-1">
         <div className="flex items-center gap-2 text-[var(--k-ink)]">
@@ -219,7 +219,7 @@ export default function FilterSidebar({
       <AnimatePresence>
         {mobileOpen && (
           <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-[rgba(16,16,19,0.85)] backdrop-blur-md lg:hidden z-[200]" onClick={onMobileClose} />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-[rgba(28,21,18,0.45)] backdrop-blur-md lg:hidden z-[200]" onClick={onMobileClose} />
             <motion.div initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'spring', stiffness: 320, damping: 34 }} className="fixed left-0 top-0 bottom-0 w-[300px] border-r border-[var(--k-line)] bg-[var(--k-surface)] z-[201] overflow-y-auto shadow-[20px_0_40px_rgba(0,0,0,0.1)] lg:hidden">
               <div className="h-full">
                 {inner}

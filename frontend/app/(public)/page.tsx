@@ -794,7 +794,7 @@ function HomePage() {
                     {locationLoading ? 'Konum Alınıyor…' : sameDayMode ? 'Gün İçi Teslim' : 'Gün İçi Teslim'}
                   </span>
                   {/* Toggle pill */}
-                  <div className={`relative w-9 h-5 rounded-full border transition-all duration-300 ${ sameDayMode ? 'bg-[rgba(6,6,7,0.62)] border-white/50' : 'bg-[var(--k-surface-3)] border-[var(--k-line-2)]' }`}>
+                  <div className={`relative w-9 h-5 rounded-full border transition-all duration-300 ${ sameDayMode ? 'bg-[rgba(28,21,18,0.45)] border-white/50' : 'bg-[var(--k-surface-3)] border-[var(--k-line-2)]' }`}>
                     <div className={`absolute top-[2px] w-[14px] h-[14px] rounded-full shadow transition-all duration-300 ${ sameDayMode ? 'left-[18px] bg-[var(--k-surface)]' : 'left-[2px] bg-[var(--k-surface)]' }`} />
                   </div>
                 </button>

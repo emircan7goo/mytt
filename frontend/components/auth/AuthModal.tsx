@@ -91,7 +91,7 @@ export default function AuthModal() {
       <div className="relative w-full max-w-[400px] bg-[var(--k-surface)] rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header Ribbon */}
-        <div className="flex items-center justify-between p-5 border-b border-[var(--k-line)] bg-[rgba(22,22,26,0.6)]">
+        <div className="flex items-center justify-between p-5 border-b border-[var(--k-line)] bg-[var(--k-canvas-2)]">
           <h2 className="text-xl font-black text-[var(--k-ink)] tracking-tight">
             {isDealerMode ? 'Bayi / Kurumsal Giriş' : 'Merhaba,'}
           </h2>

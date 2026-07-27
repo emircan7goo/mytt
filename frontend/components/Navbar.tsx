@@ -267,7 +267,7 @@ export default function Navbar() {
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(6,6,7,0.88)' : 'var(--k-void)',
+          background: scrolled ? 'rgba(251,249,246,0.86)' : 'var(--k-void)',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           borderBottom: '1px solid var(--k-line)',
@@ -289,7 +289,7 @@ export default function Navbar() {
           {/* Logo — koyu zemin için beyaz varyant */}
           <Link href="/" className="flex items-center flex-shrink-0 group mr-6">
             <img
-              src="/logo-light.png"
+              src="/logo.png"
               alt="Mytt"
               className="h-12 sm:h-14 w-auto object-contain scale-125 origin-left transition-transform duration-300 group-hover:scale-[1.32]"
             />
@@ -526,7 +526,7 @@ export default function Navbar() {
                 key={`${cat.label}-mega`}
                 className="mega-menu-enter absolute left-0 right-0 top-[50px] overflow-hidden z-50"
                 style={{
-                  background: 'rgba(10,10,12,0.97)',
+                  background: 'rgba(255,255,255,0.985)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   borderTop: '1px solid var(--k-line)',
@@ -635,7 +635,7 @@ export default function Navbar() {
             {/* Menü başlığı */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--ink-7)]">
               <Link href="/" onClick={() => setShowMobileMenu(false)} className="flex items-center">
-                <img src="/logo-light.png" alt="Mytt" className="h-11 w-auto object-contain scale-125 origin-left" />
+                <img src="/logo.png" alt="Mytt" className="h-11 w-auto object-contain scale-125 origin-left" />
               </Link>
               <button onClick={() => setShowMobileMenu(false)} className="text-[var(--ink-4)] hover:text-[var(--ink)] p-1">
                 <X size={20} />

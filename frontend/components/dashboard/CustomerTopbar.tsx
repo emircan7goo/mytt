@@ -10,7 +10,7 @@ export default function CustomerTopbar() {
       height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '0 32px',
       borderBottom: '1px solid var(--k-line)',
-      background: 'rgba(6,6,7,0.85)',
+      background: "rgba(251,249,246,0.88)",
       backdropFilter: 'blur(16px)',
       flexShrink: 0,
     }}>

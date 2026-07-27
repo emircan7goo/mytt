@@ -49,7 +49,7 @@ export default function RequireRole({
       <div className="flex items-center justify-center min-h-screen" style={{ background: '#08091200' }}>
         <div className="flex flex-col items-center gap-3">
           <div className="w-8 h-8 border-2 border-orange-500/30 border-t-orange-500 rounded-full animate-spin" />
-          <p className="text-white/30 text-xs">Oturum doğrulanıyor...</p>
+          <p className="text-[var(--k-ink-3)] text-xs">Oturum doğrulanıyor...</p>
         </div>
       </div>
     );

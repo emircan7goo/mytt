@@ -70,7 +70,7 @@ export default function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[rgba(16,16,19,0.85)] backdrop-blur-md z-[300]"
+            className="fixed inset-0 bg-[rgba(28,21,18,0.45)] backdrop-blur-md z-[300]"
             onClick={closeCart}
           />
 
@@ -81,7 +81,7 @@ export default function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-[420px] bg-[rgba(16,16,19,0.85)] backdrop-blur-3xl border-l border-[var(--k-line)] z-[301] flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.05)]"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-[420px] bg-[var(--k-surface)] border-l border-[var(--k-line)] z-[301] flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.05)]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-8 py-6 bg-transparent border-b border-[var(--k-line)]">
@@ -106,7 +106,7 @@ export default function CartDrawer() {
             </div>
 
             {/* Escrow Banner */}
-            <div className="bg-[rgba(22,22,26,0.6)] border-b border-[var(--k-line)] p-4 flex items-start gap-3">
+            <div className="bg-[var(--k-canvas-2)] border-b border-[var(--k-line)] p-4 flex items-start gap-3">
               <ShieldCheck size={20} strokeWidth={2.5} className="text-orange-500 shrink-0 mt-0.5" />
               <p className="text-[var(--k-ink-2)] font-bold text-[12px] uppercase tracking-widest leading-loose">
                 Re-Luxe Güvencesi: Sipariş sonlanana dek bakiye koruma altında.
@@ -139,7 +139,7 @@ export default function CartDrawer() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, x: 50, height: 0, marginBottom: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="flex items-center gap-4 p-4 bg-[rgba(22,22,26,0.6)] rounded-[24px] border border-[var(--k-line)]"
+                        className="flex items-center gap-4 p-4 bg-[var(--k-canvas-2)] rounded-[24px] border border-[var(--k-line)]"
                       >
                         {/* Image */}
                         <div className="w-20 h-20 rounded-2xl shrink-0 bg-[var(--k-surface)] flex items-center justify-center border border-[var(--k-line)] p-2 overflow-hidden shadow-sm">

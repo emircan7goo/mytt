@@ -32,7 +32,7 @@ export default function AnnouncementTicker() {
       <div
         className="h-[34px]"
         style={{
-          background: 'var(--k-void)', borderBottom: '1px solid var(--k-line)',
+          background: 'var(--k-canvas-2)', borderBottom: '1px solid var(--k-line)',
         }}
         aria-hidden="true"
       />
@@ -55,7 +55,7 @@ export default function AnnouncementTicker() {
     <div
       className="h-[34px] overflow-hidden flex items-center"
       style={{
-        background: 'var(--k-void)', borderBottom: '1px solid var(--k-line)',
+        background: 'var(--k-canvas-2)', borderBottom: '1px solid var(--k-line)',
       }}
       aria-label="Duyuru Bandı"
     >

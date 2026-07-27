@@ -47,8 +47,8 @@ export default function ProductFamilyPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[var(--k-void)] flex items-center justify-center">
-        <div className="w-10 h-10 border-2 border-white/10 border-t-orange-400 rounded-full animate-spin" />
+      <div className="min-h-screen bg-[var(--k-canvas)] flex items-center justify-center">
+        <div className="w-10 h-10 border-2 border-[var(--k-line)] border-t-orange-400 rounded-full animate-spin" />
       </div>
     );
   }
@@ -62,7 +62,7 @@ export default function ProductFamilyPage() {
         </p>
         <button
           onClick={() => router.push('/')}
-          className="px-8 py-3.5 text-sm tracking-widest uppercase font-bold text-white bg-zinc-900 rounded-full hover:bg-black transition-colors"
+          className="px-8 py-3.5 text-sm tracking-widest uppercase font-bold text-[var(--k-ink)] bg-zinc-900 rounded-full hover:bg-black transition-colors"
         >
           Vitrine Dön
         </button>
@@ -75,22 +75,22 @@ export default function ProductFamilyPage() {
   return (
     <div className="min-h-screen bg-[var(--k-surface-2)]">
       {/* ══════════════════════════ HERO — Karanlık, Editoryal ══════════════════════════ */}
-      <div className="relative overflow-hidden bg-[var(--k-void)] pt-[100px] md:pt-[132px] pb-20 md:pb-28">
+      <div className="relative overflow-hidden bg-[var(--k-canvas)] pt-[100px] md:pt-[132px] pb-20 md:pb-28">
         {/* Ambiyans ışıması */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 900px 500px at 12% -10%, rgba(249,115,22,0.16), transparent 60%),' +
-              'radial-gradient(ellipse 700px 500px at 100% 20%, rgba(245,158,11,0.08), transparent 55%)',
+              'radial-gradient(ellipse 900px 500px at 12% -10%, rgba(194,65,12,0.10), transparent 60%),' +
+              'radial-gradient(ellipse 700px 500px at 100% 20%, rgba(212,80,30,0.06), transparent 55%)',
           }}
         />
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
           <button
             onClick={() => router.back()}
-            className="group flex items-center gap-3 text-white/50 hover:text-white transition-colors mb-10 md:mb-14"
+            className="group flex items-center gap-3 text-[var(--k-ink-3)] hover:text-[var(--k-ink)] transition-colors mb-10 md:mb-14"
           >
-            <div className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white/40 transition-colors">
+            <div className="w-9 h-9 rounded-full border border-[var(--k-line-2)] flex items-center justify-center group-hover:border-[var(--k-hot)] transition-colors">
               <ArrowLeft size={15} strokeWidth={1.5} />
             </div>
             <span className="text-[11px] uppercase tracking-[0.2em] font-bold">Vitrine Dön</span>
@@ -102,32 +102,32 @@ export default function ProductFamilyPage() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[180px] h-[220px] md:w-[220px] md:h-[270px] shrink-0 rounded-[32px] bg-[var(--k-surface)]/[0.04] border border-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden"
+              className="w-[180px] h-[220px] md:w-[220px] md:h-[270px] shrink-0 rounded-[32px] bg-[var(--k-surface)]/[0.04] border border-[var(--k-line)] backdrop-blur-sm flex items-center justify-center overflow-hidden"
             >
               {heroImage ? (
                 <img src={heroImage} alt={model} className="w-4/5 h-4/5 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
               ) : (
-                <Smartphone size={64} className="text-white/10" strokeWidth={1} />
+                <Smartphone size={64} className="text-[var(--k-ink)]/10" strokeWidth={1} />
               )}
             </motion.div>
 
             {/* Başlık + istatistikler */}
             <div className="flex-1 text-center lg:text-left">
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                <span className="text-[11px] font-bold text-orange-300 uppercase tracking-[0.2em] bg-orange-400/10 border border-orange-400/20 px-3 py-1.5 rounded-full">
+                <span className="text-[11px] font-bold text-[var(--k-hot)] uppercase tracking-[0.2em] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] px-3 py-1.5 rounded-full">
                   {family.brand}
                 </span>
-                <span className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em] bg-[var(--k-surface)]/[0.06] border border-white/10 px-3 py-1.5 rounded-full">
+                <span className="text-[11px] font-bold text-[var(--k-ink-3)] uppercase tracking-[0.2em] bg-[var(--k-surface)]/[0.06] border border-[var(--k-line)] px-3 py-1.5 rounded-full">
                   {family.offerCount} Doğrulanmış Teklif
                 </span>
               </div>
 
-              <h1 className="font-editorial text-white text-[52px] md:text-[76px] leading-[0.98] tracking-tight mb-8">
+              <h1 className="font-editorial text-[var(--k-ink)] text-[52px] md:text-[76px] leading-[0.98] tracking-tight mb-8">
                 {family.model}
               </h1>
 
               {/* Aralık Şeridi — spec-sheet hissi */}
-              <div className="inline-flex flex-wrap justify-center lg:justify-start gap-x-10 gap-y-5 border-t border-white/10 pt-6">
+              <div className="inline-flex flex-wrap justify-center lg:justify-start gap-x-10 gap-y-5 border-t border-[var(--k-line)] pt-6">
                 {family.storageOptions.length > 0 && (
                   <StatBlock
                     icon={<Layers size={13} />}
@@ -177,14 +177,14 @@ export default function ProductFamilyPage() {
 
         {/* Filtre / Sıralama Çubuğu — tek teklifte gösterilecek bir şey yok */}
         {family.offerCount > 1 && (
-          <div className="sticky top-[76px] z-30 bg-[rgba(16,16,19,0.85)] backdrop-blur-xl border border-[var(--k-line)] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] p-3 mb-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+          <div className="sticky top-[76px] z-30 bg-[rgba(251,249,246,0.90)] backdrop-blur-xl border border-[var(--k-line)] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] p-3 mb-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
           {/* Depolama filtresi */}
           {family.storageOptions.length > 1 ? (
             <div className="flex items-center gap-1.5 flex-wrap px-1">
               <button
                 onClick={() => setStorage(null)}
                 className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                  storage === null ? 'bg-zinc-900 text-white' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
+                  storage === null ? 'bg-zinc-900 text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                 }`}
               >
                 Tümü
@@ -194,7 +194,7 @@ export default function ProductFamilyPage() {
                   key={s}
                   onClick={() => setStorage(s)}
                   className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                    storage === s ? 'bg-zinc-900 text-white' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
+                    storage === s ? 'bg-zinc-900 text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                   }`}
                 >
                   {s}
@@ -262,7 +262,7 @@ export default function ProductFamilyPage() {
                       <div className="flex-1 flex flex-col gap-2.5 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           {isTopPick && (
-                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-white bg-orange-600 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-[var(--k-ink)] bg-orange-600 px-2.5 py-1 rounded-full">
                               <Crown size={11} />
                               {sort === 'best_condition' ? 'En İyi Durum' : 'En Uygun Fiyat'}
                             </span>
@@ -319,7 +319,7 @@ export default function ProductFamilyPage() {
                             {fmt(price)}
                           </span>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] group-hover:bg-zinc-900 flex items-center justify-center text-[var(--k-ink-4)] group-hover:text-white shrink-0 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] group-hover:bg-zinc-900 flex items-center justify-center text-[var(--k-ink-4)] group-hover:text-[var(--k-ink)] shrink-0 transition-colors">
                           <ChevronRight size={16} strokeWidth={2.5} />
                         </div>
                       </div>
@@ -341,10 +341,10 @@ function StatBlock({
 }: { icon: React.ReactNode; label: string; value: string; accent?: boolean }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/40">
+      <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--k-ink-4)]">
         {icon} {label}
       </span>
-      <span className={`font-editorial text-[22px] md:text-[26px] leading-none ${accent ? 'text-orange-300' : 'text-white'}`}>
+      <span className={`font-editorial text-[22px] md:text-[26px] leading-none ${accent ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink)]'}`}>
         {value}
       </span>
     </div>

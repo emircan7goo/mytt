@@ -171,7 +171,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
             </div>
             
             {/* Card Footer */}
-            <div className="p-6 md:p-8 border-t border-[var(--k-line)] bg-[rgba(22,22,26,0.6)] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 md:p-8 border-t border-[var(--k-line)] bg-[var(--k-canvas-2)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-[12px] font-medium text-[var(--k-ink-4)] text-center sm:text-left">
                 Son Güncelleme: 16 Temmuz 2026 | Sürüm: v10.0-Elite
               </div>

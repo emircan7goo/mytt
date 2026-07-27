@@ -350,7 +350,7 @@ export default function SellPage() {
                 className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left ${ brand === b.id ? 'border-zinc-900 bg-zinc-900 text-white shadow-lg' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-black shrink-0"
-                  style={{ background: brand === b.id ? 'rgba(255,255,255,0.15)' : b.color }}>
+                  style={{ background: b.color }}>
                   {b.abbr}
                 </div>
                 <span className="font-bold text-[14px]">{b.label}</span>
