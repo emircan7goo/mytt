@@ -107,7 +107,7 @@ function DefaultBubble({
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
         <span className="block font-semibold text-[var(--k-ink-3)]" style={{ fontSize: size.textSm }}>{svc.title1}</span>
         <span
-          className="block font-black text-[var(--k-ink)] mt-0.5 group-hover:text-orange-700 transition-colors"
+          className="block font-black text-slate-900 mt-0.5 group-hover:text-indigo-600 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {svc.title2}
@@ -157,7 +157,7 @@ function CmsBubble({
       <p className="text-center leading-tight" style={{ maxWidth: size.maxW }}>
         <span className="block font-semibold text-[var(--k-ink-3)]" style={{ fontSize: size.textSm }}>{bubble.title1}</span>
         <span
-          className="block font-black text-[var(--k-ink)] mt-0.5 group-hover:text-orange-700 transition-colors"
+          className="block font-black text-slate-900 mt-0.5 group-hover:text-indigo-600 transition-colors"
           style={{ fontSize: size.textLg }}
         >
           {bubble.title2}

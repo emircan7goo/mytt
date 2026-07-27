@@ -37,32 +37,31 @@ interface Slide {
 const FALLBACK: Slide = {
   id: 'fallback',
   imageUrl: '',
-  title: 'Doğrulanmış cihaz.\nSıfır risk.',
+  title: 'Cihazını En Yüksek Fiyata Sat,\nYenisini Sıfır Riskle Al.',
   subtitle:
-    'Yüzlerce yetkili bayi aynı cihaz için yarışır. Sen en iyi fiyatı alırsın — ödemen teslimata kadar Escrow’da güvende kalır.',
-  btnLeftText: 'Cihazları Keşfet',
-  btnLeftLink: '/',
-  btnRightText: 'Cihazını Sat',
-  btnRightLink: '/sell',
+    'Yetkili bayilerin yarıştığı kapalı teklif sistemiyle cihazını 1 saatte en yüksek fiyata sat. Ya da 12 ay garantili, 32 noktada test edilmiş cihazları Escrow güvencesiyle satın al.',
+  btnLeftText: 'Cihazını Hemen Sat',
+  btnLeftLink: '/sell',
+  btnRightText: 'Garantili Cihazları İncele',
+  btnRightLink: '/',
   textAlignment: 'center',
 };
 
-/* Izgaranın üstünde süzülen mikro kartlar.
-   Konumlar yüzde cinsinden; her biri farklı gecikme/dönüşle nefes alır. */
+/* Izgaranın üstünde süzülen mikro kartlar. */
 const FLOATERS = [
-  { Icon: Cpu,             color: '#3B52F6', bg: '#EEF2FF', top: '16%',  left: '7%',   size: 52, delay: '0s',   rot: '-8deg' },
-  { Icon: BatteryCharging, color: '#10B981', bg: '#ECFDF5', top: '62%',  left: '4%',   size: 46, delay: '1.4s', rot: '6deg'  },
-  { Icon: ShieldCheck,     color: '#7C3AED', bg: '#F5F3FF', top: '26%',  right: '8%',  size: 56, delay: '0.7s', rot: '7deg'  },
-  { Icon: Heart,           color: '#EC4899', bg: '#FDF2F8', top: '68%',  right: '6%',  size: 44, delay: '2.1s', rot: '-6deg' },
-  { Icon: Smartphone,      color: '#F59E0B', bg: '#FFFBEB', top: '78%',  left: '18%',  size: 48, delay: '1.0s', rot: '9deg'  },
-  { Icon: RefreshCcw,      color: '#3B52F6', bg: '#EEF2FF', top: '10%',  right: '22%', size: 42, delay: '2.6s', rot: '-10deg'},
+  { Icon: Cpu,             color: '#3B82F6', bg: '#EFF6FF', top: '14%',  left: '6%',   size: 54, delay: '0s',   rot: '-8deg' },
+  { Icon: BatteryCharging, color: '#10B981', bg: '#ECFDF5', top: '60%',  left: '5%',   size: 48, delay: '1.4s', rot: '6deg'  },
+  { Icon: ShieldCheck,     color: '#6366F1', bg: '#EEF2FF', top: '22%',  right: '7%',  size: 58, delay: '0.7s', rot: '7deg'  },
+  { Icon: Heart,           color: '#EC4899', bg: '#FDF2F8', top: '66%',  right: '5%',  size: 46, delay: '2.1s', rot: '-6deg' },
+  { Icon: Smartphone,      color: '#F59E0B', bg: '#FFFBEB', top: '76%',  left: '16%',  size: 50, delay: '1.0s', rot: '9deg'  },
+  { Icon: RefreshCcw,      color: '#3B82F6', bg: '#EFF6FF', top: '12%',  right: '20%', size: 44, delay: '2.6s', rot: '-10deg'},
 ];
 
 const TRUST = [
-  { v: '150+',  l: 'Aktif Bayi' },
-  { v: '32',    l: 'Test Noktası' },
-  { v: '6 Ay',  l: 'Garanti' },
-  { v: '%100',  l: 'Escrow' },
+  { v: '150+',  l: 'Onaylı Yetkili Bayi' },
+  { v: '32',    l: 'Noktada Detaylı Test' },
+  { v: '12 Ay', l: 'Tam Kapsam Garanti' },
+  { v: '%100',  l: 'Escrow Güvenli Ödeme' },
 ];
 
 const isCssBackground = (v?: string | null) =>
@@ -150,17 +149,22 @@ export default function HeroSlider() {
       </div>
 
       {/* ── Merkezi mesaj ──────────────────────────────────────────────────── */}
-      <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-4 py-24 text-center lg:py-32">
+      <div className="relative mx-auto flex max-w-[1020px] flex-col items-center px-4 py-20 text-center lg:py-28">
 
-        <div className="k-chip k-chip-hot mb-8">
-          <BadgeCheck size={13} strokeWidth={2.6} />
-          32 Noktada Test · Escrow Korumalı
+        {/* Canlı Güvence Rozeti */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-50/90 border border-indigo-200/80 text-indigo-700 text-xs font-extrabold tracking-wide mb-6 shadow-xs">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <BadgeCheck size={15} strokeWidth={2.4} className="text-indigo-600" />
+          <span>TSE Onaylı Yenileme Merkezi · 32 Noktada Test · %100 Escrow Güvencesi</span>
         </div>
 
         {slide.title && (
           <h1
-            className="k-display whitespace-pre-line"
-            style={{ fontSize: 'clamp(2.6rem, 6vw, 4.9rem)', maxWidth: '15ch' }}
+            className="k-display whitespace-pre-line text-slate-900 font-extrabold tracking-tight"
+            style={{ fontSize: 'clamp(2.8rem, 6.2vw, 5.2rem)', maxWidth: '16ch', color: '#0F172A' }}
           >
             {slide.title}
           </h1>
@@ -168,30 +172,37 @@ export default function HeroSlider() {
 
         {slide.subtitle && (
           <p
-            className="mt-7 max-w-[620px] text-[16px] leading-[1.75] md:text-[18px]"
-            style={{ color: 'var(--k-ink-2)' }}
+            className="mt-6 max-w-[680px] text-[16px] leading-[1.8] md:text-[19px] font-medium text-slate-700"
           >
             {slide.subtitle}
           </p>
         )}
 
-        {/* Sıcak turuncu vurgu — renk monotonluğunu kırar */}
-        <p className="mt-4 text-[14px] font-bold" style={{ color: 'var(--k-warn-ink)' }}>
-          Peki cihazın gerçekten test edildi mi?
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        {/* Aksiyon Butonları & Hızlı Kısayol */}
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           {slide.btnLeftText && (
-            <Link href={slide.btnLeftLink || '#'} className="k-btn k-btn-hot">
+            <Link
+              href={slide.btnLeftLink || '#'}
+              className="px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-[15px] shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 transition-all flex items-center gap-2.5 hover:-translate-y-0.5"
+            >
               {slide.btnLeftText}
-              <ArrowRight size={17} strokeWidth={2.4} />
+              <ArrowRight size={18} strokeWidth={2.5} />
             </Link>
           )}
           {slide.btnRightText && (
-            <Link href={slide.btnRightLink || '#'} className="k-btn k-btn-ghost">
+            <Link
+              href={slide.btnRightLink || '#'}
+              className="px-7 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-900 font-bold text-[15px] border border-slate-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5"
+            >
               {slide.btnRightText}
             </Link>
           )}
+          <Link
+            href="/ai-finder"
+            className="px-6 py-4 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-[14px] border border-emerald-200/80 transition-all flex items-center gap-2"
+          >
+            <span>✦ Yapay Zekâ ile Telefon Bul</span>
+          </Link>
         </div>
 
         {/* ── Ürün sahnesi: varsa slayt görseli, havada süzülen kart ─────── */}

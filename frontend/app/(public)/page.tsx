@@ -71,38 +71,38 @@ const DEFAULT_FEATURE_CARDS: FeatureCardConfig[] = [
   {
     id: 'sell',
     enabled: true,
-    title: 'Cihazını Sat',
-    description: 'Yüzlerce yetkili bayi cihazın için kapalı teklifte yarışır. En yüksek teklifi onayla, kargola, paranı al.',
-    badgeText: '1 Saatte Teklif',
-    tag: 'Ücretsiz',
-    features: ['Bayiler birbirinin teklifini göremez', 'Cihaz kargosuz teslim edilir', 'Ödeme garanti ile yapılır'],
+    title: 'Cihazını Hemen Sat',
+    description: 'Yetkili bayiler cihazın için 1 saat içinde kapalı tekliflerde yarışsın. En yüksek teklifi seç, ücretsiz kargola, paranı Escrow güvencesiyle anında al.',
+    badgeText: 'Anında Kapalı Teklif',
+    tag: 'Sıfır Komisyon',
+    features: ['Şeffaf açık artırma teklifleri', 'Ücretsiz kargo & kapıdan teslimat', '%100 Güvenli Escrow ödeme koruması'],
     stat: '150+',
-    statLabel: 'Aktif Bayi',
-    ctaText: 'Başla',
+    statLabel: 'Onaylı Yetkili Bayi',
+    ctaText: 'Teklif Al',
   },
   {
     id: 'ai-finder',
     enabled: true,
-    title: 'AI Telefon Bulucu',
-    description: 'Bütçenizi ve kullanım alışkanlıklarınızı analiz edip size özel en iyi 3 cihazı anında listeleyelim.',
-    badgeText: 'YZ Destekli',
-    tag: 'Saniyeler içinde',
-    features: ['Bütçe & ihtiyaç analizi yapılır', 'Kişiye özel 3 cihaz önerilir', 'Anlık fiyat karşılaştırması'],
+    title: 'Yapay Zekâ Akıllı Telefon Bulucu',
+    description: 'Bütçenizi, kullanım alışkanlıklarınızı ve kamera/pil beklentilerinizi analiz edip size özel en uygun 3 ideal cihazı saniyeler içinde önerelim.',
+    badgeText: 'YZ Akıllı Analiz',
+    tag: 'Kişiye Özel',
+    features: ['Kullanım profili analizi', 'Fiyat / performans oranlaması', 'Kişiselleştirilmiş 3 seçenek'],
     stat: '3',
-    statLabel: 'Kişisel Öneri',
-    ctaText: 'Hemen Bul',
+    statLabel: 'Size Özel Öneri',
+    ctaText: 'Telefonumu Bul',
   },
   {
     id: 'trade-in',
     enabled: true,
-    title: 'Trade-In Hesaplayıcı',
-    description: 'Eski telefonunuzun güncel piyasa değerini öğrenin, yeni cihazınızı çok daha uygun fiyata alın.',
-    badgeText: 'Anlık Fiyat',
-    tag: 'Ücretsiz',
-    features: ['Güncel piyasa fiyatı gösterilir', 'Yeni cihazda doğrudan indirim', 'Güvenli & hızlı takas işlemi'],
+    title: 'Eskiyi Getir, Yeniyi Al (Takas)',
+    description: 'Eski telefonunuzun güncel piyasa değerini saniyeler içinde hesaplayın, yeni alacağınız cihazda doğrudan indirim avantayıyla hemen kullanın.',
+    badgeText: 'Piyasa Değeri',
+    tag: 'Anında İndirim',
+    features: ['Canlı piyasa değerlemesi', 'Cihaz fiyatından düşülen indirim', 'Adresten hızlı değişim'],
     stat: '%40',
-    statLabel: 'a kadar tasarruf',
-    ctaText: 'Değerini Öğren',
+    statLabel: 'Varan Takas İndirimi',
+    ctaText: 'Değerini Hesapla',
   },
 ];
 
@@ -117,31 +117,31 @@ const CARD_META: Record<string, {
   glowColor: string;
 }> = {
   sell: {
-    gradient:    'linear-gradient(135deg, #EA580C 0%, #F97316 100%)',
-    badgeCls:    'bg-orange-500/10 text-[var(--k-hot)] border border-orange-500/20',
+    gradient:    'linear-gradient(135deg, #059669 0%, #10B981 100%)',
+    badgeCls:    'bg-emerald-50 text-emerald-700 border border-emerald-200',
     link:        '/sell',
-    iconBg:      'bg-orange-50',
-    iconColor:   'text-orange-600',
-    borderColor: 'group-hover:border-orange-500/30',
-    glowColor:   'rgba(249,115,22,0.15)',
+    iconBg:      'bg-emerald-50',
+    iconColor:   'text-emerald-600',
+    borderColor: 'group-hover:border-emerald-500/40',
+    glowColor:   'rgba(16,185,129,0.18)',
   },
   'ai-finder': {
-    gradient:    'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
-    badgeCls:    'bg-blue-500/10 text-blue-500 border border-blue-500/20',
+    gradient:    'linear-gradient(135deg, #4F46E5 0%, #6366F1 100%)',
+    badgeCls:    'bg-indigo-50 text-indigo-700 border border-indigo-200',
     link:        '/ai-finder',
-    iconBg:      'bg-blue-50',
-    iconColor:   'text-blue-600',
-    borderColor: 'group-hover:border-blue-500/30',
-    glowColor:   'rgba(37,99,235,0.15)',
+    iconBg:      'bg-indigo-50',
+    iconColor:   'text-indigo-600',
+    borderColor: 'group-hover:border-indigo-500/40',
+    glowColor:   'rgba(99,102,241,0.18)',
   },
   'trade-in': {
-    gradient:    'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
-    badgeCls:    'bg-amber-500/10 text-amber-500 border border-amber-500/20',
+    gradient:    'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+    badgeCls:    'bg-amber-50 text-amber-700 border border-amber-200',
     link:        '/trade-in',
     iconBg:      'bg-amber-50',
     iconColor:   'text-amber-600',
-    borderColor: 'group-hover:border-amber-500/30',
-    glowColor:   'rgba(217,119,6,0.15)',
+    borderColor: 'group-hover:border-amber-500/40',
+    glowColor:   'rgba(245,158,11,0.18)',
   },
 };
 
@@ -637,22 +637,25 @@ function HomePage() {
         {!searchQuery && (
           <div className="max-w-[1440px] mx-auto px-4 lg:px-8 mt-20 mb-6">
 
-            {/* Bölüm başlığı — editoryal, numaralı */}
+            {/* Bölüm başlığı — Yüksek kontrastlı, şık başlık */}
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
-                <span className="k-section-num">01 — SERVİSLER</span>
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-extrabold uppercase tracking-wider mb-2">
+                  01 — AKILLI SERVİSLER
+                </span>
                 <h2
-                  className="k-display mt-4"
-                  style={{ fontSize: 'clamp(1.9rem, 4vw, 3.1rem)' }}
+                  className="font-extrabold text-slate-900 tracking-tight mt-2 leading-[1.1]"
+                  style={{ fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)', color: '#0F172A' }}
                 >
-                  Al, sat, takas et.
-                  <br />
-                  <span style={{ color: 'var(--k-ink-4)' }}>Hepsi tek çatı altında.</span>
+                  Al, sat, takas et.{' '}
+                  <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent block md:inline">
+                    Hepsi tek çatı altında.
+                  </span>
                 </h2>
               </div>
-              <p className="max-w-[330px] text-[14px] leading-relaxed" style={{ color: 'var(--k-ink-3)' }}>
-                Cihazını bayilere açık artırmayla sattır, yapay zekâ ile sana en uygun
-                modeli bul, ya da eskisini yenisine say.
+              <p className="max-w-[380px] text-[15px] leading-relaxed font-medium text-slate-600">
+                Cihazını bayilere kapalı açık artırmayla sattır, yapay zekâ ile sana en uygun
+                modeli bul, ya da eskisini ver yenisini indirimle al.
               </p>
             </div>
 
@@ -668,64 +671,55 @@ function HomePage() {
               };
 
               return (
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
-                  {cards.map((card, i) => {
-                    const meta = CARD_META[card.id];
-                    if (!meta) return null;
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                  {cards.map((card) => {
+                    const meta = CARD_META[card.id] || CARD_META['sell'];
                     const Icon = ICONS[card.id] ?? Smartphone;
-                    // İlk kart geniş (bento asimetrisi), diğerleri dar
-                    const span = i === 0 ? 'md:col-span-3' : 'md:col-span-3 lg:col-span-3';
 
                     return (
                       <Link
                         key={card.id}
                         href={meta.link}
-                        className={`k-card k-card-glow group relative flex flex-col overflow-hidden p-7 ${span}`}
-                        style={{ minHeight: 300 }}
+                        className="group relative flex flex-col overflow-hidden p-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 min-h-[320px]"
                       >
-                        {/* Arka ışık */}
+                        {/* Arka ışık glow */}
                         <div
-                          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-[70px] transition-all duration-700 group-hover:scale-125"
-                          style={{ background: 'rgba(255,106,26,0.14)' }}
+                          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-all duration-500"
+                          style={{ background: meta.glowColor }}
                         />
-                        <div className="k-grid-bg pointer-events-none absolute inset-0 opacity-60" />
 
                         <div className="relative flex items-start justify-between gap-4">
                           <div
-                            className="flex h-12 w-12 items-center justify-center rounded-[10px] transition-colors duration-300"
-                            style={{ background: 'var(--k-surface-3)', border: '1px solid var(--k-line-2)' }}
+                            className={`flex h-13 w-13 items-center justify-center rounded-xl transition-all duration-300 ${meta.iconBg}`}
                           >
-                            <Icon size={22} strokeWidth={2} style={{ color: 'var(--k-hot)' }} />
+                            <Icon size={24} strokeWidth={2.2} className={meta.iconColor} />
                           </div>
-                          <span className="k-chip">{card.tag}</span>
+                          <span className={`px-3 py-1 rounded-full text-xs font-bold ${meta.badgeCls}`}>
+                            {card.tag}
+                          </span>
                         </div>
 
-                        <h3 className="k-display relative mt-6 text-[24px]">{card.title}</h3>
-                        <p
-                          className="relative mt-3 text-[13.5px] leading-relaxed"
-                          style={{ color: 'var(--k-ink-3)' }}
-                        >
+                        <h3 className="font-extrabold text-slate-900 text-[22px] tracking-tight mt-6 group-hover:text-indigo-600 transition-colors">
+                          {card.title}
+                        </h3>
+                        <p className="mt-2.5 text-[14px] leading-relaxed text-slate-600 font-medium">
                           {card.description}
                         </p>
 
                         <div className="flex-1" />
 
-                        <div
-                          className="relative mt-6 flex items-end justify-between gap-4 pt-5"
-                          style={{ borderTop: '1px solid var(--k-line)' }}
-                        >
+                        <div className="relative mt-6 flex items-end justify-between gap-4 pt-4 border-t border-slate-150">
                           <div>
-                            <div className="k-mono text-[30px] font-bold leading-none" style={{ color: 'var(--k-ink)' }}>
+                            <div className="text-[28px] font-black leading-none text-slate-900">
                               {card.stat}
                             </div>
-                            <div className="k-label mt-1.5">{card.statLabel || 'Hızlı İşlem'}</div>
+                            <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">
+                              {card.statLabel || 'Hızlı İşlem'}
+                            </div>
                           </div>
-                          <span
-                            className="k-mono inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider transition-transform duration-300 group-hover:translate-x-1"
-                            style={{ color: 'var(--k-hot)' }}
-                          >
+                          <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 group-hover:translate-x-1 transition-transform">
                             {(card.ctaText || 'BAŞLA').toLocaleUpperCase('tr-TR')}
-                            <ArrowRight size={13} strokeWidth={2.5} />
+                            <ArrowRight size={14} strokeWidth={2.5} />
                           </span>
                         </div>
                       </Link>
