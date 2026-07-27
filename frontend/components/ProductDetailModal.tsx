@@ -212,7 +212,7 @@ export default function ProductDetailModal() {
                     <span className="text-[14px] font-black text-amber-700 ml-1">4.8</span>
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-200 mx-2" />
                     <span className="flex items-center gap-1 font-bold text-amber-700 text-[13px]">
-                      <BadgeCheck size={16} strokeWidth={2.5} className="text-orange-500" /> Mytt Onaylı
+                      <BadgeCheck size={16} strokeWidth={2.5} className="text-[var(--k-hot)]" /> Mytt Onaylı
                     </span>
                   </div>
 

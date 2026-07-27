@@ -231,7 +231,7 @@ function CheckoutContent() {
               className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-6"
             >
               <div className="flex items-center gap-2 mb-4">
-                <ShieldCheck size={18} className="text-orange-500" />
+                <ShieldCheck size={18} className="text-[var(--k-hot)]" />
                 <span className="font-semibold text-[var(--k-ink)] text-sm">Güvenli Ödeme Formu</span>
                 <span className="ml-auto text-xs text-[var(--k-ink-4)]">PayTR ile korunuyor</span>
               </div>
@@ -243,7 +243,7 @@ function CheckoutContent() {
           <div className="flex flex-col gap-4">
             <div className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] shadow-sm p-6 sticky top-[120px]">
               <h3 className="font-semibold text-[var(--k-ink)] mb-5 flex items-center gap-2">
-                <ShieldCheck size={16} className="text-orange-500" /> Sipariş Özeti
+                <ShieldCheck size={16} className="text-[var(--k-hot)]" /> Sipariş Özeti
               </h3>
 
               <div className="bg-[var(--k-surface-2)] rounded-2xl p-4 mb-5">
@@ -279,7 +279,7 @@ function CheckoutContent() {
               {/* Güvenlik rozetleri */}
               <div className="mt-5 pt-4 border-t border-[var(--k-line)] flex flex-col gap-2">
                 <div className="flex items-center gap-2 text-xs text-[var(--k-ink-3)]">
-                  <ShieldCheck size={13} className="text-orange-500" />
+                  <ShieldCheck size={13} className="text-[var(--k-hot)]" />
                   <span>Alışveriş güvencesi — ödeme teslimata kadar tutulur</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-[var(--k-ink-3)]">

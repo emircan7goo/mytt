@@ -96,7 +96,7 @@ export default function RegisterDealerPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-black tracking-tight text-[var(--k-ink)]">
-              my<span className="text-orange-500">tt</span>
+              my<span className="text-[var(--k-hot)]">tt</span>
             </span>
           </Link>
           <p className="mt-2 text-sm text-[var(--k-ink-3)] font-medium">
@@ -256,7 +256,7 @@ export default function RegisterDealerPage() {
               Bireysel hesap mı açmak istiyorsunuz?{' '}
               <Link
                 href="/register"
-                className="font-bold text-orange-500 hover:text-orange-600 transition-colors"
+                className="font-bold text-[var(--k-hot)] hover:text-orange-600 transition-colors"
               >
                 Üye Ol
               </Link>

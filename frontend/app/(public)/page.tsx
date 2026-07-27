@@ -118,7 +118,7 @@ const CARD_META: Record<string, {
 }> = {
   sell: {
     gradient:    'linear-gradient(135deg, #EA580C 0%, #F97316 100%)',
-    badgeCls:    'bg-orange-500/10 text-orange-500 border border-orange-500/20',
+    badgeCls:    'bg-orange-500/10 text-[var(--k-hot)] border border-orange-500/20',
     link:        '/sell',
     iconBg:      'bg-orange-50',
     iconColor:   'text-orange-600',
@@ -788,7 +788,7 @@ function HomePage() {
                 >
                   {locationLoading
                     ? <Loader2 size={15} className="animate-spin" />
-                    : <MapPin size={15} className={sameDayMode ? 'text-white' : 'text-orange-500'} />
+                    : <MapPin size={15} className={sameDayMode ? 'text-white' : 'text-[var(--k-hot)]'} />
                   }
                   <span className="hidden sm:inline">
                     {locationLoading ? 'Konum Alınıyor…' : sameDayMode ? 'Gün İçi Teslim' : 'Gün İçi Teslim'}
@@ -820,7 +820,7 @@ function HomePage() {
                     onClick={() => setIsSortOpen(!isSortOpen)}
                     className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-[var(--k-surface)] border border-[var(--k-line)] rounded-xl text-sm font-bold text-[var(--k-ink)] hover:bg-[var(--k-hot-wash)] hover:border-[var(--k-line-hot)] transition-all shadow-sm"
                   >
-                    <SlidersHorizontal size={14} className="text-orange-500 mr-1" />
+                    <SlidersHorizontal size={14} className="text-[var(--k-hot)] mr-1" />
                     <span className="hidden sm:inline text-[var(--k-ink-3)] font-medium mr-1">Sırala:</span>
                     {activeSortLabel}
                     <ChevronDown size={16} className={`text-[var(--k-ink-4)] transition-transform ${isSortOpen ? 'rotate-180' : ''}`} />
@@ -993,7 +993,7 @@ function HomePage() {
                 <div className="relative z-10 w-24 h-24 mb-8">
                   <div className="absolute inset-0 bg-orange-300/30 rounded-full animate-ping opacity-60" />
                   <div className="relative w-full h-full bg-[var(--k-surface)] rounded-full flex items-center justify-center shadow-lg border border-orange-200">
-                    <Search size={32} className="text-orange-400" strokeWidth={2} />
+                    <Search size={32} className="text-[var(--k-hot)]" strokeWidth={2} />
                   </div>
                 </div>
                 <h3 className="font-black text-2xl text-[var(--k-ink)] tracking-tight mb-3 relative z-10">

@@ -137,7 +137,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
           {isSuccess ? (
             <div className="flex flex-col items-center gap-6 px-8 py-12 text-center">
               <div className="w-20 h-20 rounded-full bg-orange-500/10 border-2 border-orange-500/40 flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.3)]">
-                <CheckCircle2 size={40} className="text-orange-400" />
+                <CheckCircle2 size={40} className="text-[var(--k-hot)]" />
               </div>
               <div>
                 <h3 className="text-[var(--k-ink)] text-2xl font-heading font-thin tracking-tight mb-2">Başvurunuz Alındı!</h3>

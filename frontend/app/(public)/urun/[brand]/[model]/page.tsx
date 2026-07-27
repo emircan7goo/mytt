@@ -284,7 +284,7 @@ export default function ProductFamilyPage() {
                             <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[var(--k-ink-2)] bg-[var(--k-surface-2)] border border-[var(--k-line)] px-2.5 py-1 rounded-full">
                               <Battery
                                 size={11}
-                                className={offer.batteryHealth >= 85 ? 'text-orange-500' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
+                                className={offer.batteryHealth >= 85 ? 'text-[var(--k-hot)]' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
                               />
                               Pil %{offer.batteryHealth}
                             </span>

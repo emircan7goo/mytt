@@ -243,7 +243,7 @@ export default function ProductDetailClient() {
                     <AnimatePresence mode="wait">
                       {addedPulse ? (
                         <motion.span key="added" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">
-                          <CheckCircle2 size={18} className="text-orange-500" /> Eklendi
+                          <CheckCircle2 size={18} className="text-[var(--k-hot)]" /> Eklendi
                         </motion.span>
                       ) : (
                         <motion.span key="add" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">
@@ -272,7 +272,7 @@ export default function ProductDetailClient() {
 
               <div className="pt-6 border-t border-[var(--k-line)] flex flex-col gap-4">
                  <div className="flex items-center gap-4 text-[var(--k-ink-2)] text-[13px] font-medium bg-[var(--k-surface)] p-4 rounded-xl border border-[var(--k-line)] shadow-sm">
-                    <div className="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-orange-50 text-[var(--k-hot)] flex items-center justify-center shrink-0">
                        <Truck size={16} />
                     </div>
                     <div>

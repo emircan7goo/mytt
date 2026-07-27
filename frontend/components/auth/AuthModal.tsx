@@ -118,7 +118,7 @@ export default function AuthModal() {
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-[var(--k-ink-2)] uppercase tracking-widest pl-1">E-Posta</label>
               <div className="relative group">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors" size={18} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-[var(--k-hot)] transition-colors" size={18} />
                 <input
                   type="email"
                   required
@@ -136,13 +136,13 @@ export default function AuthModal() {
                 <Link
                 href="/sifremi-unuttum"
                 onClick={() => setAuthModalOpen(false)}
-                className="text-[11px] font-bold text-[var(--k-ink-4)] hover:text-orange-500 transition-colors"
+                className="text-[11px] font-bold text-[var(--k-ink-4)] hover:text-[var(--k-hot)] transition-colors"
               >
                 Şifremi Unuttum
               </Link>
               </div>
               <div className="relative group">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-orange-500 transition-colors" size={18} />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)] group-focus-within:text-[var(--k-hot)] transition-colors" size={18} />
                 <input
                   type="password"
                   required
@@ -178,12 +178,12 @@ export default function AuthModal() {
               className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-xl bg-[var(--k-surface-2)] hover:bg-orange-50 border border-[var(--k-line)] hover:border-orange-300 transition-all group"
             >
               <div className="flex items-center gap-2.5">
-                <UserPlus size={16} className="text-orange-500" />
+                <UserPlus size={16} className="text-[var(--k-hot)]" />
                 <span className="text-[13px] font-bold text-[var(--k-ink-2)] group-hover:text-orange-700">
                   Hesabın yok mu? <span className="text-orange-600">Üye Ol</span>
                 </span>
               </div>
-              <ChevronRight size={14} className="text-[var(--k-ink-4)] group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all" />
+              <ChevronRight size={14} className="text-[var(--k-ink-4)] group-hover:text-[var(--k-hot)] group-hover:translate-x-0.5 transition-all" />
             </Link>
             <Link
               href="/register-dealer"

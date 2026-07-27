@@ -788,7 +788,7 @@ export default function HesabimPage() {
           )}
 
           <div className="flex items-start gap-3 p-4 rounded-xl bg-orange-50 border border-orange-100">
-            <ShieldCheck size={18} className="text-orange-500 shrink-0 mt-0.5" />
+            <ShieldCheck size={18} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
             <div>
               <p className="text-[var(--k-ink)] text-sm font-semibold mb-0.5">6 Aylık Garanti Hakkında</p>
               <p className="text-[var(--k-ink-3)] text-xs leading-relaxed">

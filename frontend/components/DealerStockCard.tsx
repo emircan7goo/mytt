@@ -125,7 +125,7 @@ export default function DealerStockCard({ product, index }: Props) {
               <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-[rgba(251,249,246,0.90)] backdrop-blur-sm border border-white/60 rounded-full px-2 py-0.5 text-[10px] font-bold text-[var(--k-ink-2)] shadow-sm">
                 <Battery
                   size={10}
-                  className={battery >= 85 ? 'text-orange-500' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
+                  className={battery >= 85 ? 'text-[var(--k-hot)]' : battery >= 70 ? 'text-amber-500' : 'text-red-400'}
                 />
                 %{battery}
               </div>

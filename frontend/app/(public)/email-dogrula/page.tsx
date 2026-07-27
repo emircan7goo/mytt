@@ -147,7 +147,7 @@ function EmailDogrulaContent() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-black tracking-tight text-[var(--k-ink)]">
-              my<span className="text-orange-500">tt</span>
+              my<span className="text-[var(--k-hot)]">tt</span>
             </span>
           </Link>
         </div>
@@ -176,7 +176,7 @@ function EmailDogrulaContent() {
             <>
               <div className="flex justify-center mb-4">
                 <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center">
-                  <Mail className="text-orange-500" size={28} />
+                  <Mail className="text-[var(--k-hot)]" size={28} />
                 </div>
               </div>
 
@@ -253,7 +253,7 @@ function EmailDogrulaContent() {
                 <button
                   onClick={handleResend}
                   disabled={resendTimer > 0}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--k-ink-3)] hover:text-orange-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--k-ink-3)] hover:text-[var(--k-hot)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <RotateCcw size={13} />
                   {resendTimer > 0 ? `Yeniden gönder (${resendTimer}s)` : 'Yeni kod gönder'}
@@ -277,7 +277,7 @@ export default function EmailDogrulaPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={36} className="animate-spin text-orange-400" />
+        <Loader2 size={36} className="animate-spin text-[var(--k-hot)]" />
       </div>
     }>
       <EmailDogrulaContent />
