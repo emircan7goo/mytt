@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight, ShieldCheck, BatteryCharging, Cpu, Heart,
-  Smartphone, RefreshCcw, BadgeCheck,
+  Smartphone, RefreshCcw, BadgeCheck, Zap,
 } from 'lucide-react';
 import { subscribeBuilderPreview, getBuilderHeroSlides, getBuilderPreview } from '@/lib/builder-preview';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
@@ -205,42 +205,83 @@ export default function HeroSlider() {
           </Link>
         </div>
 
-        {/* ── Ürün sahnesi: varsa slayt görseli, havada süzülen kart ─────── */}
-        {hasImage && (
-          <div
-            className="relative mt-16 w-full max-w-[620px] overflow-hidden"
-            style={{
-              borderRadius: 'var(--k-r-xl)',
-              border: '1px solid var(--k-line)',
-              background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFF 60%, #EEF2FF 100%)',
-              boxShadow: 'var(--shadow-xl)',
-              aspectRatio: '16 / 9',
-            }}
-          >
-            <div
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[60px]"
-              style={{ background: 'rgba(91,101,246,0.16)' }}
-            />
-            <img
-              key={slide.id}
-              src={resolveUploadUrl(slide.imageUrl)}
-              alt={slide.title || ''}
-              className="k-drift absolute inset-0 h-full w-full object-contain"
-              style={{ padding: '5%' }}
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-            />
-          </div>
-        )}
+        {/* ── Ürün Sahnesi ve Canlı Görsel Kartı ───────────────────────────── */}
+        <div className="relative mt-12 w-full max-w-[880px]">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50 p-6 md:p-9 shadow-2xl shadow-indigo-900/10">
 
-        {/* ── Güven okumaları ─────────────────────────────────────────────── */}
-        <div className="mt-16 grid w-full max-w-[720px] grid-cols-2 gap-px sm:grid-cols-4"
-             style={{ background: 'var(--k-line)', border: '1px solid var(--k-line)', borderRadius: 'var(--k-r)' }}>
-          {TRUST.map((s) => (
-            <div key={s.l} className="px-4 py-5" style={{ background: 'var(--k-surface)' }}>
-              <div className="k-price text-[26px] leading-none">
-                <span className="k-grad-text">{s.v}</span>
+            {/* Arka plan yumuşak radyal ışıklar */}
+            <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl" />
+            <div className="pointer-events-none absolute -right-20 -bottom-20 h-72 w-72 rounded-full bg-emerald-500/15 blur-3xl" />
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+
+              {/* Sol taraf: Yüksek kaliteli cihaz görseli & Yüzen teklif kartı */}
+              <div className="md:col-span-7 flex justify-center relative">
+                <div className="relative w-full max-w-[340px] aspect-[4/3] flex items-center justify-center py-2">
+                  <img
+                    src={hasImage ? resolveUploadUrl(slide.imageUrl!) : "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&fit=crop&q=85"}
+                    alt="Premium Yenilenmiş Cihaz"
+                    className="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+
+                {/* Görsel Üzerindeki Yüzen Rozet: Canlı Teklif Simülasyonu */}
+                <div className="absolute -bottom-1 -left-2 md:-left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
+                    <Zap size={20} className="fill-emerald-500 text-emerald-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Son Bayi Teklifi</div>
+                    <div className="text-sm font-black text-slate-900">42.500 ₺ <span className="text-xs font-extrabold text-emerald-600">▲ En Yüksek</span></div>
+                  </div>
+                </div>
               </div>
-              <div className="k-label mt-2">{s.l}</div>
+
+              {/* Sağ taraf: Üçlü Güvence Özellik Kartları */}
+              <div className="md:col-span-5 text-left space-y-3.5">
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-indigo-200 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
+                    <ShieldCheck size={20} strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-slate-900">12 Ay Birebir Garanti</h4>
+                    <p className="text-[11px] text-slate-500 font-medium">32 noktada ekspertiz onaylı</p>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-emerald-200 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                    <BadgeCheck size={20} strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-slate-900">%100 Escrow Koruma</h4>
+                    <p className="text-[11px] text-slate-500 font-medium">Paranız onayınıza kadar güvendedir</p>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-amber-200 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                    <RefreshCcw size={20} strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-slate-900">Adresten Ücretsiz Kargo</h4>
+                    <p className="text-[11px] text-slate-500 font-medium">Kapınızdan teslim alalım</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ── Güven metrikleri ─────────────────────────────────────────────── */}
+        <div className="mt-12 grid w-full max-w-[880px] grid-cols-2 gap-px sm:grid-cols-4 bg-slate-200/80 border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+          {TRUST.map((s) => (
+            <div key={s.l} className="px-4 py-4 bg-white text-center">
+              <div className="text-[26px] font-black leading-none text-slate-900">
+                <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">{s.v}</span>
+              </div>
+              <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1.5">{s.l}</div>
             </div>
           ))}
         </div>
