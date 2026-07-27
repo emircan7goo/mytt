@@ -161,29 +161,26 @@ export default function HeroSlider() {
           <span>TSE Onaylı Yenileme Merkezi · 32 Noktada Test · %100 Escrow Güvencesi</span>
         </div>
 
-        {slide.title && (
-          <h1
-            className="k-display whitespace-pre-line text-slate-900 font-extrabold tracking-tight"
-            style={{ fontSize: 'clamp(2.8rem, 6.2vw, 5.2rem)', maxWidth: '16ch', color: '#0F172A' }}
-          >
-            {slide.title}
-          </h1>
-        )}
+        {/* ── Headline ────────────────────────────────────────────────────────── */}
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] max-w-4xl mx-auto text-slate-900">
+          <span className="block text-slate-900">Cihazını En Yüksek Fiyata Sat,</span>
+          <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent mt-1.5 sm:mt-2">
+            Yenisini Sıfır Riskle Al.
+          </span>
+        </h1>
 
         {slide.subtitle && (
-          <p
-            className="mt-6 max-w-[680px] text-[16px] leading-[1.8] md:text-[19px] font-medium text-slate-700"
-          >
+          <p className="mt-5 max-w-[720px] text-base sm:text-lg lg:text-xl font-medium text-slate-600 leading-relaxed">
             {slide.subtitle}
           </p>
         )}
 
         {/* Aksiyon Butonları & Hızlı Kısayol */}
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
           {slide.btnLeftText && (
             <Link
-              href={slide.btnLeftLink || '#'}
-              className="px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-[15px] shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 transition-all flex items-center gap-2.5 hover:-translate-y-0.5"
+              href={slide.btnLeftLink || '/sell'}
+              className="px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-[15px] shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all flex items-center gap-2.5 hover:-translate-y-0.5"
             >
               {slide.btnLeftText}
               <ArrowRight size={18} strokeWidth={2.5} />
@@ -191,81 +188,81 @@ export default function HeroSlider() {
           )}
           {slide.btnRightText && (
             <Link
-              href={slide.btnRightLink || '#'}
-              className="px-7 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-900 font-bold text-[15px] border border-slate-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5"
+              href={slide.btnRightLink || '/'}
+              className="px-7 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-900 font-bold text-[15px] border border-slate-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
             >
               {slide.btnRightText}
             </Link>
           )}
           <Link
             href="/ai-finder"
-            className="px-6 py-4 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-[14px] border border-emerald-200/80 transition-all flex items-center gap-2"
+            className="px-6 py-4 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-[14px] border border-emerald-200/90 transition-all flex items-center gap-2 shadow-xs hover:-translate-y-0.5"
           >
             <span>✦ Yapay Zekâ ile Telefon Bul</span>
           </Link>
         </div>
 
-        {/* ── Ürün Sahnesi ve Canlı Görsel Kartı ───────────────────────────── */}
-        <div className="relative mt-12 w-full max-w-[880px]">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50 p-6 md:p-9 shadow-2xl shadow-indigo-900/10">
+        {/* ── Ürün Sahnesi ve Canlı Görsel Kartı (Siyah Kutu Kaldırıldı) ────── */}
+        <div className="relative mt-12 w-full max-w-[920px]">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50/60 p-6 md:p-10 shadow-2xl shadow-indigo-900/10 backdrop-blur-xl">
 
             {/* Arka plan yumuşak radyal ışıklar */}
-            <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl" />
-            <div className="pointer-events-none absolute -right-20 -bottom-20 h-72 w-72 rounded-full bg-emerald-500/15 blur-3xl" />
+            <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl" />
+            <div className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl" />
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
 
-              {/* Sol taraf: Yüksek kaliteli cihaz görseli & Yüzen teklif kartı */}
+              {/* Sol taraf: Transparan cihaz görseli & Yüzen teklif kartı */}
               <div className="md:col-span-7 flex justify-center relative">
-                <div className="relative w-full max-w-[340px] aspect-[4/3] flex items-center justify-center py-2">
+                <div className="relative w-full max-w-[360px] aspect-[4/3] flex items-center justify-center py-2">
                   <img
-                    src={hasImage ? resolveUploadUrl(slide.imageUrl!) : "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&fit=crop&q=85"}
+                    src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&fit=crop&q=85"
                     alt="Premium Yenilenmiş Cihaz"
                     className="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
                 {/* Görsel Üzerindeki Yüzen Rozet: Canlı Teklif Simülasyonu */}
-                <div className="absolute -bottom-1 -left-2 md:-left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
-                    <Zap size={20} className="fill-emerald-500 text-emerald-600" />
+                <div className="absolute -bottom-2 -left-2 md:-left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-4 shadow-xl flex items-center gap-3 animate-bounce-subtle">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
+                    <Zap size={22} className="fill-emerald-500 text-emerald-600" />
                   </div>
                   <div className="text-left">
-                    <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Son Bayi Teklifi</div>
-                    <div className="text-sm font-black text-slate-900">42.500 ₺ <span className="text-xs font-extrabold text-emerald-600">▲ En Yüksek</span></div>
+                    <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">🔥 1 Saatte 6 Bayi Teklif Verdi</div>
+                    <div className="text-sm font-black text-slate-900 mt-0.5">42.500 ₺ <span className="text-xs font-extrabold text-emerald-600 ml-1">▲ En Yüksek Teklif</span></div>
                   </div>
                 </div>
               </div>
 
               {/* Sağ taraf: Üçlü Güvence Özellik Kartları */}
               <div className="md:col-span-5 text-left space-y-3.5">
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-indigo-200 transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
-                    <ShieldCheck size={20} strokeWidth={2.2} />
+                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-indigo-300 transition-all hover:translate-x-1">
+                  <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
+                    <ShieldCheck size={22} strokeWidth={2.2} />
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-slate-900">12 Ay Birebir Garanti</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">32 noktada ekspertiz onaylı</p>
+                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">TSE-HYB onaylı 32 noktada ekspertiz</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-emerald-200 transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
-                    <BadgeCheck size={20} strokeWidth={2.2} />
+                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-emerald-300 transition-all hover:translate-x-1">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                    <BadgeCheck size={22} strokeWidth={2.2} />
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-slate-900">%100 Escrow Koruma</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Paranız onayınıza kadar güvendedir</p>
+                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">Paranız onayınıza kadar güvendedir</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3 hover:border-amber-200 transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
-                    <RefreshCcw size={20} strokeWidth={2.2} />
+                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-amber-300 transition-all hover:translate-x-1">
+                  <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                    <RefreshCcw size={22} strokeWidth={2.2} />
                   </div>
                   <div>
                     <h4 className="text-xs font-extrabold text-slate-900">Adresten Ücretsiz Kargo</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Kapınızdan teslim alalım</p>
+                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">Kurye cihazı kapınızdan teslim alır</p>
                   </div>
                 </div>
               </div>
