@@ -26,8 +26,8 @@ export default function GlobalError({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'radial-gradient(ellipse at top, #0f0a1a 0%, #08091a 100%)',
-          color: '#e2e8f0',
+          background: '#FBF9F6',
+          color: 'var(--k-ink-2)',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
@@ -50,7 +50,7 @@ export default function GlobalError({
               style={{
                 padding: '12px 24px',
                 borderRadius: 12,
-                background: 'linear-gradient(135deg,#EA580C,#4f46e5)',
+                background: 'linear-gradient(135deg,#C2410C,#D4501E)',
                 color: '#fff',
                 border: 'none',
                 fontWeight: 700,

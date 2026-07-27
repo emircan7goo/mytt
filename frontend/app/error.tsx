@@ -29,8 +29,8 @@ export default function RootError({
       className="min-h-screen flex items-center justify-center relative overflow-hidden font-sans"
       style={{
         background:
-          'radial-gradient(ellipse at top, #2a1220 0%, #0a0d18 55%, #08091a 100%)',
-        color: '#e2e8f0',
+          'var(--k-canvas)',
+        color: 'var(--k-ink-2)',
       }}
     >
       {/* Decorative red glow */}
@@ -51,10 +51,10 @@ export default function RootError({
           <AlertTriangle size={34} className="text-red-400" strokeWidth={2} />
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl md:text-3xl font-bold text-[var(--k-ink)] tracking-tight">
           Bir şeyler ters gitti
         </h1>
-        <p className="text-sm md:text-base text-white/50 mt-3 leading-relaxed max-w-md mx-auto">
+        <p className="text-sm md:text-base text-[var(--k-ink-3)] mt-3 leading-relaxed max-w-md mx-auto">
           Beklenmeyen bir hata oluştu. Bu durumu kaydettik, en kısa sürede
           inceleyeceğiz. Tekrar denemek ister misiniz?
         </p>
@@ -68,7 +68,7 @@ export default function RootError({
               </p>
             )}
             {error.digest && (
-              <p className="text-[10px] text-white/30 font-mono mt-1">
+              <p className="text-[10px] text-[var(--k-ink-4)] font-mono mt-1">
                 ref: {error.digest}
               </p>
             )}
@@ -79,15 +79,15 @@ export default function RootError({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <button
             onClick={() => unstable_retry()}
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}
+            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-[var(--k-ink)] text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg,#C2410C,#D4501E)' }}
           >
             <RefreshCw size={15} className="group-hover:rotate-180 transition-transform duration-500" />
             Tekrar Dene
           </button>
           <Link
             href="/"
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white/80 text-sm font-bold border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/20 transition-all"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-[var(--k-ink-2)] text-sm font-bold border border-[var(--k-line-2)] bg-[var(--k-surface)] hover:bg-[var(--k-canvas-2)] hover:border-[var(--k-ink-4)] transition-all"
           >
             <Home size={15} />
             Anasayfaya Dön

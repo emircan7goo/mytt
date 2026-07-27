@@ -17,18 +17,18 @@ export default function NotFound() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden font-sans"
       style={{
         background:
-          'radial-gradient(ellipse at top, #1a1d2e 0%, #0a0d18 50%, #08091a 100%)',
-        color: '#e2e8f0',
+          'var(--k-canvas)',
+        color: 'var(--k-ink-2)',
       }}
     >
       {/* Decorative blobs */}
       <div
         className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-30 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #EA580C 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #C2410C 0%, transparent 70%)' }}
       />
       <div
         className="absolute bottom-1/4 right-1/4 w-[360px] h-[360px] rounded-full blur-[120px] opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #4f46e5 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #D4501E 0%, transparent 70%)' }}
       />
 
       {/* Content */}
@@ -38,7 +38,7 @@ export default function NotFound() {
           className="text-[160px] md:text-[220px] font-black leading-none tracking-tighter select-none"
           style={{
             background:
-              'linear-gradient(135deg, #FB923C 0%, #EA580C 40%, #4f46e5 80%)',
+              'linear-gradient(135deg, #D4501E 0%, #C2410C 45%, #7C2D12 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -48,10 +48,10 @@ export default function NotFound() {
           404
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-white mt-2 tracking-tight">
+        <h1 className="text-2xl md:text-3xl font-bold text-[var(--k-ink)] mt-2 tracking-tight">
           Bu sayfa kayıplara karıştı
         </h1>
-        <p className="text-sm md:text-base text-white/50 mt-3 leading-relaxed">
+        <p className="text-sm md:text-base text-[var(--k-ink-3)] mt-3 leading-relaxed">
           Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.
           <br className="hidden md:block" />
           Aşağıdaki bağlantılardan devam edebilirsiniz.
@@ -61,15 +61,15 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <Link
             href="/"
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg,#EA580C,#4f46e5)' }}
+            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-[var(--k-ink)] text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-900/40 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg,#C2410C,#D4501E)' }}
           >
             <Home size={16} />
             Anasayfaya Dön
           </Link>
           <Link
             href="/?search=1"
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white/80 text-sm font-bold border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/20 transition-all backdrop-blur-sm"
+            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-[var(--k-ink-2)] text-sm font-bold border border-[var(--k-line-2)] bg-[var(--k-surface)] hover:bg-[var(--k-canvas-2)] hover:border-[var(--k-ink-4)] transition-all backdrop-blur-sm"
           >
             <Search size={16} />
             Ürün Ara
@@ -77,7 +77,7 @@ export default function NotFound() {
         </div>
 
         {/* Tiny link */}
-        <div className="mt-10 flex items-center justify-center gap-1.5 text-[12px] text-white/30">
+        <div className="mt-10 flex items-center justify-center gap-1.5 text-[12px] text-[var(--k-ink-4)]">
           <ArrowLeft size={11} />
           <span>
             Önceki sayfaya dönmek için tarayıcının geri tuşunu kullanabilirsiniz

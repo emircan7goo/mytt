@@ -2,40 +2,39 @@
  * Root loading.tsx — Sayfa geçişlerinde otomatik Suspense fallback'i.
  * Next.js bu dosyayı page.tsx'leri <Suspense> ile sarar.
  * Server Component (zero JS bundle).
+ *
+ * ATÖLYE: eskiden koyu radial zemin kullanıyordu; açık temada her sayfa
+ * geçişinde karanlık bir flaş yaratıyordu. Artık krem kanvasla aynı.
  */
 export default function Loading() {
   return (
     <div
       className="min-h-screen flex items-center justify-center"
-      style={{
-        background: 'radial-gradient(ellipse at center, #13152a 0%, #0a0d18 100%)',
-      }}
+      style={{ background: 'var(--k-canvas)' }}
     >
-      <div className="flex flex-col items-center gap-4">
-        {/* Animated ring spinner */}
-        <div className="relative w-12 h-12">
+      <div className="flex flex-col items-center gap-5">
+        {/* Halka spinner */}
+        <div className="relative w-11 h-11">
           <div
             className="absolute inset-0 rounded-full animate-spin"
             style={{
-              border: '3px solid transparent',
-              borderTopColor: '#EA580C',
-              borderRightColor: '#EA580C',
+              border: '2.5px solid var(--k-line)',
+              borderTopColor: 'var(--k-hot)',
+              borderRightColor: 'var(--k-hot)',
             }}
           />
           <div
-            className="absolute inset-[6px] rounded-full animate-spin"
+            className="absolute inset-[7px] rounded-full animate-spin"
             style={{
               border: '2px solid transparent',
-              borderBottomColor: '#FB923C',
+              borderBottomColor: 'var(--k-hot-2)',
               animationDirection: 'reverse',
-              animationDuration: '0.8s',
+              animationDuration: '0.9s',
             }}
           />
         </div>
 
-        <p className="text-[13px] text-white/30 font-medium tracking-wide">
-          Mytt
-        </p>
+        <p className="k-label">Mytt</p>
       </div>
     </div>
   );
