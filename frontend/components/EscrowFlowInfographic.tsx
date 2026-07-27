@@ -1,5 +1,5 @@
 'use client';
-import { ShieldCheck, Zap, Truck, BadgeCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Zap, Truck, BadgeCheck, CheckCircle2 } from 'lucide-react';
 
 const STEPS = [
   {
@@ -30,13 +30,13 @@ const STEPS = [
 
 export default function EscrowFlowInfographic() {
   return (
-    <div className="w-full rounded-3xl bg-slate-50 border border-slate-200/80 p-8 md:p-10 my-10 relative overflow-hidden">
+    <div className="w-full rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 p-8 md:p-10 my-8 shadow-xl shadow-indigo-900/5 relative overflow-hidden">
       <div className="text-center max-w-2xl mx-auto mb-10">
         <span className="px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-extrabold tracking-wider uppercase">
           KAPALI AÇIK ARTIRMA & ESCROW GÜVENCESİ
         </span>
-        <h3 className="text-2xl md:text-3xl font-black text-slate-900 mt-3">
-          Sistem Nasıl Çalışır? <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">3 Adımda Sıfır Risk</span>
+        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-3">
+          Sistem Nasıl Çalışır? <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">3 Adımda Sıfır Risk</span>
         </h3>
         <p className="text-sm text-slate-600 font-medium mt-2">
           Alıcı ve satıcının hakları TSE onaylı merkez ve Escrow havuz hesabı ile %100 koruma altındadır.
@@ -44,12 +44,12 @@ export default function EscrowFlowInfographic() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-        {STEPS.map((s, idx) => {
+        {STEPS.map((s) => {
           const Icon = s.icon;
           return (
             <div
               key={s.step}
-              className="relative p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="relative p-6 rounded-2xl bg-gradient-to-b from-slate-50/80 via-white to-slate-50/60 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-5">
@@ -72,7 +72,7 @@ export default function EscrowFlowInfographic() {
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-emerald-600">
+              <div className="pt-4 mt-4 border-t border-slate-150 flex items-center gap-1.5 text-[11px] font-bold text-emerald-600">
                 <CheckCircle2 size={13} />
                 <span>Doğrulanmış Escrow Adımı</span>
               </div>

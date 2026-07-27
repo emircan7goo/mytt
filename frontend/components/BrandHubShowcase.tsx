@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Smartphone, ShieldCheck, Check } from 'lucide-react';
+import { ArrowRight, Smartphone, ShieldCheck } from 'lucide-react';
 
 const BRANDS = [
   {
@@ -8,8 +8,10 @@ const BRANDS = [
     logo: '',
     tag: 'TSE Garantili',
     count: '240+ İlan',
-    bg: 'from-slate-900 to-slate-800',
-    border: 'border-slate-700',
+    bg: 'from-slate-50 via-white to-slate-100',
+    border: 'border-slate-200',
+    accent: 'text-slate-900',
+    badgeCls: 'bg-slate-900 text-white',
     link: '/?brand=Apple',
     img: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&fit=crop&q=80',
   },
@@ -18,18 +20,22 @@ const BRANDS = [
     logo: 'SAMSUNG',
     tag: 'Galaxy AI Destekli',
     count: '180+ İlan',
-    bg: 'from-blue-950 to-slate-900',
-    border: 'border-blue-900/60',
+    bg: 'from-blue-50/80 via-white to-indigo-50/60',
+    border: 'border-blue-200/80',
+    accent: 'text-blue-950',
+    badgeCls: 'bg-blue-600 text-white',
     link: '/?brand=Samsung',
     img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&fit=crop&q=80',
   },
   {
-    name: 'Xiaomi & Redmı',
+    name: 'Xiaomi & Redmi',
     logo: 'XIAOMI',
     tag: 'Fiyat / Performans',
     count: '120+ İlan',
-    bg: 'from-amber-950/80 to-slate-900',
-    border: 'border-amber-900/60',
+    bg: 'from-amber-50/80 via-white to-orange-50/60',
+    border: 'border-amber-200/80',
+    accent: 'text-amber-950',
+    badgeCls: 'bg-amber-600 text-white',
     link: '/?brand=Xiaomi',
     img: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&fit=crop&q=80',
   },
@@ -37,12 +43,12 @@ const BRANDS = [
 
 export default function BrandHubShowcase() {
   return (
-    <div className="w-full my-10">
+    <div className="w-full my-8">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
         <div>
           <span className="text-xs font-extrabold text-indigo-600 tracking-wider uppercase">MARKA VİTRİNİ</span>
-          <h3 className="text-2xl md:text-3xl font-black text-slate-900 mt-1">
-            Öne Çıkan <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Doğrulanmış Markalar</span>
+          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
+            Öne Çıkan <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">Doğrulanmış Markalar</span>
           </h3>
         </div>
         <Link
@@ -59,32 +65,32 @@ export default function BrandHubShowcase() {
           <Link
             key={b.name}
             href={b.link}
-            className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${b.bg} border ${b.border} p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[220px]`}
+            className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${b.bg} border ${b.border} p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between min-h-[220px]`}
           >
             <div className="relative z-10">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-slate-200">
+                <span className={`text-[11px] font-extrabold px-3 py-1 rounded-full shadow-xs ${b.badgeCls}`}>
                   {b.tag}
                 </span>
-                <span className="text-[11px] font-bold text-slate-400">{b.count}</span>
+                <span className="text-[11px] font-bold text-slate-500">{b.count}</span>
               </div>
 
-              <h4 className="text-2xl font-black text-white mt-4 group-hover:text-indigo-300 transition-colors">
+              <h4 className={`text-2xl font-black ${b.accent} mt-4 group-hover:text-indigo-600 transition-colors`}>
                 {b.name}
               </h4>
             </div>
 
-            <div className="relative z-10 flex items-center justify-between pt-6 border-t border-white/10">
-              <span className="text-xs font-bold text-slate-300 group-hover:text-white transition-colors">
+            <div className="relative z-10 flex items-center justify-between pt-6 border-t border-slate-200/80">
+              <span className="text-xs font-extrabold text-slate-700 group-hover:text-indigo-600 transition-colors">
                 İlanları Gör
               </span>
-              <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center text-slate-700 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-all">
                 <ArrowRight size={14} />
               </div>
             </div>
 
             {/* Arka plan görsel geçişi */}
-            <div className="absolute right-0 bottom-0 w-1/2 h-full opacity-20 group-hover:opacity-35 transition-opacity duration-500 pointer-events-none">
+            <div className="absolute right-0 bottom-0 w-1/2 h-full opacity-15 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none">
               <img src={b.img} alt={b.name} className="w-full h-full object-cover object-center" />
             </div>
           </Link>

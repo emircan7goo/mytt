@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Zap, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Zap, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 const PRESET_MODELS: Record<string, { price: string; grade: string }> = {
   'iPhone 15 Pro Max (256GB)': { price: '52.500 ₺', grade: 'A+ Kusursuz' },
@@ -13,29 +13,28 @@ const PRESET_MODELS: Record<string, { price: string; grade: string }> = {
 
 export default function QuickValuationWidget() {
   const [selectedModel, setSelectedModel] = useState('iPhone 14 Pro (128GB)');
-
   const current = PRESET_MODELS[selectedModel] || PRESET_MODELS['iPhone 14 Pro (128GB)'];
 
   return (
-    <div className="w-full rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 p-6 md:p-8 text-white shadow-2xl relative overflow-hidden my-8">
-      {/* Arka plan ışıkları */}
-      <div className="pointer-events-none absolute -right-20 -top-20 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-500/20 blur-3xl" />
+    <div className="w-full rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 p-7 md:p-10 shadow-2xl shadow-indigo-900/10 relative overflow-hidden my-6">
+      {/* Arka plan yumuşak radyal ışıklar */}
+      <div className="pointer-events-none absolute -right-20 -top-20 w-80 h-80 rounded-full bg-indigo-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
 
-        {/* Sol taraf: Başlık & Model Seçici */}
+        {/* Sol taraf: Başlık & Model Seçim Butonları */}
         <div className="lg:col-span-7 text-left space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-extrabold tracking-wider uppercase">
-            <Zap size={14} className="fill-indigo-400 text-indigo-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-extrabold tracking-wider uppercase shadow-xs">
+            <Zap size={14} className="fill-indigo-600 text-indigo-600" />
             <span>ANINDA CİHAZ DEĞERLEME SİHİRBAZI</span>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-black text-white leading-tight">
-            Cihazını Seç, <span className="text-emerald-400">Bayilerin Vereceği En Yüksek Teklifi</span> Anında Gör!
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight">
+            Cihazını Seç, <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 bg-clip-text text-transparent">En Yüksek Bayi Teklifini</span> Anında Gör!
           </h3>
 
-          <p className="text-sm text-slate-300 font-medium leading-relaxed max-w-xl">
+          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-xl">
             Modelini seçerek canlı piyasa değerini hesapla. Formu doldur, yetkili bayiler 1 saat içinde kapalı tekliflerde yarışsın.
           </p>
 
@@ -45,10 +44,10 @@ export default function QuickValuationWidget() {
               <button
                 key={modelKey}
                 onClick={() => setSelectedModel(modelKey)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border ${
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all border ${
                   selectedModel === modelKey
-                    ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/30 scale-105'
-                    : 'bg-slate-800/80 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-white'
+                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/30 scale-105'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -57,27 +56,27 @@ export default function QuickValuationWidget() {
           </div>
         </div>
 
-        {/* Sağ taraf: Canlı Değerleme Kartı */}
+        {/* Sağ taraf: Canlı Değerlendirme Fiyat Kartı */}
         <div className="lg:col-span-5">
-          <div className="rounded-2xl bg-slate-800/90 border border-slate-700 p-6 backdrop-blur-xl text-center space-y-4 shadow-xl">
-            <div className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+          <div className="rounded-2xl bg-gradient-to-b from-slate-50 via-white to-indigo-50/30 border border-slate-200 p-6 text-center space-y-4 shadow-lg">
+            <div className="text-xs font-extrabold text-slate-500 uppercase tracking-wider">
               {selectedModel} · CANLI PİYASA DEĞERİ
             </div>
 
             <div className="py-2">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
+              <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 bg-clip-text text-transparent">
                 {current.price}
               </div>
-              <div className="flex items-center justify-center gap-2 mt-2 text-xs font-extrabold text-emerald-400">
-                <CheckCircle2 size={14} />
+              <div className="flex items-center justify-center gap-2 mt-2 text-xs font-extrabold text-emerald-700">
+                <CheckCircle2 size={15} />
                 <span>Ortalama Bayi Açık Artırma Fiyatı</span>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-700/80 flex items-center justify-between gap-3">
+            <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-3">
               <Link
                 href={`/sell?model=${encodeURIComponent(selectedModel)}`}
-                className="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm transition-all shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 hover:scale-[1.02]"
+                className="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm transition-all shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2 hover:scale-[1.02]"
               >
                 <span>Bu Fiyata Satış Başlat</span>
                 <ArrowRight size={16} strokeWidth={2.5} />

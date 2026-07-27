@@ -476,20 +476,28 @@ function HomePageContent() {
   return (
     <div className="k-grain min-h-screen font-sans" style={{ background: 'var(--k-canvas)', color: 'var(--k-ink-2)' }}>
 
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 pt-6">
-        {/* YARATICI ÖZELLİK 1: ANINDA DEĞERLEME WIDGET'I */}
-        {!searchQuery && <QuickValuationWidget />}
+      {/* ── İZGARA GRID ARKA PLAN CANVAS (Kullanıcının Sevdiği Mavi Dokulu Yapı) ── */}
+      {!searchQuery && (
+        <section className="k-glow-wrap relative w-full overflow-hidden border-b border-[var(--k-line)] bg-[var(--k-canvas)] py-6 md:py-10">
+          {/* Mavimsi Izgara Dokusu */}
+          <div className="k-grid-fine k-grid-fade pointer-events-none absolute inset-0" />
 
-        {/* YARATICI ÖZELLİK 2: MARKA VİTRİNİ SHOWCASE */}
-        {!searchQuery && <BrandHubShowcase />}
+          <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-8 space-y-8">
+            {/* YARATICI ÖZELLİK 1: ANINDA DEĞERLEME WIDGET'I */}
+            <QuickValuationWidget />
 
-        {/* YARATICI ÖZELLİK 3: ESCROW GÜVENLİK AKIŞ İNFOGRAFİĞİ */}
-        {!searchQuery && <EscrowFlowInfographic />}
-      </div>
+            {/* YARATICI ÖZELLİK 2: MARKA VİTRİNİ SHOWCASE */}
+            <BrandHubShowcase />
+
+            {/* YARATICI ÖZELLİK 3: ESCROW GÜVENLİK AKIŞ İNFOGRAFİĞİ */}
+            <EscrowFlowInfographic />
+          </div>
+        </section>
+      )}
 
       {/* ── PAZARLAMA & GÜVEN DÖNÜŞÜM KATMANI ──────────────────────────── */}
       {!searchQuery && (
-        <div className="relative z-10 my-8">
+        <div className="relative z-10 my-6">
           <MarketingTriggers />
         </div>
       )}
