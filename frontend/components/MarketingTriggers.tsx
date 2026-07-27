@@ -33,57 +33,12 @@ export default function MarketingTriggers() {
   const format = (n: number) => String(n).padStart(2, '0');
 
   return (
-    <section className="w-full bg-slate-900 text-white py-12 relative overflow-hidden">
+    <section className="w-full bg-slate-900 text-white py-10 relative overflow-hidden">
       {/* Arka plan parlama halkaları */}
       <div className="pointer-events-none absolute -left-32 -top-32 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 -bottom-32 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl" />
 
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 relative z-10 space-y-12">
-
-        {/* ── 1. Flaş Kampanya & Canlı Sayaç Bandı ────────────────────────── */}
-        <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-r from-indigo-900/90 via-slate-800 to-indigo-950 border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
-          <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 shrink-0 animate-pulse">
-              <Zap size={24} className="fill-amber-400" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-400">
-                <span>🔥 GÜNÜN FLAŞ PAZARYERİ FIRSATI</span>
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-[10px] text-amber-300">SINIRLI SÜRE</span>
-              </div>
-              <h3 className="text-lg md:text-xl font-black text-white mt-1">
-                Bugün Verilen Tüm Cihaz Satışlarında <span className="text-emerald-400">Sıfır Komisyon + Ücretsiz VIP Kargo!</span>
-              </h3>
-            </div>
-          </div>
-
-          {/* Geri Sayım Sayacı */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="text-right hidden sm:block">
-              <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Fırsatın Kapanışına</div>
-              <div className="text-xs font-bold text-slate-200">Kalan Süre</div>
-            </div>
-            <div className="flex items-center gap-1.5 font-mono text-sm font-black">
-              <div className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white min-w-[42px] text-center shadow-inner">
-                {format(timeLeft.hours)}h
-              </div>
-              <span className="text-amber-400 font-bold">:</span>
-              <div className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white min-w-[42px] text-center shadow-inner">
-                {format(timeLeft.minutes)}m
-              </div>
-              <span className="text-amber-400 font-bold">:</span>
-              <div className="px-3 py-2 rounded-xl bg-amber-500 border border-amber-400 text-slate-950 min-w-[42px] text-center shadow-inner font-extrabold">
-                {format(timeLeft.seconds)}s
-              </div>
-            </div>
-            <Link
-              href="/sell"
-              className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/25 transition-all hover:scale-105"
-            >
-              Hemen Teklif Al
-            </Link>
-          </div>
-        </div>
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 relative z-10 space-y-10">
 
         {/* ── 2. "Neden Mytt?" 4'lü Güven & Pazarlama Kartları ─────────────── */}
         <div>

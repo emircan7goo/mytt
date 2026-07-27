@@ -119,34 +119,8 @@ export default function HeroSlider() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* ── Izgara dokusu: tasarımın karakteristik kimliği ─────────────────── */}
+      {/* ── Izgara dokusu ─────────────────────────────────────────────────── */}
       <div className="k-grid-fine k-grid-fade pointer-events-none absolute inset-0" />
-
-      {/* ── Yüzen mikro kartlar ────────────────────────────────────────────── */}
-      <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden>
-        {FLOATERS.map((f, i) => {
-          const { Icon } = f;
-          return (
-            <div
-              key={i}
-              className="k-float k-floaty absolute"
-              style={{
-                top: f.top, left: f.left, right: f.right,
-                width: f.size, height: f.size,
-                animationDelay: f.delay,
-                ['--k-rot' as any]: f.rot,
-              }}
-            >
-              <div
-                className="flex items-center justify-center rounded-[9px]"
-                style={{ width: f.size * 0.56, height: f.size * 0.56, background: f.bg }}
-              >
-                <Icon size={Math.round(f.size * 0.3)} strokeWidth={2.2} style={{ color: f.color }} />
-              </div>
-            </div>
-          );
-        })}
-      </div>
 
       {/* ── Merkezi mesaj ──────────────────────────────────────────────────── */}
       <div className="relative mx-auto flex max-w-[1020px] flex-col items-center px-4 py-20 text-center lg:py-28">

@@ -20,6 +20,9 @@ import ScrollReveal from '@/components/ScrollReveal';
 import ServiceBubbles from '@/components/ServiceBubbles';
 import MarketingTriggers from '@/components/MarketingTriggers';
 import LiveSocialProof from '@/components/LiveSocialProof';
+import QuickValuationWidget from '@/components/QuickValuationWidget';
+import BrandHubShowcase from '@/components/BrandHubShowcase';
+import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -732,6 +735,15 @@ function HomePage() {
             })()}
           </div>
         )}
+
+        {/* YARATICI ÖZELLİK 1: ANINDA DEĞERLEME WIDGET'I */}
+        {!searchQuery && <QuickValuationWidget />}
+
+        {/* YARATICI ÖZELLİK 2: MARKA VİTRİNİ SHOWCASE */}
+        {!searchQuery && <BrandHubShowcase />}
+
+        {/* YARATICI ÖZELLİK 3: ESCROW GÜVENLİK AKIŞ İNFOGRAFİĞİ */}
+        {!searchQuery && <EscrowFlowInfographic />}
       </div>
 
       {/* ── PAZARLAMA & GÜVEN DÖNÜŞÜM KATMANI ──────────────────────────── */}
