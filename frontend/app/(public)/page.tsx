@@ -633,111 +633,14 @@ function HomePage() {
   return (
     <div className="k-grain min-h-screen font-sans" style={{ background: 'var(--k-canvas)', color: 'var(--k-ink-2)' }}>
 
-      {/* ── HERO — tam kanvas, kutu içinde değil ── */}
-      <div className="relative z-10">
+      {/* ── HERO & SECTION 01 TEMPORARILY HIDDEN PER USER REQUEST ── */}
+      {/* <div className="relative z-10">
         {!searchQuery && showHero && <HeroSlider />}
-      </div>
+      </div> */}
 
-      {/* ── BENTO: NE YAPMAK İSTERSİNİZ ─────────────────────────────────────
-          Kart içeriği hâlâ admin builder'dan (configDataSettings.featureCards)
-          geliyor — sadece sunum KARBON bento ızgarasına taşındı. */}
-      <div className="relative z-10">
-        {!searchQuery && (
-          <div className="max-w-[1440px] mx-auto px-4 lg:px-8 mt-20 mb-6">
-
-            {/* Bölüm başlığı — Yüksek kontrastlı, şık başlık */}
-            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-extrabold uppercase tracking-wider mb-2">
-                  01 — AKILLI SERVİSLER
-                </span>
-                <h2
-                  className="font-extrabold text-slate-900 tracking-tight mt-2 leading-[1.1]"
-                  style={{ fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)', color: '#0F172A' }}
-                >
-                  Al, sat, takas et.{' '}
-                  <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent block md:inline">
-                    Hepsi tek çatı altında.
-                  </span>
-                </h2>
-              </div>
-              <p className="max-w-[380px] text-[15px] leading-relaxed font-medium text-slate-600">
-                Cihazını bayilere kapalı açık artırmayla sattır, yapay zekâ ile sana en uygun
-                modeli bul, ya da eskisini ver yenisini indirimle al.
-              </p>
-            </div>
-
-            {/* Bento ızgara */}
-            {(() => {
-              const cards = (configDataSettings?.featureCards ?? DEFAULT_FEATURE_CARDS)
-                .filter(c => c.enabled !== false);
-
-              const ICONS: Record<string, any> = {
-                'sell': Smartphone,
-                'ai-finder': Brain,
-                'trade-in': RefreshCcw,
-              };
-
-              return (
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                  {cards.map((card) => {
-                    const meta = CARD_META[card.id] || CARD_META['sell'];
-                    const Icon = ICONS[card.id] ?? Smartphone;
-
-                    return (
-                      <Link
-                        key={card.id}
-                        href={meta.link}
-                        className="group relative flex flex-col overflow-hidden p-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 min-h-[320px]"
-                      >
-                        {/* Arka ışık glow */}
-                        <div
-                          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-all duration-500"
-                          style={{ background: meta.glowColor }}
-                        />
-
-                        <div className="relative flex items-start justify-between gap-4">
-                          <div
-                            className={`flex h-13 w-13 items-center justify-center rounded-xl transition-all duration-300 ${meta.iconBg}`}
-                          >
-                            <Icon size={24} strokeWidth={2.2} className={meta.iconColor} />
-                          </div>
-                          <span className={`px-3 py-1 rounded-full text-xs font-bold ${meta.badgeCls}`}>
-                            {card.tag}
-                          </span>
-                        </div>
-
-                        <h3 className="font-extrabold text-slate-900 text-[22px] tracking-tight mt-6 group-hover:text-indigo-600 transition-colors">
-                          {card.title}
-                        </h3>
-                        <p className="mt-2.5 text-[14px] leading-relaxed text-slate-600 font-medium">
-                          {card.description}
-                        </p>
-
-                        <div className="flex-1" />
-
-                        <div className="relative mt-6 flex items-end justify-between gap-4 pt-4 border-t border-slate-150">
-                          <div>
-                            <div className="text-[28px] font-black leading-none text-slate-900">
-                              {card.stat}
-                            </div>
-                            <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">
-                              {card.statLabel || 'Hızlı İşlem'}
-                            </div>
-                          </div>
-                          <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 group-hover:translate-x-1 transition-transform">
-                            {(card.ctaText || 'BAŞLA').toLocaleUpperCase('tr-TR')}
-                            <ArrowRight size={14} strokeWidth={2.5} />
-                          </span>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              );
-            })()}
-          </div>
-        )}
+      {/* <div className="relative z-10">
+        ... Section 01 ...
+      </div> */}
 
         {/* YARATICI ÖZELLİK 1: ANINDA DEĞERLEME WIDGET'I */}
         {!searchQuery && <QuickValuationWidget />}
@@ -747,7 +650,6 @@ function HomePage() {
 
         {/* YARATICI ÖZELLİK 3: ESCROW GÜVENLİK AKIŞ İNFOGRAFİĞİ */}
         {!searchQuery && <EscrowFlowInfographic />}
-      </div>
 
       {/* ── PAZARLAMA & GÜVEN DÖNÜŞÜM KATMANI ──────────────────────────── */}
       {!searchQuery && (
