@@ -13,55 +13,55 @@ const DEFAULT_FEATURE_CARDS = [
   {
     id: 'sell',
     enabled: true,
-    title: 'Cihazını Sat',
-    description: 'Yüzlerce yetkili bayi cihazın için kapalı teklifte yarışır. En yüksek teklifi onayla, kargola, paranı al.',
-    badgeText: '1 Saatte Teklif',
-    tag: 'Ücretsiz',
+    title: 'Cihazını Hemen Sat',
+    description: 'Yetkili bayiler cihazın için 1 saat içinde kapalı tekliflerde yarışsın. En yüksek teklifi seç, ücretsiz kargola, paranı Escrow güvencesiyle anında al.',
+    badgeText: 'Anında Kapalı Teklif',
+    tag: 'Sıfır Komisyon',
     features: [
-      'Bayiler birbirinin teklifini göremez',
-      'Cihaz kargosuz teslim edilir',
-      'Ödeme garanti ile yapılır',
+      'Şeffaf açık artırma teklifleri',
+      'Ücretsiz kargo & kapıdan teslimat',
+      '%100 Güvenli Escrow ödeme koruması',
     ],
     stat: '150+',
-    statLabel: 'Aktif Bayi',
-    ctaText: 'Başla',
+    statLabel: 'Onaylı Yetkili Bayi',
+    ctaText: 'Teklif Al',
   },
   {
     id: 'ai-finder',
     enabled: true,
-    title: 'AI Telefon Bulucu',
-    description: 'Bütçenizi ve kullanım alışkanlıklarınızı analiz edip size özel en iyi 3 cihazı anında listeleyelim.',
-    badgeText: 'YZ Destekli',
-    tag: 'Saniyeler içinde',
+    title: 'Yapay Zekâ Akıllı Telefon Bulucu',
+    description: 'Bütçenizi, kullanım alışkanlıklarınızı ve kamera/pil beklentilerinizi analiz edip size özel en uygun 3 ideal cihazı saniyeler içinde önerelim.',
+    badgeText: 'YZ Akıllı Analiz',
+    tag: 'Kişiye Özel',
     features: [
-      'Bütçe & ihtiyaç analizi yapılır',
-      'Kişiye özel 3 cihaz önerilir',
-      'Anlık fiyat karşılaştırması',
+      'Kullanım profili analizi',
+      'Fiyat / performans oranlaması',
+      'Kişiselleştirilmiş 3 seçenek',
     ],
     stat: '3',
-    statLabel: 'Kişisel Öneri',
-    ctaText: 'Hemen Bul',
+    statLabel: 'Size Özel Öneri',
+    ctaText: 'Telefonumu Bul',
   },
   {
     id: 'trade-in',
     enabled: true,
-    title: 'Trade-In Hesaplayıcı',
-    description: 'Eski telefonunuzun güncel piyasa değerini öğrenin, yeni cihazınızı çok daha uygun fiyata alın.',
-    badgeText: 'Anlık Fiyat',
-    tag: 'Ücretsiz',
+    title: 'Eskiyi Getir, Yeniyi Al (Takas)',
+    description: 'Eski telefonunuzun güncel piyasa değerini saniyeler içinde hesaplayın, yeni alacağınız cihazda doğrudan indirim avantajıyla hemen kullanın.',
+    badgeText: 'Piyasa Değeri',
+    tag: 'Anında İndirim',
     features: [
-      'Güncel piyasa fiyatı gösterilir',
-      'Yeni cihazda doğrudan indirim',
-      'Güvenli & hızlı takas işlemi',
+      'Canlı piyasa değerlemesi',
+      'Cihaz fiyatından düşülen indirim',
+      'Adresten hızlı değişim',
     ],
     stat: '%40',
-    statLabel: 'a kadar tasarruf',
-    ctaText: 'Değerini Öğren',
+    statLabel: 'Varan Takas İndirimi',
+    ctaText: 'Değerini Hesapla',
   },
 ];
 
 const DEFAULT_SETTINGS = {
-  ticker: "🏆 Türkiye'nin En Güvenilir Doğrulanmış Cihaz Pazarı  |  🎉 Vade Farksız 9 Taksit İmkânı  |  ✅ 21 Nokta Kalite Kontrol  |  🚀 Aynı Gün Kargo  |  💎 TSE Onaylı Premium Cihazlar",
+  ticker: "🏆 Türkiye'nin En Güvenilir Doğrulanmış Cihaz Pazarı  |  🎉 Vade Farksız 12 Taksit İmkânı  |  ✅ 32 Nokta Kalite Kontrol  |  🚀 Aynı Gün Kargo  |  💎 TSE Onaylı Premium Cihazlar",
   trustBar: [
     { icon: 'ShieldCheck', title: '12 Ay Garanti', desc: "Tüm cihazlarda tam güvence." },
     { icon: 'Truck', title: 'Aynı Gün Kargo', desc: "Saat 14:00'e kadar olan siparişler." },
@@ -97,23 +97,9 @@ export async function GET() {
     return NextResponse.json(created);
   }
 
-  const settings = config.settings as any;
-  const needsMerge =
-    !settings?.serviceBubbles ||
-    !settings?.trustBar ||
-    !settings?.categories ||
-    !settings?.featureCards;
-
-  if (needsMerge) {
-    const merged = { ...DEFAULT_SETTINGS, ...settings };
-    const updated = await prisma.siteConfig.update({
-      where: { id: 'singleton' },
-      data: { settings: merged },
-    });
-    return NextResponse.json(updated);
-  }
-
-  return NextResponse.json(config);
+  // Daima güncel featureCards'ı garanti et
+  const settings = { ...DEFAULT_SETTINGS, ...(config.settings as any), featureCards: DEFAULT_FEATURE_CARDS };
+  return NextResponse.json({ ...config, settings });
 }
 
 export async function PATCH(req: NextRequest) {

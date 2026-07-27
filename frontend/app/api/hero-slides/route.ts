@@ -12,7 +12,41 @@ export async function GET() {
     where: { isActive: true },
     orderBy: { order: 'asc' },
   });
-  return NextResponse.json(slides);
+
+  if (slides.length === 0) {
+    return NextResponse.json([
+      {
+        id: 'default-hero',
+        imageUrl: '',
+        title: 'Cihazını En Yüksek Fiyata Sat,\nYenisini Sıfır Riskle Al.',
+        subtitle: 'Yetkili bayilerin yarıştığı kapalı teklif sistemiyle cihazını 1 saatte en yüksek fiyata sat. Ya da 12 ay garantili, 32 noktada test edilmiş cihazları Escrow güvencesiyle satın al.',
+        btnLeftText: 'Cihazını Hemen Sat',
+        btnLeftLink: '/sell',
+        btnRightText: 'Garantili Cihazları İncele',
+        btnRightLink: '/',
+        textAlignment: 'center',
+        isActive: true,
+      }
+    ]);
+  }
+
+  // Eski varsayılan slides verisini de yeni temiz içerikle senkronize et
+  const updatedSlides = slides.map(s => {
+    if (s.title?.includes('Doğrulanmış') || s.title?.includes('Elite') || s.title?.includes('Güvenle')) {
+      return {
+        ...s,
+        title: 'Cihazını En Yüksek Fiyata Sat,\nYenisini Sıfır Riskle Al.',
+        subtitle: 'Yetkili bayilerin yarıştığı kapalı teklif sistemiyle cihazını 1 saatte en yüksek fiyata sat. Ya da 12 ay garantili, 32 noktada test edilmiş cihazları Escrow güvencesiyle satın al.',
+        btnLeftText: 'Cihazını Hemen Sat',
+        btnLeftLink: '/sell',
+        btnRightText: 'Garantili Cihazları İncele',
+        btnRightLink: '/',
+      };
+    }
+    return s;
+  });
+
+  return NextResponse.json(updatedSlides);
 }
 
 export async function POST(req: NextRequest) {
