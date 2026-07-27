@@ -18,6 +18,8 @@ import { useFamilies, type FamilySummary } from '@/lib/hooks/useProducts';
 import HeroSlider from '@/components/HeroSlider';
 import ScrollReveal from '@/components/ScrollReveal';
 import ServiceBubbles from '@/components/ServiceBubbles';
+import MarketingTriggers from '@/components/MarketingTriggers';
+import LiveSocialProof from '@/components/LiveSocialProof';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -732,6 +734,13 @@ function HomePage() {
         )}
       </div>
 
+      {/* ── PAZARLAMA & GÜVEN DÖNÜŞÜM KATMANI ──────────────────────────── */}
+      {!searchQuery && (
+        <div className="relative z-10 my-8">
+          <MarketingTriggers />
+        </div>
+      )}
+
       {/* ── MAIN CONTENT (SIDEBAR + GRID) ── */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-8 mt-6 pb-12 flex flex-col lg:flex-row gap-8 lg:gap-10">
 
@@ -1061,6 +1070,9 @@ function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* CANLI CANLI SOSYAL KANIT BİLDİRİMLERİ (PAZARLAMA TOAST) */}
+      <LiveSocialProof />
 
       {/* FOOTER FADE REMOVED */}
     </div>
