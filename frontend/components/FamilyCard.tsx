@@ -5,9 +5,9 @@ import { resolveUploadUrl } from '@/lib/resolveUrl';
 import type { FamilySummary } from '@/lib/hooks/useProducts';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ATÖLYE ürün kartı
+   IZGARA ürün kartı
 
-   Beyaz kart, krem görsel sahnesi, editoryal serif model adı ve fiyat.
+   Beyaz kart, indigo tintli görsel sahnesi, geometrik sans model adı ve fiyat.
    Durağan halde neredeyse gölgesiz (yalnız hairline) — derinlik HOVER'da
    doğar: kart 4px yükselir, sıcak gölge derinleşir, görsel hafifçe büyür.
    "Sakin ama canlı" dengesini kuran mekanizma bu.
@@ -22,19 +22,19 @@ const GRADE: Record<string, { label: string; hot?: boolean }> = {
 
 /** Markaya özgü sahne halesi — krem zeminde cihazı öne çeker */
 const BRAND_AURA: Record<string, string> = {
-  Apple:   'rgba(28,21,18,0.06)',
-  Samsung: 'rgba(46,92,138,0.10)',
-  Xiaomi:  'rgba(194,65,12,0.10)',
-  Redmi:   'rgba(180,36,31,0.09)',
-  POCO:    'rgba(180,83,9,0.10)',
-  Huawei:  'rgba(180,36,31,0.09)',
-  Vivo:    'rgba(70,70,150,0.09)',
-  Realme:  'rgba(212,80,30,0.10)',
-  Tecno:   'rgba(47,125,91,0.09)',
-  Infinix: 'rgba(47,125,91,0.09)',
-  Aksesuarlar: 'rgba(194,65,12,0.09)',
+  Apple:   'rgba(15,23,42,0.06)',
+  Samsung: 'rgba(59,130,246,0.14)',
+  Xiaomi:  'rgba(245,158,11,0.14)',
+  Redmi:   'rgba(239,68,68,0.12)',
+  POCO:    'rgba(245,158,11,0.12)',
+  Huawei:  'rgba(239,68,68,0.12)',
+  Vivo:    'rgba(124,58,237,0.12)',
+  Realme:  'rgba(245,158,11,0.12)',
+  Tecno:   'rgba(16,185,129,0.12)',
+  Infinix: 'rgba(16,185,129,0.12)',
+  Aksesuarlar: 'rgba(91,101,246,0.12)',
 };
-const DEFAULT_AURA = 'rgba(28,21,18,0.05)';
+const DEFAULT_AURA = 'rgba(91,101,246,0.10)';
 
 const fmt = (n: number) =>
   new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
@@ -54,7 +54,7 @@ export default function FamilyCard({ family, index }: Props) {
   return (
     <Link
       href={href}
-      className="k-card group flex h-full flex-col overflow-hidden"
+      className="k-card k-card-glow group flex h-full flex-col overflow-hidden"
       style={{ animationDelay: `${Math.min(index * 30, 240)}ms` }}
     >
       {/* ── Görsel sahnesi ───────────────────────────────────────────────── */}
@@ -62,7 +62,7 @@ export default function FamilyCard({ family, index }: Props) {
         className="relative flex-shrink-0 overflow-hidden"
         style={{
           aspectRatio: '4 / 5',
-          background: 'linear-gradient(165deg, #FFFFFF 0%, var(--k-canvas-2) 100%)',
+          background: 'linear-gradient(165deg, #FFFFFF 0%, #F8FAFF 55%, #EEF2FF 100%)',
         }}
       >
         <div
@@ -140,7 +140,7 @@ export default function FamilyCard({ family, index }: Props) {
           {family.storageOptions.length > 0 && (
             <span
               className="k-mono rounded-[4px] px-1.5 py-0.5 text-[10px]"
-              style={{ background: 'var(--k-canvas-2)', color: 'var(--k-ink-3)' }}
+              style={{ background: 'var(--k-surface-3)', color: 'var(--k-hot)' }}
             >
               {family.storageOptions.length > 1
                 ? `${family.storageOptions[0]}–${family.storageOptions[family.storageOptions.length - 1]}`
@@ -150,7 +150,7 @@ export default function FamilyCard({ family, index }: Props) {
           {family.hasWarrantyOffer && (
             <span
               className="k-mono rounded-[4px] px-1.5 py-0.5 text-[10px]"
-              style={{ background: 'rgba(47,125,91,0.10)', color: 'var(--k-ok)' }}
+              style={{ background: 'rgba(16,185,129,0.10)', color: 'var(--k-ok)' }}
             >
               GARANTİLİ
             </span>

@@ -1,32 +1,21 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 import { AppProvider } from "@/providers/AppProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-// ATÖLYE tipografisi — editoryal serif başlık, temiz sans gövde, mono mikro etiket.
-// Fraunces değişken eksenlere sahip (opsz/SOFT/WONK): büyük puntoda daha keskin,
-// küçük puntoda daha yumuşak render eder — editoryal his tam olarak buradan gelir.
+// IZGARA tipografisi — modern, geometrik, okunaklı tek sans ailesi.
+// Başlıklarda kalın ağırlık + sıkı harf aralığı ile güçlü duruş (bkz. .k-display).
 // latin-ext altkümesi Türkçe karakterler (ğ ş İ ı) için zorunlu.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin", "latin-ext"],
   display: "swap",
-  weight: "variable",
-  style: ["normal", "italic"],
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-// Yalnız mikro teknik etiketler (kalite notu, pil %, sipariş no).
-// Fiyatlar ATÖLYE'de mono'dan serif'e taşındı — bkz. .k-price
+// Yalnız mikro teknik okumalar (pil %, teklif sayısı, sipariş no).
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
@@ -86,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#C2410C',
+  themeColor: '#3B52F6',
 };
 
 /**
@@ -113,10 +102,10 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${fraunces.variable} ${interTight.variable} ${jetbrains.variable} h-full antialiased`}>
+    <html lang="tr" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#C2410C" />
+        <meta name="theme-color" content="#3B52F6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Mytt" />

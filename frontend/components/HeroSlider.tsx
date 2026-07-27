@@ -1,24 +1,22 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import {
+  ArrowRight, ShieldCheck, BatteryCharging, Cpu, Heart,
+  Smartphone, RefreshCcw, BadgeCheck,
+} from 'lucide-react';
 import { subscribeBuilderPreview, getBuilderHeroSlides, getBuilderPreview } from '@/lib/builder-preview';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import { API_BASE } from '@/lib/apiBase';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ATÖLYE hero — bölünmüş editoryal düzen
+   IZGARA hero — "çizim masası" konsepti
 
-   KARBON'da hero tam kanvas koyu bir sahneydi ve metin görselin üstünde,
-   koyu bir scrim'in korumasıyla duruyordu. Açık temada scrim mantığı çöker:
-   krem zemine krem scrim koymak metni kurtarmaz.
+   Beyaz zemin üzerine ince kareli ızgara, üzerine merkeze ve sağ üste süzülen
+   mor/mavi radyal ışıma, ızgaranın üstünde havada duran mikro ikon kartları.
+   Ana mesaj tam merkeze oturur; negatif alan bilinçli olarak geniş bırakılır.
 
-   Bu yüzden düzen değişti — metin ve görsel artık ÜST ÜSTE değil, YAN YANA:
-   solda tipografi (krem zeminde koyu mürekkep, kontrast garantili), sağda
-   ürün görseli kendi yumuşak sahnesinde. Kontrast artık görselin ne kadar
-   karanlık olduğuna bağlı değil.
-
-   Veri akışı ve admin builder önizlemesi bilinçli olarak korundu.
+   Veri akışı ve admin builder önizlemesi korundu — hero yöneticisi aynen çalışır.
    ───────────────────────────────────────────────────────────────────────────── */
 
 interface Slide {
@@ -46,18 +44,29 @@ const FALLBACK: Slide = {
   btnLeftLink: '/',
   btnRightText: 'Cihazını Sat',
   btnRightLink: '/sell',
-  textAlignment: 'left',
+  textAlignment: 'center',
 };
+
+/* Izgaranın üstünde süzülen mikro kartlar.
+   Konumlar yüzde cinsinden; her biri farklı gecikme/dönüşle nefes alır. */
+const FLOATERS = [
+  { Icon: Cpu,             color: '#3B52F6', bg: '#EEF2FF', top: '16%',  left: '7%',   size: 52, delay: '0s',   rot: '-8deg' },
+  { Icon: BatteryCharging, color: '#10B981', bg: '#ECFDF5', top: '62%',  left: '4%',   size: 46, delay: '1.4s', rot: '6deg'  },
+  { Icon: ShieldCheck,     color: '#7C3AED', bg: '#F5F3FF', top: '26%',  right: '8%',  size: 56, delay: '0.7s', rot: '7deg'  },
+  { Icon: Heart,           color: '#EC4899', bg: '#FDF2F8', top: '68%',  right: '6%',  size: 44, delay: '2.1s', rot: '-6deg' },
+  { Icon: Smartphone,      color: '#F59E0B', bg: '#FFFBEB', top: '78%',  left: '18%',  size: 48, delay: '1.0s', rot: '9deg'  },
+  { Icon: RefreshCcw,      color: '#3B52F6', bg: '#EEF2FF', top: '10%',  right: '22%', size: 42, delay: '2.6s', rot: '-10deg'},
+];
+
+const TRUST = [
+  { v: '150+',  l: 'Aktif Bayi' },
+  { v: '32',    l: 'Test Noktası' },
+  { v: '6 Ay',  l: 'Garanti' },
+  { v: '%100',  l: 'Escrow' },
+];
 
 const isCssBackground = (v?: string | null) =>
   !!v && (v.startsWith('linear-gradient') || v.startsWith('radial-gradient') || v.startsWith('#'));
-
-const TRUST = [
-  { v: '150+', l: 'Aktif Bayi' },
-  { v: '32',   l: 'Test Noktası' },
-  { v: '6 Ay', l: 'Garanti' },
-  { v: '%100', l: 'Escrow' },
-];
 
 export default function HeroSlider() {
   const [slides, setSlides]       = useState<Slide[]>([]);
@@ -87,7 +96,7 @@ export default function HeroSlider() {
     if (animating || idx === current || total <= 1) return;
     setAnimating(true);
     setCurrent(idx);
-    setTimeout(() => setAnimating(false), 700);
+    setTimeout(() => setAnimating(false), 650);
   }, [animating, current, total]);
 
   const goNext = useCallback(() => goTo((current + 1) % total), [goTo, current, total]);
@@ -102,142 +111,146 @@ export default function HeroSlider() {
   if (previewSettings?.showHeroSlider === false) return null;
 
   const slide    = display[Math.min(current, total - 1)];
-  const gradient = isCssBackground(slide.imageUrl);
-  const hasImage = !!slide.imageUrl;
+  const hasImage = !!slide.imageUrl && !isCssBackground(slide.imageUrl);
 
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="k-glow-wrap relative w-full overflow-hidden"
       style={{ background: 'var(--k-canvas)', borderBottom: '1px solid var(--k-line)' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Çok hafif teknik ızgara — üstte belirir, aşağı doğru söner */}
-      <div className="k-grid-bg k-grid-fade pointer-events-none absolute inset-0 opacity-60" />
+      {/* ── Izgara dokusu: tasarımın karakteristik kimliği ─────────────────── */}
+      <div className="k-grid-fine k-grid-fade pointer-events-none absolute inset-0" />
 
-      <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-24">
-
-        {/* ── Sol: tipografi ─────────────────────────────────────────────── */}
-        <div key={`copy-${slide.id}`} className="max-w-[600px]">
-          <div className="mb-7 flex flex-wrap items-center gap-3 animate-hero-text">
-            <span className="k-chip k-chip-hot">
-              <ShieldCheck size={11} strokeWidth={2.5} />
-              Doğrulanmış Pazaryeri
-            </span>
-            <span className="k-label">32 Noktada Test · Escrow Korumalı</span>
-          </div>
-
-          {slide.title && (
-            <h1
-              className="k-display animate-hero-text whitespace-pre-line"
-              style={{ fontSize: 'clamp(2.5rem, 5.6vw, 4.6rem)', lineHeight: 1.02 }}
+      {/* ── Yüzen mikro kartlar ────────────────────────────────────────────── */}
+      <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden>
+        {FLOATERS.map((f, i) => {
+          const { Icon } = f;
+          return (
+            <div
+              key={i}
+              className="k-float k-floaty absolute"
+              style={{
+                top: f.top, left: f.left, right: f.right,
+                width: f.size, height: f.size,
+                animationDelay: f.delay,
+                ['--k-rot' as any]: f.rot,
+              }}
             >
-              {slide.title}
-            </h1>
-          )}
-
-          {slide.subtitle && (
-            <p
-              className="animate-hero-text delay-100 mt-7 max-w-[520px] text-[15.5px] leading-[1.75] md:text-[17px]"
-              style={{ color: 'var(--k-ink-2)' }}
-            >
-              {slide.subtitle}
-            </p>
-          )}
-
-          <div className="animate-hero-text delay-200 mt-10 flex flex-wrap items-center gap-3">
-            {slide.btnLeftText && (
-              <Link href={slide.btnLeftLink || '#'} className="k-btn k-btn-hot">
-                {slide.btnLeftText}
-                <ArrowRight size={16} strokeWidth={2.2} />
-              </Link>
-            )}
-            {slide.btnRightText && (
-              <Link href={slide.btnRightLink || '#'} className="k-btn k-btn-ghost">
-                {slide.btnRightText}
-              </Link>
-            )}
-          </div>
-
-          {/* Güven okumaları — hairline ile bölünmüş, kutu değil */}
-          <div
-            className="animate-hero-text delay-300 mt-14 grid max-w-[540px] grid-cols-2 sm:grid-cols-4"
-            style={{ borderTop: '1px solid var(--k-line)' }}
-          >
-            {TRUST.map((s, i) => (
               <div
-                key={s.l}
-                className="py-5 pr-4"
-                style={{ borderLeft: i === 0 ? 'none' : '1px solid var(--k-line)', paddingLeft: i === 0 ? 0 : 18 }}
+                className="flex items-center justify-center rounded-[9px]"
+                style={{ width: f.size * 0.56, height: f.size * 0.56, background: f.bg }}
               >
-                <div className="k-price text-[24px] leading-none" style={{ color: 'var(--k-hot)' }}>
-                  {s.v}
-                </div>
-                <div className="k-label mt-2" style={{ fontSize: 9 }}>{s.l}</div>
+                <Icon size={Math.round(f.size * 0.3)} strokeWidth={2.2} style={{ color: f.color }} />
               </div>
-            ))}
-          </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Merkezi mesaj ──────────────────────────────────────────────────── */}
+      <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-4 py-24 text-center lg:py-32">
+
+        <div className="k-chip k-chip-hot mb-8">
+          <BadgeCheck size={13} strokeWidth={2.6} />
+          32 Noktada Test · Escrow Korumalı
         </div>
 
-        {/* ── Sağ: ürün sahnesi ──────────────────────────────────────────── */}
-        <div className="relative">
+        {slide.title && (
+          <h1
+            className="k-display whitespace-pre-line"
+            style={{ fontSize: 'clamp(2.6rem, 6vw, 4.9rem)', maxWidth: '15ch' }}
+          >
+            {slide.title}
+          </h1>
+        )}
+
+        {slide.subtitle && (
+          <p
+            className="mt-7 max-w-[620px] text-[16px] leading-[1.75] md:text-[18px]"
+            style={{ color: 'var(--k-ink-2)' }}
+          >
+            {slide.subtitle}
+          </p>
+        )}
+
+        {/* Sıcak turuncu vurgu — renk monotonluğunu kırar */}
+        <p className="mt-4 text-[14px] font-bold" style={{ color: 'var(--k-warn-ink)' }}>
+          Peki cihazın gerçekten test edildi mi?
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {slide.btnLeftText && (
+            <Link href={slide.btnLeftLink || '#'} className="k-btn k-btn-hot">
+              {slide.btnLeftText}
+              <ArrowRight size={17} strokeWidth={2.4} />
+            </Link>
+          )}
+          {slide.btnRightText && (
+            <Link href={slide.btnRightLink || '#'} className="k-btn k-btn-ghost">
+              {slide.btnRightText}
+            </Link>
+          )}
+        </div>
+
+        {/* ── Ürün sahnesi: varsa slayt görseli, havada süzülen kart ─────── */}
+        {hasImage && (
           <div
-            className="relative overflow-hidden"
+            className="relative mt-16 w-full max-w-[620px] overflow-hidden"
             style={{
               borderRadius: 'var(--k-r-xl)',
               border: '1px solid var(--k-line)',
-              background: 'linear-gradient(160deg, #FFFFFF 0%, var(--k-canvas-2) 62%, #F6EDE4 100%)',
-              aspectRatio: '4 / 3.4',
-              boxShadow: 'var(--shadow-md)',
+              background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFF 60%, #EEF2FF 100%)',
+              boxShadow: 'var(--shadow-xl)',
+              aspectRatio: '16 / 9',
             }}
           >
-            {/* Yumuşak şeftali halesi — cihazı sahneden ayırır */}
             <div
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[64px]"
-              style={{ background: 'rgba(194,65,12,0.11)' }}
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[60px]"
+              style={{ background: 'rgba(91,101,246,0.16)' }}
             />
-
-            {hasImage && !gradient && (
-              <img
-                key={`img-${slide.id}`}
-                src={resolveUploadUrl(slide.imageUrl)}
-                alt={slide.title || ''}
-                className="k-drift absolute inset-0 h-full w-full object-contain"
-                style={{ padding: '9%' }}
-                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-              />
-            )}
-            {gradient && (
-              <div className="absolute inset-0" style={{ background: slide.imageUrl, opacity: 0.5 }} />
-            )}
-
-            {/* Sahne köşe etiketi */}
-            <div className="absolute left-5 top-5">
-              <span className="k-label">Doğrulanmış Cihaz</span>
-            </div>
+            <img
+              key={slide.id}
+              src={resolveUploadUrl(slide.imageUrl)}
+              alt={slide.title || ''}
+              className="k-drift absolute inset-0 h-full w-full object-contain"
+              style={{ padding: '5%' }}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+            />
           </div>
+        )}
 
-          {/* Slayt sayacı — sahnenin altında, editoryal */}
-          {total > 1 && (
-            <div className="mt-6 flex items-center gap-5">
-              <span className="k-mono text-[11px] tracking-widest" style={{ color: 'var(--k-ink-3)' }}>
-                {String(current + 1).padStart(2, '0')}
-                <span style={{ color: 'var(--k-ink-4)' }}> / {String(total).padStart(2, '0')}</span>
-              </span>
-              <div className="flex flex-1 gap-1.5">
-                {display.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => goTo(idx)}
-                    aria-label={`Slayt ${idx + 1}`}
-                    className="h-[2px] flex-1 transition-all duration-500"
-                    style={{ background: idx === current ? 'var(--k-hot)' : 'var(--k-line-2)' }}
-                  />
-                ))}
+        {/* ── Güven okumaları ─────────────────────────────────────────────── */}
+        <div className="mt-16 grid w-full max-w-[720px] grid-cols-2 gap-px sm:grid-cols-4"
+             style={{ background: 'var(--k-line)', border: '1px solid var(--k-line)', borderRadius: 'var(--k-r)' }}>
+          {TRUST.map((s) => (
+            <div key={s.l} className="px-4 py-5" style={{ background: 'var(--k-surface)' }}>
+              <div className="k-price text-[26px] leading-none">
+                <span className="k-grad-text">{s.v}</span>
               </div>
+              <div className="k-label mt-2">{s.l}</div>
             </div>
-          )}
+          ))}
         </div>
+
+        {/* ── Slayt göstergesi ────────────────────────────────────────────── */}
+        {total > 1 && (
+          <div className="mt-12 flex items-center gap-2">
+            {display.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goTo(idx)}
+                aria-label={`Slayt ${idx + 1}`}
+                className="h-2 rounded-full transition-all duration-500"
+                style={{
+                  width: idx === current ? 30 : 8,
+                  background: idx === current ? 'var(--k-grad)' : 'var(--k-line-2)',
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -267,7 +267,7 @@ export default function Navbar() {
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(251,249,246,0.86)' : 'var(--k-void)',
+          background: scrolled ? 'rgba(255,255,255,0.88)' : 'var(--k-canvas)',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           borderBottom: '1px solid var(--k-line)',
@@ -298,7 +298,7 @@ export default function Navbar() {
           {/* Arama (masaüstü) */}
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] ml-4">
             <div
-              className="group/search flex items-center w-full h-[42px] rounded-[10px] transition-all overflow-hidden pl-3 pr-1"
+              className="group/search flex items-center w-full h-[42px] rounded-full transition-all overflow-hidden pl-4 pr-1"
               style={{ background: 'var(--k-surface)', border: '1px solid var(--k-line)' }}
             >
               <Search size={16} className="flex-shrink-0" style={{ color: 'var(--k-ink-4)' }} />
@@ -332,11 +332,11 @@ export default function Navbar() {
             {/* Cihazını Sat CTA */}
             <Link
               href="/sell"
-              className="hidden md:inline-flex items-center gap-1.5 h-9 px-4 rounded-[8px] text-[12.5px] font-bold transition-all hover:-translate-y-px"
+              className="hidden md:inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13px] font-bold transition-all hover:-translate-y-px"
               style={{
-                background: 'var(--k-hot)',
-                color: 'var(--k-hot-ink)',
-                fontFamily: 'var(--font-display)',
+                background: 'var(--k-grad)',
+                color: '#fff',
+                boxShadow: '0 5px 16px rgba(91,101,246,0.28)',
               }}
             >
               <Smartphone size={13} strokeWidth={2.5} />

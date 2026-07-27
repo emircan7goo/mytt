@@ -102,14 +102,14 @@
    Sans     : Inter Tight    → gövde, UI, buton, form
    Mono     : JetBrains Mono → yalnız mikro teknik etiket (kalite, pil %, no) */
 @theme inline {
-  --font-sans:      var(--font-inter-tight), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display:   var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans:      var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:   var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:      var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
-  --font-editorial: var(--font-fraunces), Georgia, serif;
-  --color-brand:  #C2410C;
-  --color-space:  #1C1512;
-  --color-bg:     #FBF9F6;
-  --color-ink:    #1C1512;
+  --font-editorial: var(--font-jakarta), sans-serif;
+  --color-brand:  #3B52F6;
+  --color-space:  #0F172A;
+  --color-bg:     #FFFFFF;
+  --color-ink:    #0F172A;
 }
 
 /* *******************************************************************************
@@ -1245,71 +1245,72 @@ a:active {
 
 
 
+
 /* ═══════════════════════════════════════════════════════════════════════════
-   MYTT / ATÖLYE — SICAK EDİTORYAL AÇIK TEMA v12
+   MYTT / IZGARA — SaaS MODERN · NEO-MINIMALISM · TECH-GRID  v13
    ───────────────────────────────────────────────────────────────────────────
-   Felsefe: Lüks, gurultuden degil KISITLAMADAN dogar. Kirik beyaz (krem) kanvas,
-   uzerinde beyaz kartlar. Saf beyaz ve saf siyah YOK — ikisi de dijital ve ucuz
-   durur; her sey sicak eksende (mürekkep #1C1512, kanvas #FBF9F6).
+   Konsept: "cizim masasi / muhendislik defteri"nin dijitallesmesi. Beyaz zemin
+   uzerine ince kareli izgara, uzerine suzulen mor/mavi radyal isima, ve
+   izgaranin ustunde havada duran mikro kartlar.
 
-   Derinlik: KARBON'da kenar isimasiyla veriliyordu, acik temada calismaz.
-   Burada derinlik SICAK ve COK YUMUSAK golgelerle verilir; kartlar duragan
-   halde neredeyse golgesizdir, derinlik HOVER'da dogar. "Sakin ama canli"
-   dengesini kuran ana mekanizma budur.
+   Derinlik modeli: keskin golge YOK. Elemanlar "havada suzuluyor" hissi icin
+   yumusak dusen golge + gradyan isima ile kaldirilir.
 
-   Token ADLARI bilincli olarak KARBON ile ayni tutuldu — vitrinde ~1.400
-   var(--k-*) kullanimi var ve hepsi "murekkep, yuzeyin ustunde" mantigiyla
-   yazildigi icin degerleri cevirince kontrast iliskileri kendiliginden dogru
-   kaliyor. Bu yuzden bu gecis 51 dosyalik yeniden yazim degil.
+   Token ADLARI onceki sistemlerle ayni tutuldu (~1.400 var(--k-*) kullanimi
+   otomatik doner). Yalnizca degerler ve bilesen gorunumleri degisti.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root, :root[data-theme="light"], :root[data-theme="dark"] {
-  /* ── Kanvas: sicak kemik, saf beyaz DEGIL ────────────────────────────── */
-  /* NOT: --k-void KARBON'da "en dip koyu" idi. Acik temada anlami degisti:
-     artik sayfa tabani. 11 kullanim yeri karisik amacli (navbar, kart gorsel
-     sahnesi, hero, footer) — koyuya eslersem navbar ve kart sahnesi kararir.
-     Footer icin ayri --k-anchor var, sadece Footer.tsx ona baglanir. */
-  --k-void:      #FBF9F6;
-  --k-canvas:    #FBF9F6;
-  --k-canvas-2:  #F4F0E9;
+  /* ── Zemin: saf beyaz + cok hafif mavi tintler ───────────────────────── */
+  --k-void:      #FFFFFF;
+  --k-canvas:    #FFFFFF;
+  --k-canvas-2:  #F8FAFF;   /* izgara bandi / oyuk alan */
   --k-surface:   #FFFFFF;
-  --k-surface-2: #FCFAF7;
-  --k-surface-3: #F0EBE3;
-  --k-anchor:    #1C1512;   /* espresso — yalniz footer */
+  --k-surface-2: #FAFBFF;
+  --k-surface-3: #EEF2FF;   /* indigo-50 — input, inset, chip zemini */
+  --k-anchor:    #0F172A;   /* koyu lacivert — footer */
 
-  /* ── Hairline: siyahtan degil murekkepten turer → sicak kalir ────────── */
-  --k-line:      rgba(28,21,18,0.10);
-  --k-line-2:    rgba(28,21,18,0.18);
-  --k-line-hot:  rgba(194,65,12,0.28);
+  /* ── Cizgiler: izgara ve hairline ────────────────────────────────────── */
+  --k-line:      #E5E7EB;
+  --k-line-2:    #D8DDE7;
+  --k-line-hot:  rgba(91,101,246,0.30);
+  --k-grid:      rgba(99,102,241,0.075);   /* izgara cizgisi */
 
-  /* ── Murekkep: sicak siyaha yakin, mavi-siyah DEGIL ─────────────────── */
-  --k-ink:       #1C1512;
-  --k-ink-2:     rgba(28,21,18,0.74);
-  --k-ink-3:     rgba(28,21,18,0.54);
-  --k-ink-4:     rgba(28,21,18,0.36);
+  /* ── Metin: tam siyah DEGIL, koyu lacivert (premium his) ─────────────── */
+  --k-ink:       #0F172A;
+  --k-ink-2:     rgba(15,23,42,0.72);
+  --k-ink-3:     rgba(15,23,42,0.55);
+  --k-ink-4:     rgba(15,23,42,0.38);
 
-  /* ── Aksan: yanik turuncu / terracotta ──────────────────────────────── */
-  --k-hot:       #C2410C;
-  --k-hot-2:     #D4501E;
-  --k-hot-deep:  #7C2D12;
+  /* ── Ana vurgu: elektrik mavi → mor gradyan ──────────────────────────── */
+  --k-hot:       #3B52F6;
+  --k-hot-2:     #7C3AED;
+  --k-hot-deep:  #2A3BD4;
   --k-hot-ink:   #FFFFFF;
-  --k-hot-wash:  #FDF2EA;
-  --k-hot-glow:  rgba(194,65,12,0.20);
+  --k-hot-wash:  #EEF2FF;
+  --k-hot-glow:  rgba(91,101,246,0.28);
+  --k-grad:      linear-gradient(135deg, #3B52F6 0%, #7C3AED 100%);
+  --k-grad-soft: linear-gradient(135deg, rgba(59,82,246,0.10) 0%, rgba(124,58,237,0.10) 100%);
 
-  /* ── Sinyal renkleri: sicak paletle uyumlu, doygunlugu kirik ────────── */
-  --k-ok:        #2F7D5B;
-  --k-warn:      #B45309;
-  --k-bad:       #B4241F;
-  --k-cool:      #2E5C8A;
+  /* ── Aksan renkleri: renk monotonlugunu kiran dokunuslar ─────────────── */
+  --k-ok:        #10B981;   /* guvenlik / batarya — DOLGU/IKON icin */
+  --k-warn:      #F59E0B;   /* sicak turuncu — DOLGU/IKON icin */
+  /* Ayni aksanlarin METIN karsiliklari: #F59E0B beyaz uzerinde 2.1 kontrast
+     verir, yani okunmaz. Dolgu tonunu bozmadan metin icin koyu varyant. */
+  --k-warn-ink:  #B45309;   /* beyaz uzerinde ~5.0 */
+  --k-ok-ink:    #047857;   /* beyaz uzerinde ~4.8 */
+  --k-bad:       #EF4444;
+  --k-cool:      #3B52F6;
 
-  /* ── Geometri: kapsul genel durur, keskin kose sert durur ───────────── */
-  --k-r-xs: 4px;
-  --k-r-sm: 6px;
-  --k-r:    10px;
-  --k-r-lg: 16px;
-  --k-r-xl: 22px;
+  /* ── Geometri: butonlar HAP formunda, kartlar yumusak ────────────────── */
+  --k-r-xs: 8px;
+  --k-r-sm: 10px;
+  --k-r:    14px;
+  --k-r-lg: 20px;
+  --k-r-xl: 28px;
+  --k-r-pill: 9999px;
 
-  /* ── Legacy token koprusu — dokunulmayan eski bilesenler kirilmasin ─── */
+  /* ── Legacy token koprusu ────────────────────────────────────────────── */
   --bg:            var(--k-canvas);
   --bg-warm:       var(--k-canvas-2);
   --card:          var(--k-surface);
@@ -1329,24 +1330,24 @@ a:active {
   --brand-mid:     var(--k-hot-2);
   --brand-glow:    var(--k-hot-glow);
   --space:         var(--k-anchor);
-  --space-2:       #241B16;
-  --space-3:       #33251D;
+  --space-2:       #16203A;
+  --space-3:       #1E293B;
+  --r-pill:        9999px;
 
-  /* ── Golgeler: notr gri DEGIL, murekkepten turetilmis sicak golge ───── */
-  --shadow-xs:    0 1px 2px rgba(28,21,18,0.04);
-  --shadow-sm:    0 2px 8px rgba(28,21,18,0.05);
-  --shadow-md:    0 8px 24px rgba(28,21,18,0.07), 0 2px 6px rgba(28,21,18,0.04);
-  --shadow-lg:    0 20px 52px rgba(28,21,18,0.10), 0 4px 12px rgba(28,21,18,0.05);
-  --shadow-xl:    0 32px 80px rgba(28,21,18,0.12), 0 8px 20px rgba(28,21,18,0.06);
-  --shadow-brand: 0 14px 34px rgba(194,65,12,0.22);
+  /* ── Golgeler: "havada suzulen" his — yumusak ve genis ───────────────── */
+  --shadow-xs:    0 1px 2px rgba(15,23,42,0.04);
+  --shadow-sm:    0 2px 8px rgba(15,23,42,0.05);
+  --shadow-md:    0 8px 24px rgba(15,23,42,0.07), 0 2px 6px rgba(15,23,42,0.04);
+  --shadow-lg:    0 18px 44px rgba(15,23,42,0.09), 0 4px 12px rgba(15,23,42,0.05);
+  --shadow-xl:    0 32px 72px rgba(15,23,42,0.11), 0 8px 20px rgba(15,23,42,0.05);
+  --shadow-float: 0 12px 32px rgba(15,23,42,0.10), 0 2px 8px rgba(15,23,42,0.05);
+  --shadow-brand: 0 12px 30px rgba(91,101,246,0.32);
 
   --mesh-bg: none;
 }
 
-/* DIKKAT — bu kurallar bilincli olarak KATMANSIZ (unlayered).
-   Yukaridaki eski "body { background: #ffffff }" kurali da katmansiz; Tailwind
-   v4'te katmansiz kural her zaman katmanliyi yener. @layer base icine koyarsam
-   eski beyaz zemin kazanir. (KARBON'da bir kez bu hataya dustum.) */
+/* Katmansiz olmak ZORUNDA — eski body{background:#fff} kurali da katmansiz ve
+   Tailwind v4'te katmansiz her zaman katmanliyi yener. */
 html { background: var(--k-canvas); }
 body {
   background: var(--k-canvas);
@@ -1354,157 +1355,191 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-::selection { background: var(--k-hot); color: var(--k-hot-ink); }
+::selection { background: var(--k-hot); color: #fff; }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--k-ink);
-    /* Serif sikistirma istemez — KARBON'un -0.03em'i Fraunces'ta bogar */
-    letter-spacing: -0.012em;
-    line-height: 1.08;
-    font-weight: 600;
+    /* Guclu durus icin siki harf araligi */
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    font-weight: 800;
   }
 
   ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--k-canvas-2); }
   ::-webkit-scrollbar-thumb {
-    background: rgba(28,21,18,0.18);
-    border-radius: 99px;
-    border: 3px solid var(--k-canvas-2);
+    background: #CBD5E1; border-radius: 99px; border: 3px solid var(--k-canvas-2);
   }
   ::-webkit-scrollbar-thumb:hover { background: var(--k-hot); }
-  * { scrollbar-width: thin; scrollbar-color: rgba(28,21,18,0.22) var(--k-canvas-2); }
+  * { scrollbar-width: thin; scrollbar-color: #CBD5E1 var(--k-canvas-2); }
 }
 
 @layer components {
-  /* ── Teknik izgara — acik zeminde cok hafif olmali ──────────────────── */
+  /* ── IZGARA: tasarimin karakteristik kimligi ────────────────────────── */
   .k-grid-bg {
     background-image:
-      linear-gradient(to right, rgba(28,21,18,0.030) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(28,21,18,0.030) 1px, transparent 1px);
-    background-size: 72px 72px;
+      linear-gradient(to right, var(--k-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--k-grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  /* Ince ikincil izgara — "milimetrik kagit" hissi */
+  .k-grid-fine {
+    background-image:
+      linear-gradient(to right, rgba(99,102,241,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99,102,241,0.05) 1px, transparent 1px),
+      linear-gradient(to right, var(--k-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--k-grid) 1px, transparent 1px);
+    background-size: 14px 14px, 14px 14px, 112px 112px, 112px 112px;
   }
   .k-grid-fade {
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 76%);
-    mask-image: linear-gradient(to bottom, #000 0%, transparent 76%);
+    -webkit-mask-image: radial-gradient(ellipse 78% 68% at 50% 34%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 78% 68% at 50% 34%, #000 30%, transparent 100%);
   }
 
-  /* KARBON'un film greni acik zeminde KIR gibi durur — notrlestirildi.
-     Sinif hala var cunku page.tsx onu kullaniyor; sadece etkisi kaldirildi. */
+  /* ── Radyal isima: gozu merkeze cekmek icin ─────────────────────────── */
+  .k-glow-wrap { position: relative; isolation: isolate; }
+  .k-glow-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 130%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 52% 46% at 50% 26%,  rgba(59,82,246,0.16) 0%, transparent 68%),
+      radial-gradient(ellipse 42% 40% at 76% 14%,  rgba(124,58,237,0.14) 0%, transparent 66%),
+      radial-gradient(ellipse 36% 34% at 22% 40%,  rgba(59,130,246,0.09) 0%, transparent 70%);
+  }
+
+  /* ── Grain YOK (onceki sistemden devir) ─────────────────────────────── */
   .k-grain::before { content: none; }
 
   /* ── Tipografi yardimcilari ─────────────────────────────────────────── */
   .k-display {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.014em;
+    font-weight: 800;
+    letter-spacing: -0.038em;
     line-height: 1.04;
     color: var(--k-ink);
   }
-  /* Editoryal vurgu — serif'in italik/yumusak eksenini kullanir */
-  .k-display-em {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--k-hot);
+  /* Gradyanli metin vurgusu — ana mesajdaki anahtar kelime icin */
+  .k-grad-text {
+    background: var(--k-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
   .k-mono {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1, "zero" 1;
   }
-  /* Fiyat: serif + tabular rakam → "menu/butik" hissi */
   .k-price {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 800;
     font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
     color: var(--k-ink);
   }
   .k-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     color: var(--k-ink-4);
   }
 
-  /* ── Kart: duragan halde neredeyse golgesiz, derinlik HOVER'da dogar ─ */
+  /* ── Kart: havada suzulen beyaz yuzey ───────────────────────────────── */
   .k-card {
     position: relative;
     background: var(--k-surface);
     border: 1px solid var(--k-line);
     border-radius: var(--k-r-lg);
-    box-shadow: var(--shadow-xs);
-    transition: box-shadow .42s cubic-bezier(.22,1,.36,1),
-                transform .42s cubic-bezier(.22,1,.36,1),
-                border-color .42s cubic-bezier(.22,1,.36,1);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .38s cubic-bezier(.22,1,.36,1),
+                transform .38s cubic-bezier(.22,1,.36,1),
+                border-color .38s cubic-bezier(.22,1,.36,1);
   }
   .k-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--k-line-2);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--k-line-hot);
   }
-  /* KARBON'daki kenar isimasi acik temada anlamsiz — notrlestirildi */
-  .k-card-glow::after { content: none; }
+  /* Hover'da gradyan isima — kartin altindan suzulur */
+  .k-card-glow::after {
+    content: '';
+    position: absolute;
+    inset: auto 8% -14px 8%;
+    height: 46px;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(22px);
+    opacity: 0;
+    background: var(--k-grad);
+    transition: opacity .38s cubic-bezier(.22,1,.36,1);
+  }
+  .k-card-glow:hover::after { opacity: 0.34; }
 
-  /* ── Butonlar ───────────────────────────────────────────────────────── */
+  /* ── Butonlar: HAP formunda, gradyanli ──────────────────────────────── */
   .k-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    height: 48px;
-    padding: 0 26px;
-    border-radius: var(--k-r);
+    gap: 9px;
+    height: 52px;
+    padding: 0 30px;
+    border-radius: var(--k-r-pill);
     font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.005em;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: all .28s cubic-bezier(.22,1,.36,1);
+    transition: all .3s cubic-bezier(.22,1,.36,1);
     white-space: nowrap;
   }
   .k-btn-hot {
-    background: var(--k-hot);
-    color: var(--k-hot-ink);
-    box-shadow: 0 2px 10px rgba(194,65,12,0.16);
+    background: var(--k-grad);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(91,101,246,0.26);
   }
   .k-btn-hot:hover {
-    background: var(--k-hot-2);
     box-shadow: var(--shadow-brand);
     transform: translateY(-2px);
   }
   .k-btn-ghost {
-    background: transparent;
+    background: var(--k-surface);
     color: var(--k-ink);
     border-color: var(--k-line-2);
+    box-shadow: var(--shadow-xs);
   }
   .k-btn-ghost:hover {
-    border-color: var(--k-ink-3);
-    background: var(--k-surface-2);
+    border-color: var(--k-hot);
+    color: var(--k-hot);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
-  /* ── Chip / rozet ───────────────────────────────────────────────────── */
+  /* ── Chip / rozet: hap formunda ─────────────────────────────────────── */
   .k-chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    height: 26px;
-    padding: 0 10px;
-    border-radius: var(--k-r-sm);
+    height: 28px;
+    padding: 0 13px;
+    border-radius: var(--k-r-pill);
     border: 1px solid var(--k-line);
     background: var(--k-surface);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--k-ink-3);
+    box-shadow: var(--shadow-xs);
   }
   .k-chip-hot {
     border-color: var(--k-line-hot);
@@ -1512,14 +1547,25 @@ body {
     color: var(--k-hot);
   }
 
+  /* ── Yuzen mikro kart (arka plan rozetleri) ─────────────────────────── */
+  .k-float {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--k-line);
+    border-radius: var(--k-r);
+    box-shadow: var(--shadow-float);
+  }
+
   /* ── Input ──────────────────────────────────────────────────────────── */
   .k-input {
     width: 100%;
-    height: 46px;
-    padding: 0 14px;
+    height: 48px;
+    padding: 0 16px;
     background: var(--k-surface);
     border: 1px solid var(--k-line-2);
-    border-radius: var(--k-r);
+    border-radius: var(--k-r-pill);
     color: var(--k-ink);
     font-size: 14px;
     transition: border-color .22s, box-shadow .22s;
@@ -1528,79 +1574,65 @@ body {
   .k-input:focus {
     outline: none;
     border-color: var(--k-hot);
-    box-shadow: 0 0 0 3px rgba(194,65,12,0.10);
+    box-shadow: 0 0 0 4px rgba(59,82,246,0.12);
   }
 
-  /* ── Kinetik marquee (ticker) ───────────────────────────────────────── */
+  /* ── Marquee ────────────────────────────────────────────────────────── */
   .k-marquee-track {
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    animation: k-marquee 46s linear infinite;
-    will-change: transform;
+    display: inline-flex; align-items: center; white-space: nowrap;
+    animation: k-marquee 46s linear infinite; will-change: transform;
   }
   .k-marquee-wrap:hover .k-marquee-track { animation-play-state: paused; }
 
-  /* ── Editoryal bolum numarasi ───────────────────────────────────────── */
+  /* ── Bolum numarasi ─────────────────────────────────────────────────── */
   .k-section-num {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--k-hot);
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--k-grad);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
   }
   .k-section-num::after {
     content: '';
-    width: 56px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--k-hot), transparent);
+    width: 54px; height: 2px; border-radius: 2px;
+    background: var(--k-grad);
+    -webkit-text-fill-color: initial;
   }
 
-  /* ── Skeleton (acik) ────────────────────────────────────────────────── */
-  .k-skeleton,
-  .skeleton-wave {
-    background: linear-gradient(90deg, var(--k-canvas-2) 25%, var(--k-surface-3) 50%, var(--k-canvas-2) 75%);
+  /* ── Skeleton ───────────────────────────────────────────────────────── */
+  .k-skeleton, .skeleton-wave {
+    background: linear-gradient(90deg, #F1F5F9 25%, #E8EDF5 50%, #F1F5F9 75%);
     background-size: 200% 100%;
     animation: k-shimmer 1.5s ease-in-out infinite;
   }
 
-  /* ── Koyu bolge kapsami ─────────────────────────────────────────────────
-     Footer espresso zeminde duruyor. Icindeki bilesenler .k-label, .k-chip
-     gibi token tabanli siniflar kullaniyor ve bu tokenlar acik temada KOYU
-     murekkep — espresso ustunde gorunmez olurlardi.
-
-     Her birini elle yamamak yerine tokenlari YEREL olarak ters ceviriyoruz:
-     .k-on-dark tasiyan herhangi bir bolgede tum alt agac otomatik olarak
-     koyu-zemin degerlerine gecer. Tek dogru sistem cozumu bu; ileride baska
-     bir koyu bolum eklenirse sadece sinifi vermek yeterli olacak. */
+  /* ── Koyu bolge kapsami (footer) ────────────────────────────────────── */
   .k-on-dark {
-    --k-ink:        #FBF9F6;
-    --k-ink-2:      rgba(251,249,246,0.74);
-    --k-ink-3:      rgba(251,249,246,0.55);
-    --k-ink-4:      rgba(251,249,246,0.40);
-    --k-line:       rgba(255,255,255,0.10);
-    --k-line-2:     rgba(255,255,255,0.18);
-    --k-surface:    rgba(255,255,255,0.05);
-    --k-surface-2:  rgba(255,255,255,0.08);
-    --k-surface-3:  rgba(255,255,255,0.10);
-    --k-canvas:     var(--k-anchor);
-    --k-canvas-2:   rgba(255,255,255,0.06);
-    /* Koyu zeminde terracotta soner — bir tik acik ton okunur kalir */
-    --k-hot:        #E8703A;
-    --k-hot-2:      #F08B5C;
-    --k-hot-wash:   rgba(232,112,58,0.14);
-    --k-line-hot:   rgba(232,112,58,0.32);
-    --k-hot-ink:    #1C1512;
+    --k-ink:       #F8FAFC;
+    --k-ink-2:     rgba(248,250,252,0.74);
+    --k-ink-3:     rgba(248,250,252,0.55);
+    --k-ink-4:     rgba(248,250,252,0.40);
+    --k-line:      rgba(255,255,255,0.10);
+    --k-line-2:    rgba(255,255,255,0.18);
+    --k-surface:   rgba(255,255,255,0.05);
+    --k-surface-2: rgba(255,255,255,0.08);
+    --k-surface-3: rgba(255,255,255,0.10);
+    --k-canvas:    var(--k-anchor);
+    --k-canvas-2:  rgba(255,255,255,0.06);
+    --k-hot:       #8B9CFF;
+    --k-hot-2:     #A78BFA;
+    --k-hot-wash:  rgba(139,156,255,0.14);
+    --k-line-hot:  rgba(139,156,255,0.32);
+    --k-grid:      rgba(255,255,255,0.05);
     color: var(--k-ink-2);
   }
 
   /* ── Legacy sinif yamalari ──────────────────────────────────────────── */
   .glass-card, .glass-nav, .navbar-main {
     background: var(--k-surface);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
     border-color: var(--k-line);
   }
   .ticker-bar {
@@ -1608,12 +1640,12 @@ body {
     border-bottom: 1px solid var(--k-line);
     height: 34px;
   }
-  .grade-badge--a-plus { background: var(--k-hot); color: var(--k-hot-ink); }
-  .grade-badge--a      { background: var(--k-surface-3); color: var(--k-ink); }
+  .grade-badge--a-plus { background: var(--k-grad); color: #fff; }
+  .grade-badge--a      { background: var(--k-surface-3); color: var(--k-hot); }
   .bubble-circle--emerald, .bubble-circle--violet, .bubble-circle--indigo,
   .bubble-circle--rose, .bubble-circle--amber, .bubble-circle--sky,
   .bubble-circle--fuchsia, .bubble-circle--teal {
-    background: var(--k-canvas-2);
+    background: var(--k-surface-3);
     border: 1px solid var(--k-line);
   }
 }
@@ -1627,28 +1659,30 @@ body {
   to   { background-position: -200% 0; }
 }
 
-/* ── Hareket #1: bolum acilisi (ScrollReveal.tsx ile eslesir) ─────────── */
+/* ── Hareket #1: bolum acilisi ───────────────────────────────────────── */
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(16px);
+  opacity: 0; transform: translateY(18px);
   transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
 }
-.scroll-reveal.visible {
-  opacity: 1;
-  transform: none;
-}
+.scroll-reveal.visible { opacity: 1; transform: none; }
 
-/* ── Hareket #3: hero gorsel kacisi — cok yavas, sakin ───────────────── */
+/* ── Hareket #2: yuzen mikro kartlarin suzulmesi ─────────────────────── */
+@keyframes k-hover-float {
+  0%, 100% { transform: translateY(0) rotate(var(--k-rot, 0deg)); }
+  50%      { transform: translateY(-13px) rotate(var(--k-rot, 0deg)); }
+}
+.k-floaty { animation: k-hover-float 6.5s ease-in-out infinite; }
+
+/* ── Hareket #3: hero gorsel kacisi ──────────────────────────────────── */
 @keyframes k-drift {
-  0%   { transform: scale(1) translate3d(0,0,0); }
-  100% { transform: scale(1.07) translate3d(0,-1.2%,0); }
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06); }
 }
-.k-drift { animation: k-drift 22s ease-out forwards; }
+.k-drift { animation: k-drift 20s ease-out forwards; }
 
-/* KARBON'un "nefes alan" turuncu orb'u acik temada gerekmiyor */
 .k-breathe { animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .k-drift, .k-marquee-track { animation: none; }
+  .k-drift, .k-marquee-track, .k-floaty { animation: none; }
   .scroll-reveal { opacity: 1; transform: none; transition: none; }
 }
