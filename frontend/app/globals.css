@@ -1686,3 +1686,21 @@ body {
   .k-drift, .k-marquee-track, .k-floaty { animation: none; }
   .scroll-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ── NEON ORANGE VISUAL EFFECTS ── */
+.neon-glow-orange {
+  box-shadow: 0 0 25px rgba(255, 96, 0, 0.45), 0 0 50px rgba(255, 96, 0, 0.2);
+}
+.neon-glow-orange-lg {
+  box-shadow: 0 0 40px rgba(255, 96, 0, 0.6), 0 0 80px rgba(255, 96, 0, 0.25);
+}
+.neon-border-orange {
+  border: 1.5px solid rgba(255, 96, 0, 0.8) !important;
+  box-shadow: 0 0 15px rgba(255, 96, 0, 0.35) !important;
+}
+.neon-text-orange {
+  background: linear-gradient(135deg, #FF6000 0%, #FF8800 50%, #FF3300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 96, 0, 0.4));
+}
