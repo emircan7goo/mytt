@@ -206,6 +206,22 @@ export default function Navbar() {
     localStorage.setItem('mytt-dark-mode', '0');
     document.documentElement.removeAttribute('data-theme');
     setDarkMode(false);
+
+    // Unregister any stale Service Workers & clear CacheStorage to force fresh HTML/JS
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+    if (typeof window !== 'undefined' && 'caches' in window) {
+      caches.keys().then((names) => {
+        for (const name of names) {
+          caches.delete(name);
+        }
+      });
+    }
   }, []);
 
   const toggleDarkMode = () => {
@@ -264,13 +280,24 @@ export default function Navbar() {
 
   return (
     <>
+      {/* ── HEPSİBURADA TARZI TİCARİ BİLDİRİM BANTI ── */}
+      <div className="bg-emerald-700 text-white text-[11.5px] font-extrabold py-1.5 px-4 text-center tracking-wide flex items-center justify-center gap-3 border-b border-emerald-800">
+        <span className="hidden md:inline">💚 HEPSİBURADA TARZI DOĞRULANMIŞ CİHAZ PAZARYERİ</span>
+        <span className="hidden md:inline">•</span>
+        <span>⚡ Vade Farksız 12 Taksit</span>
+        <span>•</span>
+        <span>🚚 Adresten Bedava Kargo</span>
+        <span>•</span>
+        <span>🔒 %100 Escrow Güvenli Ödeme</span>
+      </div>
+
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(255,255,255,0.88)' : 'var(--k-canvas)',
+          background: scrolled ? 'rgba(255,255,255,0.95)' : '#ffffff',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
-          borderBottom: '1px solid var(--k-line)',
+          borderBottom: '2px solid #10B981',
         }}
       >
         {/* ── Ana Çubuk ───────────────────────────────────────────────────── */}
@@ -332,14 +359,13 @@ export default function Navbar() {
             {/* Cihazını Sat CTA */}
             <Link
               href="/sell"
-              className="hidden md:inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13px] font-bold transition-all hover:-translate-y-px"
+              className="hidden md:inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13px] font-black transition-all hover:-translate-y-px shadow-md hover:shadow-emerald-600/30"
               style={{
-                background: 'var(--k-grad)',
+                background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
                 color: '#fff',
-                boxShadow: '0 5px 16px rgba(91,101,246,0.28)',
               }}
             >
-              <Smartphone size={13} strokeWidth={2.5} />
+              <Smartphone size={14} strokeWidth={2.5} />
               Cihazını Sat
             </Link>
 

@@ -20,6 +20,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import ServiceBubbles from '@/components/ServiceBubbles';
 import MarketingTriggers from '@/components/MarketingTriggers';
 import LiveSocialProof from '@/components/LiveSocialProof';
+import HepsiburadaHero from '@/components/HepsiburadaHero';
 import QuickValuationWidget from '@/components/QuickValuationWidget';
 import BrandHubShowcase from '@/components/BrandHubShowcase';
 import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
@@ -474,22 +475,17 @@ function HomePageContent() {
   );
 
   return (
-    <div className="k-grain min-h-screen font-sans" style={{ background: 'var(--k-canvas)', color: 'var(--k-ink-2)' }}>
+    <div className="min-h-screen font-sans bg-slate-100 text-slate-800">
 
-      {/* ── İZGARA GRID ARKA PLAN CANVAS (Kullanıcının Sevdiği Mavi Dokulu Yapı) ── */}
+      {/* ── HEPSİBURADA HERO SAHNESİ (10 İkon Barı + İkili Banner) ── */}
+      {!searchQuery && <HepsiburadaHero />}
+
+      {/* ── TİCARİ WİDGETLAR & VİTRİNLER ── */}
       {!searchQuery && (
-        <section className="k-glow-wrap relative w-full overflow-hidden border-b border-[var(--k-line)] bg-[var(--k-canvas)] py-6 md:py-10">
-          {/* Mavimsi Izgara Dokusu */}
-          <div className="k-grid-fine k-grid-fade pointer-events-none absolute inset-0" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-8 space-y-8">
-            {/* YARATICI ÖZELLİK 1: ANINDA DEĞERLEME WIDGET'I */}
+        <section className="relative w-full py-6">
+          <div className="max-w-[1440px] mx-auto px-4 lg:px-8 space-y-6">
             <QuickValuationWidget />
-
-            {/* YARATICI ÖZELLİK 2: MARKA VİTRİNİ SHOWCASE */}
             <BrandHubShowcase />
-
-            {/* YARATICI ÖZELLİK 3: ESCROW GÜVENLİK AKIŞ İNFOGRAFİĞİ */}
             <EscrowFlowInfographic />
           </div>
         </section>
