@@ -47,7 +47,7 @@ export default function QuickValuationWidget() {
       setBidsCount((prev) => prev + 1);
 
       const randomDealer = DEALER_NAMES[Math.floor(Math.random() * DEALER_NAMES.length)];
-      setRecentDealerText(`🔥 ${randomDealer} → +${increment} ₺ teklif yükseltti!`);
+      setRecentDealerText(`🚀 ${randomDealer} → +${increment} ₺ teklif yükseltti!`);
     }, 4500);
 
     return () => clearInterval(interval);
@@ -70,34 +70,34 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full rounded-3xl bg-white/95 backdrop-blur-2xl border-2 border-orange-500/80 p-6 md:p-10 shadow-[0_0_50px_rgba(255,96,0,0.18)] relative overflow-hidden my-6">
-      {/* ── PARLAK NEON TURUNCU RADYAL IŞIMALAR ── */}
-      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-orange-500/25 via-amber-500/15 to-transparent blur-3xl animate-pulse" />
-      <div className="pointer-events-none absolute -left-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-amber-500/20 via-orange-600/15 to-transparent blur-3xl" />
+    <div className="w-full rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 p-6 md:p-10 shadow-2xl shadow-slate-900/5 relative overflow-hidden my-6">
+      {/* Arka plan safir & zümrüt yumuşak radyal ışıklar */}
+      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-blue-500/10 blur-3xl animate-pulse" />
+      <div className="pointer-events-none absolute -left-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-emerald-500/10 blur-3xl" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
 
         {/* Sol taraf: Başlık, Canlı İhale Durumu & Model Seçimi */}
         <div className="lg:col-span-7 text-left space-y-4">
           
-          {/* Live Neon Pulse Beacon */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 text-white text-xs font-black tracking-wider uppercase shadow-[0_0_20px_rgba(255,96,0,0.5)] border border-orange-300">
+          {/* Live Beacon Indicator */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-black tracking-wider uppercase shadow-xs">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-90" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-600 opacity-75" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600" />
             </span>
             <span>CANLI İHALE ARENASI DEVAM EDİYOR</span>
           </div>
 
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight">
-            Cihazını İhaleye Çıkar, <span className="neon-text-orange font-black">Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
+            Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
           </h3>
 
           <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-xl">
             Cihaz modelini seç, canlı açık artırmada yetkili bayilerin kapalı tekliflerle fiyatı nasıl yükselttiğini anında izle.
           </p>
 
-          {/* Model Seçim Çipleri (Neon Orange Glow Hover) */}
+          {/* Model Seçim Çipleri */}
           <div className="pt-2 flex flex-wrap gap-2.5">
             {Object.keys(PRESET_MODELS).map((modelKey) => (
               <button
@@ -105,8 +105,8 @@ export default function QuickValuationWidget() {
                 onClick={() => setSelectedModelKey(modelKey)}
                 className={`px-4.5 py-3 rounded-2xl text-xs font-black transition-all duration-300 border ${
                   selectedModelKey === modelKey
-                    ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-orange-400 shadow-[0_0_25px_rgba(255,96,0,0.5)] scale-105'
-                    : 'bg-orange-50/60 text-slate-800 border-orange-200 hover:bg-orange-100 hover:border-orange-400 hover:text-orange-900'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30 scale-105'
+                    : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -115,47 +115,47 @@ export default function QuickValuationWidget() {
           </div>
         </div>
 
-        {/* Sağ taraf: BÜYÜLEYİCİ NEON TURUNCU SKOR TABLOSU */}
+        {/* Sağ taraf: CANLI AÇIK ARTIRMA SKOR TABLOSU (Gece Mavisi + Zümrüt Fiyat) */}
         <div className="lg:col-span-5">
-          <div className="rounded-3xl bg-gradient-to-b from-orange-500 via-orange-600 to-amber-600 p-7 text-white text-center space-y-5 shadow-[0_0_40px_rgba(255,96,0,0.45)] relative overflow-hidden border-2 border-orange-300/80">
+          <div className="rounded-3xl bg-slate-950 p-7 text-white text-center space-y-5 shadow-2xl shadow-slate-950/20 relative overflow-hidden border border-slate-800">
             
-            <div className="flex items-center justify-between gap-2 border-b border-white/25 pb-3">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <div className="flex items-center gap-1.5 text-xs font-black text-white">
-                <Trophy size={18} className="text-amber-200 animate-bounce" />
+                <Trophy size={18} className="text-amber-400 animate-bounce" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-black text-amber-100 bg-black/25 px-3 py-1 rounded-full border border-white/20">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-300 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
                 <Clock size={13} />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
             </div>
 
-            {/* Dinamik Neon Parıldayan Fiyat Sayacı */}
+            {/* Dinamik Tırmanan Zümrüt Fiyat Sayacı */}
             <div className="py-2 space-y-1">
-              <div className="text-xs font-black text-amber-100 uppercase tracking-widest">
+              <div className="text-xs font-black text-slate-400 uppercase tracking-widest">
                 {currentPreset.modelName}
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] animate-pulse">
-                {fmt(currentBid)} <span className="text-2xl text-amber-200">₺</span>
+              <div className="text-4xl sm:text-5xl font-black text-emerald-400 tracking-tight drop-shadow-md animate-pulse">
+                {fmt(currentBid)} <span className="text-2xl text-emerald-300">₺</span>
               </div>
-              <div className="inline-flex items-center gap-2 text-xs font-black text-white bg-black/30 px-3.5 py-1.5 rounded-full border border-white/20 shadow-inner">
-                <TrendingUp size={15} className="text-amber-300" />
+              <div className="inline-flex items-center gap-2 text-xs font-black text-slate-300 bg-slate-900 px-3.5 py-1.5 rounded-full border border-slate-800">
+                <TrendingUp size={15} className="text-emerald-400" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
 
             {/* Anlık Bayi Hareket Akış Bandı */}
-            <div className="bg-black/30 backdrop-blur-md rounded-2xl p-3.5 text-xs font-extrabold text-amber-100 border border-white/25 shadow-md">
-              <div className="truncate drop-shadow-xs">
+            <div className="bg-slate-900 rounded-2xl p-3.5 text-xs font-extrabold text-slate-200 border border-slate-800 shadow-inner">
+              <div className="truncate">
                 {recentDealerText}
               </div>
             </div>
 
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-4 rounded-2xl bg-white hover:bg-orange-50 text-orange-600 font-black text-sm transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.6)] flex items-center justify-center gap-2 hover:scale-[1.03] active:scale-98"
+              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98"
             >
-              <Zap size={18} className="fill-orange-600 text-orange-600" />
+              <Zap size={18} className="fill-slate-950 text-slate-950" />
               <span>Cihazımı Bu Fiyata İhaleye Çıkar</span>
               <ArrowRight size={18} strokeWidth={3} />
             </Link>

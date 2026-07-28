@@ -12,15 +12,14 @@
    ******************************************************************************* */
 
 :root {
-  /* ── Brand — Enerjik Turuncu ────────────────────────────────────────── */
-  --brand:         #EA580C; /* Orange 600 — primary */
-  --brand-hover:   #C2410C; /* Orange 700 — hover */
-  --brand-deep:    #7C2D12; /* Orange 900 — deepest */
-  --brand-light:   #FFF7ED; /* Orange 50 — tint */
-  --brand-mid:     #FB923C; /* Orange 400 — muted accent */
-  --brand-glow:    rgba(234, 88, 12, 0.2);
-  --brand-lime:    #C6F135; /* Dogrulanmis rozet / canli vurgu */
-  --brand-lime-ink:#3F4D06; /* Lime zemin ustu koyu metin */
+  /* ── Brand — Royal Sapphire & Electric Emerald ──────────────────────── */
+  --brand:         #2563EB; /* Sapphire Blue 600 — primary */
+  --brand-hover:   #1D4ED8; /* Sapphire Blue 700 — hover */
+  --brand-deep:    #0F172A; /* Slate 900 — deepest */
+  --brand-light:   #EFF6FF; /* Blue 50 — tint */
+  --brand-mid:     #60A5FA; /* Blue 400 — accent */
+  --brand-glow:    rgba(37, 99, 235, 0.2);
+  --brand-emerald: #10B981; /* Electric Emerald — prices & trust */
 
   /* ── Space — Warm Charcoal ────────────────────────────────────────────── */
   --space:         #120E0B;

@@ -475,7 +475,7 @@ function HomePageContent() {
   );
 
   return (
-    <div className="min-h-screen font-sans bg-orange-50/20 text-slate-800">
+    <div className="min-h-screen font-sans bg-slate-100/70 text-slate-800">
 
       {/* ── HEPSİBURADA HERO SAHNESİ (10 İkon Barı + İkili Banner) ── */}
       {!searchQuery && <HepsiburadaHero />}
