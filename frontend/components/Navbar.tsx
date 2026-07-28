@@ -280,17 +280,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── HEPSİBURADA TARZI TİCARİ BİLDİRİM BANTI ── */}
-      <div className="bg-emerald-700 text-white text-[11.5px] font-extrabold py-1.5 px-4 text-center tracking-wide flex items-center justify-center gap-3 border-b border-emerald-800">
-        <span className="hidden md:inline">💚 HEPSİBURADA TARZI DOĞRULANMIŞ CİHAZ PAZARYERİ</span>
-        <span className="hidden md:inline">•</span>
-        <span>⚡ Vade Farksız 12 Taksit</span>
-        <span>•</span>
-        <span>🚚 Adresten Bedava Kargo</span>
-        <span>•</span>
-        <span>🔒 %100 Escrow Güvenli Ödeme</span>
-      </div>
-
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
