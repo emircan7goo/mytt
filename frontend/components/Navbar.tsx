@@ -286,7 +286,7 @@ export default function Navbar() {
           background: scrolled ? 'rgba(255,255,255,0.95)' : '#ffffff',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
-          borderBottom: '2px solid #10B981',
+          borderBottom: '2px solid #F97316',
         }}
       >
         {/* ── Ana Çubuk ───────────────────────────────────────────────────── */}
