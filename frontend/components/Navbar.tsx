@@ -353,17 +353,27 @@ export default function Navbar() {
               <span className="truncate">Cihazını Sat</span>
             </Link>
 
-            {/* Sağ Üst Tema Değiştirme Butonu (Karanlık / Açık Tema) */}
+            {/* Sağ Üst Tema Değiştirme Butonu (Yazılı & Yüksek Görünürlüklü Rozet) */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800/80 hover:bg-orange-500/20 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-108 active:scale-95 shadow-md shrink-0"
+              className={`inline-flex items-center gap-1.5 h-9 px-3 sm:h-10 sm:px-4 rounded-full text-xs font-black transition-all hover:scale-105 active:scale-95 shadow-lg border shrink-0 ${
+                theme === 'dark'
+                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300'
+                  : 'border-orange-500/80 bg-orange-50 text-orange-600'
+              }`}
               title={theme === 'dark' ? 'Açık Temaya Geç (Turuncu & Beyaz)' : 'Karanlık Temaya Geç (Siyah & Turuncu)'}
               aria-label="Tema Değiştir"
             >
               {theme === 'dark' ? (
-                <Sun size={18} className="text-amber-400" />
+                <>
+                  <Sun size={15} className="text-amber-400 shrink-0" />
+                  <span className="truncate">Açık Tema</span>
+                </>
               ) : (
-                <Moon size={18} className="text-orange-500" />
+                <>
+                  <Moon size={15} className="text-orange-500 shrink-0" />
+                  <span className="truncate">Koyu Tema</span>
+                </>
               )}
             </button>
 
@@ -666,6 +676,23 @@ export default function Navbar() {
               </Link>
               <button onClick={() => setShowMobileMenu(false)} className="text-[var(--ink-4)] hover:text-[var(--ink)] p-1">
                 <X size={20} />
+              </button>
+            </div>
+
+            {/* Mobil Yan Menü Tema Değiştir Butonu */}
+            <div className="px-3 pt-3">
+              <button
+                onClick={() => { toggleTheme(); setShowMobileMenu(false); }}
+                className={`w-full py-3 px-3.5 rounded-xl flex items-center justify-between font-black text-xs border shadow-md transition-all ${
+                  theme === 'dark'
+                    ? 'bg-amber-500/20 border-amber-400 text-amber-300'
+                    : 'bg-orange-50 border-orange-500 text-orange-600'
+                }`}
+              >
+                <div className="flex items-center gap-2 truncate">
+                  {theme === 'dark' ? <Sun size={18} className="text-amber-400 shrink-0" /> : <Moon size={18} className="text-orange-500 shrink-0" />}
+                  <span className="truncate">{theme === 'dark' ? '☀️ Açık Temaya Geç (Turuncu - Beyaz)' : '🌙 Koyu Temaya Geç (Siyah - Turuncu)'}</span>
+                </div>
               </button>
             </div>
 
