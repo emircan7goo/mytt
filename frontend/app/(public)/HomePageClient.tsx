@@ -26,6 +26,7 @@ import BrandHubShowcase from '@/components/BrandHubShowcase';
 import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
 import TrendyolCircleBar from '@/components/TrendyolCircleBar';
 import TrendyolSpecialProducts from '@/components/TrendyolSpecialProducts';
+import HepsiburadaPopularProducts from '@/components/HepsiburadaPopularProducts';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -489,6 +490,7 @@ function HomePageContent() {
       {!searchQuery && (
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
           <TrendyolSpecialProducts products={families} />
+          <HepsiburadaPopularProducts products={families} />
         </div>
       )}
 

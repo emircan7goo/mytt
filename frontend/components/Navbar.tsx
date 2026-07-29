@@ -289,6 +289,8 @@ export default function Navbar() {
           borderBottom: '3px solid #FF6000',
         }}
       >
+        {/* Hepsiburada Çok Renkli Çizgi */}
+        <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-orange-500 via-blue-500 via-emerald-500 to-purple-600" />
         {/* ── Ana Çubuk ───────────────────────────────────────────────────── */}
         <div className="max-w-[1280px] mx-auto px-4 lg:px-8 h-[64px] flex items-center gap-3">
 
