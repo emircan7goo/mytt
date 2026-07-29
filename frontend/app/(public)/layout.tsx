@@ -40,11 +40,8 @@ import FlashDealBanner from '@/components/FlashDealBanner';
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative overflow-x-hidden bg-[var(--bg)] text-[var(--ink-2)] min-h-screen">
-      {/* Flash Deal Banner — controlled by topBannerActive in SiteConfig */}
-      <FlashDealBanner />
-      {/* Sticky top wrapper: Ticker + Navbar */}
+      {/* Sticky top wrapper: Navbar */}
       <div className="sticky top-0 z-[50]">
-        <AnnouncementTicker />
         <Navbar />
       </div>
       <main className="w-full min-h-screen overflow-x-hidden">
