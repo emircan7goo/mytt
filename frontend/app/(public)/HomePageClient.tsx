@@ -511,9 +511,6 @@ function HomePageContent() {
             <FlashDealArena products={families} />
             <QuickValuationWidget />
             <BrandHubShowcase />
-            <EscrowFlowInfographic />
-            <VerifiedReviewsSection />
-            <SEOContentBlock />
           </div>
         </section>
       )}
