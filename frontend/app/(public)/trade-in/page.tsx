@@ -314,9 +314,9 @@ export default function TradeInPage() {
             </p>
 
             {/* Photo step info */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
-              <AlertCircle size={16} className="text-amber-600 shrink-0 mt-0.5" />
-              <p className="text-sm text-amber-700">
+            <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-xl p-4 flex gap-3">
+              <AlertCircle size={16} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
+              <p className="text-sm text-[var(--k-hot)]">
                 Sonraki adımda <strong>en az 2 fotoğraf</strong> yüklemeniz gerekiyor.
                 Bayiler cihazı görmeden teklif vermez.
               </p>
@@ -592,10 +592,10 @@ function TradeInSuccess({ created, brand, model, result, onReset, router }: {
           {/* Countdown */}
           <div className="flex items-center justify-between p-4 rounded-xl mb-4" style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)' }}>
             <div className="flex items-center gap-2">
-              <Clock size={16} className="text-amber-600" />
-              <span className="text-amber-800 text-sm font-bold">Teklif Süresi Bitiyor</span>
+              <Clock size={16} className="text-[var(--k-hot)]" />
+              <span className="text-[var(--k-hot)] text-sm font-bold">Teklif Süresi Bitiyor</span>
             </div>
-            <span className="text-2xl font-black text-amber-700 tabular-nums">{countdown}</span>
+            <span className="text-2xl font-black text-[var(--k-hot)] tabular-nums">{countdown}</span>
           </div>
           <div className="space-y-2 text-left">
             {[

@@ -8,11 +8,11 @@ export default function HakkimizdaPage() {
 
         {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
+          <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-extrabold text-xs tracking-wider uppercase border border-[var(--k-line-hot)]">
             TÜRKİYE'NİN LİDER CİHAZ PAZARYERİ
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
-            Geleceğin Güvenli <span className="text-orange-600">Teknoloji Ticareti</span>
+            Geleceğin Güvenli <span className="text-[var(--k-hot)]">Teknoloji Ticareti</span>
           </h1>
           <p className="text-[var(--k-ink-2)] text-base font-medium leading-relaxed">
             Mytt; sıfır ve yenilenmiş teknoloji ürünlerinde alıcı ve satıcıları TSE standartlarında güvenli kapalı açık artırma havuzunda buluşturan lider pazaryeridir.
@@ -22,19 +22,19 @@ export default function HakkimizdaPage() {
         {/* İstatistikler */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="bg-[var(--k-surface)] p-6 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-2">
-            <div className="text-3xl sm:text-4xl font-black text-orange-600">150+</div>
+            <div className="text-3xl sm:text-4xl font-black text-[var(--k-hot)]">150+</div>
             <div className="text-xs font-bold text-[var(--k-ink-2)] uppercase">Onaylı Yetkili Bayi</div>
           </div>
           <div className="bg-[var(--k-surface)] p-6 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-2">
-            <div className="text-3xl sm:text-4xl font-black text-orange-600">25.000+</div>
+            <div className="text-3xl sm:text-4xl font-black text-[var(--k-hot)]">25.000+</div>
             <div className="text-xs font-bold text-[var(--k-ink-2)] uppercase">Tamamlanan İşlem</div>
           </div>
           <div className="bg-[var(--k-surface)] p-6 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-2">
-            <div className="text-3xl sm:text-4xl font-black text-orange-600">%99.8</div>
+            <div className="text-3xl sm:text-4xl font-black text-[var(--k-hot)]">%99.8</div>
             <div className="text-xs font-bold text-[var(--k-ink-2)] uppercase">Müşteri Memnuniyeti</div>
           </div>
           <div className="bg-[var(--k-surface)] p-6 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-2">
-            <div className="text-3xl sm:text-4xl font-black text-orange-600">12 Ay</div>
+            <div className="text-3xl sm:text-4xl font-black text-[var(--k-hot)]">12 Ay</div>
             <div className="text-xs font-bold text-[var(--k-ink-2)] uppercase">TSE Garanti Desteği</div>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function HakkimizdaPage() {
         {/* Misyon & Vizyon */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-[var(--k-surface)] p-8 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot)] text-[var(--k-hot-ink)] flex items-center justify-center shadow-md">
               <Target size={24} />
             </div>
             <h3 className="text-xl font-black text-[var(--k-ink)]">Misyonumuz</h3>

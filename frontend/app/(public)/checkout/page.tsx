@@ -260,7 +260,7 @@ function CheckoutContent() {
                 </div>
                 <div className="flex justify-between text-[var(--k-ink-3)]">
                   <span>Kargo</span>
-                  <span className="text-orange-600 font-semibold">Ücretsiz</span>
+                  <span className="text-[var(--k-hot)] font-semibold">Ücretsiz</span>
                 </div>
                 <div className="flex justify-between text-[var(--k-ink-3)]">
                   <span>KDV</span>
@@ -287,7 +287,7 @@ function CheckoutContent() {
                   <span>Kart bilgileriniz sunucularımıza iletilmez</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-[var(--k-ink-3)]">
-                  <AlertCircle size={13} className="text-amber-500" />
+                  <AlertCircle size={13} className="text-[var(--k-hot)]" />
                   <span>Sorun olursa 14 gün içinde tam iade</span>
                 </div>
               </div>

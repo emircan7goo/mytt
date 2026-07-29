@@ -109,7 +109,7 @@ function OptionCard({
   return (
     <button
       onClick={onClick}
-      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-orange-300 shadow-sm shadow-orange-100' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm'}
+      className={selected ? 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-[var(--k-line-hot)] shadow-sm shadow-[var(--k-hot-glow)]' : 'w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all duration-150 border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] hover:shadow-sm'}
       style={selected ? { background: 'linear-gradient(135deg, #f0fdf4, #FFF7ED)', borderColor: '#FDBA74' } : { background: '#fff' }}
     >
       {Icon ? (
@@ -129,7 +129,7 @@ function OptionCard({
       )}
 
       <div className="flex-1 min-w-0">
-        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-orange-800' : 'text-[var(--k-ink)]'}`}>
+        <p className={`font-semibold text-[14px] leading-tight ${selected ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink)]'}`}>
           {label}
         </p>
         {sub && (
@@ -138,7 +138,7 @@ function OptionCard({
       </div>
 
       <div
-        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-orange-600 border-orange-600' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-[var(--k-line-2)] bg-[var(--k-surface)]'}
+        className={selected ? 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all bg-[var(--k-hot-deep)] border-[var(--k-hot-deep)]' : 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all border-[var(--k-line-2)] bg-[var(--k-surface)]'}
       >
         {selected && <Check size={10} className="text-white" strokeWidth={3.5} />}
       </div>

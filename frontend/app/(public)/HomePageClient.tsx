@@ -147,11 +147,11 @@ const CARD_META: Record<string, {
   },
   'trade-in': {
     gradient:    'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
-    badgeCls:    'bg-amber-50 text-amber-700 border border-amber-200',
+    badgeCls:    'bg-[var(--k-hot-wash)] text-[var(--k-hot)] border border-[var(--k-line-hot)]',
     link:        '/trade-in',
-    iconBg:      'bg-amber-50',
-    iconColor:   'text-amber-600',
-    borderColor: 'group-hover:border-amber-500/40',
+    iconBg:      'bg-[var(--k-hot-wash)]',
+    iconColor:   'text-[var(--k-hot)]',
+    borderColor: 'group-hover:border-[var(--k-hot-deep)]/40',
     glowColor:   'rgba(245,158,11,0.18)',
   },
 };
@@ -392,7 +392,7 @@ function HomePageContent() {
           value={searchQuery}
           onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
           placeholder="Kelime veya model ara..."
-          className="w-full pl-4 pr-10 py-2.5 bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-lg text-sm text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:border-orange-500 focus:ring-1 focus:ring-orange-200 outline-none transition-all"
+          className="w-full pl-4 pr-10 py-2.5 bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-lg text-sm text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:border-[var(--k-hot-deep)] focus:ring-1 focus:ring-[var(--k-line-hot)] outline-none transition-all"
         />
         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]">
           <Search size={16} />
@@ -427,7 +427,7 @@ function HomePageContent() {
                 <span className={`transition-colors ${isActive ? 'font-bold text-[var(--k-ink)]' : 'text-[var(--k-ink-2)] group-hover:text-[var(--k-ink)]'}`}>
                   {brand}
                 </span>
-                {isActive && <Check size={12} strokeWidth={3} className="ml-auto text-orange-600" />}
+                {isActive && <Check size={12} strokeWidth={3} className="ml-auto text-[var(--k-hot)]" />}
               </button>
             );
           })}
@@ -455,7 +455,7 @@ function HomePageContent() {
                 className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
               >
                 <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? "bg-orange-600 border-orange-600 text-white" : 'border-[var(--k-line-2)] bg-[var(--k-surface)] group-hover:border-[var(--k-ink-4)]'
+                  isActive ? "bg-[var(--k-hot-deep)] border-[var(--k-hot-deep)] text-white" : 'border-[var(--k-line-2)] bg-[var(--k-surface)] group-hover:border-[var(--k-ink-4)]'
                 }`}>
                   {isActive && <Check size={12} strokeWidth={3} />}
                 </div>
@@ -546,7 +546,7 @@ function HomePageContent() {
                 </h2>
                 {!isLoading && (
                   <span className="inline-flex items-center text-xs font-medium text-[var(--k-ink-3)] mt-0.5">
-                    <b className="text-orange-600 mr-1">{filteredProducts.length}</b>
+                    <b className="text-[var(--k-hot)] mr-1">{filteredProducts.length}</b>
                     {sameDayMode ? ' cihaz — yakınında, bugün teslim' : ' cihaz listeleniyor'}
                   </span>
                 )}
@@ -556,11 +556,11 @@ function HomePageContent() {
                 <button
                   onClick={handleSameDayToggle}
                   disabled={locationLoading}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 font-bold text-sm transition-all shadow-sm disabled:opacity-60 ${ sameDayMode ? 'bg-orange-500 border-orange-500 text-white shadow-orange-500/30 shadow-lg' : 'bg-[var(--k-surface)] border-[var(--k-line)] text-[var(--k-ink-2)] hover:border-[var(--k-line-hot)] hover:bg-[var(--k-hot-wash)] hover:text-[var(--k-hot)]' }`}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 font-bold text-sm transition-all shadow-sm disabled:opacity-60 ${ sameDayMode ? 'bg-[var(--k-hot)] border-[var(--k-hot-deep)] text-[var(--k-hot-ink)] shadow-[var(--k-hot-glow)]/30 shadow-lg' : 'bg-[var(--k-surface)] border-[var(--k-line)] text-[var(--k-ink-2)] hover:border-[var(--k-line-hot)] hover:bg-[var(--k-hot-wash)] hover:text-[var(--k-hot)]' }`}
                 >
                   {locationLoading
                     ? <Loader2 size={15} className="animate-spin" />
-                    : <MapPin size={15} className={sameDayMode ? 'text-white' : 'text-[var(--k-hot)]'} />
+                    : <MapPin size={15} className={sameDayMode ? 'text-[var(--k-hot-ink)]' : 'text-[var(--k-hot)]'} />
                   }
                   <span className="hidden sm:inline">
                     {locationLoading ? 'Konum Alınıyor…' : sameDayMode ? 'Gün İçi Teslim' : 'Gün İçi Teslim'}
@@ -592,7 +592,7 @@ function HomePageContent() {
             </div>
           ) : paginatedProducts.length === 0 ? (
             <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] p-8">
-              <div className="w-16 h-16 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
+              <div className="w-16 h-16 bg-[var(--k-hot-wash)] text-[var(--k-hot)] rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
                 🔍
               </div>
               <h3 className="font-bold text-xl text-[var(--k-ink)] mb-2">Henüz Cihaz Eklenmedi</h3>
@@ -601,7 +601,7 @@ function HomePageContent() {
               </p>
               <button
                 onClick={resetFilters}
-                className="px-6 py-2.5 bg-orange-600 text-white font-bold text-sm rounded-xl hover:bg-orange-700 transition-colors shadow-md shadow-orange-600/20"
+                className="px-6 py-2.5 bg-[var(--k-hot-deep)] text-white font-bold text-sm rounded-xl hover:bg-[var(--k-hot-deep)] transition-colors shadow-md shadow-[var(--k-hot-glow)]/20"
               >
                 Tüm Filtreleri Temizle
               </button>

@@ -31,7 +31,7 @@ export default function GizlilikPage() {
 
           <h3 className="text-base font-black text-[var(--k-ink)] pt-2">4. İletişim</h3>
           <p>
-            Gizlilik politikamız hakkındaki tüm soru ve KVKK talepleriniz için <Link href="/iletisim" className="text-orange-600 font-bold underline">destek@mytt.com.tr</Link> adresinden bizimle iletişime geçebilirsiniz.
+            Gizlilik politikamız hakkındaki tüm soru ve KVKK talepleriniz için <Link href="/iletisim" className="text-[var(--k-hot)] font-bold underline">destek@mytt.com.tr</Link> adresinden bizimle iletişime geçebilirsiniz.
           </p>
         </div>
 

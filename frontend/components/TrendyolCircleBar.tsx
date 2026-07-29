@@ -39,7 +39,7 @@ export default function TrendyolCircleBar() {
         {/* Sol Kaydırma Butonu (Masaüstünde Görünür) */}
         <button
           onClick={() => scroll('left')}
-          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-xl border border-[var(--k-line)] items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-xl border border-[var(--k-line)] items-center justify-center hover:bg-[var(--k-hot-deep)] hover:border-[var(--k-hot-deep)] transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sola kaydır"
         >
           <ChevronLeft size={22} />
@@ -59,7 +59,7 @@ export default function TrendyolCircleBar() {
                 className="flex flex-col items-center gap-1.5 sm:gap-3 group/item shrink-0 w-[84px] sm:w-[96px] text-center select-none"
               >
                 {/* Halka + üretilmiş illüstrasyon (ikon yedekli) */}
-                <div className="relative p-0.5 sm:p-1 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_15px_rgba(255,106,26,0.35)] group-hover/item:shadow-[0_0_28px_rgba(255,106,26,0.7)] group-hover/item:scale-105 transition-all duration-300">
+                <div className="relative p-0.5 sm:p-1 rounded-full bg-gradient-to-tr from-[var(--k-hot)] via-[var(--k-hot-2)] to-[var(--k-hot-deep)] shadow-[0_0_15px_rgba(255,106,26,0.35)] group-hover/item:shadow-[0_0_28px_rgba(255,106,26,0.7)] group-hover/item:scale-105 transition-all duration-300">
                   <div className="w-[62px] h-[62px] sm:w-[76px] sm:h-[76px] rounded-full bg-[var(--k-void)] p-1 flex items-center justify-center overflow-hidden">
                     <img
                       src={item.img}
@@ -74,14 +74,14 @@ export default function TrendyolCircleBar() {
                         el.nextElementSibling?.classList.remove('hidden');
                       }}
                     />
-                    <div className="hidden w-full h-full rounded-full bg-gradient-to-br from-orange-500 to-amber-600 text-white items-center justify-center flex">
+                    <div className="hidden w-full h-full rounded-full bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] text-[var(--k-hot-ink)] items-center justify-center flex">
                       <Icon className="w-5 h-5 sm:w-7 sm:h-7" strokeWidth={2.2} />
                     </div>
                   </div>
                 </div>
 
                 {/* Metin Etiketi */}
-                <span className="text-[10px] sm:text-[12px] font-black text-[var(--k-ink)] leading-tight group-hover/item:text-orange-400 transition-colors line-clamp-2 drop-shadow-sm">
+                <span className="text-[10px] sm:text-[12px] font-black text-[var(--k-ink)] leading-tight group-hover/item:text-[var(--k-hot)] transition-colors line-clamp-2 drop-shadow-sm">
                   {item.label}
                 </span>
               </Link>
@@ -92,7 +92,7 @@ export default function TrendyolCircleBar() {
         {/* Sağ Kaydırma Butonu (Masaüstünde Görünür) */}
         <button
           onClick={() => scroll('right')}
-          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-xl border border-[var(--k-line)] items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-xl border border-[var(--k-line)] items-center justify-center hover:bg-[var(--k-hot-deep)] hover:border-[var(--k-hot-deep)] transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sağa kaydır"
         >
           <ChevronRight size={22} />

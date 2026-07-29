@@ -69,8 +69,8 @@ export default function ThemeInjector() {
 
   if (!settings) return null;
 
-  const primaryColor  = settings.primaryColor || '#FF6A1A';
-  const primaryHover  = settings.primaryColorHover || '#FF8A47';
+  const primaryColor  = settings.primaryColor || '#FF7A20';
+  const primaryHover  = settings.primaryColorHover || '#FFA351';
 
   // Font: SADECE admin panelden bilinçli olarak seçilmişse devreye girer.
   // Aksi halde layout.tsx'teki KARBON fontları (Space Grotesk / Inter Tight /

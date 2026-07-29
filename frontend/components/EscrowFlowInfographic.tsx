@@ -36,14 +36,14 @@ export default function EscrowFlowInfographic() {
         
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[var(--k-line)] pb-6">
           <div>
-            <span className="text-xs font-black text-orange-400 tracking-widest uppercase">GÜVENLİ TİCARET AKIŞI</span>
+            <span className="text-xs font-black text-[var(--k-hot)] tracking-widest uppercase">GÜVENLİ TİCARET AKIŞI</span>
             <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
-              4 Adımda <span className="text-orange-400">%100 Güvenli Alım Satım</span> Nasıl Çalışır?
+              4 Adımda <span className="text-[var(--k-hot)]">%100 Güvenli Alım Satım</span> Nasıl Çalışır?
             </h3>
           </div>
           <Link
             href="/garanti"
-            className="text-xs font-black text-[var(--k-ink-4)] hover:text-orange-400 flex items-center gap-1.5 transition-colors"
+            className="text-xs font-black text-[var(--k-ink-4)] hover:text-[var(--k-hot)] flex items-center gap-1.5 transition-colors"
           >
             <span>Escrow Detaylarını İncele</span>
             <ArrowRight size={16} />
@@ -54,10 +54,10 @@ export default function EscrowFlowInfographic() {
           {STEPS.map((s, idx) => {
             const Icon = s.icon;
             return (
-              <div key={idx} className="bg-[var(--k-void)] rounded-2xl p-6 border border-[var(--k-line)] space-y-3 relative group hover:border-orange-500/60 transition-colors">
-                <div className="flex items-center justify-between text-orange-400 font-mono font-black text-lg">
+              <div key={idx} className="bg-[var(--k-void)] rounded-2xl p-6 border border-[var(--k-line)] space-y-3 relative group hover:border-[var(--k-hot-deep)]/60 transition-colors">
+                <div className="flex items-center justify-between text-[var(--k-hot)] font-mono font-black text-lg">
                   <span>{s.step}</span>
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--k-hot)]/10 border border-[var(--k-hot-deep)]/20 flex items-center justify-center text-[var(--k-hot)]">
                     <Icon size={20} />
                   </div>
                 </div>

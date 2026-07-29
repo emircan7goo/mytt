@@ -125,7 +125,7 @@ export default function AuthModal() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="ornek@hesap.com"
-                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium"
+                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-[var(--k-hot-deep)]/20 focus:border-[var(--k-hot-deep)] transition-all font-medium"
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function AuthModal() {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium tracking-widest"
+                  className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-[var(--k-hot-deep)]/20 focus:border-[var(--k-hot-deep)] transition-all font-medium tracking-widest"
                 />
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function AuthModal() {
             <button
               type="submit"
               disabled={loading}
-              className={`group relative mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${isDealerMode ? 'bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20' : 'bg-orange-500 hover:bg-orange-600 text-white shadow-orange-500/20'}`}
+              className={`group relative mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${isDealerMode ? 'bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20' : 'bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white shadow-[var(--k-hot-glow)]/20'}`}
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -175,12 +175,12 @@ export default function AuthModal() {
             <Link
               href="/register"
               onClick={() => setAuthModalOpen(false)}
-              className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-xl bg-[var(--k-surface-2)] hover:bg-orange-50 border border-[var(--k-line)] hover:border-orange-300 transition-all group"
+              className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-xl bg-[var(--k-surface-2)] hover:bg-[var(--k-hot-wash)] border border-[var(--k-line)] hover:border-[var(--k-line-hot)] transition-all group"
             >
               <div className="flex items-center gap-2.5">
                 <UserPlus size={16} className="text-[var(--k-hot)]" />
-                <span className="text-[13px] font-bold text-[var(--k-ink-2)] group-hover:text-orange-700">
-                  Hesabın yok mu? <span className="text-orange-600">Üye Ol</span>
+                <span className="text-[13px] font-bold text-[var(--k-ink-2)] group-hover:text-[var(--k-hot)]">
+                  Hesabın yok mu? <span className="text-[var(--k-hot)]">Üye Ol</span>
                 </span>
               </div>
               <ChevronRight size={14} className="text-[var(--k-ink-4)] group-hover:text-[var(--k-hot)] group-hover:translate-x-0.5 transition-all" />

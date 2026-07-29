@@ -6,7 +6,7 @@ export default function IadePage() {
     <div className="min-h-screen bg-[var(--k-canvas-2)] py-12 px-4 lg:px-8">
       <div className="max-w-[900px] mx-auto bg-[var(--k-surface)] p-8 md:p-12 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-8">
         <div className="flex items-center gap-4 border-b border-[var(--k-line)] pb-6">
-          <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold">
+          <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center font-bold">
             <RotateCcw size={24} />
           </div>
           <div>
@@ -27,8 +27,8 @@ export default function IadePage() {
             <li>Cihaz TSE ekspertiz merkezimize ulaştığında 24 saat içinde ücret iadeniz bankanıza aktarılır.</li>
           </ol>
 
-          <div className="bg-orange-50 p-6 rounded-2xl border border-orange-200 text-orange-900 font-bold text-xs space-y-2">
-            <div className="flex items-center gap-2 text-sm font-black text-orange-600">
+          <div className="bg-[var(--k-hot-wash)] p-6 rounded-2xl border border-[var(--k-line-hot)] text-[var(--k-hot)] font-bold text-xs space-y-2">
+            <div className="flex items-center gap-2 text-sm font-black text-[var(--k-hot)]">
               <ShieldCheck size={18} />
               <span>Garanti Kapsamında Ücretsiz Değişim</span>
             </div>

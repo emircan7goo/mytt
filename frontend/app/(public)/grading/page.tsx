@@ -27,7 +27,7 @@ export default function GradingPage() {
           </div>
 
           <div className="p-6 bg-[var(--k-canvas-2)] rounded-2xl border border-[var(--k-line)] space-y-3">
-            <span className="px-3 py-1 rounded-full bg-amber-500 text-white font-black text-xs">B İyi</span>
+            <span className="px-3 py-1 rounded-full bg-[var(--k-hot)] text-[var(--k-hot-ink)] font-black text-xs">B İyi</span>
             <p className="text-xs text-[var(--k-ink-2)] font-medium">Normal kullanım izleri barındıran, 100% donanımsal kusursuzlukta uygun fiyatlı cihazlar.</p>
           </div>
         </div>

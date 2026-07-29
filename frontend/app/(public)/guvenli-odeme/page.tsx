@@ -23,11 +23,11 @@ export default function GuvenliOdemePage() {
           <h3 className="text-base font-black text-[var(--k-ink)]">Escrow Sistemi Nasıl Çalışır?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold text-[var(--k-ink)]">
             <div className="p-4 bg-[var(--k-canvas-2)] rounded-2xl border border-[var(--k-line)] space-y-2">
-              <div className="text-orange-600 font-black">1. Ödeme Bloke Edilir</div>
+              <div className="text-[var(--k-hot)] font-black">1. Ödeme Bloke Edilir</div>
               <p className="text-[var(--k-ink-2)] font-medium">Alıcının ödemesi Escrow havuz hesabında güvenle bekletilir.</p>
             </div>
             <div className="p-4 bg-[var(--k-canvas-2)] rounded-2xl border border-[var(--k-line)] space-y-2">
-              <div className="text-orange-600 font-black">2. Ekspertiz Onayı</div>
+              <div className="text-[var(--k-hot)] font-black">2. Ekspertiz Onayı</div>
               <p className="text-[var(--k-ink-2)] font-medium">Cihaz TSE merkezinde 32 noktadan test edilip doğrulanır.</p>
             </div>
             <div className="p-4 bg-[var(--k-canvas-2)] rounded-2xl border border-[var(--k-line)] space-y-2">

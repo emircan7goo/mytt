@@ -34,9 +34,9 @@ function BasarisizContent() {
         </div>
 
         {/* Olası sebepler */}
-        <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 w-full text-left">
-          <p className="text-sm font-semibold text-amber-800 mb-2">Olası Sebepler</p>
-          <ul className="text-xs text-amber-700 space-y-1 list-disc list-inside leading-relaxed">
+        <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-4 w-full text-left">
+          <p className="text-sm font-semibold text-[var(--k-hot)] mb-2">Olası Sebepler</p>
+          <ul className="text-xs text-[var(--k-hot)] space-y-1 list-disc list-inside leading-relaxed">
             <li>Kart bilgileri hatalı girildi</li>
             <li>Kartınızın internet alışverişi kapalı olabilir</li>
             <li>3D Secure şifresi yanlış girildi</li>

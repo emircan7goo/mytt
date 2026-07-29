@@ -120,7 +120,7 @@ export default function ProductDetailClient() {
                   Grade {(product as any).cosmeticGrade || (product as any).grade || 'A'}
                 </span>
                 {product.condition === 'NEW' && (
-                  <span className="bg-orange-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
+                  <span className="bg-[var(--k-hot)] text-[var(--k-hot-ink)] text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
                     Sıfır Cihaz
                   </span>
                 )}
@@ -272,7 +272,7 @@ export default function ProductDetailClient() {
 
               <div className="pt-6 border-t border-[var(--k-line)] flex flex-col gap-4">
                  <div className="flex items-center gap-4 text-[var(--k-ink-2)] text-[13px] font-medium bg-[var(--k-surface)] p-4 rounded-xl border border-[var(--k-line)] shadow-sm">
-                    <div className="w-8 h-8 rounded-full bg-orange-50 text-[var(--k-hot)] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center shrink-0">
                        <Truck size={16} />
                     </div>
                     <div>

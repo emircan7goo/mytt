@@ -107,7 +107,7 @@ function LoginForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ornek@hesap.com"
-                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-4 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-[var(--k-hot-deep)]/20 focus:border-[var(--k-hot-deep)] transition-all font-medium text-sm"
                   />
                 </div>
               </div>
@@ -137,7 +137,7 @@ function LoginForm() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium tracking-widest text-sm"
+                    className="w-full bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-xl py-3 pl-11 pr-11 text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:ring-2 focus:ring-[var(--k-hot-deep)]/20 focus:border-[var(--k-hot-deep)] transition-all font-medium tracking-widest text-sm"
                   />
                   <button
                     type="button"
@@ -153,7 +153,7 @@ function LoginForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group relative mt-1 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-orange-500 hover:bg-orange-600 text-white shadow-orange-500/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="group relative mt-1 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white shadow-[var(--k-hot-glow)]/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -173,7 +173,7 @@ function LoginForm() {
               Hesabınız yok mu?{' '}
               <Link
                 href="/register"
-                className="font-bold text-[var(--k-hot)] hover:text-orange-600 transition-colors"
+                className="font-bold text-[var(--k-hot)] hover:text-[var(--k-hot)] transition-colors"
               >
                 Üye Ol
               </Link>

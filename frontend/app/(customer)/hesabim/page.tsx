@@ -217,10 +217,10 @@ function ProfileTab() {
       {/* Şifre değiştir */}
       <div className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] shadow-sm p-6">
         <h3 className="font-bold text-[var(--k-ink)] mb-5 flex items-center gap-2">
-          <Lock size={16} className="text-amber-500" /> Şifre Değiştir
+          <Lock size={16} className="text-[var(--k-hot)]" /> Şifre Değiştir
         </h3>
         {pwdSuccess ? (
-          <div className="flex items-center gap-2 text-orange-600 bg-orange-50 rounded-xl p-4 text-sm font-semibold">
+          <div className="flex items-center gap-2 text-[var(--k-hot)] bg-[var(--k-hot-wash)] rounded-xl p-4 text-sm font-semibold">
             <CheckCircle2 size={16} /> Şifreniz başarıyla güncellendi
           </div>
         ) : (
@@ -256,7 +256,7 @@ function ProfileTab() {
             <button
               type="submit"
               disabled={pwdSaving || !curPwd || !newPwd}
-              className="self-start flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40"
+              className="self-start flex items-center gap-2 bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40"
             >
               {pwdSaving ? <Loader2 size={14} className="animate-spin" /> : <Lock size={14} />}
               Şifreyi Güncelle
@@ -379,14 +379,14 @@ function SellRequestCard({ req }: { req: SellRequest }) {
           <div className="flex items-center gap-3 p-3 rounded-xl mb-3"
             style={{ background: 'linear-gradient(135deg,#fef3c7,#fef9c3)', border: '1px solid #fde68a' }}>
             <div className="flex flex-col items-center shrink-0">
-              <span className="text-2xl font-black text-amber-700 tabular-nums leading-none">{countdown}</span>
-              <span className="text-[9px] font-bold text-amber-500 uppercase tracking-wider mt-0.5">kalan süre</span>
+              <span className="text-2xl font-black text-[var(--k-hot)] tabular-nums leading-none">{countdown}</span>
+              <span className="text-[9px] font-bold text-[var(--k-hot)] uppercase tracking-wider mt-0.5">kalan süre</span>
             </div>
             <div>
-              <p className="text-amber-800 text-xs font-bold">Teklif süreci devam ediyor</p>
-              <p className="text-amber-600 text-[11px]">Bayiler anonim teklif veriyor — süre dolunca karar verebilirsiniz</p>
+              <p className="text-[var(--k-hot)] text-xs font-bold">Teklif süreci devam ediyor</p>
+              <p className="text-[var(--k-hot)] text-[11px]">Bayiler anonim teklif veriyor — süre dolunca karar verebilirsiniz</p>
             </div>
-            <div className="ml-auto w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+            <div className="ml-auto w-2 h-2 rounded-full bg-[var(--k-hot)] animate-pulse shrink-0" />
           </div>
         )}
 
@@ -394,9 +394,9 @@ function SellRequestCard({ req }: { req: SellRequest }) {
         {req.status === 'PENDING' && sortedBids.length === 0 && (
           <div className="mb-3 text-center py-5 bg-[var(--k-surface-2)] rounded-xl border border-[var(--k-line)]">
             <div className="flex items-center justify-center gap-2 text-[var(--k-ink-4)]">
-              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-              <div className="w-2 h-2 rounded-full bg-orange-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+              <div className="w-2 h-2 rounded-full bg-[var(--k-hot)] animate-bounce" style={{ animationDelay: '0ms' }} />
+              <div className="w-2 h-2 rounded-full bg-[var(--k-hot)] animate-bounce" style={{ animationDelay: '150ms' }} />
+              <div className="w-2 h-2 rounded-full bg-[var(--k-hot)] animate-bounce" style={{ animationDelay: '300ms' }} />
             </div>
             <p className="text-[var(--k-ink-4)] text-xs mt-2">Bayiler teklif hazırlıyor...</p>
           </div>
@@ -413,26 +413,26 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                 <div key={bid.id}
                   className={`flex items-center justify-between p-3 rounded-xl border ${
                     i === 0
-                      ? 'border-orange-200 bg-gradient-to-r from-orange-50 to-white'
+                      ? 'border-[var(--k-line-hot)] bg-gradient-to-r from-[var(--k-hot-wash)] to-white'
                       : 'border-[var(--k-line)] bg-[var(--k-surface-2)]'
                   }`}>
                   <div className="flex items-center gap-2">
                     {i === 0 && <span className="text-base leading-none">🏆</span>}
                     <div>
-                      <p className={`font-bold text-sm ${i === 0 ? 'text-orange-800' : 'text-[var(--k-ink-2)]'}`}>
+                      <p className={`font-bold text-sm ${i === 0 ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink-2)]'}`}>
                         {bid.dealerTag ?? `Bayi #${i + 1}`}
                       </p>
                       {bid.note && <p className="text-xs text-[var(--k-ink-4)] italic">"{bid.note}"</p>}
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`font-black text-base ${i === 0 ? 'text-orange-700' : 'text-[var(--k-ink-2)]'}`}>
+                    <span className={`font-black text-base ${i === 0 ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink-2)]'}`}>
                       {Number(bid.amount).toLocaleString('tr-TR')} ₺
                     </span>
                     {req.status === 'EXPIRED' && i === 0 && (
                       <button onClick={() => handleAccept(bid.id)}
                         disabled={acceptBid.isPending}
-                        className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg text-xs font-bold hover:bg-orange-700 transition-colors disabled:opacity-50">
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[var(--k-hot-deep)] text-white rounded-lg text-xs font-bold hover:bg-[var(--k-hot-deep)] transition-colors disabled:opacity-50">
                         <Check size={11} /> Kabul Et
                       </button>
                     )}
@@ -459,7 +459,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
               <p className="text-blue-700 text-xs">Cihazınızı Mytt deposuna kargolayın. Kargo kodunuzu girin.</p>
             </div>
             {req.shippingCode ? (
-              <div className="flex items-center gap-2 text-sm text-orange-700 bg-orange-50 border border-orange-100 rounded-xl p-3">
+              <div className="flex items-center gap-2 text-sm text-[var(--k-hot)] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-xl p-3">
                 <Package size={14} />
                 <span>Kargo Kodu: <strong className="font-mono">{req.shippingCode}</strong></span>
               </div>
@@ -474,7 +474,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                   placeholder="Kargo takip kodu..."
                   className="flex-1 border border-[var(--k-line)] focus:border-[var(--k-line-2)] rounded-xl px-3 py-2 text-sm outline-none" />
                 <button onClick={handleShipping} disabled={!shippingCode || addShipping.isPending}
-                  className="px-4 py-2 bg-orange-600 text-white rounded-xl text-xs font-bold disabled:opacity-50">
+                  className="px-4 py-2 bg-[var(--k-hot-deep)] text-white rounded-xl text-xs font-bold disabled:opacity-50">
                   {addShipping.isPending ? '...' : 'Kaydet'}
                 </button>
               </div>
@@ -484,11 +484,11 @@ function SellRequestCard({ req }: { req: SellRequest }) {
 
         {/* COMPLETED */}
         {req.status === 'COMPLETED' && (
-          <div className="mb-4 p-3 rounded-xl bg-orange-50 border border-orange-100 flex items-center gap-2">
-            <Check size={16} className="text-orange-600" />
+          <div className="mb-4 p-3 rounded-xl bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] flex items-center gap-2">
+            <Check size={16} className="text-[var(--k-hot)]" />
             <div>
-              <p className="text-orange-800 text-xs font-bold">İşlem Tamamlandı</p>
-              <p className="text-orange-700 text-xs">Nihai ödeme: {req.finalPrice ? `${Number(req.finalPrice).toLocaleString('tr-TR')} ₺` : '—'}</p>
+              <p className="text-[var(--k-hot)] text-xs font-bold">İşlem Tamamlandı</p>
+              <p className="text-[var(--k-hot)] text-xs">Nihai ödeme: {req.finalPrice ? `${Number(req.finalPrice).toLocaleString('tr-TR')} ₺` : '—'}</p>
             </div>
           </div>
         )}
@@ -514,7 +514,7 @@ function SellRequestsTab() {
           <p className="text-[var(--k-ink-4)] text-sm">Cihaz satış talepleriniz ve gelen teklifler</p>
         </div>
         <Link href="/sell"
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-600 text-white text-xs font-bold hover:bg-orange-700 transition-colors">
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[var(--k-hot-deep)] text-white text-xs font-bold hover:bg-[var(--k-hot-deep)] transition-colors">
           <Smartphone size={13} /> Yeni Talep
         </Link>
       </div>
@@ -663,7 +663,7 @@ function WishlistTab() {
                     <span className="font-bold text-[14px] text-[var(--k-ink)] leading-snug truncate">{p.model}</span>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       {p.grade && (
-                        <span className="text-[10px] font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-full">{p.grade}</span>
+                        <span className="text-[10px] font-bold text-[var(--k-hot)] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] px-2 py-0.5 rounded-full">{p.grade}</span>
                       )}
                       {p.store && (
                         <DealerTrustBadge rating={p.store.rating} isPremium={p.store.isPremium} />
@@ -750,7 +750,7 @@ export default function HesabimPage() {
               <p className="text-[var(--k-ink-4)] text-sm">Sipariş durumu, garanti süresi ve kargo takibi</p>
             </div>
             <a href="/"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-500 text-white text-xs font-bold shadow-sm hover:bg-orange-600 transition-colors">
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[var(--k-hot)] text-white text-xs font-bold shadow-sm hover:bg-[var(--k-hot-deep)] transition-colors">
               Alışverişe Devam <ChevronRight size={13} />
             </a>
           </div>
@@ -787,7 +787,7 @@ export default function HesabimPage() {
             </div>
           )}
 
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-orange-50 border border-orange-100">
+          <div className="flex items-start gap-3 p-4 rounded-xl bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]">
             <ShieldCheck size={18} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
             <div>
               <p className="text-[var(--k-ink)] text-sm font-semibold mb-0.5">6 Aylık Garanti Hakkında</p>

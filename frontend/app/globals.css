@@ -105,10 +105,10 @@
   --font-display:   var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:      var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
   --font-editorial: var(--font-jakarta), sans-serif;
-  --color-brand:  #FF6A1A;
-  --color-space:  #05070B;
-  --color-bg:     #090D16;
-  --color-ink:    #F8FAFC;
+  --color-brand:  #FF7A20;
+  --color-space:  #070504;
+  --color-bg:     #100D0B;
+  --color-ink:    #FBF7F2;
 }
 
 /* *******************************************************************************
@@ -1263,43 +1263,49 @@ a:active {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root, :root[data-theme="light"], :root[data-theme="dark"] {
-  /* ── Zemin: sicak siyah basamaklari ──────────────────────────────────── */
-  --k-void:      #07090E;   /* sayfa tabani */
-  --k-canvas:    #090D16;   /* ana kanvas — mevcut koyu bolumlerle ayni ton */
-  --k-canvas-2:  #0E1420;   /* bant / oyuk alan */
-  --k-surface:   #131A28;   /* kart */
-  --k-surface-2: #18202F;   /* yukseltilmis / hover */
-  --k-surface-3: #1F2937;   /* input, inset */
-  --k-anchor:    #05070B;   /* footer — en dip */
+  /* ── EMBER — sicak grafit taban (lacivert-siyah DEGIL) ───────────────────
+     Onceki GECE denemesi lacivert-siyah + turuncuydu; sonuc "gri-siyah-turuncu
+     yamasi" gibi kaliyordu cunku bilesenlerde onlarca acik-tema orange-50/100
+     ve amber-* Tailwind sinifi tokenlere hic baglanmamis, ciplak kalmisti.
+     Bu surumde: (1) taban lacivertten sicak/notr grafite cekildi — turuncuyla
+     rengarenk carpismiyor, (2) amber ailesi tamamen kaldirildi, TEK turuncu
+     gradyan var, (3) ~340 kacak acik-tema sinif tokene baglandi (bkz. asagidaki
+     genis degisim gecmisi). ────────────────────────────────────────────── */
+  --k-void:      #0B0908;   /* sayfa tabani */
+  --k-canvas:    #100D0B;   /* ana kanvas */
+  --k-canvas-2:  #16110E;   /* bant / oyuk alan */
+  --k-surface:   #1C1512;   /* kart */
+  --k-surface-2: #241C17;   /* yukseltilmis / hover */
+  --k-surface-3: #2C221C;   /* input, inset */
+  --k-anchor:    #070504;   /* footer — en dip */
 
   /* ── Cizgiler ────────────────────────────────────────────────────────── */
   --k-line:      rgba(255,255,255,0.08);
   --k-line-2:    rgba(255,255,255,0.14);
-  --k-line-hot:  rgba(255,106,26,0.34);
-  --k-grid:      rgba(255,255,255,0.035);
+  --k-line-hot:  rgba(255,122,32,0.36);
+  --k-grid:      rgba(255,255,255,0.032);
 
-  /* ── Murekkep ────────────────────────────────────────────────────────── */
-  --k-ink:       #F8FAFC;
-  --k-ink-2:     rgba(248,250,252,0.74);
-  --k-ink-3:     rgba(248,250,252,0.55);
-  --k-ink-4:     rgba(248,250,252,0.38);
+  /* ── Murekkep: sicak beyaz (mavi-beyaz degil) ────────────────────────── */
+  --k-ink:       #FBF7F2;
+  --k-ink-2:     rgba(251,247,242,0.74);
+  --k-ink-3:     rgba(251,247,242,0.55);
+  --k-ink-4:     rgba(251,247,242,0.38);
 
-  /* ── Akkor turuncu ───────────────────────────────────────────────────── */
-  --k-hot:       #FF6A1A;
-  --k-hot-2:     #FF8A47;
+  /* ── Ember turuncu — TEK aile, amber yok ─────────────────────────────── */
+  --k-hot:       #FF7A20;
+  --k-hot-2:     #FFA351;
   --k-hot-deep:  #C2410C;
-  --k-hot-ink:   #0A0A0C;   /* turuncu zemin ustu metin */
-  --k-hot-wash:  rgba(255,106,26,0.12);
-  --k-hot-glow:  rgba(255,106,26,0.34);
-  --k-grad:      linear-gradient(135deg, #FF6A1A 0%, #FFA23D 100%);
-  --k-grad-soft: linear-gradient(135deg, rgba(255,106,26,0.14) 0%, rgba(255,162,61,0.10) 100%);
+  --k-hot-ink:   #1A0D02;   /* turuncu zemin ustu metin — sicak neredeyse-siyah */
+  --k-hot-wash:  rgba(255,122,32,0.13);
+  --k-hot-glow:  rgba(255,122,32,0.40);
+  --k-grad:      linear-gradient(135deg, #FF7A20 0%, #FFA351 100%);
+  --k-grad-soft: linear-gradient(135deg, rgba(255,122,32,0.15) 0%, rgba(255,163,81,0.10) 100%);
 
   /* ── Sinyal renkleri: koyu zeminde okunacak acik uclar ───────────────── */
   --k-ok:        #34D399;
   --k-warn:      #FBBF24;
   --k-bad:       #F87171;
   --k-cool:      #60A5FA;
-  /* Koyu zeminde bu tonlar zaten okunur; ayri "ink" varyanti gerekmiyor */
   --k-ok-ink:    #34D399;
   --k-warn-ink:  #FBBF24;
 
@@ -1459,6 +1465,10 @@ body {
     background: var(--k-surface);
     border: 1px solid var(--k-line);
     border-radius: var(--k-r-lg);
+    /* Ustte ince camsi isik cizgisi — EMBER'in GECE'den farkli, daha
+       "cam yuzey" hissi veren imzasi. Golge yerine ust kenarda cok hafif
+       bir aydinlanma: elemanlar hafifce isik alan bir camdan yapilmis gibi. */
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
     transition: border-color .34s cubic-bezier(.22,1,.36,1),
                 background .34s cubic-bezier(.22,1,.36,1),
                 transform .34s cubic-bezier(.22,1,.36,1),
@@ -1468,7 +1478,8 @@ body {
     transform: translateY(-5px);
     background: var(--k-surface-2);
     border-color: var(--k-line-hot);
-    box-shadow: 0 18px 44px rgba(0,0,0,0.6), 0 0 34px -10px var(--k-hot-glow);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.07),
+                0 18px 44px rgba(0,0,0,0.55), 0 0 38px -8px var(--k-hot-glow);
   }
   .k-card-glow::after {
     content: '';

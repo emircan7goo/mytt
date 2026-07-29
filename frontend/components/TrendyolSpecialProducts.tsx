@@ -35,7 +35,7 @@ export default function TrendyolSpecialProducts({ products }: Props) {
           </h2>
           <Link
             href="/"
-            className="text-[11px] sm:text-xs font-black text-[var(--k-ink-4)] hover:text-orange-400 flex items-center gap-1 transition-colors"
+            className="text-[11px] sm:text-xs font-black text-[var(--k-ink-4)] hover:text-[var(--k-hot)] flex items-center gap-1 transition-colors"
           >
             <span>Tümünü Gör</span>
             <ChevronRight size={14} className="sm:w-4 sm:h-4" />
@@ -45,7 +45,7 @@ export default function TrendyolSpecialProducts({ products }: Props) {
         {/* Sol Kaydırma Butonu */}
         <button
           onClick={() => scroll('left')}
-          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-2xl border border-[var(--k-line)] items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-2xl border border-[var(--k-line)] items-center justify-center hover:bg-[var(--k-hot-deep)] hover:border-[var(--k-hot-deep)] transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sola kaydır"
         >
           <ChevronLeft size={20} />
@@ -65,18 +65,18 @@ export default function TrendyolSpecialProducts({ products }: Props) {
               <Link
                 key={`${family.brand}-${family.model}`}
                 href={href}
-                className="group/card flex flex-col justify-between shrink-0 w-[155px] sm:w-[220px] bg-[var(--k-void)] rounded-xl sm:rounded-2xl border border-[var(--k-line)]/90 p-2.5 sm:p-3.5 shadow-xl hover:shadow-2xl hover:border-orange-500 transition-all duration-300 relative overflow-hidden select-none"
+                className="group/card flex flex-col justify-between shrink-0 w-[155px] sm:w-[220px] bg-[var(--k-void)] rounded-xl sm:rounded-2xl border border-[var(--k-line)]/90 p-2.5 sm:p-3.5 shadow-xl hover:shadow-2xl hover:border-[var(--k-hot-deep)] transition-all duration-300 relative overflow-hidden select-none"
               >
                 {/* ── Üst Etiketler & Favori Kalp ── */}
                 <div className="space-y-1.5 sm:space-y-2">
                   <div className="flex items-center justify-between gap-1">
-                    <span className="px-1.5 py-0.5 rounded bg-orange-600/20 text-orange-400 border border-orange-500/30 font-black text-[8px] sm:text-[9px] uppercase tracking-wider">
+                    <span className="px-1.5 py-0.5 rounded bg-[var(--k-hot-deep)]/20 text-[var(--k-hot)] border border-[var(--k-hot-deep)]/30 font-black text-[8px] sm:text-[9px] uppercase tracking-wider">
                       Kargo Bedava
                     </span>
 
                     <button
                       onClick={(e) => { e.preventDefault(); }}
-                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--k-canvas)] border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-4)] hover:text-orange-400 transition-colors"
+                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--k-canvas)] border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-4)] hover:text-[var(--k-hot)] transition-colors"
                       title="Favorilere Ekle"
                     >
                       <Heart size={12} className="sm:w-3.5 sm:h-3.5" />
@@ -100,13 +100,13 @@ export default function TrendyolSpecialProducts({ products }: Props) {
                   {/* ── Marka & Model Başlığı ── */}
                   <div className="text-left space-y-0.5 sm:space-y-1 pt-0.5">
                     <div className="text-[11px] sm:text-[12px] font-black text-white line-clamp-2 leading-snug">
-                      <span className="font-black text-orange-400 mr-1">{family.brand}</span>
+                      <span className="font-black text-[var(--k-hot)] mr-1">{family.brand}</span>
                       <span className="font-bold text-[var(--k-ink-2)]">{family.model}</span>
                     </div>
 
                     {/* Yıldız Değerlendirmesi */}
-                    <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-extrabold text-amber-400 pt-0.5">
-                      <Star size={10} className="fill-amber-400 text-amber-400 sm:w-3 sm:h-3" />
+                    <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-extrabold text-[var(--k-hot)] pt-0.5">
+                      <Star size={10} className="fill-[var(--k-hot)] text-[var(--k-hot)] sm:w-3 sm:h-3" />
                       <span>4.9</span>
                       <span className="text-[var(--k-ink-4)] text-[9px] sm:text-[10px] font-medium">(2051)</span>
                     </div>
@@ -118,7 +118,7 @@ export default function TrendyolSpecialProducts({ products }: Props) {
                   <div className="text-[10px] sm:text-[11px] font-bold text-[var(--k-ink-4)] line-through leading-none">
                     {fmt(oldPrice)} TL
                   </div>
-                  <div className="text-sm sm:text-base font-black text-orange-400 leading-tight mt-0.5">
+                  <div className="text-sm sm:text-base font-black text-[var(--k-hot)] leading-tight mt-0.5">
                     {fmt(family.minPrice)} TL
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export default function TrendyolSpecialProducts({ products }: Props) {
         {/* Sağ Kaydırma Butonu */}
         <button
           onClick={() => scroll('right')}
-          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-2xl border border-[var(--k-line)] items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--k-canvas)]/90 text-white shadow-2xl border border-[var(--k-line)] items-center justify-center hover:bg-[var(--k-hot-deep)] hover:border-[var(--k-hot-deep)] transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sağa kaydır"
         >
           <ChevronRight size={20} />

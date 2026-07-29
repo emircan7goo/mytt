@@ -6,7 +6,7 @@ export default function SEOContentBlock() {
     <div className="w-full my-12 bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)]/90 p-8 md:p-12 shadow-sm text-[var(--k-ink-2)] space-y-6">
       
       <div className="flex items-center gap-3 border-b border-[var(--k-line)] pb-4">
-        <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold">
+        <div className="w-10 h-10 rounded-xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center font-bold">
           <BookOpen size={20} />
         </div>
         <div>
@@ -22,7 +22,7 @@ export default function SEOContentBlock() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed space-y-2 md:space-y-0">
         <div className="space-y-3">
           <h4 className="text-sm font-black text-[var(--k-ink)] flex items-center gap-1.5">
-            <CheckCircle2 size={16} className="text-orange-600" />
+            <CheckCircle2 size={16} className="text-[var(--k-hot)]" />
             <span>Sıfır ve Hatasız 2. El Cihaz Standartlarımız</span>
           </h4>
           <p>
@@ -52,7 +52,7 @@ export default function SEOContentBlock() {
 
         <div className="space-y-3 pt-2">
           <h4 className="text-sm font-black text-[var(--k-ink)] flex items-center gap-1.5">
-            <CheckCircle2 size={16} className="text-amber-600" />
+            <CheckCircle2 size={16} className="text-[var(--k-hot)]" />
             <span>TSE 12 Ay Garanti Kapsamı</span>
           </h4>
           <p>

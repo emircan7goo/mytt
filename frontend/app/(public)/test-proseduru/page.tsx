@@ -6,7 +6,7 @@ export default function TestProseduruPage() {
     <div className="min-h-screen bg-[var(--k-canvas-2)] py-12 px-4 lg:px-8">
       <div className="max-w-[900px] mx-auto bg-[var(--k-surface)] p-8 md:p-12 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-8">
         <div className="flex items-center gap-4 border-b border-[var(--k-line)] pb-6">
-          <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold">
+          <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center font-bold">
             <ShieldCheck size={24} />
           </div>
           <div>

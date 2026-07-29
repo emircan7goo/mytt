@@ -37,10 +37,10 @@ function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8 px-4 text-center">
       <div className="relative">
-        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 flex items-center justify-center shadow-lg">
-          <BarChart2 size={40} className="text-orange-600" />
+        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[var(--k-hot-wash)] to-[var(--k-hot-wash)] border border-[var(--k-line-hot)] flex items-center justify-center shadow-lg">
+          <BarChart2 size={40} className="text-[var(--k-hot)]" />
         </div>
-        <div className="absolute -top-1 -right-1 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+        <div className="absolute -top-1 -right-1 w-6 h-6 bg-[var(--k-hot)] rounded-full flex items-center justify-center">
           <span className="text-white text-xs font-black">0</span>
         </div>
       </div>
@@ -107,11 +107,11 @@ function CompareTable({ products }: { products: MockProduct[] }) {
       const isLowest = product.price === minPrice && products.length > 1;
       return (
         <div className="flex flex-col items-center gap-1">
-          <span className={`font-black text-lg leading-none ${isLowest ? 'text-orange-600' : 'text-[var(--k-ink)]'}`}>
+          <span className={`font-black text-lg leading-none ${isLowest ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink)]'}`}>
             {product.price.toLocaleString('tr-TR')} ₺
           </span>
           {isLowest && (
-            <span className="inline-block text-[10px] font-bold uppercase tracking-wide text-orange-700 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full">
+            <span className="inline-block text-[10px] font-bold uppercase tracking-wide text-[var(--k-hot)] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] px-2 py-0.5 rounded-full">
               En İyi Fiyat
             </span>
           )}
@@ -147,7 +147,7 @@ function CompareTable({ products }: { products: MockProduct[] }) {
             style={{ boxShadow: product.price === minPrice && products.length > 1 ? '0 0 0 2px #EA580C, 0 8px 32px rgba(234,88,12,0.1)' : undefined }}
           >
             {product.price === minPrice && products.length > 1 && (
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-t-3xl" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--k-hot)] to-[var(--k-hot-deep)] rounded-t-3xl" />
             )}
             <button
               onClick={() => toggleCompare(product)}
@@ -244,7 +244,7 @@ export default function ComparePage() {
           <div className="flex items-center gap-2.5">
             <h1 className="text-3xl font-black text-[var(--k-ink)] tracking-tight">Telefon Karşılaştır</h1>
             {compareList.length >= 2 && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-bold">
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] text-[var(--k-hot)] text-xs font-bold">
                 <Zap size={10} />
                 {compareList.length} ürün
               </span>

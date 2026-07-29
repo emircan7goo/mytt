@@ -65,7 +65,7 @@ export default function FilterSidebar({
 
   const gradeStyles: Record<CosmeticGrade, { active: string; inactive: string }> = {
     'A+': {
-      active:   'bg-orange-600 text-white border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.2)]',
+      active:   'bg-[var(--k-hot-deep)] text-white border-[var(--k-hot-deep)] shadow-[0_0_15px_rgba(234,88,12,0.2)]',
       inactive: 'bg-transparent text-[var(--k-ink-3)] border-[var(--k-line)] hover:border-[var(--k-line-2)]',
     },
     A: {

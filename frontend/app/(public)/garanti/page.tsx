@@ -8,11 +8,11 @@ export default function GarantiPage() {
 
         {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
+          <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-extrabold text-xs tracking-wider uppercase border border-[var(--k-line-hot)]">
             %100 ALICI VE SATICI KORUMASI
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
-            TSE 12 Ay Garanti & <span className="text-orange-600">Escrow Güvence Sistemi</span>
+            TSE 12 Ay Garanti & <span className="text-[var(--k-hot)]">Escrow Güvence Sistemi</span>
           </h1>
           <p className="text-[var(--k-ink-2)] text-base font-medium leading-relaxed">
             Mytt'de satılan ve alınan tüm yenilenmiş cihazlar TSE belgeli merkezimiz tarafından 32-nokta detaylı ekspertiz kontrolünden geçer ve 12 ay boyunca birebir teknik garanti altına alınır.
@@ -22,7 +22,7 @@ export default function GarantiPage() {
         {/* 3 Ana Güven Sütunu */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-[var(--k-surface)] p-8 rounded-3xl border border-[var(--k-line)] shadow-md space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 rounded-2xl bg-[var(--k-hot)] text-[var(--k-hot-ink)] flex items-center justify-center shadow-lg">
               <Award size={28} />
             </div>
             <h3 className="text-xl font-black text-[var(--k-ink)]">TSE Sertifikalı Ekspertiz</h3>
@@ -53,14 +53,14 @@ export default function GarantiPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-orange-500 to-amber-600 rounded-3xl p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-gradient-to-r from-[var(--k-hot)] to-[var(--k-hot-deep)] rounded-3xl p-8 text-[var(--k-hot-ink)] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-2 text-center sm:text-left">
             <h2 className="text-2xl sm:text-3xl font-black">Cihazınızı Güvenle Satışa Çıkarın!</h2>
-            <p className="text-orange-100 text-sm font-medium">150+ Onaylı yetkili bayi cihazınız için teklif yarıştırsın.</p>
+            <p className="text-[rgba(26,13,2,0.72)] text-sm font-medium">150+ Onaylı yetkili bayi cihazınız için teklif yarıştırsın.</p>
           </div>
           <Link
             href="/sell"
-            className="px-8 py-4 rounded-full bg-[var(--k-surface)] text-orange-600 font-black text-sm hover:bg-orange-50 transition-all shadow-lg flex items-center gap-2 shrink-0"
+            className="px-8 py-4 rounded-full bg-[var(--k-surface)] text-[var(--k-hot)] font-black text-sm hover:bg-[var(--k-hot-wash)] transition-all shadow-lg flex items-center gap-2 shrink-0"
           >
             <span>Hemen Satış Başlat</span>
             <ArrowRight size={18} />

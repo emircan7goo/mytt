@@ -79,7 +79,7 @@ export default function RegisterDealerPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white font-bold rounded-xl transition-colors"
           >
             Ana Sayfaya Dön
           </Link>
@@ -256,7 +256,7 @@ export default function RegisterDealerPage() {
               Bireysel hesap mı açmak istiyorsunuz?{' '}
               <Link
                 href="/register"
-                className="font-bold text-[var(--k-hot)] hover:text-orange-600 transition-colors"
+                className="font-bold text-[var(--k-hot)] hover:text-[var(--k-hot)] transition-colors"
               >
                 Üye Ol
               </Link>

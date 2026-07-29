@@ -31,16 +31,16 @@ const DEFAULT_SERVICES = [
 
 // ─── CMS bubble bg → gradient eşlemesi ───────────────────────────────────────
 const BG_GRADIENTS: Record<string, { gradient: string }> = {
-  indigo:  { gradient: 'from-orange-100 to-orange-50'  },
+  indigo:  { gradient: 'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]'  },
   rose:    { gradient: 'from-rose-100 to-pink-50'      },
-  emerald: { gradient: 'from-orange-100 to-orange-50'   },
-  amber:   { gradient: 'from-amber-100 to-yellow-50'   },
+  emerald: { gradient: 'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]'   },
+  amber:   { gradient: 'from-[var(--k-hot-wash)] to-yellow-50'   },
   sky:     { gradient: 'from-sky-100 to-blue-50'       },
-  violet:  { gradient: 'from-orange-100 to-orange-50'  },
+  violet:  { gradient: 'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]'  },
   fuchsia: { gradient: 'from-fuchsia-100 to-pink-50'   },
-  teal:    { gradient: 'from-orange-100 to-orange-50'   },
-  orange:  { gradient: 'from-orange-100 to-amber-50'   },
-  green:   { gradient: 'from-green-100 to-orange-50'  },
+  teal:    { gradient: 'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]'   },
+  orange:  { gradient: 'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]'   },
+  green:   { gradient: 'from-green-100 to-[var(--k-hot-wash)]'  },
 };
 
 // CMS index → local SVG icon fallback
@@ -56,12 +56,12 @@ const CMS_ICON_FALLBACKS = [
 ];
 
 const FALLBACK_GRADIENTS = [
-  'from-orange-100 to-orange-50',
-  'from-orange-100 to-amber-50',
-  'from-orange-100 to-orange-50',
+  'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]',
+  'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]',
+  'from-[var(--k-hot-wash)] to-[var(--k-hot-wash)]',
   'from-sky-100 to-blue-50',
-  'from-yellow-100 to-amber-50',
-  'from-orange-100 to-green-50',
+  'from-yellow-100 to-[var(--k-hot-wash)]',
+  'from-[var(--k-hot-wash)] to-green-50',
   'from-rose-100 to-pink-50',
   'from-slate-100 to-gray-50',
 ];

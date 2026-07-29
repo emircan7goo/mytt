@@ -166,7 +166,7 @@ function EmailDogrulaContent() {
               <p className="text-[var(--k-ink-3)] text-sm leading-relaxed mb-6">{message}</p>
               <Link
                 href="/login"
-                className="block w-full py-3.5 rounded-xl font-bold text-sm bg-orange-500 hover:bg-orange-600 text-white transition-colors text-center shadow-orange-500/20 shadow-lg"
+                className="block w-full py-3.5 rounded-xl font-bold text-sm bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white transition-colors text-center shadow-[var(--k-hot-glow)]/20 shadow-lg"
               >
                 Giriş Yap
               </Link>
@@ -175,7 +175,7 @@ function EmailDogrulaContent() {
             /* ── Kod Giriş Formu ─────────────────────────────────────────── */
             <>
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-[var(--k-hot-wash)] flex items-center justify-center">
                   <Mail className="text-[var(--k-hot)]" size={28} />
                 </div>
               </div>
@@ -192,9 +192,9 @@ function EmailDogrulaContent() {
 
               {/* DEV Modu Bandı */}
               {devMode && (
-                <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 mb-4">
-                  <FlaskConical size={14} className="text-amber-600 shrink-0" />
-                  <p className="text-[11px] text-amber-700 leading-snug">
+                <div className="flex items-center gap-2 bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-xl px-3 py-2.5 mb-4">
+                  <FlaskConical size={14} className="text-[var(--k-hot)] shrink-0" />
+                  <p className="text-[11px] text-[var(--k-hot)] leading-snug">
                     <strong>Dev modu:</strong> Kod otomatik dolduruldu.
                     Butona basarak doğrulayın.
                   </p>
@@ -217,12 +217,12 @@ function EmailDogrulaContent() {
                     className={[
                       'w-11 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all outline-none',
                       digit
-                        ? 'border-orange-400 bg-orange-50 text-[var(--k-ink)]'
+                        ? 'border-[var(--k-line-hot)] bg-[var(--k-hot-wash)] text-[var(--k-ink)]'
                         : 'border-[var(--k-line)] bg-[var(--k-surface-2)] text-[var(--k-ink-4)]',
                       status === 'error'
                         ? '!border-red-400 !bg-red-50'
                         : '',
-                      'focus:border-orange-500 focus:bg-[var(--k-surface)] focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
+                      'focus:border-[var(--k-hot-deep)] focus:bg-[var(--k-surface)] focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]',
                     ].join(' ')}
                   />
                 ))}
@@ -239,7 +239,7 @@ function EmailDogrulaContent() {
               <button
                 onClick={handleVerify}
                 disabled={status === 'loading' || fullCode.length < 6}
-                className="w-full py-3.5 rounded-xl font-bold text-sm bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-orange-500/20 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-4"
+                className="w-full py-3.5 rounded-xl font-bold text-sm bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white transition-colors shadow-[var(--k-hot-glow)]/20 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-4"
               >
                 {status === 'loading' ? (
                   <><Loader2 size={18} className="animate-spin" /> Doğrulanıyor...</>

@@ -230,8 +230,8 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[var(--k-surface)]/90 border border-[var(--k-line)]/80 shadow-xs flex items-center gap-3.5 hover:border-amber-300 transition-all hover:translate-x-1">
-                  <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                <div className="p-4 rounded-2xl bg-[var(--k-surface)]/90 border border-[var(--k-line)]/80 shadow-xs flex items-center gap-3.5 hover:border-[var(--k-line-hot)] transition-all hover:translate-x-1">
+                  <div className="w-11 h-11 rounded-xl bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] flex items-center justify-center text-[var(--k-hot)] shrink-0">
                     <RefreshCcw size={22} strokeWidth={2.2} />
                   </div>
                   <div>

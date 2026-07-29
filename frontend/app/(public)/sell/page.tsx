@@ -79,10 +79,10 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
   const adminApproved = liveReq?.adminApproved ?? false;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex items-center justify-center px-4 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--k-hot-wash)] to-white flex items-center justify-center px-4 py-20">
       <div className="max-w-lg w-full">
         <div className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] p-10 shadow-xl shadow-black/5 text-center">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center mx-auto mb-5 shadow-xl shadow-orange-500/30">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto mb-5 shadow-xl shadow-[var(--k-hot-glow)]/30">
             <Check size={38} className="text-white" strokeWidth={2.5} />
           </div>
           <h2 className="text-2xl font-bold text-[var(--k-ink)] mb-2">Talebiniz Alındı!</h2>
@@ -91,14 +91,14 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
           </p>
 
           {/* Admin Onayı Durumu */}
-          <div className={`rounded-2xl p-5 mb-5 text-left ${adminApproved ? 'bg-orange-50 border border-orange-200' : 'bg-amber-50 border border-amber-200'}`}>
+          <div className={`rounded-2xl p-5 mb-5 text-left ${adminApproved ? 'bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]' : 'bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]'}`}>
             <div className="flex items-center gap-3 mb-2">
               {adminApproved
-                ? <><TrendingUp size={18} className="text-orange-600" /><span className="font-bold text-orange-800 text-sm">Onaylandı — Bayiler Teklif Verebilir</span></>
-                : <><Shield size={18} className="text-amber-600" /><span className="font-bold text-amber-800 text-sm">Admin Onayı Bekleniyor</span></>
+                ? <><TrendingUp size={18} className="text-[var(--k-hot)]" /><span className="font-bold text-[var(--k-hot)] text-sm">Onaylandı — Bayiler Teklif Verebilir</span></>
+                : <><Shield size={18} className="text-[var(--k-hot)]" /><span className="font-bold text-[var(--k-hot)] text-sm">Admin Onayı Bekleniyor</span></>
               }
             </div>
-            <p className={`text-sm leading-relaxed ${adminApproved ? 'text-orange-700' : 'text-amber-700'}`}>
+            <p className={`text-sm leading-relaxed ${adminApproved ? 'text-[var(--k-hot)]' : 'text-[var(--k-hot)]'}`}>
               {adminApproved
                 ? 'Talebiniz onaylandı. Tüm aktif bayilere bildirim gönderildi, teklifler geliyor!'
                 : 'Görselleriniz kısa sürede incelenecek. Onaylandıktan sonra bayiler teklif verebilecek.'
@@ -129,7 +129,7 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
             <p className="text-xs uppercase tracking-wider font-bold text-[var(--k-ink-4)] mb-1">Gelen Teklifler</p>
             <div className="flex items-center justify-center gap-3">
               <p className="font-black text-4xl text-[var(--k-ink)]">{bidCount}</p>
-              {newBidFlash && <span className="text-orange-600 font-bold text-sm animate-bounce">+Yeni!</span>}
+              {newBidFlash && <span className="text-[var(--k-hot)] font-bold text-sm animate-bounce">+Yeni!</span>}
             </div>
             <p className="text-[var(--k-ink-4)] text-xs mt-1">bayi teklif verdi (anonim)</p>
           </div>
@@ -260,7 +260,7 @@ export default function SellPage() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center mx-auto mb-6 shadow-xl shadow-orange-500/20">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[var(--k-hot-glow)]/20">
             <Smartphone size={36} className="text-white" />
           </div>
           <h1 className="text-3xl font-bold text-[var(--k-ink)] mb-3">Cihazını Sat</h1>
@@ -325,7 +325,7 @@ export default function SellPage() {
         <div className="flex items-center gap-1 mb-10 mt-6">
           {STEPS.map((s, i) => (
             <div key={i} className="flex items-center gap-1 flex-1">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-all ${ i < step ? 'bg-[var(--k-canvas)] text-white' : i === step ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30' : 'bg-[var(--k-surface-3)] text-[var(--k-ink-4)]' }`}>
+              <div className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-all ${ i < step ? 'bg-[var(--k-canvas)] text-white' : i === step ? 'bg-[var(--k-hot)] text-[var(--k-hot-ink)] shadow-lg shadow-[var(--k-hot-glow)]/30' : 'bg-[var(--k-surface-3)] text-[var(--k-ink-4)]' }`}>
                 {i < step ? <Check size={14} /> : i + 1}
               </div>
               {i < STEPS.length - 1 && (
@@ -336,7 +336,7 @@ export default function SellPage() {
         </div>
 
         {/* Step label */}
-        <p className="text-xs uppercase tracking-widest font-bold text-orange-600 mb-4">
+        <p className="text-xs uppercase tracking-widest font-bold text-[var(--k-hot)] mb-4">
           Adım {step + 1} / {STEPS.length} — {STEPS[step].label}
         </p>
 
@@ -460,10 +460,10 @@ export default function SellPage() {
                   { key: 'hasAcc',    state: hasAcc,    set: setHasAcc,    icon: Zap,      label: 'Aksesuar'},
                 ].map(({ key, state, set, icon: Icon, label }) => (
                   <button key={key} onClick={() => set(!state)}
-                    className={`flex flex-col items-center gap-2 py-4 rounded-2xl border-2 transition-all ${ state ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-[var(--k-line)] bg-[var(--k-surface)] text-[var(--k-ink-3)]' }`}>
+                    className={`flex flex-col items-center gap-2 py-4 rounded-2xl border-2 transition-all ${ state ? 'border-[var(--k-hot-deep)] bg-[var(--k-hot-wash)] text-[var(--k-hot)]' : 'border-[var(--k-line)] bg-[var(--k-surface)] text-[var(--k-ink-3)]' }`}>
                     <Icon size={20} />
                     <span className="text-xs font-bold">{label}</span>
-                    {state && <Check size={12} className="text-orange-600" />}
+                    {state && <Check size={12} className="text-[var(--k-hot)]" />}
                   </button>
                 ))}
               </div>
@@ -486,11 +486,11 @@ export default function SellPage() {
               <AlertCircle size={18} className="text-blue-600 shrink-0 mt-0.5" />
               <p className="text-sm text-blue-700">En az 2, en fazla 6 fotoğraf yükleyin. Ön, arka, köşe ve ekran fotoğrafları tercih edilir.</p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3">
-              <AlertCircle size={18} className="text-amber-600 shrink-0 mt-0.5" />
+            <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-4 flex gap-3">
+              <AlertCircle size={18} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-bold text-amber-800 mb-1">Önemli: Görsellerde bayi etiketi / sticker olmamalı</p>
-                <p className="text-sm text-amber-700">Fotoğraflarınızda bayi etiketi, mağaza logosu veya sticker görünüyorsa talebiniz admin onayından geçemez. Etiketleri çıkardıktan sonra fotoğraf çekin.</p>
+                <p className="text-sm font-bold text-[var(--k-hot)] mb-1">Önemli: Görsellerde bayi etiketi / sticker olmamalı</p>
+                <p className="text-sm text-[var(--k-hot)]">Fotoğraflarınızda bayi etiketi, mağaza logosu veya sticker görünüyorsa talebiniz admin onayından geçemez. Etiketleri çıkardıktan sonra fotoğraf çekin.</p>
               </div>
             </div>
 
@@ -567,12 +567,12 @@ export default function SellPage() {
               </div>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-2xl p-5">
+            <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2">
-                <Clock size={18} className="text-orange-600" />
-                <span className="font-bold text-orange-800">30 Dakikalık Teklif Süreci</span>
+                <Clock size={18} className="text-[var(--k-hot)]" />
+                <span className="font-bold text-[var(--k-hot)]">30 Dakikalık Teklif Süreci</span>
               </div>
-              <p className="text-orange-700 text-sm leading-relaxed">
+              <p className="text-[var(--k-hot)] text-sm leading-relaxed">
                 Talebiniz gönderildikten sonra tüm aktif bayilere bildirim gidecek.
                 30 dakika içinde gelen teklifler arasından en yüksek fiyatı seçebilirsiniz.
                 Email ve hesabınızdan takip edebilirsiniz.
@@ -601,7 +601,7 @@ export default function SellPage() {
             <button
               onClick={handleSubmit}
               disabled={createRequest.isPending}
-              className="flex-1 py-3.5 rounded-xl bg-orange-600 text-white font-bold text-sm hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-orange-600/25">
+              className="flex-1 py-3.5 rounded-xl bg-[var(--k-hot-deep)] text-white font-bold text-sm hover:bg-[var(--k-hot-deep)] transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-[var(--k-hot-glow)]/25">
               {createRequest.isPending ? (
                 <><Loader2 size={16} className="animate-spin" /> Gönderiliyor...</>
               ) : (

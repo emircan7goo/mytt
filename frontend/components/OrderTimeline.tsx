@@ -50,21 +50,21 @@ export default function OrderTimeline({ currentStep, compact = false }: OrderTim
             {/* Content */}
             <div className="pt-1.5 pb-1 min-w-0 flex-1">
               <p className={`font-bold text-sm leading-tight
-                ${isDone    ? 'text-orange-700' : ''}
+                ${isDone    ? 'text-[var(--k-hot)]' : ''}
                 ${isActive  ? 'text-[var(--k-ink)]'   : ''}
                 ${isPending ? 'text-[var(--k-ink-4)]'   : ''}
               `}>
                 {step.label}
                 {isActive && (
-                  <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-extrabold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-100">
-                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse-dot" />
+                  <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-extrabold text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-2 py-0.5 rounded-full border border-[var(--k-line-hot)]">
+                    <span className="w-1.5 h-1.5 bg-[var(--k-hot)] rounded-full animate-pulse-dot" />
                     AKTIF
                   </span>
                 )}
               </p>
               {!compact && (
                 <p className={`text-xs font-medium mt-1 leading-relaxed
-                  ${isDone    ? 'text-orange-600/80' : ''}
+                  ${isDone    ? 'text-[var(--k-hot)]/80' : ''}
                   ${isActive  ? 'text-[var(--k-ink-3)]'       : ''}
                   ${isPending ? 'text-[var(--k-ink-4)]'       : ''}
                 `}>

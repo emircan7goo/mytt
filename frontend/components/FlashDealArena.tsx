@@ -35,16 +35,16 @@ export default function FlashDealArena({ products }: Props) {
 
   return (
     <div className="w-full my-4 sm:my-8 max-w-full overflow-hidden">
-      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-orange-950 p-4 sm:p-8 text-white shadow-2xl relative overflow-hidden border border-orange-500/40">
+      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 p-4 sm:p-8 text-white shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/40">
         
         {/* ── Üst Başlık & Geri Sayım Sayacı ── */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-[var(--k-line)]">
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-orange-600 text-white flex items-center justify-center shadow-lg shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[var(--k-hot-deep)] text-white flex items-center justify-center shadow-lg shrink-0">
               <Flame size={22} className="fill-white" />
             </div>
             <div>
-              <span className="text-[10px] sm:text-xs font-black text-orange-400 tracking-wider uppercase">GÜNÜN FLAŞ FIRSATLARI</span>
+              <span className="text-[10px] sm:text-xs font-black text-[var(--k-hot)] tracking-wider uppercase">GÜNÜN FLAŞ FIRSATLARI</span>
               <h3 className="text-lg sm:text-3xl font-black text-white leading-tight">
                 Seçili Cihazlarda Ek İndirim!
               </h3>
@@ -53,9 +53,9 @@ export default function FlashDealArena({ products }: Props) {
 
           {/* Geri Sayım Kutusui */}
           <div className="flex items-center gap-1.5 sm:gap-2 bg-[var(--k-canvas)]/90 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl border border-[var(--k-line)]">
-            <Clock size={14} className="text-orange-400 sm:w-4 sm:h-4" />
+            <Clock size={14} className="text-[var(--k-hot)] sm:w-4 sm:h-4" />
             <span className="text-[10px] sm:text-xs font-bold text-[var(--k-ink-4)]">Kalan Süre:</span>
-            <div className="flex items-center gap-1 font-mono font-black text-xs sm:text-base text-orange-400">
+            <div className="flex items-center gap-1 font-mono font-black text-xs sm:text-base text-[var(--k-hot)]">
               <span className="bg-[var(--k-void)] px-1.5 py-0.5 rounded border border-[var(--k-line)]">{format(timeLeft.hours)}</span>:
               <span className="bg-[var(--k-void)] px-1.5 py-0.5 rounded border border-[var(--k-line)]">{format(timeLeft.minutes)}</span>:
               <span className="bg-[var(--k-void)] px-1.5 py-0.5 rounded border border-[var(--k-line)]">{format(timeLeft.seconds)}</span>
@@ -75,16 +75,16 @@ export default function FlashDealArena({ products }: Props) {
               <Link
                 key={family.model}
                 href={href}
-                className="group flex flex-col justify-between bg-[var(--k-void)] text-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-[var(--k-line)] shadow-md hover:border-orange-500 transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between bg-[var(--k-void)] text-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-[var(--k-line)] shadow-md hover:border-[var(--k-hot-deep)] transition-all duration-300 relative overflow-hidden"
               >
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-2">
-                    <span className="px-1.5 py-0.5 rounded bg-orange-600/20 text-orange-400 font-black text-[8px] sm:text-[9px] uppercase border border-orange-500/30 truncate">
+                    <span className="px-1.5 py-0.5 rounded bg-[var(--k-hot-deep)]/20 text-[var(--k-hot)] font-black text-[8px] sm:text-[9px] uppercase border border-[var(--k-hot-deep)]/30 truncate">
                       %15 İNDİRİM
                     </span>
                     <button
                       onClick={(e) => { e.preventDefault(); }}
-                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--k-canvas)] border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-4)] hover:text-orange-400 transition-colors"
+                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--k-canvas)] border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-4)] hover:text-[var(--k-hot)] transition-colors"
                     >
                       <Heart size={12} className="sm:w-3.5 sm:h-3.5" />
                     </button>
@@ -100,8 +100,8 @@ export default function FlashDealArena({ products }: Props) {
 
                   <div className="text-left space-y-0.5">
                     <div className="text-[11px] sm:text-xs font-black text-white line-clamp-1">{family.brand} {family.model}</div>
-                    <div className="flex items-center gap-1 text-[10px] font-extrabold text-amber-400">
-                      <Star size={10} className="fill-amber-400" />
+                    <div className="flex items-center gap-1 text-[10px] font-extrabold text-[var(--k-hot)]">
+                      <Star size={10} className="fill-[var(--k-hot)]" />
                       <span>4.9</span>
                     </div>
                   </div>
@@ -112,19 +112,19 @@ export default function FlashDealArena({ products }: Props) {
                   <div className="space-y-1">
                     <div className="flex justify-between text-[9px] sm:text-[10px] font-bold text-[var(--k-ink-4)]">
                       <span>Stok</span>
-                      <span className="text-orange-400 font-extrabold">%{soldPercent}</span>
+                      <span className="text-[var(--k-hot)] font-extrabold">%{soldPercent}</span>
                     </div>
                     <div className="w-full h-1 bg-[var(--k-canvas)] rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full" style={{ width: `${soldPercent}%` }} />
+                      <div className="h-full bg-gradient-to-r from-[var(--k-hot)] to-[var(--k-hot)] rounded-full" style={{ width: `${soldPercent}%` }} />
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between pt-1 flex-wrap gap-1">
                     <div className="text-left">
                       <div className="text-[9px] sm:text-[10px] text-[var(--k-ink-4)] line-through font-bold">{fmt(oldPrice)} ₺</div>
-                      <div className="text-xs sm:text-base font-black text-orange-400 leading-none">{fmt(family.minPrice)} ₺</div>
+                      <div className="text-xs sm:text-base font-black text-[var(--k-hot)] leading-none">{fmt(family.minPrice)} ₺</div>
                     </div>
-                    <span className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-orange-600 text-white font-extrabold text-[10px] sm:text-xs shadow-xs">
+                    <span className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[var(--k-hot-deep)] text-white font-extrabold text-[10px] sm:text-xs shadow-xs">
                       İncele
                     </span>
                   </div>

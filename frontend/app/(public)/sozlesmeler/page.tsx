@@ -130,11 +130,11 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center gap-3.5 px-5 py-4 rounded-2xl text-[14px] font-black text-left transition-all ${
                     isSelected 
-                      ? 'bg-orange-600 text-white shadow-lg shadow-orange-600/25 border-orange-500' 
+                      ? 'bg-[var(--k-hot-deep)] text-white shadow-lg shadow-[var(--k-hot-glow)]/25 border-[var(--k-hot-deep)]' 
                       : 'hover:bg-[var(--k-surface-2)] text-[var(--k-ink-2)] hover:text-[var(--k-ink)] border-transparent'
                   } border`}
                 >
-                  <TabIcon size={20} strokeWidth={isSelected ? 2.5 : 2} className={isSelected ? 'text-amber-400' : 'text-[var(--k-ink-4)]'} />
+                  <TabIcon size={20} strokeWidth={isSelected ? 2.5 : 2} className={isSelected ? 'text-[var(--k-hot)]' : 'text-[var(--k-ink-4)]'} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -147,7 +147,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
             <div className="p-6 md:p-8 bg-[var(--k-surface-2)] border-b border-[var(--k-line)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-700">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--k-hot-wash)] flex items-center justify-center text-[var(--k-hot)]">
                     <IconComponent size={20} strokeWidth={2.5} />
                   </div>
                   <h2 className="font-heading font-black text-[var(--k-ink)] text-[20px] md:text-[24px]">
@@ -158,7 +158,7 @@ Güven ihlali, sahte cihaz listeleme veya yanlış kozmetik grade beyanı durumu
                   {activeTabData.description}
                 </p>
               </div>
-              <div className="shrink-0 flex items-center gap-1.5 bg-amber-50 text-amber-800 text-[12px] font-black px-4 py-2 rounded-xl border border-amber-100 self-start sm:self-center">
+              <div className="shrink-0 flex items-center gap-1.5 bg-[var(--k-hot-wash)] text-[var(--k-hot)] text-[12px] font-black px-4 py-2 rounded-xl border border-[var(--k-line-hot)] self-start sm:self-center">
                 Yasal Metin
               </div>
             </div>

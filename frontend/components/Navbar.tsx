@@ -305,7 +305,7 @@ export default function Navbar() {
           {/* Logo — Turuncu 'Y' Vurgulu Prestijli Mytt Logosu */}
           <Link href="/" className="flex items-center flex-shrink-0 group mr-6 py-1">
             <span className="font-black text-3xl sm:text-4xl tracking-tighter text-[var(--k-ink)] flex items-center select-none">
-              m<span className="text-orange-500 drop-shadow-[0_0_12px_rgba(255,96,0,0.75)] inline-block transition-transform duration-300 group-hover:scale-125">y</span>tt
+              m<span className="text-[var(--k-hot)] drop-shadow-[0_0_12px_rgba(255,96,0,0.75)] inline-block transition-transform duration-300 group-hover:scale-125">y</span>tt
             </span>
           </Link>
 
@@ -315,7 +315,7 @@ export default function Navbar() {
               className="group/search flex items-center w-full h-[42px] rounded-full transition-all overflow-hidden pl-4 pr-1"
               style={{ background: 'var(--k-surface)', border: '1.5px solid #FF6000' }}
             >
-              <Search size={16} className="flex-shrink-0 text-orange-500" />
+              <Search size={16} className="flex-shrink-0 text-[var(--k-hot)]" />
               <input
                 type="text"
                 value={searchValue}
@@ -332,7 +332,7 @@ export default function Navbar() {
               </kbd>
               <button
                 type="submit"
-                className="k-mono h-[32px] px-4 rounded-[7px] text-[11px] font-extrabold tracking-wider flex-shrink-0 transition-all active:scale-95 bg-orange-600 hover:bg-orange-700 text-white shadow-sm"
+                className="k-mono h-[32px] px-4 rounded-[7px] text-[11px] font-extrabold tracking-wider flex-shrink-0 transition-all active:scale-95 bg-[var(--k-hot-deep)] hover:bg-[var(--k-hot-deep)] text-white shadow-sm"
               >
                 ARA
               </button>

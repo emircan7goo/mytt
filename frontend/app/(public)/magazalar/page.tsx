@@ -17,11 +17,11 @@ export default function MagazalarPage() {
 
         {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
+          <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-extrabold text-xs tracking-wider uppercase border border-[var(--k-line-hot)]">
             ONAYLI 150+ BAYİ AĞI
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
-            Doğrulanmış <span className="text-orange-600">Yetkili Bayi Pazaryeri</span>
+            Doğrulanmış <span className="text-[var(--k-hot)]">Yetkili Bayi Pazaryeri</span>
           </h1>
           <p className="text-[var(--k-ink-2)] text-base font-medium leading-relaxed">
             Türkiye genelinde TSE standartlarında hizmet veren, ticaret odası kayıtlı onaylı yetkili bayilerimizi inceleyin.
@@ -31,10 +31,10 @@ export default function MagazalarPage() {
         {/* Mağazalar Izgarası */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {DEALERS.map((d) => (
-            <div key={d.id} className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] p-6 shadow-sm hover:shadow-xl hover:border-orange-400 transition-all space-y-4 flex flex-col justify-between">
+            <div key={d.id} className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] p-6 shadow-sm hover:shadow-xl hover:border-[var(--k-line-hot)] transition-all space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-200">
+                  <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center border border-[var(--k-line-hot)]">
                     <Store size={24} />
                   </div>
                   <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-extrabold text-[10px] border border-emerald-200">
@@ -51,8 +51,8 @@ export default function MagazalarPage() {
                 </div>
 
                 <div className="flex items-center justify-between pt-2 text-xs font-bold">
-                  <div className="flex items-center gap-1 text-amber-500">
-                    <Star size={14} className="fill-amber-400" />
+                  <div className="flex items-center gap-1 text-[var(--k-hot)]">
+                    <Star size={14} className="fill-[var(--k-hot)]" />
                     <span>{d.rating}</span>
                   </div>
                   <span className="text-[var(--k-ink-2)]">{d.sales}</span>
@@ -61,7 +61,7 @@ export default function MagazalarPage() {
 
               <Link
                 href="/sell"
-                className="w-full py-3 rounded-2xl bg-[var(--k-surface-2)] hover:bg-orange-500 hover:text-white text-[var(--k-ink)] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-3 rounded-2xl bg-[var(--k-surface-2)] hover:bg-[var(--k-hot)] hover:text-[var(--k-hot-ink)] text-[var(--k-ink)] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5"
               >
                 <span>Teklif İste</span>
                 <ArrowRight size={14} />

@@ -262,7 +262,7 @@ export default function ProductFamilyPage() {
                       <div className="flex-1 flex flex-col gap-2.5 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           {isTopPick && (
-                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-[var(--k-ink)] bg-orange-600 px-2.5 py-1 rounded-full">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-[var(--k-ink)] bg-[var(--k-hot-deep)] px-2.5 py-1 rounded-full">
                               <Crown size={11} />
                               {sort === 'best_condition' ? 'En İyi Durum' : 'En Uygun Fiyat'}
                             </span>
@@ -284,7 +284,7 @@ export default function ProductFamilyPage() {
                             <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[var(--k-ink-2)] bg-[var(--k-surface-2)] border border-[var(--k-line)] px-2.5 py-1 rounded-full">
                               <Battery
                                 size={11}
-                                className={offer.batteryHealth >= 85 ? 'text-[var(--k-hot)]' : offer.batteryHealth >= 70 ? 'text-amber-500' : 'text-red-400'}
+                                className={offer.batteryHealth >= 85 ? 'text-[var(--k-hot)]' : offer.batteryHealth >= 70 ? 'text-[var(--k-hot)]' : 'text-red-400'}
                               />
                               Pil %{offer.batteryHealth}
                             </span>
@@ -313,7 +313,7 @@ export default function ProductFamilyPage() {
                       <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[var(--k-line)]">
                         <div className="text-right">
                           {isCheapest && family.items.length > 1 && (
-                            <span className="block text-[9px] font-black uppercase tracking-wide text-orange-600 mb-0.5">En Düşük Fiyat</span>
+                            <span className="block text-[9px] font-black uppercase tracking-wide text-[var(--k-hot)] mb-0.5">En Düşük Fiyat</span>
                           )}
                           <span className="font-editorial block text-[26px] md:text-[30px] leading-none text-[var(--k-ink)]">
                             {fmt(price)}

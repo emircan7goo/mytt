@@ -35,11 +35,11 @@ export default function SSSPage() {
 
         {/* Hero Header */}
         <div className="text-center space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
+          <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-extrabold text-xs tracking-wider uppercase border border-[var(--k-line-hot)]">
             DESTEK MERKEZİ
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
-            Sıkça Sorulan <span className="text-orange-600">Sorular</span>
+            Sıkça Sorulan <span className="text-[var(--k-hot)]">Sorular</span>
           </h1>
           <p className="text-[var(--k-ink-2)] text-base font-medium">
             Alış, satış, ödeme ve kargo süreçleri hakkında merak ettiğiniz tüm soruların yanıtları.
@@ -54,10 +54,10 @@ export default function SSSPage() {
               <div key={faq.q} className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden shadow-xs">
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-6 text-left font-black text-base text-[var(--k-ink)] flex items-center justify-between gap-4 hover:text-orange-600 transition-colors"
+                  className="w-full p-6 text-left font-black text-base text-[var(--k-ink)] flex items-center justify-between gap-4 hover:text-[var(--k-hot)] transition-colors"
                 >
                   <span>{faq.q}</span>
-                  <ChevronDown size={20} className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-600' : 'text-[var(--k-ink-4)]'}`} />
+                  <ChevronDown size={20} className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-[var(--k-hot)]' : 'text-[var(--k-ink-4)]'}`} />
                 </button>
                 {isOpen && (
                   <div className="px-6 pb-6 text-sm text-[var(--k-ink-2)] font-medium leading-relaxed border-t border-[var(--k-line)] pt-4">
@@ -75,7 +75,7 @@ export default function SSSPage() {
           <p className="text-[var(--k-ink-2)] text-sm font-medium">Canlı destek ekibimiz 7/24 sorularınızı yanıtlamak için hazır.</p>
           <Link
             href="/iletisim"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-orange-600 hover:bg-orange-700 text-white font-black text-xs shadow-md transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[var(--k-hot-deep)] hover:bg-[var(--k-hot-deep)] text-white font-black text-xs shadow-md transition-all"
           >
             <span>Bize Ulaşın</span>
             <ArrowRight size={14} />

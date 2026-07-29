@@ -13,7 +13,7 @@ import BatteryGauge from '@/components/BatteryGauge';
 import { GRADE_LABELS, type CosmeticGrade } from '@/lib/mock-data';
 
 const gradeClass: Record<CosmeticGrade, string> = {
-  'A+': 'bg-orange-500 text-white',
+  'A+': 'bg-[var(--k-hot)] text-[var(--k-hot-ink)]',
   'A':  'bg-[#F97316] text-white',
   'B':  'bg-[#3B82F6] text-white',
   'C':  'bg-[#F59E0B] text-white',
@@ -22,16 +22,16 @@ const gradeClass: Record<CosmeticGrade, string> = {
 function TestValueTag({ value }: { value: string | number | boolean }) {
   if (typeof value === 'boolean') {
     return (
-      <span className={`px-2 py-1 rounded-md text-[10px] font-black uppercase ${value ? 'bg-orange-100 text-orange-700' : 'bg-red-100 text-red-600'}`}>
+      <span className={`px-2 py-1 rounded-md text-[10px] font-black uppercase ${value ? 'bg-[var(--k-hot-wash)] text-[var(--k-hot)]' : 'bg-red-100 text-red-600'}`}>
         {value ? '✓ Başarılı' : '✗ Sorunlu'}
       </span>
     );
   }
   if (typeof value === 'number') {
     const colorClass = value >= 90
-      ? 'bg-orange-100 text-orange-700'
+      ? 'bg-[var(--k-hot-wash)] text-[var(--k-hot)]'
       : value >= 80
-        ? 'bg-amber-100 text-amber-600'
+        ? 'bg-[var(--k-hot-wash)] text-[var(--k-hot)]'
         : 'bg-red-100 text-red-600';
     return <span className={`px-2 py-1 rounded-[6px] text-[10px] font-black ${colorClass}`}>%{value}</span>;
   }
@@ -198,20 +198,20 @@ export default function ProductDetailModal() {
                         {GRADE_LABELS[activeProduct.cosmeticGrade as CosmeticGrade]}
                       </span>
                       {activeProduct.isHot && (
-                        <span className="flex items-center gap-1.5 bg-[var(--k-canvas)] text-amber-400 text-[12px] font-black px-4 py-2 rounded-xl shadow-sm">
+                        <span className="flex items-center gap-1.5 bg-[var(--k-canvas)] text-[var(--k-hot)] text-[12px] font-black px-4 py-2 rounded-xl shadow-sm">
                           <Zap size={14} fill="currentColor" strokeWidth={2.5} /> GÖZDE CİHAZ
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 mb-8 bg-amber-50 self-start px-4 py-2 rounded-xl border border-amber-100">
+                  <div className="flex items-center gap-2 mb-8 bg-[var(--k-hot-wash)] self-start px-4 py-2 rounded-xl border border-[var(--k-line-hot)]">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} className="fill-amber-400 text-amber-400" strokeWidth={2} />
+                      <Star key={i} size={16} className="fill-[var(--k-hot)] text-[var(--k-hot)]" strokeWidth={2} />
                     ))}
-                    <span className="text-[14px] font-black text-amber-700 ml-1">4.8</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-200 mx-2" />
-                    <span className="flex items-center gap-1 font-bold text-amber-700 text-[13px]">
+                    <span className="text-[14px] font-black text-[var(--k-hot)] ml-1">4.8</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--k-hot-wash)] mx-2" />
+                    <span className="flex items-center gap-1 font-bold text-[var(--k-hot)] text-[13px]">
                       <BadgeCheck size={16} strokeWidth={2.5} className="text-[var(--k-hot)]" /> Mytt Onaylı
                     </span>
                   </div>

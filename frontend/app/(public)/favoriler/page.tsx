@@ -16,7 +16,7 @@ export default function FavorilerPage() {
 
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-orange-600 hover:bg-orange-700 text-white font-black text-xs shadow-md transition-all"
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[var(--k-hot-deep)] hover:bg-[var(--k-hot-deep)] text-white font-black text-xs shadow-md transition-all"
         >
           <span>Ürünleri İncele</span>
           <ArrowRight size={14} />

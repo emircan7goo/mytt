@@ -74,9 +74,9 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full max-w-full rounded-3xl bg-[var(--k-surface)]/95 backdrop-blur-2xl border-2 border-orange-300 p-5 sm:p-8 md:p-10 shadow-2xl shadow-orange-950/10 relative overflow-hidden my-6">
+    <div className="w-full max-w-full rounded-3xl bg-[var(--k-surface)]/95 backdrop-blur-2xl border-2 border-[var(--k-line-hot)] p-5 sm:p-8 md:p-10 shadow-2xl /10 relative overflow-hidden my-6">
       {/* Arka plan radyal turuncu ışıklar */}
-      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-orange-500/15 blur-3xl animate-pulse" />
+      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-[var(--k-hot)]/15 blur-3xl animate-pulse" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 min-w-0">
 
@@ -84,7 +84,7 @@ export default function QuickValuationWidget() {
         <div className="lg:col-span-7 text-left space-y-4 min-w-0">
           
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--k-ink)] leading-tight break-words">
-            Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
+            Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-[var(--k-hot-deep)] via-[var(--k-hot)] to-[var(--k-hot-deep)] bg-clip-text text-transparent">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
           </h3>
 
           <p className="text-sm sm:text-base text-[var(--k-ink-2)] font-medium leading-relaxed max-w-xl break-words">
@@ -99,8 +99,8 @@ export default function QuickValuationWidget() {
                 onClick={() => setSelectedModelKey(modelKey)}
                 className={`px-3.5 py-2.5 sm:px-4.5 sm:py-3 rounded-2xl text-xs font-black transition-all duration-300 border shrink-0 ${
                   selectedModelKey === modelKey
-                    ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-orange-500 shadow-md shadow-orange-500/30 scale-105'
-                    : 'bg-orange-50/50 text-[var(--k-ink)] border-orange-200 hover:bg-orange-100 hover:text-orange-900'
+                    ? 'bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] text-[var(--k-hot-ink)] border-[var(--k-hot-deep)] shadow-md shadow-[var(--k-hot-glow)]/30 scale-105'
+                    : 'bg-[var(--k-hot-wash)]/50 text-[var(--k-ink)] border-[var(--k-line-hot)] hover:bg-[var(--k-hot-wash)] hover:text-[var(--k-hot)]'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -111,14 +111,14 @@ export default function QuickValuationWidget() {
 
         {/* Sağ taraf: CANLI AÇIK ARTIRMA SKOR TABLOSU */}
         <div className="lg:col-span-5 min-w-0 w-full">
-          <div className="rounded-3xl bg-gradient-to-b from-orange-500 via-orange-600 to-amber-600 p-6 sm:p-7 text-white text-center space-y-5 shadow-2xl shadow-orange-600/35 relative overflow-hidden border border-orange-400 max-w-full">
+          <div className="rounded-3xl bg-gradient-to-b from-[var(--k-hot-deep)] via-[var(--k-anchor)] to-[var(--k-void)] p-6 sm:p-7 text-white text-center space-y-5 shadow-2xl shadow-[var(--k-hot-glow)]/35 relative overflow-hidden border border-[var(--k-line-hot)] max-w-full">
             
             <div className="flex items-center justify-between gap-2 border-b border-white/20 pb-3 flex-wrap">
               <div className="flex items-center gap-1.5 text-xs font-black text-white">
-                <Trophy size={18} className="text-amber-200" />
+                <Trophy size={18} className="text-[var(--k-hot-2)]" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-orange-100 bg-[var(--k-surface)]/20 px-3 py-1 rounded-full backdrop-blur-xs">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-[var(--k-hot-2)] bg-[var(--k-surface)]/20 px-3 py-1 rounded-full backdrop-blur-xs">
                 <Clock size={13} />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
@@ -126,16 +126,16 @@ export default function QuickValuationWidget() {
 
             {/* Dijital Matrix/Slot Artış Animasyonu */}
             <div className="py-2 space-y-1">
-              <div className="text-xs font-black text-orange-100 uppercase tracking-widest truncate">
+              <div className="text-xs font-black text-[var(--k-hot-2)] uppercase tracking-widest truncate">
                 {currentPreset.modelName}
               </div>
               
               <div className={`text-3xl sm:text-5xl font-black text-white tracking-tight transition-transform duration-300 ${isTickActive ? 'scale-105 drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]' : ''}`}>
-                {fmt(currentBid)} <span className="text-xl sm:text-2xl text-amber-200">₺</span>
+                {fmt(currentBid)} <span className="text-xl sm:text-2xl text-[var(--k-hot-2)]">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-black text-amber-100 bg-[var(--k-void)]/20 px-3.5 py-1.5 rounded-full mt-2">
-                <TrendingUp size={15} className="text-amber-300" />
+              <div className="inline-flex items-center gap-2 text-xs font-black text-[var(--k-hot-2)] bg-[var(--k-void)]/20 px-3.5 py-1.5 rounded-full mt-2">
+                <TrendingUp size={15} className="text-[var(--k-hot-2)]" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
@@ -149,9 +149,9 @@ export default function QuickValuationWidget() {
 
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-3.5 sm:py-4 rounded-2xl bg-[var(--k-surface)] hover:bg-orange-50 text-orange-600 font-black text-xs sm:text-sm transition-all shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98 max-w-full"
+              className="w-full py-3.5 sm:py-4 rounded-2xl bg-[var(--k-surface)] hover:bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-black text-xs sm:text-sm transition-all shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98 max-w-full"
             >
-              <Zap size={18} className="fill-orange-600 text-orange-600 shrink-0" />
+              <Zap size={18} className="fill-[var(--k-hot-deep)] text-[var(--k-hot)] shrink-0" />
               <span className="truncate">Cihazımı Bu Fiyata İhaleye Çıkar</span>
               <ArrowRight size={18} strokeWidth={3} className="shrink-0" />
             </Link>

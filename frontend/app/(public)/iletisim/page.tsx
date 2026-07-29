@@ -16,11 +16,11 @@ export default function IletisimPage() {
 
         {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
+          <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-extrabold text-xs tracking-wider uppercase border border-[var(--k-line-hot)]">
             7/24 MÜŞTERİ DESTEĞİ
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
-            Bizimle <span className="text-orange-600">İletişime Geçin</span>
+            Bizimle <span className="text-[var(--k-hot)]">İletişime Geçin</span>
           </h1>
           <p className="text-[var(--k-ink-2)] text-base font-medium">
             Sorularınız, önerileriniz veya kurumsal iş birlikleri için müşteri hizmetleri ekibimiz her zaman yanınızda.
@@ -33,7 +33,7 @@ export default function IletisimPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-[var(--k-surface)] p-6 rounded-3xl border border-[var(--k-line)] shadow-sm space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-200 shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center border border-[var(--k-line-hot)] shrink-0">
                   <PhoneCall size={22} />
                 </div>
                 <div>
@@ -43,7 +43,7 @@ export default function IletisimPage() {
               </div>
 
               <div className="flex items-center gap-4 pt-4 border-t border-[var(--k-line)]">
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-200 shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center border border-[var(--k-line-hot)] shrink-0">
                   <Mail size={22} />
                 </div>
                 <div>
@@ -53,7 +53,7 @@ export default function IletisimPage() {
               </div>
 
               <div className="flex items-center gap-4 pt-4 border-t border-[var(--k-line)]">
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-200 shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--k-hot-wash)] text-[var(--k-hot)] flex items-center justify-center border border-[var(--k-line-hot)] shrink-0">
                   <MapPin size={22} />
                 </div>
                 <div>
@@ -81,27 +81,27 @@ export default function IletisimPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-bold text-[var(--k-ink-2)] block mb-1">Adınız Soyadınız</label>
-                    <input required type="text" placeholder="Orhan Yılmaz" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-orange-500" />
+                    <input required type="text" placeholder="Orhan Yılmaz" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-[var(--k-hot-deep)]" />
                   </div>
                   <div>
                     <label className="text-xs font-bold text-[var(--k-ink-2)] block mb-1">E-Posta Adresiniz</label>
-                    <input required type="email" placeholder="orhan@example.com" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-orange-500" />
+                    <input required type="email" placeholder="orhan@example.com" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-[var(--k-hot-deep)]" />
                   </div>
                 </div>
 
                 <div>
                   <label className="text-xs font-bold text-[var(--k-ink-2)] block mb-1">Konu</label>
-                  <input required type="text" placeholder="İhale veya Cihaz Satışı Hakkında" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-orange-500" />
+                  <input required type="text" placeholder="İhale veya Cihaz Satışı Hakkında" className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-[var(--k-hot-deep)]" />
                 </div>
 
                 <div>
                   <label className="text-xs font-bold text-[var(--k-ink-2)] block mb-1">Mesajınız</label>
-                  <textarea required rows={4} placeholder="Sorunuzu buraya yazabilirsiniz..." className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-orange-500" />
+                  <textarea required rows={4} placeholder="Sorunuzu buraya yazabilirsiniz..." className="w-full px-4 py-3 rounded-xl border border-[var(--k-line)] text-sm bg-[var(--k-canvas-2)] outline-none focus:border-[var(--k-hot-deep)]" />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-black text-sm transition-all shadow-lg flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-2xl bg-[var(--k-hot-deep)] hover:bg-[var(--k-hot-deep)] text-white font-black text-sm transition-all shadow-lg flex items-center justify-center gap-2"
                 >
                   <Send size={16} />
                   <span>Mesajı Gönder</span>

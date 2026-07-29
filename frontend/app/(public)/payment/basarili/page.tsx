@@ -26,7 +26,7 @@ function BasariliContent() {
         className="flex flex-col items-center gap-6 max-w-md text-center"
       >
         {/* İkon */}
-        <div className="w-28 h-28 rounded-full bg-orange-50 border-2 border-orange-200 flex items-center justify-center shadow-[0_0_60px_rgba(249,115,22,0.15)]">
+        <div className="w-28 h-28 rounded-full bg-[var(--k-hot-wash)] border-2 border-[var(--k-line-hot)] flex items-center justify-center shadow-[0_0_60px_rgba(249,115,22,0.15)]">
           <CheckCircle2 size={52} className="text-[var(--k-hot)]" strokeWidth={1.5} />
         </div>
 
@@ -42,11 +42,11 @@ function BasariliContent() {
 
         {/* Test modu uyarısı — gerçek ödeme henüz bağlı değil */}
         {isTestMode && (
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 w-full text-left flex gap-3">
-            <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
+          <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-4 w-full text-left flex gap-3">
+            <AlertTriangle size={18} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-amber-800 mb-0.5">Test Modu — Gerçek Ödeme Alınmadı</p>
-              <p className="text-xs text-amber-700 leading-relaxed">
+              <p className="text-sm font-semibold text-[var(--k-hot)] mb-0.5">Test Modu — Gerçek Ödeme Alınmadı</p>
+              <p className="text-xs text-[var(--k-hot)] leading-relaxed">
                 Ödeme altyapımız yakında devreye alınacak. Bu sipariş test amaçlı oluşturuldu,
                 kartınızdan herhangi bir tutar çekilmedi.
               </p>

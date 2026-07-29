@@ -24,13 +24,13 @@ export default function DealerTrustBadge({
 
   return (
     <div className={`flex items-center gap-2 flex-wrap ${text}`}>
-      <span className="inline-flex items-center gap-1 font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-full">
+      <span className="inline-flex items-center gap-1 font-bold text-[var(--k-hot)] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] px-2 py-0.5 rounded-full">
         <ShieldCheck size={12} strokeWidth={2.5} /> Doğrulanmış Satıcı
       </span>
 
       {typeof rating === 'number' && rating > 0 && (
         <span className="inline-flex items-center gap-1 font-semibold text-[var(--k-ink-2)]">
-          <Star size={12} className="fill-amber-400 text-amber-400" />
+          <Star size={12} className="fill-[var(--k-hot)] text-[var(--k-hot)]" />
           {rating.toFixed(1)}
           {typeof reviewCount === 'number' && reviewCount > 0 && (
             <span className="text-[var(--k-ink-4)] font-medium">({reviewCount})</span>
@@ -39,7 +39,7 @@ export default function DealerTrustBadge({
       )}
 
       {isPremium && (
-        <span className="inline-flex items-center gap-1 font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full uppercase tracking-wide text-[10px]">
+        <span className="inline-flex items-center gap-1 font-black text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-2 py-0.5 rounded-full uppercase tracking-wide text-[10px]">
           <Award size={11} /> Premium Bayi
         </span>
       )}
