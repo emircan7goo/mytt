@@ -39,7 +39,7 @@ export default function BrandHubShowcase() {
         <div>
           <span className="text-xs font-black text-orange-600 tracking-widest uppercase">MARKA VİTRİNİ</span>
           <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
-            Öne Çıkan <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Yenilenmiş Markalar</span>
+            Öne Çıkan <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Sıfır & Hatasız 2. El Markaları</span>
           </h3>
         </div>
         <Link

@@ -21,7 +21,7 @@ const REVIEWS = [
     rating: 5,
     date: '3 gün önce',
     comment: 'TSE 12 ay garantili aldığım telefon tamamen sıfır gibi geldi. Kutusunda 32-nokta ekspertiz raporu da çıktı. Şeffaf ve çok güvenilir.',
-    type: 'Yenilenmiş Cihaz Aldı',
+    type: 'Hatasız 2. El Cihaz Aldı',
     verified: true,
   },
   {
@@ -32,7 +32,7 @@ const REVIEWS = [
     rating: 5,
     date: 'Geçen hafta',
     comment: 'Escrow havuz hesabı olması içimi çok rahatlattı. Cihazı kuryeden teslim alıp kontrol edene kadar para havuzda bekledi. Güvenle alışveriş yapabilirsiniz.',
-    type: 'Yenilenmiş Cihaz Aldı',
+    type: 'Sıfır Cihaz Aldı',
     verified: true,
   },
 ];

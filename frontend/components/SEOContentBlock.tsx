@@ -11,7 +11,7 @@ export default function SEOContentBlock() {
         </div>
         <div>
           <h3 className="text-xl font-black text-slate-900">
-            Yenilenmiş Telefon ve Doğrulanmış Cihaz Pazaryeri Rehberi
+            Sıfır ve Hatasız 2. El Cihaz Pazaryeri Rehberi
           </h3>
           <p className="text-xs text-slate-500 font-medium">
             Sıfır ve 2. el teknoloji alışverişinde bilmeniz gereken tüm detaylar.
@@ -23,10 +23,10 @@ export default function SEOContentBlock() {
         <div className="space-y-3">
           <h4 className="text-sm font-black text-slate-900 flex items-center gap-1.5">
             <CheckCircle2 size={16} className="text-orange-600" />
-            <span>Yenilenmiş Telefon Nedir?</span>
+            <span>Sıfır ve Hatasız 2. El Cihaz Standartlarımız</span>
           </h4>
           <p>
-            Yenilenmiş telefon; kullanılmış cihazların Ticaret Bakanlığı onaylı ve TSE belgeli yenileme merkezlerinde 32 farklı teknik kontrol aşamasından geçirilerek, tüm donanım ve yazılımlarının sıfır standartlarına ulaştırılmasıdır. Tüm veriler kalıcı olarak sıfırlanır ve cihaz 12 ay resmi garanti ile sunulur.
+            Mytt platformunda yenilenmiş (refurbished) cihaz satışı yapılmaz; sadece %100 orijinal sıfır (kapalı kutu) veya kozmetik ve donanımsal olarak kusursuz hatasız 2. el telefonlar listelenir. Tüm cihazlar TSE belgeli ekspertiz merkezimizde 32 farklı teknik kontrol aşamasından geçirilerek onaylanır.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function SEOContentBlock() {
         <div className="space-y-3 pt-2">
           <h4 className="text-sm font-black text-slate-900 flex items-center gap-1.5">
             <Award size={16} className="text-blue-600" />
-            <span>Cihazımı En Yüksek Fiyata Nasıl Satarım?</span>
+            <span>Cihazımı En Yüksek Fiyatık Nasıl Satarım?</span>
           </h4>
           <p>
             Cihaz modelinizi ve kozmetik durumunu sisteme girdiğinizde, 150+ onaylı yetkili bayi kapalı açık artırma tekliflerinde yarışır. En yüksek teklifi seçtiğinizde kuryemiz kapınızdan ücretsiz teslim alır ve paranız aynı gün hesabınıza aktarılır.
@@ -56,7 +56,7 @@ export default function SEOContentBlock() {
             <span>TSE 12 Ay Garanti Kapsamı</span>
           </h4>
           <p>
-            Platformumuzdan satın alınan tüm yenilenmiş cihazlar 12 ay boyunca kullanıcı hatası dışındaki tüm teknik arızalara karşı ücretsiz onarım ve birebir cihaz değişim garantisine sahiptir.
+            Platformumuzdan satın alınan tüm cihazlar 12 ay boyunca kullanıcı hatası dışındaki tüm teknik arızalara karşı ücretsiz onarım ve birebir cihaz değişim garantisine sahiptir.
           </p>
         </div>
       </div>

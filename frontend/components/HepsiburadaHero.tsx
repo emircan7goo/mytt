@@ -27,8 +27,8 @@ export default function HepsiburadaHero() {
     },
     {
       id: 3,
-      title: 'TSE GARANTİLİ YENİLENMİŞ TELEFONLAR',
-      subtitle: '32-nokta ekspertiz onaylı, 12 ay resmi garantili ve %100 orijinal yenilenmiş akıllı telefonlar.',
+      title: 'SIFIR VE HATASIZ 2. EL TELEFONLAR',
+      subtitle: '32-nokta ekspertiz onaylı, 12 ay resmi garantili, sıfır veya hatasız ikinci el akıllı telefonlar.',
       badge: 'TSE ONAYLI GÜVENCE',
       img: '/banners/clean_hero_3.jpg',
       ctaText: 'Garantili Cihazları Gör',
@@ -73,7 +73,7 @@ export default function HepsiburadaHero() {
     <div className="w-full max-w-full bg-orange-50/40 border-b border-orange-200/80 py-4 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
 
-        {/* ── TAM BOYUT DEV HERO BANNER (Korumalı Taşmasız Düzen) ── */}
+        {/* ── TAM BOYUT DEV HERO BANNER (Sıfır & Hatasız 2. El Vurgusu) ── */}
         <div className="relative w-full h-[360px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
@@ -100,7 +100,7 @@ export default function HepsiburadaHero() {
             <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
           </button>
 
-          {/* Metin İçeriği (Hizalanmış & Sınırlandırılmış) */}
+          {/* Metin İçeriği */}
           <div className="relative z-20 p-5 sm:p-8 md:p-12 max-w-xl lg:max-w-2xl text-left text-white space-y-3 sm:space-y-4 my-auto min-w-0">
             <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-orange-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-wider shadow-md">
               {slides[activeSlide].badge}
