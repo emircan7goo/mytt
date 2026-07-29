@@ -342,17 +342,17 @@ export default function Navbar() {
           {/* Sağ aksiyonlar */}
           <div className="flex items-center gap-1.5 ml-auto">
 
-            {/* Cihazını Sat CTA */}
+            {/* Cihazını Sat CTA (Turuncu Renk Harmonisi) */}
             <Link
               href="/sell"
-              className="hidden md:inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13px] font-black transition-all hover:-translate-y-px shadow-md hover:shadow-emerald-600/30"
+              className="inline-flex items-center gap-1.5 h-9 px-3.5 sm:h-10 sm:px-5 rounded-full text-[11px] sm:text-[13px] font-black transition-all hover:-translate-y-px shadow-md shadow-orange-500/30"
               style={{
-                background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
+                background: 'linear-gradient(135deg, #FF6000 0%, #EA580C 100%)',
                 color: '#fff',
               }}
             >
               <Smartphone size={14} strokeWidth={2.5} />
-              Cihazını Sat
+              <span className="truncate">Cihazını Sat</span>
             </Link>
 
             {/* Mobil arama */}

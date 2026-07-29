@@ -70,11 +70,11 @@ export default function HepsiburadaHero() {
   };
 
   return (
-    <div className="w-full max-w-full bg-orange-50/40 border-b border-orange-200/80 py-2 sm:py-4 overflow-hidden">
+    <div className="w-full max-w-full bg-[#090D16] border-b border-slate-800/80 py-2 sm:py-4 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-8">
 
-        {/* ULTRA KOMPAKT MOBİL HERO BANNER (h-[185px] sm:h-[420px]) */}
-        <div className="relative w-full h-[185px] sm:h-[420px] overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
+        {/* LÜKS DEPOSUZ UYUMLU HERO BANNER (#0F172A Koyu Safir Zemin) */}
+        <div className="relative w-full h-[185px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-800/80 bg-slate-950 shadow-2xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
           {slides.map((s, idx) => (
@@ -89,7 +89,7 @@ export default function HepsiburadaHero() {
           ))}
 
           {/* Sol Karanlık Degrade Katmanı */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-transparent z-10" />
 
           {/* Sol Navigasyon Oku (Masaüstü) */}
           <button

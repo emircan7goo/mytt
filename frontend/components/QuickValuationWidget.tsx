@@ -74,7 +74,7 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-slate-900/95 border border-orange-500/40 p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
+    <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-slate-800 p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-center relative z-10 min-w-0">
 
         {/* Sol taraf: Başlık & Model Seçim Butonları */}
@@ -106,47 +106,48 @@ export default function QuickValuationWidget() {
           </div>
         </div>
 
-        {/* Sağ taraf: CANLI AÇIK ARTIRMA SKOR TABLOSU */}
+        {/* Sağ taraf: LÜKS OBSİDYEN CANLI SKOR KARTI (Bağıran Turuncu Yerine Şık Koyu Mat) */}
         <div className="lg:col-span-5 min-w-0 w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-orange-500 via-orange-600 to-amber-600 p-4 sm:p-7 text-white text-center space-y-3 sm:space-y-5 shadow-xl relative overflow-hidden border border-orange-400 max-w-full">
+          <div className="rounded-2xl sm:rounded-3xl bg-slate-950 p-4 sm:p-7 text-white text-center space-y-3 sm:space-y-4 shadow-2xl relative overflow-hidden border border-orange-500/40 max-w-full">
             
-            <div className="flex items-center justify-between gap-2 border-b border-white/20 pb-2 sm:pb-3 flex-wrap">
-              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-black text-white">
-                <Trophy size={14} className="text-amber-200 sm:w-4 sm:h-4" />
+            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-2 sm:pb-3 flex-wrap">
+              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-black text-orange-400">
+                <Trophy size={14} className="text-amber-400 sm:w-4 sm:h-4" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-orange-100 bg-white/20 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
-                <Clock size={11} />
+              <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-slate-300 bg-slate-900 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-slate-800">
+                <Clock size={11} className="text-orange-400" />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
             </div>
 
-            {/* Dijital Matrix/Slot Artış Animasyonu */}
+            {/* Dijital Slot Artış Animasyonu (Neon Orange Fiyat Vurgusu) */}
             <div className="py-1 space-y-0.5">
-              <div className="text-[10px] sm:text-xs font-black text-orange-100 uppercase tracking-widest truncate">
+              <div className="text-[10px] sm:text-xs font-black text-orange-400 uppercase tracking-widest truncate">
                 {currentPreset.modelName}
               </div>
               
-              <div className={`text-2xl sm:text-5xl font-black text-white tracking-tight transition-transform duration-300 ${isTickActive ? 'scale-105' : ''}`}>
-                {fmt(currentBid)} <span className="text-lg sm:text-2xl text-amber-200">₺</span>
+              <div className={`text-3xl sm:text-5xl font-black text-white tracking-tight transition-transform duration-300 drop-shadow-[0_0_25px_rgba(255,96,0,0.5)] ${isTickActive ? 'scale-105' : ''}`}>
+                {fmt(currentBid)} <span className="text-xl sm:text-3xl text-orange-400">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-amber-100 bg-black/20 px-3 py-1 rounded-full mt-1">
-                <TrendingUp size={13} className="text-amber-300" />
+              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-amber-300 bg-orange-950/60 border border-orange-500/30 px-3 py-1 rounded-full mt-1">
+                <TrendingUp size={13} className="text-orange-400" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
 
             {/* Anlık Bayi Akış Bandı */}
-            <div className="bg-white/15 rounded-xl p-2.5 text-[10px] sm:text-xs font-extrabold text-white border border-white/20 shadow-xs truncate">
+            <div className="bg-slate-900 rounded-xl p-2.5 text-[10px] sm:text-xs font-extrabold text-slate-200 border border-slate-800 shadow-xs truncate">
               {recentDealerText}
             </div>
 
+            {/* Lüks Turuncu Aksiyon Butonu */}
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white hover:bg-orange-50 text-orange-600 font-black text-xs sm:text-sm transition-all shadow-lg flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-orange-500/30 flex items-center justify-center gap-1.5 hover:scale-[1.02] active:scale-98 max-w-full"
             >
-              <Zap size={16} className="fill-orange-600 text-orange-600 shrink-0" />
+              <Zap size={16} className="fill-white text-white shrink-0" />
               <span className="truncate">Cihazımı Bu Fiyata İhaleye Çıkar</span>
               <ArrowRight size={16} strokeWidth={3} className="shrink-0" />
             </Link>
