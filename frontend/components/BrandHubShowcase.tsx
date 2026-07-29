@@ -1,41 +1,32 @@
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Smartphone, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const BRANDS = [
   {
-    name: 'Apple iPhone',
-    logo: '',
-    tag: 'TSE 12 Ay Garantili',
-    count: '240+ İlan',
+    name: 'iPhone',
+    count: 'Güncel İlanlar',
     bg: 'from-slate-900 via-slate-950 to-slate-900 text-white',
     border: 'border-slate-800',
     accent: 'text-white',
-    badgeCls: 'bg-white text-slate-950 font-black',
     link: '/?brand=Apple',
     img: '/brands/apple.jpg',
   },
   {
-    name: 'Samsung Galaxy',
-    logo: 'SAMSUNG',
-    tag: 'Galaxy AI Destekli',
-    count: '180+ İlan',
+    name: 'Samsung',
+    count: 'Güncel İlanlar',
     bg: 'from-blue-950 via-slate-950 to-blue-900 text-white',
     border: 'border-blue-900/60',
     accent: 'text-white',
-    badgeCls: 'bg-blue-600 text-white font-black',
     link: '/?brand=Samsung',
     img: '/brands/samsung.jpg',
   },
   {
-    name: 'Xiaomi & Redmi',
-    logo: 'XIAOMI',
-    tag: 'Fiyat / Performans',
-    count: '120+ İlan',
+    name: 'Xiaomi',
+    count: 'Güncel İlanlar',
     bg: 'from-amber-950 via-slate-950 to-amber-900 text-white',
     border: 'border-amber-900/60',
     accent: 'text-white',
-    badgeCls: 'bg-amber-600 text-white font-black',
     link: '/?brand=Xiaomi',
     img: '/brands/xiaomi.jpg',
   },
@@ -48,7 +39,7 @@ export default function BrandHubShowcase() {
         <div>
           <span className="text-xs font-black text-blue-600 tracking-widest uppercase">MARKA VİTRİNİ</span>
           <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
-            Öne Çıkan <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">Yenilenmiş Telefon Markaları</span>
+            Öne Çıkan <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">Yenilenmiş Markalar</span>
           </h3>
         </div>
         <Link
@@ -72,28 +63,27 @@ export default function BrandHubShowcase() {
 
             <div className="relative z-20">
               <div className="flex items-center justify-between gap-2">
-                <span className={`text-xs font-black px-3.5 py-1.5 rounded-full shadow-xs ${b.badgeCls}`}>
-                  {b.tag}
+                <span className="text-xs font-extrabold text-slate-300 bg-white/10 px-3 py-1 rounded-full border border-white/10 backdrop-blur-xs">
+                  {b.count}
                 </span>
-                <span className="text-xs font-extrabold text-slate-300">{b.count}</span>
               </div>
 
-              <h4 className={`text-3xl font-black ${b.accent} mt-6 group-hover:text-blue-400 transition-colors tracking-tight drop-shadow-md`}>
+              <h4 className={`text-4xl font-black ${b.accent} mt-8 group-hover:text-blue-400 transition-colors tracking-tight drop-shadow-lg`}>
                 {b.name}
               </h4>
             </div>
 
             <div className="relative z-20 flex items-center justify-between pt-8 border-t border-white/20">
               <span className="text-sm font-black text-white group-hover:text-blue-400 transition-colors">
-                Tüm İlanları Gör
+                İlanları Gör
               </span>
               <div className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
                 <ArrowRight size={16} strokeWidth={2.5} />
               </div>
             </div>
 
-            {/* Arka plan 3D lansman görseli */}
-            <div className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+            {/* Arka plan 3D Logo + Telefon Görseli */}
+            <div className="absolute inset-0 w-full h-full opacity-50 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none">
               <img src={b.img} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
             </div>
           </Link>
