@@ -24,6 +24,8 @@ import HepsiburadaHero from '@/components/HepsiburadaHero';
 import QuickValuationWidget from '@/components/QuickValuationWidget';
 import BrandHubShowcase from '@/components/BrandHubShowcase';
 import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
+import TrendyolCircleBar from '@/components/TrendyolCircleBar';
+import TrendyolSpecialProducts from '@/components/TrendyolSpecialProducts';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -477,8 +479,18 @@ function HomePageContent() {
   return (
     <div className="min-h-screen font-sans bg-orange-50/20 text-slate-800">
 
-      {/* ── HEPSİBURADA HERO SAHNESİ (10 İkon Barı + İkili Banner) ── */}
+      {/* ── 1. TRENDYOL YUVARLAK DİRE STORY BAR ── */}
+      {!searchQuery && <TrendyolCircleBar />}
+
+      {/* ── 2. TRENDYOL HERO LANSMAN BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
+
+      {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
+      {!searchQuery && (
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
+          <TrendyolSpecialProducts products={families} />
+        </div>
+      )}
 
       {/* ── TİCARİ WİDGETLAR & VİTRİNLER ── */}
       {!searchQuery && (
