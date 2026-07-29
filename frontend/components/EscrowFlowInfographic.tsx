@@ -1,84 +1,76 @@
 'use client';
-import { ShieldCheck, Zap, Truck, BadgeCheck, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { ShieldCheck, Laptop, Truck, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const STEPS = [
   {
     step: '01',
-    title: 'Cihazını İlana Koy & Teklif Al',
-    desc: 'Cihaz bilgilerini ve fotoğraflarını yükle. 150+ onaylı yetkili bayi kapalı teklifte yarışsın.',
-    icon: Zap,
-    color: 'from-blue-600 to-indigo-700',
-    badge: '1 Saatte Teklif',
+    title: 'Cihazını İhaleye Çıkar',
+    desc: 'Cihaz bilgilerini gir, 150+ onaylı yetkili bayi 1 saat içinde kapalı tekliflerde yarışsın.',
+    icon: Laptop,
   },
   {
     step: '02',
-    title: 'Ücretsiz Kuryeye Teslim Et',
-    desc: 'En yüksek teklifi seç. Kuryemiz cihazını kapından ücretsiz teslim alıp merkeze ulaştırsın.',
+    title: 'Adresten Ücretsiz Kurye',
+    desc: 'En yüksek teklifi onayladığında VIP kuryemiz kapından ücretsiz teslim alsın.',
     icon: Truck,
-    color: 'from-emerald-600 to-teal-700',
-    badge: 'Sıfır Kargo Ücreti',
   },
   {
     step: '03',
-    title: 'Paranı Escrow Güvencesiyle Al',
-    desc: '32-nokta ekspertiz onayından sonra paran anında banka hesabına eksiksiz aktarılsın.',
+    title: 'Escrow Havuz Hesabı',
+    desc: 'Ödemeniz BDDK lisanslı Escrow havuz hesabına aktarılır. Paranız %100 güvendedir.',
     icon: ShieldCheck,
-    color: 'from-violet-600 to-indigo-800',
-    badge: '%100 Güvenli Ödeme',
+  },
+  {
+    step: '04',
+    title: 'Aynı Gün Anında Ödeme',
+    desc: 'Ekspertiz onayından sonra paranız 15 dakika içinde banka hesabınıza yatırılır.',
+    icon: CheckCircle2,
   },
 ];
 
 export default function EscrowFlowInfographic() {
   return (
-    <div className="w-full rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-8 md:p-10 my-8 shadow-xl shadow-slate-900/5 relative overflow-hidden">
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold tracking-wider uppercase">
-          KAPALI AÇIK ARTIRMA & ESCROW GÜVENCESİ
-        </span>
-        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-3">
-          Sistem Nasıl Çalışır? <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">3 Adımda Sıfır Risk</span>
-        </h3>
-        <p className="text-sm text-slate-600 font-medium mt-2">
-          Alıcı ve satıcının hakları TSE onaylı merkez ve Escrow havuz hesabı ile %100 koruma altındadır.
-        </p>
-      </div>
+    <div className="w-full my-10">
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl space-y-8 relative overflow-hidden">
+        
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+          <div>
+            <span className="text-xs font-black text-orange-400 tracking-widest uppercase">GÜVENLİ TİCARET AKIŞI</span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
+              4 Adımda <span className="text-orange-400">%100 Güvenli Alım Satım</span> Nasıl Çalışır?
+            </h3>
+          </div>
+          <Link
+            href="/garanti"
+            className="text-xs font-black text-slate-300 hover:text-orange-400 flex items-center gap-1.5 transition-colors"
+          >
+            <span>Escrow Detaylarını İncele</span>
+            <ArrowRight size={16} />
+          </Link>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-        {STEPS.map((s) => {
-          const Icon = s.icon;
-          return (
-            <div
-              key={s.step}
-              className="relative p-6 rounded-2xl bg-gradient-to-b from-slate-50/80 via-white to-slate-50/40 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${s.color} text-white flex items-center justify-center shadow-md shrink-0`}>
-                    <Icon size={24} strokeWidth={2.2} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {STEPS.map((s, idx) => {
+            const Icon = s.icon;
+            return (
+              <div key={idx} className="bg-slate-950 rounded-2xl p-6 border border-slate-800 space-y-3 relative group hover:border-orange-500/60 transition-colors">
+                <div className="flex items-center justify-between text-orange-400 font-mono font-black text-lg">
+                  <span>{s.step}</span>
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                    <Icon size={20} />
                   </div>
-                  <span className="text-3xl font-black text-slate-200">{s.step}</span>
                 </div>
 
-                <div className="inline-block px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[10px] font-extrabold mb-3 border border-slate-200">
-                  {s.badge}
+                <div className="space-y-1 text-left pt-2">
+                  <h4 className="text-base font-black text-white">{s.title}</h4>
+                  <p className="text-xs text-slate-400 font-medium leading-relaxed">{s.desc}</p>
                 </div>
-
-                <h4 className="text-lg font-black text-slate-900 leading-snug">
-                  {s.title}
-                </h4>
-
-                <p className="text-xs text-slate-600 font-medium leading-relaxed mt-2">
-                  {s.desc}
-                </p>
               </div>
+            );
+          })}
+        </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-emerald-600">
-                <CheckCircle2 size={13} className="text-emerald-600" />
-                <span>Doğrulanmış Escrow Adımı</span>
-              </div>
-            </div>
-          );
-        })}
       </div>
     </div>
   );

@@ -24,28 +24,28 @@ export default function TrendyolCircleBar() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
+      const scrollAmount = direction === 'left' ? -320 : 320;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="w-full bg-white py-4 border-b border-slate-100 relative group">
+    <div className="w-full bg-[#090D16] py-6 border-b border-slate-800/80 relative group">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 relative">
 
         {/* Sol Kaydırma Butonu */}
         <button
           onClick={() => scroll('left')}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-orange-50 hover:text-orange-600 transition-all opacity-0 group-hover:opacity-100"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 flex items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-80 sm:opacity-0 group-hover:opacity-100"
           aria-label="Sola kaydır"
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft size={22} />
         </button>
 
-        {/* ── Trendyol Tarzı Yuvarlak Daire Story Barı ── */}
+        {/* ── BÜYÜTÜLMÜŞ LÜKS KOYU TEMALI DİJİTAL STORY BAR (w-[96px]) ── */}
         <div
           ref={scrollRef}
-          className="no-scrollbar flex items-center gap-6 overflow-x-auto py-1 scroll-smooth"
+          className="no-scrollbar flex items-center gap-6 sm:gap-8 overflow-x-auto py-2 scroll-smooth"
         >
           {CIRCLE_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -53,19 +53,19 @@ export default function TrendyolCircleBar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex flex-col items-center gap-2 group/item shrink-0 w-[84px] text-center"
+                className="flex flex-col items-center gap-3 group/item shrink-0 w-[96px] text-center"
               >
-                {/* Daire Halka İkon */}
-                <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-orange-600 shadow-sm group-hover/item:scale-108 transition-transform duration-300">
-                  <div className="w-[64px] h-[64px] rounded-full bg-white p-1 flex items-center justify-center">
+                {/* BÜYÜTÜLMÜŞ Daire Halka İkon (Işıldayan Canlı Turuncu Halka) */}
+                <div className="relative p-1 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_20px_rgba(255,96,0,0.35)] group-hover/item:shadow-[0_0_28px_rgba(255,96,0,0.7)] group-hover/item:scale-110 transition-all duration-300">
+                  <div className="w-[76px] h-[76px] rounded-full bg-slate-950 p-1 flex items-center justify-center">
                     <div className={`w-full h-full rounded-full bg-gradient-to-br ${item.color} text-white flex items-center justify-center shadow-inner`}>
-                      <Icon size={24} strokeWidth={2} />
+                      <Icon size={30} strokeWidth={2.2} />
                     </div>
                   </div>
                 </div>
 
                 {/* Metin Etiketi */}
-                <span className="text-[11px] font-extrabold text-slate-700 leading-tight group-hover/item:text-orange-600 transition-colors line-clamp-2">
+                <span className="text-[12px] font-black text-slate-100 leading-tight group-hover/item:text-orange-400 transition-colors line-clamp-2 drop-shadow-sm">
                   {item.label}
                 </span>
               </Link>
@@ -76,10 +76,10 @@ export default function TrendyolCircleBar() {
         {/* Sağ Kaydırma Butonu */}
         <button
           onClick={() => scroll('right')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-orange-50 hover:text-orange-600 transition-all opacity-0 group-hover:opacity-100"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 flex items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-80 sm:opacity-0 group-hover:opacity-100"
           aria-label="Sağa kaydır"
         >
-          <ChevronRight size={18} />
+          <ChevronRight size={22} />
         </button>
 
       </div>

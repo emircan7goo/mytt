@@ -26,18 +26,18 @@
   --space-2:       #1D1712;
   --space-3:       #2B221A;
 
-  /* ── Surface System (Light Premium) ─────────────────────────────────── */
-  --bg:            #FFFFFF;
-  --bg-warm:       #FAFAFA;
-  --card:          #FFFFFF;
-  --elevated:      #FFFFFF;
+  /* ── Surface System (Dark Premium) ─────────────────────────────────── */
+  --bg:            #090D16;
+  --bg-warm:       #0F172A;
+  --card:          #0F172A;
+  --elevated:      #1E293B;
 
-  /* ── Ink System (Carbon & Slate) ────────────────────────────────────── */
-  --ink:           #111827; /* Carbon slate */
-  --ink-2:         #1F2937;
-  --ink-3:         #374151;
-  --ink-4:         #4B5563;
-  --ink-5:         #6B7280;
+  /* ── Ink System (Dark Mode Crisp Typography) ───────────────────────── */
+  --ink:           #FFFFFF;
+  --ink-2:         #F8FAFC;
+  --ink-3:         #CBD5E1;
+  --ink-4:         #94A3B8;
+  --ink-5:         #64748B;
   --ink-6:         #9CA3AF;
   --ink-7:         #E5E7EB;
   --ink-8:         #F3F4F6;
