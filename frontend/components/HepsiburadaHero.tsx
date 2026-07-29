@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function HepsiburadaHero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -25,6 +25,33 @@ export default function HepsiburadaHero() {
       ctaText: 'Hemen Satış Başlat',
       ctaLink: '/sell',
     },
+    {
+      id: 3,
+      title: 'TSE GARANTİLİ YENİLENMİŞ TELEFONLAR',
+      subtitle: '32-nokta ekspertiz onaylı, 12 ay resmi garantili ve %100 orijinal yenilenmiş akıllı telefonlar.',
+      badge: 'TSE ONAYLI GÜVENCE',
+      img: '/banners/clean_hero_3.jpg',
+      ctaText: 'Garantili Cihazları Gör',
+      ctaLink: '/?cat=S%C4%B1f%C4%B1r',
+    },
+    {
+      id: 4,
+      title: 'VADE FARKSIZ 12 TAKSİT İMKANI',
+      subtitle: 'Tüm anlaşmalı kredi kartlarına özel vade farksız 12 aya varan taksit avantajıyla hemen sahip ol.',
+      badge: 'PEŞİN FİYATINA TAKSİT',
+      img: '/banners/clean_hero_4.jpg',
+      ctaText: 'Taksitli Fırsatları İncele',
+      ctaLink: '/?promo=taksit',
+    },
+    {
+      id: 5,
+      title: '%100 ESCROW GÜVENCELİ ALIM SATIM',
+      subtitle: 'Paranız Escrow havuz hesabında güvende. Cihazınızı teslim alıp onaylayana kadar paranız %100 korumada.',
+      badge: 'SIRTINIZ YERE GELMESİN',
+      img: '/banners/clean_hero_5.jpg',
+      ctaText: 'Escrow Sistemi Nasıl Çalışır?',
+      ctaLink: '/garanti',
+    },
   ];
 
   useEffect(() => {
@@ -34,11 +61,19 @@ export default function HepsiburadaHero() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % slides.length);
+  };
+
   return (
     <div className="w-full bg-orange-50/40 border-b border-orange-200/80 py-4">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
 
-        {/* ── TAM BOYUT DEV HERO BANNER (Canlı Turuncu Vurgulu) ── */}
+        {/* ── TAM BOYUT 5'Lİ DEV HERO BANNER (Navigasyon Okları Eklendi) ── */}
         <div className="relative w-full h-[380px] md:h-[420px] overflow-hidden rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
@@ -47,14 +82,23 @@ export default function HepsiburadaHero() {
               key={s.id}
               src={s.img}
               alt={s.title}
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+              className={`absolute inset-0 w-full h-full object-cover object-right transition-opacity duration-700 ${
                 activeSlide === idx ? 'opacity-100 z-0' : 'opacity-0 -z-10'
               }`}
             />
           ))}
 
-          {/* Sol Karanlık Degrade Katmanı */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent z-10" />
+          {/* Sol Karanlık Degrade Katmanı (Metin ve Buton Çakışmasını %100 Önler) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/70 to-transparent z-10" />
+
+          {/* Sol Navigasyon Oku */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+            aria-label="Önceki slayt"
+          >
+            <ChevronLeft size={24} />
+          </button>
 
           {/* Metin İçeriği */}
           <div className="relative z-20 p-8 md:p-12 max-w-2xl text-left text-white space-y-4 my-auto">
@@ -80,6 +124,15 @@ export default function HepsiburadaHero() {
               </Link>
             </div>
           </div>
+
+          {/* Sağ Navigasyon Oku */}
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+            aria-label="Sonraki slayt"
+          >
+            <ChevronRight size={24} />
+          </button>
 
           {/* Carousel Noktaları */}
           <div className="relative z-20 pb-5 flex items-center justify-center gap-2.5">
