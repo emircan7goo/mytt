@@ -490,14 +490,7 @@ function HomePageContent() {
       {/* ── 2. TRENDYOL HERO LANSMAN BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
 
-      {/* ── 3. EASYCEP TARZI "MYTT DÜNYASI" 4'LÜ AKSİYON IZGARASI ── */}
-      {!searchQuery && (
-        <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
-          <MyttWorldGrid />
-        </div>
-      )}
-
-      {/* ── 4. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
+      {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
       {!searchQuery && (
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
           <TrendyolSpecialProducts products={families} />
