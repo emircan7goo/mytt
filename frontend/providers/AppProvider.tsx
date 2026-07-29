@@ -13,6 +13,8 @@ import { API_BASE } from '@/lib/api';
 import ThemeInjector from '@/components/ThemeInjector';
 
 // ─────────────────────────────────────────────────────────────────────────────
+import { ThemeProvider } from '@/providers/ThemeContext';
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const [queryClient] = useState(
     () =>
@@ -26,41 +28,30 @@ export function AppProvider({ children }: { children: ReactNode }) {
       })
   );
 
-  /**
-   * Session Restore — HttpOnly cookie ile
-   * Sayfa yüklendiğinde GET /auth/me çağrısı yapılır.
-   * Cookie geçerliyse backend user bilgisini döndürür, store'a yazılır.
-   * Cookie geçersiz/yoksa sessizce görmezden gelinir.
-   */
   useEffect(() => {
     const restoreSession = async () => {
       try {
         const res = await fetch(`${API_BASE}/auth/me`, {
           method: 'GET',
-          credentials: 'include', // HttpOnly cookie gönderir
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
         });
         if (res.ok) {
           const user: AuthPayload = await res.json();
           if (user?.id && user?.role) {
             useAuthStore.setState({ user });
-            // Companion cookie'yi de yenile — proxy.ts (RBAC) bunu okuyor
             setSessionCookie(user);
           }
         } else if (res.status === 401) {
-          // Cookie geçersiz → companion cookie'yi de temizle
           clearSessionCookie();
           useAuthStore.setState({ user: null });
         }
-      } catch {
-        // Network hatası → sessizce geç
-      }
+      } catch {}
     };
 
     restoreSession();
   }, []);
 
-  // Sync route changes with UI state (close modals/drawers on navigation)
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -71,18 +62,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [pathname, searchParams]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeInjector />
-      <Toaster
-        position="bottom-right"
-        richColors
-        toastOptions={{
-          style: { fontFamily: 'var(--font-heading, sans-serif)' },
-          className: 'font-bold text-[14px]',
-        }}
-      />
-      {children}
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeInjector />
+        <Toaster
+          position="bottom-right"
+          richColors
+          toastOptions={{
+            style: { fontFamily: 'var(--font-heading, sans-serif)' },
+            className: 'font-bold text-[14px]',
+          }}
+        />
+        {children}
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

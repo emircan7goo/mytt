@@ -41,6 +41,29 @@
   --ink-6:         #9CA3AF;
   --ink-7:         #E5E7EB;
   --ink-8:         #F3F4F6;
+}
+
+/* ── ☀️ LIGHT THEME (AÇIK TURUNCU-BEYAZ TEMA) ───────────────────────── */
+[data-theme="light"] {
+  --bg:            #F8FAFC;
+  --bg-warm:       #FFFFFF;
+  --card:          #FFFFFF;
+  --elevated:      #F1F5F9;
+
+  --ink:           #0F172A;
+  --ink-2:         #1E293B;
+  --ink-3:         #334155;
+  --ink-4:         #475569;
+  --ink-5:         #64748B;
+
+  --k-canvas:      #F8FAFC;
+  --k-surface:     #FFFFFF;
+  --k-surface-2:   #F1F5F9;
+  --k-line:        #E2E8F0;
+  --k-ink:         #0F172A;
+  --k-ink-2:       #1E293B;
+  --k-ink-3:       #475569;
+}
 
   /* -- Accent Colors ------------------------------------------------------ */
   --orange:        #F97316;   /* Kampanya, indirim */

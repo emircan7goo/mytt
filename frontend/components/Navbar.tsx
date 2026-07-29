@@ -11,6 +11,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { toast } from 'sonner';
 import { useApp } from '@/providers/AppProvider';
+import { useTheme } from '@/providers/ThemeContext';
 import { useSiteConfig } from '@/lib/hooks/useSiteConfig';
 import { ROLE_DASHBOARD } from '@/lib/auth';
 
@@ -197,15 +198,12 @@ export default function Navbar() {
   const activeCategory = searchParams?.get('cat') || null;
 
   const { cartCount, user, logout, setShowAuthModal, openCart, setSearchQuery } = useApp();
+  const { theme, toggleTheme } = useTheme();
   const { data: configData } = useSiteConfig();
   const navbarModels = (configData?.settings as any)?.navbarModels || {};
 
   useEffect(() => {
     setMounted(true);
-    // Ensure light mode is always the default — clear any saved dark mode preference
-    localStorage.setItem('mytt-dark-mode', '0');
-    document.documentElement.removeAttribute('data-theme');
-    setDarkMode(false);
 
     // Unregister any stale Service Workers & clear CacheStorage to force fresh HTML/JS
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
@@ -354,6 +352,20 @@ export default function Navbar() {
               <Smartphone size={14} strokeWidth={2.5} />
               <span className="truncate">Cihazını Sat</span>
             </Link>
+
+            {/* Sağ Üst Tema Değiştirme Butonu (Karanlık / Açık Tema) */}
+            <button
+              onClick={toggleTheme}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800/80 hover:bg-orange-500/20 border border-slate-700/80 flex items-center justify-center transition-all hover:scale-108 active:scale-95 shadow-md shrink-0"
+              title={theme === 'dark' ? 'Açık Temaya Geç (Turuncu & Beyaz)' : 'Karanlık Temaya Geç (Siyah & Turuncu)'}
+              aria-label="Tema Değiştir"
+            >
+              {theme === 'dark' ? (
+                <Sun size={18} className="text-amber-400" />
+              ) : (
+                <Moon size={18} className="text-orange-500" />
+              )}
+            </button>
 
             {/* Mobil arama */}
             <button

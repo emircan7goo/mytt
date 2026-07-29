@@ -14,6 +14,7 @@ import {
   Smartphone, ArrowRight, Users, BadgeDollarSign, MapPin, Loader2,
 } from 'lucide-react';
 import { useApp } from '@/providers/AppProvider';
+import { useTheme } from '@/providers/ThemeContext';
 import { useFamilies, type FamilySummary } from '@/lib/hooks/useProducts';
 import HeroSlider from '@/components/HeroSlider';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -195,6 +196,7 @@ function useDebouncedPriceRange(
 
 function HomePageContent() {
   const { searchQuery, setSearchQuery, addToCart, openCart, toggleWishlist, isInWishlist } = useApp();
+  const { theme } = useTheme();
   const searchParams = useSearchParams();
 
   const [mounted, setMounted] = useState(false);
@@ -482,7 +484,7 @@ function HomePageContent() {
   );
 
   return (
-    <div className="min-h-screen font-sans bg-[var(--k-canvas)] text-white">
+    <div className={`min-h-screen font-sans ${theme === 'dark' ? 'bg-[#090D16] text-white' : 'bg-slate-50/80 text-slate-900'} transition-colors duration-300`}>
 
       {/* ── 1. TRENDYOL YUVARLAK DİRE STORY BAR ── */}
       {!searchQuery && <TrendyolCircleBar />}
