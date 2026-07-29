@@ -26,7 +26,9 @@ import BrandHubShowcase from '@/components/BrandHubShowcase';
 import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
 import TrendyolCircleBar from '@/components/TrendyolCircleBar';
 import TrendyolSpecialProducts from '@/components/TrendyolSpecialProducts';
-import HepsiburadaPopularProducts from '@/components/HepsiburadaPopularProducts';
+import FlashDealArena from '@/components/FlashDealArena';
+import VerifiedReviewsSection from '@/components/VerifiedReviewsSection';
+import SEOContentBlock from '@/components/SEOContentBlock';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -490,7 +492,6 @@ function HomePageContent() {
       {!searchQuery && (
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
           <TrendyolSpecialProducts products={families} />
-          <HepsiburadaPopularProducts products={families} />
         </div>
       )}
 
@@ -498,9 +499,12 @@ function HomePageContent() {
       {!searchQuery && (
         <section className="relative w-full py-6">
           <div className="max-w-[1440px] mx-auto px-4 lg:px-8 space-y-6">
+            <FlashDealArena products={families} />
             <QuickValuationWidget />
             <BrandHubShowcase />
             <EscrowFlowInfographic />
+            <VerifiedReviewsSection />
+            <SEOContentBlock />
           </div>
         </section>
       )}
