@@ -1,24 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import {
-  Zap, ArrowRight, ShieldCheck, RefreshCcw, CreditCard,
-  Sparkles, Truck, Lock, BadgeCheck, Flame, Clock
-} from 'lucide-react';
-
-// Dünya Standartlarında Çok Tonlu Armonik Renk Paleti (Harmonious Multi-Tone Premium Icons)
-const QUICK_TILES = [
-  { label: 'Eskiyi Ver Yeniyi Al', badge: 'Takas', href: '/trade-in', icon: RefreshCcw, color: 'bg-blue-600 text-white' },
-  { label: 'Cihazını Hemen Sat', badge: 'En Yüksek Teklif', href: '/sell', icon: Zap, color: 'bg-emerald-600 text-white' },
-  { label: 'AI Telefon Bul', badge: 'YZ Sihirbazı', href: '/ai-finder', icon: Sparkles, color: 'bg-indigo-600 text-white' },
-  { label: 'Vade Farksız 12 Taksit', badge: 'Sıfır Faiz', href: '/?promo=taksit', icon: CreditCard, color: 'bg-violet-600 text-white' },
-  { label: 'Fırsatları Kaçırma', badge: 'Flaş İndirim', href: '/?promo=kampanya', icon: Flame, color: 'bg-rose-600 text-white' },
-  { label: 'TSE Garantili Cihazlar', badge: '12 Ay Garanti', href: '/?cat=S%C4%B1f%C4%B1r', icon: BadgeCheck, color: 'bg-emerald-700 text-white' },
-  { label: 'Günün Süper Fiyatı', badge: 'Son Ürünler', href: '/?promo=paket', icon: Clock, color: 'bg-amber-600 text-white' },
-  { label: 'Adresten Bedava Kargo', badge: 'Ücretsiz', href: '/sell', icon: Truck, color: 'bg-cyan-600 text-white' },
-  { label: '%100 Escrow Koruma', badge: 'Paranız Güvende', href: '/garanti', icon: Lock, color: 'bg-slate-900 text-white' },
-  { label: 'Yetkili Bayi Pazarı', badge: '150+ Mağaza', href: '/magazalar', icon: ShieldCheck, color: 'bg-teal-600 text-white' },
-];
+import { ArrowRight } from 'lucide-react';
 
 export default function HepsiburadaHero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -53,34 +36,10 @@ export default function HepsiburadaHero() {
 
   return (
     <div className="w-full bg-slate-100/70 border-b border-slate-200 py-4">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 space-y-4">
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
 
-        {/* ── 1. Hepsiburada Tarzı 10'lu Yatay İkon Barı (Armonik Prestijli Renkler) ── */}
-        <div className="no-scrollbar flex items-center gap-3 overflow-x-auto py-1">
-          {QUICK_TILES.map((t) => {
-            const Icon = t.icon;
-            return (
-              <Link
-                key={t.label}
-                href={t.href}
-                className="group flex-shrink-0 flex items-center gap-2.5 p-2.5 pr-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:shadow-md hover:border-blue-300 transition-all hover:-translate-y-0.5"
-              >
-                <div className={`w-9 h-9 rounded-xl ${t.color} flex items-center justify-center shadow-xs shrink-0 group-hover:scale-105 transition-transform`}>
-                  <Icon size={18} strokeWidth={2.2} />
-                </div>
-                <div className="text-left leading-tight">
-                  <div className="text-[10px] font-black text-blue-600 uppercase tracking-wider">{t.badge}</div>
-                  <div className="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors whitespace-nowrap">
-                    {t.label}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* ── 2. TAM BOYUT DEV HERO BANNER (Safir Mavi & Zümrüt Vurgulu) ── */}
-        <div className="relative w-full h-[380px] md:h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 shadow-xl flex flex-col justify-between group">
+        {/* ── TAM BOYUT DEV HERO BANNER (Full Width 100%, Kayan Bar Kaldırıldı) ── */}
+        <div className="relative w-full h-[380px] md:h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-lg flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
           {slides.map((s, idx) => (
