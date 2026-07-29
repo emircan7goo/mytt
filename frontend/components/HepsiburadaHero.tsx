@@ -70,11 +70,11 @@ export default function HepsiburadaHero() {
   };
 
   return (
-    <div className="w-full max-w-full bg-[var(--k-hot-wash)]/40 border-b border-[var(--k-line-hot)]/80 py-4 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
+    <div className="w-full max-w-full bg-orange-50/40 border-b border-orange-200/80 py-2 sm:py-4 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-8">
 
-        {/* ── TAM BOYUT DEV HERO BANNER (Sıfır & Hatasız 2. El Vurgusu) ── */}
-        <div className="relative w-full h-[360px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-3xl border border-[var(--k-line-hot)] bg-[var(--k-void)] shadow-xl flex flex-col justify-between group">
+        {/* ULTRA KOMPAKT MOBİL HERO BANNER (h-[185px] sm:h-[420px]) */}
+        <div className="relative w-full h-[185px] sm:h-[420px] overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
           {slides.map((s, idx) => (
@@ -91,56 +91,56 @@ export default function HepsiburadaHero() {
           {/* Sol Karanlık Degrade Katmanı */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-transparent z-10" />
 
-          {/* Sol Navigasyon Oku */}
+          {/* Sol Navigasyon Oku (Masaüstü) */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[var(--k-void)]/50 hover:bg-[var(--k-hot-deep)] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg"
             aria-label="Önceki slayt"
           >
-            <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
+            <ChevronLeft size={24} />
           </button>
 
-          {/* Metin İçeriği */}
-          <div className="relative z-20 p-5 sm:p-8 md:p-12 max-w-xl lg:max-w-2xl text-left text-white space-y-3 sm:space-y-4 my-auto min-w-0">
-            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[var(--k-hot-deep)] text-white font-black text-[10px] sm:text-xs uppercase tracking-wider shadow-md">
+          {/* Metin İçeriği (Mobilde Ultra Sade) */}
+          <div className="relative z-20 p-3.5 sm:p-12 max-w-xl lg:max-w-2xl text-left text-white space-y-1.5 sm:space-y-4 my-auto min-w-0">
+            <span className="inline-block px-2.5 py-0.5 sm:px-4 sm:py-1.5 rounded-full bg-orange-600 text-white font-black text-[9px] sm:text-xs uppercase tracking-wider shadow-md">
               {slides[activeSlide].badge}
             </span>
 
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white drop-shadow-md break-words">
+            <h2 className="text-sm sm:text-4xl font-black tracking-tight leading-tight text-white drop-shadow-md break-words">
               {slides[activeSlide].title}
             </h2>
 
-            <p className="text-xs sm:text-base font-medium text-[var(--k-hot-2)] leading-relaxed max-w-lg break-words line-clamp-3 sm:line-clamp-none">
+            <p className="hidden sm:block text-base font-medium text-orange-100 leading-relaxed max-w-lg break-words">
               {slides[activeSlide].subtitle}
             </p>
 
-            <div className="pt-2 sm:pt-3">
+            <div className="pt-1 sm:pt-3">
               <Link
                 href={slides[activeSlide].ctaLink}
-                className="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-[var(--k-hot-ink)] hover:text-white font-black text-xs sm:text-sm shadow-xl shadow-[var(--k-hot-glow)]/35 transition-all hover:scale-105"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-black text-[10px] sm:text-sm shadow-xl shadow-orange-500/35 transition-all hover:scale-105"
               >
                 <span>{slides[activeSlide].ctaText}</span>
-                <ArrowRight size={16} className="sm:w-4 sm:h-4" strokeWidth={3} />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" strokeWidth={3} />
               </Link>
             </div>
           </div>
 
-          {/* Sağ Navigasyon Oku */}
+          {/* Sağ Navigasyon Oku (Masaüstü) */}
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[var(--k-void)]/50 hover:bg-[var(--k-hot-deep)] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg"
             aria-label="Sonraki slayt"
           >
-            <ChevronRight size={20} className="sm:w-6 sm:h-6" />
+            <ChevronRight size={24} />
           </button>
 
           {/* Carousel Noktaları */}
-          <div className="relative z-20 pb-4 sm:pb-5 flex items-center justify-center gap-2">
+          <div className="relative z-20 pb-2 sm:pb-5 flex items-center justify-center gap-1.5 sm:gap-2">
             {slides.map((s, idx) => (
               <button
                 key={s.id}
                 onClick={() => setActiveSlide(idx)}
-                className={`k-tap h-2 rounded-full transition-all ${activeSlide === idx ? 'w-8 bg-[var(--k-hot)]' : 'w-2 bg-[var(--k-surface)]/40'}`}
+                className={`h-1.5 sm:h-2 rounded-full transition-all ${activeSlide === idx ? 'w-5 sm:w-8 bg-orange-500' : 'w-1.5 sm:w-2 bg-white/40'}`}
                 aria-label={`Slayt ${idx + 1}`}
               />
             ))}
