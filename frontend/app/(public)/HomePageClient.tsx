@@ -29,6 +29,8 @@ import TrendyolSpecialProducts from '@/components/TrendyolSpecialProducts';
 import FlashDealArena from '@/components/FlashDealArena';
 import VerifiedReviewsSection from '@/components/VerifiedReviewsSection';
 import SEOContentBlock from '@/components/SEOContentBlock';
+import MyttWorldGrid from '@/components/MyttWorldGrid';
+import MobileBottomNav from '@/components/MobileBottomNav';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
@@ -488,7 +490,14 @@ function HomePageContent() {
       {/* ── 2. TRENDYOL HERO LANSMAN BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
 
-      {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
+      {/* ── 3. EASYCEP TARZI "MYTT DÜNYASI" 4'LÜ AKSİYON IZGARASI ── */}
+      {!searchQuery && (
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
+          <MyttWorldGrid />
+        </div>
+      )}
+
+      {/* ── 4. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
       {!searchQuery && (
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
           <TrendyolSpecialProducts products={families} />
@@ -615,6 +624,9 @@ function HomePageContent() {
           )}
         </div>
       </div>
+
+      {/* ── MOBİL SABİT ALT NAVİGASYON BARI ── */}
+      <MobileBottomNav />
 
     </div>
   );
