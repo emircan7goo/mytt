@@ -41,7 +41,6 @@ export default function QuickValuationWidget() {
     setRecentDealerText(`🚀 ${DEALER_NAMES[0]} → +600 ₺ teklif yükseltti!`);
   }, [selectedModelKey]);
 
-  // Şık Dijital Matrix/Slot Artış Animasyonu
   useEffect(() => {
     const interval = setInterval(() => {
       const increment = (Math.floor(Math.random() * 4) + 1) * 150;
@@ -58,7 +57,6 @@ export default function QuickValuationWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  // Geri sayım sayacı
   useEffect(() => {
     const timer = setInterval(() => {
       setTimerSeconds((prev) => (prev > 0 ? prev - 1 : 2868));
@@ -76,10 +74,10 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 p-6 md:p-10 shadow-2xl shadow-slate-900/5 relative overflow-hidden my-6">
-      {/* Arka plan yumuşak radyal ışıklar */}
-      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-emerald-500/10 blur-3xl" />
+    <div className="w-full rounded-3xl bg-white/95 backdrop-blur-2xl border-2 border-orange-300 p-6 md:p-10 shadow-2xl shadow-orange-950/10 relative overflow-hidden my-6">
+      {/* Arka plan radyal turuncu ışıklar */}
+      <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-orange-500/15 blur-3xl animate-pulse" />
+      <div className="pointer-events-none absolute -left-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-amber-500/15 blur-3xl" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
 
@@ -87,7 +85,7 @@ export default function QuickValuationWidget() {
         <div className="lg:col-span-7 text-left space-y-4">
           
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight">
-            Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
+            Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
           </h3>
 
           <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-xl">
@@ -102,8 +100,8 @@ export default function QuickValuationWidget() {
                 onClick={() => setSelectedModelKey(modelKey)}
                 className={`px-4.5 py-3 rounded-2xl text-xs font-black transition-all duration-300 border ${
                   selectedModelKey === modelKey
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30 scale-105'
-                    : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
+                    ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-orange-500 shadow-md shadow-orange-500/30 scale-105'
+                    : 'bg-orange-50/50 text-slate-800 border-orange-200 hover:bg-orange-100 hover:text-orange-900'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -112,16 +110,16 @@ export default function QuickValuationWidget() {
           </div>
         </div>
 
-        {/* Sağ taraf: LÜKS DİJİTAL AÇIK ARTIRMA SKOR TABLOSU (TEMSİLİ ÖRNEK) */}
+        {/* Sağ taraf: CANLI AÇIK ARTIRMA SKOR TABLOSU (BÜYÜLEYİCİ CANLI TURUNCU) */}
         <div className="lg:col-span-5">
-          <div className="rounded-3xl bg-slate-950 p-7 text-white text-center space-y-5 shadow-2xl shadow-slate-950/20 relative overflow-hidden border border-slate-800">
+          <div className="rounded-3xl bg-gradient-to-b from-orange-500 via-orange-600 to-amber-600 p-7 text-white text-center space-y-5 shadow-2xl shadow-orange-600/35 relative overflow-hidden border border-orange-400">
             
-            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between gap-2 border-b border-white/20 pb-3">
               <div className="flex items-center gap-1.5 text-xs font-black text-white">
-                <Trophy size={18} className="text-amber-400" />
+                <Trophy size={18} className="text-amber-200" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-300 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-orange-100 bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs">
                 <Clock size={13} />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
@@ -129,22 +127,22 @@ export default function QuickValuationWidget() {
 
             {/* Dijital Matrix/Slot Artış Animasyonu */}
             <div className="py-2 space-y-1">
-              <div className="text-xs font-black text-slate-400 uppercase tracking-widest">
+              <div className="text-xs font-black text-orange-100 uppercase tracking-widest">
                 {currentPreset.modelName}
               </div>
               
-              <div className={`text-4xl sm:text-5xl font-black text-emerald-400 tracking-tight transition-transform duration-300 ${isTickActive ? 'scale-110 text-emerald-300 drop-shadow-[0_0_20px_rgba(16,185,129,0.8)]' : ''}`}>
-                {fmt(currentBid)} <span className="text-2xl text-emerald-300">₺</span>
+              <div className={`text-4xl sm:text-5xl font-black text-white tracking-tight transition-transform duration-300 ${isTickActive ? 'scale-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]' : ''}`}>
+                {fmt(currentBid)} <span className="text-2xl text-amber-200">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-black text-slate-300 bg-slate-900 px-3.5 py-1.5 rounded-full border border-slate-800 mt-2">
-                <TrendingUp size={15} className="text-emerald-400" />
+              <div className="inline-flex items-center gap-2 text-xs font-black text-amber-100 bg-black/20 px-3.5 py-1.5 rounded-full mt-2">
+                <TrendingUp size={15} className="text-amber-300" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
 
             {/* Anlık Bayi Akış Bandı */}
-            <div className="bg-slate-900 rounded-2xl p-3.5 text-xs font-extrabold text-slate-200 border border-slate-800 shadow-inner">
+            <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 text-xs font-extrabold text-white border border-white/20 shadow-md">
               <div className="truncate">
                 {recentDealerText}
               </div>
@@ -152,9 +150,9 @@ export default function QuickValuationWidget() {
 
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98"
+              className="w-full py-4 rounded-2xl bg-white hover:bg-orange-50 text-orange-600 font-black text-sm transition-all shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98"
             >
-              <Zap size={18} className="fill-slate-950 text-slate-950" />
+              <Zap size={18} className="fill-orange-600 text-orange-600" />
               <span>Cihazımı Bu Fiyata İhaleye Çıkar</span>
               <ArrowRight size={18} strokeWidth={3} />
             </Link>

@@ -15,8 +15,8 @@ const BRANDS = [
   {
     name: 'Samsung',
     count: 'Güncel İlanlar',
-    bg: 'from-blue-950 via-slate-950 to-blue-900 text-white',
-    border: 'border-blue-900/60',
+    bg: 'from-orange-950 via-slate-950 to-amber-950 text-white',
+    border: 'border-orange-900/60',
     accent: 'text-white',
     link: '/?brand=Samsung',
     img: '/brands/samsung.jpg',
@@ -24,7 +24,7 @@ const BRANDS = [
   {
     name: 'Xiaomi',
     count: 'Güncel İlanlar',
-    bg: 'from-amber-950 via-slate-950 to-amber-900 text-white',
+    bg: 'from-amber-950 via-slate-950 to-orange-900 text-white',
     border: 'border-amber-900/60',
     accent: 'text-white',
     link: '/?brand=Xiaomi',
@@ -37,14 +37,14 @@ export default function BrandHubShowcase() {
     <div className="w-full my-10">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
         <div>
-          <span className="text-xs font-black text-blue-600 tracking-widest uppercase">MARKA VİTRİNİ</span>
+          <span className="text-xs font-black text-orange-600 tracking-widest uppercase">MARKA VİTRİNİ</span>
           <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
-            Öne Çıkan <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">Yenilenmiş Markalar</span>
+            Öne Çıkan <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Yenilenmiş Markalar</span>
           </h3>
         </div>
         <Link
           href="/"
-          className="text-sm font-black text-blue-600 hover:text-blue-800 flex items-center gap-2 transition-colors"
+          className="text-sm font-black text-orange-600 hover:text-orange-800 flex items-center gap-2 transition-colors"
         >
           <span>Tüm Markaları İncele</span>
           <ArrowRight size={16} strokeWidth={2.5} />
@@ -56,28 +56,28 @@ export default function BrandHubShowcase() {
           <Link
             key={b.name}
             href={b.link}
-            className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${b.bg} border ${b.border} p-8 shadow-md hover:shadow-2xl hover:border-blue-400 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between min-h-[280px] md:min-h-[300px]`}
+            className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${b.bg} border ${b.border} p-8 shadow-md hover:shadow-2xl hover:border-orange-400 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between min-h-[280px] md:min-h-[300px]`}
           >
             {/* Karanlık Gradyan Katmanı */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10" />
 
             <div className="relative z-20">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-extrabold text-slate-300 bg-white/10 px-3 py-1 rounded-full border border-white/10 backdrop-blur-xs">
+                <span className="text-xs font-extrabold text-orange-200 bg-orange-950/60 px-3 py-1 rounded-full border border-orange-500/30 backdrop-blur-xs">
                   {b.count}
                 </span>
               </div>
 
-              <h4 className={`text-4xl font-black ${b.accent} mt-8 group-hover:text-blue-400 transition-colors tracking-tight drop-shadow-lg`}>
+              <h4 className={`text-4xl font-black ${b.accent} mt-8 group-hover:text-orange-400 transition-colors tracking-tight drop-shadow-lg`}>
                 {b.name}
               </h4>
             </div>
 
             <div className="relative z-20 flex items-center justify-between pt-8 border-t border-white/20">
-              <span className="text-sm font-black text-white group-hover:text-blue-400 transition-colors">
+              <span className="text-sm font-black text-white group-hover:text-orange-400 transition-colors">
                 İlanları Gör
               </span>
-              <div className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
+              <div className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-900 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all">
                 <ArrowRight size={16} strokeWidth={2.5} />
               </div>
             </div>

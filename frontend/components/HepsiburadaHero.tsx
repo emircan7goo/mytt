@@ -35,11 +35,11 @@ export default function HepsiburadaHero() {
   }, [slides.length]);
 
   return (
-    <div className="w-full bg-slate-100/70 border-b border-slate-200 py-4">
+    <div className="w-full bg-orange-50/40 border-b border-orange-200/80 py-4">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
 
-        {/* ── TAM BOYUT DEV HERO BANNER (Full Width 100%, Kayan Bar Kaldırıldı) ── */}
-        <div className="relative w-full h-[380px] md:h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-lg flex flex-col justify-between group">
+        {/* ── TAM BOYUT DEV HERO BANNER (Canlı Turuncu Vurgulu) ── */}
+        <div className="relative w-full h-[380px] md:h-[420px] overflow-hidden rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
           {slides.map((s, idx) => (
@@ -58,7 +58,7 @@ export default function HepsiburadaHero() {
 
           {/* Metin İçeriği */}
           <div className="relative z-20 p-8 md:p-12 max-w-2xl text-left text-white space-y-4 my-auto">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white font-black text-xs uppercase tracking-wider shadow-md">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-orange-600 text-white font-black text-xs uppercase tracking-wider shadow-md">
               {slides[activeSlide].badge}
             </span>
 
@@ -66,14 +66,14 @@ export default function HepsiburadaHero() {
               {slides[activeSlide].title}
             </h2>
 
-            <p className="text-base sm:text-lg font-medium text-slate-200 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg font-medium text-orange-100 leading-relaxed max-w-xl">
               {slides[activeSlide].subtitle}
             </p>
 
             <div className="pt-3">
               <Link
                 href={slides[activeSlide].ctaLink}
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-xl shadow-emerald-500/30 transition-all hover:scale-105"
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-black text-sm shadow-xl shadow-orange-500/35 transition-all hover:scale-105"
               >
                 <span>{slides[activeSlide].ctaText}</span>
                 <ArrowRight size={18} strokeWidth={3} />
@@ -87,7 +87,7 @@ export default function HepsiburadaHero() {
               <button
                 key={s.id}
                 onClick={() => setActiveSlide(idx)}
-                className={`h-2.5 rounded-full transition-all ${activeSlide === idx ? 'w-10 bg-emerald-400' : 'w-2.5 bg-white/40'}`}
+                className={`h-2.5 rounded-full transition-all ${activeSlide === idx ? 'w-10 bg-orange-500' : 'w-2.5 bg-white/40'}`}
                 aria-label={`Slayt ${idx + 1}`}
               />
             ))}

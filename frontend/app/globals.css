@@ -12,14 +12,14 @@
    ******************************************************************************* */
 
 :root {
-  /* ── Brand — Royal Sapphire & Electric Emerald ──────────────────────── */
-  --brand:         #2563EB; /* Sapphire Blue 600 — primary */
-  --brand-hover:   #1D4ED8; /* Sapphire Blue 700 — hover */
-  --brand-deep:    #0F172A; /* Slate 900 — deepest */
-  --brand-light:   #EFF6FF; /* Blue 50 — tint */
-  --brand-mid:     #60A5FA; /* Blue 400 — accent */
-  --brand-glow:    rgba(37, 99, 235, 0.2);
-  --brand-emerald: #10B981; /* Electric Emerald — prices & trust */
+  /* ── Brand — Vibrant Commercial Orange & Derivatives ─────────────────── */
+  --brand:         #FF6000; /* Vibrant Orange — primary */
+  --brand-hover:   #EA580C; /* Orange 600 — hover */
+  --brand-deep:    #9A3412; /* Orange 800 — deepest */
+  --brand-light:   #FFF7ED; /* Orange 50 — tint */
+  --brand-mid:     #FB923C; /* Orange 400 — accent */
+  --brand-glow:    rgba(255, 96, 0, 0.25);
+  --brand-emerald: #10B981; /* Electric Emerald — secondary */
 
   /* ── Space — Warm Charcoal ────────────────────────────────────────────── */
   --space:         #120E0B;
