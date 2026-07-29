@@ -302,22 +302,20 @@ export default function Navbar() {
             <Menu size={20} />
           </button>
 
-          {/* Logo — Büyütülmüş prestijli Mytt Logosu */}
+          {/* Logo — Turuncu 'Y' Vurgulu Prestijli Mytt Logosu */}
           <Link href="/" className="flex items-center flex-shrink-0 group mr-6 py-1">
-            <img
-              src="/logo.png"
-              alt="Mytt"
-              className="h-16 sm:h-20 w-auto object-contain scale-125 origin-left transition-transform duration-300 group-hover:scale-[1.35]"
-            />
+            <span className="font-black text-3xl sm:text-4xl tracking-tighter text-slate-900 flex items-center select-none">
+              m<span className="text-orange-500 drop-shadow-[0_0_12px_rgba(255,96,0,0.75)] inline-block transition-transform duration-300 group-hover:scale-125">y</span>tt
+            </span>
           </Link>
 
           {/* Arama (masaüstü) */}
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] ml-4">
             <div
               className="group/search flex items-center w-full h-[42px] rounded-full transition-all overflow-hidden pl-4 pr-1"
-              style={{ background: 'var(--k-surface)', border: '1px solid var(--k-line)' }}
+              style={{ background: 'var(--k-surface)', border: '1.5px solid #FF6000' }}
             >
-              <Search size={16} className="flex-shrink-0" style={{ color: 'var(--k-ink-4)' }} />
+              <Search size={16} className="flex-shrink-0 text-orange-500" />
               <input
                 type="text"
                 value={searchValue}
@@ -334,8 +332,7 @@ export default function Navbar() {
               </kbd>
               <button
                 type="submit"
-                className="k-mono h-[32px] px-4 rounded-[7px] text-[11px] font-bold tracking-wider flex-shrink-0 transition-all active:scale-95"
-                style={{ background: 'var(--k-hot)', color: 'var(--k-hot-ink)' }}
+                className="k-mono h-[32px] px-4 rounded-[7px] text-[11px] font-extrabold tracking-wider flex-shrink-0 transition-all active:scale-95 bg-orange-600 hover:bg-orange-700 text-white shadow-sm"
               >
                 ARA
               </button>
