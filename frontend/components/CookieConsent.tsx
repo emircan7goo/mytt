@@ -110,7 +110,7 @@ export default function CookieConsent() {
             </button>
             <button
               onClick={accept}
-              className="flex-1 text-xs font-bold px-4 py-2.5 rounded-xl bg-[var(--k-canvas)] text-white hover:bg-[var(--k-void)] transition-colors"
+              className="flex-1 text-xs font-bold px-4 py-2.5 rounded-xl bg-[var(--k-hot)] text-[var(--k-hot-ink)] hover:bg-[var(--k-hot-deep)] transition-colors"
             >
               Tümünü Kabul Et
             </button>

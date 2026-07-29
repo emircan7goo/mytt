@@ -178,7 +178,7 @@ export default function HeroSlider() {
 
         {/* ── Ürün Sahnesi ve Canlı Görsel Kartı (Siyah Kutu Kaldırıldı) ────── */}
         <div className="relative mt-12 w-full max-w-[920px]">
-          <div className="relative overflow-hidden rounded-3xl border border-[var(--k-line)]/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50/60 p-6 md:p-10 shadow-2xl shadow-indigo-900/10 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-[var(--k-line)]/90 bg-gradient-to-b from-[var(--k-surface)] via-indigo-50/20 to-[var(--k-surface)] p-6 md:p-10 shadow-2xl shadow-indigo-900/10 backdrop-blur-xl">
 
             {/* Arka plan yumuşak radyal ışıklar */}
             <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl" />

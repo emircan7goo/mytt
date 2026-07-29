@@ -102,7 +102,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         >
           {/* Glow gradient top */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-300 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--k-line-2)] to-transparent" />
 
           {/* Header */}
           <div className="px-8 pt-8 pb-6 border-b border-[var(--k-line)] flex items-start justify-between">

@@ -41,29 +41,6 @@
   --ink-6:         #9CA3AF;
   --ink-7:         #E5E7EB;
   --ink-8:         #F3F4F6;
-}
-
-/* ── ☀️ LIGHT THEME (AÇIK TURUNCU-BEYAZ TEMA) ───────────────────────── */
-[data-theme="light"] {
-  --bg:            #F8FAFC;
-  --bg-warm:       #FFFFFF;
-  --card:          #FFFFFF;
-  --elevated:      #F1F5F9;
-
-  --ink:           #0F172A;
-  --ink-2:         #1E293B;
-  --ink-3:         #334155;
-  --ink-4:         #475569;
-  --ink-5:         #64748B;
-
-  --k-canvas:      #F8FAFC;
-  --k-surface:     #FFFFFF;
-  --k-surface-2:   #F1F5F9;
-  --k-line:        #E2E8F0;
-  --k-ink:         #0F172A;
-  --k-ink-2:       #1E293B;
-  --k-ink-3:       #475569;
-}
 
   /* -- Accent Colors ------------------------------------------------------ */
   --orange:        #F97316;   /* Kampanya, indirim */
@@ -1285,7 +1262,8 @@ a:active {
    ayni tutuldu — vitrinde 1.200+ var(--k-*) kullanimi kendiliginden doner.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-:root, :root[data-theme="light"], :root[data-theme="dark"] {
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
   /* ── EMBER — sicak grafit taban (lacivert-siyah DEGIL) ───────────────────
      Onceki GECE denemesi lacivert-siyah + turuncuydu; sonuc "gri-siyah-turuncu
      yamasi" gibi kaliyordu cunku bilesenlerde onlarca acik-tema orange-50/100
@@ -1376,10 +1354,73 @@ a:active {
   --mesh-bg: none;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   MYTT / EMBER — ACIK TEMA  (data-theme="light")
+   ───────────────────────────────────────────────────────────────────────────
+   Kullanici sag ust toggle ile secer; varsayilan KOYU. Ayni turuncu kimlik,
+   sicak beyaz zemin. SADECE ham --k-* degerleri + golgeler + color-scheme
+   override edilir; legacy kopru tokenlari (--bg, --ink ...) zaten var(--k-*)'e
+   isaret ettigi icin kendiliginden doner. Bu blok koyu bloktan SONRA ve daha
+   yuksek ozgulluk (:root[data-theme=...]) tasidigi icin acik modda kazanir.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* ── Sicak beyaz zeminler ────────────────────────────────────────────── */
+  --k-void:      #ECE6DE;   /* en dip */
+  --k-canvas:    #FAF7F2;   /* ana kanvas */
+  --k-canvas-2:  #F3EEE7;   /* bant / oyuk */
+  --k-surface:   #FFFFFF;   /* kart */
+  --k-surface-2: #F7F3EC;   /* yukseltilmis / hover */
+  --k-surface-3: #EEE8DF;   /* input, inset */
+  --k-anchor:    #F1EBE3;   /* footer — acik ton (metin koyu kalir) */
+
+  /* ── Cizgiler (koyu sicak, dusuk opaklik) ────────────────────────────── */
+  --k-line:      rgba(26,19,13,0.10);
+  --k-line-2:    rgba(26,19,13,0.16);
+  --k-line-hot:  rgba(194,65,12,0.32);
+  --k-grid:      rgba(26,19,13,0.04);
+
+  /* ── Murekkep: koyu sicak (siyah-mavi degil) ─────────────────────────── */
+  --k-ink:       #1A130D;
+  --k-ink-2:     rgba(26,19,13,0.74);
+  --k-ink-3:     rgba(26,19,13,0.56);
+  --k-ink-4:     rgba(26,19,13,0.42);
+
+  /* ── Ember turuncu — beyaz zeminde metin kontrasti icin koyu uclar ─────
+     #C2410C beyaz uzerinde ~4.9:1 (normal metin AA gecer); fill'lerde de
+     beyaz metinle uyumlu. Daha acik turuncu (fill vurgusu) --k-hot-fill'de. */
+  --k-hot:       #C2410C;   /* metin + ana vurgu — WCAG AA */
+  --k-hot-2:     #9A3412;
+  --k-hot-deep:  #7C2D12;
+  --k-hot-ink:   #FFFFFF;   /* turuncu buton ustu beyaz */
+  --k-hot-wash:  rgba(232,93,4,0.10);
+  --k-hot-glow:  rgba(232,93,4,0.26);
+  --k-grad:      linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  --k-grad-soft: linear-gradient(135deg, rgba(249,115,22,0.12) 0%, rgba(234,88,12,0.08) 100%);
+
+  /* ── Sinyal renkleri: acik zeminde okunacak koyu uclar ───────────────── */
+  --k-ok:        #059669;
+  --k-warn:      #B45309;
+  --k-bad:       #DC2626;
+  --k-cool:      #2563EB;
+  --k-ok-ink:    #047857;
+  --k-warn-ink:  #B45309;
+
+  /* ── Golgeler: acik zeminde GERCEK golge calisir ─────────────────────── */
+  --shadow-xs:    0 1px 2px rgba(26,19,13,0.05);
+  --shadow-sm:    0 2px 8px rgba(26,19,13,0.07), 0 1px 2px rgba(26,19,13,0.05);
+  --shadow-md:    0 8px 26px rgba(26,19,13,0.10), 0 1px 3px rgba(26,19,13,0.06);
+  --shadow-lg:    0 18px 46px rgba(26,19,13,0.12), 0 2px 6px rgba(26,19,13,0.06);
+  --shadow-xl:    0 32px 76px rgba(26,19,13,0.15);
+  --shadow-float: 0 12px 34px rgba(26,19,13,0.12);
+  --shadow-brand: 0 10px 30px var(--k-hot-glow);
+}
+
 /* Katmansiz olmak ZORUNDA — eski body{background:#fff} kurali da katmansiz ve
    Tailwind v4'te katmansiz her zaman katmanliyi yener. @layer base icine
    koyarsam eski beyaz zemin kazanir (bu tuzaga daha once dustum). */
-html { background: var(--k-canvas); color-scheme: dark; }
+html { background: var(--k-canvas); }
 body {
   background: var(--k-canvas);
   color: var(--k-ink-2);
@@ -1397,8 +1438,8 @@ body {
     font-weight: 800;
   }
 
-  /* Form denetimleri koyu temada tarayici varsayilanina dusmesin */
-  input, textarea, select { color-scheme: dark; }
+  /* Form denetimleri kok color-scheme'i miras alir (koyu/acik temaya gore) */
+  input, textarea, select { color-scheme: inherit; }
 
   ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--k-void); }
@@ -1657,6 +1698,39 @@ body {
     --k-line-hot:  rgba(194,65,12,0.28);
     --k-hot-ink:   #FFFFFF;
     --k-grid:      rgba(15,23,42,0.05);
+    color: var(--k-ink-2);
+  }
+
+  /* ── KOYU bolge kapsami (her iki temada da koyu kalir) ────────────────
+     Bilincli olarak KOYU tutulan "showcase" bantlari (obsidyen ihale karti,
+     marka foto vitrini, flas firsat bandi) icin. Alt agacta EMBER koyu token
+     degerlerini zorlar; boylece bu bloklardaki text-white ve bg-[var(--k-void)]
+     gibi koyu-varsayan stiller ACIK temada da dogru gorunur. Tek tek elemani
+     degistirmeye gerek kalmaz. */
+  .k-on-dark {
+    color-scheme: dark;
+    --k-void:      #0B0908;
+    --k-canvas:    #100D0B;
+    --k-canvas-2:  #16110E;
+    --k-surface:   #1C1512;
+    --k-surface-2: #241C17;
+    --k-surface-3: #2C221C;
+    --k-anchor:    #070504;
+    --k-line:      rgba(255,255,255,0.08);
+    --k-line-2:    rgba(255,255,255,0.14);
+    --k-line-hot:  rgba(255,122,32,0.36);
+    --k-grid:      rgba(255,255,255,0.032);
+    --k-ink:       #FBF7F2;
+    --k-ink-2:     rgba(251,247,242,0.74);
+    --k-ink-3:     rgba(251,247,242,0.55);
+    --k-ink-4:     rgba(251,247,242,0.38);
+    --k-hot:       #FF7A20;
+    --k-hot-2:     #FFA351;
+    --k-hot-deep:  #C2410C;
+    --k-hot-ink:   #1A0D02;
+    --k-hot-wash:  rgba(255,122,32,0.13);
+    --k-line-hot:  rgba(255,122,32,0.36);
+    --k-hot-glow:  rgba(255,122,32,0.40);
     color: var(--k-ink-2);
   }
 

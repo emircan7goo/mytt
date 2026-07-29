@@ -1,7 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { Battery, Smartphone, ArrowUpRight, ShieldCheck, Heart, Star, ShoppingBag } from 'lucide-react';
+import { toast } from 'sonner';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
+import { useApp } from '@/providers/AppProvider';
+import { familyToFavorite, familyFavoriteId } from '@/lib/familyFavorite';
 import type { FamilySummary } from '@/lib/hooks/useProducts';
 
 const GRADE: Record<string, { label: string; hot?: boolean }> = {
@@ -20,10 +23,19 @@ interface Props {
 }
 
 export default function FamilyCard({ family, index }: Props) {
+  const { toggleWishlist, isInWishlist } = useApp();
   const gradeCfg = GRADE[family.bestGrade] ?? null;
   const imgSrc   = family.masterImages?.[0] ? resolveUploadUrl(family.masterImages[0]) : null;
   const isRange  = family.minPrice !== family.maxPrice;
   const href     = `/urun/${encodeURIComponent(family.brand)}/${encodeURIComponent(family.model)}`;
+  const fav      = isInWishlist(familyFavoriteId(family.brand, family.model));
+
+  const handleFav = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(familyToFavorite(family));
+    toast.success(fav ? 'Favorilerden çıkarıldı' : 'Favorilere eklendi', { duration: 2000 });
+  };
 
   return (
     <Link
@@ -38,11 +50,12 @@ export default function FamilyCard({ family, index }: Props) {
         </span>
 
         <button
-          onClick={(e) => { e.preventDefault(); }}
-          className="w-8 h-8 rounded-full bg-[var(--k-hot-wash)]/60 border border-[var(--k-line-hot)] flex items-center justify-center text-[var(--k-hot)] hover:text-[var(--k-hot)] hover:bg-[var(--k-hot-wash)] hover:border-[var(--k-line-hot)] transition-colors shadow-xs"
-          title="Favorilere Ekle"
+          onClick={handleFav}
+          className="w-8 h-8 rounded-full bg-[var(--k-hot-wash)]/60 border border-[var(--k-line-hot)] flex items-center justify-center text-[var(--k-hot)] hover:bg-[var(--k-hot-wash)] transition-colors shadow-xs"
+          title={fav ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+          aria-pressed={fav}
         >
-          <Heart size={15} />
+          <Heart size={15} className={fav ? 'fill-[var(--k-hot)]' : ''} />
         </button>
       </div>
 

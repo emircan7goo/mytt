@@ -413,7 +413,7 @@ function SellRequestCard({ req }: { req: SellRequest }) {
                 <div key={bid.id}
                   className={`flex items-center justify-between p-3 rounded-xl border ${
                     i === 0
-                      ? 'border-[var(--k-line-hot)] bg-gradient-to-r from-[var(--k-hot-wash)] to-white'
+                      ? 'border-[var(--k-line-hot)] bg-gradient-to-r from-[var(--k-hot-wash)] to-[var(--k-surface)]'
                       : 'border-[var(--k-line)] bg-[var(--k-surface-2)]'
                   }`}>
                   <div className="flex items-center gap-2">

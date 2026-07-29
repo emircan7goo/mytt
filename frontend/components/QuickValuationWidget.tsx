@@ -74,17 +74,17 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-slate-800 p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
+    <div className="k-on-dark w-full max-w-full rounded-2xl sm:rounded-3xl bg-[var(--k-surface)] border border-[var(--k-line-2)] p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-center relative z-10 min-w-0">
 
         {/* Sol taraf: Başlık & Model Seçim Butonları */}
         <div className="lg:col-span-7 text-left space-y-2 sm:space-y-4 min-w-0">
           
           <h3 className="text-base sm:text-3xl lg:text-4xl font-black text-white leading-tight break-words">
-            Cihazını İhaleye Çıkar, <span className="text-orange-400">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
+            Cihazını İhaleye Çıkar, <span className="text-[var(--k-hot)]">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
           </h3>
 
-          <p className="text-xs sm:text-base text-slate-400 font-medium leading-relaxed max-w-xl break-words">
+          <p className="text-xs sm:text-base text-[var(--k-ink-4)] font-medium leading-relaxed max-w-xl break-words">
             Cihaz modelini seç, kapalı açık artırma ihalesinde canlı fiyatların nasıl yükseldiğini incele.
           </p>
 
@@ -96,8 +96,8 @@ export default function QuickValuationWidget() {
                 onClick={() => setSelectedModelKey(modelKey)}
                 className={`px-2.5 py-1.5 sm:px-4.5 sm:py-3 rounded-xl sm:rounded-2xl text-[10px] sm:text-xs font-black transition-all duration-300 border shrink-0 ${
                   selectedModelKey === modelKey
-                    ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-orange-500 shadow-md shadow-orange-500/30'
-                    : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] text-white border-[var(--k-hot-deep)] shadow-md shadow-[var(--k-hot-glow)]'
+                    : 'bg-[var(--k-void)] text-[var(--k-ink-4)] border-[var(--k-line-2)] hover:bg-[var(--k-surface-2)] hover:text-white'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -108,44 +108,44 @@ export default function QuickValuationWidget() {
 
         {/* Sağ taraf: LÜKS OBSİDYEN CANLI SKOR KARTI (Bağıran Turuncu Yerine Şık Koyu Mat) */}
         <div className="lg:col-span-5 min-w-0 w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-slate-950 p-4 sm:p-7 text-white text-center space-y-3 sm:space-y-4 shadow-2xl relative overflow-hidden border border-orange-500/40 max-w-full">
+          <div className="rounded-2xl sm:rounded-3xl bg-[var(--k-void)] p-4 sm:p-7 text-white text-center space-y-3 sm:space-y-4 shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/40 max-w-full">
             
-            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-2 sm:pb-3 flex-wrap">
-              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-black text-orange-400">
-                <Trophy size={14} className="text-amber-400 sm:w-4 sm:h-4" />
+            <div className="flex items-center justify-between gap-2 border-b border-[var(--k-line-2)] pb-2 sm:pb-3 flex-wrap">
+              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-black text-[var(--k-hot)]">
+                <Trophy size={14} className="text-[var(--k-hot)] sm:w-4 sm:h-4" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-slate-300 bg-slate-900 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-slate-800">
-                <Clock size={11} className="text-orange-400" />
+              <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[var(--k-ink-4)] bg-[var(--k-surface)] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[var(--k-line-2)]">
+                <Clock size={11} className="text-[var(--k-hot)]" />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
             </div>
 
             {/* Dijital Slot Artış Animasyonu (Neon Orange Fiyat Vurgusu) */}
             <div className="py-1 space-y-0.5">
-              <div className="text-[10px] sm:text-xs font-black text-orange-400 uppercase tracking-widest truncate">
+              <div className="text-[10px] sm:text-xs font-black text-[var(--k-hot)] uppercase tracking-widest truncate">
                 {currentPreset.modelName}
               </div>
               
               <div className={`text-3xl sm:text-5xl font-black text-white tracking-tight transition-transform duration-300 drop-shadow-[0_0_25px_rgba(255,96,0,0.5)] ${isTickActive ? 'scale-105' : ''}`}>
-                {fmt(currentBid)} <span className="text-xl sm:text-3xl text-orange-400">₺</span>
+                {fmt(currentBid)} <span className="text-xl sm:text-3xl text-[var(--k-hot)]">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-amber-300 bg-orange-950/60 border border-orange-500/30 px-3 py-1 rounded-full mt-1">
-                <TrendingUp size={13} className="text-orange-400" />
+              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-white bg-[var(--k-hot-deep)] border border-[var(--k-hot-deep)]/30 px-3 py-1 rounded-full mt-1">
+                <TrendingUp size={13} className="text-white" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
 
             {/* Anlık Bayi Akış Bandı */}
-            <div className="bg-slate-900 rounded-xl p-2.5 text-[10px] sm:text-xs font-extrabold text-slate-200 border border-slate-800 shadow-xs truncate">
+            <div className="bg-[var(--k-surface)] rounded-xl p-2.5 text-[10px] sm:text-xs font-extrabold text-[var(--k-ink-2)] border border-[var(--k-line-2)] shadow-xs truncate">
               {recentDealerText}
             </div>
 
             {/* Lüks Turuncu Aksiyon Butonu */}
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-orange-500/30 flex items-center justify-center gap-1.5 hover:scale-[1.02] active:scale-98 max-w-full"
+              className="w-full py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-1.5 hover:scale-[1.02] active:scale-98 max-w-full"
             >
               <Zap size={16} className="fill-white text-white shrink-0" />
               <span className="truncate">Cihazımı Bu Fiyata İhaleye Çıkar</span>

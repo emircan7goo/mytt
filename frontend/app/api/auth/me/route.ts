@@ -19,5 +19,6 @@ export async function GET(req: NextRequest) {
     commissionRate: user.commissionRate,
     b2bStatus: user.b2bStatus,
     walletBalance: Number(user.walletBalance ?? 0),
+    emailVerified: user.emailVerified,
   });
 }

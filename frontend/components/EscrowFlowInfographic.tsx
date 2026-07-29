@@ -32,7 +32,7 @@ const STEPS = [
 export default function EscrowFlowInfographic() {
   return (
     <div className="w-full my-10">
-      <div className="bg-[var(--k-canvas)] border border-[var(--k-line)] rounded-3xl p-8 md:p-12 text-white shadow-2xl space-y-8 relative overflow-hidden">
+      <div className="k-on-dark bg-[var(--k-canvas)] border border-[var(--k-line)] rounded-3xl p-8 md:p-12 text-white shadow-2xl space-y-8 relative overflow-hidden">
         
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[var(--k-line)] pb-6">
           <div>

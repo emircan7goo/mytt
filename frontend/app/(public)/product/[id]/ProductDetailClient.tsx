@@ -102,7 +102,7 @@ export default function ProductDetailClient() {
               className="relative w-full aspect-[4/5] bg-[var(--k-surface)] rounded-[40px] border border-[var(--k-line)] shadow-[0_20px_80px_rgba(0,0,0,0.03)] flex items-center justify-center overflow-hidden"
             >
               {/* Subtle background gradient inside image container */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-50 to-white pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--k-surface-2)] to-[var(--k-surface)] pointer-events-none" />
               
               <motion.img
                 src={resolveUploadUrl(product.image)}

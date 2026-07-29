@@ -177,7 +177,7 @@ function CompareTable({ products }: { products: MockProduct[] }) {
           <>
             <div
               key={`label-${row.key}`}
-              className="flex items-center px-4 py-3 rounded-2xl bg-gradient-to-r from-zinc-50 to-slate-50 border border-[var(--k-line)] text-sm font-bold text-[var(--k-ink-2)]"
+              className="flex items-center px-4 py-3 rounded-2xl bg-gradient-to-r from-[var(--k-surface-2)] to-[var(--k-surface)] border border-[var(--k-line)] text-sm font-bold text-[var(--k-ink-2)]"
             >
               {row.label}
             </div>
@@ -193,7 +193,7 @@ function CompareTable({ products }: { products: MockProduct[] }) {
         ))}
 
         {/* ── Action row ── */}
-        <div className="flex items-center px-4 py-3 rounded-2xl bg-gradient-to-r from-zinc-50 to-slate-50 border border-[var(--k-line)] text-sm font-bold text-[var(--k-ink-2)]">
+        <div className="flex items-center px-4 py-3 rounded-2xl bg-gradient-to-r from-[var(--k-surface-2)] to-[var(--k-surface)] border border-[var(--k-line)] text-sm font-bold text-[var(--k-ink-2)]">
           Satın Al
         </div>
         {products.map((product) => (

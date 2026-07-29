@@ -240,7 +240,7 @@ export default function RegisterDealerPage() {
                 className="group relative mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-[var(--k-line-2)] border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
                     Başvuruyu Gönder

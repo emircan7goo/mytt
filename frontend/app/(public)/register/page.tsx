@@ -6,9 +6,13 @@ import { useRouter } from 'next/navigation';
 import { Mail, Lock, User, ChevronRight, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { API_BASE } from '@/lib/apiBase';
+import { useAuthStore } from '@/store';
+import { ROLE_DASHBOARD, setSessionCookie } from '@/lib/auth';
+import type { UserRole } from '@/lib/mock-data';
 
 export default function RegisterPage() {
   const router                  = useRouter();
+  const { login }               = useAuthStore();
   const [name, setName]         = useState('');
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
@@ -41,8 +45,16 @@ export default function RegisterPage() {
         throw new Error(msg);
       }
 
-      // Kayıt başarılı — OTP doğrulama sayfasına yönlendir
-      router.push(`/email-dogrula?email=${encodeURIComponent(email)}`);
+      // Kayıt başarılı — kullanıcı artık doğrudan içeride (cookie register route'ta
+      // set edildi). E-posta doğrulama opsiyonel; site içi banner ile hatırlatılır.
+      login(data.user);
+      setSessionCookie(data.user);
+      toast.success(`Hoş geldiniz, ${data.user.name}!`);
+
+      const role = data.user.role as UserRole;
+      const destination = ROLE_DASHBOARD[role] ?? '/';
+      window.location.href = destination;
+      router.push(destination);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Sunucuya bağlanılamadı.';
       toast.error(message);
@@ -173,7 +185,7 @@ export default function RegisterPage() {
                 className="group relative mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white shadow-[var(--k-hot-glow)]/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-[var(--k-line-2)] border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
                     Hesap Oluştur

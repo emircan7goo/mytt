@@ -36,10 +36,13 @@ import GodLevelOverlay from '@/components/GodLevelOverlay';
 import CookieConsent from '@/components/CookieConsent';
 import BackToTop from '@/components/BackToTop';
 import FlashDealBanner from '@/components/FlashDealBanner';
+import EmailVerifyBanner from '@/components/EmailVerifyBanner';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative overflow-x-hidden bg-[var(--bg)] text-[var(--ink-2)] min-h-screen">
+      {/* Opsiyonel e-posta doğrulama hatırlatması (yalnızca doğrulanmamış kullanıcıya) */}
+      <EmailVerifyBanner />
       {/* Sticky top wrapper: Navbar */}
       <div className="sticky top-0 z-[50]">
         <Navbar />

@@ -71,7 +71,7 @@ export default function PriceComparisonWidget({ globalProductId, currentPrice }:
                      {price.toLocaleString('tr-TR')} <span className="text-[10px]">₺</span>
                    </span>
                  </div>
-                 <Link href={`/product/${dealerStock.id}`} className="text-[var(--k-ink-4)] hover:text-black transition-colors bg-[var(--k-surface)] p-1.5 rounded-full shadow-sm border border-[var(--k-line)]">
+                 <Link href={`/product/${dealerStock.id}`} className="text-[var(--k-ink-4)] hover:text-[var(--k-ink)] transition-colors bg-[var(--k-surface)] p-1.5 rounded-full shadow-sm border border-[var(--k-line)]">
                     <ChevronRight size={14} strokeWidth={3} />
                  </Link>
                </div>

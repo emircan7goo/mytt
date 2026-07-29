@@ -36,13 +36,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'E-posta veya şifre hatalı.' }, { status: 401 });
   }
 
-  if (!user.emailVerified && user.emailVerifyToken) {
-    return NextResponse.json(
-      { message: 'E-posta adresiniz doğrulanmamış. Kayıt e-postanızdaki doğrulama bağlantısına tıklayın.' },
-      { status: 403 },
-    );
-  }
-
+  // E-posta doğrulama artık giriş için ZORUNLU DEĞİL. Doğrulanmamış kullanıcı
+  // da giriş yapabilir; site içinde opsiyonel bir "e-postanı doğrula" banner'ı
+  // (components/EmailVerifyBanner.tsx) ile hatırlatılır. Böylece mail ulaşmasa
+  // bile kimse hesabına kilitlenmez.
   const roleNormalized = user.role.toLowerCase() as 'customer' | 'dealer' | 'admin';
   const accessToken = signAccessToken({ email: user.email, sub: user.id, role: user.role });
   const refreshToken = signRefreshToken(user.id);
@@ -60,6 +57,7 @@ export async function POST(req: NextRequest) {
       role: roleNormalized,
       commissionRate: user.commissionRate,
       b2bStatus: user.b2bStatus,
+      emailVerified: user.emailVerified,
     },
   });
 }

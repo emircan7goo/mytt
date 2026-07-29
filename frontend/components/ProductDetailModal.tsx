@@ -161,7 +161,7 @@ export default function ProductDetailModal() {
                           <button
                             key={i}
                             onClick={() => setActiveImg(i)}
-                            className={`k-tap w-2 h-2 rounded-full transition-all ${ i === activeImg ? 'bg-[var(--k-canvas)] w-5' : 'bg-slate-300' }`}
+                            className={`k-tap w-2 h-2 rounded-full transition-all ${ i === activeImg ? 'bg-[var(--k-canvas)] w-5' : 'bg-[var(--k-surface-2)]' }`}
                           />
                         ))}
                       </div>

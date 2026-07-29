@@ -2,8 +2,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Flame, Clock, Heart, Star } from 'lucide-react';
+import { toast } from 'sonner';
 import type { FamilySummary } from '@/lib/hooks/useProducts';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
+import { useApp } from '@/providers/AppProvider';
+import { familyToFavorite, familyFavoriteId } from '@/lib/familyFavorite';
 
 interface Props {
   products: FamilySummary[];
@@ -13,7 +16,16 @@ const fmt = (n: number) =>
   new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
 export default function FlashDealArena({ products }: Props) {
+  const { toggleWishlist, isInWishlist } = useApp();
   const [timeLeft, setTimeLeft] = useState({ hours: 3, minutes: 14, seconds: 22 });
+
+  const handleFav = (family: FamilySummary) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const wasFav = isInWishlist(familyFavoriteId(family.brand, family.model));
+    toggleWishlist(familyToFavorite(family));
+    toast.success(wasFav ? 'Favorilerden çıkarıldı' : 'Favorilere eklendi', { duration: 2000 });
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -35,7 +47,7 @@ export default function FlashDealArena({ products }: Props) {
 
   return (
     <div className="w-full my-4 sm:my-8 max-w-full overflow-hidden">
-      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 p-4 sm:p-8 text-white shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/40">
+      <div className="k-on-dark rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[var(--k-void)] via-[var(--k-canvas)] p-4 sm:p-8 text-white shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/40">
         
         {/* ── Üst Başlık & Geri Sayım Sayacı ── */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-[var(--k-line)]">
@@ -83,10 +95,12 @@ export default function FlashDealArena({ products }: Props) {
                       %15 İNDİRİM
                     </span>
                     <button
-                      onClick={(e) => { e.preventDefault(); }}
+                      onClick={handleFav(family)}
+                      title={isInWishlist(familyFavoriteId(family.brand, family.model)) ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+                      aria-pressed={isInWishlist(familyFavoriteId(family.brand, family.model))}
                       className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--k-canvas)] border border-[var(--k-line)] flex items-center justify-center text-[var(--k-ink-4)] hover:text-[var(--k-hot)] transition-colors"
                     >
-                      <Heart size={12} className="sm:w-3.5 sm:h-3.5" />
+                      <Heart size={12} className={`sm:w-3.5 sm:h-3.5 ${isInWishlist(familyFavoriteId(family.brand, family.model)) ? 'fill-[var(--k-hot)] text-[var(--k-hot)]' : ''}`} />
                     </button>
                   </div>
 

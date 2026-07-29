@@ -79,7 +79,7 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
   const adminApproved = liveReq?.adminApproved ?? false;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[var(--k-hot-wash)] to-white flex items-center justify-center px-4 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--k-hot-wash)] to-[var(--k-surface)] flex items-center justify-center px-4 py-20">
       <div className="max-w-lg w-full">
         <div className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] p-10 shadow-xl shadow-black/5 text-center">
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto mb-5 shadow-xl shadow-[var(--k-hot-glow)]/30">
@@ -258,7 +258,7 @@ export default function SellPage() {
   // ── Giriş yapılmamışsa login gate ────────────────────────────────────────
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--k-surface-2)] to-[var(--k-surface)] flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
           <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[var(--k-hot-glow)]/20">
             <Smartphone size={36} className="text-white" />
@@ -496,7 +496,7 @@ export default function SellPage() {
 
             {/* Upload area */}
             <button onClick={() => fileRef.current?.click()} disabled={uploading || images.length >= 6}
-              className="w-full border-2 border-dashed border-[var(--k-line-2)] rounded-2xl py-12 flex flex-col items-center gap-3 hover:border-zinc-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+              className="w-full border-2 border-dashed border-[var(--k-line-2)] rounded-2xl py-12 flex flex-col items-center gap-3 hover:border-[var(--k-line-2)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
               {uploading ? (
                 <Loader2 size={32} className="text-[var(--k-ink-4)] animate-spin" />
               ) : (

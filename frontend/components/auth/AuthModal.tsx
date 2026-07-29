@@ -160,7 +160,7 @@ export default function AuthModal() {
               className={`group relative mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${isDealerMode ? 'bg-sky-600 hover:bg-sky-700 text-white shadow-sky-600/20' : 'bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white shadow-[var(--k-hot-glow)]/20'}`}
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-[var(--k-line-2)] border-t-white rounded-full animate-spin" />
               ) : (
                 <>
                   Giriş Yap

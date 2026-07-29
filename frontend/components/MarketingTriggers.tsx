@@ -36,7 +36,7 @@ const FEATURES = [
 export default function MarketingTriggers() {
   return (
     <div className="w-full my-8 max-w-[1440px] mx-auto px-4 lg:px-8">
-      <div className="bg-[var(--k-canvas)] border border-[var(--k-line)] shadow-2xl rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+      <div className="k-on-dark bg-[var(--k-canvas)] border border-[var(--k-line)] shadow-2xl rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
         
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <span className="px-4 py-1.5 rounded-full bg-[var(--k-hot-deep)]/20 text-[var(--k-hot)] border border-[var(--k-hot-deep)]/30 text-xs font-black tracking-widest uppercase">

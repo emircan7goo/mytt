@@ -156,7 +156,7 @@ function LoginForm() {
                 className="group relative mt-1 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[15px] bg-[var(--k-hot)] hover:bg-[var(--k-hot-deep)] text-white shadow-[var(--k-hot-glow)]/20 shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-[var(--k-line-2)] border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
                     Giriş Yap

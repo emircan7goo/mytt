@@ -189,7 +189,6 @@ export default function Navbar() {
   const [mounted, setMounted]                 = useState(false);
   const [scrolled, setScrolled]               = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-  const [darkMode, setDarkMode] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const profileMenuRef = useRef<HTMLDivElement>(null);
@@ -221,18 +220,6 @@ export default function Navbar() {
       });
     }
   }, []);
-
-  const toggleDarkMode = () => {
-    const next = !darkMode;
-    setDarkMode(next);
-    if (next) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('mytt-dark-mode', '1');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('mytt-dark-mode', '0');
-    }
-  };
 
   // Ctrl+K / Cmd+K → open fullscreen search
   useEffect(() => {
@@ -281,7 +268,7 @@ export default function Navbar() {
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(9,13,22,0.88)' : 'var(--k-canvas)',
+          background: scrolled ? 'var(--k-surface)' : 'var(--k-canvas)',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           borderBottom: '3px solid #FF6000',
@@ -343,7 +330,7 @@ export default function Navbar() {
             {/* Cihazını Sat CTA (Turuncu Renk Harmonisi) */}
             <Link
               href="/sell"
-              className="inline-flex items-center gap-1.5 h-9 px-3.5 sm:h-10 sm:px-5 rounded-full text-[11px] sm:text-[13px] font-black transition-all hover:-translate-y-px shadow-md shadow-orange-500/30"
+              className="inline-flex items-center gap-1.5 h-9 px-3.5 sm:h-10 sm:px-5 rounded-full text-[11px] sm:text-[13px] font-black transition-all hover:-translate-y-px shadow-md shadow-[var(--k-hot-glow)]"
               style={{
                 background: 'linear-gradient(135deg, #FF6000 0%, #EA580C 100%)',
                 color: '#fff',
@@ -356,22 +343,18 @@ export default function Navbar() {
             {/* Sağ Üst Tema Değiştirme Butonu (Yazılı & Yüksek Görünürlüklü Rozet) */}
             <button
               onClick={toggleTheme}
-              className={`inline-flex items-center gap-1.5 h-9 px-3 sm:h-10 sm:px-4 rounded-full text-xs font-black transition-all hover:scale-105 active:scale-95 shadow-lg border shrink-0 ${
-                theme === 'dark'
-                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300'
-                  : 'border-orange-500/80 bg-orange-50 text-orange-600'
-              }`}
-              title={theme === 'dark' ? 'Açık Temaya Geç (Turuncu & Beyaz)' : 'Karanlık Temaya Geç (Siyah & Turuncu)'}
+              className="inline-flex items-center gap-1.5 h-9 px-3 sm:h-10 sm:px-4 rounded-full text-xs font-black transition-all hover:scale-105 active:scale-95 shadow-lg border shrink-0 border-[var(--k-line-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)] hover:bg-[var(--k-surface-2)]"
+              title={theme === 'dark' ? 'Açık Temaya Geç' : 'Koyu Temaya Geç'}
               aria-label="Tema Değiştir"
             >
               {theme === 'dark' ? (
                 <>
-                  <Sun size={15} className="text-amber-400 shrink-0" />
+                  <Sun size={15} className="shrink-0" />
                   <span className="truncate">Açık Tema</span>
                 </>
               ) : (
                 <>
-                  <Moon size={15} className="text-orange-500 shrink-0" />
+                  <Moon size={15} className="shrink-0" />
                   <span className="truncate">Koyu Tema</span>
                 </>
               )}
@@ -563,7 +546,7 @@ export default function Navbar() {
                 key={`${cat.label}-mega`}
                 className="mega-menu-enter absolute left-0 right-0 top-[50px] overflow-hidden z-50"
                 style={{
-                  background: 'rgba(19,26,40,0.985)',
+                  background: 'var(--k-surface)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   borderTop: '1px solid var(--k-line)',
@@ -683,15 +666,11 @@ export default function Navbar() {
             <div className="px-3 pt-3">
               <button
                 onClick={() => { toggleTheme(); setShowMobileMenu(false); }}
-                className={`w-full py-3 px-3.5 rounded-xl flex items-center justify-between font-black text-xs border shadow-md transition-all ${
-                  theme === 'dark'
-                    ? 'bg-amber-500/20 border-amber-400 text-amber-300'
-                    : 'bg-orange-50 border-orange-500 text-orange-600'
-                }`}
+                className="w-full py-3 px-3.5 rounded-xl flex items-center justify-between font-black text-xs border shadow-md transition-all bg-[var(--k-hot-wash)] border-[var(--k-line-hot)] text-[var(--k-hot)]"
               >
                 <div className="flex items-center gap-2 truncate">
-                  {theme === 'dark' ? <Sun size={18} className="text-amber-400 shrink-0" /> : <Moon size={18} className="text-orange-500 shrink-0" />}
-                  <span className="truncate">{theme === 'dark' ? '☀️ Açık Temaya Geç (Turuncu - Beyaz)' : '🌙 Koyu Temaya Geç (Siyah - Turuncu)'}</span>
+                  {theme === 'dark' ? <Sun size={18} className="shrink-0" /> : <Moon size={18} className="shrink-0" />}
+                  <span className="truncate">{theme === 'dark' ? 'Açık Temaya Geç' : 'Koyu Temaya Geç'}</span>
                 </div>
               </button>
             </div>

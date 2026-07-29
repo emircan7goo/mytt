@@ -484,7 +484,7 @@ function HomePageContent() {
   );
 
   return (
-    <div className={`min-h-screen font-sans ${theme === 'dark' ? 'bg-[#090D16] text-white' : 'bg-slate-50/80 text-slate-900'} transition-colors duration-300`}>
+    <div className={`min-h-screen font-sans ${theme === 'dark' ? 'bg-[var(--k-void)] text-white' : 'bg-[var(--k-surface-2)] text-[var(--k-ink)]'} transition-colors duration-300`}>
 
       {/* ── 1. TRENDYOL YUVARLAK DİRE STORY BAR ── */}
       {!searchQuery && <TrendyolCircleBar />}

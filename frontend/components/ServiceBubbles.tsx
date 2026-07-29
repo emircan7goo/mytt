@@ -22,10 +22,10 @@ const DEFAULT_SERVICES = [
   { id: 2, title1: 'İndirimli Paket',title2: 'Ürünler!',    image: '/icons/icon_indirim.png',   link: '/?promo=paket'     },
   { id: 3, title1: 'Sıfır',          title2: 'Telefonlar',  image: '/icons/icon_sifir.png',     link: '/?cat=Sıfır'       },
   { id: 4, title1: 'Kaçmaz',         title2: 'Fiyatlar!',   image: '/icons/icon_fiyat.svg',     link: '/?promo=kampanya'  },
-  { id: 5, title1: 'Akıllı',         title2: 'Eşleştirme',  image: '/icons/icon_eslestirme.svg',link: '/secim-asistani'   },
+  { id: 5, title1: 'Akıllı',         title2: 'Eşleştirme',  image: '/icons/icon_eslestirme.svg',link: '/ai-finder'        },
   { id: 6, title1: 'Mytt',           title2: 'Güvencesi',   image: '/icons/icon_guvence.svg',   link: '/garanti'          },
   { id: 7, title1: 'Mağazadan',      title2: 'Teslim Al',   image: '/icons/icon_magaza.svg',    link: '/magazalar'        },
-  { id: 8, title1: 'Sıkça Sorulan',  title2: 'Sorular',     image: '/icons/icon_sss.svg',       link: '/yardim'           },
+  { id: 8, title1: 'Sıkça Sorulan',  title2: 'Sorular',     image: '/icons/icon_sss.svg',       link: '/sss'              },
 ] as const;
 
 
@@ -63,7 +63,7 @@ const FALLBACK_GRADIENTS = [
   'from-yellow-100 to-[var(--k-hot-wash)]',
   'from-[var(--k-hot-wash)] to-green-50',
   'from-rose-100 to-pink-50',
-  'from-slate-100 to-gray-50',
+  'from-[var(--k-surface-2)] to-[var(--k-surface)]',
 ];
 
 // ─── Balon boyut sistemi ────────────────────────────────────────────────

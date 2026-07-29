@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#3B52F6',
+  themeColor: '#100D0B',
 };
 
 /**
@@ -102,10 +102,18 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
+    <html lang="tr" data-theme="dark" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
+        {/* Tema pre-paint: kayitli tercihi (yoksa varsayilan 'dark') boyamadan
+            once uygular — FOUC (yanlis tema flashi) olmaz. ThemeContext ile ayni
+            'mytt_theme' anahtarini kullanir. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('mytt_theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#3B52F6" />
+        <meta name="theme-color" content="#100D0B" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Mytt" />

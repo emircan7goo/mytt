@@ -125,7 +125,7 @@ export default function FilterSidebar({
                   onChange={() => toggleBrand(brand)}
                 />
                 <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300
-                   ${filters.brands.includes(brand) ? 'bg-[var(--k-canvas)] border-[var(--k-line-2)]' : 'bg-transparent border-[var(--k-line-2)] group-hover:border-zinc-500'}`}>
+                   ${filters.brands.includes(brand) ? 'bg-[var(--k-canvas)] border-[var(--k-line-2)]' : 'bg-transparent border-[var(--k-line-2)] group-hover:border-[var(--k-line-2)]'}`}>
                    <svg width="10" height="8" viewBox="0 0 12 10" fill="none" className={`transition-opacity duration-300 ${filters.brands.includes(brand) ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                      <path d="M1.5 5L4.5 8L10.5 2" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                    </svg>
@@ -179,7 +179,7 @@ export default function FilterSidebar({
                  className={`text-left px-5 py-3 rounded-xl border text-[13px] font-light tracking-wide transition-all duration-300
                    ${isPresetActive(p.min, p.max)
                      ? 'bg-[var(--k-canvas)] text-white border-[var(--k-line-2)] shadow-sm font-bold'
-                     : 'bg-transparent text-[var(--k-ink-2)] border-[var(--k-line-2)] hover:border-zinc-500 hover:bg-[var(--k-surface-2)]'
+                     : 'bg-transparent text-[var(--k-ink-2)] border-[var(--k-line-2)] hover:border-[var(--k-line-2)] hover:bg-[var(--k-surface-2)]'
                    }
                  `}
                >
@@ -200,7 +200,7 @@ export default function FilterSidebar({
         <div
           onClick={(e) => { e.preventDefault(); onChange({ ...filters, inStockOnly: !filters.inStockOnly }); }}
           className={`relative w-12 h-6 rounded-full transition-all duration-400
-            ${filters.inStockOnly ? 'bg-[var(--k-canvas)]' : 'bg-zinc-300'}`}
+            ${filters.inStockOnly ? 'bg-[var(--k-canvas)]' : 'bg-[var(--k-surface-2)]'}`}
         >
           <div className={`absolute top-[2px] w-5 h-5 bg-[var(--k-surface)] rounded-full shadow-sm transition-all duration-400
             ${filters.inStockOnly ? 'left-[26px]' : 'left-[2px]'}`}

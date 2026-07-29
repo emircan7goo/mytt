@@ -13,7 +13,7 @@ const GRADE_BG: Record<CosmeticGrade, string> = {
   'A+': 'badge-metal-gold text-xs font-black tracking-widest',
   'A':  'badge-metal-silver text-xs font-black tracking-widest',
   'B':  'badge-metal-bronze text-xs font-black tracking-widest',
-  'C':  'bg-slate-700 text-white text-xs font-black tracking-widest',
+  'C':  'bg-[var(--k-surface-2)] text-white text-xs font-black tracking-widest',
 };
 
 const GRADE_LABEL: Record<CosmeticGrade, string> = {

@@ -48,6 +48,7 @@ export interface AuthPayload {
   commissionRate?: number;
   walletBalance?:  number;
   b2bStatus?:     string;
+  emailVerified?: boolean;
 }
 
 // Route → Required Role mapping

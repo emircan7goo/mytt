@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { sendVerificationCode } from '@/lib/mail';
 import { isRateLimited, rateLimitResponse } from '@/lib/rateLimit';
+import { signAccessToken, signRefreshToken, setAuthCookies } from '@/lib/auth-server';
 
 function generateOtp(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -57,11 +58,31 @@ export async function POST(req: NextRequest) {
     data: { emailVerifyToken, emailVerifyExpiry },
   });
 
+  // OTP maili best-effort gönderilir (opsiyonel doğrulama için) — akışı bloklamaz.
   await sendVerificationCode({ email, name: name ?? email.split('@')[0], code: otp });
 
-  const { password: _pw, emailVerifyToken: _t, ...safeUser } = user;
+  // Kullanıcıyı kayıt anında doğrudan içeri al: doğrulama artık zorunlu değil.
+  // login/route.ts ile aynı token + cookie akışı.
+  const roleNormalized = user.role.toLowerCase() as 'customer' | 'dealer' | 'admin';
+  const accessToken = signAccessToken({ email: user.email, sub: user.id, role: user.role });
+  const refreshToken = signRefreshToken(user.id);
+  const refreshHash = await bcrypt.hash(refreshToken, 8);
+  await prisma.user.update({ where: { id: user.id }, data: { refreshTokenHash: refreshHash } });
+  await setAuthCookies(accessToken, refreshToken);
+
   return NextResponse.json(
-    { ...safeUser, message: 'Kayıt başarılı! E-posta adresinize 6 haneli doğrulama kodu gönderdik.' },
+    {
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name ?? user.email.split('@')[0],
+        role: roleNormalized,
+        commissionRate: user.commissionRate,
+        b2bStatus: user.b2bStatus,
+        emailVerified: false,
+      },
+      message: 'Kayıt başarılı! E-posta adresinize 6 haneli doğrulama kodu gönderdik (isteğe bağlı).',
+    },
     { status: 201 },
   );
 }
