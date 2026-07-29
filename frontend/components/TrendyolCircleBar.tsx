@@ -24,28 +24,28 @@ export default function TrendyolCircleBar() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -320 : 320;
+      const scrollAmount = direction === 'left' ? -280 : 280;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="w-full bg-[#090D16] py-6 border-b border-slate-800/80 relative group">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 relative">
+    <div className="w-full bg-[#090D16] py-3 sm:py-6 border-b border-slate-800/80 relative group overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-8 relative">
 
-        {/* Sol Kaydırma Butonu */}
+        {/* Sol Kaydırma Butonu (Masaüstünde Görünür) */}
         <button
           onClick={() => scroll('left')}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 flex items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-80 sm:opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sola kaydır"
         >
           <ChevronLeft size={22} />
         </button>
 
-        {/* ── BÜYÜTÜLMÜŞ LÜKS KOYU TEMALI DİJİTAL STORY BAR (w-[96px]) ── */}
+        {/* ── YEREL MOBİL UYGULAMA KALİTESİNDE ULTRA ŞIK STORY BAR ── */}
         <div
           ref={scrollRef}
-          className="no-scrollbar flex items-center gap-6 sm:gap-8 overflow-x-auto py-2 scroll-smooth"
+          className="no-scrollbar flex items-center gap-3.5 sm:gap-8 overflow-x-auto py-1 scroll-smooth max-w-full"
         >
           {CIRCLE_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -53,19 +53,19 @@ export default function TrendyolCircleBar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex flex-col items-center gap-3 group/item shrink-0 w-[96px] text-center"
+                className="flex flex-col items-center gap-1.5 sm:gap-3 group/item shrink-0 w-[74px] sm:w-[96px] text-center select-none"
               >
-                {/* BÜYÜTÜLMÜŞ Daire Halka İkon (Işıldayan Canlı Turuncu Halka) */}
-                <div className="relative p-1 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_20px_rgba(255,96,0,0.35)] group-hover/item:shadow-[0_0_28px_rgba(255,96,0,0.7)] group-hover/item:scale-110 transition-all duration-300">
-                  <div className="w-[76px] h-[76px] rounded-full bg-slate-950 p-1 flex items-center justify-center">
+                {/* Responsive Daire Halka İkon */}
+                <div className="relative p-0.5 sm:p-1 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_15px_rgba(255,96,0,0.35)] group-hover/item:shadow-[0_0_25px_rgba(255,96,0,0.7)] group-hover/item:scale-108 transition-all duration-300">
+                  <div className="w-[58px] h-[58px] sm:w-[76px] sm:h-[76px] rounded-full bg-slate-950 p-1 flex items-center justify-center">
                     <div className={`w-full h-full rounded-full bg-gradient-to-br ${item.color} text-white flex items-center justify-center shadow-inner`}>
-                      <Icon size={30} strokeWidth={2.2} />
+                      <Icon className="w-5 h-5 sm:w-7 sm:h-7" strokeWidth={2.2} />
                     </div>
                   </div>
                 </div>
 
                 {/* Metin Etiketi */}
-                <span className="text-[12px] font-black text-slate-100 leading-tight group-hover/item:text-orange-400 transition-colors line-clamp-2 drop-shadow-sm">
+                <span className="text-[10px] sm:text-[12px] font-black text-slate-100 leading-tight group-hover/item:text-orange-400 transition-colors line-clamp-2 drop-shadow-sm">
                   {item.label}
                 </span>
               </Link>
@@ -73,10 +73,10 @@ export default function TrendyolCircleBar() {
           })}
         </div>
 
-        {/* Sağ Kaydırma Butonu */}
+        {/* Sağ Kaydırma Butonu (Masaüstünde Görünür) */}
         <button
           onClick={() => scroll('right')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 flex items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-80 sm:opacity-0 group-hover:opacity-100"
+          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/90 text-white shadow-xl border border-slate-700 items-center justify-center hover:bg-orange-600 hover:border-orange-500 transition-all opacity-0 group-hover:opacity-100"
           aria-label="Sağa kaydır"
         >
           <ChevronRight size={22} />
