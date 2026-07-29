@@ -85,7 +85,7 @@ export default function ProductDetailModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[200]"
+            className="fixed inset-0 bg-[var(--k-canvas)]/60 backdrop-blur-md z-[200]"
             onClick={closeProductModal}
           />
           <motion.div
@@ -161,7 +161,7 @@ export default function ProductDetailModal() {
                           <button
                             key={i}
                             onClick={() => setActiveImg(i)}
-                            className={`w-2 h-2 rounded-full transition-all ${ i === activeImg ? 'bg-slate-900 w-5' : 'bg-slate-300' }`}
+                            className={`k-tap w-2 h-2 rounded-full transition-all ${ i === activeImg ? 'bg-[var(--k-canvas)] w-5' : 'bg-slate-300' }`}
                           />
                         ))}
                       </div>
@@ -198,7 +198,7 @@ export default function ProductDetailModal() {
                         {GRADE_LABELS[activeProduct.cosmeticGrade as CosmeticGrade]}
                       </span>
                       {activeProduct.isHot && (
-                        <span className="flex items-center gap-1.5 bg-slate-900 text-amber-400 text-[12px] font-black px-4 py-2 rounded-xl shadow-sm">
+                        <span className="flex items-center gap-1.5 bg-[var(--k-canvas)] text-amber-400 text-[12px] font-black px-4 py-2 rounded-xl shadow-sm">
                           <Zap size={14} fill="currentColor" strokeWidth={2.5} /> GÖZDE CİHAZ
                         </span>
                       )}

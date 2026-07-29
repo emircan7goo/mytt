@@ -105,10 +105,10 @@
   --font-display:   var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:      var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
   --font-editorial: var(--font-jakarta), sans-serif;
-  --color-brand:  #3B52F6;
-  --color-space:  #0F172A;
-  --color-bg:     #FFFFFF;
-  --color-ink:    #0F172A;
+  --color-brand:  #FF6A1A;
+  --color-space:  #05070B;
+  --color-bg:     #090D16;
+  --color-ink:    #F8FAFC;
 }
 
 /* *******************************************************************************
@@ -1245,63 +1245,65 @@ a:active {
 
 
 
+
 /* ═══════════════════════════════════════════════════════════════════════════
-   MYTT / IZGARA — SaaS MODERN · NEO-MINIMALISM · TECH-GRID  v13
+   MYTT / GECE — KARANLIK TEMA · AKKOR TURUNCU  v14
    ───────────────────────────────────────────────────────────────────────────
-   Konsept: "cizim masasi / muhendislik defteri"nin dijitallesmesi. Beyaz zemin
-   uzerine ince kareli izgara, uzerine suzulen mor/mavi radyal isima, ve
-   izgaranin ustunde havada duran mikro kartlar.
+   Sicak siyah zemin (mavi-siyah DEGIL; turuncuyla uyumlu olsun diye) uzerine
+   akkor turuncu. Havali, smooth, tutarli.
 
-   Derinlik modeli: keskin golge YOK. Elemanlar "havada suzuluyor" hissi icin
-   yumusak dusen golge + gradyan isima ile kaldirilir.
+   NEDEN BU BLOK VAR:
+   Onceki karanlik tema denemesinde bilesenlere tek tek koyu siniflar yazilmis
+   ama TOKEN KATMANINA hic dokunulmamisti. Sonuc: token kullanan Navbar beyaz
+   kaldi, elle boyanan bolumler siyah oldu, arada gri kaldi. Renk icin dort ayri
+   dogruluk kaynagi ayni anda calisiyordu.
 
-   Token ADLARI onceki sistemlerle ayni tutuldu (~1.400 var(--k-*) kullanimi
-   otomatik doner). Yalnizca degerler ve bilesen gorunumleri degisti.
+   Bu blok TEK dogruluk kaynagi olur. Token ADLARI onceki sistemlerle birebir
+   ayni tutuldu — vitrinde 1.200+ var(--k-*) kullanimi kendiliginden doner.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root, :root[data-theme="light"], :root[data-theme="dark"] {
-  /* ── Zemin: saf beyaz + cok hafif mavi tintler ───────────────────────── */
-  --k-void:      #FFFFFF;
-  --k-canvas:    #FFFFFF;
-  --k-canvas-2:  #F8FAFF;   /* izgara bandi / oyuk alan */
-  --k-surface:   #FFFFFF;
-  --k-surface-2: #FAFBFF;
-  --k-surface-3: #EEF2FF;   /* indigo-50 — input, inset, chip zemini */
-  --k-anchor:    #0F172A;   /* koyu lacivert — footer */
+  /* ── Zemin: sicak siyah basamaklari ──────────────────────────────────── */
+  --k-void:      #07090E;   /* sayfa tabani */
+  --k-canvas:    #090D16;   /* ana kanvas — mevcut koyu bolumlerle ayni ton */
+  --k-canvas-2:  #0E1420;   /* bant / oyuk alan */
+  --k-surface:   #131A28;   /* kart */
+  --k-surface-2: #18202F;   /* yukseltilmis / hover */
+  --k-surface-3: #1F2937;   /* input, inset */
+  --k-anchor:    #05070B;   /* footer — en dip */
 
-  /* ── Cizgiler: izgara ve hairline ────────────────────────────────────── */
-  --k-line:      #E5E7EB;
-  --k-line-2:    #D8DDE7;
-  --k-line-hot:  rgba(91,101,246,0.30);
-  --k-grid:      rgba(99,102,241,0.075);   /* izgara cizgisi */
+  /* ── Cizgiler ────────────────────────────────────────────────────────── */
+  --k-line:      rgba(255,255,255,0.08);
+  --k-line-2:    rgba(255,255,255,0.14);
+  --k-line-hot:  rgba(255,106,26,0.34);
+  --k-grid:      rgba(255,255,255,0.035);
 
-  /* ── Metin: tam siyah DEGIL, koyu lacivert (premium his) ─────────────── */
-  --k-ink:       #0F172A;
-  --k-ink-2:     rgba(15,23,42,0.72);
-  --k-ink-3:     rgba(15,23,42,0.55);
-  --k-ink-4:     rgba(15,23,42,0.38);
+  /* ── Murekkep ────────────────────────────────────────────────────────── */
+  --k-ink:       #F8FAFC;
+  --k-ink-2:     rgba(248,250,252,0.74);
+  --k-ink-3:     rgba(248,250,252,0.55);
+  --k-ink-4:     rgba(248,250,252,0.38);
 
-  /* ── Ana vurgu: elektrik mavi → mor gradyan ──────────────────────────── */
-  --k-hot:       #3B52F6;
-  --k-hot-2:     #7C3AED;
-  --k-hot-deep:  #2A3BD4;
-  --k-hot-ink:   #FFFFFF;
-  --k-hot-wash:  #EEF2FF;
-  --k-hot-glow:  rgba(91,101,246,0.28);
-  --k-grad:      linear-gradient(135deg, #3B52F6 0%, #7C3AED 100%);
-  --k-grad-soft: linear-gradient(135deg, rgba(59,82,246,0.10) 0%, rgba(124,58,237,0.10) 100%);
+  /* ── Akkor turuncu ───────────────────────────────────────────────────── */
+  --k-hot:       #FF6A1A;
+  --k-hot-2:     #FF8A47;
+  --k-hot-deep:  #C2410C;
+  --k-hot-ink:   #0A0A0C;   /* turuncu zemin ustu metin */
+  --k-hot-wash:  rgba(255,106,26,0.12);
+  --k-hot-glow:  rgba(255,106,26,0.34);
+  --k-grad:      linear-gradient(135deg, #FF6A1A 0%, #FFA23D 100%);
+  --k-grad-soft: linear-gradient(135deg, rgba(255,106,26,0.14) 0%, rgba(255,162,61,0.10) 100%);
 
-  /* ── Aksan renkleri: renk monotonlugunu kiran dokunuslar ─────────────── */
-  --k-ok:        #10B981;   /* guvenlik / batarya — DOLGU/IKON icin */
-  --k-warn:      #F59E0B;   /* sicak turuncu — DOLGU/IKON icin */
-  /* Ayni aksanlarin METIN karsiliklari: #F59E0B beyaz uzerinde 2.1 kontrast
-     verir, yani okunmaz. Dolgu tonunu bozmadan metin icin koyu varyant. */
-  --k-warn-ink:  #B45309;   /* beyaz uzerinde ~5.0 */
-  --k-ok-ink:    #047857;   /* beyaz uzerinde ~4.8 */
-  --k-bad:       #EF4444;
-  --k-cool:      #3B52F6;
+  /* ── Sinyal renkleri: koyu zeminde okunacak acik uclar ───────────────── */
+  --k-ok:        #34D399;
+  --k-warn:      #FBBF24;
+  --k-bad:       #F87171;
+  --k-cool:      #60A5FA;
+  /* Koyu zeminde bu tonlar zaten okunur; ayri "ink" varyanti gerekmiyor */
+  --k-ok-ink:    #34D399;
+  --k-warn-ink:  #FBBF24;
 
-  /* ── Geometri: butonlar HAP formunda, kartlar yumusak ────────────────── */
+  /* ── Geometri ────────────────────────────────────────────────────────── */
   --k-r-xs: 8px;
   --k-r-sm: 10px;
   --k-r:    14px;
@@ -1329,65 +1331,67 @@ a:active {
   --brand-mid:     var(--k-hot-2);
   --brand-glow:    var(--k-hot-glow);
   --space:         var(--k-anchor);
-  --space-2:       #16203A;
-  --space-3:       #1E293B;
+  --space-2:       var(--k-canvas-2);
+  --space-3:       var(--k-surface);
   --r-pill:        9999px;
 
-  /* ── Golgeler: "havada suzulen" his — yumusak ve genis ───────────────── */
-  --shadow-xs:    0 1px 2px rgba(15,23,42,0.04);
-  --shadow-sm:    0 2px 8px rgba(15,23,42,0.05);
-  --shadow-md:    0 8px 24px rgba(15,23,42,0.07), 0 2px 6px rgba(15,23,42,0.04);
-  --shadow-lg:    0 18px 44px rgba(15,23,42,0.09), 0 4px 12px rgba(15,23,42,0.05);
-  --shadow-xl:    0 32px 72px rgba(15,23,42,0.11), 0 8px 20px rgba(15,23,42,0.05);
-  --shadow-float: 0 12px 32px rgba(15,23,42,0.10), 0 2px 8px rgba(15,23,42,0.05);
-  --shadow-brand: 0 12px 30px rgba(91,101,246,0.32);
+  /* ── Golgeler: koyu zeminde golge islemez → ISIMA tabanli ────────────── */
+  --shadow-xs:    0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-md:    0 8px 26px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-lg:    0 18px 46px rgba(0,0,0,0.62), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-xl:    0 32px 76px rgba(0,0,0,0.7),  0 0 0 1px rgba(255,255,255,0.07);
+  --shadow-float: 0 12px 34px rgba(0,0,0,0.6),  0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-brand: 0 10px 34px var(--k-hot-glow);
 
   --mesh-bg: none;
 }
 
 /* Katmansiz olmak ZORUNDA — eski body{background:#fff} kurali da katmansiz ve
-   Tailwind v4'te katmansiz her zaman katmanliyi yener. */
-html { background: var(--k-canvas); }
+   Tailwind v4'te katmansiz her zaman katmanliyi yener. @layer base icine
+   koyarsam eski beyaz zemin kazanir (bu tuzaga daha once dustum). */
+html { background: var(--k-canvas); color-scheme: dark; }
 body {
   background: var(--k-canvas);
   color: var(--k-ink-2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-::selection { background: var(--k-hot); color: #fff; }
+::selection { background: var(--k-hot); color: var(--k-hot-ink); }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--k-ink);
-    /* Guclu durus icin siki harf araligi */
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+    letter-spacing: -0.032em;
+    line-height: 1.06;
     font-weight: 800;
   }
 
+  /* Form denetimleri koyu temada tarayici varsayilanina dusmesin */
+  input, textarea, select { color-scheme: dark; }
+
   ::-webkit-scrollbar { width: 11px; height: 11px; }
-  ::-webkit-scrollbar-track { background: var(--k-canvas-2); }
+  ::-webkit-scrollbar-track { background: var(--k-void); }
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1; border-radius: 99px; border: 3px solid var(--k-canvas-2);
+    background: var(--k-surface-3); border-radius: 99px; border: 3px solid var(--k-void);
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--k-hot); }
-  * { scrollbar-width: thin; scrollbar-color: #CBD5E1 var(--k-canvas-2); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--k-hot-deep); }
+  * { scrollbar-width: thin; scrollbar-color: var(--k-surface-3) var(--k-void); }
 }
 
 @layer components {
-  /* ── IZGARA: tasarimin karakteristik kimligi ────────────────────────── */
+  /* ── Izgara dokusu — konsept korunuyor, koyu zemine uyarlandi ───────── */
   .k-grid-bg {
     background-image:
       linear-gradient(to right, var(--k-grid) 1px, transparent 1px),
       linear-gradient(to bottom, var(--k-grid) 1px, transparent 1px);
     background-size: 56px 56px;
   }
-  /* Ince ikincil izgara — "milimetrik kagit" hissi */
   .k-grid-fine {
     background-image:
-      linear-gradient(to right, rgba(99,102,241,0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(99,102,241,0.05) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px),
       linear-gradient(to right, var(--k-grid) 1px, transparent 1px),
       linear-gradient(to bottom, var(--k-grid) 1px, transparent 1px);
     background-size: 14px 14px, 14px 14px, 112px 112px, 112px 112px;
@@ -1397,7 +1401,7 @@ body {
     mask-image: radial-gradient(ellipse 78% 68% at 50% 34%, #000 30%, transparent 100%);
   }
 
-  /* ── Radyal isima: gozu merkeze cekmek icin ─────────────────────────── */
+  /* ── Radyal isima: koyu zeminde turuncu akkor ───────────────────────── */
   .k-glow-wrap { position: relative; isolation: isolate; }
   .k-glow-wrap::before {
     content: '';
@@ -1407,29 +1411,25 @@ body {
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse 52% 46% at 50% 26%,  rgba(59,82,246,0.16) 0%, transparent 68%),
-      radial-gradient(ellipse 42% 40% at 76% 14%,  rgba(124,58,237,0.14) 0%, transparent 66%),
-      radial-gradient(ellipse 36% 34% at 22% 40%,  rgba(59,130,246,0.09) 0%, transparent 70%);
+      radial-gradient(ellipse 52% 46% at 50% 24%, rgba(255,106,26,0.20) 0%, transparent 68%),
+      radial-gradient(ellipse 40% 38% at 78% 12%, rgba(255,162,61,0.13) 0%, transparent 66%),
+      radial-gradient(ellipse 36% 34% at 20% 42%, rgba(255,106,26,0.09) 0%, transparent 70%);
   }
 
-  /* ── Grain YOK (onceki sistemden devir) ─────────────────────────────── */
   .k-grain::before { content: none; }
 
-  /* ── Tipografi yardimcilari ─────────────────────────────────────────── */
+  /* ── Tipografi ──────────────────────────────────────────────────────── */
   .k-display {
     font-family: var(--font-display);
     font-weight: 800;
-    letter-spacing: -0.038em;
-    line-height: 1.04;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
     color: var(--k-ink);
   }
-  /* Gradyanli metin vurgusu — ana mesajdaki anahtar kelime icin */
   .k-grad-text {
     background: var(--k-grad);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
   }
   .k-mono {
     font-family: var(--font-mono);
@@ -1440,71 +1440,65 @@ body {
     font-family: var(--font-display);
     font-weight: 800;
     font-variant-numeric: tabular-nums;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.028em;
     color: var(--k-ink);
   }
   .k-label {
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    /* Mobilde 10px okunmuyordu — taban 11px */
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--k-ink-4);
   }
 
-  /* ── Kart: havada suzulen beyaz yuzey ───────────────────────────────── */
+  /* ── Kart: hairline + hover'da turuncu kenar isimasi ─────────────────── */
   .k-card {
     position: relative;
     background: var(--k-surface);
     border: 1px solid var(--k-line);
     border-radius: var(--k-r-lg);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow .38s cubic-bezier(.22,1,.36,1),
-                transform .38s cubic-bezier(.22,1,.36,1),
-                border-color .38s cubic-bezier(.22,1,.36,1);
+    transition: border-color .34s cubic-bezier(.22,1,.36,1),
+                background .34s cubic-bezier(.22,1,.36,1),
+                transform .34s cubic-bezier(.22,1,.36,1),
+                box-shadow .34s cubic-bezier(.22,1,.36,1);
   }
   .k-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-5px);
+    background: var(--k-surface-2);
     border-color: var(--k-line-hot);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.6), 0 0 34px -10px var(--k-hot-glow);
   }
-  /* Hover'da gradyan isima — kartin altindan suzulur */
   .k-card-glow::after {
     content: '';
     position: absolute;
-    inset: auto 8% -14px 8%;
-    height: 46px;
-    z-index: -1;
-    border-radius: 50%;
-    filter: blur(22px);
-    opacity: 0;
+    inset: auto 10% -12px 10%;
+    height: 40px; z-index: -1; border-radius: 50%;
+    filter: blur(20px); opacity: 0;
     background: var(--k-grad);
-    transition: opacity .38s cubic-bezier(.22,1,.36,1);
+    transition: opacity .34s cubic-bezier(.22,1,.36,1);
   }
-  .k-card-glow:hover::after { opacity: 0.34; }
+  .k-card-glow:hover::after { opacity: 0.30; }
 
-  /* ── Butonlar: HAP formunda, gradyanli ──────────────────────────────── */
+  /* ── Butonlar: hap formunda, akkor gradyan ──────────────────────────── */
   .k-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex; align-items: center; justify-content: center;
     gap: 9px;
-    height: 52px;
-    padding: 0 30px;
+    /* Mobil dokunma hedefi: 48px taban */
+    min-height: 48px;
+    padding: 0 28px;
     border-radius: var(--k-r-pill);
     font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: -0.01em;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all .3s cubic-bezier(.22,1,.36,1);
+    font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+    border: 1px solid transparent; cursor: pointer;
+    transition: all .28s cubic-bezier(.22,1,.36,1);
     white-space: nowrap;
   }
   .k-btn-hot {
     background: var(--k-grad);
-    color: #fff;
-    box-shadow: 0 6px 18px rgba(91,101,246,0.26);
+    color: var(--k-hot-ink);
+    box-shadow: 0 6px 20px rgba(255,106,26,0.28);
   }
   .k-btn-hot:hover {
     box-shadow: var(--shadow-brand);
@@ -1514,45 +1508,36 @@ body {
     background: var(--k-surface);
     color: var(--k-ink);
     border-color: var(--k-line-2);
-    box-shadow: var(--shadow-xs);
   }
   .k-btn-ghost:hover {
     border-color: var(--k-hot);
-    color: var(--k-hot);
+    color: var(--k-hot-2);
+    background: var(--k-surface-2);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
   }
 
-  /* ── Chip / rozet: hap formunda ─────────────────────────────────────── */
+  /* ── Chip ───────────────────────────────────────────────────────────── */
   .k-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    height: 28px;
-    padding: 0 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+    min-height: 28px; padding: 0 13px;
     border-radius: var(--k-r-pill);
-    border: 1px solid var(--k-line);
+    border: 1px solid var(--k-line-2);
     background: var(--k-surface);
     font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--k-ink-3);
-    box-shadow: var(--shadow-xs);
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--k-ink-2);
   }
   .k-chip-hot {
     border-color: var(--k-line-hot);
     background: var(--k-hot-wash);
-    color: var(--k-hot);
+    color: var(--k-hot-2);
   }
 
-  /* ── Yuzen mikro kart (arka plan rozetleri) ─────────────────────────── */
+  /* ── Yuzen mikro kart ───────────────────────────────────────────────── */
   .k-float {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border: 1px solid var(--k-line);
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--k-surface);
+    border: 1px solid var(--k-line-2);
     border-radius: var(--k-r);
     box-shadow: var(--shadow-float);
   }
@@ -1560,20 +1545,21 @@ body {
   /* ── Input ──────────────────────────────────────────────────────────── */
   .k-input {
     width: 100%;
-    height: 48px;
+    min-height: 48px;
     padding: 0 16px;
-    background: var(--k-surface);
-    border: 1px solid var(--k-line-2);
+    background: var(--k-surface-3);
+    border: 1px solid var(--k-line);
     border-radius: var(--k-r-pill);
     color: var(--k-ink);
-    font-size: 14px;
-    transition: border-color .22s, box-shadow .22s;
+    font-size: 15px;   /* iOS'ta 16px alti otomatik zoom yapar — 15px+ guvenli */
+    transition: border-color .22s, box-shadow .22s, background .22s;
   }
   .k-input::placeholder { color: var(--k-ink-4); }
   .k-input:focus {
     outline: none;
     border-color: var(--k-hot);
-    box-shadow: 0 0 0 4px rgba(59,82,246,0.12);
+    background: var(--k-surface-2);
+    box-shadow: 0 0 0 4px rgba(255,106,26,0.14);
   }
 
   /* ── Marquee ────────────────────────────────────────────────────────── */
@@ -1589,42 +1575,54 @@ body {
     font-size: 11px; font-weight: 800; letter-spacing: 0.16em;
     text-transform: uppercase;
     display: inline-flex; align-items: center; gap: 12px;
-    background: var(--k-grad);
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; -webkit-text-fill-color: transparent;
+    color: var(--k-hot);
   }
   .k-section-num::after {
-    content: '';
-    width: 54px; height: 2px; border-radius: 2px;
+    content: ''; width: 54px; height: 2px; border-radius: 2px;
     background: var(--k-grad);
-    -webkit-text-fill-color: initial;
   }
 
   /* ── Skeleton ───────────────────────────────────────────────────────── */
   .k-skeleton, .skeleton-wave {
-    background: linear-gradient(90deg, #F1F5F9 25%, #E8EDF5 50%, #F1F5F9 75%);
+    background: linear-gradient(90deg, var(--k-surface) 25%, var(--k-surface-3) 50%, var(--k-surface) 75%);
     background-size: 200% 100%;
     animation: k-shimmer 1.5s ease-in-out infinite;
   }
 
-  /* ── Koyu bolge kapsami (footer) ────────────────────────────────────── */
-  .k-on-dark {
-    --k-ink:       #F8FAFC;
-    --k-ink-2:     rgba(248,250,252,0.74);
-    --k-ink-3:     rgba(248,250,252,0.55);
-    --k-ink-4:     rgba(248,250,252,0.40);
-    --k-line:      rgba(255,255,255,0.10);
-    --k-line-2:    rgba(255,255,255,0.18);
-    --k-surface:   rgba(255,255,255,0.05);
-    --k-surface-2: rgba(255,255,255,0.08);
-    --k-surface-3: rgba(255,255,255,0.10);
-    --k-canvas:    var(--k-anchor);
-    --k-canvas-2:  rgba(255,255,255,0.06);
-    --k-hot:       #8B9CFF;
-    --k-hot-2:     #A78BFA;
-    --k-hot-wash:  rgba(139,156,255,0.14);
-    --k-line-hot:  rgba(139,156,255,0.32);
-    --k-grid:      rgba(255,255,255,0.05);
+  /* ── Yatay kaydirma seridi (mobil kategori cubugu, story bar) ────────── */
+  .k-scroll-x {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .k-scroll-x::-webkit-scrollbar { display: none; }
+  .k-scroll-x > * { scroll-snap-align: start; flex: 0 0 auto; }
+
+  /* ── ACIK bolge kapsami ──────────────────────────────────────────────
+     Onceki sistemde .k-on-dark vardi (acik temada koyu bolge icin). Tema
+     tersine dondugu icin artik tersi gerekiyor: koyu temada bilincli olarak
+     ACIK bir bolge istenirse tokenlari yerel olarak cevirir. */
+  .k-on-light {
+    --k-canvas:    #FFFFFF;
+    --k-canvas-2:  #F5F7FA;
+    --k-surface:   #FFFFFF;
+    --k-surface-2: #F8FAFC;
+    --k-surface-3: #EEF2F7;
+    --k-line:      rgba(15,23,42,0.10);
+    --k-line-2:    rgba(15,23,42,0.18);
+    --k-ink:       #0F172A;
+    --k-ink-2:     rgba(15,23,42,0.74);
+    --k-ink-3:     rgba(15,23,42,0.55);
+    --k-ink-4:     rgba(15,23,42,0.38);
+    --k-hot:       #C2410C;
+    --k-hot-2:     #EA580C;
+    --k-hot-wash:  #FFF7ED;
+    --k-line-hot:  rgba(194,65,12,0.28);
+    --k-hot-ink:   #FFFFFF;
+    --k-grid:      rgba(15,23,42,0.05);
     color: var(--k-ink-2);
   }
 
@@ -1635,16 +1633,16 @@ body {
     border-color: var(--k-line);
   }
   .ticker-bar {
-    background: var(--k-canvas-2);
+    background: var(--k-void);
     border-bottom: 1px solid var(--k-line);
     height: 34px;
   }
-  .grade-badge--a-plus { background: var(--k-grad); color: #fff; }
-  .grade-badge--a      { background: var(--k-surface-3); color: var(--k-hot); }
+  .grade-badge--a-plus { background: var(--k-grad); color: var(--k-hot-ink); }
+  .grade-badge--a      { background: var(--k-surface-3); color: var(--k-ink); }
   .bubble-circle--emerald, .bubble-circle--violet, .bubble-circle--indigo,
   .bubble-circle--rose, .bubble-circle--amber, .bubble-circle--sky,
   .bubble-circle--fuchsia, .bubble-circle--teal {
-    background: var(--k-surface-3);
+    background: var(--k-surface-2);
     border: 1px solid var(--k-line);
   }
 }
@@ -1658,21 +1656,19 @@ body {
   to   { background-position: -200% 0; }
 }
 
-/* ── Hareket #1: bolum acilisi ───────────────────────────────────────── */
+/* ── Hareket ─────────────────────────────────────────────────────────── */
 .scroll-reveal {
   opacity: 0; transform: translateY(18px);
   transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
 }
 .scroll-reveal.visible { opacity: 1; transform: none; }
 
-/* ── Hareket #2: yuzen mikro kartlarin suzulmesi ─────────────────────── */
 @keyframes k-hover-float {
   0%, 100% { transform: translateY(0) rotate(var(--k-rot, 0deg)); }
   50%      { transform: translateY(-13px) rotate(var(--k-rot, 0deg)); }
 }
 .k-floaty { animation: k-hover-float 6.5s ease-in-out infinite; }
 
-/* ── Hareket #3: hero gorsel kacisi ──────────────────────────────────── */
 @keyframes k-drift {
   0%   { transform: scale(1); }
   100% { transform: scale(1.06); }
@@ -1686,20 +1682,66 @@ body {
   .scroll-reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ── NEON ORANGE VISUAL EFFECTS ── */
-.neon-glow-orange {
-  box-shadow: 0 0 25px rgba(255, 96, 0, 0.45), 0 0 50px rgba(255, 96, 0, 0.2);
-}
-.neon-glow-orange-lg {
-  box-shadow: 0 0 40px rgba(255, 96, 0, 0.6), 0 0 80px rgba(255, 96, 0, 0.25);
-}
-.neon-border-orange {
-  border: 1.5px solid rgba(255, 96, 0, 0.8) !important;
-  box-shadow: 0 0 15px rgba(255, 96, 0, 0.35) !important;
-}
-.neon-text-orange {
-  background: linear-gradient(135deg, #FF6000 0%, #FF8800 50%, #FF3300 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 12px rgba(255, 96, 0, 0.4));
+/* ═══ MOBIL OLCEKLEME ═══════════════════════════════════════════════════
+   Olculen sorunlar: 37 dokunma hedefi 36px alti, 31 metin 11px alti.
+   Asagidaki kurallar mobilde tabani yukseltir; masaustune dokunmaz. */
+@media (max-width: 640px) {
+  /* Dokunma hedefi tabani */
+  .k-btn { min-height: 48px; padding: 0 22px; font-size: 14.5px; }
+  .k-chip { min-height: 30px; font-size: 11.5px; }
+
+  /* En kucuk metin tabani */
+  .k-label { font-size: 11px; letter-spacing: 0.1em; }
+
+  /* Bolum dikey bosluklari mobilde kademeli kucultulur */
+  .k-sec { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+
+  /* ── METIN TABANI ────────────────────────────────────────────────────
+     Olcum: mobilde 31 metin 11px altindaydi (balon etiketleri 10px) —
+     okunmuyordu. Bunlar 90 ayri yerde text-[10px]/[9px]/[8px] olarak
+     yaziliydi; hepsini elle degistirmek yerine mobilde tek bir taban
+     uygulaniyor. Masaustu etkilenmiyor. */
+  .text-\[8px\], .text-\[9px\], .text-\[10px\], .text-\[10\.5px\] {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* ── DOKUNMA HEDEFI TABANI ───────────────────────────────────────────
+     Olcum: 37 hedef 36px altindaydi (bazilari 8x8px). Gorunumu bozmadan
+     dokunulabilir alani genisletir — gorsel boyut ayni kalir. */
+  .k-tap { position: relative; }
+  .k-tap::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: inherit;
+  }
+
+  /* Navigasyon baglantilari parmak icin yeterli yukseklikte olsun */
+  nav a, nav button { min-height: 44px; }
+
+  /* Footer ve liste baglantilari: 16–21px yukseklikteydiler, parmakla
+     isabet zordu. Liste akisini bozmadan dikey dolguyla 40px'e cikarilir. */
+  footer li > a,
+  footer .flex-col > a {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Footer alt seridi (KVKK, Kullanim Kosullari, Cerez…) — satir icinde
+     duruyorlar, bu yuzden blok dolgu yerine min-height veriliyor. */
+  footer a {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Satir ici "…İncele / …Detaylari" tipi CTA baglantilari */
+  a[class*="font-black"]:not(.k-btn),
+  a[class*="font-extrabold"]:not(.k-btn) {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
 }

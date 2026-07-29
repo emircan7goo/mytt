@@ -283,7 +283,7 @@ export default function Navbar() {
       <header
         className="sticky top-0 z-[50] w-full transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(255,255,255,0.95)' : '#ffffff',
+          background: scrolled ? 'rgba(9,13,22,0.88)' : 'var(--k-canvas)',
           backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
           borderBottom: '3px solid #FF6000',
@@ -304,7 +304,7 @@ export default function Navbar() {
 
           {/* Logo — Turuncu 'Y' Vurgulu Prestijli Mytt Logosu */}
           <Link href="/" className="flex items-center flex-shrink-0 group mr-6 py-1">
-            <span className="font-black text-3xl sm:text-4xl tracking-tighter text-slate-900 flex items-center select-none">
+            <span className="font-black text-3xl sm:text-4xl tracking-tighter text-[var(--k-ink)] flex items-center select-none">
               m<span className="text-orange-500 drop-shadow-[0_0_12px_rgba(255,96,0,0.75)] inline-block transition-transform duration-300 group-hover:scale-125">y</span>tt
             </span>
           </Link>
@@ -496,8 +496,11 @@ export default function Navbar() {
           style={{ borderTop: '1px solid var(--k-line)', background: 'var(--k-void)' }}
           onMouseLeave={() => setHoveredCategory(null)}
         >
+          {/* Mobilde bu çubuk kırpılıyordu: nav genişliği 343px ama içeriği 567px,
+              overflow-x: visible olduğu için "Tabletler" ve "Aksesuarlar" ekran
+              dışında kalıp TIKLANAMIYORDU. k-scroll-x ile kaydırılabilir yapıldı. */}
           <div className="max-w-[1280px] mx-auto px-4 lg:px-8">
-            <nav className="flex items-center gap-0.5 h-[44px] relative">
+            <nav className="k-scroll-x lg:!overflow-visible items-center gap-0.5 h-[48px] relative">
               {MENU_ITEMS.map((cat) => {
                 const isActive = activeCategory === cat.value || (cat.value === null && !activeCategory);
                 const isHovered = hoveredCategory === cat.label;
@@ -538,7 +541,7 @@ export default function Navbar() {
                 key={`${cat.label}-mega`}
                 className="mega-menu-enter absolute left-0 right-0 top-[50px] overflow-hidden z-50"
                 style={{
-                  background: 'rgba(255,255,255,0.985)',
+                  background: 'rgba(19,26,40,0.985)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   borderTop: '1px solid var(--k-line)',
@@ -642,7 +645,7 @@ export default function Navbar() {
       {/* ── Mobil Yan Menü ──────────────────────────────────────────────── */}
       {showMobileMenu && (
         <div className="fixed inset-0 z-[100] flex animate-in fade-in duration-150">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowMobileMenu(false)} />
+          <div className="absolute inset-0 bg-[var(--k-void)]/50 backdrop-blur-sm" onClick={() => setShowMobileMenu(false)} />
           <div className="relative w-[280px] h-full flex flex-col animate-in slide-in-from-left duration-200" style={{ background: "var(--k-canvas)", borderRight: "1px solid var(--k-line)" }}>
             {/* Menü başlığı */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--ink-7)]">

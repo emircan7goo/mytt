@@ -124,7 +124,7 @@ export default function CartDrawer() {
                   <p className="text-[var(--k-ink-3)] text-[14px] font-bold max-w-[250px] mb-8 leading-relaxed uppercase tracking-widest">
                     Uzayda süzülen bir ürün yok.
                   </p>
-                  <button onClick={closeCart} className="bg-zinc-900 text-white font-bold uppercase tracking-widest px-8 py-4 text-[12px] rounded-full hover:bg-black transition-colors shadow-[0_0_20px_rgba(0,0,0,0.1)]">
+                  <button onClick={closeCart} className="bg-[var(--k-canvas)] text-white font-bold uppercase tracking-widest px-8 py-4 text-[12px] rounded-full hover:bg-[var(--k-void)] transition-colors shadow-[0_0_20px_rgba(0,0,0,0.1)]">
                     Kataloğa Dön
                   </button>
                 </div>
@@ -248,7 +248,7 @@ export default function CartDrawer() {
                 <button
                   id="cart-checkout-btn"
                   onClick={handleCheckout}
-                  className="w-full py-5 text-[14px] bg-zinc-900 text-white font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3 mt-8 hover:bg-black transition-colors shadow-[0_0_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_30px_rgba(0,0,0,0.1)]"
+                  className="w-full py-5 text-[14px] bg-[var(--k-canvas)] text-white font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3 mt-8 hover:bg-[var(--k-void)] transition-colors shadow-[0_0_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_30px_rgba(0,0,0,0.1)]"
                 >
                   Güvenli Ödeme <ArrowRight size={18} strokeWidth={2.5} />
                 </button>

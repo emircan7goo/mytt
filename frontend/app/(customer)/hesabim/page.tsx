@@ -206,7 +206,7 @@ function ProfileTab() {
           <button
             type="submit"
             disabled={saving || !name.trim() || name === user?.name}
-            className="self-start flex items-center gap-2 bg-slate-900 hover:bg-black text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40"
+            className="self-start flex items-center gap-2 bg-[var(--k-canvas)] hover:bg-[var(--k-void)] text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40"
           >
             {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
             Kaydet
@@ -465,14 +465,14 @@ function SellRequestCard({ req }: { req: SellRequest }) {
               </div>
             ) : !showShip ? (
               <button onClick={() => setShowShip(true)}
-                className="w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-black transition-colors">
+                className="w-full py-2.5 bg-[var(--k-canvas)] text-white rounded-xl text-xs font-bold hover:bg-[var(--k-void)] transition-colors">
                 Kargo Kodu Gir
               </button>
             ) : (
               <div className="flex gap-2">
                 <input type="text" value={shippingCode} onChange={e => setShippingCode(e.target.value)}
                   placeholder="Kargo takip kodu..."
-                  className="flex-1 border border-[var(--k-line)] focus:border-slate-900 rounded-xl px-3 py-2 text-sm outline-none" />
+                  className="flex-1 border border-[var(--k-line)] focus:border-[var(--k-line-2)] rounded-xl px-3 py-2 text-sm outline-none" />
                 <button onClick={handleShipping} disabled={!shippingCode || addShipping.isPending}
                   className="px-4 py-2 bg-orange-600 text-white rounded-xl text-xs font-bold disabled:opacity-50">
                   {addShipping.isPending ? '...' : 'Kaydet'}
@@ -526,11 +526,11 @@ function SellRequestsTab() {
         </div>
       ) : !sellOnly.length ? (
         <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)]">
-          <Smartphone size={36} className="text-slate-200 mx-auto mb-3" />
+          <Smartphone size={36} className="text-[var(--k-ink-2)] mx-auto mb-3" />
           <p className="text-[var(--k-ink-2)] font-semibold text-sm mb-1">Henüz satış talebi yok</p>
           <p className="text-[var(--k-ink-4)] text-xs mb-4">Elinizdeki cihazı satmak için talep oluşturun.</p>
           <Link href="/sell"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-black transition-colors">
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--k-canvas)] text-white rounded-xl text-sm font-bold hover:bg-[var(--k-void)] transition-colors">
             Cihazımı Sat <ArrowRight size={14} />
           </Link>
         </div>
@@ -579,7 +579,7 @@ function TradeInTab() {
         </div>
       ) : !tradeOnly.length ? (
         <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)]">
-          <RefreshCw size={36} className="text-slate-200 mx-auto mb-3" />
+          <RefreshCw size={36} className="text-[var(--k-ink-2)] mx-auto mb-3" />
           <p className="text-[var(--k-ink-2)] font-semibold text-sm mb-1">Henüz takas talebi yok</p>
           <p className="text-[var(--k-ink-4)] text-xs mb-4">Elinizdeki cihazı takasa vererek yeni cihazınıza ulaşın.</p>
           <Link href="/sell?type=trade-in"
@@ -633,10 +633,10 @@ function WishlistTab() {
         </div>
       ) : !items?.length ? (
         <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)]">
-          <Heart size={36} className="text-slate-200 mx-auto mb-3" />
+          <Heart size={36} className="text-[var(--k-ink-2)] mx-auto mb-3" />
           <p className="text-[var(--k-ink-2)] font-semibold text-sm mb-1">Henüz favori ürün yok</p>
           <p className="text-[var(--k-ink-4)] text-xs mb-4">Vitrinlerde kalp ikonuna basarak ürün favorile.</p>
-          <Link href="/" className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-black transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--k-canvas)] text-white rounded-xl text-sm font-bold hover:bg-[var(--k-void)] transition-colors">
             Ürünleri Keşfet <ArrowRight size={14} />
           </Link>
         </div>
@@ -674,7 +674,7 @@ function WishlistTab() {
                   <div className="flex flex-col items-end gap-2 shrink-0">
                     <span className="text-[17px] font-black text-[var(--k-ink)]">{fmt(p.price)}</span>
                     <div className="flex items-center gap-1.5">
-                      <Link href={`/product/${p.id}`} className="px-3 py-1.5 bg-zinc-900 text-white rounded-lg text-[11px] font-black hover:bg-black transition-colors">
+                      <Link href={`/product/${p.id}`} className="px-3 py-1.5 bg-[var(--k-canvas)] text-white rounded-lg text-[11px] font-black hover:bg-[var(--k-void)] transition-colors">
                         İncele →
                       </Link>
                       <button
@@ -734,7 +734,7 @@ export default function HesabimPage() {
           <button
             key={t.key}
             onClick={() => setTab(t.key)}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${ tab === t.key ? 'bg-slate-900 text-white shadow-sm' : 'text-[var(--k-ink-3)] hover:text-[var(--k-ink)]' }`}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${ tab === t.key ? 'bg-[var(--k-canvas)] text-white shadow-sm' : 'text-[var(--k-ink-3)] hover:text-[var(--k-ink)]' }`}
           >
             {t.icon} {t.label}
           </button>
@@ -777,7 +777,7 @@ export default function HesabimPage() {
             </div>
           ) : orders.length === 0 ? (
             <div className="text-center py-16 bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)]">
-              <ShoppingBag size={32} className="text-slate-200 mx-auto mb-3" />
+              <ShoppingBag size={32} className="text-[var(--k-ink-2)] mx-auto mb-3" />
               <p className="text-[var(--k-ink-3)] font-semibold text-sm">Henüz sipariş bulunmuyor</p>
               <p className="text-[var(--k-ink-4)] text-xs mt-1">İlk alışverişini yapmak için ürünlere göz at</p>
             </div>

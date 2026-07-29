@@ -12,7 +12,7 @@ const DEALERS = [
 
 export default function MagazalarPage() {
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 lg:px-8">
+    <div className="min-h-screen bg-[var(--k-canvas-2)] py-12 px-4 lg:px-8">
       <div className="max-w-[1200px] mx-auto space-y-10">
 
         {/* Hero Header */}
@@ -20,10 +20,10 @@ export default function MagazalarPage() {
           <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
             ONAYLI 150+ BAYİ AĞI
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
             Doğrulanmış <span className="text-orange-600">Yetkili Bayi Pazaryeri</span>
           </h1>
-          <p className="text-slate-600 text-base font-medium leading-relaxed">
+          <p className="text-[var(--k-ink-2)] text-base font-medium leading-relaxed">
             Türkiye genelinde TSE standartlarında hizmet veren, ticaret odası kayıtlı onaylı yetkili bayilerimizi inceleyin.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function MagazalarPage() {
         {/* Mağazalar Izgarası */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {DEALERS.map((d) => (
-            <div key={d.id} className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-orange-400 transition-all space-y-4 flex flex-col justify-between">
+            <div key={d.id} className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)] p-6 shadow-sm hover:shadow-xl hover:border-orange-400 transition-all space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-200">
@@ -43,9 +43,9 @@ export default function MagazalarPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-black text-slate-900">{d.name}</h3>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-1">
-                    <MapPin size={14} className="text-slate-400" />
+                  <h3 className="text-lg font-black text-[var(--k-ink)]">{d.name}</h3>
+                  <div className="flex items-center gap-1.5 text-xs text-[var(--k-ink-3)] font-medium mt-1">
+                    <MapPin size={14} className="text-[var(--k-ink-4)]" />
                     <span>{d.city}</span>
                   </div>
                 </div>
@@ -55,13 +55,13 @@ export default function MagazalarPage() {
                     <Star size={14} className="fill-amber-400" />
                     <span>{d.rating}</span>
                   </div>
-                  <span className="text-slate-600">{d.sales}</span>
+                  <span className="text-[var(--k-ink-2)]">{d.sales}</span>
                 </div>
               </div>
 
               <Link
                 href="/sell"
-                className="w-full py-3 rounded-2xl bg-slate-100 hover:bg-orange-500 hover:text-white text-slate-800 font-extrabold text-xs transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-3 rounded-2xl bg-[var(--k-surface-2)] hover:bg-orange-500 hover:text-white text-[var(--k-ink)] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5"
               >
                 <span>Teklif İste</span>
                 <ArrowRight size={14} />

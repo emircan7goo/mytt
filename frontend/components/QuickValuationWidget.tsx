@@ -74,7 +74,7 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="w-full max-w-full rounded-3xl bg-white/95 backdrop-blur-2xl border-2 border-orange-300 p-5 sm:p-8 md:p-10 shadow-2xl shadow-orange-950/10 relative overflow-hidden my-6">
+    <div className="w-full max-w-full rounded-3xl bg-[var(--k-surface)]/95 backdrop-blur-2xl border-2 border-orange-300 p-5 sm:p-8 md:p-10 shadow-2xl shadow-orange-950/10 relative overflow-hidden my-6">
       {/* Arka plan radyal turuncu ışıklar */}
       <div className="pointer-events-none absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full bg-orange-500/15 blur-3xl animate-pulse" />
 
@@ -83,11 +83,11 @@ export default function QuickValuationWidget() {
         {/* Sol taraf: Başlık & Model Seçim Butonları */}
         <div className="lg:col-span-7 text-left space-y-4 min-w-0">
           
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight break-words">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--k-ink)] leading-tight break-words">
             Cihazını İhaleye Çıkar, <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Yetkili Bayiler En Yüksek Fiyat İçin Yarışsın!</span>
           </h3>
 
-          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-xl break-words">
+          <p className="text-sm sm:text-base text-[var(--k-ink-2)] font-medium leading-relaxed max-w-xl break-words">
             Cihaz modelini seç, kapalı açık artırma ihalesinde bayilerin teklifleri nasıl yükselttiğini aşağıdaki canlı örnekte incele.
           </p>
 
@@ -100,7 +100,7 @@ export default function QuickValuationWidget() {
                 className={`px-3.5 py-2.5 sm:px-4.5 sm:py-3 rounded-2xl text-xs font-black transition-all duration-300 border shrink-0 ${
                   selectedModelKey === modelKey
                     ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white border-orange-500 shadow-md shadow-orange-500/30 scale-105'
-                    : 'bg-orange-50/50 text-slate-800 border-orange-200 hover:bg-orange-100 hover:text-orange-900'
+                    : 'bg-orange-50/50 text-[var(--k-ink)] border-orange-200 hover:bg-orange-100 hover:text-orange-900'
                 }`}
               >
                 {modelKey.split(' ')[0]} {modelKey.split(' ')[1]}
@@ -118,7 +118,7 @@ export default function QuickValuationWidget() {
                 <Trophy size={18} className="text-amber-200" />
                 <span>CANLI EN YÜKSEK TEKLİF</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-orange-100 bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-orange-100 bg-[var(--k-surface)]/20 px-3 py-1 rounded-full backdrop-blur-xs">
                 <Clock size={13} />
                 <span>Kalan: {formatTime(timerSeconds)}</span>
               </div>
@@ -134,14 +134,14 @@ export default function QuickValuationWidget() {
                 {fmt(currentBid)} <span className="text-xl sm:text-2xl text-amber-200">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-black text-amber-100 bg-black/20 px-3.5 py-1.5 rounded-full mt-2">
+              <div className="inline-flex items-center gap-2 text-xs font-black text-amber-100 bg-[var(--k-void)]/20 px-3.5 py-1.5 rounded-full mt-2">
                 <TrendingUp size={15} className="text-amber-300" />
                 <span>{bidsCount} Yetkili Bayi Teklif Verdi</span>
               </div>
             </div>
 
             {/* Anlık Bayi Akış Bandı */}
-            <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 text-xs font-extrabold text-white border border-white/20 shadow-md overflow-hidden">
+            <div className="bg-[var(--k-surface)]/15 backdrop-blur-md rounded-2xl p-3.5 text-xs font-extrabold text-white border border-white/20 shadow-md overflow-hidden">
               <div className="truncate">
                 {recentDealerText}
               </div>
@@ -149,7 +149,7 @@ export default function QuickValuationWidget() {
 
             <Link
               href={`/sell?model=${encodeURIComponent(selectedModelKey)}`}
-              className="w-full py-3.5 sm:py-4 rounded-2xl bg-white hover:bg-orange-50 text-orange-600 font-black text-xs sm:text-sm transition-all shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98 max-w-full"
+              className="w-full py-3.5 sm:py-4 rounded-2xl bg-[var(--k-surface)] hover:bg-orange-50 text-orange-600 font-black text-xs sm:text-sm transition-all shadow-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-98 max-w-full"
             >
               <Zap size={18} className="fill-orange-600 text-orange-600 shrink-0" />
               <span className="truncate">Cihazımı Bu Fiyata İhaleye Çıkar</span>

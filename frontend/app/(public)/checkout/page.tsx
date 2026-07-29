@@ -212,7 +212,7 @@ function CheckoutContent() {
                 <button
                   type="submit"
                   disabled={loading || !isFormValid}
-                  className="mt-2 bg-zinc-900 hover:bg-black text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="mt-2 bg-[var(--k-canvas)] hover:bg-[var(--k-void)] text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <><Loader2 size={18} className="animate-spin" /> Hazırlanıyor...</>

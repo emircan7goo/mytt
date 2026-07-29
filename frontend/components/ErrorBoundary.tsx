@@ -68,7 +68,7 @@ export default class ErrorBoundary extends Component<Props, State> {
         )}
         <button
           onClick={this.reset}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm font-semibold hover:bg-black transition-colors"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--k-canvas)] text-white text-sm font-semibold hover:bg-[var(--k-void)] transition-colors"
         >
           <RefreshCw size={14} />
           Tekrar Dene

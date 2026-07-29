@@ -30,7 +30,7 @@ export default function SSSPage() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 lg:px-8">
+    <div className="min-h-screen bg-[var(--k-canvas-2)] py-12 px-4 lg:px-8">
       <div className="max-w-[900px] mx-auto space-y-10">
 
         {/* Hero Header */}
@@ -38,10 +38,10 @@ export default function SSSPage() {
           <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-extrabold text-xs tracking-wider uppercase border border-orange-200">
             DESTEK MERKEZİ
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-[var(--k-ink)] leading-tight">
             Sıkça Sorulan <span className="text-orange-600">Sorular</span>
           </h1>
-          <p className="text-slate-600 text-base font-medium">
+          <p className="text-[var(--k-ink-2)] text-base font-medium">
             Alış, satış, ödeme ve kargo süreçleri hakkında merak ettiğiniz tüm soruların yanıtları.
           </p>
         </div>
@@ -51,16 +51,16 @@ export default function SSSPage() {
           {FAQS.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={faq.q} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+              <div key={faq.q} className="bg-[var(--k-surface)] rounded-2xl border border-[var(--k-line)] overflow-hidden shadow-xs">
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-6 text-left font-black text-base text-slate-900 flex items-center justify-between gap-4 hover:text-orange-600 transition-colors"
+                  className="w-full p-6 text-left font-black text-base text-[var(--k-ink)] flex items-center justify-between gap-4 hover:text-orange-600 transition-colors"
                 >
                   <span>{faq.q}</span>
-                  <ChevronDown size={20} className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-600' : 'text-slate-400'}`} />
+                  <ChevronDown size={20} className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-600' : 'text-[var(--k-ink-4)]'}`} />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 text-sm text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4">
+                  <div className="px-6 pb-6 text-sm text-[var(--k-ink-2)] font-medium leading-relaxed border-t border-[var(--k-line)] pt-4">
                     {faq.a}
                   </div>
                 )}
@@ -70,9 +70,9 @@ export default function SSSPage() {
         </div>
 
         {/* İletişim Yönlendirmesi */}
-        <div className="bg-white rounded-3xl p-8 border border-slate-200 text-center space-y-4 shadow-sm">
-          <h3 className="text-xl font-black text-slate-900">Aradığınız cevabı bulamadınız mı?</h3>
-          <p className="text-slate-600 text-sm font-medium">Canlı destek ekibimiz 7/24 sorularınızı yanıtlamak için hazır.</p>
+        <div className="bg-[var(--k-surface)] rounded-3xl p-8 border border-[var(--k-line)] text-center space-y-4 shadow-sm">
+          <h3 className="text-xl font-black text-[var(--k-ink)]">Aradığınız cevabı bulamadınız mı?</h3>
+          <p className="text-[var(--k-ink-2)] text-sm font-medium">Canlı destek ekibimiz 7/24 sorularınızı yanıtlamak için hazır.</p>
           <Link
             href="/iletisim"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-orange-600 hover:bg-orange-700 text-white font-black text-xs shadow-md transition-all"

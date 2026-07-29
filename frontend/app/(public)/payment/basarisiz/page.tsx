@@ -50,7 +50,7 @@ function BasarisizContent() {
           {productId && (
             <Link
               href={`/checkout?productId=${productId}`}
-              className="w-full bg-zinc-900 hover:bg-black text-white font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors"
+              className="w-full bg-[var(--k-canvas)] hover:bg-[var(--k-void)] text-white font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors"
             >
               <RefreshCw size={16} /> Tekrar Dene
             </Link>

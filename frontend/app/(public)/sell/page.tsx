@@ -149,7 +149,7 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
           <div className="flex flex-col gap-3">
             <button
               onClick={() => router.push('/hesabim?tab=sell-requests')}
-              className="w-full py-3.5 bg-zinc-900 text-white rounded-xl font-bold hover:bg-black transition-colors"
+              className="w-full py-3.5 bg-[var(--k-canvas)] text-white rounded-xl font-bold hover:bg-[var(--k-void)] transition-colors"
             >
               Teklifleri Takip Et
             </button>
@@ -270,7 +270,7 @@ export default function SellPage() {
           </p>
           <button
             onClick={() => setShowAuthModal(true)}
-            className="w-full py-4 bg-zinc-900 text-white rounded-2xl font-bold text-[15px] hover:bg-black transition-colors"
+            className="w-full py-4 bg-[var(--k-canvas)] text-white rounded-2xl font-bold text-[15px] hover:bg-[var(--k-void)] transition-colors"
           >
             Giriş Yap / Kayıt Ol
           </button>
@@ -325,11 +325,11 @@ export default function SellPage() {
         <div className="flex items-center gap-1 mb-10 mt-6">
           {STEPS.map((s, i) => (
             <div key={i} className="flex items-center gap-1 flex-1">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-all ${ i < step ? 'bg-zinc-900 text-white' : i === step ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30' : 'bg-[var(--k-surface-3)] text-[var(--k-ink-4)]' }`}>
+              <div className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-all ${ i < step ? 'bg-[var(--k-canvas)] text-white' : i === step ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30' : 'bg-[var(--k-surface-3)] text-[var(--k-ink-4)]' }`}>
                 {i < step ? <Check size={14} /> : i + 1}
               </div>
               {i < STEPS.length - 1 && (
-                <div className={`flex-1 h-0.5 transition-all ${i < step ? 'bg-zinc-900' : 'bg-[var(--k-surface-3)]'}`} />
+                <div className={`flex-1 h-0.5 transition-all ${i < step ? 'bg-[var(--k-canvas)]' : 'bg-[var(--k-surface-3)]'}`} />
               )}
             </div>
           ))}
@@ -347,7 +347,7 @@ export default function SellPage() {
               <button
                 key={b.id}
                 onClick={() => { setBrand(b.id); setModel(''); setCustomModel(''); }}
-                className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left ${ brand === b.id ? 'border-zinc-900 bg-zinc-900 text-white shadow-lg' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
+                className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left ${ brand === b.id ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white shadow-lg' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-black shrink-0"
                   style={{ background: b.color }}>
@@ -367,7 +367,7 @@ export default function SellPage() {
                 <button
                   key={m}
                   onClick={() => { setModel(m); setCustomModel(''); }}
-                  className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all text-left ${ model === m ? 'border-zinc-900 bg-zinc-900 text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
+                  className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all text-left ${ model === m ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
                 >
                   <span className="font-semibold text-sm">{m}</span>
                   {model === m && <Check size={16} />}
@@ -375,7 +375,7 @@ export default function SellPage() {
               ))}
               <button
                 onClick={() => setModel('Diğer')}
-                className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all ${ model === 'Diğer' ? 'border-zinc-900 bg-zinc-900 text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
+                className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all ${ model === 'Diğer' ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
               >
                 <span className="font-semibold text-sm">Listede yok — Manuel gir</span>
                 <ChevronRight size={16} />
@@ -388,7 +388,7 @@ export default function SellPage() {
                 placeholder="Model adını yazın..."
                 value={customModel}
                 onChange={(e) => setCustomModel(e.target.value)}
-                className="w-full px-4 py-3.5 rounded-xl border-2 border-[var(--k-line)] focus:border-zinc-900 focus:outline-none text-sm font-semibold mt-2"
+                className="w-full px-4 py-3.5 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm font-semibold mt-2"
                 autoFocus
               />
             )}
@@ -398,7 +398,7 @@ export default function SellPage() {
               <div>
                 <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Depolama</label>
                 <select value={storage} onChange={(e) => setStorage(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-zinc-900 focus:outline-none text-sm bg-[var(--k-surface)]">
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm bg-[var(--k-surface)]">
                   <option value="">Seçin</option>
                   {['32GB','64GB','128GB','256GB','512GB','1TB'].map(s => (
                     <option key={s} value={s}>{s}</option>
@@ -409,7 +409,7 @@ export default function SellPage() {
                 <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Renk</label>
                 <input type="text" placeholder="Örn: Siyah" value={color}
                   onChange={(e) => setColor(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-zinc-900 focus:outline-none text-sm" />
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm" />
               </div>
             </div>
           </div>
@@ -447,7 +447,7 @@ export default function SellPage() {
               </label>
               <input type="number" min="0" max="100" placeholder="Örn: 87"
                 value={battery} onChange={(e) => setBattery(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-32 px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-zinc-900 focus:outline-none text-sm font-bold text-center" />
+                className="w-32 px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm font-bold text-center" />
             </div>
 
             {/* Accessories */}
@@ -474,7 +474,7 @@ export default function SellPage() {
               <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Açıklama (Opsiyonel)</label>
               <textarea rows={3} placeholder="Cihaz hakkında eklemek istediğiniz bilgiler..."
                 value={desc} onChange={(e) => setDesc(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-zinc-900 focus:outline-none text-sm resize-none" />
+                className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm resize-none" />
             </div>
           </div>
         )}
@@ -514,11 +514,11 @@ export default function SellPage() {
                   <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-[var(--k-line)] bg-[var(--k-surface-3)]">
                     <img src={url} alt="" className="w-full h-full object-cover" />
                     <button onClick={() => setImages(images.filter((_, j) => j !== i))}
-                      className="absolute top-2 right-2 w-7 h-7 bg-black/70 rounded-full flex items-center justify-center hover:bg-black transition-colors">
+                      className="absolute top-2 right-2 w-7 h-7 bg-[var(--k-void)]/70 rounded-full flex items-center justify-center hover:bg-[var(--k-void)] transition-colors">
                       <X size={13} className="text-white" />
                     </button>
                     {i === 0 && (
-                      <span className="absolute bottom-2 left-2 text-[10px] bg-zinc-900/80 text-white px-2 py-0.5 rounded-full font-bold">Ana Fotoğraf</span>
+                      <span className="absolute bottom-2 left-2 text-[10px] bg-[var(--k-canvas)]/80 text-white px-2 py-0.5 rounded-full font-bold">Ana Fotoğraf</span>
                     )}
                   </div>
                 ))}
@@ -594,7 +594,7 @@ export default function SellPage() {
             <button
               onClick={() => setStep(s => s + 1)}
               disabled={!canNext()}
-              className="flex-1 py-3.5 rounded-xl bg-zinc-900 text-white font-bold text-sm hover:bg-black transition-colors flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+              className="flex-1 py-3.5 rounded-xl bg-[var(--k-canvas)] text-white font-bold text-sm hover:bg-[var(--k-void)] transition-colors flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
               Devam Et <ArrowRight size={16} />
             </button>
           ) : (

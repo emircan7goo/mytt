@@ -83,7 +83,7 @@ export default function AuthModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop overlay */}
       <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-[var(--k-void)]/40 backdrop-blur-sm"
         onClick={() => setAuthModalOpen(false)}
       />
 

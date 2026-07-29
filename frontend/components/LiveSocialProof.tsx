@@ -44,10 +44,10 @@ export default function LiveSocialProof() {
 
   return (
     <div className="fixed bottom-5 left-5 z-50 animate-bounce-subtle transition-all duration-500">
-      <div className="relative flex items-center gap-3.5 p-3.5 pr-9 bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl shadow-2xl shadow-indigo-900/15 max-w-[340px]">
+      <div className="relative flex items-center gap-3.5 p-3.5 pr-9 bg-[var(--k-surface)]/95 backdrop-blur-md border border-[var(--k-line)] rounded-2xl shadow-2xl shadow-indigo-900/15 max-w-[340px]">
         <button
           onClick={() => setDismissed(true)}
-          className="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-700 transition-colors p-1"
+          className="absolute right-2.5 top-2.5 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors p-1"
           aria-label="Kapat"
         >
           <X size={14} />
@@ -58,17 +58,17 @@ export default function LiveSocialProof() {
         </div>
 
         <div className="text-left leading-tight">
-          <div className="flex items-center gap-1.5 text-[11px] font-extrabold text-slate-500">
-            <span className="font-bold text-slate-900">{current.name}</span>
+          <div className="flex items-center gap-1.5 text-[11px] font-extrabold text-[var(--k-ink-3)]">
+            <span className="font-bold text-[var(--k-ink)]">{current.name}</span>
             <span>({current.city})</span>
             <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-extrabold ml-auto">
               {current.type}
             </span>
           </div>
-          <div className="text-xs font-black text-slate-900 mt-1">
+          <div className="text-xs font-black text-[var(--k-ink)] mt-1">
             {current.action} → <span className="text-indigo-600">{current.price}</span>
           </div>
-          <div className="flex items-center gap-1 text-[10px] text-slate-400 font-medium mt-1">
+          <div className="flex items-center gap-1 text-[10px] text-[var(--k-ink-4)] font-medium mt-1">
             <CheckCircle2 size={11} className="text-emerald-500" />
             <span>Doğrulanmış İşlem · {current.time}</span>
           </div>

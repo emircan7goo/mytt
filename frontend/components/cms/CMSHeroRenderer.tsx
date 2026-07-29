@@ -93,7 +93,7 @@ export default function CMSHeroRenderer() {
             className="pt-4 sm:pt-8"
           >
             <button 
-              className={`group inline-flex items-center justify-between gap-4 min-w-[180px] sm:min-w-[220px] px-6 sm:px-8 py-4 sm:py-5 rounded-[24px] backdrop-blur-xl bg-[var(--k-surface)] border-2 border-[var(--k-line)] font-black text-[13px] sm:text-[15px] tracking-widest uppercase text-[var(--k-ink)] transition-all duration-500 hover:bg-zinc-900 hover:text-white shadow-sm hover:shadow-md ${block.cta.isMagnetic ? 'hover:scale-105 active:scale-95' : ''}`}
+              className={`group inline-flex items-center justify-between gap-4 min-w-[180px] sm:min-w-[220px] px-6 sm:px-8 py-4 sm:py-5 rounded-[24px] backdrop-blur-xl bg-[var(--k-surface)] border-2 border-[var(--k-line)] font-black text-[13px] sm:text-[15px] tracking-widest uppercase text-[var(--k-ink)] transition-all duration-500 hover:bg-[var(--k-canvas)] hover:text-white shadow-sm hover:shadow-md ${block.cta.isMagnetic ? 'hover:scale-105 active:scale-95' : ''}`}
               onClick={(e) => {
                 e.stopPropagation();
                 window.location.href = block.cta.href && block.cta.href !== '#' ? block.cta.href : '/';

@@ -90,7 +90,7 @@ function BasariliContent() {
         <div className="flex flex-col gap-3 w-full">
           <Link
             href="/hesabim"
-            className="w-full bg-zinc-900 hover:bg-black text-white font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors"
+            className="w-full bg-[var(--k-canvas)] hover:bg-[var(--k-void)] text-white font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-colors"
           >
             Siparişlerime Git <ArrowRight size={16} />
           </Link>

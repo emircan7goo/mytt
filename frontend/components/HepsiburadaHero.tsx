@@ -74,7 +74,7 @@ export default function HepsiburadaHero() {
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
 
         {/* ── TAM BOYUT DEV HERO BANNER (Sıfır & Hatasız 2. El Vurgusu) ── */}
-        <div className="relative w-full h-[360px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-3xl border border-orange-300 bg-slate-950 shadow-xl flex flex-col justify-between group">
+        <div className="relative w-full h-[360px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-3xl border border-orange-300 bg-[var(--k-void)] shadow-xl flex flex-col justify-between group">
           
           {/* Arka Plan Görselleri */}
           {slides.map((s, idx) => (
@@ -94,7 +94,7 @@ export default function HepsiburadaHero() {
           {/* Sol Navigasyon Oku */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[var(--k-void)]/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
             aria-label="Önceki slayt"
           >
             <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
@@ -128,7 +128,7 @@ export default function HepsiburadaHero() {
           {/* Sağ Navigasyon Oku */}
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[var(--k-void)]/50 hover:bg-orange-600 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 shadow-lg"
             aria-label="Sonraki slayt"
           >
             <ChevronRight size={20} className="sm:w-6 sm:h-6" />
@@ -140,7 +140,7 @@ export default function HepsiburadaHero() {
               <button
                 key={s.id}
                 onClick={() => setActiveSlide(idx)}
-                className={`h-2 rounded-full transition-all ${activeSlide === idx ? 'w-8 bg-orange-500' : 'w-2 bg-white/40'}`}
+                className={`k-tap h-2 rounded-full transition-all ${activeSlide === idx ? 'w-8 bg-orange-500' : 'w-2 bg-[var(--k-surface)]/40'}`}
                 aria-label={`Slayt ${idx + 1}`}
               />
             ))}

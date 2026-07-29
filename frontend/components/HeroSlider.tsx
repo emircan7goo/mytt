@@ -136,15 +136,15 @@ export default function HeroSlider() {
         </div>
 
         {/* ── Headline ────────────────────────────────────────────────────────── */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] max-w-4xl mx-auto text-slate-900">
-          <span className="block text-slate-900">Cihazını En Yüksek Fiyata Sat,</span>
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] max-w-4xl mx-auto text-[var(--k-ink)]">
+          <span className="block text-[var(--k-ink)]">Cihazını En Yüksek Fiyata Sat,</span>
           <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 bg-clip-text text-transparent mt-1.5 sm:mt-2">
             Yenisini Sıfır Riskle Al.
           </span>
         </h1>
 
         {slide.subtitle && (
-          <p className="mt-5 max-w-[720px] text-base sm:text-lg lg:text-xl font-medium text-slate-600 leading-relaxed">
+          <p className="mt-5 max-w-[720px] text-base sm:text-lg lg:text-xl font-medium text-[var(--k-ink-2)] leading-relaxed">
             {slide.subtitle}
           </p>
         )}
@@ -163,7 +163,7 @@ export default function HeroSlider() {
           {slide.btnRightText && (
             <Link
               href={slide.btnRightLink || '/'}
-              className="px-7 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-900 font-bold text-[15px] border border-slate-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+              className="px-7 py-4 rounded-full bg-[var(--k-surface)] hover:bg-[var(--k-canvas-2)] text-[var(--k-ink)] font-bold text-[15px] border border-[var(--k-line)] shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
             >
               {slide.btnRightText}
             </Link>
@@ -178,7 +178,7 @@ export default function HeroSlider() {
 
         {/* ── Ürün Sahnesi ve Canlı Görsel Kartı (Siyah Kutu Kaldırıldı) ────── */}
         <div className="relative mt-12 w-full max-w-[920px]">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50/60 p-6 md:p-10 shadow-2xl shadow-indigo-900/10 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-[var(--k-line)]/90 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50/60 p-6 md:p-10 shadow-2xl shadow-indigo-900/10 backdrop-blur-xl">
 
             {/* Arka plan yumuşak radyal ışıklar */}
             <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl" />
@@ -197,46 +197,46 @@ export default function HeroSlider() {
                 </div>
 
                 {/* Görsel Üzerindeki Yüzen Rozet: Canlı Teklif Simülasyonu */}
-                <div className="absolute -bottom-2 -left-2 md:-left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-4 shadow-xl flex items-center gap-3 animate-bounce-subtle">
+                <div className="absolute -bottom-2 -left-2 md:-left-4 bg-[var(--k-surface)]/95 backdrop-blur-md border border-[var(--k-line)]/90 rounded-2xl p-4 shadow-xl flex items-center gap-3 animate-bounce-subtle">
                   <div className="w-11 h-11 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
                     <Zap size={22} className="fill-emerald-500 text-emerald-600" />
                   </div>
                   <div className="text-left">
-                    <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">🔥 1 Saatte 6 Bayi Teklif Verdi</div>
-                    <div className="text-sm font-black text-slate-900 mt-0.5">42.500 ₺ <span className="text-xs font-extrabold text-emerald-600 ml-1">▲ En Yüksek Teklif</span></div>
+                    <div className="text-[10px] font-extrabold text-[var(--k-ink-3)] uppercase tracking-wider">🔥 1 Saatte 6 Bayi Teklif Verdi</div>
+                    <div className="text-sm font-black text-[var(--k-ink)] mt-0.5">42.500 ₺ <span className="text-xs font-extrabold text-emerald-600 ml-1">▲ En Yüksek Teklif</span></div>
                   </div>
                 </div>
               </div>
 
               {/* Sağ taraf: Üçlü Güvence Özellik Kartları */}
               <div className="md:col-span-5 text-left space-y-3.5">
-                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-indigo-300 transition-all hover:translate-x-1">
+                <div className="p-4 rounded-2xl bg-[var(--k-surface)]/90 border border-[var(--k-line)]/80 shadow-xs flex items-center gap-3.5 hover:border-indigo-300 transition-all hover:translate-x-1">
                   <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
                     <ShieldCheck size={22} strokeWidth={2.2} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-extrabold text-slate-900">12 Ay Birebir Garanti</h4>
-                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">TSE-HYB onaylı 32 noktada ekspertiz</p>
+                    <h4 className="text-xs font-extrabold text-[var(--k-ink)]">12 Ay Birebir Garanti</h4>
+                    <p className="text-[11px] text-[var(--k-ink-3)] font-medium mt-0.5">TSE-HYB onaylı 32 noktada ekspertiz</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-emerald-300 transition-all hover:translate-x-1">
+                <div className="p-4 rounded-2xl bg-[var(--k-surface)]/90 border border-[var(--k-line)]/80 shadow-xs flex items-center gap-3.5 hover:border-emerald-300 transition-all hover:translate-x-1">
                   <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
                     <BadgeCheck size={22} strokeWidth={2.2} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-extrabold text-slate-900">%100 Escrow Koruma</h4>
-                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">Paranız onayınıza kadar güvendedir</p>
+                    <h4 className="text-xs font-extrabold text-[var(--k-ink)]">%100 Escrow Koruma</h4>
+                    <p className="text-[11px] text-[var(--k-ink-3)] font-medium mt-0.5">Paranız onayınıza kadar güvendedir</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:border-amber-300 transition-all hover:translate-x-1">
+                <div className="p-4 rounded-2xl bg-[var(--k-surface)]/90 border border-[var(--k-line)]/80 shadow-xs flex items-center gap-3.5 hover:border-amber-300 transition-all hover:translate-x-1">
                   <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
                     <RefreshCcw size={22} strokeWidth={2.2} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-extrabold text-slate-900">Adresten Ücretsiz Kargo</h4>
-                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">Kurye cihazı kapınızdan teslim alır</p>
+                    <h4 className="text-xs font-extrabold text-[var(--k-ink)]">Adresten Ücretsiz Kargo</h4>
+                    <p className="text-[11px] text-[var(--k-ink-3)] font-medium mt-0.5">Kurye cihazı kapınızdan teslim alır</p>
                   </div>
                 </div>
               </div>
@@ -246,13 +246,13 @@ export default function HeroSlider() {
         </div>
 
         {/* ── Güven metrikleri ─────────────────────────────────────────────── */}
-        <div className="mt-12 grid w-full max-w-[880px] grid-cols-2 gap-px sm:grid-cols-4 bg-slate-200/80 border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+        <div className="mt-12 grid w-full max-w-[880px] grid-cols-2 gap-px sm:grid-cols-4 bg-[var(--k-surface-3)]/80 border border-[var(--k-line)] rounded-2xl overflow-hidden shadow-xs">
           {TRUST.map((s) => (
-            <div key={s.l} className="px-4 py-4 bg-white text-center">
-              <div className="text-[26px] font-black leading-none text-slate-900">
+            <div key={s.l} className="px-4 py-4 bg-[var(--k-surface)] text-center">
+              <div className="text-[26px] font-black leading-none text-[var(--k-ink)]">
                 <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">{s.v}</span>
               </div>
-              <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1.5">{s.l}</div>
+              <div className="text-[11px] font-bold text-[var(--k-ink-3)] uppercase tracking-wider mt-1.5">{s.l}</div>
             </div>
           ))}
         </div>
@@ -265,7 +265,7 @@ export default function HeroSlider() {
                 key={idx}
                 onClick={() => goTo(idx)}
                 aria-label={`Slayt ${idx + 1}`}
-                className="h-2 rounded-full transition-all duration-500"
+                className="k-tap h-2 rounded-full transition-all duration-500"
                 style={{
                   width: idx === current ? 30 : 8,
                   background: idx === current ? 'var(--k-grad)' : 'var(--k-line-2)',

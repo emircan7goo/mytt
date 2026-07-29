@@ -7,7 +7,7 @@ const BRANDS = [
     name: 'iPhone',
     count: 'Güncel İlanlar',
     bg: 'from-slate-900 via-slate-950 to-slate-900 text-white',
-    border: 'border-slate-800',
+    border: 'border-[var(--k-line)]',
     accent: 'text-white',
     link: '/?brand=Apple',
     img: '/brands/apple.jpg',
@@ -38,7 +38,7 @@ export default function BrandHubShowcase() {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
         <div>
           <span className="text-xs font-black text-orange-600 tracking-widest uppercase">MARKA VİTRİNİ</span>
-          <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
+          <h3 className="text-3xl sm:text-4xl font-black text-[var(--k-ink)] mt-1.5 tracking-tight">
             Öne Çıkan <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 bg-clip-text text-transparent">Sıfır & Hatasız 2. El Markaları</span>
           </h3>
         </div>
@@ -77,7 +77,7 @@ export default function BrandHubShowcase() {
               <span className="text-sm font-black text-white group-hover:text-orange-400 transition-colors">
                 İlanları Gör
               </span>
-              <div className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-slate-900 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all">
+              <div className="w-10 h-10 rounded-full bg-[var(--k-surface)] border border-[var(--k-line)] shadow-md flex items-center justify-center text-[var(--k-ink)] group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all">
                 <ArrowRight size={16} strokeWidth={2.5} />
               </div>
             </div>

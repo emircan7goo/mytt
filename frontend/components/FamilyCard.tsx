@@ -28,7 +28,7 @@ export default function FamilyCard({ family, index }: Props) {
   return (
     <Link
       href={href}
-      className="group relative flex flex-col h-full rounded-2xl bg-white border border-orange-200/80 p-4 shadow-xs hover:shadow-xl hover:border-orange-400 transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+      className="group relative flex flex-col h-full rounded-2xl bg-[var(--k-surface)] border border-orange-200/80 p-4 shadow-xs hover:shadow-xl hover:border-orange-400 transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
       style={{ animationDelay: `${Math.min(index * 30, 240)}ms` }}
     >
       {/* ── Üst Rozetler & Favori (Canlı Turuncu) ───────────────────────── */}
@@ -64,7 +64,7 @@ export default function FamilyCard({ family, index }: Props) {
 
         {/* Çoklu teklif rozeti */}
         {family.offerCount > 1 && (
-          <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-white/95 border border-orange-200 text-orange-800 font-extrabold text-[10px] shadow-xs">
+          <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-[var(--k-surface)]/95 border border-orange-200 text-orange-800 font-extrabold text-[10px] shadow-xs">
             {family.offerCount} BAYİ TEKLİFİ
           </span>
         )}
@@ -75,14 +75,14 @@ export default function FamilyCard({ family, index }: Props) {
         <div className="flex items-center gap-1 text-[11px] font-extrabold text-orange-500">
           <Star size={12} className="fill-orange-400 text-orange-400" />
           <span>4.9</span>
-          <span className="text-slate-400 font-medium">(120+ değerlendirme)</span>
+          <span className="text-[var(--k-ink-4)] font-medium">(120+ değerlendirme)</span>
         </div>
 
         <div className="text-[11px] font-black text-orange-600/80 uppercase tracking-wider">
           {family.brand}
         </div>
 
-        <h3 className="font-extrabold text-sm text-slate-900 line-clamp-2 leading-snug group-hover:text-orange-600 transition-colors">
+        <h3 className="font-extrabold text-sm text-[var(--k-ink)] line-clamp-2 leading-snug group-hover:text-orange-600 transition-colors">
           {family.model}
         </h3>
 
@@ -99,7 +99,7 @@ export default function FamilyCard({ family, index }: Props) {
       {/* ── Fiyatlandırma & Satın Al Butonu ──────────────────────────────── */}
       <div className="pt-3 mt-3 border-t border-orange-100 flex items-center justify-between gap-2">
         <div className="text-left">
-          <div className="text-[10px] font-extrabold text-slate-400 uppercase">
+          <div className="text-[10px] font-extrabold text-[var(--k-ink-4)] uppercase">
             {isRange ? 'Başlangıç Fiyatı' : 'Net Fiyat'}
           </div>
           <div className="text-lg font-black text-orange-600 leading-none">
@@ -118,7 +118,7 @@ export default function FamilyCard({ family, index }: Props) {
 
 export function FamilyCardSkeleton() {
   return (
-    <div className="rounded-2xl bg-white border border-orange-100 p-4 animate-pulse space-y-3">
+    <div className="rounded-2xl bg-[var(--k-surface)] border border-orange-100 p-4 animate-pulse space-y-3">
       <div className="h-4 bg-orange-50 rounded w-1/3" />
       <div className="aspect-square bg-orange-50 rounded-xl" />
       <div className="h-4 bg-orange-50 rounded w-3/4" />

@@ -84,7 +84,7 @@ export default function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={loading || !email}
-            className="bg-zinc-900 hover:bg-black text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-50 mt-2"
+            className="bg-[var(--k-canvas)] hover:bg-[var(--k-void)] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-50 mt-2"
           >
             {loading ? (
               <><Loader2 size={16} className="animate-spin" /> Gönderiliyor...</>

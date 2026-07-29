@@ -480,7 +480,7 @@ function HomePageContent() {
   );
 
   return (
-    <div className="min-h-screen font-sans bg-[#090D16] text-white">
+    <div className="min-h-screen font-sans bg-[var(--k-canvas)] text-white">
 
       {/* ── 1. TRENDYOL YUVARLAK DİRE STORY BAR ── */}
       {!searchQuery && <TrendyolCircleBar />}

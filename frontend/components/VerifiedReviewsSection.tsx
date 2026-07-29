@@ -44,14 +44,14 @@ export default function VerifiedReviewsSection() {
         <span className="px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-orange-700 text-xs font-black tracking-wider uppercase">
           DOĞRULANMIŞ KULLANICI DENEYİMLERİ
         </span>
-        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2.5">
+        <h3 className="text-2xl sm:text-3xl font-black text-[var(--k-ink)] mt-2.5">
           Binlerce Kullanıcı Mytt Güvencesiyle <span className="text-orange-600">Alıyor ve Satıyor</span>
         </h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {REVIEWS.map((r) => (
-          <div key={r.id} className="bg-white rounded-3xl border border-slate-200/90 p-6 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+          <div key={r.id} className="bg-[var(--k-surface)] rounded-3xl border border-[var(--k-line)]/90 p-6 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1 text-amber-400">
@@ -65,20 +65,20 @@ export default function VerifiedReviewsSection() {
                 </span>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed italic">
+              <p className="text-xs sm:text-sm text-[var(--k-ink-2)] font-medium leading-relaxed italic">
                 "{r.comment}"
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div className="pt-4 border-t border-[var(--k-line)] flex items-center justify-between gap-2">
               <div>
-                <div className="text-sm font-black text-slate-900 flex items-center gap-1">
+                <div className="text-sm font-black text-[var(--k-ink)] flex items-center gap-1">
                   <span>{r.name}</span>
                   <ShieldCheck size={14} className="text-blue-600" />
                 </div>
-                <div className="text-[11px] text-slate-500 font-bold">{r.device} · {r.location}</div>
+                <div className="text-[11px] text-[var(--k-ink-3)] font-bold">{r.device} · {r.location}</div>
               </div>
-              <span className="text-[10px] text-slate-400 font-bold">{r.date}</span>
+              <span className="text-[10px] text-[var(--k-ink-4)] font-bold">{r.date}</span>
             </div>
           </div>
         ))}

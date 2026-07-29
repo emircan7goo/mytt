@@ -380,10 +380,10 @@ export default function TradeInPage() {
                   <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-[var(--k-line)] bg-[var(--k-surface-3)]">
                     <img src={url} alt="" className="w-full h-full object-cover" />
                     <button onClick={() => setImages(images.filter((_, j) => j !== i))}
-                      className="absolute top-1.5 right-1.5 w-6 h-6 bg-black/70 rounded-full flex items-center justify-center">
+                      className="absolute top-1.5 right-1.5 w-6 h-6 bg-[var(--k-void)]/70 rounded-full flex items-center justify-center">
                       <X size={11} className="text-white" />
                     </button>
-                    {i === 0 && <span className="absolute bottom-1.5 left-1.5 text-[9px] bg-black/70 text-white px-1.5 py-0.5 rounded-full font-bold">Ana</span>}
+                    {i === 0 && <span className="absolute bottom-1.5 left-1.5 text-[9px] bg-[var(--k-void)]/70 text-white px-1.5 py-0.5 rounded-full font-bold">Ana</span>}
                   </div>
                 ))}
               </div>

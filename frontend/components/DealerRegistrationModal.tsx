@@ -130,8 +130,8 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
 
           {/* Steps indicator */}
           <div className="px-8 pt-6 flex items-center gap-3">
-            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 1 ? 'bg-zinc-900' : 'bg-[var(--k-surface-3)]'}`} />
-            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 2 ? 'bg-zinc-900' : 'bg-[var(--k-surface-3)]'}`} />
+            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 1 ? 'bg-[var(--k-canvas)]' : 'bg-[var(--k-surface-3)]'}`} />
+            <div className={`flex-1 h-1 rounded-full transition-all ${step >= 2 ? 'bg-[var(--k-canvas)]' : 'bg-[var(--k-surface-3)]'}`} />
           </div>
 
           {isSuccess ? (
@@ -148,7 +148,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
               </div>
               <button
                 onClick={onClose}
-                className="bg-zinc-900 text-white font-black uppercase tracking-widest px-8 py-3 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all text-[13px]"
+                className="bg-[var(--k-canvas)] text-white font-black uppercase tracking-widest px-8 py-3 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all text-[13px]"
               >
                 Tamam, Kapat
               </button>
@@ -185,7 +185,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
               </div>
 
               <button type="submit"
-                className="mt-2 bg-zinc-900 text-white font-black uppercase tracking-widest py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all text-[13px]">
+                className="mt-2 bg-[var(--k-canvas)] text-white font-black uppercase tracking-widest py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all text-[13px]">
                 İleri — Firma Bilgileri <ArrowRight size={16} />
               </button>
             </form>
@@ -221,7 +221,7 @@ export default function DealerRegistrationModal({ onClose }: DealerRegistrationM
                   Geri
                 </button>
                 <button type="submit" disabled={isSubmitting}
-                  className="flex-1 bg-zinc-900 text-white font-black uppercase tracking-widest py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] disabled:opacity-50 transition-all text-[13px]">
+                  className="flex-1 bg-[var(--k-canvas)] text-white font-black uppercase tracking-widest py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] disabled:opacity-50 transition-all text-[13px]">
                   {isSubmitting ? 'Gönderiliyor...' : <><Store size={15} /> Başvur</>}
                 </button>
               </div>

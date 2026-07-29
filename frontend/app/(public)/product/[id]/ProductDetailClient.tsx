@@ -67,7 +67,7 @@ export default function ProductDetailClient() {
         <p className="text-[var(--k-ink-3)] text-[18px] font-light max-w-sm text-center mb-10">
           Bu uzamsal frekansta aradığınız donanıma ulaşılamadı.
         </p>
-        <button onClick={() => router.push('/')} className="px-10 py-4 text-sm tracking-widest uppercase font-bold text-white bg-zinc-900 rounded-full hover:bg-black transition-colors">
+        <button onClick={() => router.push('/')} className="px-10 py-4 text-sm tracking-widest uppercase font-bold text-white bg-[var(--k-canvas)] rounded-full hover:bg-[var(--k-void)] transition-colors">
           Vitrine Dön
         </button>
       </div>
@@ -75,7 +75,7 @@ export default function ProductDetailClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--k-canvas)] text-[var(--k-ink)] selection:bg-zinc-900 selection:text-white pt-[100px] md:pt-[120px] pb-20 overflow-hidden relative">
+    <div className="min-h-screen bg-[var(--k-canvas)] text-[var(--k-ink)] selection:bg-[var(--k-canvas)] selection:text-white pt-[100px] md:pt-[120px] pb-20 overflow-hidden relative">
       
       {/* Deep Space Glowing Orb Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-gradient-to-b from-blue-50/50 to-transparent blur-[100px] rounded-full pointer-events-none" />
@@ -116,7 +116,7 @@ export default function ProductDetailClient() {
 
               {/* Badges on image */}
               <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
-                <span className="bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
+                <span className="bg-[var(--k-canvas)] text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-md">
                   Grade {(product as any).cosmeticGrade || (product as any).grade || 'A'}
                 </span>
                 {product.condition === 'NEW' && (
@@ -224,7 +224,7 @@ export default function ProductDetailClient() {
                     onClick={handleBuyNow}
                     disabled={product.stock <= 0}
                     whileTap={{ scale: 0.98 }}
-                    className={product.stock > 0 ? 'flex-1 h-[60px] rounded-2xl flex items-center justify-center gap-3 text-[14px] font-bold tracking-wide transition-all bg-zinc-900 text-white hover:bg-black shadow-[0_10px_20px_rgba(0,0,0,0.15)]' : 'flex-1 h-[60px] rounded-2xl flex items-center justify-center gap-3 text-[14px] font-bold tracking-wide transition-all bg-[var(--k-surface-3)] text-[var(--k-ink-4)] cursor-not-allowed'}
+                    className={product.stock > 0 ? 'flex-1 h-[60px] rounded-2xl flex items-center justify-center gap-3 text-[14px] font-bold tracking-wide transition-all bg-[var(--k-canvas)] text-white hover:bg-[var(--k-void)] shadow-[0_10px_20px_rgba(0,0,0,0.15)]' : 'flex-1 h-[60px] rounded-2xl flex items-center justify-center gap-3 text-[14px] font-bold tracking-wide transition-all bg-[var(--k-surface-3)] text-[var(--k-ink-4)] cursor-not-allowed'}
                   >
                     <AnimatePresence mode="wait">
                       <motion.span key="buy" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">

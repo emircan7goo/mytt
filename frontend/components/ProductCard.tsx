@@ -138,7 +138,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
 
             {/* Condition label */}
             {(product as any).condition !== 'NEW' ? (
-              <div className="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded">
+              <div className="absolute top-2.5 left-2.5 bg-[var(--k-canvas)] text-white text-[9px] font-bold px-2 py-0.5 rounded">
                 {GRADE_LABEL[product.cosmeticGrade] ?? 'İkinci El'}
               </div>
             ) : (

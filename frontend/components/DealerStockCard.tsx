@@ -172,7 +172,7 @@ export default function DealerStockCard({ product, index }: Props) {
 
             {/* Çoklu teklif rozeti */}
             {hasMultipleOffers && (
-              <div className="absolute bottom-3 left-3 z-10 bg-zinc-900/90 backdrop-blur-sm text-white text-[10px] font-black px-2.5 py-1 rounded-full">
+              <div className="absolute bottom-3 left-3 z-10 bg-[var(--k-canvas)]/90 backdrop-blur-sm text-white text-[10px] font-black px-2.5 py-1 rounded-full">
                 {product.offerCount} Teklif
               </div>
             )}
@@ -222,7 +222,7 @@ export default function DealerStockCard({ product, index }: Props) {
                   {fmt(product.price)}
                 </span>
               </div>
-              <div className="h-9 px-3.5 flex items-center rounded-xl text-[11px] font-black bg-zinc-900 text-white transition-all duration-200 group-hover:bg-black group-hover:px-4">
+              <div className="h-9 px-3.5 flex items-center rounded-xl text-[11px] font-black bg-[var(--k-canvas)] text-white transition-all duration-200 group-hover:bg-[var(--k-void)] group-hover:px-4">
                 {hasMultipleOffers ? 'Karşılaştır →' : 'İncele →'}
               </div>
             </div>

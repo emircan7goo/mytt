@@ -62,7 +62,7 @@ export default function ProductFamilyPage() {
         </p>
         <button
           onClick={() => router.push('/')}
-          className="px-8 py-3.5 text-sm tracking-widest uppercase font-bold text-[var(--k-ink)] bg-zinc-900 rounded-full hover:bg-black transition-colors"
+          className="px-8 py-3.5 text-sm tracking-widest uppercase font-bold text-[var(--k-ink)] bg-[var(--k-canvas)] rounded-full hover:bg-[var(--k-void)] transition-colors"
         >
           Vitrine Dön
         </button>
@@ -184,7 +184,7 @@ export default function ProductFamilyPage() {
               <button
                 onClick={() => setStorage(null)}
                 className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                  storage === null ? 'bg-zinc-900 text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
+                  storage === null ? 'bg-[var(--k-canvas)] text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                 }`}
               >
                 Tümü
@@ -194,7 +194,7 @@ export default function ProductFamilyPage() {
                   key={s}
                   onClick={() => setStorage(s)}
                   className={`px-3.5 py-2 rounded-xl text-[12px] font-bold transition-all ${
-                    storage === s ? 'bg-zinc-900 text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
+                    storage === s ? 'bg-[var(--k-canvas)] text-[var(--k-ink)]' : 'text-[var(--k-ink-3)] hover:bg-[var(--k-surface-3)]'
                   }`}
                 >
                   {s}
@@ -319,7 +319,7 @@ export default function ProductFamilyPage() {
                             {fmt(price)}
                           </span>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] group-hover:bg-zinc-900 flex items-center justify-center text-[var(--k-ink-4)] group-hover:text-[var(--k-ink)] shrink-0 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-[var(--k-surface-3)] group-hover:bg-[var(--k-canvas)] flex items-center justify-center text-[var(--k-ink-4)] group-hover:text-[var(--k-ink)] shrink-0 transition-colors">
                           <ChevronRight size={16} strokeWidth={2.5} />
                         </div>
                       </div>
