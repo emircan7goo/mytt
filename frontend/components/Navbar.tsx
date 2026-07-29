@@ -302,12 +302,12 @@ export default function Navbar() {
             <Menu size={20} />
           </button>
 
-          {/* Logo — koyu zemin için beyaz varyant */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-6">
+          {/* Logo — Büyütülmüş prestijli Mytt Logosu */}
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-6 py-1">
             <img
               src="/logo.png"
               alt="Mytt"
-              className="h-12 sm:h-14 w-auto object-contain scale-125 origin-left transition-transform duration-300 group-hover:scale-[1.32]"
+              className="h-16 sm:h-20 w-auto object-contain scale-125 origin-left transition-transform duration-300 group-hover:scale-[1.35]"
             />
           </Link>
 

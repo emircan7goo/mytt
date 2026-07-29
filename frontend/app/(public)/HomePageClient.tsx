@@ -598,7 +598,6 @@ function HomePageContent() {
         </div>
       </div>
 
-      <LiveSocialProof />
     </div>
   );
 }
