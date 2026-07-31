@@ -486,10 +486,7 @@ function HomePageContent() {
   return (
     <div className={`min-h-screen font-sans ${theme === 'dark' ? 'bg-[var(--k-void)] text-white' : 'bg-[var(--k-surface-2)] text-[var(--k-ink)]'} transition-colors duration-300`}>
 
-      {/* ── 1. TRENDYOL YUVARLAK DİRE STORY BAR ── */}
-      {!searchQuery && <TrendyolCircleBar />}
-
-      {/* ── 2. TRENDYOL HERO LANSMAN BANNER ── */}
+      {/* ── 1. TRENDYOL HERO LANSMAN BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
 
       {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
