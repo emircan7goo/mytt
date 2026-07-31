@@ -340,26 +340,6 @@ export default function Navbar() {
               <span className="truncate">Cihazını Sat</span>
             </Link>
 
-            {/* Sağ Üst Tema Değiştirme Butonu (Yazılı & Yüksek Görünürlüklü Rozet) */}
-            <button
-              onClick={toggleTheme}
-              className="inline-flex items-center gap-1.5 h-9 px-3 sm:h-10 sm:px-4 rounded-full text-xs font-black transition-all hover:scale-105 active:scale-95 shadow-lg border shrink-0 border-[var(--k-line-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)] hover:bg-[var(--k-surface-2)]"
-              title={theme === 'dark' ? 'Açık Temaya Geç' : 'Koyu Temaya Geç'}
-              aria-label="Tema Değiştir"
-            >
-              {theme === 'dark' ? (
-                <>
-                  <Sun size={15} className="shrink-0" />
-                  <span className="truncate">Açık Tema</span>
-                </>
-              ) : (
-                <>
-                  <Moon size={15} className="shrink-0" />
-                  <span className="truncate">Koyu Tema</span>
-                </>
-              )}
-            </button>
-
             {/* Mobil arama */}
             <button
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-[8px] transition-colors"
