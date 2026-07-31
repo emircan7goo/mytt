@@ -59,8 +59,8 @@ export default function BrandHubShowcase() {
             href={b.link}
             className={`k-on-dark group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br ${b.bg} border ${b.border} p-4 sm:p-8 shadow-md hover:shadow-2xl hover:border-[var(--k-hot-deep)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[125px] sm:min-h-[300px] select-none`}
           >
-            {/* Karanlık Degrade Katmanı */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--k-void)] via-[var(--k-void)] to-transparent z-10" />
+            {/* Yumuşatılmış Şeffaf Degrade Katmanı */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent z-10" />
 
             <div className="relative z-20 flex items-center justify-between gap-2">
               <h4 className={`text-xl sm:text-4xl font-black ${b.accent} group-hover:text-[var(--k-hot)] transition-colors tracking-tight drop-shadow-md`}>
@@ -80,8 +80,8 @@ export default function BrandHubShowcase() {
               </div>
             </div>
 
-            {/* Arka plan 3D Logo + Telefon Görseli */}
-            <div className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-65 transition-opacity duration-500 pointer-events-none">
+            {/* Arka plan 3D Logo + Telefon Görseli (Canlı & Belirgin) */}
+            <div className="absolute inset-0 w-full h-full opacity-75 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none">
               <img src={b.img} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
             </div>
           </Link>

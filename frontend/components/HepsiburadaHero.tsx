@@ -88,8 +88,8 @@ export default function HepsiburadaHero() {
             />
           ))}
 
-          {/* Sol Karanlık Degrade Katmanı */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--k-void)] via-[var(--k-void)] to-transparent z-10" />
+          {/* Yumuşatılmış Sol Şeffaf Degrade Katmanı */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/35 to-transparent z-10" />
 
           {/* Sol Navigasyon Oku (Masaüstü) */}
           <button
