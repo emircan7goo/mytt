@@ -1733,6 +1733,34 @@ body {
     color: var(--k-ink-2);
   }
 
+  /* ☀️ AÇIK TEMADA .k-on-dark SIFIRLAMA (SAF BEYAZ DÖNÜŞÜMÜ) */
+  :root[data-theme="light"] .k-on-dark,
+  [data-theme="light"] .k-on-dark {
+    color-scheme: light !important;
+    --k-void:      #FAF7F2 !important;
+    --k-canvas:    #FFFFFF !important;
+    --k-canvas-2:  #F8FAFC !important;
+    --k-surface:   #FFFFFF !important;
+    --k-surface-2: #F1F5F9 !important;
+    --k-surface-3: #E2E8F0 !important;
+    --k-anchor:    #FAF7F2 !important;
+    --k-line:      #E2E8F0 !important;
+    --k-line-2:    #CBD5E1 !important;
+    --k-line-hot:  rgba(255,96,0,0.4) !important;
+    --k-grid:      rgba(15,23,42,0.04) !important;
+    --k-ink:       #0F172A !important;
+    --k-ink-2:     #334155 !important;
+    --k-ink-3:     #475569 !important;
+    --k-ink-4:     #64748B !important;
+    --k-hot:       #FF6000 !important;
+    --k-hot-2:     #EA580C !important;
+    --k-hot-deep:  #EA580C !important;
+    --k-hot-ink:   #FFFFFF !important;
+    --k-hot-wash:  #FFF7ED !important;
+    --k-hot-glow:  rgba(255,96,0,0.25) !important;
+    color: #0F172A !important;
+  }
+
   /* ── Legacy sinif yamalari ──────────────────────────────────────────── */
   .glass-card, .glass-nav, .navbar-main {
     background: var(--k-surface);

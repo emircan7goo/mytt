@@ -70,7 +70,7 @@ export default function HepsiburadaHero() {
   };
 
   return (
-    <div className="k-on-dark w-full max-w-full bg-[var(--k-void)] border-b border-[var(--k-line-2)] py-2 sm:py-4 overflow-hidden">
+    <div className="w-full max-w-full bg-[var(--k-void)] border-b border-[var(--k-line-2)] py-2 sm:py-4 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-8">
 
         {/* LÜKS DEPOSUZ UYUMLU HERO BANNER (#0F172A Koyu Safir Zemin) */}

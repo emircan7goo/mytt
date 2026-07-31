@@ -74,7 +74,7 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
 
   return (
-    <div className="k-on-dark w-full max-w-full rounded-2xl sm:rounded-3xl bg-[var(--k-surface)] border border-[var(--k-line-2)] p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
+    <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-[var(--k-surface)] border border-[var(--k-line-2)] p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-center relative z-10 min-w-0">
 
         {/* Sol taraf: Başlık & Model Seçim Butonları */}
