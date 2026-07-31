@@ -5,7 +5,13 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 const nextConfig: NextConfig = {
   // Docker production için standalone build
   output: process.env.DOCKER_BUILD === '1' ? 'standalone' : undefined,
+  compress: true,
+  reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion'],
+  },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       // ── Bütün Domainler Serbest (Çökmeleri Engellemek İçin) ───────────────
       { protocol: 'https', hostname: '**' },
@@ -43,13 +49,23 @@ const nextConfig: NextConfig = {
   },
   turbopack: {},
   // ── Uploads Proxy: /uploads/* → backend (3001) ────────────────────────────
-  // Frontend 3000'den gelen /uploads/* isteklerini backend'e ilet.
-  // Bu olmadan Next.js kendi origin'inde 404 verir.
   async rewrites() {
     return [
       {
         source: '/uploads/:path*',
         destination: `${API_URL}/uploads/:path*`,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: '/banners/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/brands/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ];
   },

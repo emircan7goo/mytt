@@ -55,6 +55,14 @@ export default function HepsiburadaHero() {
   ];
 
   useEffect(() => {
+    // Preload hero slide images for instant 0-lag transitions
+    slides.forEach((s) => {
+      if (typeof window !== 'undefined') {
+        const img = new window.Image();
+        img.src = s.img;
+      }
+    });
+
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
