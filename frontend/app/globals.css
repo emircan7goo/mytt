@@ -1363,43 +1363,42 @@ a:active {
    isaret ettigi icin kendiliginden doner. Bu blok koyu bloktan SONRA ve daha
    yuksek ozgulluk (:root[data-theme=...]) tasidigi icin acik modda kazanir.
    ═══════════════════════════════════════════════════════════════════════════ */
-:root[data-theme="light"] {
+:root[data-theme="light"],
+[data-theme="light"] {
   color-scheme: light;
 
-  /* ── Sicak beyaz zeminler ────────────────────────────────────────────── */
-  --k-void:      #ECE6DE;   /* en dip */
-  --k-canvas:    #FAF7F2;   /* ana kanvas */
-  --k-canvas-2:  #F3EEE7;   /* bant / oyuk */
+  /* ── Saf Kristal Beyaz zeminler (Apple / EasyCep Standartı) ──────────────── */
+  --k-void:      #F8FAFC;   /* en dip */
+  --k-canvas:    #FFFFFF;   /* ana kanvas — PURE WHITE */
+  --k-canvas-2:  #F8FAFC;   /* bant / oyuk */
   --k-surface:   #FFFFFF;   /* kart */
-  --k-surface-2: #F7F3EC;   /* yukseltilmis / hover */
-  --k-surface-3: #EEE8DF;   /* input, inset */
-  --k-anchor:    #F1EBE3;   /* footer — acik ton (metin koyu kalir) */
+  --k-surface-2: #F1F5F9;   /* yukseltilmis / hover */
+  --k-surface-3: #E2E8F0;   /* input, inset */
+  --k-anchor:    #F8FAFC;   /* footer */
 
-  /* ── Cizgiler (koyu sicak, dusuk opaklik) ────────────────────────────── */
-  --k-line:      rgba(26,19,13,0.10);
-  --k-line-2:    rgba(26,19,13,0.16);
-  --k-line-hot:  rgba(194,65,12,0.32);
-  --k-grid:      rgba(26,19,13,0.04);
+  /* ── Cizgiler ───────────────────────────────────────────────────────── */
+  --k-line:      #E2E8F0;
+  --k-line-2:    #CBD5E1;
+  --k-line-hot:  rgba(255,96,0,0.4);
+  --k-grid:      rgba(15,23,42,0.04);
 
-  /* ── Murekkep: koyu sicak (siyah-mavi degil) ─────────────────────────── */
-  --k-ink:       #1A130D;
-  --k-ink-2:     rgba(26,19,13,0.74);
-  --k-ink-3:     rgba(26,19,13,0.56);
-  --k-ink-4:     rgba(26,19,13,0.42);
+  /* ── Mürekkep (Jilet gibi Derin Lacivert Slate) ─────────────────────── */
+  --k-ink:       #0F172A;
+  --k-ink-2:     #334155;
+  --k-ink-3:     #475569;
+  --k-ink-4:     #64748B;
 
-  /* ── Ember turuncu — beyaz zeminde metin kontrasti icin koyu uclar ─────
-     #C2410C beyaz uzerinde ~4.9:1 (normal metin AA gecer); fill'lerde de
-     beyaz metinle uyumlu. Daha acik turuncu (fill vurgusu) --k-hot-fill'de. */
-  --k-hot:       #C2410C;   /* metin + ana vurgu — WCAG AA */
-  --k-hot-2:     #9A3412;
-  --k-hot-deep:  #7C2D12;
-  --k-hot-ink:   #FFFFFF;   /* turuncu buton ustu beyaz */
-  --k-hot-wash:  rgba(232,93,4,0.10);
-  --k-hot-glow:  rgba(232,93,4,0.26);
-  --k-grad:      linear-gradient(135deg, #F97316 0%, #EA580C 100%);
-  --k-grad-soft: linear-gradient(135deg, rgba(249,115,22,0.12) 0%, rgba(234,88,12,0.08) 100%);
+  /* ── Vibrant Commercial Orange ───────────────────────────────────────── */
+  --k-hot:       #FF6000;   /* Canlı Turuncu */
+  --k-hot-2:     #EA580C;
+  --k-hot-deep:  #EA580C;
+  --k-hot-ink:   #FFFFFF;   /* turuncu buton üstü beyaz */
+  --k-hot-wash:  #FFF7ED;
+  --k-hot-glow:  rgba(255,96,0,0.25);
+  --k-grad:      linear-gradient(135deg, #FF6000 0%, #EA580C 100%);
+  --k-grad-soft: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
 
-  /* ── Sinyal renkleri: acik zeminde okunacak koyu uclar ───────────────── */
+  /* ── Sinyal renkleri ─────────────────────────────────────────────────── */
   --k-ok:        #059669;
   --k-warn:      #B45309;
   --k-bad:       #DC2626;
@@ -1407,13 +1406,13 @@ a:active {
   --k-ok-ink:    #047857;
   --k-warn-ink:  #B45309;
 
-  /* ── Golgeler: acik zeminde GERCEK golge calisir ─────────────────────── */
-  --shadow-xs:    0 1px 2px rgba(26,19,13,0.05);
-  --shadow-sm:    0 2px 8px rgba(26,19,13,0.07), 0 1px 2px rgba(26,19,13,0.05);
-  --shadow-md:    0 8px 26px rgba(26,19,13,0.10), 0 1px 3px rgba(26,19,13,0.06);
-  --shadow-lg:    0 18px 46px rgba(26,19,13,0.12), 0 2px 6px rgba(26,19,13,0.06);
-  --shadow-xl:    0 32px 76px rgba(26,19,13,0.15);
-  --shadow-float: 0 12px 34px rgba(26,19,13,0.12);
+  /* ── Gölgeler: açık zeminde GERÇEK gölge ─────────────────────────────── */
+  --shadow-xs:    0 1px 2px rgba(15,23,42,0.05);
+  --shadow-sm:    0 2px 8px rgba(15,23,42,0.07), 0 1px 2px rgba(15,23,42,0.05);
+  --shadow-md:    0 8px 26px rgba(15,23,42,0.10), 0 1px 3px rgba(15,23,42,0.06);
+  --shadow-lg:    0 18px 46px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06);
+  --shadow-xl:    0 32px 76px rgba(15,23,42,0.15);
+  --shadow-float: 0 12px 34px rgba(15,23,42,0.12);
   --shadow-brand: 0 10px 30px var(--k-hot-glow);
 }
 
@@ -1852,4 +1851,46 @@ body {
     display: inline-flex;
     align-items: center;
   }
+}
+
+/* ☀️ LIGHT THEME GLOBAL COMPONENT OVERRIDES (PURE CRISP WHITE & VIBRANT ORANGE) */
+[data-theme="light"] body,
+[data-theme="light"] main,
+[data-theme="light"] .min-h-screen {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] header,
+[data-theme="light"] .navbar-main {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+
+[data-theme="light"] .bg-\[\#090D16\],
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .bg-slate-900\/90,
+[data-theme="light"] .bg-slate-950\/90 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-slate-200,
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-400 {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-700,
+[data-theme="light"] .border-slate-800\/80,
+[data-theme="light"] .border-slate-800\/60 {
+  border-color: #E2E8F0 !important;
 }
