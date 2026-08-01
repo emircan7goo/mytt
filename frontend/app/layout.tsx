@@ -28,39 +28,58 @@ const BASE_URL = 'https://mytt.com.tr';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Mytt — Doğrulanmış Cihaz Pazaryeri',
-    template: '%s | Mytt',
+    default: 'Mytt — Sıfır & Hatasız 2. El Telefon Al Sat | 12 Ay Garantili',
+    template: '%s | Mytt Telefon Pazaryeri',
   },
-  description: 'Sıfır ve hatasız 2. el telefonlarda doğrulanmış bayi teklifleri. iPhone, Samsung, Xiaomi — güvenli, garantili, uzman kontrollü.',
-  keywords: ['ikinci el iPhone', 'sıfır telefon', 'Samsung Galaxy', 'Xiaomi', 'garantili telefon', 'doğrulanmış bayi', 'Mytt'],
-  authors: [{ name: 'Mytt' }],
+  description: 'Sıfır ve hatasız 2. el telefonlarda 150+ onaylı yetkili bayi teklifleri. iPhone, Samsung, Xiaomi — 12 ay garantili, %100 BDDK lisanslı Escrow güvencesi ile anında al sat.',
+  keywords: [
+    'mytt',
+    'mytt telefon',
+    'ikinci el telefon',
+    'ikinci el telefon fiyatları',
+    'sıfır ve hatasız ikinci el telefon',
+    'ikinci el iphone',
+    'ikinci el samsung galaxy',
+    'garantili ikinci el telefon',
+    'eskiyi getir yeniyi al',
+    '2 el telefon al sat',
+    'güvenli telefon ticareti',
+    'doğrulanmış yetkili bayi teklifleri',
+  ],
+  authors: [{ name: 'Mytt Teknolojik Ürünler Pazaryeri' }],
   creator: 'Mytt',
   publisher: 'Mytt',
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
     url: BASE_URL,
     siteName: 'Mytt',
-    title: 'Mytt — Doğrulanmış Cihaz Pazaryeri',
-    description: 'Sıfır ve hatasız 2. el cihazlarda doğrulanmış bayi teklifleri — güvenli, garantili, uzman kontrollü.',
+    title: 'Mytt — Sıfır & Hatasız 2. El Telefon Al Sat | 12 Ay Garantili',
+    description: '150+ Yetkili Bayiden Kapalı İhale Teklifleri. Sıfır ve Hatasız 2. El Akıllı Telefon Pazaryeri.',
     images: [
       {
         url: `${BASE_URL}/og-banner.png`,
         width: 1200,
         height: 630,
-        alt: 'Mytt — Doğrulanmış Cihaz Pazaryeri',
+        alt: 'Mytt — Sıfır & Hatasız 2. El Telefon Pazaryeri',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mytt — Doğrulanmış Cihaz Pazaryeri',
-    description: 'Sıfır ve hatasız 2. el cihazlarda doğrulanmış bayi teklifleri — güvenli ve garantili.',
+    title: 'Mytt — Sıfır & Hatasız 2. El Telefon Al Sat',
+    description: 'Sıfır ve hatasız 2. el cihazlarda 150+ yetkili bayi kapalı teklifleri — %100 BDDK Escrow Güvenceli.',
     images: [`${BASE_URL}/og-banner.png`],
     creator: '@mytt',
   },
@@ -78,25 +97,34 @@ export const viewport = {
   themeColor: '#100D0B',
 };
 
-/**
- * Root Layout — SADECE <html> ve <body> açar.
- * Navbar / CartDrawer / AuthModal gibi vitrin bileşenleri
- * burada YOK — (public) route grubu kendi layout'unda tutuyor.
- * Dashboard route grupları ((admin), (dealer), (customer)) da
- * kendi AppProvider + Sidebar + Topbar'larını kendi layout.tsx'lerinde alıyor.
- */
-// Schema.org Organization markup — site genelinde
+// Schema.org Organization markup — Google Knowledge Graph
 const organizationJsonLd = {
   '@context': 'https://schema.org',
-  '@type':    'Organization',
-  name:       'Mytt',
-  url:        BASE_URL,
-  logo:       `${BASE_URL}/logo.png`,
-  sameAs:     [],
+  '@type': 'Organization',
+  name: 'Mytt',
+  alternateName: ['Mytt Telefon', 'Mytt Pazaryeri'],
+  url: BASE_URL,
+  logo: `${BASE_URL}/logo.png`,
   contactPoint: {
-    '@type':       'ContactPoint',
-    contactType:   'customer service',
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
     availableLanguage: 'Turkish',
+  },
+};
+
+// Schema.org WebSite markup — Google Sitelinks Searchbox
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Mytt',
+  url: BASE_URL,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${BASE_URL}/?query={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
   },
 };
 
@@ -121,10 +149,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="h-full font-sans overflow-x-hidden w-full">
         {/* Google Analytics 4 — Consent Mode v2 */}
         <GoogleAnalytics />
-        {/* Global Schema.org */}
+        {/* Global Schema.org (Organization & WebSite Sitelinks Searchbox) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <Suspense fallback={null}>
           <AppProvider>{children}</AppProvider>
