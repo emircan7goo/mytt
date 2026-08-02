@@ -16,7 +16,7 @@ import { useSiteConfig } from '@/lib/hooks/useSiteConfig';
 import { ROLE_DASHBOARD } from '@/lib/auth';
 
 export const MENU_ITEMS = [
-  { label: 'Tüm Cihazlar', value: null, href: '/', icon: Grid3x3 },
+  { label: 'Tüm Telefonlar', value: null, href: '/', icon: Grid3x3 },
   {
     label: 'iPhone',
     value: 'Apple',
@@ -177,8 +177,9 @@ export const MENU_ITEMS = [
       }
     ]
   },
-  { label: 'Tabletler',    value: 'Tabletler',    href: '/?cat=Tabletler',    icon: Tablet },
-  { label: 'Aksesuarlar',  value: 'Aksesuarlar',  href: '/?cat=Aksesuarlar',  icon: Package },
+  { label: 'Huawei / Honor', value: 'Huawei', href: '/?cat=Huawei', icon: Smartphone },
+  { label: 'Redmi / Poco',   value: 'Poco',   href: '/?cat=Poco',   icon: Smartphone },
+  { label: 'Diğer Markalar', value: 'Diğer',  href: '/sell',        icon: Smartphone },
 ];
 
 export default function Navbar() {
@@ -287,56 +288,59 @@ export default function Navbar() {
             <Menu size={20} />
           </button>
 
-          {/* Logo — Turuncu 'Y' Vurgulu Prestijli Mytt Logosu */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-6 py-1">
-            <span className="font-black text-3xl sm:text-4xl tracking-tighter text-[var(--k-ink)] flex items-center select-none">
-              m<span className="text-[var(--k-hot)] drop-shadow-[0_0_12px_rgba(255,96,0,0.75)] inline-block transition-transform duration-300 group-hover:scale-125">y</span>tt
-            </span>
+          {/* Logo — Yenilenmiş İkonik MYTT Logosu ve Rozeti */}
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-6 py-1">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-lg shadow-[#FF6000]/30 border border-orange-400/30 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
+                <Zap className="text-white fill-white w-5 h-5 animate-pulse" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black text-2xl sm:text-3xl tracking-tight text-white flex items-center leading-none font-sans select-none">
+                  my<span className="text-[#FF6000] drop-shadow-[0_0_15px_rgba(255,96,0,0.9)]">tt</span>
+                </span>
+                <span className="text-[9px] font-extrabold tracking-[0.25em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
+                  İHALE PLATFORMU
+                </span>
+              </div>
+            </div>
           </Link>
 
           {/* Arama (masaüstü) */}
-          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] ml-4">
+          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] mx-auto">
             <div
-              className="group/search flex items-center w-full h-[42px] rounded-full transition-all overflow-hidden pl-4 pr-1"
-              style={{ background: 'var(--k-surface)', border: '1.5px solid #FF6000' }}
+              className="group/search flex items-center w-full h-[44px] rounded-2xl transition-all overflow-hidden pl-4 pr-1.5 bg-[var(--k-surface-2)] border border-[var(--k-line-2)] focus-within:border-[#FF6000] focus-within:ring-2 focus-within:ring-[#FF6000]/20 shadow-inner"
             >
-              <Search size={16} className="flex-shrink-0 text-[var(--k-hot)]" />
+              <Search size={17} className="flex-shrink-0 text-[#FF6000]" />
               <input
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Marka, model veya kategori ara…"
-                className="flex-1 px-3 text-[13.5px] bg-transparent outline-none min-w-0"
-                style={{ color: 'var(--k-ink)' }}
+                placeholder="Telefon markası veya modeli ara… (Örn: iPhone 16 Pro)"
+                className="flex-1 px-3 text-[13.5px] bg-transparent outline-none min-w-0 text-white placeholder-slate-400 font-medium"
               />
               <kbd
-                className="k-mono hidden lg:block mr-2 rounded-[4px] px-1.5 py-0.5 text-[10px] select-none flex-shrink-0"
-                style={{ background: 'var(--k-surface-3)', color: 'var(--k-ink-4)', border: '1px solid var(--k-line)' }}
+                className="k-mono hidden lg:block mr-2 rounded-md px-2 py-0.5 text-[10px] select-none flex-shrink-0 bg-slate-900 text-slate-400 border border-slate-700 font-bold"
               >
                 ⌘K
               </kbd>
               <button
                 type="submit"
-                className="k-mono h-[32px] px-4 rounded-[7px] text-[11px] font-extrabold tracking-wider flex-shrink-0 transition-all active:scale-95 bg-[var(--k-hot-deep)] hover:bg-[var(--k-hot-deep)] text-white shadow-sm"
+                className="h-[34px] px-5 rounded-xl text-xs font-black tracking-wider flex-shrink-0 transition-all active:scale-95 bg-gradient-to-r from-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white shadow-md shadow-[#FF6000]/20 flex items-center gap-1.5"
               >
-                ARA
+                <span>ARA</span>
               </button>
             </div>
           </form>
 
           {/* Sağ aksiyonlar */}
-          <div className="flex items-center gap-1.5 ml-auto">
+          <div className="flex items-center gap-2 ml-auto">
 
-            {/* Cihazını Sat CTA (Turuncu Renk Harmonisi) */}
+            {/* Cihazını Sat CTA */}
             <Link
               href="/sell"
-              className="inline-flex items-center gap-1.5 h-9 px-3.5 sm:h-10 sm:px-5 rounded-full text-[11px] sm:text-[13px] font-black transition-all hover:-translate-y-px shadow-md shadow-[var(--k-hot-glow)]"
-              style={{
-                background: 'linear-gradient(135deg, #FF6000 0%, #EA580C 100%)',
-                color: '#fff',
-              }}
+              className="inline-flex items-center gap-2 h-10 px-4 sm:px-6 rounded-2xl text-xs sm:text-sm font-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-[#FF6000]/30 bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] text-white border border-orange-400/30"
             >
-              <Smartphone size={14} strokeWidth={2.5} />
+              <Smartphone size={16} strokeWidth={2.5} className="fill-white/20" />
               <span className="truncate">Cihazını Sat</span>
             </Link>
 
