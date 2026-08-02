@@ -281,29 +281,31 @@ export default function Navbar() {
             <Menu size={20} />
           </button>
 
-          {/* Logo — Yarısı Turuncu Yarısı Beyaz 'y' Vurgulu Özel MYTT Logosu */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-2 sm:mr-6 py-1">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-lg shadow-[#FF6000]/40 border border-orange-400/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Zap className="text-white fill-white w-5 h-5 animate-pulse" />
+          {/* Logo — Özel Büyük MYTT Logosu ve Sağ Üstten Aşağı Turuncu 'Y' Vurgusu */}
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-8 py-1.5">
+            <div className="flex items-center gap-3.5">
+              {/* Işıltılı Şık İkon Amblemi */}
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-xl shadow-[#FF6000]/40 border border-orange-400/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Zap className="text-white fill-white w-6 h-6 animate-pulse" />
               </div>
+
               <div className="flex flex-col">
-                <span className="font-black text-3xl sm:text-4xl tracking-tighter text-white flex items-center leading-none font-sans select-none">
+                <span className="font-black text-4xl sm:text-[44px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-md">
                   m
                   <span
                     className="inline-block font-black tracking-tighter mx-[0.5px] group-hover:scale-110 transition-transform duration-300"
                     style={{
-                      backgroundImage: 'linear-gradient(to bottom, #FF6000 50%, #FFFFFF 50%)',
+                      backgroundImage: 'linear-gradient(225deg, #FF6000 0%, #FF6000 50%, #FFFFFF 50%, #FFFFFF 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 0 12px rgba(255,96,0,0.6))',
+                      filter: 'drop-shadow(0 0 14px rgba(255,96,0,0.85))',
                     }}
                   >
                     y
                   </span>
                   tt
                 </span>
-                <span className="text-[9px] font-black tracking-[0.28em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
+                <span className="text-[10px] font-black tracking-[0.32em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
                   İHALE PLATFORMU
                 </span>
               </div>
