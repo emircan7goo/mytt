@@ -6,6 +6,7 @@ import {
   ArrowLeft, ArrowRight, Check, Upload, X, Smartphone,
   Package, FileText, Zap, Battery, Camera, ChevronRight,
   Clock, Loader2, Star, AlertCircle, Shield, TrendingUp,
+  UserCheck, Lock, UserPlus, LogIn
 } from 'lucide-react';
 import { useApp } from '@/providers/AppProvider';
 import { useCreateSellRequest, useMySellRequest } from '@/lib/hooks/useSellRequests';
@@ -91,14 +92,14 @@ function SellSuccessScreen({ created, brand, model, router }: { created: any; br
           </p>
 
           {/* Admin Onayı Durumu */}
-          <div className={`rounded-2xl p-5 mb-5 text-left ${adminApproved ? 'bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]' : 'bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]'}`}>
+          <div className={`rounded-2xl p-5 mb-5 text-left bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)]`}>
             <div className="flex items-center gap-3 mb-2">
               {adminApproved
                 ? <><TrendingUp size={18} className="text-[var(--k-hot)]" /><span className="font-bold text-[var(--k-hot)] text-sm">Onaylandı — Bayiler Teklif Verebilir</span></>
                 : <><Shield size={18} className="text-[var(--k-hot)]" /><span className="font-bold text-[var(--k-hot)] text-sm">Admin Onayı Bekleniyor</span></>
               }
             </div>
-            <p className={`text-sm leading-relaxed ${adminApproved ? 'text-[var(--k-hot)]' : 'text-[var(--k-hot)]'}`}>
+            <p className="text-sm leading-relaxed text-[var(--k-hot)]">
               {adminApproved
                 ? 'Talebiniz onaylandı. Tüm aktif bayilere bildirim gönderildi, teklifler geliyor!'
                 : 'Görselleriniz kısa sürede incelenecek. Onaylandıktan sonra bayiler teklif verebilecek.'
@@ -167,31 +168,104 @@ export default function SellPage() {
   const router       = useRouter();
   const searchParams = useSearchParams();
   const isTradeIn    = searchParams.get('type') === 'trade-in';
+  const autoSubmit   = searchParams.get('autoSubmit') === 'true';
   const { user, setShowAuthModal } = useApp();
   const createRequest = useCreateSellRequest();
 
-  const [step, setStep]     = useState(0);
-  const [done, setDone]     = useState(false);
-  const [created, setCreated] = useState<any>(null);
+  const [step, setStep]         = useState(0);
+  const [done, setDone]         = useState(false);
+  const [created, setCreated]   = useState<any>(null);
+  const [showAuthGateModal, setShowAuthGateModal] = useState(false);
 
   // Form state
-  const [brand,     setBrand]     = useState('');
-  const [model,     setModel]     = useState('');
+  const [brand,       setBrand]       = useState('');
+  const [model,       setModel]       = useState('');
   const [customModel, setCustomModel] = useState('');
-  const [storage,   setStorage]   = useState('');
-  const [color,     setColor]     = useState('');
-  const [grade,     setGrade]     = useState('');
-  const [battery,   setBattery]   = useState<number | ''>('');
-  const [hasBox,    setHasBox]    = useState(false);
-  const [hasInvoice, setHasInvoice] = useState(false);
-  const [hasAcc,    setHasAcc]    = useState(false);
-  const [desc,      setDesc]      = useState('');
-  const [images,    setImages]    = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
+  const [storage,     setStorage]     = useState('');
+  const [color,       setColor]       = useState('');
+  const [grade,       setGrade]       = useState('');
+  const [battery,     setBattery]     = useState<number | ''>('');
+  const [hasBox,      setHasBox]      = useState(false);
+  const [hasInvoice,  setHasInvoice]  = useState(false);
+  const [hasAcc,      setHasAcc]      = useState(false);
+  const [desc,        setDesc]        = useState('');
+  const [images,      setImages]      = useState<string[]>([]);
+  const [uploading,   setUploading]   = useState(false);
 
   const fileRef = useRef<HTMLInputElement>(null);
-
   const finalModel = model === 'Diğer' ? customModel : model;
+
+  // ── Session Storage Draft Restoring ──────────────────────────────────────────
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem('mytt_sell_draft');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.brand) setBrand(parsed.brand);
+        if (parsed.model) setModel(parsed.model);
+        if (parsed.customModel) setCustomModel(parsed.customModel);
+        if (parsed.storage) setStorage(parsed.storage);
+        if (parsed.color) setColor(parsed.color);
+        if (parsed.grade) setGrade(parsed.grade);
+        if (parsed.battery !== undefined) setBattery(parsed.battery);
+        if (parsed.hasBox !== undefined) setHasBox(parsed.hasBox);
+        if (parsed.hasInvoice !== undefined) setHasInvoice(parsed.hasInvoice);
+        if (parsed.hasAcc !== undefined) setHasAcc(parsed.hasAcc);
+        if (parsed.desc) setDesc(parsed.desc);
+        if (Array.isArray(parsed.images)) setImages(parsed.images);
+        if (parsed.step !== undefined) setStep(parsed.step);
+      }
+    } catch {}
+  }, []);
+
+  // Save to Session Storage on change
+  useEffect(() => {
+    try {
+      if (brand || model || grade || images.length > 0) {
+        sessionStorage.setItem('mytt_sell_draft', JSON.stringify({
+          brand, model, customModel, storage, color, grade, battery,
+          hasBox, hasInvoice, hasAcc, desc, images, step
+        }));
+      }
+    } catch {}
+  }, [brand, model, customModel, storage, color, grade, battery, hasBox, hasInvoice, hasAcc, desc, images, step]);
+
+  // ── Form gönder ──────────────────────────────────────────────────────────
+  const handleSubmit = async () => {
+    if (!user) {
+      setShowAuthGateModal(true);
+      return;
+    }
+    try {
+      const result = await createRequest.mutateAsync({
+        brand,
+        model:         finalModel,
+        storage:       storage || undefined,
+        color:         color   || undefined,
+        grade,
+        batteryHealth: battery !== '' ? Number(battery) : undefined,
+        hasBox,
+        hasInvoice,
+        hasAccessories: hasAcc,
+        description:   desc || undefined,
+        imagesUrl:     images,
+        requestType:   isTradeIn ? 'TRADE_IN' : 'SELL',
+      });
+      sessionStorage.removeItem('mytt_sell_draft');
+      setCreated(result);
+      setDone(true);
+    } catch (err: any) {
+      alert(err?.response?.data?.message ?? 'Bir hata oluştu, lütfen tekrar deneyin.');
+    }
+  };
+
+  // Auto-submit after returning logged in
+  useEffect(() => {
+    if (user && (autoSubmit || showAuthGateModal) && brand && (model || customModel) && grade) {
+      setShowAuthGateModal(false);
+      handleSubmit();
+    }
+  }, [user, autoSubmit]);
 
   // ── Görsel yükleme ───────────────────────────────────────────────────────
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,7 +284,7 @@ export default function SellPage() {
         const { data } = await apiClient.post('/uploads/image', form, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
-        urls.push(data.url);   // Göreceli yol — resolveUploadUrl() domain bağımsız halleder
+        urls.push(data.url);
       }
       setImages((prev) => [...prev, ...urls]);
     } catch {
@@ -221,66 +295,14 @@ export default function SellPage() {
     }
   }, [images]);
 
-  // ── Form gönder ──────────────────────────────────────────────────────────
-  const handleSubmit = async () => {
-    if (!user) { setShowAuthModal(true); return; }
-    try {
-      const result = await createRequest.mutateAsync({
-        brand,
-        model:         finalModel,
-        storage:       storage || undefined,
-        color:         color   || undefined,
-        grade,
-        batteryHealth: battery !== '' ? Number(battery) : undefined,
-        hasBox,
-        hasInvoice,
-        hasAccessories: hasAcc,
-        description:   desc || undefined,
-        imagesUrl:     images,
-        requestType:   isTradeIn ? 'TRADE_IN' : 'SELL',
-      });
-      setCreated(result);
-      setDone(true);
-    } catch (err: any) {
-      alert(err?.response?.data?.message ?? 'Bir hata oluştu, lütfen tekrar deneyin.');
-    }
-  };
-
   // ── Step validation ──────────────────────────────────────────────────────
   const canNext = () => {
     if (step === 0) return !!brand;
     if (step === 1) return !!(model || customModel);
     if (step === 2) return !!grade;
-    if (step === 3) return images.length >= 2;
+    if (step === 3) return images.length >= 0; // Fotoğraf opsiyonel veya önerili
     return true;
   };
-
-  // ── Giriş yapılmamışsa login gate ────────────────────────────────────────
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-[var(--k-surface-2)] to-[var(--k-surface)] flex items-center justify-center px-4">
-        <div className="max-w-md w-full text-center">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[var(--k-hot-glow)]/20">
-            <Smartphone size={36} className="text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-[var(--k-ink)] mb-3">Cihazını Sat</h1>
-          <p className="text-[var(--k-ink-3)] mb-8 leading-relaxed">
-            Cihazını platforma sat, 30 dakika içinde yüzlerce bayiden teklifler gelsin.
-            Hesabınıza giriş yaparak başlayın.
-          </p>
-          <button
-            onClick={() => setShowAuthModal(true)}
-            className="w-full py-4 bg-[var(--k-canvas)] text-white rounded-2xl font-bold text-[15px] hover:bg-[var(--k-void)] transition-colors"
-          >
-            Giriş Yap / Kayıt Ol
-          </button>
-          <Link href="/" className="block mt-4 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] text-sm transition-colors">
-            Ana sayfaya dön
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   // ── Başarı ekranı ────────────────────────────────────────────────────────
   if (done && created) {
@@ -289,7 +311,73 @@ export default function SellPage() {
 
   // ── Ana form ─────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-[var(--k-canvas)] pt-24 pb-20">
+    <div className="min-h-screen bg-[var(--k-canvas)] pt-24 pb-20 relative">
+      
+      {/* AUTH PROMPT MODAL (TAM İHALEYE GÖNDERİRKEN GÖSTERİLEN ŞEFFAF KAYIT/GİRİŞ MODALI) */}
+      {showAuthGateModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-[var(--k-surface)] border border-[var(--k-line-hot)] rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-6 shadow-2xl relative overflow-hidden">
+            
+            <div className="absolute top-0 right-0 p-4">
+              <button 
+                onClick={() => setShowAuthGateModal(false)}
+                className="text-[var(--k-ink-4)] hover:text-white p-2 rounded-full hover:bg-[var(--k-surface-2)] transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--k-hot)] to-[var(--k-hot-deep)] flex items-center justify-center mx-auto shadow-xl shadow-[var(--k-hot-glow)]/30">
+              <Zap size={32} className="text-white fill-white animate-pulse" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black">
+                <Check size={14} />
+                <span>CİHAZ BİLGİLERİNİZ HAZIR & KAYDEDİLDİ</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
+                Son Adım: İhalenizi Başlatmak İçin Giriş Yapın
+              </h3>
+
+              <div className="bg-[var(--k-void)] p-3 rounded-xl border border-[var(--k-line-2)] inline-block w-full">
+                <p className="text-xs font-bold text-[var(--k-hot)]">
+                  📱 {brand} {finalModel} ({GRADES.find(g => g.id === grade)?.label || grade})
+                </p>
+              </div>
+
+              <p className="text-xs text-[var(--k-ink-3)] font-medium leading-relaxed pt-1">
+                İhalenizi 150+ onaylı yetkili bayiye anında başlatıp canlı teklifleri izlemek ve paranızın yatacağı banka hesabını belirlemek için hemen giriş yapın veya 10 saniyede ücretsiz hesap oluşturun.
+              </p>
+            </div>
+
+            <div className="space-y-3 pt-2">
+              <Link
+                href={`/login?redirect=${encodeURIComponent('/sell?autoSubmit=true')}`}
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-2"
+              >
+                <LogIn size={18} />
+                <span>Giriş Yap ve İhaleyi Başlat</span>
+              </Link>
+
+              <Link
+                href={`/register?redirect=${encodeURIComponent('/sell?autoSubmit=true')}`}
+                className="w-full py-3.5 rounded-2xl bg-[var(--k-surface-2)] hover:bg-[var(--k-surface-3)] border border-[var(--k-line-2)] text-white font-bold text-sm transition-all flex items-center justify-center gap-2"
+              >
+                <UserPlus size={18} className="text-[var(--k-hot)]" />
+                <span>Ücretsiz Hesap Oluştur</span>
+              </Link>
+            </div>
+
+            <p className="text-[10px] text-[var(--k-ink-4)]">
+              *Tüm bilgileriniz gizlidir. Hiçbir bilgi kaybolmaz, hesabınız açılır açılmaz ihaleniz canlıya alınır.
+            </p>
+
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="max-w-2xl mx-auto px-4">
         <Link href="/" className="inline-flex items-center gap-2 text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)] transition-colors mb-8 text-sm">
@@ -298,118 +386,140 @@ export default function SellPage() {
         </Link>
 
         <div className="mb-2">
-          <h1 className="text-3xl font-bold text-[var(--k-ink)] tracking-tight">
-            {isTradeIn ? 'Cihazını Takasa Ver' : 'Cihazını Sat'}
+          <h1 className="text-3xl font-black text-[var(--k-ink)] tracking-tight">
+            {isTradeIn ? 'Takas Talebi Oluştur' : 'Cihazını İhaleye Çıkar'}
           </h1>
-          <p className="text-[var(--k-ink-3)] mt-1 text-sm">
-            {isTradeIn
-              ? 'Cihaz bilgilerini gir, bayilerden takas teklifi al, farkı öde, yeni cihaza geç.'
-              : 'Bilgileri gir, 30 dakika içinde bayilerden teklif al.'}
+          <p className="text-[var(--k-ink-3)] text-sm mt-1 font-medium">
+            150+ onaylı bayiden anında canlı teklif almak için bilgileri tamamlayın.
           </p>
         </div>
 
-        {/* Trade-in mode banner */}
-        {isTradeIn && (
-          <div className="flex items-center gap-3 p-4 rounded-2xl bg-blue-50 border border-blue-200 mb-2 mt-4">
-            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
-              <ArrowRight size={14} className="text-white" />
-            </div>
-            <div>
-              <p className="text-blue-900 font-bold text-sm">Takas Modu Aktif</p>
-              <p className="text-blue-700 text-xs">Bu form ile oluşturduğun talep &quot;Takas&quot; olarak işaretlenecek.</p>
-            </div>
-          </div>
-        )}
-
-        {/* Progress */}
-        <div className="flex items-center gap-1 mb-10 mt-6">
-          {STEPS.map((s, i) => (
-            <div key={i} className="flex items-center gap-1 flex-1">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-all ${ i < step ? 'bg-[var(--k-canvas)] text-white' : i === step ? 'bg-[var(--k-hot)] text-[var(--k-hot-ink)] shadow-lg shadow-[var(--k-hot-glow)]/30' : 'bg-[var(--k-surface-3)] text-[var(--k-ink-4)]' }`}>
-                {i < step ? <Check size={14} /> : i + 1}
-              </div>
-              {i < STEPS.length - 1 && (
-                <div className={`flex-1 h-0.5 transition-all ${i < step ? 'bg-[var(--k-canvas)]' : 'bg-[var(--k-surface-3)]'}`} />
-              )}
-            </div>
-          ))}
+        {/* Stepper */}
+        <div className="flex items-center justify-between my-8 relative">
+          <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-[var(--k-line)] -translate-y-1/2 -z-0" />
+          {STEPS.map((s, i) => {
+            const Icon = s.icon;
+            const active = i === step;
+            const past   = i < step;
+            return (
+              <button
+                key={s.label}
+                onClick={() => i < step && setStep(i)}
+                disabled={i > step}
+                className={`relative z-10 flex flex-col items-center gap-1 group ${i > step ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
+                  past   ? 'bg-[var(--k-hot)] text-white shadow-md' :
+                  active ? 'bg-[var(--k-hot)] text-white ring-4 ring-[var(--k-hot-wash)] scale-110 shadow-lg shadow-[var(--k-hot-glow)]/30' :
+                           'bg-[var(--k-surface-2)] text-[var(--k-ink-4)] border border-[var(--k-line)]'
+                }`}>
+                  {past ? <Check size={16} strokeWidth={3} /> : <Icon size={18} />}
+                </div>
+                <span className={`text-xs font-semibold ${active ? 'text-[var(--k-hot)]' : past ? 'text-[var(--k-ink-2)]' : 'text-[var(--k-ink-4)]'}`}>
+                  {s.label}
+                </span>
+              </button>
+            );
+          })}
         </div>
-
-        {/* Step label */}
-        <p className="text-xs uppercase tracking-widest font-bold text-[var(--k-hot)] mb-4">
-          Adım {step + 1} / {STEPS.length} — {STEPS[step].label}
-        </p>
 
         {/* ── STEP 0: Marka ────────────────────────────────────────────── */}
         {step === 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {BRANDS.map((b) => (
-              <button
-                key={b.id}
-                onClick={() => { setBrand(b.id); setModel(''); setCustomModel(''); }}
-                className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left ${ brand === b.id ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white shadow-lg' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-black shrink-0"
-                  style={{ background: b.color }}>
-                  {b.abbr}
-                </div>
-                <span className="font-bold text-[14px]">{b.label}</span>
-              </button>
-            ))}
+          <div className="space-y-4">
+            <h2 className="text-lg font-bold text-[var(--k-ink)] mb-4">Cihazınızın Markasını Seçin</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {BRANDS.map((b) => (
+                <button
+                  key={b.id}
+                  onClick={() => { setBrand(b.id); setModel(''); setCustomModel(''); setStep(1); }}
+                  className={`p-5 rounded-2xl border text-left transition-all hover:scale-[1.02] flex items-center justify-between ${
+                    brand === b.id
+                      ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)] shadow-md shadow-[var(--k-hot-glow)]/10'
+                      : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--k-surface-2)] flex items-center justify-center font-black text-lg text-[var(--k-ink)]">
+                      {b.abbr}
+                    </div>
+                    <span className="font-bold text-[var(--k-ink)]">{b.label}</span>
+                  </div>
+                  {brand === b.id && <Check size={18} className="text-[var(--k-hot)]" />}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* ── STEP 1: Model ────────────────────────────────────────────── */}
         {step === 1 && (
-          <div className="space-y-3">
-            <div className="grid grid-cols-1 gap-2 max-h-[420px] overflow-y-auto pr-1">
-              {(POPULAR_MODELS[brand] ?? []).map((m) => (
-                <button
-                  key={m}
-                  onClick={() => { setModel(m); setCustomModel(''); }}
-                  className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all text-left ${ model === m ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
-                >
-                  <span className="font-semibold text-sm">{m}</span>
-                  {model === m && <Check size={16} />}
-                </button>
-              ))}
-              <button
-                onClick={() => setModel('Diğer')}
-                className={`flex items-center justify-between px-5 py-3.5 rounded-xl border-2 transition-all ${ model === 'Diğer' ? 'border-[var(--k-line-2)] bg-[var(--k-canvas)] text-white' : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)] text-[var(--k-ink-2)]' }`}
-              >
-                <span className="font-semibold text-sm">Listede yok — Manuel gir</span>
-                <ChevronRight size={16} />
-              </button>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-[var(--k-ink)]">Model ve Depolama Seçin</h2>
+              <span className="text-xs font-semibold text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-2.5 py-1 rounded-full border border-[var(--k-line-hot)]">
+                {brand}
+              </span>
             </div>
 
-            {model === 'Diğer' && (
-              <input
-                type="text"
-                placeholder="Model adını yazın..."
-                value={customModel}
-                onChange={(e) => setCustomModel(e.target.value)}
-                className="w-full px-4 py-3.5 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm font-semibold mt-2"
-                autoFocus
-              />
+            {/* Popüler Modeller */}
+            {(POPULAR_MODELS[brand] ?? []).length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {(POPULAR_MODELS[brand] ?? []).map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => { setModel(m); setCustomModel(''); }}
+                    className={`p-4 rounded-xl border text-left transition-all font-semibold text-sm flex items-center justify-between ${
+                      model === m
+                        ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-bold'
+                        : 'border-[var(--k-line)] bg-[var(--k-surface)] text-[var(--k-ink)] hover:border-[var(--k-line-2)]'
+                    }`}
+                  >
+                    <span>{m}</span>
+                    {model === m && <Check size={16} className="text-[var(--k-hot)]" />}
+                  </button>
+                ))}
+              </div>
             )}
 
-            {/* Storage & Color */}
-            <div className="grid grid-cols-2 gap-3 mt-4">
+            {/* Manuel Giriş */}
+            <div className="pt-2">
+              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block mb-2">
+                Listede yoksa elle yazın
+              </label>
+              <input
+                type="text"
+                value={customModel}
+                onChange={(e) => { setCustomModel(e.target.value); setModel('Diğer'); }}
+                placeholder="Örn: iPhone SE 2022 veya Galaxy Z Fold 4"
+                className="w-full p-4 rounded-xl bg-[var(--k-surface)] border border-[var(--k-line-2)] text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:outline-none focus:border-[var(--k-hot)] text-sm font-medium"
+              />
+            </div>
+
+            {/* Depolama & Renk */}
+            <div className="grid grid-cols-2 gap-3 pt-2">
               <div>
-                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Depolama</label>
-                <select value={storage} onChange={(e) => setStorage(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm bg-[var(--k-surface)]">
-                  <option value="">Seçin</option>
-                  {['32GB','64GB','128GB','256GB','512GB','1TB'].map(s => (
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block mb-2">Depolama</label>
+                <select
+                  value={storage}
+                  onChange={(e) => setStorage(e.target.value)}
+                  className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-[var(--k-line-2)] text-[var(--k-ink)] text-sm font-medium focus:outline-none focus:border-[var(--k-hot)]"
+                >
+                  <option value="">Seçiniz</option>
+                  {['64 GB', '128 GB', '256 GB', '512 GB', '1 TB'].map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
               </div>
+
               <div>
-                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Renk</label>
-                <input type="text" placeholder="Örn: Siyah" value={color}
+                <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block mb-2">Renk</label>
+                <input
+                  type="text"
+                  value={color}
                   onChange={(e) => setColor(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm" />
+                  placeholder="Örn: Uzay Siyahı"
+                  className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-[var(--k-line-2)] text-[var(--k-ink)] text-sm font-medium placeholder-[var(--k-ink-4)] focus:outline-none focus:border-[var(--k-hot)]"
+                />
               </div>
             </div>
           </div>
@@ -417,86 +527,103 @@ export default function SellPage() {
 
         {/* ── STEP 2: Durum ────────────────────────────────────────────── */}
         {step === 2 && (
-          <div className="space-y-5">
-            {/* Grade */}
-            <div>
-              <p className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-3">Kozmetik Durum</p>
-              <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-6">
+            <h2 className="text-lg font-bold text-[var(--k-ink)]">Cihazın Durumunu Belirtin</h2>
+
+            {/* Kozmetik Derece */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider">Kozmetik Durumu</label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {GRADES.map((g) => (
-                  <button key={g.id} onClick={() => setGrade(g.id)}
-                    className="p-4 rounded-2xl border-2 text-left transition-all"
-                    style={{
-                      borderColor: grade === g.id ? g.color : 'rgba(226,232,240,1)',
-                      background:  grade === g.id ? g.bg : '#fff',
-                    }}>
+                  <button
+                    key={g.id}
+                    onClick={() => setGrade(g.id)}
+                    className={`p-4 rounded-2xl border text-left transition-all ${
+                      grade === g.id
+                        ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)]'
+                        : 'border-[var(--k-line)] bg-[var(--k-surface)] hover:border-[var(--k-line-2)]'
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-black text-lg" style={{ color: g.color }}>{g.id}</span>
-                      {grade === g.id && <Check size={16} style={{ color: g.color }} />}
+                      <span className="font-bold text-sm text-[var(--k-ink)]">{g.label} ({g.id})</span>
+                      {grade === g.id && <Check size={16} className="text-[var(--k-hot)]" />}
                     </div>
-                    <p className="font-bold text-[13px] text-[var(--k-ink)]">{g.label}</p>
-                    <p className="text-[11px] text-[var(--k-ink-3)] mt-0.5 leading-relaxed">{g.desc}</p>
+                    <p className="text-xs text-[var(--k-ink-3)] font-medium">{g.desc}</p>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Battery */}
+            {/* Pil Sağlığı */}
             <div>
-              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-3 flex items-center gap-2">
-                <Battery size={14} /> Pil Sağlığı (%)
+              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block mb-2">
+                Pil Sağlığı (%) — Opsiyonel
               </label>
-              <input type="number" min="0" max="100" placeholder="Örn: 87"
-                value={battery} onChange={(e) => setBattery(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-32 px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm font-bold text-center" />
+              <input
+                type="number"
+                min="50"
+                max="100"
+                value={battery}
+                onChange={(e) => setBattery(e.target.value ? Number(e.target.value) : '')}
+                placeholder="Örn: 88"
+                className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-[var(--k-line-2)] text-[var(--k-ink)] text-sm font-medium placeholder-[var(--k-ink-4)] focus:outline-none focus:border-[var(--k-hot)]"
+              />
             </div>
 
-            {/* Accessories */}
-            <div>
-              <p className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-3">Aksesuar / Ek Bilgi</p>
+            {/* Kutu & Fatura & Aksesuar */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block">Kutu / Fatura / Aksesuar</label>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { key: 'hasBox',    state: hasBox,    set: setHasBox,    icon: Package,  label: 'Kutu'  },
-                  { key: 'hasInvoice',state: hasInvoice, set: setHasInvoice,icon: FileText, label: 'Fatura'},
-                  { key: 'hasAcc',    state: hasAcc,    set: setHasAcc,    icon: Zap,      label: 'Aksesuar'},
-                ].map(({ key, state, set, icon: Icon, label }) => (
-                  <button key={key} onClick={() => set(!state)}
-                    className={`flex flex-col items-center gap-2 py-4 rounded-2xl border-2 transition-all ${ state ? 'border-[var(--k-hot-deep)] bg-[var(--k-hot-wash)] text-[var(--k-hot)]' : 'border-[var(--k-line)] bg-[var(--k-surface)] text-[var(--k-ink-3)]' }`}>
-                    <Icon size={20} />
-                    <span className="text-xs font-bold">{label}</span>
-                    {state && <Check size={12} className="text-[var(--k-hot)]" />}
+                  { label: 'Kutu Var', state: hasBox, setState: setHasBox },
+                  { label: 'Fatura Var', state: hasInvoice, setState: setHasInvoice },
+                  { label: 'Aksesuar Var', state: hasAcc, setState: setHasAcc },
+                ].map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => item.setState(!item.state)}
+                    className={`p-3.5 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                      item.state
+                        ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)]'
+                        : 'border-[var(--k-line)] bg-[var(--k-surface)] text-[var(--k-ink-3)] hover:border-[var(--k-line-2)]'
+                    }`}
+                  >
+                    {item.state && <Check size={14} />}
+                    {item.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Description */}
+            {/* Açıklama */}
             <div>
-              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider mb-2 block">Açıklama (Opsiyonel)</label>
-              <textarea rows={3} placeholder="Cihaz hakkında eklemek istediğiniz bilgiler..."
-                value={desc} onChange={(e) => setDesc(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border-2 border-[var(--k-line)] focus:border-[var(--k-line-2)] focus:outline-none text-sm resize-none" />
+              <label className="text-xs font-bold text-[var(--k-ink-3)] uppercase tracking-wider block mb-2">Ek Açıklama (İsteğe Bağlı)</label>
+              <textarea
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+                rows={3}
+                placeholder="Cihazdaki ek detaylar, kılcal çizik durumu vb..."
+                className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-[var(--k-line-2)] text-[var(--k-ink)] text-sm font-medium placeholder-[var(--k-ink-4)] focus:outline-none focus:border-[var(--k-hot)] resize-none"
+              />
             </div>
           </div>
         )}
 
-        {/* ── STEP 3: Fotoğraflar ──────────────────────────────────────── */}
+        {/* ── STEP 3: Fotoğraf ────────────────────────────────────────────── */}
         {step === 3 && (
-          <div className="space-y-5">
-            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex gap-3">
-              <AlertCircle size={18} className="text-blue-600 shrink-0 mt-0.5" />
-              <p className="text-sm text-blue-700">En az 2, en fazla 6 fotoğraf yükleyin. Ön, arka, köşe ve ekran fotoğrafları tercih edilir.</p>
-            </div>
-            <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-4 flex gap-3">
-              <AlertCircle size={18} className="text-[var(--k-hot)] shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-bold text-[var(--k-hot)] mb-1">Önemli: Görsellerde bayi etiketi / sticker olmamalı</p>
-                <p className="text-sm text-[var(--k-hot)]">Fotoğraflarınızda bayi etiketi, mağaza logosu veya sticker görünüyorsa talebiniz admin onayından geçemez. Etiketleri çıkardıktan sonra fotoğraf çekin.</p>
-              </div>
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-lg font-bold text-[var(--k-ink)]">Fotoğraf Yükleyin</h2>
+              <p className="text-xs text-[var(--k-ink-3)] mt-1 font-medium">
+                Cihazınızın ön, arka ve kenar açılarını net çeken fotoğraflar ekleyin. (Önerilen: En az 2 fotoğraf)
+              </p>
             </div>
 
-            {/* Upload area */}
-            <button onClick={() => fileRef.current?.click()} disabled={uploading || images.length >= 6}
-              className="w-full border-2 border-dashed border-[var(--k-line-2)] rounded-2xl py-12 flex flex-col items-center gap-3 hover:border-[var(--k-line-2)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            <button
+              onClick={() => fileRef.current?.click()}
+              disabled={uploading}
+              className="w-full p-8 border-2 border-dashed border-[var(--k-line-2)] hover:border-[var(--k-hot)] bg-[var(--k-surface)] rounded-2xl flex flex-col items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
               {uploading ? (
                 <Loader2 size={32} className="text-[var(--k-ink-4)] animate-spin" />
               ) : (
@@ -570,12 +697,11 @@ export default function SellPage() {
             <div className="bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2">
                 <Clock size={18} className="text-[var(--k-hot)]" />
-                <span className="font-bold text-[var(--k-hot)]">30 Dakikalık Teklif Süreci</span>
+                <span className="font-bold text-[var(--k-hot)]">1 Saatlik Canlı İhale Süreci</span>
               </div>
               <p className="text-[var(--k-hot)] text-sm leading-relaxed">
-                Talebiniz gönderildikten sonra tüm aktif bayilere bildirim gidecek.
-                30 dakika içinde gelen teklifler arasından en yüksek fiyatı seçebilirsiniz.
-                Email ve hesabınızdan takip edebilirsiniz.
+                Talebiniz gönderildikten sonra tüm onaylı yetkili bayilere anında bildirim gider.
+                İhale süresi boyunca gelen teklifler arasından en yüksek fiyatı seçip onaylayabilirsiniz.
               </p>
             </div>
           </div>
@@ -601,11 +727,11 @@ export default function SellPage() {
             <button
               onClick={handleSubmit}
               disabled={createRequest.isPending}
-              className="flex-1 py-3.5 rounded-xl bg-[var(--k-hot-deep)] text-white font-bold text-sm hover:bg-[var(--k-hot-deep)] transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-[var(--k-hot-glow)]/25">
+              className="flex-1 py-4 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] text-white font-black text-sm hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-xl shadow-[var(--k-hot-glow)]/30">
               {createRequest.isPending ? (
-                <><Loader2 size={16} className="animate-spin" /> Gönderiliyor...</>
+                <><Loader2 size={18} className="animate-spin" /> İhaleye Gönderiliyor...</>
               ) : (
-                <><Check size={16} /> Talebi Gönder</>
+                <><Zap size={18} className="fill-white" /> Cihazımı Ücretsiz İhaleye Çıkar</>
               )}
             </button>
           )}

@@ -52,7 +52,12 @@ export default function RegisterPage() {
       toast.success(`Hoş geldiniz, ${data.user.name}!`);
 
       const role = data.user.role as UserRole;
-      const destination = ROLE_DASHBOARD[role] ?? '/';
+      const dashboard = ROLE_DASHBOARD[role] ?? '/';
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirectTo = searchParams.get('redirect');
+      const safeRedirect = redirectTo && /^\/[^/]/.test(redirectTo) && !redirectTo.startsWith('/register');
+      const destination = safeRedirect ? redirectTo : dashboard;
+
       window.location.href = destination;
       router.push(destination);
     } catch (err: unknown) {
