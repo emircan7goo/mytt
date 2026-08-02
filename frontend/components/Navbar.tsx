@@ -318,11 +318,6 @@ export default function Navbar() {
                 placeholder="Telefon markası veya modeli ara… (Örn: iPhone 16 Pro)"
                 className="flex-1 px-3 text-[13.5px] bg-transparent outline-none min-w-0 text-white placeholder-slate-400 font-medium"
               />
-              <kbd
-                className="k-mono hidden lg:block mr-2 rounded-md px-2 py-0.5 text-[10px] select-none flex-shrink-0 bg-slate-900 text-slate-400 border border-slate-700 font-bold"
-              >
-                ⌘K
-              </kbd>
               <button
                 type="submit"
                 className="h-[34px] px-5 rounded-xl text-xs font-black tracking-wider flex-shrink-0 transition-all active:scale-95 bg-gradient-to-r from-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white shadow-md shadow-[#FF6000]/20 flex items-center gap-1.5"
