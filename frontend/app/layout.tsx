@@ -84,8 +84,15 @@ export const metadata: Metadata = {
     creator: '@mytt',
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   alternates: {
     canonical: BASE_URL,
@@ -104,7 +111,7 @@ const organizationJsonLd = {
   name: 'Mytt',
   alternateName: ['Mytt Telefon', 'Mytt Pazaryeri'],
   url: BASE_URL,
-  logo: `${BASE_URL}/logo.png`,
+  logo: `${BASE_URL}/icon-512.png`,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
@@ -132,6 +139,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="tr" data-theme="dark" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         {/* Tema pre-paint: kayitli tercihi (yoksa varsayilan 'dark') boyamadan
             once uygular — FOUC (yanlis tema flashi) olmaz. ThemeContext ile ayni
             'mytt_theme' anahtarini kullanir. */}
