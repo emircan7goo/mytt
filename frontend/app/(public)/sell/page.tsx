@@ -12,134 +12,60 @@ import { useApp } from '@/providers/AppProvider';
 import { useCreateSellRequest, useMySellRequest } from '@/lib/hooks/useSellRequests';
 import apiClient from '@/lib/api';
 
-// ── 18 Marka Tanımı ve Özel SVG Logo Komponenti ────────────────────────────────
+// ── 18 Marka Tanımı ve Özel Kullanıcı Logo URL'leri ────────────────────────────────
 const BRANDS = [
-  { id: 'Apple',          label: 'Apple',          color: '#ffffff', bg: '#000000', border: '#333333' },
-  { id: 'Samsung',        label: 'Samsung',        color: '#1428a0', bg: '#1428a0', border: '#1d35bc' },
-  { id: 'Xiaomi',         label: 'Xiaomi',         color: '#ff6900', bg: '#ff6900', border: '#ff8533' },
-  { id: 'Huawei',         label: 'Huawei',         color: '#cf0a2c', bg: '#cf0a2c', border: '#e62446' },
-  { id: 'Oppo',           label: 'Oppo',           color: '#008b5e', bg: '#008b5e', border: '#00b379' },
-  { id: 'realme',         label: 'realme',         color: '#ffc914', bg: '#ffc914', border: '#ffd647' },
-  { id: 'Poco',           label: 'Poco',           color: '#ffe500', bg: '#ffe500', border: '#fff04d' },
-  { id: 'vivo',           label: 'vivo',           color: '#008cd6', bg: '#008cd6', border: '#1aa3ed' },
-  { id: 'Honor',          label: 'Honor',          color: '#000000', bg: '#000000', border: '#333333' },
-  { id: 'Tecno',          label: 'Tecno',          color: '#0052cc', bg: '#0052cc', border: '#2673e6' },
-  { id: 'Infinix',        label: 'Infinix',        color: '#2bb673', bg: '#2bb673', border: '#45d18d' },
-  { id: 'Reeder',         label: 'Reeder',         color: '#65b32e', bg: '#65b32e', border: '#80cc4a' },
-  { id: 'General Mobile', label: 'General Mobile', color: '#1a1a1a', bg: '#1a1a1a', border: '#333333' },
-  { id: 'Casper',         label: 'Casper',         color: '#1d3e8e', bg: '#1d3e8e', border: '#2f57b5' },
-  { id: 'TCL',            label: 'TCL',            color: '#e2001a', bg: '#e2001a', border: '#ff2942' },
-  { id: 'Nothing',        label: 'Nothing',        color: '#ffffff', bg: '#000000', border: '#333333' },
-  { id: 'Omix',           label: 'Omix',           color: '#000000', bg: '#000000', border: '#333333' },
-  { id: 'Diğer',          label: 'DİĞER',          color: '#64748b', bg: '#1e293b', border: '#334155' },
+  { id: 'Apple',          label: 'Apple',          logoUrl: 'https://cdn-icons-png.magnific.com/512/0/747.png' },
+  { id: 'Samsung',        label: 'Samsung',        logoUrl: 'https://static.vecteezy.com/system/resources/previews/020/975/545/non_2x/samsung-logo-samsung-icon-transparent-free-png.png' },
+  { id: 'Xiaomi',         label: 'Xiaomi',         logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/960px-Xiaomi_logo_%282021-%29.svg.png' },
+  { id: 'Huawei',         label: 'Huawei',         logoUrl: 'https://www.freepnglogos.com/uploads/huawei-logo-png/huawei-logo-transparent-2.png' },
+  { id: 'Oppo',           label: 'Oppo',           logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/13/OPPO_Logo_wiki.png' },
+  { id: 'realme',         label: 'realme',         logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Realme_logo.png' },
+  { id: 'Poco',           label: 'Poco',           logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Poco_Smartphone_Company_logo.png' },
+  { id: 'vivo',           label: 'vivo',           logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqWmUV8HRwaOavdOGa_r_4EkvKnT3tAkMMvw&s' },
+  { id: 'Honor',          label: 'Honor',          logoUrl: 'https://www.logo.wine/a/logo/Honor_8x/Honor_8x-Logo.wine.svg' },
+  { id: 'Infinix',        label: 'Infinix',        logoUrl: 'https://static.vecteezy.com/system/resources/previews/068/973/775/non_2x/infinix-black-wordmark-logo-on-transparent-background-free-png.png' },
+  { id: 'Reeder',         label: 'Reeder',         logoUrl: 'https://iconlogovector.com/uploads/images/2024/12/lg-675e2298a5d23-Reeder.webp' },
+  { id: 'General Mobile', label: 'General Mobile', logoUrl: 'https://www.dijifabrik.com/wp-content/uploads/2019/04/Group-1026@2x.png' },
+  { id: 'Casper',         label: 'Casper',         logoUrl: 'https://www.casper.com.tr/uploads/2021/01/casper-logo-lacivert.png' },
+  { id: 'TCL',            label: 'TCL',            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Logo_of_the_TCL_Corporation.svg/1280px-Logo_of_the_TCL_Corporation.svg.png' },
+  { id: 'Nothing',        label: 'Nothing',        logoUrl: 'https://cdn.nothing.community/2025-12-14/1765733320-179713-nothing-01.jpg' },
+  { id: 'Omix',           label: 'Omix',           logoUrl: 'https://images.seeklogo.com/logo-png/52/1/omix-telefon-logo-png_seeklogo-522593.png' },
+  { id: 'Diğer',          label: 'DİĞER',          logoUrl: '' },
 ];
 
-function BrandLogo({ id }: { id: string }) {
+function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
+  const [imgError, setImgError] = useState(false);
+
+  if (logoUrl && !imgError) {
+    return (
+      <div className="w-14 h-14 bg-white rounded-2xl shadow-md p-2 flex items-center justify-center border border-slate-700/30 overflow-hidden shrink-0">
+        <img
+          src={logoUrl}
+          alt={id}
+          className="w-full h-full object-contain"
+          onError={() => setImgError(true)}
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
+  // Fallback icon badges if image load fails
   switch (id) {
     case 'Apple':
       return (
-        <svg viewBox="0 0 170 170" width="36" height="36" fill="currentColor">
-          <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
-        </svg>
-      );
-    case 'Samsung':
-      return (
-        <div className="bg-[#1428a0] text-white px-2 py-1 rounded-full font-black text-[13px] tracking-tighter italic border border-blue-400/40 shadow-sm">
-          SAMSUNG
-        </div>
-      );
-    case 'Xiaomi':
-      return (
-        <div className="w-9 h-9 bg-[#ff6900] text-white rounded-xl flex items-center justify-center font-black text-lg tracking-tighter shadow-sm border border-orange-400/40">
-          mi
-        </div>
-      );
-    case 'Huawei':
-      return (
-        <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-600 to-rose-500 text-white flex items-center justify-center font-black text-xs shadow-sm border border-red-400/40">
-          🌸
-        </div>
-      );
-    case 'Oppo':
-      return (
-        <div className="bg-[#008b5e] text-white px-2.5 py-1 rounded-lg font-black text-[12px] tracking-widest uppercase border border-emerald-400/40">
-          OPPO
-        </div>
-      );
-    case 'realme':
-      return (
-        <div className="bg-[#ffc914] text-black px-2 py-1 rounded-md font-black text-[11px] lowercase tracking-tight border border-amber-400">
-          realme
-        </div>
-      );
-    case 'Poco':
-      return (
-        <div className="bg-[#ffe500] text-black px-2 py-0.5 rounded-sm font-black text-[12px] uppercase tracking-widest border border-yellow-400">
-          POCO
-        </div>
-      );
-    case 'vivo':
-      return (
-        <div className="bg-[#008cd6] text-white px-2.5 py-1 rounded-lg font-black text-[12px] lowercase tracking-wider border border-sky-400/40">
-          vivo
-        </div>
-      );
-    case 'Honor':
-      return (
-        <div className="bg-black text-white px-2.5 py-1 rounded-md font-extrabold text-[12px] uppercase tracking-widest border border-slate-700">
-          HONOR
-        </div>
-      );
-    case 'Tecno':
-      return (
-        <div className="bg-[#0052cc] text-white px-2 py-0.5 rounded font-black text-[12px] uppercase tracking-wider border border-blue-400">
-          TECNO
-        </div>
-      );
-    case 'Infinix':
-      return (
-        <div className="bg-[#2bb673] text-white px-2 py-0.5 rounded font-bold text-[11px] tracking-tight">
-          Infinix
-        </div>
-      );
-    case 'Reeder':
-      return (
-        <div className="bg-[#65b32e] text-white px-2 py-0.5 rounded font-black text-[11px] tracking-tight">
-          reeder
-        </div>
-      );
-    case 'General Mobile':
-      return (
-        <div className="bg-zinc-800 text-white px-2 py-0.5 rounded font-black text-[10px] uppercase tracking-tighter border border-zinc-700">
-          GENERAL MOBILE
-        </div>
-      );
-    case 'Casper':
-      return (
-        <div className="bg-[#1d3e8e] text-white px-2 py-0.5 rounded font-black text-[11px] tracking-tight">
-          Casper
-        </div>
-      );
-    case 'TCL':
-      return (
-        <div className="bg-[#e2001a] text-white px-2.5 py-0.5 rounded font-black text-[13px] tracking-widest">
-          TCL
-        </div>
-      );
-    case 'Nothing':
-      return (
-        <div className="bg-black text-white px-2 py-0.5 rounded border border-dashed border-slate-500 font-mono text-[10px] uppercase tracking-widest">
-          NOTHING
-        </div>
-      );
-    case 'Omix':
-      return (
-        <div className="bg-slate-900 text-white px-2 py-0.5 rounded font-black text-[11px] tracking-widest border border-slate-700">
-          OMIX
+        <div className="w-14 h-14 bg-white rounded-2xl shadow-md p-2 flex items-center justify-center text-black font-black">
+          <svg viewBox="0 0 170 170" width="32" height="32" fill="currentColor">
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
+          </svg>
         </div>
       );
     default:
-      return <MoreHorizontal size={24} className="text-slate-400" />;
+      return (
+        <div className="w-14 h-14 bg-slate-800 rounded-2xl shadow-md p-2 flex items-center justify-center text-slate-300 font-bold">
+          <MoreHorizontal size={24} />
+        </div>
+      );
   }
 }
 
@@ -535,7 +461,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN (GÖRSELDEKİ BİREBİR LOGO IZGARASI) ──────────────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN (KULLANICININ ÖZEL LOGO LİSTESİYLE) ──────────────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -554,9 +480,9 @@ export default function SellPage() {
                       : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600 hover:bg-[var(--k-surface-2)]'
                   }`}
                 >
-                  {/* Marka Logo Rozeti */}
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110">
-                    <BrandLogo id={b.id} />
+                  {/* Marka Logo Görseli / Rozeti */}
+                  <div className="transition-transform group-hover:scale-110 flex items-center justify-center">
+                    <BrandLogo id={b.id} logoUrl={b.logoUrl} />
                   </div>
 
                   {/* Marka İsmi */}
