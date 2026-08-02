@@ -46,14 +46,17 @@ const BRAND_CATEGORIES: Record<string, string[]> = {
 
 function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
+  const needsInvert = ['Apple', 'Honor', 'Infinix', 'General Mobile', 'Nothing', 'Omix', 'Reeder'].includes(id);
 
   if (logoUrl && !imgError) {
     return (
-      <div className="w-14 h-14 bg-white rounded-2xl shadow-md p-2 flex items-center justify-center border border-slate-700/30 overflow-hidden shrink-0">
+      <div className="w-full h-12 flex items-center justify-center shrink-0 px-2">
         <img
           src={logoUrl}
           alt={id}
-          className="w-full h-full object-contain"
+          className={`max-h-10 max-w-[85%] object-contain transition-all duration-300 group-hover:scale-110 ${
+            needsInvert ? 'brightness-200 invert' : ''
+          }`}
           onError={() => setImgError(true)}
           loading="lazy"
         />
@@ -61,11 +64,29 @@ function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
     );
   }
 
-  return (
-    <div className="w-14 h-14 bg-slate-800 rounded-2xl shadow-md p-2 flex items-center justify-center text-slate-300 font-bold">
-      <MoreHorizontal size={24} />
-    </div>
-  );
+  // Pure SVG / Clean Fallback (Kart üzerinde doğrudan, BEYAZ KUTU YOK!)
+  switch (id) {
+    case 'Apple':
+      return (
+        <div className="w-full h-12 flex items-center justify-center text-white">
+          <svg viewBox="0 0 170 170" width="34" height="34" fill="currentColor">
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
+          </svg>
+        </div>
+      );
+    case 'Xiaomi':
+      return (
+        <div className="w-10 h-10 bg-[#ff6900] text-white rounded-xl flex items-center justify-center font-black text-lg shadow-md">
+          mi
+        </div>
+      );
+    default:
+      return (
+        <div className="w-full h-12 flex items-center justify-center text-slate-400">
+          <MoreHorizontal size={28} />
+        </div>
+      );
+  }
 }
 
 const POPULAR_MODELS: Record<string, string[]> = {
@@ -578,7 +599,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN (KULLANICININ ÖZEL LOGO LİSTESİYLE) ──────────────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN (KULLANICININ ÖZEL LOGO LİSTESİYLE & BEYAZ KUTUSUZ) ──────────────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -597,9 +618,7 @@ export default function SellPage() {
                       : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600 hover:bg-[var(--k-surface-2)]'
                   }`}
                 >
-                  <div className="transition-transform group-hover:scale-110 flex items-center justify-center">
-                    <BrandLogo id={b.id} logoUrl={b.logoUrl} />
-                  </div>
+                  <BrandLogo id={b.id} logoUrl={b.logoUrl} />
 
                   <span className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight group-hover:text-white">
                     {b.label}
