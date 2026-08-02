@@ -35,37 +35,164 @@ const BRANDS = [
 
 function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
-  const needsInvert = ['Apple', 'Honor', 'Infinix', 'General Mobile', 'Nothing', 'Omix', 'Reeder'].includes(id);
+
+  // Koyu yazılı/saydam PNG'si siyah zeminde kaybolan markalar için temiz beyaz rozet
+  const whiteBgBrands = ['Samsung', 'Reeder', 'General Mobile', 'Casper', 'Nothing', 'Omix', 'Infinix', 'Honor'];
 
   if (logoUrl && !imgError) {
     return (
-      <div className="w-full h-12 flex items-center justify-center shrink-0 px-2">
-        <img
-          src={logoUrl}
-          alt={id}
-          className={`max-h-10 max-w-[85%] object-contain transition-all duration-300 group-hover:scale-110 ${
-            needsInvert ? 'brightness-200 invert' : ''
-          }`}
-          onError={() => setImgError(true)}
-          loading="lazy"
-        />
+      <div className="w-full h-12 flex items-center justify-center shrink-0 px-1">
+        <div className={`h-10 px-3 py-1 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110 ${
+          whiteBgBrands.includes(id) ? 'bg-white shadow-md border border-slate-200' : ''
+        }`}>
+          <img
+            src={logoUrl}
+            alt={id}
+            className="max-h-8 max-w-[100px] object-contain"
+            onError={() => setImgError(true)}
+            loading="lazy"
+          />
+        </div>
       </div>
     );
   }
 
+  // Özel SVG / Rozet Fallback (Mükemmel Netlik)
   switch (id) {
     case 'Apple':
       return (
         <div className="w-full h-12 flex items-center justify-center text-white">
-          <svg viewBox="0 0 170 170" width="34" height="34" fill="currentColor">
+          <svg viewBox="0 0 170 170" width="36" height="36" fill="currentColor">
             <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
           </svg>
         </div>
       );
+    case 'Samsung':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-[#1428a0] px-3.5 py-1.5 rounded-xl font-black tracking-[0.2em] text-xs shadow-md border border-slate-200">
+            SAMSUNG
+          </div>
+        </div>
+      );
     case 'Xiaomi':
       return (
-        <div className="w-10 h-10 bg-[#ff6900] text-white rounded-xl flex items-center justify-center font-black text-lg shadow-md">
-          mi
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="w-10 h-10 bg-[#ff6900] text-white rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-orange-500/20">
+            mi
+          </div>
+        </div>
+      );
+    case 'Huawei':
+      return (
+        <div className="w-full h-12 flex items-center justify-center gap-1.5 text-white">
+          <div className="w-8 h-8 rounded-full bg-[#c7000b] flex items-center justify-center shadow-md">
+            <span className="text-white font-black text-xs">H</span>
+          </div>
+        </div>
+      );
+    case 'Oppo':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#00875a] text-white px-3.5 py-1.5 rounded-lg font-black tracking-widest text-xs shadow-md">
+            oppo
+          </div>
+        </div>
+      );
+    case 'realme':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#ffc900] text-black px-3.5 py-1.5 rounded-lg font-black tracking-tight text-xs shadow-md">
+            realme
+          </div>
+        </div>
+      );
+    case 'Poco':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#ffe800] text-black px-4 py-1.5 rounded-lg font-black tracking-widest text-xs shadow-md">
+            POCO
+          </div>
+        </div>
+      );
+    case 'vivo':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#0066ff] text-white px-4 py-1.5 rounded-lg font-black tracking-widest text-xs shadow-md">
+            vivo
+          </div>
+        </div>
+      );
+    case 'Honor':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-slate-900 px-3.5 py-1.5 rounded-xl font-black tracking-widest text-xs shadow-md border border-slate-200">
+            HONOR
+          </div>
+        </div>
+      );
+    case 'Tecno':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#0052cc] text-white px-3.5 py-1.5 rounded-lg font-black tracking-wider text-xs shadow-md">
+            TECNO
+          </div>
+        </div>
+      );
+    case 'Infinix':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-emerald-600 px-3.5 py-1.5 rounded-xl font-black tracking-wider text-xs shadow-md border border-slate-200">
+            Infinix
+          </div>
+        </div>
+      );
+    case 'Reeder':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-slate-900 px-3.5 py-1.5 rounded-xl font-black tracking-wider text-xs shadow-md border border-slate-200">
+            reeder
+          </div>
+        </div>
+      );
+    case 'General Mobile':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-red-600 px-3.5 py-1.5 rounded-xl font-black tracking-widest text-xs shadow-md border border-slate-200">
+            GM
+          </div>
+        </div>
+      );
+    case 'Casper':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-[#002C6C] px-3.5 py-1.5 rounded-xl font-black tracking-wider text-xs shadow-md border border-slate-200">
+            Casper
+          </div>
+        </div>
+      );
+    case 'TCL':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-[#e2001a] text-white px-4 py-1.5 rounded-lg font-black tracking-widest text-xs shadow-md">
+            TCL
+          </div>
+        </div>
+      );
+    case 'Nothing':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-black px-3.5 py-1.5 rounded-xl font-mono font-bold tracking-widest text-xs shadow-md border border-slate-200">
+            NOTHING
+          </div>
+        </div>
+      );
+    case 'Omix':
+      return (
+        <div className="w-full h-12 flex items-center justify-center">
+          <div className="bg-white text-black px-3.5 py-1.5 rounded-xl font-black tracking-widest text-xs shadow-md border border-slate-200">
+            OMIX
+          </div>
         </div>
       );
     default:
@@ -587,7 +714,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN ──────────────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN (YÜKSEK NETLİKTE TEMİZ BEYAZ ROZET DESTEĞİ İLE) ──────────────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -618,7 +745,7 @@ export default function SellPage() {
           </div>
         )}
 
-        {/* ── STEP 1: Model Seçimi & Detaylar (KATEGORİ TAMAMEN KALDIRILDI) ────────────────── */}
+        {/* ── STEP 1: Model Seçimi & Detaylar ────────────────── */}
         {step === 1 && (
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="flex items-center justify-between">
@@ -746,7 +873,7 @@ export default function SellPage() {
               </div>
             </div>
 
-            {/* Detay Açıklama Kutusu (Kaç aylık cihaz, garantisi, kozmetiği vb.) */}
+            {/* Detay Açıklama Kutusu */}
             <div>
               <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
                 Cihaz Detayları & Açıklama (Opsiyonel)
