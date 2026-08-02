@@ -13,18 +13,19 @@
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 
-const resend   = new Resend(process.env.RESEND_API_KEY);
+const resend   = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const from     = process.env.EMAIL_FROM ?? 'onboarding@resend.dev';
 const siteName = 'Mytt';
 const siteUrl  = process.env.FRONTEND_URL ?? 'http://localhost:3000';
 
 const smtpTransport = (() => {
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER ?? process.env.GMAIL_USER;
-  const pass = process.env.SMTP_PASS ?? process.env.GMAIL_APP_PASSWORD;
+  const host = process.env.SMTP_HOST ?? 'smtp.gmail.com';
+  const user = process.env.SMTP_USER ?? process.env.GMAIL_USER ?? 'mytt.iletisim@gmail.com';
+  const rawPass = process.env.SMTP_PASS ?? process.env.GMAIL_APP_PASSWORD ?? 'rykj tusu ddtx vqev';
+  const pass = rawPass ? rawPass.replace(/\s+/g, '') : '';
   if (!user || !pass) return null;
   return nodemailer.createTransport({
-    host: host ?? 'smtp.gmail.com',
+    host,
     port: Number(process.env.SMTP_PORT ?? 587),
     secure: process.env.SMTP_SECURE === 'true',
     auth: { user, pass },
@@ -34,16 +35,16 @@ const smtpTransport = (() => {
 async function send(to: string, subject: string, html: string): Promise<void> {
   if (smtpTransport) {
     try {
-      const fromName = `${siteName} <${process.env.SMTP_USER ?? process.env.GMAIL_USER}>`;
+      const fromName = `${siteName} <${process.env.SMTP_USER ?? process.env.GMAIL_USER ?? 'mytt.iletisim@gmail.com'}>`;
       await smtpTransport.sendMail({ from: fromName, to, subject, html });
-      console.log(`✉️  SMTP ile gönderildi → ${to}`);
+      console.log(`✉️  Gmail SMTP ile başarıyla gönderildi → ${to}`);
       return;
     } catch (err: any) {
-      console.error(`SMTP hatası (${to}): ${err?.message}`);
+      console.error(`Gmail SMTP hatası (${to}): ${err?.message}`);
     }
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!resend) {
     console.log(`[MAIL STUB] To: ${to} | Subject: ${subject}`);
     return;
   }
@@ -63,34 +64,43 @@ async function send(to: string, subject: string, html: string): Promise<void> {
 
 export async function sendVerificationCode(opts: { email: string; name: string; code: string }): Promise<void> {
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`\n${'═'.repeat(50)}\n🔑  OTP KODU  |  ${opts.email}\n    KOD: ${opts.code}\n${'═'.repeat(50)}`);
+    console.log(`\n${'═'.repeat(50)}\n🔑  GMAIL SMTP OTP KODU  |  ${opts.email}\n    KOD: ${opts.code}\n${'═'.repeat(50)}`);
   }
   const digits = opts.code.split('').map(d =>
-    `<span style="display:inline-block;width:44px;height:56px;line-height:56px;text-align:center;font-size:28px;font-weight:900;color:#18181b;background:#f4f4f5;border-radius:10px;margin:0 3px;font-family:monospace,monospace">${d}</span>`
+    `<span style="display:inline-block;width:44px;height:56px;line-height:56px;text-align:center;font-size:30px;font-weight:900;color:#f97316;background:#0f172a;border:2px solid #f97316;border-radius:12px;margin:0 4px;box-shadow:0 4px 12px rgba(249,115,22,0.2);font-family:Consolas,monospace">${d}</span>`
   ).join('');
+
   await send(
     opts.email,
-    `${opts.code} — ${siteName} Doğrulama Kodunuz`,
-    `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#f8fafc">
-      <div style="background:#fff;border-radius:16px;padding:36px 32px;border:1px solid #e2e8f0">
-        <div style="text-align:center;margin-bottom:24px">
-          <span style="font-size:28px;font-weight:900;color:#18181b;letter-spacing:-1px">my<span style="color:#f97316">tt</span></span>
+    `🔑 ${opts.code} — MYTT E-posta Doğrulama Kodunuz`,
+    `<div style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:560px;margin:0 auto;padding:40px 20px;background:#090d16">
+      <div style="background:#131927;border-radius:24px;padding:40px 32px;border:1px solid #1e293b;box-shadow:0 20px 40px rgba(0,0,0,0.5)">
+        <div style="text-align:center;margin-bottom:28px">
+          <span style="font-size:32px;font-weight:900;color:#ffffff;letter-spacing:-1px">my<span style="color:#f97316">tt</span></span>
+          <p style="color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin:4px 0 0">Türkiye'nin İhale Platformu</p>
         </div>
-        <h2 style="color:#18181b;margin:0 0 8px;font-size:20px;font-weight:800;text-align:center">E-posta Doğrulama Kodu</h2>
-        <p style="color:#71717a;margin:0 0 28px;font-size:14px;line-height:1.6;text-align:center">
-          Merhaba <strong style="color:#18181b">${opts.name}</strong>, hesabınızı doğrulamak için aşağıdaki 6 haneli kodu girin.
+
+        <h2 style="color:#ffffff;margin:0 0 10px;font-size:22px;font-weight:800;text-align:center">E-posta Doğrulama Kodu</h2>
+        <p style="color:#94a3b8;margin:0 0 28px;font-size:14px;line-height:1.6;text-align:center">
+          Merhaba <strong style="color:#ffffff">${opts.name}</strong>,<br>İşleminizi tamamlamak için 6 haneli güvenlik kodunuz:
         </p>
-        <div style="text-align:center;margin:0 0 28px;padding:20px;background:#fafafa;border-radius:12px;border:1px solid #e2e8f0">
+
+        <div style="text-align:center;margin:0 0 28px;padding:24px 16px;background:#090d16;border-radius:16px;border:1px solid #334155">
           ${digits}
         </div>
-        <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:14px 16px;margin-bottom:20px">
-          <p style="margin:0;font-size:12px;color:#9a3412;line-height:1.6">
-            ⏰ <strong>Bu kod 15 dakika geçerlidir.</strong> Süresi dolmadan girin.<br>
-            Bu işlemi siz yapmadıysanız bu emaili dikkate almayın.
+
+        <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:14px;padding:16px 18px;margin-bottom:24px;text-align:center">
+          <p style="margin:0;font-size:13px;color:#fb923c;line-height:1.5 font-weight:600">
+            ⏰ <strong>Bu onay kodu 5 dakika geçerlidir.</strong><br>
+            Güvenliğiniz için bu kodu kimseyle paylaşmayın.
           </p>
         </div>
-        <p style="color:#a1a1aa;font-size:11px;margin:0;text-align:center">
-          ${siteName} · Güvenli Alışveriş · <a href="${siteUrl}" style="color:#a1a1aa">mytt.com.tr</a>
+
+        <hr style="border:none;border-top:1px solid #1e293b;margin:28px 0 20px" />
+
+        <p style="color:#64748b;font-size:11px;margin:0;text-align:center;line-height:1.5">
+          Bu e-posta <strong>MYTT Gmail SMTP Güvenlik Servisi</strong> tarafından otomatik gönderilmiştir.<br>
+          <a href="${siteUrl}" style="color:#f97316;text-decoration:none;font-weight:700">mytt.com.tr</a>
         </p>
       </div>
     </div>`,

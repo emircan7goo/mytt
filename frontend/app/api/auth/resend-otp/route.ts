@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   if (user && !user.emailVerified) {
     const otp = generateOtp();
     const emailVerifyToken = `${user.id.slice(0, 8)}-${otp}`;
-    const emailVerifyExpiry = new Date(Date.now() + 15 * 60 * 1000);
+    const emailVerifyExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
     await prisma.user.update({
       where: { id: user.id },
