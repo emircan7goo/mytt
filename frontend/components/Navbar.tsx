@@ -267,48 +267,53 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="sticky top-0 z-[50] w-full transition-all duration-300"
-        style={{
-          background: scrolled ? 'var(--k-surface)' : 'var(--k-canvas)',
-          backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
-          borderBottom: '3px solid #FF6000',
-        }}
+        className="sticky top-0 z-[50] w-full transition-all duration-300 bg-[#090D16]/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/80"
       >
-        {/* ── Ana Çubuk ───────────────────────────────────────────────────── */}
-        <div className="max-w-[1280px] mx-auto px-4 lg:px-8 h-[64px] flex items-center gap-3">
+        {/* ── Ana Çubuk (Apple Glassmorphism Layout) ─────────────────────────────────── */}
+        <div className="max-w-[1280px] mx-auto px-4 lg:px-8 h-[68px] flex items-center gap-4">
 
           {/* Hamburger (mobil) */}
           <button
-            className="lg:hidden w-9 h-9 flex items-center justify-center rounded-[8px] transition-all"
-            style={{ color: 'var(--k-ink-2)' }}
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-200 transition-all hover:bg-white/10"
             onClick={() => setShowMobileMenu(true)}
             aria-label="Menüyü aç"
           >
             <Menu size={20} />
           </button>
 
-          {/* Logo — Yenilenmiş İkonik MYTT Logosu ve Rozeti */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-6 py-1">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-lg shadow-[#FF6000]/30 border border-orange-400/30 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
+          {/* Logo — Yarısı Turuncu Yarısı Beyaz 'y' Vurgulu Özel MYTT Logosu */}
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-2 sm:mr-6 py-1">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-lg shadow-[#FF6000]/40 border border-orange-400/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <Zap className="text-white fill-white w-5 h-5 animate-pulse" />
               </div>
               <div className="flex flex-col">
-                <span className="font-black text-2xl sm:text-3xl tracking-tight text-white flex items-center leading-none font-sans select-none">
-                  my<span className="text-[#FF6000] drop-shadow-[0_0_15px_rgba(255,96,0,0.9)]">tt</span>
+                <span className="font-black text-3xl sm:text-4xl tracking-tighter text-white flex items-center leading-none font-sans select-none">
+                  m
+                  <span
+                    className="inline-block font-black tracking-tighter mx-[0.5px] group-hover:scale-110 transition-transform duration-300"
+                    style={{
+                      backgroundImage: 'linear-gradient(to bottom, #FF6000 50%, #FFFFFF 50%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      filter: 'drop-shadow(0 0 12px rgba(255,96,0,0.6))',
+                    }}
+                  >
+                    y
+                  </span>
+                  tt
                 </span>
-                <span className="text-[9px] font-extrabold tracking-[0.25em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
+                <span className="text-[9px] font-black tracking-[0.28em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
                   İHALE PLATFORMU
                 </span>
               </div>
             </div>
           </Link>
 
-          {/* Arama (masaüstü) */}
+          {/* Arama (Masaüstü Apple Glass Arama Çubuğu) */}
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] mx-auto">
             <div
-              className="group/search flex items-center w-full h-[44px] rounded-2xl transition-all overflow-hidden pl-4 pr-1.5 bg-[var(--k-surface-2)] border border-[var(--k-line-2)] focus-within:border-[#FF6000] focus-within:ring-2 focus-within:ring-[#FF6000]/20 shadow-inner"
+              className="group/search flex items-center w-full h-[44px] rounded-full transition-all overflow-hidden pl-4 pr-1.5 bg-white/5 border border-white/10 focus-within:border-[#FF6000]/80 focus-within:bg-white/10 focus-within:ring-4 focus-within:ring-[#FF6000]/15 backdrop-blur-md shadow-inner"
             >
               <Search size={17} className="flex-shrink-0 text-[#FF6000]" />
               <input
@@ -320,7 +325,7 @@ export default function Navbar() {
               />
               <button
                 type="submit"
-                className="h-[34px] px-5 rounded-xl text-xs font-black tracking-wider flex-shrink-0 transition-all active:scale-95 bg-gradient-to-r from-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white shadow-md shadow-[#FF6000]/20 flex items-center gap-1.5"
+                className="h-[34px] px-5 rounded-full text-xs font-black tracking-wider flex-shrink-0 transition-all active:scale-95 bg-gradient-to-r from-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white shadow-md shadow-[#FF6000]/30 flex items-center gap-1.5"
               >
                 <span>ARA</span>
               </button>
@@ -328,12 +333,12 @@ export default function Navbar() {
           </form>
 
           {/* Sağ aksiyonlar */}
-          <div className="flex items-center gap-2 ml-auto">
+          <div className="flex items-center gap-2.5 ml-auto">
 
             {/* Cihazını Sat CTA */}
             <Link
               href="/sell"
-              className="inline-flex items-center gap-2 h-10 px-4 sm:px-6 rounded-2xl text-xs sm:text-sm font-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-[#FF6000]/30 bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] text-white border border-orange-400/30"
+              className="inline-flex items-center gap-2 h-10 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-black transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#FF6000]/35 bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] text-white border border-orange-400/30"
             >
               <Smartphone size={16} strokeWidth={2.5} className="fill-white/20" />
               <span className="truncate">Cihazını Sat</span>
