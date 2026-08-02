@@ -1,58 +1,30 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Store, Truck, Lock, CheckCircle2, Smartphone, Award, CreditCard, ChevronRight } from 'lucide-react';
-
-const STEPS = [
-  {
-    id: 1,
-    title: '1. Cihazını Ekle',
-    badge: '30 SANİYEDE ÜCRETSİZ',
-    heading: 'Cihaz Bilgilerini Gir & İhaleyi Başlat',
-    description: 'Marka, model ve durum bilgilerini seç. Cihazın anında 150+ yetkili bayinin canlı ihale ekranına düşsün.',
-    icon: Smartphone,
-    color: 'from-orange-500 to-amber-500',
-    statLabel: 'Ortalama İhale Süresi',
-    statValue: '1 Saat',
-  },
-  {
-    id: 2,
-    title: '2. Bayiler Yarışsın',
-    badge: '150+ ONAYLI BAYİ',
-    heading: 'Bayiler En Yüksek Fiyat İçin Yarışsın',
-    description: 'Kapalı ihalemiz sayesinde yetkili bayiler birbirlerinin teklifini görmeden en yüksek rakamı vermek için rekabet eder.',
-    icon: Store,
-    color: 'from-amber-500 to-emerald-500',
-    statLabel: 'En Yüksek Fiyat Garantisi',
-    statValue: '%100 Net',
-  },
-  {
-    id: 3,
-    title: '3. Anında Ödeme',
-    badge: 'BDDK ESCROW GÜVENCESİ',
-    heading: 'Kapıdan Ücretsiz Teslim & 15 Dk Ödeme',
-    description: 'En yüksek teklifi onaylayın, VIP kuryemiz kapınızdan teslim alsın. Ekspertiz onayından 15 dk sonra paranız bankanızda!',
-    icon: CreditCard,
-    color: 'from-emerald-500 to-teal-500',
-    statLabel: 'Banka Transfer Süresi',
-    statValue: '15 Dakika',
-  },
-];
+import { ArrowRight, ShieldCheck, Zap, Store, Truck, Lock, CheckCircle2, TrendingUp, Sparkles, Smartphone } from 'lucide-react';
 
 export default function QuickValuationWidget() {
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [demoPrice, setDemoPrice] = useState(36500);
+  const [isSlamming, setIsSlamming] = useState(false);
+  const [currentBump, setCurrentBump] = useState(500);
 
-  // Otomatik geçiş efekti (her 3.5 saniyede bir sonraki adıma pürüzsüz geçiş)
+  // Sağdan Uçup Fiyata Çarpan Rakam Animasyonu
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStepIndex((prev) => (prev + 1) % STEPS.length);
-    }, 3500);
+    const interval = setInterval(() => {
+      const bump = [450, 600, 750, 900][Math.floor(Math.random() * 4)];
+      setCurrentBump(bump);
+      setIsSlamming(true);
 
-    return () => clearInterval(timer);
+      setDemoPrice((prev) => (prev >= 44500 ? 36500 : prev + bump));
+
+      setTimeout(() => setIsSlamming(false), 950);
+    }, 3200);
+
+    return () => clearInterval(interval);
   }, []);
 
-  const activeStep = STEPS[activeStepIndex];
-  const StepIcon = activeStep.icon;
+  const formatTL = (val: number) =>
+    new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(val);
 
   return (
     <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-[var(--k-surface)] border border-[var(--k-line-2)] p-4 sm:p-10 shadow-2xl relative overflow-hidden my-4 sm:my-8">
@@ -110,61 +82,55 @@ export default function QuickValuationWidget() {
 
         </div>
 
-        {/* Sağ Taraf: İNTERAKTİF DİNAMİK İHALE SÜRECİ ŞOV KARTI (DİNAMİK GEÇİŞ EFEKTLİ) */}
+        {/* Sağ Taraf: SAĞDAN UÇAN RAKAM PATLAMALI CANLI İHALE ANİMASYON KARTI */}
         <div className="lg:col-span-6 min-w-0 w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-[var(--k-void)] p-5 sm:p-7 text-white text-left space-y-4 shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/50 group">
+          <div className={`rounded-2xl sm:rounded-3xl bg-[var(--k-void)] p-5 sm:p-7 text-white text-left space-y-4 shadow-2xl relative overflow-hidden transition-all duration-300 border ${isSlamming ? 'border-[var(--k-hot)] shadow-[0_0_40px_rgba(255,96,0,0.6)] scale-[1.02]' : 'border-[var(--k-hot-deep)]/40'}`}>
             
             {/* Arka Plan Neonsal Parlama */}
             <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-gradient-to-br from-[var(--k-hot)]/20 to-amber-500/10 blur-3xl pointer-events-none" />
 
-            {/* İnteraktif Adım Sekmeleri (Tab Switcher) */}
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-[var(--k-surface)] rounded-xl border border-[var(--k-line-2)]">
-              {STEPS.map((s, idx) => (
-                <button
-                  key={s.id}
-                  onClick={() => setActiveStepIndex(idx)}
-                  className={`py-2 px-2 rounded-lg text-[10px] sm:text-xs font-black transition-all duration-300 flex items-center justify-center gap-1.5 ${
-                    activeStepIndex === idx
-                      ? 'bg-gradient-to-r from-[var(--k-hot)] to-[var(--k-hot-deep)] text-white shadow-md'
-                      : 'text-[var(--k-ink-4)] hover:text-white hover:bg-[var(--k-surface-2)]'
-                  }`}
-                >
-                  <span className="truncate">{s.title}</span>
-                </button>
-              ))}
+            {/* Üst Başlık & Model Etiketi */}
+            <div className="flex items-center justify-between border-b border-[var(--k-line-2)] pb-3 flex-wrap gap-2">
+              <div className="flex items-center gap-2 text-xs font-black text-[var(--k-hot)]">
+                <Smartphone size={16} className="text-[var(--k-hot)]" />
+                <span className="uppercase tracking-wider">TEMSİLİ İHALE ÖRNEĞİ (ÖRN. IPHONE 15 PRO)</span>
+              </div>
+              <span className="text-[10px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full">
+                Örnek Akış
+              </span>
             </div>
 
-            {/* ADIM SAHNESİ (DİNAMİK KAYDIRMALI GEÇİŞ EFEKTİ) */}
-            <div className="key-stage min-h-[175px] bg-gradient-to-b from-[var(--k-surface)] to-[var(--k-void)] p-5 rounded-2xl border border-[var(--k-line-2)] flex flex-col justify-between relative overflow-hidden transition-all duration-500 animate-in fade-in zoom-in-95">
+            {/* FİYAT YÜKSELME & SAĞDAN UÇAN RAKAM ANİMASYON ALANI */}
+            <div className="py-4 text-center bg-gradient-to-b from-[var(--k-surface)] to-[var(--k-void)] p-5 rounded-2xl border border-[var(--k-line-2)] space-y-3 relative overflow-hidden shadow-inner">
               
-              {/* Adım Başlığı & Rozeti */}
-              <div className="flex items-center justify-between border-b border-[var(--k-line-2)] pb-2.5">
-                <div className="flex items-center gap-2">
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${activeStep.color} flex items-center justify-center text-white shadow-md`}>
-                    <StepIcon size={18} />
+              <div className="text-[11px] font-bold text-[var(--k-ink-3)] uppercase tracking-widest flex items-center justify-center gap-1.5">
+                <Sparkles size={14} className="text-[var(--k-hot)] animate-spin" />
+                <span>150+ BAYİ KAPALI İHALEDE YARIŞTIKÇA TEKLİF YÜKSELİR</span>
+              </div>
+
+              {/* SAĞDAN UÇAN FİYAT ARTIŞ ROZETİ VE RAKAM PATLAMASI */}
+              <div className="relative flex flex-col items-center justify-center min-h-[75px]">
+                
+                {/* Sağdan Fırlayan Rakam Rozeti */}
+                {isSlamming && (
+                  <div className="absolute top-0 right-2 sm:right-6 animate-in slide-in-from-right-12 fade-in duration-400 z-20 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-xs px-3.5 py-1 rounded-full shadow-lg shadow-emerald-500/40 border border-emerald-300 flex items-center gap-1.5">
+                    <TrendingUp size={14} className="animate-bounce" />
+                    <span>+{formatTL(currentBump)} ₺ TEKLİF YÜKSELDİ!</span>
                   </div>
-                  <span className="text-xs sm:text-sm font-black text-white">{activeStep.heading}</span>
+                )}
+
+                <div className={`text-4xl sm:text-6xl font-black tracking-tight transition-all duration-300 ${isSlamming ? 'scale-115 text-[var(--k-hot-2)] drop-shadow-[0_0_35px_rgba(255,96,0,0.95)]' : 'text-white drop-shadow-[0_0_15px_rgba(255,96,0,0.3)]'}`}>
+                  {formatTL(demoPrice)} <span className="text-2xl sm:text-4xl text-[var(--k-hot)]">₺</span>
                 </div>
-                <span className="text-[9px] font-black text-[var(--k-hot)] bg-[var(--k-hot-wash)] border border-[var(--k-line-hot)] px-2.5 py-0.5 rounded-full">
-                  {activeStep.badge}
-                </span>
               </div>
 
-              {/* Adım Açıklaması */}
-              <p className="text-xs text-[var(--k-ink-3)] font-medium leading-relaxed my-2">
-                {activeStep.description}
-              </p>
-
-              {/* İstatistik Metriği */}
-              <div className="flex items-center justify-between pt-2 border-t border-[var(--k-line-2)] text-xs">
-                <span className="font-bold text-[var(--k-ink-4)]">{activeStep.statLabel}:</span>
-                <span className="font-black text-[var(--k-hot)] text-sm">{activeStep.statValue}</span>
+              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-white bg-[var(--k-hot-deep)] border border-[var(--k-hot-deep)]/40 px-4 py-1.5 rounded-full shadow-md">
+                <span>+ Teklif Geldikçe Fiyat Anında Yukarı Çarpar</span>
               </div>
-
             </div>
 
             {/* İHALE GÜVENCE GARANTİSİ MADDELERİ */}
-            <div className="pt-2 border-t border-[var(--k-line-2)] space-y-2 text-xs font-semibold text-[var(--k-ink-2)]">
+            <div className="pt-2 border-t border-[var(--k-line-2)] space-y-2.5 text-xs font-semibold text-[var(--k-ink-2)]">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-[var(--k-hot)]">İHALE GÜVENCE GARANTİSİ:</span>
                 <ShieldCheck size={16} className="text-[var(--k-hot)]" />
@@ -189,11 +155,11 @@ export default function QuickValuationWidget() {
             <div className="pt-1">
               <Link
                 href="/sell"
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98"
               >
                 <Zap size={16} className="fill-white shrink-0" />
                 <span>Cihazını İhaleye Çıkar (En Yüksek Fiyatı Al)</span>
-                <ChevronRight size={16} strokeWidth={2.5} className="shrink-0" />
+                <ArrowRight size={16} strokeWidth={2.5} className="shrink-0" />
               </Link>
             </div>
 
