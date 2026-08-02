@@ -12,173 +12,55 @@ import { useApp } from '@/providers/AppProvider';
 import { useCreateSellRequest, useMySellRequest } from '@/lib/hooks/useSellRequests';
 import apiClient from '@/lib/api';
 
-// ── 18 Marka Tanımı ──────────────────────────────────────────────────────────
+// ── 18 Marka Tanımı ve Kullanıcının Birebir Özel Logo URL'leri ───────────────────────
 const BRANDS = [
-  { id: 'Apple',          label: 'Apple' },
-  { id: 'Samsung',        label: 'Samsung' },
-  { id: 'Xiaomi',         label: 'Xiaomi' },
-  { id: 'Huawei',         label: 'Huawei' },
-  { id: 'Oppo',           label: 'Oppo' },
-  { id: 'realme',         label: 'realme' },
-  { id: 'Poco',           label: 'Poco' },
-  { id: 'vivo',           label: 'vivo' },
-  { id: 'Honor',          label: 'Honor' },
-  { id: 'Infinix',        label: 'Infinix' },
-  { id: 'Reeder',         label: 'Reeder' },
-  { id: 'General Mobile', label: 'General Mobile' },
-  { id: 'Casper',         label: 'Casper' },
-  { id: 'TCL',            label: 'TCL' },
-  { id: 'Nothing',        label: 'Nothing' },
-  { id: 'Omix',           label: 'Omix' },
-  { id: 'Diğer',          label: 'DİĞER' },
+  { id: 'Apple',          label: 'Apple',          logoUrl: 'https://cdn-icons-png.magnific.com/512/0/747.png' },
+  { id: 'Samsung',        label: 'Samsung',        logoUrl: 'https://static.vecteezy.com/system/resources/previews/020/975/545/non_2x/samsung-logo-samsung-icon-transparent-free-png.png' },
+  { id: 'Xiaomi',         label: 'Xiaomi',         logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/960px-Xiaomi_logo_%282021-%29.svg.png' },
+  { id: 'Huawei',         label: 'Huawei',         logoUrl: 'https://www.freepnglogos.com/uploads/huawei-logo-png/huawei-logo-transparent-2.png' },
+  { id: 'Oppo',           label: 'Oppo',           logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/13/OPPO_Logo_wiki.png' },
+  { id: 'realme',         label: 'realme',         logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Realme_logo.png' },
+  { id: 'Poco',           label: 'Poco',           logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Poco_Smartphone_Company_logo.png' },
+  { id: 'vivo',           label: 'vivo',           logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqWmUV8HRwaOavdOGa_r_4EkvKnT3tAkMMvw&s' },
+  { id: 'Honor',          label: 'Honor',          logoUrl: 'https://www.logo.wine/a/logo/Honor_8x/Honor_8x-Logo.wine.svg' },
+  { id: 'Infinix',        label: 'Infinix',        logoUrl: 'https://static.vecteezy.com/system/resources/previews/068/973/775/non_2x/infinix-black-wordmark-logo-on-transparent-background-free-png.png' },
+  { id: 'Reeder',         label: 'Reeder',         logoUrl: 'https://iconlogovector.com/uploads/images/2024/12/lg-675e2298a5d23-Reeder.webp' },
+  { id: 'General Mobile', label: 'General Mobile', logoUrl: 'https://www.dijifabrik.com/wp-content/uploads/2019/04/Group-1026@2x.png' },
+  { id: 'Casper',         label: 'Casper',         logoUrl: 'https://www.casper.com.tr/uploads/2021/01/casper-logo-lacivert.png' },
+  { id: 'TCL',            label: 'TCL',            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Logo_of_the_TCL_Corporation.svg/1280px-Logo_of_the_TCL_Corporation.svg.png' },
+  { id: 'Nothing',        label: 'Nothing',        logoUrl: 'https://cdn.nothing.community/2025-12-14/1765733320-179713-nothing-01.jpg' },
+  { id: 'Omix',           label: 'Omix',           logoUrl: 'https://images.seeklogo.com/logo-png/52/1/omix-telefon-logo-png_seeklogo-522593.png' },
+  { id: 'Diğer',          label: 'DİĞER',          logoUrl: '' },
 ];
 
-// ── Her Markaya Özel Kusursuz, Standart Boyutlu Logo Rozeti ─────────────────
-function BrandLogo({ id }: { id: string }) {
-  switch (id) {
-    case 'Apple':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <svg viewBox="0 0 170 170" className="w-9 h-9 fill-white text-white drop-shadow-md">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
-          </svg>
+// ── Kullanıcının Verdiği URL'leri Kusursuz Hizalayan Beyaz Rozet Komponenti ────────
+function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
+  const [imgError, setImgError] = useState(false);
+
+  if (logoUrl && !imgError) {
+    return (
+      <div className="w-full h-12 flex items-center justify-center shrink-0">
+        <div className="w-24 h-11 bg-white rounded-xl shadow-md border border-slate-200 p-2 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <img
+            src={logoUrl}
+            alt={id}
+            className="max-h-7 max-w-[76px] w-auto h-auto object-contain"
+            onError={() => setImgError(true)}
+            loading="lazy"
+          />
         </div>
-      );
-    case 'Samsung':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-[#1428A0] h-9 px-4 rounded-xl font-black tracking-[0.18em] text-xs shadow-md border border-slate-200 flex items-center justify-center">
-            SAMSUNG
-          </div>
-        </div>
-      );
-    case 'Xiaomi':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="w-9 h-9 bg-[#FF6900] text-white rounded-xl flex items-center justify-center font-black text-lg shadow-lg shadow-orange-500/30">
-            mi
-          </div>
-        </div>
-      );
-    case 'Huawei':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#C7000B] text-white h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md flex items-center justify-center">
-            HUAWEI
-          </div>
-        </div>
-      );
-    case 'Oppo':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#00875A] text-white h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md flex items-center justify-center">
-            oppo
-          </div>
-        </div>
-      );
-    case 'realme':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#FFC900] text-black h-9 px-4 rounded-xl font-black text-xs tracking-tight shadow-md flex items-center justify-center">
-            realme
-          </div>
-        </div>
-      );
-    case 'Poco':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#FFE800] text-black h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md flex items-center justify-center">
-            POCO
-          </div>
-        </div>
-      );
-    case 'vivo':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#0066FF] text-white h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md flex items-center justify-center">
-            vivo
-          </div>
-        </div>
-      );
-    case 'Honor':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-slate-900 h-9 px-4 rounded-xl font-black text-xs tracking-[0.2em] shadow-md border border-slate-200 flex items-center justify-center">
-            HONOR
-          </div>
-        </div>
-      );
-    case 'Tecno':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#0052CC] text-white h-9 px-4 rounded-xl font-black text-xs tracking-wider shadow-md flex items-center justify-center">
-            TECNO
-          </div>
-        </div>
-      );
-    case 'Infinix':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-emerald-600 h-9 px-4 rounded-xl font-black text-xs tracking-wider shadow-md border border-slate-200 flex items-center justify-center">
-            Infinix
-          </div>
-        </div>
-      );
-    case 'Reeder':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-slate-900 h-9 px-4 rounded-xl font-black text-xs tracking-wider shadow-md border border-slate-200 flex items-center justify-center">
-            reeder
-          </div>
-        </div>
-      );
-    case 'General Mobile':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-red-600 h-9 px-3 rounded-xl font-black text-[10px] tracking-wider shadow-md border border-slate-200 flex items-center justify-center whitespace-nowrap">
-            GENERAL MOBILE
-          </div>
-        </div>
-      );
-    case 'Casper':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-[#002C6C] h-9 px-4 rounded-xl font-black text-xs tracking-wider shadow-md border border-slate-200 flex items-center justify-center">
-            Casper
-          </div>
-        </div>
-      );
-    case 'TCL':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-[#E2001A] text-white h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md flex items-center justify-center">
-            TCL
-          </div>
-        </div>
-      );
-    case 'Nothing':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-black h-9 px-4 rounded-xl font-mono font-bold text-xs tracking-widest shadow-md border border-slate-200 flex items-center justify-center">
-            NOTHING
-          </div>
-        </div>
-      );
-    case 'Omix':
-      return (
-        <div className="w-full h-12 flex items-center justify-center">
-          <div className="bg-white text-black h-9 px-4 rounded-xl font-black text-xs tracking-widest shadow-md border border-slate-200 flex items-center justify-center">
-            OMIX
-          </div>
-        </div>
-      );
-    default:
-      return (
-        <div className="w-full h-12 flex items-center justify-center text-slate-400">
-          <MoreHorizontal size={28} />
-        </div>
-      );
+      </div>
+    );
   }
+
+  // Görsel yüklenemezse veya Diğer seçeneği ise şık fallback
+  return (
+    <div className="w-full h-12 flex items-center justify-center shrink-0">
+      <div className="w-24 h-11 bg-slate-800 text-slate-200 rounded-xl shadow-md border border-slate-700 p-2 flex items-center justify-center font-bold text-xs">
+        {id === 'Diğer' ? <MoreHorizontal size={24} /> : id}
+      </div>
+    </div>
+  );
 }
 
 const POPULAR_MODELS: Record<string, string[]> = {
@@ -691,7 +573,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN (HER MARKA İÇİN KUSURSUZ TASARLANMIŞ EŞİT ROZETLER) ──────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN (GÖNDERDİĞİNİZ 16 BİREBİR URL İLE ORANTILI BEYAZ ROZETLER) ──────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -710,7 +592,7 @@ export default function SellPage() {
                       : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600 hover:bg-[var(--k-surface-2)]'
                   }`}
                 >
-                  <BrandLogo id={b.id} />
+                  <BrandLogo id={b.id} logoUrl={b.logoUrl} />
 
                   <span className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight group-hover:text-white">
                     {b.label}
