@@ -6,7 +6,7 @@ import {
   ArrowLeft, ArrowRight, Check, Upload, X, Smartphone,
   Package, FileText, Zap, Battery, Camera, ChevronRight,
   Clock, Loader2, Star, AlertCircle, Shield, TrendingUp,
-  UserCheck, Lock, UserPlus, LogIn, MoreHorizontal
+  UserCheck, Lock, UserPlus, LogIn, MoreHorizontal, Laptop, Watch, Tablet
 } from 'lucide-react';
 import { useApp } from '@/providers/AppProvider';
 import { useCreateSellRequest, useMySellRequest } from '@/lib/hooks/useSellRequests';
@@ -33,6 +33,17 @@ const BRANDS = [
   { id: 'Diğer',          label: 'DİĞER',          logoUrl: '' },
 ];
 
+const BRAND_CATEGORIES: Record<string, string[]> = {
+  Apple:   ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
+  Samsung: ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
+  Xiaomi:  ['Telefon', 'Tablet', 'Akıllı Saat'],
+  Huawei:  ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
+  Honor:   ['Telefon', 'Tablet', 'Akıllı Saat'],
+  Reeder:  ['Telefon', 'Tablet'],
+  Casper:  ['Telefon', 'Tablet'],
+  TCL:     ['Telefon', 'Tablet'],
+};
+
 function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
 
@@ -50,36 +61,140 @@ function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
     );
   }
 
-  // Fallback icon badges if image load fails
-  switch (id) {
-    case 'Apple':
-      return (
-        <div className="w-14 h-14 bg-white rounded-2xl shadow-md p-2 flex items-center justify-center text-black font-black">
-          <svg viewBox="0 0 170 170" width="32" height="32" fill="currentColor">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.04.12-9.84-1.92-14.42-6.12-3.24-2.76-7.14-7.46-11.71-14.1-6.73-9.75-12.01-20.73-15.83-32.93-3.82-12.21-5.73-24.16-5.73-35.86 0-14.85 3.65-27.18 10.96-36.98 7.31-9.8 16.76-14.77 28.34-14.9 5.04 0 10.45 1.25 16.24 3.74 5.79 2.49 9.87 3.74 12.24 3.74 1.94 0 6.13-1.32 12.57-3.97 6.44-2.65 11.83-3.85 16.16-3.61 12.08.74 21.68 5.4 28.8 13.98-10.82 6.53-16.1 15.67-15.84 27.42.25 9.28 3.82 17.06 10.72 23.33 6.9 6.27 15.11 9.77 24.63 10.5-2.58 7.74-5.96 15.54-10.15 23.4zM119.22 31.54c0-7.38 2.65-14.42 7.95-21.13 5.3-6.71 11.94-10.41 19.92-11.1 0 .74.06 1.48.06 2.22 0 7.26-2.71 14.36-8.13 21.3-5.42 6.94-12.07 10.64-19.95 11.1-.06-.74-.11-1.48-.11-2.22z"/>
-          </svg>
-        </div>
-      );
-    default:
-      return (
-        <div className="w-14 h-14 bg-slate-800 rounded-2xl shadow-md p-2 flex items-center justify-center text-slate-300 font-bold">
-          <MoreHorizontal size={24} />
-        </div>
-      );
-  }
+  return (
+    <div className="w-14 h-14 bg-slate-800 rounded-2xl shadow-md p-2 flex items-center justify-center text-slate-300 font-bold">
+      <MoreHorizontal size={24} />
+    </div>
+  );
 }
 
 const POPULAR_MODELS: Record<string, string[]> = {
-  Apple:   ['iPhone 15 Pro Max','iPhone 15 Pro','iPhone 15','iPhone 14 Pro Max','iPhone 14 Pro','iPhone 14','iPhone 13 Pro','iPhone 13','iPhone 12','iPhone 11'],
-  Samsung: ['Galaxy S24 Ultra','Galaxy S24+','Galaxy S24','Galaxy S23 Ultra','Galaxy S23','Galaxy S22','Galaxy A54','Galaxy A34','Galaxy Z Fold 5','Galaxy Z Flip 5'],
-  Xiaomi:  ['Xiaomi 14','Xiaomi 13','Redmi Note 13 Pro','Redmi Note 12 Pro','POCO F5','POCO X5 Pro'],
-  Huawei:  ['P60 Pro','Mate 60 Pro','Nova 12'],
-  Oppo:    ['Reno 10 Pro','Reno 8','A78','A58'],
-  realme:  ['11 Pro+','10','C55','GT Neo 5'],
-  Poco:    ['X6 Pro','F5 Pro','M6 Pro'],
-  vivo:    ['V29','Y36','Y22s'],
-  Honor:   ['Magic6 Pro','90','X9b'],
-  Diğer:   [],
+  Apple: [
+    'iPhone 17 Pro Max', 'iPhone 17 Pro', 'iPhone 17',
+    'iPhone 16 Pro Max', 'iPhone 16 Pro', 'iPhone 16 Plus', 'iPhone 16',
+    'iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15',
+    'iPhone 14 Pro Max', 'iPhone 14 Pro', 'iPhone 14 Plus', 'iPhone 14',
+    'iPhone 13 Pro Max', 'iPhone 13 Pro', 'iPhone 13', 'iPhone 13 Mini',
+    'iPhone 12 Pro Max', 'iPhone 12 Pro', 'iPhone 12', 'iPhone 12 Mini',
+    'iPhone 11 Pro Max', 'iPhone 11 Pro', 'iPhone 11',
+    'iPhone XS Max', 'iPhone XS', 'iPhone XR', 'iPhone X',
+    'iPhone SE (3. Nesil)', 'iPhone SE (2. Nesil)',
+    'iPhone 8 Plus', 'iPhone 8', 'iPhone 7 Plus', 'iPhone 7',
+    'Diğer Apple Modeli'
+  ],
+  Samsung: [
+    'Galaxy Z Fold6', 'Galaxy Z Flip6', 'Galaxy Z Fold5', 'Galaxy Z Flip5', 'Galaxy Z Fold4', 'Galaxy Z Flip4',
+    'Galaxy S24 Ultra', 'Galaxy S24+', 'Galaxy S24',
+    'Galaxy S23 Ultra', 'Galaxy S23+', 'Galaxy S23', 'Galaxy S23 FE',
+    'Galaxy S22 Ultra', 'Galaxy S22+', 'Galaxy S22',
+    'Galaxy S21 Ultra', 'Galaxy S21+', 'Galaxy S21', 'Galaxy S21 FE',
+    'Galaxy S20 Ultra', 'Galaxy S20 FE',
+    'Galaxy A55 5G', 'Galaxy A54 5G', 'Galaxy A53 5G', 'Galaxy A52s 5G', 'Galaxy A52',
+    'Galaxy A35 5G', 'Galaxy A34 5G', 'Galaxy A33 5G', 'Galaxy A32',
+    'Galaxy A25 5G', 'Galaxy A24', 'Galaxy A23', 'Galaxy A15',
+    'Galaxy M54', 'Galaxy M53', 'Galaxy M34', 'Galaxy M14',
+    'Diğer Samsung Modeli'
+  ],
+  Xiaomi: [
+    'Xiaomi 14 Ultra', 'Xiaomi 14 Pro', 'Xiaomi 14',
+    'Xiaomi 13 Ultra', 'Xiaomi 13 Pro', 'Xiaomi 13', 'Xiaomi 13T Pro', 'Xiaomi 13T',
+    'Xiaomi 12T Pro', 'Xiaomi 12T', 'Xiaomi 12 Pro', 'Xiaomi 12',
+    'Xiaomi 11T Pro', 'Xiaomi 11T', 'Mi 11 Lite',
+    'Redmi Note 13 Pro+', 'Redmi Note 13 Pro', 'Redmi Note 13',
+    'Redmi Note 12 Pro+', 'Redmi Note 12 Pro', 'Redmi Note 12',
+    'Redmi Note 11 Pro+', 'Redmi Note 11 Pro', 'Redmi Note 11',
+    'Redmi Note 10 Pro', 'Redmi Note 10S', 'Redmi Note 9 Pro',
+    'Diğer Xiaomi Modeli'
+  ],
+  Huawei: [
+    'Pura 70 Ultra', 'Pura 70 Pro', 'Pura 70',
+    'Mate 60 Pro+', 'Mate 60 Pro', 'Mate 60',
+    'P60 Pro', 'P60', 'Mate 50 Pro',
+    'P50 Pro', 'P50 Pocket',
+    'P40 Pro', 'P40 Lite', 'P30 Pro', 'P30 Lite',
+    'Nova 12 SE', 'Nova 11', 'Nova 10', 'Nova 9',
+    'Diğer Huawei Modeli'
+  ],
+  Oppo: [
+    'Find X7 Ultra', 'Find X7',
+    'Reno 11 Pro', 'Reno 11', 'Reno 10 Pro+', 'Reno 10 Pro', 'Reno 10',
+    'Reno 7', 'Reno 6', 'Reno 5',
+    'A79 5G', 'A78', 'A58', 'A54', 'A16',
+    'Diğer Oppo Modeli'
+  ],
+  realme: [
+    'GT5 Pro', 'GT3', 'GT Neo 3',
+    '12 Pro+', '12 Pro', '12',
+    '11 Pro+', '11 Pro', '11',
+    '10 Pro+', '10',
+    'C67', 'C55', 'C53', 'C21Y',
+    'Diğer Realme Modeli'
+  ],
+  Poco: [
+    'POCO F6 Pro', 'POCO F6', 'POCO F5 Pro', 'POCO F5',
+    'POCO X6 Pro', 'POCO X6', 'POCO X5 Pro', 'POCO X5',
+    'POCO M6 Pro', 'POCO M5s',
+    'POCO X3 Pro', 'POCO X3 NFC',
+    'Diğer Poco Modeli'
+  ],
+  vivo: [
+    'X100 Pro', 'X100',
+    'V30 Pro', 'V30', 'V30 Lite',
+    'V29 5G', 'V29 Lite', 'V25 5G',
+    'Y36', 'Y35', 'Y22s',
+    'Diğer Vivo Modeli'
+  ],
+  Honor: [
+    'Magic6 Pro', 'Magic V2', 'Magic5 Pro',
+    'Honor 200 Pro', 'Honor 200', 'Honor 90', 'Honor 70',
+    'Honor X9b', 'Honor X9a', 'Honor X7b',
+    'Diğer Honor Modeli'
+  ],
+  Tecno: [
+    'Phantom V Fold', 'Phantom V Flip',
+    'Camon 30 Pro 5G', 'Camon 30', 'Camon 20 Pro',
+    'Spark 20 Pro+', 'Spark 20 Pro', 'Spark 10 Pro',
+    'Pova 6 Pro 5G', 'Pova 5 Pro',
+    'Diğer Tecno Modeli'
+  ],
+  Infinix: [
+    'Note 40 Pro+ 5G', 'Note 40 Pro', 'Note 40',
+    'Note 30 VIP', 'Note 30 Pro', 'Note 30',
+    'Zero 30 5G', 'Zero 30',
+    'Hot 40 Pro', 'Hot 40i',
+    'Diğer Infinix Modeli'
+  ],
+  'General Mobile': [
+    'GM 24 Pro', 'GM 24',
+    'GM 23 SE', 'GM 23',
+    'GM 22 Pro', 'GM 22 Plus', 'GM 22',
+    'GM 21 Pro', 'GM 21 Plus',
+    'Diğer GM Modeli'
+  ],
+  Reeder: [
+    'S23 Pro Max', 'S19 Max Pro S', 'S19 Max Pro', 'S19 Max',
+    'P13 Blue Max', 'P13 Blue',
+    'Diğer Reeder Modeli'
+  ],
+  Casper: [
+    'VIA X30 Plus', 'VIA X30', 'VIA V30', 'VIA M35', 'VIA E30', 'VIA X20',
+    'Diğer Casper Modeli'
+  ],
+  TCL: [
+    '40 NXTPAPER', '40 SE', '30+', '30 SE', '20 Pro 5G',
+    'Diğer TCL Modeli'
+  ],
+  Nothing: [
+    'Phone (2)', 'Phone (2a) Plus', 'Phone (2a)', 'Phone (1)', 'CMF Phone 1',
+    'Diğer Nothing Modeli'
+  ],
+  Omix: [
+    'X600', 'X400', 'X300',
+    'Diğer Omix Modeli'
+  ],
+  Diğer: [
+    'Diğer Modeli'
+  ]
 };
 
 const GRADES = [
@@ -223,6 +338,7 @@ export default function SellPage() {
 
   // Form state
   const [brand,       setBrand]       = useState('');
+  const [category,    setCategory]    = useState('Telefon');
   const [model,       setModel]       = useState('');
   const [customModel, setCustomModel] = useState('');
   const [storage,     setStorage]     = useState('');
@@ -237,7 +353,7 @@ export default function SellPage() {
   const [uploading,   setUploading]   = useState(false);
 
   const fileRef = useRef<HTMLInputElement>(null);
-  const finalModel = model === 'Diğer' ? customModel : model;
+  const finalModel = model === 'Diğer' || model === 'Diğer Apple Modeli' || model === 'Diğer Samsung Modeli' || model === 'Diğer Xiaomi Modeli' ? customModel : model;
 
   // ── Session Storage Draft Restoring ──────────────────────────────────────────
   useEffect(() => {
@@ -246,6 +362,7 @@ export default function SellPage() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.brand) setBrand(parsed.brand);
+        if (parsed.category) setCategory(parsed.category);
         if (parsed.model) setModel(parsed.model);
         if (parsed.customModel) setCustomModel(parsed.customModel);
         if (parsed.storage) setStorage(parsed.storage);
@@ -267,12 +384,12 @@ export default function SellPage() {
     try {
       if (brand || model || grade || images.length > 0) {
         sessionStorage.setItem('mytt_sell_draft', JSON.stringify({
-          brand, model, customModel, storage, color, grade, battery,
+          brand, category, model, customModel, storage, color, grade, battery,
           hasBox, hasInvoice, hasAcc, desc, images, step
         }));
       }
     } catch {}
-  }, [brand, model, customModel, storage, color, grade, battery, hasBox, hasInvoice, hasAcc, desc, images, step]);
+  }, [brand, category, model, customModel, storage, color, grade, battery, hasBox, hasInvoice, hasAcc, desc, images, step]);
 
   // ── Form gönder ──────────────────────────────────────────────────────────
   const handleSubmit = async () => {
@@ -291,7 +408,7 @@ export default function SellPage() {
         hasBox,
         hasInvoice,
         hasAccessories: hasAcc,
-        description:   desc || undefined,
+        description:   desc ? `[Kategori: ${category}] ${desc}` : `[Kategori: ${category}]`,
         imagesUrl:     images,
         requestType:   isTradeIn ? 'TRADE_IN' : 'SELL',
       });
@@ -480,12 +597,10 @@ export default function SellPage() {
                       : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600 hover:bg-[var(--k-surface-2)]'
                   }`}
                 >
-                  {/* Marka Logo Görseli / Rozeti */}
                   <div className="transition-transform group-hover:scale-110 flex items-center justify-center">
                     <BrandLogo id={b.id} logoUrl={b.logoUrl} />
                   </div>
 
-                  {/* Marka İsmi */}
                   <span className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight group-hover:text-white">
                     {b.label}
                   </span>
@@ -496,31 +611,57 @@ export default function SellPage() {
           </div>
         )}
 
-        {/* ── STEP 1: Model ────────────────────────────────────────────── */}
+        {/* ── STEP 1: Model & Kategori ────────────────────────────────────────────── */}
         {step === 1 && (
-          <div className="max-w-2xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-white">Model ve Depolama Seçin</h2>
-              <span className="text-xs font-black text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-3 py-1 rounded-full border border-[var(--k-line-hot)]">
+              <h2 className="text-xl font-bold text-white">Cihaz Kategorisi & Model Seçimi</h2>
+              <span className="text-xs font-black text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-3.5 py-1 rounded-full border border-[var(--k-line-hot)]">
                 {brand}
               </span>
             </div>
 
-            {/* Popüler Modeller */}
+            {/* Kategori Seçici Tab Bar */}
+            {(BRAND_CATEGORIES[brand] ?? ['Telefon']).length > 1 && (
+              <div className="flex gap-2 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800 flex-wrap">
+                {(BRAND_CATEGORIES[brand] ?? ['Telefon']).map((cat) => {
+                  const isSelected = category === cat;
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setCategory(cat)}
+                      className={`flex-1 min-w-[100px] py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                        isSelected
+                          ? 'bg-[var(--k-hot)] text-white shadow-lg shadow-[var(--k-hot-glow)]/30'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      {cat === 'Telefon' && <Smartphone size={15} />}
+                      {cat === 'Tablet' && <Tablet size={15} />}
+                      {cat === 'Bilgisayar' && <Laptop size={15} />}
+                      {cat === 'Akıllı Saat' && <Watch size={15} />}
+                      <span>{cat}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Popüler Modeller Izgarası */}
             {(POPULAR_MODELS[brand] ?? []).length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
                 {(POPULAR_MODELS[brand] ?? []).map((m) => (
                   <button
                     key={m}
                     onClick={() => { setModel(m); setCustomModel(''); }}
-                    className={`p-4 rounded-xl border text-left transition-all font-semibold text-sm flex items-center justify-between ${
+                    className={`p-3.5 rounded-xl border text-left transition-all font-semibold text-xs flex items-center justify-between ${
                       model === m
                         ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-bold shadow-md'
                         : 'border-slate-800 bg-[var(--k-surface)] text-slate-200 hover:border-slate-600'
                     }`}
                   >
-                    <span>{m}</span>
-                    {model === m && <Check size={16} className="text-[var(--k-hot)]" />}
+                    <span className="truncate">{m}</span>
+                    {model === m && <Check size={15} className="text-[var(--k-hot)] shrink-0" />}
                   </button>
                 ))}
               </div>
@@ -529,13 +670,13 @@ export default function SellPage() {
             {/* Manuel Giriş */}
             <div className="pt-2">
               <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                Listede yoksa elle yazın
+                Listede aradığınız model yoksa elle yazın
               </label>
               <input
                 type="text"
                 value={customModel}
                 onChange={(e) => { setCustomModel(e.target.value); setModel('Diğer'); }}
-                placeholder="Örn: iPhone SE 2022 veya Galaxy Z Fold 4"
+                placeholder={`Örn: ${brand} Modeli`}
                 className="w-full p-4 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)] text-sm font-medium"
               />
             </div>
@@ -550,7 +691,7 @@ export default function SellPage() {
                   className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium focus:outline-none focus:border-[var(--k-hot)]"
                 >
                   <option value="">Seçiniz</option>
-                  {['64 GB', '128 GB', '256 GB', '512 GB', '1 TB'].map((s) => (
+                  {['64 GB', '128 GB', '256 GB', '512 GB', '1 TB', '2 TB'].map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
@@ -562,7 +703,7 @@ export default function SellPage() {
                   type="text"
                   value={color}
                   onChange={(e) => setColor(e.target.value)}
-                  placeholder="Örn: Uzay Siyahı"
+                  placeholder="Örn: Siyah / Titanyum"
                   className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)]"
                 />
               </div>
@@ -696,6 +837,7 @@ export default function SellPage() {
               <h3 className="font-bold text-white text-sm border-b border-slate-800 pb-2">Cihaz Özeti</h3>
               {[
                 ['Marka', brand],
+                ['Kategori', category],
                 ['Model', finalModel],
                 ['Depolama', storage || '—'],
                 ['Renk', color || '—'],
