@@ -6,7 +6,7 @@ import {
   ArrowLeft, ArrowRight, Check, Upload, X, Smartphone,
   Package, FileText, Zap, Battery, Camera, ChevronRight,
   Clock, Loader2, Star, AlertCircle, Shield, TrendingUp,
-  UserCheck, Lock, UserPlus, LogIn, MoreHorizontal, Laptop, Watch, Tablet
+  UserCheck, Lock, UserPlus, LogIn, MoreHorizontal
 } from 'lucide-react';
 import { useApp } from '@/providers/AppProvider';
 import { useCreateSellRequest, useMySellRequest } from '@/lib/hooks/useSellRequests';
@@ -33,17 +33,6 @@ const BRANDS = [
   { id: 'Diğer',          label: 'DİĞER',          logoUrl: '' },
 ];
 
-const BRAND_CATEGORIES: Record<string, string[]> = {
-  Apple:   ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
-  Samsung: ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
-  Xiaomi:  ['Telefon', 'Tablet', 'Akıllı Saat'],
-  Huawei:  ['Telefon', 'Tablet', 'Bilgisayar', 'Akıllı Saat'],
-  Honor:   ['Telefon', 'Tablet', 'Akıllı Saat'],
-  Reeder:  ['Telefon', 'Tablet'],
-  Casper:  ['Telefon', 'Tablet'],
-  TCL:     ['Telefon', 'Tablet'],
-};
-
 function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
   const needsInvert = ['Apple', 'Honor', 'Infinix', 'General Mobile', 'Nothing', 'Omix', 'Reeder'].includes(id);
@@ -64,7 +53,6 @@ function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
     );
   }
 
-  // Pure SVG / Clean Fallback (Kart üzerinde doğrudan, BEYAZ KUTU YOK!)
   switch (id) {
     case 'Apple':
       return (
@@ -358,20 +346,20 @@ export default function SellPage() {
   const [showAuthGateModal, setShowAuthGateModal] = useState(false);
 
   // Form state
-  const [brand,       setBrand]       = useState('');
-  const [category,    setCategory]    = useState('Telefon');
-  const [model,       setModel]       = useState('');
-  const [customModel, setCustomModel] = useState('');
-  const [storage,     setStorage]     = useState('');
-  const [color,       setColor]       = useState('');
-  const [grade,       setGrade]       = useState('');
-  const [battery,     setBattery]     = useState<number | ''>('');
-  const [hasBox,      setHasBox]      = useState(false);
-  const [hasInvoice,  setHasInvoice]  = useState(false);
-  const [hasAcc,      setHasAcc]      = useState(false);
-  const [desc,        setDesc]        = useState('');
-  const [images,      setImages]      = useState<string[]>([]);
-  const [uploading,   setUploading]   = useState(false);
+  const [brand,          setBrand]          = useState('');
+  const [model,          setModel]          = useState('');
+  const [customModel,    setCustomModel]    = useState('');
+  const [storage,        setStorage]        = useState('');
+  const [color,          setColor]          = useState('');
+  const [grade,          setGrade]          = useState('');
+  const [battery,        setBattery]        = useState<number | ''>('');
+  const [warrantyStatus, setWarrantyStatus] = useState('Garantisi Yok');
+  const [hasBox,         setHasBox]         = useState(false);
+  const [hasInvoice,     setHasInvoice]     = useState(false);
+  const [hasAcc,         setHasAcc]         = useState(false);
+  const [desc,           setDesc]           = useState('');
+  const [images,         setImages]         = useState<string[]>([]);
+  const [uploading,      setUploading]      = useState(false);
 
   const fileRef = useRef<HTMLInputElement>(null);
   const finalModel = model === 'Diğer' || model === 'Diğer Apple Modeli' || model === 'Diğer Samsung Modeli' || model === 'Diğer Xiaomi Modeli' ? customModel : model;
@@ -383,13 +371,13 @@ export default function SellPage() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.brand) setBrand(parsed.brand);
-        if (parsed.category) setCategory(parsed.category);
         if (parsed.model) setModel(parsed.model);
         if (parsed.customModel) setCustomModel(parsed.customModel);
         if (parsed.storage) setStorage(parsed.storage);
         if (parsed.color) setColor(parsed.color);
         if (parsed.grade) setGrade(parsed.grade);
         if (parsed.battery !== undefined) setBattery(parsed.battery);
+        if (parsed.warrantyStatus) setWarrantyStatus(parsed.warrantyStatus);
         if (parsed.hasBox !== undefined) setHasBox(parsed.hasBox);
         if (parsed.hasInvoice !== undefined) setHasInvoice(parsed.hasInvoice);
         if (parsed.hasAcc !== undefined) setHasAcc(parsed.hasAcc);
@@ -405,12 +393,12 @@ export default function SellPage() {
     try {
       if (brand || model || grade || images.length > 0) {
         sessionStorage.setItem('mytt_sell_draft', JSON.stringify({
-          brand, category, model, customModel, storage, color, grade, battery,
+          brand, model, customModel, storage, color, grade, battery, warrantyStatus,
           hasBox, hasInvoice, hasAcc, desc, images, step
         }));
       }
     } catch {}
-  }, [brand, category, model, customModel, storage, color, grade, battery, hasBox, hasInvoice, hasAcc, desc, images, step]);
+  }, [brand, model, customModel, storage, color, grade, battery, warrantyStatus, hasBox, hasInvoice, hasAcc, desc, images, step]);
 
   // ── Form gönder ──────────────────────────────────────────────────────────
   const handleSubmit = async () => {
@@ -429,7 +417,7 @@ export default function SellPage() {
         hasBox,
         hasInvoice,
         hasAccessories: hasAcc,
-        description:   desc ? `[Kategori: ${category}] ${desc}` : `[Kategori: ${category}]`,
+        description:   desc ? `[Garanti: ${warrantyStatus}] ${desc}` : `[Garanti: ${warrantyStatus}]`,
         imagesUrl:     images,
         requestType:   isTradeIn ? 'TRADE_IN' : 'SELL',
       });
@@ -494,7 +482,7 @@ export default function SellPage() {
   return (
     <div className="min-h-screen bg-[var(--k-canvas)] pt-20 pb-20 relative">
       
-      {/* AUTH PROMPT MODAL (TAM İHALEYE GÖNDERİRKEN GÖSTERİLEN ŞEFFAF KAYIT/GİRİŞ MODALI) */}
+      {/* AUTH PROMPT MODAL */}
       {showAuthGateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
           <div className="bg-[var(--k-surface)] border border-[var(--k-line-hot)] rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-6 shadow-2xl relative overflow-hidden">
@@ -599,7 +587,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN (KULLANICININ ÖZEL LOGO LİSTESİYLE & BEYAZ KUTUSUZ) ──────────────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN ──────────────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -630,45 +618,19 @@ export default function SellPage() {
           </div>
         )}
 
-        {/* ── STEP 1: Model & Kategori ────────────────────────────────────────────── */}
+        {/* ── STEP 1: Model Seçimi & Detaylar (KATEGORİ TAMAMEN KALDIRILDI) ────────────────── */}
         {step === 1 && (
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-white">Cihaz Kategorisi & Model Seçimi</h2>
+              <h2 className="text-xl font-bold text-white">Model & Cihaz Bilgileri</h2>
               <span className="text-xs font-black text-[var(--k-hot)] bg-[var(--k-hot-wash)] px-3.5 py-1 rounded-full border border-[var(--k-line-hot)]">
                 {brand}
               </span>
             </div>
 
-            {/* Kategori Seçici Tab Bar */}
-            {(BRAND_CATEGORIES[brand] ?? ['Telefon']).length > 1 && (
-              <div className="flex gap-2 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800 flex-wrap">
-                {(BRAND_CATEGORIES[brand] ?? ['Telefon']).map((cat) => {
-                  const isSelected = category === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => setCategory(cat)}
-                      className={`flex-1 min-w-[100px] py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-                        isSelected
-                          ? 'bg-[var(--k-hot)] text-white shadow-lg shadow-[var(--k-hot-glow)]/30'
-                          : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                      }`}
-                    >
-                      {cat === 'Telefon' && <Smartphone size={15} />}
-                      {cat === 'Tablet' && <Tablet size={15} />}
-                      {cat === 'Bilgisayar' && <Laptop size={15} />}
-                      {cat === 'Akıllı Saat' && <Watch size={15} />}
-                      <span>{cat}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-
             {/* Popüler Modeller Izgarası */}
             {(POPULAR_MODELS[brand] ?? []).length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[360px] overflow-y-auto pr-1">
                 {(POPULAR_MODELS[brand] ?? []).map((m) => (
                   <button
                     key={m}
@@ -686,8 +648,8 @@ export default function SellPage() {
               </div>
             )}
 
-            {/* Manuel Giriş */}
-            <div className="pt-2">
+            {/* Manuel Model Girişi */}
+            <div className="pt-1">
               <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
                 Listede aradığınız model yoksa elle yazın
               </label>
@@ -700,8 +662,8 @@ export default function SellPage() {
               />
             </div>
 
-            {/* Depolama & Renk */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
+            {/* Depolama & Renk & Batarya Sağlığı */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <div>
                 <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Depolama</label>
                 <select
@@ -726,58 +688,42 @@ export default function SellPage() {
                   className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)]"
                 />
               </div>
-            </div>
-          </div>
-        )}
 
-        {/* ── STEP 2: Durum ────────────────────────────────────────────── */}
-        {step === 2 && (
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h2 className="text-xl font-bold text-white">Cihazın Durumunu Belirtin</h2>
-
-            {/* Kozmetik Derece */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Kozmetik Durumu</label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {GRADES.map((g) => (
-                  <button
-                    key={g.id}
-                    onClick={() => setGrade(g.id)}
-                    className={`p-4 rounded-2xl border text-left transition-all ${
-                      grade === g.id
-                        ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)]'
-                        : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-sm text-white">{g.label} ({g.id})</span>
-                      {grade === g.id && <Check size={16} className="text-[var(--k-hot)]" />}
-                    </div>
-                    <p className="text-xs text-slate-400 font-medium">{g.desc}</p>
-                  </button>
-                ))}
+              <div>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                  Batarya Sağlığı (%)
+                </label>
+                <input
+                  type="number"
+                  min="50"
+                  max="100"
+                  value={battery}
+                  onChange={(e) => setBattery(e.target.value ? Number(e.target.value) : '')}
+                  placeholder="Örn: 88 (Biliniyorsa)"
+                  className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)]"
+                />
               </div>
             </div>
 
-            {/* Pil Sağlığı */}
+            {/* Garanti Durumu */}
             <div>
               <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                Pil Sağlığı (%) — Opsiyonel
+                Garanti Durumu
               </label>
-              <input
-                type="number"
-                min="50"
-                max="100"
-                value={battery}
-                onChange={(e) => setBattery(e.target.value ? Number(e.target.value) : '')}
-                placeholder="Örn: 88"
-                className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)]"
-              />
+              <select
+                value={warrantyStatus}
+                onChange={(e) => setWarrantyStatus(e.target.value)}
+                className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium focus:outline-none focus:border-[var(--k-hot)]"
+              >
+                <option value="Resmi Distribütör Garantili (Devam Ediyor)">Resmi Distribütör Garantili (Devam Ediyor)</option>
+                <option value="İthalatçı Garantili (Devam Ediyor)">İthalatçı Garantili (Devam Ediyor)</option>
+                <option value="Garantisi Bitti / Yok">Garantisi Bitti / Yok</option>
+              </select>
             </div>
 
-            {/* Kutu & Fatura & Aksesuar */}
+            {/* Kutu & Fatura & Aksesuar Seçimi */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Kutu / Fatura / Aksesuar</label>
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Kutu / Fatura / Aksesuar Durumu</label>
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { label: 'Kutu Var', state: hasBox, setState: setHasBox },
@@ -800,21 +746,73 @@ export default function SellPage() {
               </div>
             </div>
 
-            {/* Açıklama */}
+            {/* Detay Açıklama Kutusu (Kaç aylık cihaz, garantisi, kozmetiği vb.) */}
             <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Ek Açıklama (İsteğe Bağlı)</label>
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                Cihaz Detayları & Açıklama (Opsiyonel)
+              </label>
               <textarea
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 rows={3}
-                placeholder="Cihazdaki ek detaylar, kılcal çizik durumu vb..."
-                className="w-full p-3.5 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)] resize-none"
+                placeholder="Cihaz kaç aylık, garantisi kaç ay kaldı, kozmetik durumu nasıl, ekranda/kasede çizik varmı, tamir gördü mü vb. detayları yazabilirsiniz..."
+                className="w-full p-4 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white text-sm font-medium placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)] resize-none"
               />
             </div>
           </div>
         )}
 
-        {/* ── STEP 3: Onay & Özet ────────────────────────────────────────────── */}
+        {/* ── STEP 2: Durum (Kozmetik Seçimi) ────────────────────────────────────────────── */}
+        {step === 2 && (
+          <div className="max-w-2xl mx-auto space-y-6">
+            <h2 className="text-xl font-bold text-white">Kozmetik Durum Seçimi</h2>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Kozmetik Derece</label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {GRADES.map((g) => (
+                  <button
+                    key={g.id}
+                    onClick={() => setGrade(g.id)}
+                    className={`p-4 rounded-2xl border text-left transition-all ${
+                      grade === g.id
+                        ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)]'
+                        : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-sm text-white">{g.label} ({g.id})</span>
+                      {grade === g.id && <Check size={16} className="text-[var(--k-hot)]" />}
+                    </div>
+                    <p className="text-xs text-slate-400 font-medium">{g.desc}</p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Hızlı Özet Gösterimi */}
+            <div className="bg-[var(--k-surface)] rounded-2xl border border-slate-800 p-4 space-y-2">
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Model</span>
+                <span className="font-bold text-white">{brand} {finalModel}</span>
+              </div>
+              {storage && (
+                <div className="flex justify-between text-xs">
+                  <span className="text-slate-400">Depolama / Renk</span>
+                  <span className="font-bold text-white">{storage} {color ? `/ ${color}` : ''}</span>
+                </div>
+              )}
+              {battery !== '' && (
+                <div className="flex justify-between text-xs">
+                  <span className="text-slate-400">Batarya Sağlığı</span>
+                  <span className="font-bold text-white">%{battery}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ── STEP 3: Onay & Fotoğraf ────────────────────────────────────────────── */}
         {step === 3 && (
           <div className="max-w-2xl mx-auto space-y-6">
             
@@ -855,14 +853,13 @@ export default function SellPage() {
             <div className="bg-[var(--k-surface)] rounded-2xl border border-slate-800 p-5 space-y-3">
               <h3 className="font-bold text-white text-sm border-b border-slate-800 pb-2">Cihaz Özeti</h3>
               {[
-                ['Marka', brand],
-                ['Kategori', category],
-                ['Model', finalModel],
+                ['Marka & Model', `${brand} ${finalModel}`],
                 ['Depolama', storage || '—'],
                 ['Renk', color || '—'],
-                ['Kozmetik Durum', `${grade} — ${GRADES.find(g => g.id === grade)?.label}`],
                 ['Pil Sağlığı', battery !== '' ? `%${battery}` : '—'],
-                ['Kutu / Fatura', `${hasBox ? 'Kutu Var' : 'Kutu Yok'}, ${hasInvoice ? 'Fatura Var' : 'Fatura Yok'}`],
+                ['Garanti Durumu', warrantyStatus],
+                ['Kozmetik Durum', `${grade} — ${GRADES.find(g => g.id === grade)?.label}`],
+                ['Kutu / Fatura / Aksesuar', `${hasBox ? 'Kutu Var' : 'Kutu Yok'}, ${hasInvoice ? 'Fatura Var' : 'Fatura Yok'}, ${hasAcc ? 'Aksesuar Var' : 'Aksesuar Yok'}`],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between text-sm">
                   <span className="text-slate-400">{k}</span>
