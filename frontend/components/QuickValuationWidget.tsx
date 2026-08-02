@@ -6,14 +6,29 @@ import { ArrowRight, ShieldCheck, Zap, Store, Truck, Lock, CheckCircle2, Trendin
 export default function QuickValuationWidget() {
   const [samplePrice, setSamplePrice] = useState(35000);
   const [isPulsing, setIsPulsing] = useState(false);
+  const [lastIncrease, setLastIncrease] = useState(750);
+  const [progressPercent, setProgressPercent] = useState(25);
 
-  // Fiyat yükselme ve neon glow animasyon döngüsü (Tamamen Temsili Kavramsal Gösterim)
+  // Aşırı Efektli Fiyat Yükselme & Neon Glow Animasyon Döngüsü
   useEffect(() => {
     const interval = setInterval(() => {
+      const inc = [500, 750, 1000, 1250][Math.floor(Math.random() * 4)];
+      setLastIncrease(inc);
       setIsPulsing(true);
-      setSamplePrice((prev) => (prev >= 42000 ? 35000 : prev + 750));
-      setTimeout(() => setIsPulsing(false), 800);
-    }, 3000);
+
+      setSamplePrice((prev) => {
+        if (prev >= 43500) {
+          setProgressPercent(20);
+          return 34500;
+        }
+        const nextVal = prev + inc;
+        const p = Math.min(100, Math.round(((nextVal - 34500) / (43500 - 34500)) * 100));
+        setProgressPercent(p);
+        return nextVal;
+      });
+
+      setTimeout(() => setIsPulsing(false), 900);
+    }, 2800);
 
     return () => clearInterval(interval);
   }, []);
@@ -77,38 +92,57 @@ export default function QuickValuationWidget() {
 
         </div>
 
-        {/* Sağ Taraf: TEMSİLİ ÖRNEK İHALE ÇALIŞMA MANTIĞI */}
+        {/* Sağ Taraf: AŞIRI EFEKTLİ TEMSİLİ ÖRNEK İHALE ANİMASYON KARTI */}
         <div className="lg:col-span-6 min-w-0 w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-[var(--k-void)] p-5 sm:p-7 text-white text-left space-y-4 shadow-2xl relative overflow-hidden border border-[var(--k-hot-deep)]/50 group">
+          <div className={`rounded-2xl sm:rounded-3xl bg-[var(--k-void)] p-5 sm:p-7 text-white text-left space-y-4 shadow-2xl relative overflow-hidden transition-all duration-500 border ${isPulsing ? 'border-[var(--k-hot)] shadow-[0_0_35px_rgba(255,96,0,0.5)] scale-[1.01]' : 'border-[var(--k-hot-deep)]/40'}`}>
             
-            {/* Arka Plan Glow Efekti */}
-            <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-[var(--k-hot)]/10 blur-3xl pointer-events-none" />
+            {/* Döner Lazer Neonsal Arka Plan Parlaması */}
+            <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-gradient-to-br from-[var(--k-hot)]/20 to-amber-500/10 blur-3xl pointer-events-none animate-pulse" />
 
             {/* Üst Başlık: Temsili Örnek İhale Sistemi */}
             <div className="flex items-center justify-between border-b border-[var(--k-line-2)] pb-3 flex-wrap gap-2">
               <div className="flex items-center gap-2 text-xs font-black text-[var(--k-hot)]">
-                <Sparkles size={16} className="text-[var(--k-hot)]" />
+                <Sparkles size={16} className="text-[var(--k-hot)] animate-spin" />
                 <span className="uppercase tracking-wider">İHALE ÇALIŞMA MANTIĞI (TEMSİLİ GÖSTERİM)</span>
               </div>
-              <span className="text-[10px] font-bold text-[var(--k-ink-4)] bg-[var(--k-surface)] px-2.5 py-1 rounded-full border border-[var(--k-line-2)]">
-                Örnek Akış
+              <span className="text-[10px] font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full animate-pulse">
+                ⚡ TEKLİFLER YARIŞIYOR
               </span>
             </div>
 
-            {/* TEMSİLİ FİYAT YÜKSELME ANİMASYON ALANI */}
-            <div className="py-3 text-center bg-gradient-to-b from-[var(--k-surface)] to-[var(--k-void)] p-5 rounded-2xl border border-[var(--k-line-2)] space-y-2 relative overflow-hidden">
-              <div className="text-[11px] font-bold text-[var(--k-ink-4)] uppercase tracking-widest">
-                BAYİLER BİRBİRİYLE YARIŞTIKÇA TEKLİF YÜKSELİR
+            {/* AŞIRI EFEKTLİ FİYAT YÜKSELME ALANI */}
+            <div className="py-4 text-center bg-gradient-to-b from-[var(--k-surface)] to-[var(--k-void)] p-6 rounded-2xl border border-[var(--k-line-2)] space-y-3 relative overflow-hidden shadow-inner">
+              
+              <div className="text-[11px] font-extrabold text-[var(--k-ink-3)] uppercase tracking-widest flex items-center justify-center gap-1.5">
+                <span>BAYİLER BİRBİRİYLE YARIŞTIKÇA TEKLİF YÜKSELİR</span>
               </div>
 
-              {/* Rakam Parlama & Yükselme Animasyonu */}
-              <div className={`text-3xl sm:text-5xl font-black text-white tracking-tight transition-all duration-300 ${isPulsing ? 'scale-108 text-[var(--k-hot-2)] drop-shadow-[0_0_25px_rgba(255,96,0,0.8)]' : 'drop-shadow-[0_0_15px_rgba(255,96,0,0.3)]'}`}>
-                {formatTL(samplePrice)} <span className="text-xl sm:text-3xl text-[var(--k-hot)]">₺</span>
+              {/* DİJİTAL NEON RAKAM & YÜKSELME PATLAMASI */}
+              <div className="relative flex flex-col items-center justify-center">
+                
+                {/* Uçan Fiyat Artış Rozeti */}
+                {isPulsing && (
+                  <div className="absolute -top-6 animate-in fade-in zoom-in slide-in-from-bottom-2 duration-300 bg-emerald-500 text-white font-black text-[11px] px-3 py-0.5 rounded-full shadow-lg shadow-emerald-500/30 border border-emerald-300">
+                    +{formatTL(lastIncrease)} ₺ YENİ TEKLİF YÜKSELDİ!
+                  </div>
+                )}
+
+                <div className={`text-4xl sm:text-6xl font-black tracking-tight transition-all duration-300 ${isPulsing ? 'scale-115 text-[var(--k-hot-2)] drop-shadow-[0_0_35px_rgba(255,96,0,0.95)]' : 'text-white drop-shadow-[0_0_15px_rgba(255,96,0,0.3)]'}`}>
+                  {formatTL(samplePrice)} <span className="text-2xl sm:text-4xl text-[var(--k-hot)]">₺</span>
+                </div>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-white bg-[var(--k-hot-deep)] border border-[var(--k-hot-deep)]/40 px-3.5 py-1 rounded-full shadow-md">
-                <TrendingUp size={13} className="text-white" />
-                <span>+ Teklif Geldikçe Fiyat Yukarı Tırmanır</span>
+              {/* Canlı İlerleme Çubuğu (Progression Bar) */}
+              <div className="w-full bg-[var(--k-void)] h-2 rounded-full overflow-hidden border border-[var(--k-line-2)] p-0.5">
+                <div 
+                  className="h-full bg-gradient-to-r from-[var(--k-hot)] via-amber-400 to-emerald-400 rounded-full transition-all duration-700 shadow-[0_0_10px_rgba(255,96,0,0.8)]"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+
+              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-white bg-[var(--k-hot-deep)] border border-[var(--k-hot-deep)]/40 px-4 py-1.5 rounded-full shadow-md">
+                <TrendingUp size={14} className="text-white animate-bounce" />
+                <span>+ Teklif Geldikçe Fiyat Zirveye Tırmanır</span>
               </div>
             </div>
 
@@ -138,7 +172,7 @@ export default function QuickValuationWidget() {
             <div className="pt-1">
               <Link
                 href="/sell"
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-xs sm:text-sm transition-all shadow-xl shadow-[var(--k-hot-glow)] flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98"
               >
                 <Zap size={16} className="fill-white shrink-0" />
                 <span>Cihazını İhaleye Çıkar (En Yüksek Fiyatı Al)</span>
