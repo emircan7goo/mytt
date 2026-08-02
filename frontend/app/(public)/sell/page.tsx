@@ -475,7 +475,6 @@ export default function SellPage() {
   // Form state
   const [brand,          setBrand]          = useState('');
   const [model,          setModel]          = useState('');
-  const [customModel,    setCustomModel]    = useState('');
   const [storage,        setStorage]        = useState('');
   const [color,          setColor]          = useState('');
   const [grade,          setGrade]          = useState('');
@@ -483,13 +482,11 @@ export default function SellPage() {
   const [warrantyStatus, setWarrantyStatus] = useState('Garantisi Yok');
   const [hasBox,         setHasBox]         = useState(false);
   const [hasInvoice,     setHasInvoice]     = useState(false);
-  const [hasAcc,         setHasAcc]         = useState(false);
   const [desc,           setDesc]           = useState('');
   const [images,         setImages]         = useState<string[]>([]);
   const [uploading,      setUploading]      = useState(false);
 
   const fileRef = useRef<HTMLInputElement>(null);
-  const finalModel = model === 'Diğer' || model === 'Diğer Apple Modeli' || model === 'Diğer Samsung Modeli' || model === 'Diğer Xiaomi Modeli' ? customModel : model;
 
   // ── Session Storage Draft Restoring ──────────────────────────────────────────
   useEffect(() => {
@@ -499,7 +496,6 @@ export default function SellPage() {
         const parsed = JSON.parse(saved);
         if (parsed.brand) setBrand(parsed.brand);
         if (parsed.model) setModel(parsed.model);
-        if (parsed.customModel) setCustomModel(parsed.customModel);
         if (parsed.storage) setStorage(parsed.storage);
         if (parsed.color) setColor(parsed.color);
         if (parsed.grade) setGrade(parsed.grade);
@@ -507,7 +503,6 @@ export default function SellPage() {
         if (parsed.warrantyStatus) setWarrantyStatus(parsed.warrantyStatus);
         if (parsed.hasBox !== undefined) setHasBox(parsed.hasBox);
         if (parsed.hasInvoice !== undefined) setHasInvoice(parsed.hasInvoice);
-        if (parsed.hasAcc !== undefined) setHasAcc(parsed.hasAcc);
         if (parsed.desc) setDesc(parsed.desc);
         if (Array.isArray(parsed.images)) setImages(parsed.images);
         if (parsed.step !== undefined) setStep(parsed.step);
@@ -520,15 +515,19 @@ export default function SellPage() {
     try {
       if (brand || model || grade || images.length > 0) {
         sessionStorage.setItem('mytt_sell_draft', JSON.stringify({
-          brand, model, customModel, storage, color, grade, battery, warrantyStatus,
-          hasBox, hasInvoice, hasAcc, desc, images, step
+          brand, model, storage, color, grade, battery, warrantyStatus,
+          hasBox, hasInvoice, desc, images, step
         }));
       }
     } catch {}
-  }, [brand, model, customModel, storage, color, grade, battery, warrantyStatus, hasBox, hasInvoice, hasAcc, desc, images, step]);
+  }, [brand, model, storage, color, grade, battery, warrantyStatus, hasBox, hasInvoice, desc, images, step]);
 
-  // ── Form gönder ──────────────────────────────────────────────────────────
+  // ── Form gönder (EN AZ 3, EN FAZLA 5 GÖRSEL KONTROLÜ İLE) ────────────────────
   const handleSubmit = async () => {
+    if (images.length < 3) {
+      alert('İhaleyi başlatabilmek için en az 3 adet cihaz fotoğrafı yüklemelisiniz.');
+      return;
+    }
     if (!user) {
       setShowAuthGateModal(true);
       return;
@@ -536,14 +535,14 @@ export default function SellPage() {
     try {
       const result = await createRequest.mutateAsync({
         brand,
-        model:         finalModel,
+        model,
         storage:       storage || undefined,
         color:         color   || undefined,
         grade,
         batteryHealth: battery !== '' ? Number(battery) : undefined,
         hasBox,
         hasInvoice,
-        hasAccessories: hasAcc,
+        hasAccessories: false,
         description:   desc ? `[Garanti: ${warrantyStatus}] ${desc}` : `[Garanti: ${warrantyStatus}]`,
         imagesUrl:     images,
         requestType:   isTradeIn ? 'TRADE_IN' : 'SELL',
@@ -558,18 +557,18 @@ export default function SellPage() {
 
   // Auto-submit after returning logged in
   useEffect(() => {
-    if (user && (autoSubmit || showAuthGateModal) && brand && (model || customModel) && grade) {
+    if (user && (autoSubmit || showAuthGateModal) && brand && model && grade && images.length >= 3) {
       setShowAuthGateModal(false);
       handleSubmit();
     }
   }, [user, autoSubmit]);
 
-  // ── Görsel yükleme ───────────────────────────────────────────────────────
+  // ── Görsel yükleme (EN AZ 3, EN FAZLA 5 FOTOĞRAF KURALI) ───────────────────
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
     if (!files.length) return;
-    if (images.length + files.length > 6) {
-      alert('En fazla 6 fotoğraf yükleyebilirsiniz.');
+    if (images.length + files.length > 5) {
+      alert('En fazla 5 adet fotoğraf yükleyebilirsiniz.');
       return;
     }
     setUploading(true);
@@ -595,14 +594,15 @@ export default function SellPage() {
   // ── Step validation ──────────────────────────────────────────────────────
   const canNext = () => {
     if (step === 0) return !!brand;
-    if (step === 1) return !!(model || customModel);
+    if (step === 1) return !!model;
     if (step === 2) return !!grade;
+    if (step === 3) return images.length >= 3 && images.length <= 5;
     return true;
   };
 
   // ── Başarı ekranı ────────────────────────────────────────────────────────
   if (done && created) {
-    return <SellSuccessScreen created={created} brand={brand} model={finalModel} router={router} />;
+    return <SellSuccessScreen created={created} brand={brand} model={model} router={router} />;
   }
 
   // ── Ana form ─────────────────────────────────────────────────────────────
@@ -639,7 +639,7 @@ export default function SellPage() {
 
               <div className="bg-[var(--k-void)] p-3 rounded-xl border border-[var(--k-line-2)] inline-block w-full">
                 <p className="text-xs font-bold text-[var(--k-hot)]">
-                  📱 {brand} {finalModel} ({GRADES.find(g => g.id === grade)?.label || grade})
+                  📱 {brand} {model} ({GRADES.find(g => g.id === grade)?.label || grade})
                 </p>
               </div>
 
@@ -714,7 +714,7 @@ export default function SellPage() {
           </div>
         </div>
 
-        {/* ── STEP 0: MARKANIZI SEÇİN (YÜKSEK NETLİKTE TEMİZ BEYAZ ROZET DESTEĞİ İLE) ──────────────── */}
+        {/* ── STEP 0: MARKANIZI SEÇİN ──────────────── */}
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
@@ -726,7 +726,7 @@ export default function SellPage() {
               {BRANDS.map((b) => (
                 <button
                   key={b.id}
-                  onClick={() => { setBrand(b.id); setModel(''); setCustomModel(''); setStep(1); }}
+                  onClick={() => { setBrand(b.id); setModel(''); setStep(1); }}
                   className={`p-4 sm:p-5 rounded-2xl border text-center transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center gap-3 group relative overflow-hidden ${
                     brand === b.id
                       ? 'border-[var(--k-hot)] bg-[var(--k-surface)] ring-2 ring-[var(--k-hot)]/40 shadow-xl shadow-[var(--k-hot-glow)]/20'
@@ -757,11 +757,11 @@ export default function SellPage() {
 
             {/* Popüler Modeller Izgarası */}
             {(POPULAR_MODELS[brand] ?? []).length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[360px] overflow-y-auto pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
                 {(POPULAR_MODELS[brand] ?? []).map((m) => (
                   <button
                     key={m}
-                    onClick={() => { setModel(m); setCustomModel(''); }}
+                    onClick={() => setModel(m)}
                     className={`p-3.5 rounded-xl border text-left transition-all font-semibold text-xs flex items-center justify-between ${
                       model === m
                         ? 'border-[var(--k-hot)] bg-[var(--k-hot-wash)] text-[var(--k-hot)] font-bold shadow-md'
@@ -774,20 +774,6 @@ export default function SellPage() {
                 ))}
               </div>
             )}
-
-            {/* Manuel Model Girişi */}
-            <div className="pt-1">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                Listede aradığınız model yoksa elle yazın
-              </label>
-              <input
-                type="text"
-                value={customModel}
-                onChange={(e) => { setCustomModel(e.target.value); setModel('Diğer'); }}
-                placeholder={`Örn: ${brand} Modeli`}
-                className="w-full p-4 rounded-xl bg-[var(--k-surface)] border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[var(--k-hot)] text-sm font-medium"
-              />
-            </div>
 
             {/* Depolama & Renk & Batarya Sağlığı */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
@@ -848,14 +834,13 @@ export default function SellPage() {
               </select>
             </div>
 
-            {/* Kutu & Fatura & Aksesuar Seçimi */}
+            {/* Kutu & Fatura Seçimi (AKSESUAR SEÇİMİ KALDIRILDI) */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Kutu / Fatura / Aksesuar Durumu</label>
-              <div className="grid grid-cols-3 gap-3">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Kutu / Fatura Durumu</label>
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: 'Kutu Var', state: hasBox, setState: setHasBox },
                   { label: 'Fatura Var', state: hasInvoice, setState: setHasInvoice },
-                  { label: 'Aksesuar Var', state: hasAcc, setState: setHasAcc },
                 ].map((item) => (
                   <button
                     key={item.label}
@@ -921,7 +906,7 @@ export default function SellPage() {
             <div className="bg-[var(--k-surface)] rounded-2xl border border-slate-800 p-4 space-y-2">
               <div className="flex justify-between text-xs">
                 <span className="text-slate-400">Model</span>
-                <span className="font-bold text-white">{brand} {finalModel}</span>
+                <span className="font-bold text-white">{brand} {model}</span>
               </div>
               {storage && (
                 <div className="flex justify-between text-xs">
@@ -939,32 +924,46 @@ export default function SellPage() {
           </div>
         )}
 
-        {/* ── STEP 3: Onay & Fotoğraf ────────────────────────────────────────────── */}
+        {/* ── STEP 3: Onay & Fotoğraf (EN AZ 3, EN FAZLA 5 FOTOĞRAF YÜKLEME) ────────────────── */}
         {step === 3 && (
           <div className="max-w-2xl mx-auto space-y-6">
             
             {/* Fotoğraf Yükleme Alanı */}
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-white">Fotoğraf Yükleyin (İsteğe Bağlı)</h2>
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-white">Fotoğraf Yükleyin (Zorunlu)</h2>
+                <span className={`text-xs font-black px-3 py-1 rounded-full border ${
+                  images.length >= 3 && images.length <= 5
+                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                    : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                }`}>
+                  {images.length >= 3 ? `✓ ${images.length}/5 Fotoğraf Yüklendi` : `En az 3 fotoğraf ekleyin (${images.length}/5)`}
+                </span>
+              </div>
+
               <button
                 onClick={() => fileRef.current?.click()}
-                disabled={uploading}
-                className="w-full p-6 border-2 border-dashed border-slate-700 hover:border-[var(--k-hot)] bg-[var(--k-surface)] rounded-2xl flex flex-col items-center justify-center gap-2 transition-colors cursor-pointer"
+                disabled={uploading || images.length >= 5}
+                className="w-full p-6 border-2 border-dashed border-slate-700 hover:border-[var(--k-hot)] bg-[var(--k-surface)] rounded-2xl flex flex-col items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {uploading ? (
                   <Loader2 size={28} className="text-slate-400 animate-spin" />
                 ) : (
-                  <Upload size={28} className="text-slate-400" />
+                  <Upload size={28} className="text-[var(--k-hot)]" />
                 )}
-                <p className="text-slate-200 font-semibold text-sm">{uploading ? 'Yükleniyor...' : 'Fotoğraf Seç'}</p>
-                <p className="text-slate-500 text-xs">{images.length}/6 yüklendi</p>
+                <p className="text-slate-200 font-semibold text-sm">
+                  {uploading ? 'Yükleniyor...' : 'Cihaz Fotoğraflarını Seç (En az 3, Max 5)'}
+                </p>
+                <p className="text-slate-400 text-xs">
+                  Açık artırmadaki bayilerin doğru teklif verebilmesi için en az 3 adet net fotoğraf zorunludur.
+                </p>
               </button>
               <input ref={fileRef} type="file" accept="image/*" multiple onChange={handleFileChange} className="hidden" />
 
               {images.length > 0 && (
-                <div className="grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-5 gap-2.5">
                   {images.map((url, i) => (
-                    <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-slate-700 bg-slate-900">
+                    <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-md">
                       <img src={url} alt="" className="w-full h-full object-cover" />
                       <button onClick={() => setImages(images.filter((_, j) => j !== i))}
                         className="absolute top-1 right-1 w-6 h-6 bg-black/70 rounded-full flex items-center justify-center hover:bg-black transition-colors">
@@ -974,19 +973,28 @@ export default function SellPage() {
                   ))}
                 </div>
               )}
+
+              {images.length < 3 && (
+                <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-3.5 flex items-center gap-3">
+                  <AlertCircle size={20} className="text-amber-400 shrink-0" />
+                  <p className="text-amber-300 text-xs font-semibold">
+                    İhaleyi başlatabilmek için lütfen cihazın önden, arkadan ve ekran açık durumdaki en az 3 adet fotoğrafını yükleyin.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Özet Tablosu */}
             <div className="bg-[var(--k-surface)] rounded-2xl border border-slate-800 p-5 space-y-3">
               <h3 className="font-bold text-white text-sm border-b border-slate-800 pb-2">Cihaz Özeti</h3>
               {[
-                ['Marka & Model', `${brand} ${finalModel}`],
+                ['Marka & Model', `${brand} ${model}`],
                 ['Depolama', storage || '—'],
                 ['Renk', color || '—'],
                 ['Pil Sağlığı', battery !== '' ? `%${battery}` : '—'],
                 ['Garanti Durumu', warrantyStatus],
                 ['Kozmetik Durum', `${grade} — ${GRADES.find(g => g.id === grade)?.label}`],
-                ['Kutu / Fatura / Aksesuar', `${hasBox ? 'Kutu Var' : 'Kutu Yok'}, ${hasInvoice ? 'Fatura Var' : 'Fatura Yok'}, ${hasAcc ? 'Aksesuar Var' : 'Aksesuar Yok'}`],
+                ['Kutu / Fatura Durumu', `${hasBox ? 'Kutu Var' : 'Kutu Yok'}, ${hasInvoice ? 'Fatura Var' : 'Fatura Yok'}`],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between text-sm">
                   <span className="text-slate-400">{k}</span>
@@ -1024,8 +1032,8 @@ export default function SellPage() {
           ) : (
             <button
               onClick={handleSubmit}
-              disabled={createRequest.isPending}
-              className="flex-1 py-4 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] text-white font-black text-sm hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-xl shadow-[var(--k-hot-glow)]/30">
+              disabled={createRequest.isPending || images.length < 3 || images.length > 5}
+              className="flex-1 py-4 rounded-xl bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] text-white font-black text-sm hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shadow-xl shadow-[var(--k-hot-glow)]/30">
               {createRequest.isPending ? (
                 <><Loader2 size={18} className="animate-spin" /> İhaleye Gönderiliyor...</>
               ) : (
