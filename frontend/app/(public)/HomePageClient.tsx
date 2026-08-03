@@ -22,7 +22,6 @@ import ServiceBubbles from '@/components/ServiceBubbles';
 import MarketingTriggers from '@/components/MarketingTriggers';
 import LiveSocialProof from '@/components/LiveSocialProof';
 import HepsiburadaHero from '@/components/HepsiburadaHero';
-import AntiRefurbishedBanner from '@/components/AntiRefurbishedBanner';
 import QuickValuationWidget from '@/components/QuickValuationWidget';
 import BrandHubShowcase from '@/components/BrandHubShowcase';
 import EscrowFlowInfographic from '@/components/EscrowFlowInfographic';
@@ -489,9 +488,6 @@ function HomePageContent() {
 
       {/* ── 1. HERO SLIDER BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
-
-      {/* ── 2. DOĞRUDAN ESNAF TİCARETİ & YENİLENMİŞ CİHAZ DÜŞMANI BANNER ── */}
-      {!searchQuery && <AntiRefurbishedBanner />}
 
       {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
       {!searchQuery && (
