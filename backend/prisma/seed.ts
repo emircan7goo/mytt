@@ -30,32 +30,32 @@ async function main() {
   await prisma.store.deleteMany();
   await prisma.user.deleteMany();
 
-  const passwordHash = await bcrypt.hash('password123', 10);
-
-  // â”€â”€ Demo Hesaplar (frontend lib/auth.ts ile uyumlu) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  const adminHash    = await bcrypt.hash('admin123',   10);
-  const dealerHash   = await bcrypt.hash('bayi123',    10);
-  const customerHash = await bcrypt.hash('musteri123', 10);
+  // ── Gerçek Resmi Hesaplar (MYTT Production Accounts) ──────────────────────────
+  const adminHash    = await bcrypt.hash('Mytt2026!Admin',   10);
+  const dealerHash   = await bcrypt.hash('Mytt2026!Bayi',    10);
+  const customerHash = await bcrypt.hash('Mytt2026!Musteri', 10);
 
   await prisma.user.create({
     data: {
-      email: 'admin@demo.com',
-      name: 'System Admin',
+      email: 'admin@mytt.com.tr',
+      name: 'MYTT Genel Yönetim',
       password: adminHash,
       role: 'ADMIN',
       isActive: true,
+      emailVerified: true,
     },
   });
 
   const demoDealer = await prisma.user.create({
     data: {
-      email: 'bayi@demo.com',
-      name: 'Ahmet Bayi',
+      email: 'bayi@mytt.com.tr',
+      name: 'MYTT Yetkili İletişim Bayii',
       password: dealerHash,
       role: 'DEALER',
       isActive: true,
+      emailVerified: true,
       b2bStatus: 'APPROVED',
-      companyName: 'Demo Bayi A.Å.',
+      companyName: 'MYTT Teknoloji ve İletişim A.Ş.',
       taxId: '1234567890',
       commissionRate: 0.08,
     },
@@ -63,17 +63,18 @@ async function main() {
 
   await prisma.user.create({
     data: {
-      email: 'musteri@demo.com',
-      name: 'Ali Demir',
+      email: 'musteri@mytt.com.tr',
+      name: 'Emir Can',
       password: customerHash,
       role: 'CUSTOMER',
       isActive: true,
+      emailVerified: true,
     },
   });
 
-  console.log('âœ… Demo hesaplar: admin@demo.com / bayi@demo.com / musteri@demo.com');
+  console.log('✅ Resmi MYTT hesapları oluşturuldu: admin@mytt.com.tr / bayi@mytt.com.tr / musteri@mytt.com.tr');
 
-  // Demo dealer'a maÄŸaza oluÅŸtur (DealerStock iÃ§in gerekli)
+  // Demo dealer'a mağaza oluştur (DealerStock için gerekli)
   const demoDealerStore = await prisma.store.create({
     data: {
       ownerId: demoDealer.id,
