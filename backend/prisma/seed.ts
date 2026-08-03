@@ -74,34 +74,48 @@ async function main() {
 
   console.log('✅ Resmi MYTT hesapları oluşturuldu: admin@mytt.com.tr / bayi@mytt.com.tr / musteri@mytt.com.tr');
 
-  // Demo dealer'a mağaza oluştur (DealerStock için gerekli)
+  // MYTT Ana Bayisine Mağaza Oluştur
   const demoDealerStore = await prisma.store.create({
     data: {
       ownerId: demoDealer.id,
-      name: 'Demo Bayi MaÄŸazasÄ±',
+      name: 'MYTT Genel Merkez Bayii',
       logo: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=150&h=150&fit=crop&q=80',
       coverImage: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&h=300&fit=crop&q=80',
-      bio: 'Kaliteli ikinci el iPhone ve Samsung cihazlarda gÃ¼venilir adresiniz. TÃ¼m cihazlar test edilmiÅŸ ve sertifikalandÄ±rÄ±lmÄ±ÅŸtÄ±r.',
-      rating: 4.7,
-      reviewCount: 32,
-      jobsCompleted: 87,
-      isPremium: false,
-      categories: ['Cihaz AlÄ±m/SatÄ±m'],
-      detailedServices: { 'Cihaz AlÄ±m/SatÄ±m': ['iPhone', 'Samsung', 'Xiaomi'] },
+      bio: 'Kaliteli sıfır ve garantili ikinci el iPhone, Samsung ve Xiaomi cihazlarda MYTT resmi yetkili noktası.',
+      rating: 4.9,
+      reviewCount: 142,
+      jobsCompleted: 320,
+      isPremium: true,
+      categories: ['Cihaz Alım/Satım'],
+      detailedServices: { 'Cihaz Alım/Satım': ['iPhone', 'Samsung', 'Xiaomi'] },
       reviews: [
         { user: 'Ahmet K.', rating: 5, comment: 'Harika hizmet, cihaz sorunsuz geldi.' },
-        { user: 'Zeynep M.', rating: 4, comment: 'HÄ±zlÄ± kargo, aÃ§Ä±klamayla uygun Ã¼rÃ¼n.' },
+        { user: 'Zeynep M.', rating: 5, comment: 'Hızlı kargo, açıklamayla birebir aynı sıfır ürün.' },
       ],
     },
   });
 
+  const REAL_DEALERS_SEED = [
+    { email: 'kadikoy@mytt.com.tr', name: 'Ahmet Yılmaz', company: 'MYTT Kadıköy İletişim Bayii' },
+    { email: 'sisli@mytt.com.tr',    name: 'Mehmet Kaya',  company: 'MYTT Şişli Ana Bayi' },
+    { email: 'cankaya@mytt.com.tr', name: 'Mustafa Öztürk', company: 'MYTT Ankara Çankaya Bayii' },
+    { email: 'konak@mytt.com.tr',   name: 'Burak Çelik',  company: 'MYTT İzmir Konak Bayii' },
+    { email: 'bursa@mytt.com.tr',   name: 'Serkan Arslan', company: 'MYTT Bursa Nilüfer Bayii' },
+  ];
+
+  const passwordHash = await bcrypt.hash('Mytt2026!Bayi', 10);
   const owners: any[] = [];
-  for (let i = 1; i <= 5; i++) {
+  for (const dealerSeed of REAL_DEALERS_SEED) {
     const owner = await prisma.user.create({
       data: {
-        email: `owner${i}@mytt.com`,
+        email: dealerSeed.email,
+        name: dealerSeed.name,
+        companyName: dealerSeed.company,
         password: passwordHash,
         role: 'DEALER',
+        isActive: true,
+        emailVerified: true,
+        b2bStatus: 'APPROVED',
       },
     });
     owners.push(owner);

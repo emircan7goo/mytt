@@ -22,12 +22,17 @@ export async function POST(req: NextRequest) {
   const cleanEmail = email.trim().toLowerCase();
 
   // Official production accounts mapping for instant availability
-  const OFFICIAL_ACCOUNTS: Record<string, { role: 'ADMIN' | 'DEALER' | 'CUSTOMER'; pass: string; name: string }> = {
+  const OFFICIAL_ACCOUNTS: Record<string, { role: 'ADMIN' | 'DEALER' | 'CUSTOMER'; pass: string; name: string; companyName?: string }> = {
     'admin@mytt.com.tr':   { role: 'ADMIN',    pass: 'Mytt2026!Admin',   name: 'MYTT Genel Yönetim' },
-    'bayi@mytt.com.tr':    { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'MYTT Yetkili İletişim Bayii' },
+    'bayi@mytt.com.tr':    { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Ahmet Yılmaz', companyName: 'MYTT Yetkili İletişim Bayii' },
+    'kadikoy@mytt.com.tr': { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Ahmet Yılmaz', companyName: 'MYTT Kadıköy İletişim Bayii' },
+    'sisli@mytt.com.tr':    { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Mehmet Kaya',  companyName: 'MYTT Şişli Ana Bayi' },
+    'cankaya@mytt.com.tr': { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Mustafa Öztürk', companyName: 'MYTT Ankara Çankaya Bayii' },
+    'konak@mytt.com.tr':   { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Burak Çelik',  companyName: 'MYTT İzmir Konak Bayii' },
+    'bursa@mytt.com.tr':   { role: 'DEALER',   pass: 'Mytt2026!Bayi',    name: 'Serkan Arslan', companyName: 'MYTT Bursa Nilüfer Bayii' },
     'musteri@mytt.com.tr': { role: 'CUSTOMER', pass: 'Mytt2026!Musteri', name: 'Emir Can' },
     'admin@demo.com':      { role: 'ADMIN',    pass: 'admin123',         name: 'MYTT Admin' },
-    'bayi@demo.com':       { role: 'DEALER',   pass: 'bayi123',          name: 'MYTT Bayi' },
+    'bayi@demo.com':       { role: 'DEALER',   pass: 'bayi123',          name: 'MYTT Bayi', companyName: 'MYTT Demo Bayi A.Ş.' },
     'musteri@demo.com':    { role: 'CUSTOMER', pass: 'musteri123',       name: 'MYTT Müşteri' },
   };
 
@@ -47,6 +52,7 @@ export async function POST(req: NextRequest) {
       data: {
         email: cleanEmail,
         name: acc.name,
+        companyName: acc.companyName,
         password: passHash,
         role: acc.role,
         isActive: true,

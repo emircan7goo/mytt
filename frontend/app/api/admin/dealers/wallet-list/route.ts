@@ -21,5 +21,10 @@ export async function GET(req: NextRequest) {
     orderBy: { createdAt: 'desc' },
   });
 
-  return NextResponse.json(dealers);
+  const mapped = dealers.map((d) => ({
+    ...d,
+    companyName: d.companyName || d.store?.name || d.name || 'MYTT Yetkili Bayi',
+  }));
+
+  return NextResponse.json(mapped);
 }
