@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6000" />
+      <stop offset="100%" stop-color="#D94600" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF6000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#orangeGrad)" filter="url(#shadow)" />
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="none" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="6" />
+
+  <!-- Bold White MYTT Emblem -->
+  <text x="256" y="275" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="160" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" letter-spacing="-6">MYTT</text>
+  
+  <!-- Orange Zap Dot Accent -->
+  <circle cx="410" cy="150" r="28" fill="#FFFFFF" />
+  <circle cx="410" cy="150" r="18" fill="#FF6000" />
+</svg>

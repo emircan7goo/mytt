@@ -128,9 +128,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="tr" data-theme="dark" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon" />
         {/* Tema pre-paint: kayitli tercihi (yoksa varsayilan 'dark') boyamadan
             once uygular — FOUC (yanlis tema flashi) olmaz. ThemeContext ile ayni
             'mytt_theme' anahtarini kullanir. */}
