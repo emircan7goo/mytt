@@ -12,8 +12,12 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   const store = await prisma.store.findUnique({
     where: { id },
     include: {
-      owner: { select: { id: true, email: true } },
-      products: true,
+      owner: { select: { id: true, email: true, name: true, companyName: true } },
+      dealerStock: {
+        where: { adminApproved: true, stock: { gt: 0 } },
+        include: { globalProduct: true },
+        orderBy: { createdAt: 'desc' },
+      },
     },
   });
 

@@ -190,6 +190,7 @@ export default function Navbar() {
   const [mounted, setMounted]                 = useState(false);
   const [scrolled, setScrolled]               = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const profileMenuRef = useRef<HTMLDivElement>(null);
@@ -322,6 +323,8 @@ export default function Navbar() {
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
                 placeholder="Telefon markası veya modeli ara… (Örn: iPhone 16 Pro)"
                 className="flex-1 px-3 text-[13.5px] bg-transparent outline-none min-w-0 text-white placeholder-slate-400 font-medium"
               />
@@ -332,6 +335,46 @@ export default function Navbar() {
                 <span>ARA</span>
               </button>
             </div>
+
+            {/* Instant Search Dropdown Auto-complete */}
+            {isSearchFocused && searchValue.trim().length >= 2 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-[#111625]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 p-2 text-white animate-in fade-in zoom-in-95 duration-150">
+                <div className="p-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 flex justify-between">
+                  <span>Hızlı Sonuçlar</span>
+                  <span className="text-[#FF6000]">MYTT Doğrulanmış Cihazlar</span>
+                </div>
+                <div className="py-1 divide-y divide-slate-800/40 max-h-72 overflow-y-auto">
+                  {[
+                    { name: 'iPhone 16 Pro Max', brand: 'Apple', url: '/urun/apple/iphone-16-pro-max' },
+                    { name: 'iPhone 15 Pro', brand: 'Apple', url: '/urun/apple/iphone-15-pro' },
+                    { name: 'iPhone 14 Pro Max', brand: 'Apple', url: '/urun/apple/iphone-14-pro-max' },
+                    { name: 'Galaxy S24 Ultra', brand: 'Samsung', url: '/urun/samsung/galaxy-s24-ultra' },
+                    { name: 'Galaxy S23 FE', brand: 'Samsung', url: '/urun/samsung/galaxy-s23-fe' },
+                    { name: 'Xiaomi 14T Pro', brand: 'Xiaomi', url: '/urun/xiaomi/xiaomi-14t-pro' },
+                  ]
+                    .filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) || item.brand.toLowerCase().includes(searchValue.toLowerCase()))
+                    .map((item, i) => (
+                      <Link
+                        key={i}
+                        href={item.url}
+                        onClick={() => { setSearchValue(''); setIsSearchFocused(false); }}
+                        className="flex items-center justify-between p-2.5 hover:bg-white/5 rounded-xl transition-all group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-[#FF6000]">
+                            <Smartphone size={16} />
+                          </div>
+                          <div>
+                            <p className="font-bold text-xs text-white group-hover:text-[#FF6000] transition-colors">{item.name}</p>
+                            <p className="text-[10px] text-slate-400">{item.brand} • Doğrulanmış Bayi Stoklarında</p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold text-[#FF6000] opacity-0 group-hover:opacity-100 transition-opacity">İncele ➔</span>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            )}
           </form>
 
           {/* Sağ aksiyonlar */}
