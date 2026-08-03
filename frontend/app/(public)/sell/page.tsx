@@ -33,31 +33,66 @@ const BRANDS = [
   { id: 'Diğer',          label: 'DİĞER',          logoUrl: '' },
 ];
 
-// ── Kullanıcının Verdiği URL'leri Kusursuz Hizalayan Beyaz Rozet Komponenti ────────
-function BrandLogo({ id, logoUrl }: { id: string; logoUrl?: string }) {
-  const [imgError, setImgError] = useState(false);
+// ── Tutarli, her zaman okunur MARKA ROZETLERI ─────────────────────────────────
+// Dis kaynakli (Wikipedia/gstatic/...) logolar farkli boyut/oran/arka planda
+// geldigi icin "biri buyuk biri kucuk, biri okunmuyor" sorununu yaratiyordu.
+// Cozum: her markayi KENDI imza renginde, beyaz cip uzerinde, isim uzunluguna
+// gore olceklenmis TEK TIP wordmark olarak React icinde ciziyoruz. Dis istek yok,
+// her zaman net; acik zeminde okunur renkler secildi (realme/POCO/Nothing sarisi
+// yerine koyu ton). Apple ikonik glyph ile.
+const BRAND_STYLE: Record<string, { text: string; color: string }> = {
+  Apple:            { text: 'Apple',          color: '#111111' }, // glyph ile gosterilir
+  Samsung:          { text: 'SAMSUNG',        color: '#1428A0' },
+  Xiaomi:           { text: 'Xiaomi',         color: '#FF6900' },
+  Huawei:           { text: 'HUAWEI',         color: '#C7000B' },
+  Oppo:             { text: 'OPPO',           color: '#046A38' },
+  realme:           { text: 'realme',         color: '#111111' },
+  Poco:             { text: 'POCO',           color: '#111111' },
+  vivo:             { text: 'vivo',           color: '#415FFF' },
+  Honor:            { text: 'HONOR',          color: '#111111' },
+  Infinix:          { text: 'infinix',        color: '#111111' },
+  Reeder:           { text: 'Reeder',         color: '#E4002B' },
+  'General Mobile': { text: 'General Mobile',  color: '#005BAA' },
+  Casper:           { text: 'Casper',         color: '#0B2C5F' },
+  TCL:              { text: 'TCL',            color: '#E60012' },
+  Nothing:          { text: 'Nothing',        color: '#111111' },
+  Omix:             { text: 'OMIX',           color: '#111111' },
+};
 
-  if (logoUrl && !imgError) {
-    return (
-      <div className="w-full h-12 flex items-center justify-center shrink-0">
-        <div className="w-24 h-11 bg-white rounded-xl shadow-md border border-slate-200 p-2 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-          <img
-            src={logoUrl}
-            alt={id}
-            className="max-h-7 max-w-[76px] w-auto h-auto object-contain"
-            onError={() => setImgError(true)}
-            loading="lazy"
-          />
-        </div>
-      </div>
-    );
-  }
+const AppleGlyph = ({ color }: { color: string }) => (
+  <svg width="26" height="26" viewBox="0 0 24 24" fill={color} aria-hidden>
+    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 8.32 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.8 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+  </svg>
+);
 
-  // Görsel yüklenemezse veya Diğer seçeneği ise şık fallback
+function wordmarkSize(text: string): string {
+  const n = text.length;
+  if (n <= 4)  return 'text-[19px]';
+  if (n <= 7)  return 'text-[15px]';
+  if (n <= 11) return 'text-[12px]';
+  return 'text-[10px]';
+}
+
+function BrandLogo({ id }: { id: string }) {
+  const style = BRAND_STYLE[id];
+
   return (
     <div className="w-full h-12 flex items-center justify-center shrink-0">
-      <div className="w-24 h-11 bg-slate-800 text-slate-200 rounded-xl shadow-md border border-slate-700 p-2 flex items-center justify-center font-bold text-xs">
-        {id === 'Diğer' ? <MoreHorizontal size={24} /> : id}
+      <div className="w-[108px] h-12 bg-white rounded-xl shadow-sm border border-black/10 px-2 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+        {id === 'Diğer' || id === 'Diger' ? (
+          <MoreHorizontal size={26} className="text-slate-500" />
+        ) : id === 'Apple' ? (
+          <AppleGlyph color={style?.color ?? '#111111'} />
+        ) : style ? (
+          <span
+            className={`font-black leading-none tracking-tight whitespace-nowrap ${wordmarkSize(style.text)}`}
+            style={{ color: style.color }}
+          >
+            {style.text}
+          </span>
+        ) : (
+          <span className="font-black text-[13px] text-slate-800">{id}</span>
+        )}
       </div>
     </div>
   );
@@ -577,7 +612,7 @@ export default function SellPage() {
         {step === 0 && (
           <div className="space-y-8 text-center max-w-5xl mx-auto">
             
-            <h2 className="text-xl sm:text-3xl font-black text-slate-300 uppercase tracking-widest font-mono">
+            <h2 className="text-xl sm:text-3xl font-black text-[var(--k-ink-2)] uppercase tracking-widest font-mono">
               MARKANIZI SEÇİN
             </h2>
 
@@ -588,13 +623,13 @@ export default function SellPage() {
                   onClick={() => { setBrand(b.id); setModel(''); setStep(1); }}
                   className={`p-4 sm:p-5 rounded-2xl border text-center transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center gap-3 group relative overflow-hidden ${
                     brand === b.id
-                      ? 'border-[var(--k-hot)] bg-[var(--k-surface)] ring-2 ring-[var(--k-hot)]/40 shadow-xl shadow-[var(--k-hot-glow)]/20'
-                      : 'border-slate-800 bg-[var(--k-surface)] hover:border-slate-600 hover:bg-[var(--k-surface-2)]'
+                      ? 'border-[var(--k-hot)] bg-[var(--k-surface-2)] ring-2 ring-[var(--k-hot)]/40 shadow-xl shadow-[var(--k-hot-glow)]/20'
+                      : 'border-[var(--k-line)] bg-[var(--k-canvas-2)] hover:border-[var(--k-line-hot)] hover:bg-[var(--k-surface-2)]'
                   }`}
                 >
-                  <BrandLogo id={b.id} logoUrl={b.logoUrl} />
+                  <BrandLogo id={b.id} />
 
-                  <span className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight group-hover:text-white">
+                  <span className="text-xs sm:text-sm font-bold text-[var(--k-ink-2)] tracking-tight group-hover:text-[var(--k-hot)]">
                     {b.label}
                   </span>
                 </button>
