@@ -83,18 +83,6 @@ export const metadata: Metadata = {
     images: [`${BASE_URL}/og-banner.png`],
     creator: '@mytt',
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/favicon.png', type: 'image/png' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
   alternates: {
     canonical: BASE_URL,
   },
@@ -102,7 +90,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#100D0B',
+  themeColor: '#FF6000',
 };
 
 // Schema.org Organization markup — Google Knowledge Graph
@@ -112,7 +100,7 @@ const organizationJsonLd = {
   name: 'Mytt',
   alternateName: ['Mytt Telefon', 'Mytt Pazaryeri'],
   url: BASE_URL,
-  logo: `${BASE_URL}/icon-512.png`,
+  logo: `${BASE_URL}/icon`,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
