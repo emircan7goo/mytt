@@ -8,7 +8,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-import axios from 'axios';
+import apiClient from '../api';
 import { API_BASE } from '../apiBase';
 
 // ── API Product type (matches backend Prisma output) ─────────────────────────
@@ -55,13 +55,13 @@ export interface ApiProduct {
 
 // ── Fetch helpers ─────────────────────────────────────────────────────────────
 async function fetchProductsFromAPI(signal?: AbortSignal): Promise<ApiProduct[]> {
-  const { data } = await axios.get<{ items: any[] }>(`${API_BASE}/catalog/stock/list`, { signal });
+  const { data } = await apiClient.get<{ items: any[] }>(`/catalog/stock/list`, { signal });
   const mapped = data.items.map(normalizeProduct);
   return mapped;
 }
 
 async function fetchProductByIdFromAPI(id: string, signal?: AbortSignal): Promise<ApiProduct> {
-  const { data } = await axios.get<any>(`${API_BASE}/catalog/stock/public/${id}`, { signal });
+  const { data } = await apiClient.get<any>(`/catalog/stock/public/${id}`, { signal });
   return normalizeProduct(data);
 }
 
@@ -216,13 +216,12 @@ export interface FamilySummary {
   hasWarrantyOffer: boolean;
 }
 
-/** Ana vitrin — her kart bir marka+model ailesi (ör. tek bir "iPhone 12" kartı). */
 export function useFamilies(): UseQueryResult<FamilySummary[], Error> {
   return useQuery<FamilySummary[], Error>({
     queryKey: ['families'],
     queryFn: async ({ signal }) => {
-      const { data } = await axios.get<{ items: FamilySummary[] }>(
-        `${API_BASE}/catalog/browse`,
+      const { data } = await apiClient.get<{ items: FamilySummary[] }>(
+        `/catalog/browse`,
         { params: { limit: 200 }, signal },
       );
       return data.items;
@@ -243,7 +242,7 @@ export function useProductFamily(
     queryKey: ['product-family', brand, model, filters],
     queryFn: async ({ signal }) => {
       if (!brand || !model) return null;
-      const { data } = await axios.get<FamilyDetail>(`${API_BASE}/catalog/family`, {
+      const { data } = await apiClient.get<FamilyDetail>(`/catalog/family`, {
         params: { brand, model, ...filters },
         signal,
       });

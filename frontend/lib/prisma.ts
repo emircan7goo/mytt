@@ -33,6 +33,5 @@ function createPrismaClient(): PrismaClient {
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = prisma;
-}
+// Always cache the client globally in serverless lambdas to avoid reconnecting on every request!
+globalForPrisma.prisma = prisma;
