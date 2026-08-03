@@ -13,8 +13,6 @@ import {
 const NAV_ITEMS = [
   { href: '/admin/dashboard',        label: 'Genel Bakış',        icon: LayoutDashboard },
   { href: '/admin/approvals',        label: 'Onay Merkezi',       icon: BadgeCheck,  highlight: true, badgeKey: 'approvals' },
-  { href: '/admin/builder',          label: 'Site Düzenleyici',   icon: LayoutTemplate  },
-  { href: '/admin/hero-manager',     label: 'Hero Slider',        icon: Image           },
   { href: '/admin/dealers',          label: 'Bayiler',            icon: Store           },
   { href: '/admin/dealer-approvals', label: 'Bayi Başvuruları',   icon: AlertTriangle   },
   { href: '/admin/catalog',          label: 'Ürün Kataloğu',      icon: Package         },
