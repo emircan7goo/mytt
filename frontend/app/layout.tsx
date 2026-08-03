@@ -83,6 +83,15 @@ export const metadata: Metadata = {
     images: [`${BASE_URL}/og-banner.png`],
     creator: '@mytt',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.ico', type: 'image/x-icon' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   alternates: {
     canonical: BASE_URL,
   },
