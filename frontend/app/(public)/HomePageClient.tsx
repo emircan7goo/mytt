@@ -35,6 +35,7 @@ import MobileBottomNav from '@/components/MobileBottomNav';
 import { useSiteConfig, type FeatureCardConfig } from '@/lib/hooks/useSiteConfig';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import FamilyCard, { FamilyCardSkeleton } from '@/components/FamilyCard';
+import { getBrandLogo, normalizeBrandName } from '@/lib/brandLogos';
 import { MENU_ITEMS } from '@/components/Navbar';
 
 // ── Her marka için kendine özgü renk ──
@@ -301,7 +302,7 @@ function HomePageContent() {
   const configDataSettings = configReady ? configData?.settings : undefined;
   const isLoading     = isProductsLoading;
 
-  const brands   = useMemo(() => Array.from(new Set(families.map(f => f.brand))).sort(), [families]);
+  const brands   = useMemo(() => Array.from(new Set(families.map(f => normalizeBrandName(f.brand)))).sort(), [families]);
   const colors   = useMemo(() => Array.from(new Set(families.flatMap(f => f.colorOptions))).sort(), [families]);
   const storages = useMemo(() => Array.from(new Set(families.flatMap(f => f.storageOptions))).sort((a, b) => parseInt(a) - parseInt(b)), [families]);
   const priceStats = useMemo(() => {
@@ -447,31 +448,24 @@ function HomePageContent() {
         <div className="bg-[var(--k-surface-2)] px-4 py-2.5 border-b border-[var(--k-line)] flex justify-between items-center">
           <span className="text-xs font-bold text-[var(--k-ink-2)]">Marka</span>
         </div>
-        <div className="p-3 bg-[var(--k-surface)] space-y-2">
+        <div className="p-2.5 bg-[var(--k-surface)] space-y-1">
           {brands.map(brand => {
             const isActive = selectedBrand === brand;
-            const bc = BRAND_COLORS[brand] ?? DEFAULT_BRAND_COLOR;
             return (
               <button
                 key={brand}
                 onClick={() => setSelectedBrand(isActive ? null : brand)}
-                className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
+                className={`flex items-center gap-2.5 w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-all group ${
+                  isActive
+                    ? 'bg-orange-500/10 text-orange-400 font-extrabold border border-orange-500/30'
+                    : 'text-slate-300 hover:bg-slate-800/60 hover:text-white border border-transparent'
+                }`}
               >
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shrink-0 transition-all"
-                  style={{
-                    background: bc.active,
-                    color: bc.text,
-                    boxShadow: isActive ? `0 0 0 3px ${bc.glow}` : 'none',
-                    opacity: isActive ? 1 : 0.75,
-                  }}
-                >
-                  {brandMonogram(brand)}
+                <div className="w-6 h-6 rounded-md bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-200 shrink-0 transition-transform group-hover:scale-105">
+                  {getBrandLogo(brand, 14, isActive ? "text-orange-400" : "text-slate-300")}
                 </div>
-                <span className={`transition-colors ${isActive ? 'font-bold text-[var(--k-ink)]' : 'text-[var(--k-ink-2)] group-hover:text-[var(--k-ink)]'}`}>
-                  {brand}
-                </span>
-                {isActive && <Check size={12} strokeWidth={3} className="ml-auto text-[var(--k-hot)]" />}
+                <span className="truncate">{brand}</span>
+                {isActive && <Check size={13} strokeWidth={3} className="ml-auto text-orange-400 shrink-0" />}
               </button>
             );
           })}

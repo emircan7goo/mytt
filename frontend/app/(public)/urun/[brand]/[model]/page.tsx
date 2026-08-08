@@ -10,6 +10,7 @@ import {
 import { useProductFamily, type ComparisonSort } from '@/lib/hooks/useProducts';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import DealerTrustBadge from '@/components/DealerTrustBadge';
+import DeviceRenderMockup from '@/components/DeviceRenderMockup';
 
 const GRADE: Record<string, { label: string; color: string; bg: string; border: string }> = {
   'A+': { label: 'Kusursuz',         color: "var(--k-hot)", bg: '#FFF7ED', border: '#FED7AA' },
@@ -107,7 +108,7 @@ export default function ProductFamilyPage() {
               {heroImage ? (
                 <img src={heroImage} alt={model} className="w-4/5 h-4/5 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
               ) : (
-                <Smartphone size={64} className="text-[var(--k-ink)]/10" strokeWidth={1} />
+                <DeviceRenderMockup brand={family.brand} model={family.model} className="w-full h-full" />
               )}
             </motion.div>
 
