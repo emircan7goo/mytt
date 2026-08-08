@@ -71,13 +71,13 @@ export default function FamilyCard({ family, index }: Props) {
       className="group relative flex flex-col h-full rounded-2xl bg-[#161922] border border-slate-800/90 p-3 sm:p-3.5 shadow-sm hover:shadow-xl hover:border-orange-500/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       style={{ animationDelay: `${Math.min(index * 25, 200)}ms` }}
     >
-      {/* ── 1. Şeffaf / Temiz Görsel Kutusu ───────── */}
-      <div className="relative w-full aspect-square bg-[#0D0F17] rounded-xl p-2.5 sm:p-3 flex items-center justify-center overflow-hidden mb-2.5 group-hover:bg-[#121520] transition-colors">
+      {/* ── 1. Doğrudan Temiz Görsel (İç Kutu / Koyu Arka Plan Yok) ───────── */}
+      <div className="relative w-full aspect-square flex items-center justify-center overflow-hidden mb-3">
         <img
           src={photoUrl}
           alt={`${family.brand} ${family.model}`}
           loading="lazy"
-          className="h-full w-full object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-contain rounded-xl drop-shadow-md transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
