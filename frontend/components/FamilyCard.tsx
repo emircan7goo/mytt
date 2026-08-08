@@ -77,6 +77,9 @@ export default function FamilyCard({ family, index }: Props) {
           src={photoUrl}
           alt={`${family.brand} ${family.model}`}
           loading="lazy"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=80';
+          }}
           className="h-full w-full object-contain rounded-xl drop-shadow-md transition-transform duration-500 group-hover:scale-105"
         />
       </div>
