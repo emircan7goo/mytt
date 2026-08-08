@@ -1,7 +1,7 @@
 /**
- * POST /api/admin/semih-import
+ * POST /api/semih-import
  * TEK SEFERLİK güvenli toplu import endpoint'i.
- * Secret key ile korunur. Deploy sonra silinecek.
+ * Secret key ile korunur.
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
@@ -72,11 +72,9 @@ export async function POST(req: NextRequest) {
 
   const results: { id: number; status: string; message?: string }[] = [];
 
-  // Semih İletişim için system store bul ya da oluştur
-  // Admin kullanıcısı bul
-  let adminUser = await prisma.user.findFirst({ where: { role: 'ADMIN' } });
+  // Semih İletişim için system dealer bul veya oluştur
+  let adminUser = await prisma.user.findFirst({ where: { email: 'semih@mytt.com.tr' } });
   if (!adminUser) {
-    // Admin yok — system user oluştur
     const bcrypt = await import('bcryptjs');
     adminUser = await prisma.user.create({
       data: {
