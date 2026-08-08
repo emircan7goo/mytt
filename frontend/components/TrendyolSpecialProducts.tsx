@@ -7,6 +7,7 @@ import type { FamilySummary } from '@/lib/hooks/useProducts';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import { useApp } from '@/providers/AppProvider';
 import { familyToFavorite, familyFavoriteId } from '@/lib/familyFavorite';
+import { getProductPhotoUrl } from '@/lib/productImageMapper';
 
 interface Props {
   products: FamilySummary[];
@@ -98,16 +99,12 @@ export default function TrendyolSpecialProducts({ products }: Props) {
 
                   {/* ── Ürün Görseli ── */}
                   <div className="w-full aspect-square bg-[var(--k-surface)] rounded-lg sm:rounded-xl p-1.5 sm:p-3 flex items-center justify-center overflow-hidden border border-[var(--k-line-2)] group-hover/card:bg-[var(--k-surface)] transition-colors">
-                    {imgSrc ? (
-                      <img
-                        src={imgSrc}
-                        alt={`${family.brand} ${family.model}`}
-                        loading="lazy"
-                        className="h-full w-full object-contain transition-transform duration-500 group-hover/card:scale-108"
-                      />
-                    ) : (
-                      <div className="text-[var(--k-ink-4)] text-xs font-bold">{family.brand}</div>
-                    )}
+                    <img
+                      src={getProductPhotoUrl(family.brand, family.model, imgSrc)}
+                      alt={`${family.brand} ${family.model}`}
+                      loading="lazy"
+                      className="h-full w-full object-contain transition-transform duration-500 group-hover/card:scale-108"
+                    />
                   </div>
 
                   {/* ── Marka & Model Başlığı ── */}
@@ -117,10 +114,9 @@ export default function TrendyolSpecialProducts({ products }: Props) {
                       <span className="font-bold text-[var(--k-ink-2)]">{family.model}</span>
                     </div>
 
-                    {/* Yıldız Değerlendirmesi */}
-                    <div className="flex items-center gap-1 text-[9px] sm:text-[11px] font-extrabold text-[var(--k-hot)] pt-0.5">
-                      <Star size={9} className="fill-[var(--k-hot)] text-[var(--k-hot)] sm:w-3 sm:h-3" />
-                      <span>4.9</span>
+                    {/* Güvenlik Etiketi */}
+                    <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-extrabold text-emerald-400 pt-0.5">
+                      <span>✓ Orijinal Cihaz</span>
                     </div>
                   </div>
                 </div>

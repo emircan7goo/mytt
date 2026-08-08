@@ -7,6 +7,7 @@ import type { FamilySummary } from '@/lib/hooks/useProducts';
 import { resolveUploadUrl } from '@/lib/resolveUrl';
 import { useApp } from '@/providers/AppProvider';
 import { familyToFavorite, familyFavoriteId } from '@/lib/familyFavorite';
+import { getProductPhotoUrl } from '@/lib/productImageMapper';
 
 interface Props {
   products: FamilySummary[];
@@ -105,18 +106,17 @@ export default function FlashDealArena({ products }: Props) {
                   </div>
 
                   <div className="w-full aspect-square bg-[var(--k-canvas)] rounded-lg sm:rounded-xl p-2 sm:p-3 flex items-center justify-center overflow-hidden mb-2 sm:mb-3">
-                    {imgSrc ? (
-                      <img src={imgSrc} alt={family.model} className="h-full w-full object-contain group-hover:scale-108 transition-transform duration-500" />
-                    ) : (
-                      <div className="text-[var(--k-ink-4)] text-xs font-bold">{family.brand}</div>
-                    )}
+                    <img
+                      src={getProductPhotoUrl(family.brand, family.model, imgSrc)}
+                      alt={family.model}
+                      className="h-full w-full object-contain group-hover:scale-108 transition-transform duration-500"
+                    />
                   </div>
 
                   <div className="text-left space-y-0.5">
                     <div className="text-[11px] sm:text-xs font-black text-white line-clamp-1">{family.brand} {family.model}</div>
-                    <div className="flex items-center gap-1 text-[10px] font-extrabold text-[var(--k-hot)]">
-                      <Star size={10} className="fill-[var(--k-hot)]" />
-                      <span>4.9</span>
+                    <div className="flex items-center gap-1 text-[10px] font-extrabold text-orange-400">
+                      <span>✓ Doğrulanmış Stok</span>
                     </div>
                   </div>
                 </div>
