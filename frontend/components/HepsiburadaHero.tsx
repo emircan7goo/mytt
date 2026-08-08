@@ -103,15 +103,15 @@ export default function HepsiburadaHero() {
   };
 
   return (
-    <div className="w-full max-w-full bg-[var(--k-void)] border-b border-[var(--k-line-2)] py-1.5 sm:py-4 overflow-hidden select-none">
+    <div className="w-full max-w-full bg-[var(--k-void)] border-b border-[var(--k-line-2)] py-2 sm:py-4 overflow-hidden select-none">
       <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
 
-        {/* SWIPE DESTEKLİ DOKUNMATİK BANNER CONTAINER */}
+        {/* SWIPE DESTEKLİ GERİŞ VE YÜKSEK BANNER CONTAINER */}
         <div
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="relative w-full h-[165px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-xl sm:rounded-3xl border border-[var(--k-line-2)] bg-[var(--k-void)] shadow-2xl flex flex-col justify-between group touch-pan-y"
+          className="relative w-full h-[210px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--k-line-2)] bg-[var(--k-void)] shadow-2xl flex flex-col justify-between group touch-pan-y"
         >
           
           {/* Arka Plan Görselleri */}
@@ -127,7 +127,7 @@ export default function HepsiburadaHero() {
           ))}
 
           {/* Yumuşatılmış Sol Şeffaf Degrade Katmanı */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent z-10 pointer-events-none" />
 
           {/* Sol Navigasyon Oku (Masaüstü) */}
           <button
@@ -138,13 +138,13 @@ export default function HepsiburadaHero() {
             <ChevronLeft size={24} />
           </button>
 
-          {/* Metin İçeriği (Mobilde Kompakt & Şık Boyut) */}
-          <div className="relative z-20 p-3 sm:p-12 max-w-[70%] sm:max-w-xl lg:max-w-2xl text-left text-white space-y-1 sm:space-y-4 my-auto min-w-0">
-            <span className="inline-block px-2 py-0.5 sm:px-4 sm:py-1.5 rounded-full bg-[var(--k-hot-deep)] text-white font-black text-[8px] sm:text-xs uppercase tracking-wider shadow-md">
+          {/* Metin İçeriği (Geniş & Rahat Nefes Alan Mobil Alan) */}
+          <div className="relative z-20 p-4 sm:p-12 max-w-[85%] sm:max-w-xl lg:max-w-2xl text-left text-white space-y-2 sm:space-y-4 my-auto min-w-0">
+            <span className="inline-block px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[var(--k-hot-deep)] text-white font-black text-[9px] sm:text-xs uppercase tracking-wider shadow-md">
               {slides[activeSlide].badge}
             </span>
 
-            <h2 className="text-xs sm:text-3xl lg:text-4xl font-black tracking-tight leading-snug text-white drop-shadow-md break-words">
+            <h2 className="text-sm sm:text-3xl lg:text-4xl font-black tracking-tight leading-snug text-white drop-shadow-md break-words">
               {slides[activeSlide].title}
             </h2>
 
@@ -152,13 +152,13 @@ export default function HepsiburadaHero() {
               {slides[activeSlide].subtitle}
             </p>
 
-            <div className="pt-0.5 sm:pt-3">
+            <div className="pt-1 sm:pt-3">
               <Link
                 href={slides[activeSlide].ctaLink}
-                className="inline-flex items-center gap-1 px-3 py-1 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-[9px] sm:text-sm shadow-xl shadow-[var(--k-hot-glow)] transition-all hover:scale-105"
+                className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-[var(--k-hot)] via-[var(--k-hot)] to-[var(--k-hot-deep)] hover:from-[var(--k-hot-deep)] hover:to-[var(--k-hot-deep)] text-white font-black text-[10px] sm:text-sm shadow-xl shadow-[var(--k-hot-glow)] transition-all hover:scale-105"
               >
                 <span>{slides[activeSlide].ctaText}</span>
-                <ArrowRight className="w-2.5 h-2.5 sm:w-4 sm:h-4" strokeWidth={3} />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" strokeWidth={3} />
               </Link>
             </div>
           </div>
@@ -173,12 +173,12 @@ export default function HepsiburadaHero() {
           </button>
 
           {/* Carousel Noktaları */}
-          <div className="relative z-20 pb-1.5 sm:pb-5 flex items-center justify-center gap-1 sm:gap-2">
+          <div className="relative z-20 pb-2 sm:pb-5 flex items-center justify-center gap-1.5 sm:gap-2">
             {slides.map((s, idx) => (
               <button
                 key={s.id}
                 onClick={() => setActiveSlide(idx)}
-                className={`h-1 sm:h-2 rounded-full transition-all ${activeSlide === idx ? 'w-4 sm:w-8 bg-[var(--k-hot)]' : 'w-1 sm:w-2 bg-[var(--k-surface)]'}`}
+                className={`h-1.5 sm:h-2 rounded-full transition-all ${activeSlide === idx ? 'w-5 sm:w-8 bg-[var(--k-hot)]' : 'w-1.5 sm:w-2 bg-[var(--k-surface)]'}`}
                 aria-label={`Slayt ${idx + 1}`}
               />
             ))}
