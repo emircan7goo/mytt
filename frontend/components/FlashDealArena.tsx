@@ -115,23 +115,10 @@ export default function FlashDealArena({ products }: Props) {
 
                   <div className="text-left space-y-0.5">
                     <div className="text-[11px] sm:text-xs font-black text-white line-clamp-1">{family.brand} {family.model}</div>
-                    <div className="flex items-center gap-1 text-[10px] font-extrabold text-orange-400">
-                      <span>✓ Doğrulanmış Stok</span>
-                    </div>
                   </div>
                 </div>
 
-                <div className="pt-2 sm:pt-3 mt-2 border-t border-[var(--k-line)] space-y-1.5">
-                  {/* Stok Çubuğu */}
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-[9px] sm:text-[10px] font-bold text-[var(--k-ink-4)]">
-                      <span>Stok</span>
-                      <span className="text-[var(--k-hot)] font-extrabold">%{soldPercent}</span>
-                    </div>
-                    <div className="w-full h-1 bg-[var(--k-canvas)] rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-[var(--k-hot)] to-[var(--k-hot)] rounded-full" style={{ width: `${soldPercent}%` }} />
-                    </div>
-                  </div>
+                <div className="pt-2 sm:pt-3 mt-2 border-t border-[var(--k-line)]">
 
                   <div className="flex items-center justify-between pt-1 flex-wrap gap-1">
                     <div className="text-left">

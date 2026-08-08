@@ -520,13 +520,6 @@ function HomePageContent() {
       {/* ── 1. HERO SLIDER BANNER ── */}
       {!searchQuery && <HepsiburadaHero />}
 
-      {/* ── 3. TRENDYOL "SANA ÖZEL ÜRÜNLER" KAYDIRMALI ÜRÜN ARENASI ── */}
-      {!searchQuery && (
-        <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
-          <TrendyolSpecialProducts products={families} />
-        </div>
-      )}
-
       {/* ── TİCARİ WİDGETLAR & VİTRİNLER ── */}
       {!searchQuery && (
         <section className="relative w-full py-6">

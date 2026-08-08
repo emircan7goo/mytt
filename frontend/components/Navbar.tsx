@@ -459,11 +459,10 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setShowAuthModal(true)}
-                  className="flex items-center gap-1.5 h-[36px] px-4 rounded-[8px] text-[13px] font-[600] active:scale-95 transition-all"
-                  style={{ border: '1px solid var(--k-line-2)', color: 'var(--k-ink)' }}
+                  className="flex items-center gap-1.5 h-[36px] px-3.5 rounded-xl text-xs sm:text-sm font-extrabold active:scale-95 transition-all bg-white/10 border border-white/20 text-white hover:bg-white/20"
                 >
-                  <User size={14} />
-                  <span className="hidden sm:inline">Giriş Yap</span>
+                  <User size={14} className="text-orange-400" />
+                  <span>Giriş Yap</span>
                 </button>
               </>
             ) : null}
