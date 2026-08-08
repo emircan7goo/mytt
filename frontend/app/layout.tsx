@@ -85,12 +85,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.png', type: 'image/png' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
     shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   alternates: {
     canonical: BASE_URL,
@@ -109,7 +114,7 @@ const organizationJsonLd = {
   name: 'Mytt',
   alternateName: ['Mytt Telefon', 'Mytt Pazaryeri'],
   url: BASE_URL,
-  logo: `${BASE_URL}/icon`,
+  logo: `${BASE_URL}/icon-512.png`,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
@@ -137,9 +142,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="tr" data-theme="dark" className={`${jakarta.variable} ${jetbrains.variable} h-full antialiased`}>
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-        <link rel="alternate icon" href="/favicon.ico?v=2" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-icon?v=2" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=3" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=3" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+        <link rel="alternate icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png?v=3" />
         {/* Tema pre-paint: kayitli tercihi (yoksa varsayilan 'dark') boyamadan
             once uygular — FOUC (yanlis tema flashi) olmaz. ThemeContext ile ayni
             'mytt_theme' anahtarini kullanir. */}
