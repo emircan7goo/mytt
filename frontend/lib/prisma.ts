@@ -2,18 +2,11 @@
  * lib/prisma.ts
  * ─────────────────────────────────────────────────────────────────────────────
  * Neon (serverless Postgres) için Prisma singleton.
- *
- * PrismaNeon (WebSocket/Pool tabanlı) kullanılıyor — PrismaNeonHttp DEĞİL,
- * çünkü backend'deki $transaction akışları (checkout, escrow release, sell-request
- * teklif kabul vb.) interactive transaction gerektiriyor; HTTP adaptörü bunu desteklemiyor.
- *
- * Vercel serverless fonksiyonlarında her invocation yeni bir modül context'i
- * alabilir; dev'de Next.js hot-reload de aynı şekilde modülü sıfırdan yükleyebilir.
- * globalThis üzerinde saklayarak gereksiz yeni bağlantı havuzu oluşmasını engelliyoruz.
+ * Pool adaptörü ile Vercel serverless ortamında güvenli ve kesintisiz bağlantı.
  */
 import { PrismaClient } from '@prisma/client';
 import { PrismaNeon } from '@prisma/adapter-neon';
-import { neonConfig } from '@neondatabase/serverless';
+import { Pool, neonConfig } from '@neondatabase/serverless';
 import ws from 'ws';
 
 neonConfig.webSocketConstructor = ws;
@@ -27,11 +20,16 @@ if (!connectionString) {
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 function createPrismaClient(): PrismaClient {
-  const adapter = new PrismaNeon({ connectionString });
-  return new PrismaClient({ adapter });
+  try {
+    const pool = new Pool({ connectionString });
+    const adapter = new PrismaNeon(pool as any);
+    return new PrismaClient({ adapter });
+  } catch (err) {
+    console.error('PrismaNeon adapter init failed, falling back to standard PrismaClient:', err);
+    return new PrismaClient();
+  }
 }
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-// Always cache the client globally in serverless lambdas to avoid reconnecting on every request!
 globalForPrisma.prisma = prisma;
