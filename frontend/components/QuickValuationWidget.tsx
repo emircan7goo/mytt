@@ -2,227 +2,139 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  ArrowRight, ShieldCheck, Zap, Store, Truck, Lock, CheckCircle2, 
-  TrendingUp, Sparkles, Smartphone, Flame, DollarSign, Award, RefreshCw 
-} from 'lucide-react';
-
-const RECENT_BIDS_MOCK = [
-  { dealer: 'MYTT Kadıköy Yetkili Bayii', bump: 750, location: 'İstanbul' },
-  { dealer: 'MYTT Şişli Ana Bayi', bump: 1200, location: 'İstanbul' },
-  { dealer: 'MYTT Çankaya Bayii', bump: 500, location: 'Ankara' },
-  { dealer: 'MYTT Konak Bayii', bump: 950, location: 'İzmir' },
-  { dealer: 'MYTT Bursa Nilüfer Bayii', bump: 800, location: 'Bursa' },
-];
-
-const DEVICE_PROMPTS = [
-  'iPhone, Samsung, Xiaomi & Tüm Modeller',
-  'Sıfır Kutulu veya İkinci El Cihazınız',
-  '150+ Onaylı Bayi Canlı Yarışır',
-];
+import { ArrowRight, ShieldCheck, Store, Truck, Lock, CheckCircle2, TrendingUp, Smartphone } from 'lucide-react';
 
 export default function QuickValuationWidget() {
-  const [demoPrice, setDemoPrice] = useState(38400);
-  const [isSlamming, setIsSlamming] = useState(false);
-  const [lastBid, setLastBid] = useState(RECENT_BIDS_MOCK[0]);
-  const [promptIdx, setPromptIdx] = useState(0);
-  const [bidCount, setBidCount] = useState(14);
+  const [demoPrice, setDemoPrice] = useState(42500);
+  const [isBumping, setIsBumping] = useState(false);
 
-  // Live Auction Bidding Simulation Effect
+  // Subtle natural price bump ticker without noisy simulation text
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomBid = RECENT_BIDS_MOCK[Math.floor(Math.random() * RECENT_BIDS_MOCK.length)];
-      setLastBid(randomBid);
-      setIsSlamming(true);
-      setBidCount((prev) => prev + 1);
-
-      setDemoPrice((prev) => (prev >= 48500 ? 38400 : prev + randomBid.bump));
-
-      setTimeout(() => setIsSlamming(false), 850);
-    }, 3000);
+      setIsBumping(true);
+      setDemoPrice((prev) => (prev >= 49000 ? 42500 : prev + 650));
+      setTimeout(() => setIsBumping(false), 600);
+    }, 3500);
 
     return () => clearInterval(interval);
-  }, []);
-
-  // Text ticker cycling
-  useEffect(() => {
-    const textTimer = setInterval(() => {
-      setPromptIdx((prev) => (prev + 1) % DEVICE_PROMPTS.length);
-    }, 4000);
-    return () => clearInterval(textTimer);
   }, []);
 
   const formatTL = (val: number) =>
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(val);
 
   return (
-    <div className="w-full max-w-full rounded-3xl bg-[#0b0f19] border border-white/10 p-5 sm:p-10 shadow-2xl relative overflow-hidden my-6 sm:my-10 backdrop-blur-2xl">
+    <div className="w-full max-w-full rounded-3xl bg-[#111625] border border-white/10 p-5 sm:p-8 shadow-xl relative overflow-hidden my-4 sm:my-6">
       
-      {/* Background Neon Glowing Orbs */}
-      <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#FF6000]/15 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10 min-w-0">
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 min-w-0">
-
-        {/* Sol Taraf: Değer Önermesi & Özellikler */}
-        <div className="lg:col-span-6 text-left space-y-4 sm:space-y-6 min-w-0">
+        {/* Sol Taraf: Öz ve Net Metin */}
+        <div className="lg:col-span-6 text-left space-y-3.5 sm:space-y-5 min-w-0">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6000]/15 border border-[#FF6000]/30 text-[#FF6000] text-xs font-black tracking-wide shadow-md shadow-[#FF6000]/10">
-            <Zap size={15} className="fill-[#FF6000] animate-pulse" />
-            <span>ARADA KOMİSYONCU YOK • DOĞRUDAN ESNAF TİCARETİ</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.15] tracking-tight">
-            Fiyatı Algoritma Değil, <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-[#FF6000] via-[#FF7A00] to-[#EA580C] bg-clip-text text-transparent">
-              İşini Bilen Telefoncu Versin!
-            </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
+            Fiyatı Algoritma Değil, <br />
+            <span className="text-[#FF6000]">İşini Bilen Telefoncu Versin!</span>
           </h2>
 
-          <p className="text-xs sm:text-base text-slate-300 font-medium leading-relaxed max-w-xl">
+          <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed max-w-xl">
             Cihazını 1 dakikada teklife çıkar. Türkiye'nin 150+ onaylı yetkili telefoncu bayisi canlı kapalı ihalede teklif versin. En yüksek teklifi sen seç, paran %100 Escrow korumasıyla anında hesabına yatsın.
           </p>
 
-          {/* 3 Özellik Rozeti */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Store size={20} className="text-[#FF6000] shrink-0" />
-              <div className="text-xs font-bold text-white leading-tight">
-                150+ Onaylı Bayi Yarışır
-              </div>
+          {/* 3 Temel Rozet */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10">
+              <Store size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-xs font-bold text-slate-200">150+ Onaylı Bayi Yarışır</span>
             </div>
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Truck size={20} className="text-[#FF6000] shrink-0" />
-              <div className="text-xs font-bold text-white leading-tight">
-                Ücretsiz Kapıdan Kurye
-              </div>
+            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10">
+              <Truck size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-xs font-bold text-slate-200">Ücretsiz Kapıdan Kurye</span>
             </div>
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Lock size={20} className="text-[#FF6000] shrink-0" />
-              <div className="text-xs font-bold text-white leading-tight">
-                %100 BDDK Escrow Güvencesi
-              </div>
+            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10">
+              <Lock size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-xs font-bold text-slate-200">%100 BDDK Escrow Güvencesi</span>
             </div>
           </div>
 
-          {/* Sol Aksiyon Butonu */}
-          <div className="pt-2">
+          {/* Aksiyon Butonu */}
+          <div className="pt-1">
             <Link
               href="/sell"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white font-black text-sm sm:text-base transition-all shadow-xl shadow-[#FF6000]/30 hover:scale-[1.02] active:scale-98 border border-orange-400/30"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF6000] hover:bg-[#EA580C] text-white font-black text-xs sm:text-sm transition-all shadow-lg shadow-[#FF6000]/20 hover:scale-[1.01] active:scale-98"
             >
               <span>Cihazını İhaleye Çıkar & Teklif Al</span>
-              <ArrowRight size={18} strokeWidth={2.5} />
+              <ArrowRight size={16} strokeWidth={2.5} />
             </Link>
           </div>
 
         </div>
 
-        {/* Sağ Taraf: ULTRA DİNAMİK CANLI İHALE SİMÜLATÖRÜ KARTI */}
+        {/* Sağ Taraf: MİNİMAL CANLI FİYAT KARTI */}
         <div className="lg:col-span-6 min-w-0 w-full">
-          <div className={`rounded-3xl bg-[#111625] p-6 sm:p-8 text-white text-left space-y-5 shadow-2xl relative overflow-hidden transition-all duration-300 border ${
-            isSlamming 
-              ? 'border-[#FF6000] shadow-[0_0_50px_rgba(255,96,0,0.5)] scale-[1.01]' 
-              : 'border-white/10'
-          }`}>
+          <div className="rounded-2xl bg-[#0b0f19] p-5 sm:p-6 text-white text-left space-y-4 border border-white/10 shadow-xl">
             
-            {/* Üst Canlı Simülasyon Başlığı */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3.5 flex-wrap gap-2">
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                </span>
-                <span className="text-xs font-black text-white uppercase tracking-wider">CANLI İHALE SİMÜLATÖRÜ</span>
+            {/* Üst Model Etiketi */}
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
+                <Smartphone size={16} className="text-[#FF6000]" />
+                <span>iPhone, Samsung, Xiaomi & Tüm Modeller</span>
               </div>
-              
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1.5">
-                  <Flame size={13} className="fill-emerald-400" />
-                  <span>{bidCount} Canlı Teklif Verildi</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Dinamik Model / İhale Etiketi Switcher */}
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 flex items-center justify-between">
-              <div className="flex items-center gap-2.5 text-xs text-slate-300 font-bold truncate">
-                <Smartphone size={16} className="text-[#FF6000] shrink-0" />
-                <span className="truncate transition-all duration-300 text-white font-black">{DEVICE_PROMPTS[promptIdx]}</span>
-              </div>
-              <span className="text-[10px] font-bold text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-md shrink-0">
+              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Canlı Yarışma
               </span>
             </div>
 
-            {/* CANLI FİYAT YÜKSELME & SAĞDAN SLAM TEKLİF ALANI */}
-            <div className="py-5 text-center bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-3.5 relative overflow-hidden shadow-inner">
-              
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-                <Sparkles size={14} className="text-[#FF6000] animate-spin" />
-                <span>150+ BAYİ KAPALI İHALEDE YARIŞTIKÇA TEKLİF YÜKSELİR</span>
+            {/* MİNİMAL FİYAT GÖSTERİMİ */}
+            <div className="py-4 text-center bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-2">
+              <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                150+ BAYİ KAPALI İHALEDE YARIŞTIKÇA TEKLİF YÜKSELİR
               </div>
 
-              {/* FİYAT ARTIŞI & CANLI SLAM ROZETİ */}
-              <div className="relative flex flex-col items-center justify-center min-h-[85px]">
-                
-                {/* Canlı Bayi Teklifi Pop-up Rozeti */}
-                {isSlamming && (
-                  <div className="absolute -top-1 right-2 sm:right-4 animate-in slide-in-from-right-16 fade-in duration-300 z-30 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-xs px-3.5 py-1.5 rounded-xl shadow-xl shadow-emerald-500/40 border border-emerald-300 flex items-center gap-1.5">
-                    <TrendingUp size={15} className="animate-bounce" />
-                    <span>{lastBid.dealer}: +{formatTL(lastBid.bump)} ₺</span>
-                  </div>
-                )}
-
-                <div className={`text-4xl sm:text-6xl font-black tracking-tight transition-all duration-300 ${
-                  isSlamming 
-                    ? 'scale-110 text-[#FF6000] drop-shadow-[0_0_35px_rgba(255,96,0,0.95)]' 
-                    : 'text-white drop-shadow-[0_0_20px_rgba(255,96,0,0.3)]'
-                }`}>
-                  {formatTL(demoPrice)} <span className="text-2xl sm:text-4xl text-[#FF6000]">₺</span>
-                </div>
+              <div className={`text-3xl sm:text-5xl font-black tracking-tight transition-all duration-300 ${
+                isBumping ? 'scale-105 text-[#FF6000]' : 'text-white'
+              }`}>
+                {formatTL(demoPrice)} <span className="text-xl sm:text-3xl text-[#FF6000]">₺</span>
               </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-md">
-                <TrendingUp size={14} />
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+                <TrendingUp size={13} />
                 <span>+ Teklif Geldikçe Fiyat Anında Yukarı Çarpar</span>
               </div>
             </div>
 
-            {/* İHALE GÜVENCE GARANTİSİ MADDELERİ */}
-            <div className="pt-2 border-t border-slate-800 space-y-3">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-black text-[#FF6000] tracking-wider uppercase flex items-center gap-1.5">
-                  <ShieldCheck size={16} /> İHALE GÜVENCE GARANTİSİ
+            {/* GÜVENCE GARANTİSİ */}
+            <div className="pt-1 border-t border-slate-800 space-y-2 text-xs">
+              <div className="flex items-center justify-between font-bold text-slate-400 text-[11px]">
+                <span className="text-[#FF6000] uppercase tracking-wider flex items-center gap-1">
+                  <ShieldCheck size={14} /> İHALE GÜVENCE GARANTİSİ
                 </span>
-                <span className="text-[10px] text-slate-400 font-bold">%100 Güvenli Ticaret</span>
+                <span>%100 Güvenli Ticaret</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs font-bold">
-                <div className="flex items-center gap-2 bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-slate-200">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
-                  <span className="leading-tight">Komisyon Yok (%0 Kesinti)</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-semibold text-slate-300">
+                <div className="flex items-center gap-1.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                  <span>Komisyon Yok (%0 Kesinti)</span>
                 </div>
-                <div className="flex items-center gap-2 bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-slate-200">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
-                  <span className="leading-tight">En Yüksek Fiyat Garantisi</span>
+                <div className="flex items-center gap-1.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                  <span>En Yüksek Fiyat Garantisi</span>
                 </div>
-                <div className="flex items-center gap-2 bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-slate-200">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
-                  <span className="leading-tight">15 Dk Anında Ödeme</span>
+                <div className="flex items-center gap-1.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                  <span>15 Dk Anında Ödeme</span>
                 </div>
               </div>
             </div>
 
-            {/* HIGH-IMPACT MAIN CTA BUTTON */}
+            {/* CTA BUTONU */}
             <div className="pt-1">
               <Link
                 href="/sell"
-                className="w-full py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white font-black text-sm sm:text-base transition-all shadow-xl shadow-[#FF6000]/30 flex items-center justify-center gap-2 text-center hover:scale-[1.02] active:scale-98 border border-orange-400/30 group"
+                className="w-full py-3.5 rounded-xl bg-[#FF6000] hover:bg-[#EA580C] text-white font-black text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 text-center"
               >
-                <Zap size={18} className="fill-white shrink-0 group-hover:rotate-12 transition-transform" />
                 <span>Cihazını İhaleye Çıkar & En Yüksek Teklifi Al</span>
-                <ArrowRight size={18} strokeWidth={2.5} className="shrink-0 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} strokeWidth={2.5} />
               </Link>
             </div>
 

@@ -502,7 +502,6 @@ function HomePageContent() {
           <div className="max-w-[1440px] mx-auto px-4 lg:px-8 space-y-6">
             <FlashDealArena products={families} />
             <QuickValuationWidget />
-            <BrandHubShowcase />
           </div>
         </section>
       )}
