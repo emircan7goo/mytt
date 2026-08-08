@@ -340,15 +340,6 @@ export default function Navbar() {
           {/* Sağ aksiyonlar */}
           <div className="flex items-center gap-2.5 ml-auto">
 
-            {/* Cihazını Sat CTA (Mobilde Üst Navbardan Kaldırıldı) */}
-            <Link
-              href="/sell"
-              className="hidden sm:inline-flex items-center gap-2 h-10 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-black transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#FF6000]/35 bg-gradient-to-r from-[#FF6000] via-[#FF6000] to-[#EA580C] text-white border border-orange-400/30"
-            >
-              <Smartphone size={16} strokeWidth={2.5} className="fill-white/20" />
-              <span className="truncate">Cihazını Sat</span>
-            </Link>
-
             {/* Mobil arama */}
             <button
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-[8px] transition-colors"
