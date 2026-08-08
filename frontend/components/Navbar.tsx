@@ -3,7 +3,7 @@
 import {
   Search, ShoppingCart, User, ChevronDown, LogOut,
   LayoutGrid, Settings, Menu, X, Heart, Phone, Store,
-  ChevronRight, Zap, Smartphone, Apple, Tablet, Package,
+  ChevronRight, Zap, Smartphone, Apple, Tablet, Package, Headphones,
   Grid3x3, Moon, Sun,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -179,6 +179,7 @@ export const MENU_ITEMS = [
   },
   { label: 'Huawei / Honor', value: 'Huawei', href: '/?cat=Huawei', icon: Smartphone },
   { label: 'Redmi / Poco',   value: 'Poco',   href: '/?cat=Poco',   icon: Smartphone },
+  { label: 'Aksesuarlar',    value: 'Aksesuarlar', href: '/?cat=Aksesuarlar', icon: Headphones },
   { label: 'Diğer Markalar', value: 'Diğer',  href: '/sell',        icon: Smartphone },
 ];
 
@@ -198,69 +199,37 @@ export default function Navbar() {
   const router         = useRouter();
   const activeCategory = searchParams?.get('cat') || null;
 
-  const { cartCount, user, logout, setShowAuthModal, openCart, setSearchQuery } = useApp();
+  const { searchQuery, setSearchQuery, cart, cartCount, wishlist, user, logout, setShowAuthModal, openCart } = useApp();
   const { theme, toggleTheme } = useTheme();
-  const { data: configData } = useSiteConfig();
-  const navbarModels = (configData?.settings as any)?.navbarModels || {};
 
   useEffect(() => {
     setMounted(true);
-
-    // Unregister any stale Service Workers & clear CacheStorage to force fresh HTML/JS
-    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        for (const registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
-    if (typeof window !== 'undefined' && 'caches' in window) {
-      caches.keys().then((names) => {
-        for (const name of names) {
-          caches.delete(name);
-        }
-      });
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Ctrl+K / Cmd+K → open fullscreen search
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setShowSearch(true);
+    function handleClickOutside(event: MouseEvent) {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target as Node)) {
+        setShowProfileMenu(false);
       }
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!profileMenuRef.current?.contains(e.target as Node)) setShowProfileMenu(false);
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  useEffect(() => {
-    if (showSearch) setTimeout(() => searchInputRef.current?.focus(), 80);
-  }, [showSearch]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSearchQuery(searchValue);
-    setShowSearch(false);
+    if (searchValue.trim()) {
+      setSearchQuery(searchValue.trim());
+      setShowSearch(false);
+      router.push(`/?q=${encodeURIComponent(searchValue.trim())}`);
+    }
   };
 
   const handleLogout = useCallback(async () => {
-    logout();
+    await logout();
     setShowProfileMenu(false);
     toast.success('Güvenli çıkış yapıldı.');
   }, [logout]);
@@ -268,41 +237,44 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="sticky top-0 z-[50] w-full transition-all duration-300 bg-[#090D16]/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/80"
+        className="sticky top-0 z-[50] w-full transition-all duration-300 bg-[#090D16]/90 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/80"
       >
-        {/* ── Ana Çubuk (Apple Glassmorphism Layout) ─────────────────────────────────── */}
-        <div className="max-w-[1280px] mx-auto px-4 lg:px-8 h-[68px] flex items-center gap-4">
+        {/* ── Ana Çubuk (Apple Glassmorphism Layout — Mobilde Sıkıştırılmış Esnek Düzen) ── */}
+        <div className="max-w-[1280px] mx-auto px-2 sm:px-4 lg:px-8 h-[60px] sm:h-[68px] flex items-center justify-between gap-1.5 sm:gap-4 min-w-0">
 
-          {/* Hamburger (mobil) */}
-          <button
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-200 transition-all hover:bg-white/10"
-            onClick={() => setShowMobileMenu(true)}
-            aria-label="Menüyü aç"
-          >
-            <Menu size={20} />
-          </button>
+          <div className="flex items-center gap-1.5 sm:gap-4 min-w-0 shrink-0">
+            {/* Hamburger (mobil) */}
+            <button
+              className="lg:hidden w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg sm:rounded-xl bg-white/5 border border-white/10 text-slate-200 transition-all hover:bg-white/10 shrink-0"
+              onClick={() => setShowMobileMenu(true)}
+              aria-label="Menüyü aç"
+            >
+              <Menu size={18} className="sm:hidden" />
+              <Menu size={20} className="hidden sm:block" />
+            </button>
 
-          {/* Logo — Özel Büyük MYTT Logosu */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-3 sm:mr-8 py-1">
-            <span className="font-black text-3xl sm:text-[52px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
-              m
-              <span
-                className="inline-block font-black tracking-tighter mx-[0.5px]"
-                style={{
-                  backgroundImage: 'linear-gradient(225deg, #FF6000 0%, #FF6000 50%, #FFFFFF 50%, #FFFFFF 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: 'drop-shadow(0 0 16px rgba(255,96,0,0.9))',
-                }}
-              >
-                y
+            {/* Logo — Özel Kompakt MYTT Logosu */}
+            <Link href="/" className="flex items-center shrink-0 group py-1">
+              <span className="font-black text-2xl sm:text-[46px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+                m
+                <span
+                  className="inline-block font-black tracking-tighter mx-[0.5px]"
+                  style={{
+                    backgroundImage: 'linear-gradient(225deg, #FF6000 0%, #FF6000 50%, #FFFFFF 50%, #FFFFFF 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter: 'drop-shadow(0 0 16px rgba(255,96,0,0.9))',
+                  }}
+                >
+                  y
+                </span>
+                tt
               </span>
-              tt
-            </span>
-          </Link>
+            </Link>
+          </div>
 
           {/* Arama (Masaüstü Apple Glass Arama Çubuğu) */}
-          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] mx-auto">
+          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-[560px] mx-auto relative">
             <div
               className="group/search flex items-center w-full h-[44px] rounded-full transition-all overflow-hidden pl-4 pr-1.5 bg-white/5 border border-white/10 focus-within:border-[#FF6000]/80 focus-within:bg-white/10 focus-within:ring-4 focus-within:ring-[#FF6000]/15 backdrop-blur-md shadow-inner"
             >
