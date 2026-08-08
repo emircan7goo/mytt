@@ -1,0 +1,80 @@
+/**
+ * productImageMapper.ts
+ * Marka ve modele göre Getmobil / Hepsiburada tarzında yüksek çözünürlüklü
+ * ve şeffaf ürün fotoğrafları sağlar.
+ */
+
+// Model bazlı özel fotoğraflar
+const MODEL_PHOTOS: Record<string, string> = {
+  // Apple iPhone
+  'iphone 16 pro max': 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80',
+  'iphone 15 pro max': 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80',
+  'iphone 15':         'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80',
+  'iphone 14 pro max': 'https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=500&auto=format&fit=crop&q=80',
+  'iphone 14 plus':    'https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=500&auto=format&fit=crop&q=80',
+  'iphone 14':         'https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=500&auto=format&fit=crop&q=80',
+  'iphone 13 pro max': 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80',
+  'iphone 13 pro':     'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80',
+  'iphone 13':         'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=80',
+  'iphone 12 pro max': 'https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&auto=format&fit=crop&q=80',
+  'iphone 12 pro':     'https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&auto=format&fit=crop&q=80',
+  'iphone 12':         'https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&auto=format&fit=crop&q=80',
+  'iphone 12 mini':    'https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&auto=format&fit=crop&q=80',
+  'iphone 11 pro max': 'https://images.unsplash.com/photo-1574944985070-8f30c4397e3c?w=500&auto=format&fit=crop&q=80',
+  'iphone 11 pro':     'https://images.unsplash.com/photo-1574944985070-8f30c4397e3c?w=500&auto=format&fit=crop&q=80',
+  'iphone 11':         'https://images.unsplash.com/photo-1574944985070-8f30c4397e3c?w=500&auto=format&fit=crop&q=80',
+  'iphone se':         'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+
+  // Samsung
+  'samsung s24 fe':        'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80',
+  'samsung s25 fe':        'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80',
+  'samsung note 20 ultra': 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=80',
+  'samsung note 20':       'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=80',
+  'samsung a71':           'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+  'samsung a51':           'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+  'samsung a31':           'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+  'samsung a36 5g':        'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+  'samsung m30s':          'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
+
+  // Xiaomi & Others
+  'honor magic v2':  'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  'nothing nothins os': 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+};
+
+// Marka bazlı varsayılan kaliteli fotoğraflar
+const BRAND_DEFAULT_PHOTOS: Record<string, string> = {
+  Apple:   'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=80',
+  Samsung: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80',
+  Xiaomi:  'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  Realme:  'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  Oppo:    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  Vivo:    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  Honor:   'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+  Poco:    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80',
+};
+
+export function getProductPhotoUrl(brand: string, model: string, userUploadedPhoto?: string | null): string {
+  if (userUploadedPhoto && userUploadedPhoto.trim().length > 0) {
+    return userUploadedPhoto;
+  }
+
+  const bKey = (brand || '').toLowerCase().trim();
+  const mKey = `${bKey} ${(model || '').toLowerCase().trim()}`;
+
+  // Tam model eşleşmesi
+  for (const [key, url] of Object.entries(MODEL_PHOTOS)) {
+    if (mKey.includes(key) || key.includes(mKey)) {
+      return url;
+    }
+  }
+
+  // Marka varsayılan fotoğrafı
+  const bNorm = Object.keys(BRAND_DEFAULT_PHOTOS).find(
+    (b) => b.toLowerCase() === bKey || bKey.includes(b.toLowerCase())
+  );
+  if (bNorm && BRAND_DEFAULT_PHOTOS[bNorm]) {
+    return BRAND_DEFAULT_PHOTOS[bNorm];
+  }
+
+  return 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=80';
+}
