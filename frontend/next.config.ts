@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   output: process.env.DOCKER_BUILD === '1' ? 'standalone' : undefined,
   compress: true,
   reactStrictMode: true,
+  serverExternalPackages: ['pg', '@prisma/adapter-pg', '@prisma/client'],
   experimental: {
     optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion'],
   },
