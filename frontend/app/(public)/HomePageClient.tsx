@@ -559,16 +559,12 @@ function HomePageContent() {
             <div className="bg-[#161922] rounded-2xl p-3.5 border border-slate-800 shadow-md flex items-center justify-between gap-3">
               <div>
                 <h2 className="font-extrabold text-base sm:text-lg tracking-tight text-white">
-                  {sameDayMode
-                    ? '🚀 Gün İçi Teslim'
-                    : searchQuery
-                      ? `"${searchQuery}" Sonuçları`
-                      : 'Tüm Cihazlar'}
+                  {searchQuery ? `"${searchQuery}" Sonuçları` : 'Tüm Cihazlar'}
                 </h2>
                 {!isLoading && (
                   <span className="inline-flex items-center text-[11px] font-semibold text-slate-400 mt-0.5">
                     <b className="text-orange-400 mr-1">{filteredProducts.length}</b>
-                    {sameDayMode ? ' cihaz — bugün teslim' : ' cihaz listeleniyor'}
+                    cihaz listeleniyor
                   </span>
                 )}
               </div>
@@ -586,25 +582,6 @@ function HomePageContent() {
                       {activeFiltersCount}
                     </span>
                   )}
-                </button>
-
-                <button
-                  onClick={handleSameDayToggle}
-                  disabled={locationLoading}
-                  className={`flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border font-extrabold text-xs sm:text-sm transition-all shadow-xs disabled:opacity-60 ${
-                    sameDayMode
-                      ? 'bg-orange-500 border-orange-600 text-white shadow-orange-500/20'
-                      : 'bg-slate-800/80 border-slate-700/80 text-slate-300 hover:border-orange-500/50 hover:text-white'
-                  }`}
-                >
-                  {locationLoading ? (
-                    <Loader2 size={14} className="animate-spin" />
-                  ) : (
-                    <MapPin size={14} className={sameDayMode ? 'text-white' : 'text-orange-400'} />
-                  )}
-                  <span className="truncate">
-                    {locationLoading ? 'Konum...' : 'Gün İçi Teslim'}
-                  </span>
                 </button>
 
                 <div className="hidden sm:flex items-center gap-1 p-1 bg-slate-900/80 rounded-xl border border-slate-800">
