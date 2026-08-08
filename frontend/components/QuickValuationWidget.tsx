@@ -29,18 +29,18 @@ export default function QuickValuationWidget() {
     new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(val);
 
   return (
-    <div className="w-full max-w-full rounded-3xl bg-[#111625] border border-white/10 p-5 sm:p-8 shadow-2xl relative overflow-hidden my-4 sm:my-6">
+    <div className="w-full max-w-full rounded-2xl sm:rounded-3xl bg-[#111625] border border-white/10 p-4 sm:p-8 shadow-2xl relative overflow-hidden my-3 sm:my-6">
       
       {/* Background Neon Glowing Orbs */}
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[#FF6000]/15 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10 min-w-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center relative z-10 min-w-0">
 
-        {/* Sol Taraf: Öz ve Net Metin (Buton Kaldırıldı) */}
-        <div className="lg:col-span-6 text-left space-y-4 sm:space-y-6 min-w-0">
+        {/* Sol Taraf: Öz ve Net Metin */}
+        <div className="lg:col-span-6 text-left space-y-3 sm:space-y-6 min-w-0">
           
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
             Fiyatı Algoritma Değil, <br />
             <span className="bg-gradient-to-r from-[#FF6000] via-[#FF7A00] to-[#EA580C] bg-clip-text text-transparent">
               İşini Bilen Telefoncu Versin!
@@ -52,18 +52,18 @@ export default function QuickValuationWidget() {
           </p>
 
           {/* 3 Temel Rozet */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Store size={18} className="text-[#FF6000] shrink-0" />
-              <span className="text-xs font-bold text-slate-200">150+ Onaylı Bayi Yarışır</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+            <div className="flex items-center gap-2 p-2.5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Store size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-slate-200">150+ Onaylı Bayi Yarışır</span>
             </div>
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Truck size={18} className="text-[#FF6000] shrink-0" />
-              <span className="text-xs font-bold text-slate-200">Ücretsiz Kapıdan Kurye</span>
+            <div className="flex items-center gap-2 p-2.5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Truck size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-slate-200">Ücretsiz Kapıdan Kurye</span>
             </div>
-            <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Lock size={18} className="text-[#FF6000] shrink-0" />
-              <span className="text-xs font-bold text-slate-200">%100 BDDK Escrow Güvencesi</span>
+            <div className="flex items-center gap-2 p-2.5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Lock size={16} className="text-[#FF6000] shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-slate-200">%100 BDDK Escrow Güvencesi</span>
             </div>
           </div>
 
@@ -71,41 +71,41 @@ export default function QuickValuationWidget() {
 
         {/* Sağ Taraf: GOD-LEVEL ANİMASYONLU MİNİMAL CANLI FİYAT KARTI */}
         <div className="lg:col-span-6 min-w-0 w-full">
-          <div className={`rounded-3xl bg-[#0b0f19] p-6 sm:p-8 text-white text-left space-y-6 border transition-all duration-300 shadow-2xl relative overflow-hidden flex flex-col justify-center ${
+          <div className={`rounded-2xl sm:rounded-3xl bg-[#0b0f19] p-4 sm:p-8 text-white text-left space-y-4 sm:space-y-6 border transition-all duration-300 shadow-2xl relative overflow-hidden flex flex-col justify-center ${
             isBumping 
-              ? 'border-[#FF6000] shadow-[0_0_50px_rgba(255,96,0,0.5)] scale-[1.02]' 
+              ? 'border-[#FF6000] shadow-[0_0_50px_rgba(255,96,0,0.5)] scale-[1.01]' 
               : 'border-white/10'
           }`}>
             
             {/* GOD-LEVEL FİYAT ANİMASYON ALANI */}
-            <div className="py-7 text-center bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-4 relative overflow-hidden shadow-inner">
+            <div className="py-4 sm:py-7 text-center bg-slate-900/90 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden shadow-inner">
               
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-                <Sparkles size={14} className="text-[#FF6000] animate-spin" />
+              <div className="text-[9px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1">
+                <Sparkles size={12} className="text-[#FF6000] animate-spin" />
                 <span>150+ BAYİ KAPALI İHALEDE YARIŞTIKÇA TEKLİF YÜKSELİR</span>
               </div>
 
               {/* SAĞDAN FIRLAYAN İHALE TEKLİF PATLAMASI & RAKAM YÜKSELİŞİ */}
-              <div className="relative flex flex-col items-center justify-center min-h-[90px]">
+              <div className="relative flex flex-col items-center justify-center min-h-[70px] sm:min-h-[90px]">
                 
                 {isBumping && (
-                  <div className="absolute -top-2 right-2 sm:right-6 animate-in slide-in-from-right-16 fade-in duration-300 z-30 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-xs px-3.5 py-1.5 rounded-xl shadow-xl shadow-emerald-500/40 border border-emerald-300 flex items-center gap-1.5">
-                    <TrendingUp size={15} className="animate-bounce" />
+                  <div className="absolute -top-2 right-1 sm:right-6 animate-in slide-in-from-right-16 fade-in duration-300 z-30 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-[10px] sm:text-xs px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl shadow-xl stroke-emerald-500/40 border border-emerald-300 flex items-center gap-1">
+                    <TrendingUp size={13} className="animate-bounce" />
                     <span>+{formatTL(lastBump)} ₺ CANLI TEKLİF!</span>
                   </div>
                 )}
 
-                <div className={`text-4xl sm:text-6xl font-black tracking-tight transition-all duration-300 ${
+                <div className={`text-3xl sm:text-6xl font-black tracking-tight transition-all duration-300 ${
                   isBumping 
-                    ? 'scale-115 text-[#FF6000] drop-shadow-[0_0_40px_rgba(255,96,0,0.95)]' 
+                    ? 'scale-110 text-[#FF6000] drop-shadow-[0_0_40px_rgba(255,96,0,0.95)]' 
                     : 'text-white drop-shadow-[0_0_20px_rgba(255,96,0,0.3)]'
                 }`}>
-                  {formatTL(demoPrice)} <span className="text-2xl sm:text-4xl text-[#FF6000]">₺</span>
+                  {formatTL(demoPrice)} <span className="text-xl sm:text-4xl text-[#FF6000]">₺</span>
                 </div>
               </div>
 
-              <div className="inline-flex items-center gap-2 text-xs font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-md">
-                <TrendingUp size={14} />
+              <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-md">
+                <TrendingUp size={12} />
                 <span>+ Teklif Geldikçe Fiyat Anında Yukarı Çıkar</span>
               </div>
             </div>

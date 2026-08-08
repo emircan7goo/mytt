@@ -283,8 +283,8 @@ export default function Navbar() {
           </button>
 
           {/* Logo — Özel Büyük MYTT Logosu */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-8 py-1">
-            <span className="font-black text-5xl sm:text-[54px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-3 sm:mr-8 py-1">
+            <span className="font-black text-3xl sm:text-[52px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
               m
               <span
                 className="inline-block font-black tracking-tighter mx-[0.5px]"
