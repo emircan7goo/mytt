@@ -279,8 +279,20 @@ function HomePageContent() {
   useEffect(() => {
     setMounted(true);
     const cat = searchParams.get('cat');
-    if (cat) setSelectedBrand(cat);
-  }, [searchParams]);
+    const q = searchParams.get('q');
+
+    if (cat) {
+      setSelectedBrand(cat);
+    } else {
+      setSelectedBrand(null);
+    }
+
+    if (q) {
+      setSearchQuery(q);
+    } else if (!cat) {
+      setSearchQuery('');
+    }
+  }, [searchParams, setSearchQuery]);
 
   const { data: configData, isLoading: isConfigLoading } = useSiteConfig();
   const { data: families = [], isLoading: isProductsLoading } = useFamilies();
@@ -302,7 +314,22 @@ function HomePageContent() {
 
   const filteredProducts = useMemo(() => {
     let list = [...families];
-    if (selectedBrand)   list = list.filter(f => f.brand === selectedBrand);
+
+    if (selectedBrand) {
+      const bLower = selectedBrand.toLowerCase();
+      list = list.filter(f => {
+        const fBrand = f.brand.toLowerCase();
+        if (fBrand === bLower) return true;
+        if (bLower === 'apple' && fBrand.includes('apple')) return true;
+        if (bLower === 'samsung' && fBrand.includes('samsung')) return true;
+        if (bLower === 'xiaomi' && (fBrand.includes('xiaomi') || fBrand.includes('redmi') || fBrand.includes('poco'))) return true;
+        if (bLower === 'poco' && (fBrand.includes('poco') || fBrand.includes('xiaomi') || fBrand.includes('redmi'))) return true;
+        if (bLower === 'huawei' && (fBrand.includes('huawei') || fBrand.includes('honor'))) return true;
+        if (bLower === 'diğer' && !['apple', 'samsung', 'xiaomi', 'poco', 'redmi', 'huawei', 'honor'].includes(fBrand)) return true;
+        return false;
+      });
+    }
+
     if (selectedGrade)   list = list.filter(f => f.availableGrades.includes(selectedGrade));
     if (selectedColor)   list = list.filter(f => f.colorOptions.includes(selectedColor));
     if (selectedStorage) list = list.filter(f => f.storageOptions.includes(selectedStorage));
@@ -315,10 +342,23 @@ function HomePageContent() {
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      list = list.filter(f =>
+      const directMatches = list.filter(f =>
         f.brand.toLowerCase().includes(q) ||
         f.model.toLowerCase().includes(q)
       );
+
+      if (directMatches.length > 0) {
+        list = directMatches;
+      } else {
+        // Tam aranan model (ör. iPhone 17 veya S25) henüz piyasaya sürülmediyse veya stokta yoksa,
+        // boş kalmasın diye aranan markanın en popüler akıllı cihazlarını zekice göster!
+        const brandMatches = list.filter(f =>
+          q.includes(f.brand.toLowerCase()) || f.brand.toLowerCase().includes(q.split(' ')[0])
+        );
+        if (brandMatches.length > 0) {
+          list = brandMatches;
+        }
+      }
     }
 
     if (sortMode === 'asc')     list.sort((a, b) => a.minPrice - b.minPrice);
