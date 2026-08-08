@@ -37,7 +37,7 @@ export default function QuickValuationWidget() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-8 items-center relative z-10 min-w-0">
 
-        {/* Sol Taraf: Öz ve Net Metin (Mobilde Ultra Minimal) */}
+        {/* Sol Taraf: Öz ve Net Metin (Mobilde Ultra Minimal & Noktasız) */}
         <div className="lg:col-span-6 text-left space-y-2 sm:space-y-6 min-w-0">
           
           <h2 className="text-base sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
@@ -51,19 +51,19 @@ export default function QuickValuationWidget() {
             Cihazını 1 dakikada teklife çıkar. Türkiye'nin 150+ onaylı yetkili telefoncu bayisi canlı kapalı ihalede teklif versin. En yüksek teklifi sen seç, paran %100 Escrow korumasıyla anında hesabına yatsın.
           </p>
 
-          {/* 3 Temel Rozet — Mobilde Sıkıştırılmış Satır */}
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 pt-0.5 sm:pt-1">
-            <div className="flex items-center gap-1.5 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Store size={14} className="text-[#FF6000] shrink-0" />
-              <span className="text-[9px] sm:text-xs font-bold text-slate-200 truncate">150+ Bayi</span>
+          {/* 3 Temel Rozet — Mobilde Noktasız & Tam Metinli Satır */}
+          <div className="grid grid-cols-3 gap-1 sm:gap-3 pt-0.5 sm:pt-1">
+            <div className="flex items-center justify-center gap-1 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Store size={13} className="text-[#FF6000] shrink-0" />
+              <span className="text-[9.5px] sm:text-xs font-black text-slate-200 whitespace-nowrap">150+ Bayi</span>
             </div>
-            <div className="flex items-center gap-1.5 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Truck size={14} className="text-[#FF6000] shrink-0" />
-              <span className="text-[9px] sm:text-xs font-bold text-slate-200 truncate">Ücretsiz Kurye</span>
+            <div className="flex items-center justify-center gap-1 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Truck size={13} className="text-[#FF6000] shrink-0" />
+              <span className="text-[9.5px] sm:text-xs font-black text-slate-200 whitespace-nowrap">Bedava Kurye</span>
             </div>
-            <div className="flex items-center gap-1.5 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <Lock size={14} className="text-[#FF6000] shrink-0" />
-              <span className="text-[9px] sm:text-xs font-bold text-slate-200 truncate">%100 Escrow</span>
+            <div className="flex items-center justify-center gap-1 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <Lock size={13} className="text-[#FF6000] shrink-0" />
+              <span className="text-[9.5px] sm:text-xs font-black text-slate-200 whitespace-nowrap">%100 Escrow</span>
             </div>
           </div>
 
