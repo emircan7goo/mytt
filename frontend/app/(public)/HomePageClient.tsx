@@ -562,10 +562,10 @@ function HomePageContent() {
 
         <div className="flex-1 min-w-0">
 
-          <div className="sticky top-[80px] z-40 mb-6">
-            <div className="bg-[var(--k-surface)] rounded-xl p-4 border border-[var(--k-line)] shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="sticky top-[75px] z-40 mb-5">
+            <div className="bg-[#161922] rounded-2xl p-3.5 border border-slate-800 shadow-md flex items-center justify-between gap-3">
               <div>
-                <h2 className="font-bold text-lg tracking-tight text-[var(--k-ink)]">
+                <h2 className="font-extrabold text-base sm:text-lg tracking-tight text-white">
                   {sameDayMode
                     ? '🚀 Gün İçi Teslim'
                     : searchQuery
@@ -573,39 +573,59 @@ function HomePageContent() {
                       : 'Tüm Cihazlar'}
                 </h2>
                 {!isLoading && (
-                  <span className="inline-flex items-center text-xs font-medium text-[var(--k-ink-3)] mt-0.5">
-                    <b className="text-[var(--k-hot)] mr-1">{filteredProducts.length}</b>
-                    {sameDayMode ? ' cihaz — yakınında, bugün teslim' : ' cihaz listeleniyor'}
+                  <span className="inline-flex items-center text-[11px] font-semibold text-slate-400 mt-0.5">
+                    <b className="text-orange-400 mr-1">{filteredProducts.length}</b>
+                    {sameDayMode ? ' cihaz — bugün teslim' : ' cihaz listeleniyor'}
                   </span>
                 )}
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                {/* Mobil Filtre Aç Butonu */}
+                <button
+                  onClick={() => setShowMobileFilters(true)}
+                  className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 border border-slate-700/80 text-xs font-bold text-slate-200 hover:text-white transition-colors"
+                >
+                  <Filter size={14} className="text-orange-400" />
+                  <span>Filtrele</span>
+                  {activeFiltersCount > 0 && (
+                    <span className="w-4 h-4 rounded-full bg-orange-500 text-white font-black text-[10px] flex items-center justify-center ml-0.5">
+                      {activeFiltersCount}
+                    </span>
+                  )}
+                </button>
+
                 <button
                   onClick={handleSameDayToggle}
                   disabled={locationLoading}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 font-bold text-sm transition-all shadow-sm disabled:opacity-60 ${ sameDayMode ? 'bg-[var(--k-hot)] border-[var(--k-hot-deep)] text-[var(--k-hot-ink)] shadow-[var(--k-hot-glow)]/30 shadow-lg' : 'bg-[var(--k-surface)] border-[var(--k-line)] text-[var(--k-ink-2)] hover:border-[var(--k-line-hot)] hover:bg-[var(--k-hot-wash)] hover:text-[var(--k-hot)]' }`}
+                  className={`flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border font-extrabold text-xs sm:text-sm transition-all shadow-xs disabled:opacity-60 ${
+                    sameDayMode
+                      ? 'bg-orange-500 border-orange-600 text-white shadow-orange-500/20'
+                      : 'bg-slate-800/80 border-slate-700/80 text-slate-300 hover:border-orange-500/50 hover:text-white'
+                  }`}
                 >
-                  {locationLoading
-                    ? <Loader2 size={15} className="animate-spin" />
-                    : <MapPin size={15} className={sameDayMode ? 'text-[var(--k-hot-ink)]' : 'text-[var(--k-hot)]'} />
-                  }
-                  <span className="hidden sm:inline">
-                    {locationLoading ? 'Konum Alınıyor…' : sameDayMode ? 'Gün İçi Teslim' : 'Gün İçi Teslim'}
+                  {locationLoading ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <MapPin size={14} className={sameDayMode ? 'text-white' : 'text-orange-400'} />
+                  )}
+                  <span className="truncate">
+                    {locationLoading ? 'Konum...' : 'Gün İçi Teslim'}
                   </span>
                 </button>
-                <div className="flex items-center gap-1 p-1 bg-[var(--k-surface-3)] rounded-xl border border-[var(--k-line)]">
+
+                <div className="hidden sm:flex items-center gap-1 p-1 bg-slate-900/80 rounded-xl border border-slate-800">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[var(--k-surface)] text-[var(--k-ink)] shadow-sm border border-[var(--k-line)]' : 'text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)]'}`}
+                    className={`p-1.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-slate-800 text-white shadow-xs border border-slate-700' : 'text-slate-500 hover:text-slate-300'}`}
                   >
-                    <Grid3X3 size={18} strokeWidth={2.5} />
+                    <Grid3X3 size={16} strokeWidth={2.5} />
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-[var(--k-surface)] text-[var(--k-ink)] shadow-sm border border-[var(--k-line)]' : 'text-[var(--k-ink-4)] hover:text-[var(--k-ink-2)]'}`}
+                    className={`p-1.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-slate-800 text-white shadow-xs border border-slate-700' : 'text-slate-500 hover:text-slate-300'}`}
                   >
-                    <List size={18} strokeWidth={2.5} />
+                    <List size={16} strokeWidth={2.5} />
                   </button>
                 </div>
               </div>
