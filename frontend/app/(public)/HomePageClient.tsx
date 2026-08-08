@@ -431,52 +431,49 @@ function HomePageContent() {
         </div>
       )}
 
-      <div className="relative group mb-6">
+      <div className="relative group mb-5">
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
           placeholder="Kelime veya model ara..."
-          className="w-full pl-4 pr-10 py-2.5 bg-[var(--k-surface)] border border-[var(--k-line-2)] rounded-lg text-sm text-[var(--k-ink)] placeholder-[var(--k-ink-4)] focus:border-[var(--k-hot-deep)] focus:ring-1 focus:ring-[var(--k-line-hot)] outline-none transition-all"
+          className="w-full pl-4 pr-10 py-2.5 bg-[#161922] border border-slate-800 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all"
         />
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--k-ink-4)]">
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">
           <Search size={16} />
         </div>
       </div>
 
-      <div className="border border-[var(--k-line)] rounded-lg overflow-hidden mb-4">
-        <div className="bg-[var(--k-surface-2)] px-4 py-2.5 border-b border-[var(--k-line)] flex justify-between items-center">
-          <span className="text-xs font-bold text-[var(--k-ink-2)]">Marka</span>
+      <div className="border border-slate-800 rounded-2xl overflow-hidden mb-4 bg-[#161922] shadow-md">
+        <div className="bg-[#1C202B] px-4 py-3 border-b border-slate-800/80 flex justify-between items-center">
+          <span className="text-xs font-black text-slate-200 tracking-wider uppercase">Marka</span>
         </div>
-        <div className="p-2.5 bg-[var(--k-surface)] space-y-1">
+        <div className="p-2.5 bg-[#161922] space-y-1">
           {brands.map(brand => {
             const isActive = selectedBrand === brand;
             return (
               <button
                 key={brand}
                 onClick={() => setSelectedBrand(isActive ? null : brand)}
-                className={`flex items-center gap-2.5 w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-all group ${
+                className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-xl text-xs transition-all ${
                   isActive
-                    ? 'bg-orange-500/10 text-orange-400 font-extrabold border border-orange-500/30'
+                    ? 'bg-orange-500/15 text-orange-400 font-extrabold border border-orange-500/40 shadow-xs'
                     : 'text-slate-300 hover:bg-slate-800/60 hover:text-white border border-transparent'
                 }`}
               >
-                <div className="w-6 h-6 rounded-md bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-200 shrink-0 transition-transform group-hover:scale-105">
-                  {getBrandLogo(brand, 14, isActive ? "text-orange-400" : "text-slate-300")}
-                </div>
                 <span className="truncate">{brand}</span>
-                {isActive && <Check size={13} strokeWidth={3} className="ml-auto text-orange-400 shrink-0" />}
+                {isActive && <Check size={14} strokeWidth={3} className="text-orange-400 shrink-0" />}
               </button>
             );
           })}
         </div>
       </div>
 
-      <div className="border border-[var(--k-line)] rounded-lg overflow-hidden mb-4">
-        <div className="bg-[var(--k-surface-2)] px-4 py-2.5 border-b border-[var(--k-line)] flex justify-between items-center">
-          <span className="text-xs font-bold text-[var(--k-ink-2)]">Kozmetik Durum</span>
+      <div className="border border-slate-800 rounded-2xl overflow-hidden mb-4 bg-[#161922] shadow-md">
+        <div className="bg-[#1C202B] px-4 py-3 border-b border-slate-800/80 flex justify-between items-center">
+          <span className="text-xs font-black text-slate-200 tracking-wider uppercase">Kozmetik Durum</span>
         </div>
-        <div className="p-3 bg-[var(--k-surface)] space-y-2">
+        <div className="p-3 bg-[#161922] space-y-2">
           {(['A+', 'A', 'B', 'C'] as const).map(grade => {
             const gradeData: Record<string, { label: string }> = {
               'A+': { label: 'Kusursuz' },
@@ -493,12 +490,12 @@ function HomePageContent() {
                 className="flex items-center gap-2.5 w-full text-left py-1 text-xs group"
               >
                 <div className={`w-4 h-4 rounded flex items-center justify-center border transition-all ${
-                  isActive ? "bg-[var(--k-hot-deep)] border-[var(--k-hot-deep)] text-white" : 'border-[var(--k-line-2)] bg-[var(--k-surface)] group-hover:border-[var(--k-ink-4)]'
+                  isActive ? "bg-orange-500 border-orange-500 text-white" : 'border-slate-700 bg-slate-800 group-hover:border-slate-500'
                 }`}>
                   {isActive && <Check size={12} strokeWidth={3} />}
                 </div>
-                <span className={`transition-colors ${isActive ? 'font-bold text-[var(--k-ink)]' : 'text-[var(--k-ink-2)] group-hover:text-[var(--k-ink)]'}`}>
-                  {grade} <span className="text-[10px] text-[var(--k-ink-4)] font-normal">({gd.label})</span>
+                <span className={`transition-colors ${isActive ? 'font-bold text-white' : 'text-slate-300 group-hover:text-white'}`}>
+                  {grade} <span className="text-[10px] text-slate-400 font-normal">({gd.label})</span>
                 </span>
               </button>
             );
@@ -509,7 +506,7 @@ function HomePageContent() {
       {activeFiltersCount > 0 && (
         <button
           onClick={resetFilters}
-          className="w-full py-2 bg-[rgba(255,92,92,0.10)] text-[var(--k-bad)] font-bold text-xs rounded-lg hover:bg-[rgba(255,92,92,0.18)] transition-colors border border-[rgba(255,92,92,0.30)] flex items-center justify-center gap-1.5"
+          className="w-full py-2.5 bg-rose-500/10 text-rose-400 font-extrabold text-xs rounded-xl hover:bg-rose-500/20 transition-colors border border-rose-500/30 flex items-center justify-center gap-1.5"
         >
           Filtreleri Temizle
         </button>
