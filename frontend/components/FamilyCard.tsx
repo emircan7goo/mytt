@@ -64,8 +64,8 @@ export default function FamilyCard({ family, index }: Props) {
       className="group relative flex flex-col h-full rounded-2xl bg-white dark:bg-[#161922] border border-slate-200 dark:border-slate-800/90 p-4 shadow-sm hover:shadow-xl hover:border-orange-500/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       style={{ animationDelay: `${Math.min(index * 25, 200)}ms` }}
     >
-      {/* ── 1. Temiz Ürün Görseli (Görseli Kapatan Hiçbir Rozet Yok) ───────── */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-square bg-slate-50 dark:bg-[#0D0F17] rounded-xl p-3 flex items-center justify-center overflow-hidden mb-3.5 group-hover:bg-slate-100 dark:group-hover:bg-[#121520] transition-colors">
+      {/* ── 1. Temiz Dikey Ürün Görseli Kutusu (Aspect 3/4 Telefon Formatı) ────── */}
+      <div className="relative w-full aspect-[3/4] bg-slate-50 dark:bg-[#0D0F17] rounded-xl p-2.5 sm:p-3 flex items-center justify-center overflow-hidden mb-3 group-hover:bg-slate-100 dark:group-hover:bg-[#121520] transition-colors">
         <img
           src={photoUrl}
           alt={`${family.brand} ${family.model}`}
