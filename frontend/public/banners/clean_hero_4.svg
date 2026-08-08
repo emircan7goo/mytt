@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+    <defs>
+      <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#090D16"/>
+        <stop offset="50%" stop-color="#111625"/>
+        <stop offset="100%" stop-color="#0B0F19"/>
+      </linearGradient>
+      <radialGradient id="ambientGlow" cx="75%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FF6000" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#FF6000" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1280" height="720" fill="url(#bgGrad)"/>
+    <rect width="1280" height="720" fill="url(#ambientGlow)"/>
+    
+      <g transform="translate(700, 150)">
+        <ellipse cx="260" cy="380" rx="220" ry="40" fill="#FF6000" opacity="0.15" filter="blur(20px)"/>
+
+        <!-- 3D Matte Black & Neon Orange Credit Card -->
+        <g transform="rotate(-8 260 200)">
+          <rect x="60" y="80" width="380" height="230" rx="28" fill="#1E293B" stroke="#FF6000" stroke-width="6"/>
+          <line x1="60" y1="140" x2="440" y2="140" stroke="#FF6000" stroke-width="20"/>
+          <rect x="100" y="190" width="80" height="50" rx="12" fill="#F59E0B"/>
+          <circle cx="360" cy="240" r="24" fill="#FF6000" opacity="0.8"/>
+          <circle cx="390" cy="240" r="24" fill="#EF4444" opacity="0.8"/>
+        </g>
+      </g>
+    
+  </svg>
