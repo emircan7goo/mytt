@@ -282,35 +282,23 @@ export default function Navbar() {
             <Menu size={20} />
           </button>
 
-          {/* Logo — Özel Büyük MYTT Logosu ve Sağ Üstten Aşağı Turuncu 'Y' Vurgusu */}
-          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-8 py-1.5">
-            <div className="flex items-center gap-3.5">
-              {/* Işıltılı Şık İkon Amblemi */}
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#FF6000] via-[#FF6000] to-[#EA580C] flex items-center justify-center shadow-xl shadow-[#FF6000]/40 border border-orange-400/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Zap className="text-white fill-white w-6 h-6 animate-pulse" />
-              </div>
-
-              <div className="flex flex-col">
-                <span className="font-black text-4xl sm:text-[44px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-md">
-                  m
-                  <span
-                    className="inline-block font-black tracking-tighter mx-[0.5px] group-hover:scale-110 transition-transform duration-300"
-                    style={{
-                      backgroundImage: 'linear-gradient(225deg, #FF6000 0%, #FF6000 50%, #FFFFFF 50%, #FFFFFF 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 0 14px rgba(255,96,0,0.85))',
-                    }}
-                  >
-                    y
-                  </span>
-                  tt
-                </span>
-                <span className="text-[10px] font-black tracking-[0.32em] text-slate-400 uppercase leading-none mt-1 group-hover:text-orange-400 transition-colors">
-                  İHALE PLATFORMU
-                </span>
-              </div>
-            </div>
+          {/* Logo — Özel Büyük MYTT Logosu */}
+          <Link href="/" className="flex items-center flex-shrink-0 group mr-4 sm:mr-8 py-1">
+            <span className="font-black text-5xl sm:text-[54px] tracking-tighter text-white flex items-center leading-none font-sans select-none drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+              m
+              <span
+                className="inline-block font-black tracking-tighter mx-[0.5px]"
+                style={{
+                  backgroundImage: 'linear-gradient(225deg, #FF6000 0%, #FF6000 50%, #FFFFFF 50%, #FFFFFF 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 0 16px rgba(255,96,0,0.9))',
+                }}
+              >
+                y
+              </span>
+              tt
+            </span>
           </Link>
 
           {/* Arama (Masaüstü Apple Glass Arama Çubuğu) */}
